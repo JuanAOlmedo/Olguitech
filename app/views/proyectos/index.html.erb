@@ -1,0 +1,32 @@
+<head>
+    <%= stylesheet_link_tag 'articles-index' %>
+
+    <style>
+    .proyectos-link {
+        color: #656565;
+    }
+    </style>
+</head>
+
+<h1 class='index-title'> Nuestros Proyectos </h1>
+
+<div class='articles-div'>
+    <% @proyectos.each do |article| %>
+        <div class='article still move'>
+            <% if article.image.attached? %>
+                <img src='<%= url_for(article.image) %>' class='article-img' alt='<%= article.image.filename %>'>
+            <% end %>
+
+            <div class='article-information'>
+                <h2 class='article-title'> <%= article.title %> </h2>
+                <p class='article-text'> 
+                    <%= article.description %> <br>
+                </p>
+
+                <%= link_to proyecto_path(article) do %>
+                    <%= render 'layouts/more' %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>

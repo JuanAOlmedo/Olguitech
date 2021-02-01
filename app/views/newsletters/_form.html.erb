@@ -1,0 +1,14 @@
+<%= form_with model: @newsletter do |form| %>
+  <div class="field">
+    <%= form.label :title, "Título" %>
+    <%= form.text_area :title, class:'title-textarea article-title show-title' %>
+
+    <%= form.label :content, "Contenido" %>
+    <%= form.rich_text_area :content, class:'rich-text' %>
+
+    <%= form.label :subject, "Asunto" %>
+    <%= form.text_area :subject, class:'description-textarea' %> 
+
+    <%= form.submit 'Crear' %>
+  </div>
+<% end %>

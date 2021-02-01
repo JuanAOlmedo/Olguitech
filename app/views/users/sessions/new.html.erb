@@ -1,0 +1,32 @@
+<head>
+    <%= stylesheet_link_tag 'forms' %>
+</head>
+
+<div class='form-div'>
+  <h2 class='form-title'>Acceder</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  label: false,
+                  required: false,
+                  placeholder: 'Email',
+                  autofocus: true,
+                  class: 'input',
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  label: false,
+                  required: false,
+                  placeholder: 'Contraseña',
+                  class: 'input',
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Acceder", class:'gold-button', id:'button' %>
+    </div>
+  <% end %>
+
+  <%= render "users/shared/links" %>
+</div>

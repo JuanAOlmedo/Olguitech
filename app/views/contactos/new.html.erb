@@ -1,0 +1,21 @@
+<head>
+    <%= stylesheet_link_tag 'contacto' %>
+    <style>
+    .contacto-link {
+        transform: perspective(500px) translate3d(0, 0 , 1rem);
+        color: #656565;
+    }
+    </style>
+</head>
+
+<%= simple_form_for @contacto do |form| %>
+  <div class="field">
+    <h2 class='preference'> Cuál de nuestras soluciones te interesó más? </h2>
+    <%= form.collection_select :preference, Article.all, :id, :title %>
+
+    <h2 class='preference'> Cuál de nuestros proyectos te interesó más? </h2>
+    <%= form.collection_select :preference2, Proyecto.all, :id, :title %> <br>
+
+    <%= form.button :submit, 'Recibir Mail', class:'gold-button', id:'button' %>
+  </div>
+<% end %>

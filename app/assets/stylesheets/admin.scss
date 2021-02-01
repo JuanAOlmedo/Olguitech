@@ -1,0 +1,54 @@
+@import "settings";
+
+.icon-tabler-square-plus, .icon-tabler-circle-plus, .icon-tabler-news, .icon-tabler-users {
+    color: $accent-color;
+}
+
+.right-navbar-section.admin-right {
+    // width: 60%;
+    width: 67%;
+
+    @media only screen and (max-width: 80rem) {
+        width: 74%;
+    }
+
+    @media only screen and (max-width: 70rem) {
+        width: 77%;
+    }
+}
+
+.edit i {
+    margin-top: 3rem;
+}
+
+.destroy i {
+    margin-top: 6.2rem;
+}
+
+#edit {
+    padding: 1rem;
+    background-color: $color1;
+    color: $color2;
+    font-size: 1.1rem;
+    min-height: 35rem;
+}
+
+.right-tool {
+    right: 0;
+    bottom: 0;
+    margin: 1rem;
+    z-index: 10;
+    color: $accent-color;
+}
+
+.right-tool-proyecto {
+    margin-right: 5rem;
+}
+
+.right-tool-news {
+    margin-right: 9rem;
+}
+
+.right-tool-users {
+    margin-right: 13rem;
+}

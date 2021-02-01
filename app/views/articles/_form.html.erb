@@ -1,0 +1,17 @@
+<%= form_with model: @article do |form| %>
+  <div class="field">
+    <%= form.label :title, "Título" %>
+    <%= form.text_area :title, class:'title-textarea article-title show-title' %>
+
+    <%= form.label :image, 'Imagen' %>
+    <%= form.file_field :image, class:'image-attacher', id:"fileInput" %> <br>
+
+    <%= form.label :content, "Contenido" %>
+    <%= form.rich_text_area :content, class:'rich-text' %>
+
+    <%= form.label :description, "Descripción" %>
+    <%= form.text_area :description, class:'description-textarea' %> 
+
+    <%= form.submit 'Crear' %>
+  </div>
+<% end %>

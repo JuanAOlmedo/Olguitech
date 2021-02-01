@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang='es'>
+  <head>
+    <title>Olguitech s.a.s.</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Olguitech s.a. Soluciones en ingeniería -- Uruguay">
+    <meta name="theme-color" content="hsl(210, 60%, 20%)">
+    <%# <link rel="manifest" href="/manifest.webmanifest"> %>
+
+    <%= javascript_pack_tag 'application', :defer => "defer"  %>
+    
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="//fonts.googleapis.com/css2?family=Montserrat&family=Varela+Round&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+
+  <% if flash[:alert] || true %>
+    <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% end %>
+
+  <% if admin_signed_in? %> 
+    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% end %> 
+
+    <nav>
+      <div class="left-navbar-section">
+        <%= link_to root_path, method: :get do %>
+          <img src='/LogoA1.webp' alt='Logo De Olguitech' class='logo'>
+        <% end %>
+      </div>
+
+      <% if !admin_signed_in? %>
+      <div class="right-navbar-section">
+      <% else %>
+      <div class="right-navbar-section admin-right">
+      <% end %>
+
+        <%= render 'layouts/articles' %>
+        <%= render 'layouts/proyects' %>
+
+
+        <h2 class='element navbar-link-title nosotros-link navbar-link'>
+          <%= link_to 'Nosotros', nosotros_path, method: :get, class:'navbar-link nosotros-link' %>
+        </h2>
+
+        <h2 class='element navbar-link-title contacto-link navbar-link'>
+          <%= link_to 'Contacto', contactos_path, method: :get, class:'navbar-link contacto-link' %>
+        </h2>
+
+        <% if user_signed_in? %>
+          <h2 class='element navbar-link-title newsletter-link navbar-link'>
+            <%= link_to 'Newsletters', newsletters_path, method: :get, class:'navbar-link newsletter-link' %>
+          </h2>
+        <% end %>
+
+        <% if user_signed_in? %>
+          <h2 class='element gold-button'><%= link_to 'Perfil', edit_user_registration_path %></h2>
+        <% else %>
+          <h2 class='element gold-button'><%= link_to 'Acceder', new_user_session_path %></h2>
+        <% end %>
+
+        <% if admin_signed_in? %>
+          <h2 class='element gold-button'><%= link_to 'Admin', edit_admin_registration_path %></h2>
+        <% end %>
+      </div>
+      <%= render 'layouts/dropdown' %>
+    </nav>
+
+
+    <% if flash[:alert] %>
+      <div class='alert'>
+        <p> <%= alert %> </p>
+        <i class='close-alert' cursor='pointer' tabindex='0'> 
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </i>
+      </div>
+    <% elsif !flash[:notice] %>
+      <div class='alert'>
+        <p> Actualmente la página está en mantenimiento, puede ser que no todo fucione correctamente </p>
+        <i class='close-alert' cursor='pointer' tabindex='0'> 
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </i>
+      </div>
+    <% end %>
+
+
+    <% if flash[:notice] %>
+      <div class='notice'>
+        <p> <%= notice %> </p>
+        <i class='close-notice' cursor='pointer' tabindex='0'> 
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </i>
+      </div>
+    <% end %>
+
+    <div id='dropdown' class='dropdown'>
+      <h2 class='articles-hoverable dropdown-articles-hoverable articles-link'>
+          <%= link_to 'Soluciones', articles_path, class:'dropdown-navbar-link articles-link' %>
+      </h2>
+
+      <h2 class='articles-hoverable dropdown-articles-hoverable proyectos-link'> 
+          <%= link_to 'Proyectos', proyectos_path, class:'dropdown-navbar-link proyectos-link' %>
+      </h2>
+
+      <h2 class='navbar-link-title dropdown-navbar-link'>
+          <%= link_to 'Nosotros', nosotros_path, method: :get, class:'dropdown-navbar-link' %>
+      </h2>
+
+      <h2 class='navbar-link-title dropdown-navbar-link'>
+          <%= link_to 'Contacto', contactos_path, method: :get, class:'dropdown-navbar-link' %>
+      </h2>
+
+      <% if user_signed_in? %>
+        <h2 class='navbar-link-title dropdown-navbar-link'>
+            <%= link_to 'Newsletters', newsletters_path, method: :get, class:'dropdown-navbar-link' %>
+        </h2>
+      <% end %>
+      
+      <% if user_signed_in? %>
+          <h2 id='dropdown-acceder'><%= link_to 'Perfil', edit_user_registration_path, class:'dropdown-access' %></h2>
+      <% else %>
+          <h2 id='dropdown-acceder'><%= link_to 'Acceder', new_user_session_path, class:'dropdown-access' %></h2>
+      <% end %>
+
+      <% if admin_signed_in? %>
+          <h2 id='dropdown-acceder'><%= link_to 'Admin', edit_admin_registration_path, class:'dropdown-access' %></h2>
+      <% end %>
+    </div>
+    
+    <div id='all'>
+      <%= yield %>
+      <% if admin_signed_in? %>
+        <%= link_to new_article_path, class: 'right-tool', method: :get do %>
+          <i class='articles-fas right-tool'>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <circle cx="12" cy="12" r="9" />
+              <line x1="9" y1="12" x2="15" y2="12" />
+              <line x1="12" y1="9" x2="12" y2="15" />
+            </svg>
+          </i>
+        <% end %>
+        <%= link_to new_proyecto_path, class: 'right-tool-proyecto', method: :get do %>
+          <i class='articles-fas right-tool right-tool-proyecto'>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z"/>
+              <rect x="4" y="4" width="16" height="16" rx="2" />
+              <line x1="9" y1="12" x2="15" y2="12" />
+              <line x1="12" y1="9" x2="12" y2="15" />
+            </svg>
+          </i>
+        <% end %>
+
+        <%= link_to new_newsletter_path, class: 'right-tool-news', method: :get do %>
+          <i class='articles-fas right-tool right-tool-news'>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
+              <line x1="8" y1="8" x2="12" y2="8" />
+              <line x1="8" y1="12" x2="12" y2="12" />
+              <line x1="8" y1="16" x2="12" y2="16" />
+            </svg>
+          </i>
+        <% end %>
+
+        <%= link_to users_path, class: 'right-tool-users', method: :get do %>
+          <i class='articles-fas right-tool right-tool-users'>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <circle cx="9" cy="7" r="4" />
+              <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+            </svg>
+          </i>
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= javascript_pack_tag 'all' %>
+
+    <% if flash[:alert] || true %>
+      <%= javascript_pack_tag 'alert' %>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <%= javascript_pack_tag 'notice' %>
+    <% end %>
+  </body>
+</html>

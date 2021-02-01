@@ -1,0 +1,414 @@
+@import "settings";
+
+// 1. GENERAL //
+body {
+    margin: 0;
+    font-family: 'Varela Round', 'Gill Sans', sans-serif;
+    overflow-x: hidden;
+    background-color: $color1;
+}
+
+p {
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+}
+  
+#all {
+    margin-top: 5.15em;
+}
+  
+a {
+    text-decoration: none;
+    color: $color2;
+}
+  
+a:visited {
+    text-decoration: none;
+    color: $color2;
+}
+  
+a:hover {
+    text-decoration: none;
+    background-color: hsla(0, 0, 0, 0);
+    color: $color3;
+}
+
+// 2. NAVBAR //
+
+nav {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-image: linear-gradient(90deg, #121212, #222);
+    // background-color: $color6;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.9rem;
+    font-family: 'Varela Round', 'Gill Sans', sans-serif;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.left-navbar-section {
+    height: 5.7em;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.logo {
+    height: 100%;
+    width: auto;
+    padding-left: 0.3rem;
+}
+
+.right-navbar-section {
+    text-align: right;
+    display: flex;
+    // width: 47%;
+    width: 62%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 0.5rem;
+
+    @media only screen and (max-width: 80rem) {
+        // width: 60%;
+        width: 65%;
+    }
+
+    @media only screen and (max-width: 70rem) {
+        width: 70%;
+    }
+}
+
+.articles-hoverable-content {
+    position: absolute;
+    display: none;
+    flex-wrap: wrap;
+    // transition: all 0.9s;
+    background-color: $color6;
+    background-image: linear-gradient(90deg, #121212, #222);
+    top: 5.15em;
+    left: 2rem;
+    right: 2rem;
+    overflow-y: scroll;
+    max-height: 29rem;
+}
+
+// 2.1 Scrollbar //
+/* width */
+.articles-hoverable-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+.articles-hoverable-content::-webkit-scrollbar-track {
+    background-color: $color6; 
+}
+  
+/* Handle */
+.articles-hoverable-content::-webkit-scrollbar-thumb {
+    background: $color3;
+    border-radius: 5px;
+}
+////////////
+
+.articles-hoverable-div:hover {
+    // .articles-hoverable-div {
+    //     background-color: #CCC;
+    // }
+
+    .articles-hoverable-content {
+        display: flex;
+    }
+
+    #articles-hoverable {
+        // transform: perspective(500px) translate3d(0, 0 , 1.5rem);
+        color: $color5 !important;
+    }
+}
+
+.dropdown-articles-hoverable-div:hover {
+    .articles-hoverable-content {
+        display: none;
+    }
+}
+
+#articles-hoverable {
+    width: 100%;
+}
+
+#articles-hoverable a, #articles-hoverable a:visited {
+    color: inherit;
+}
+
+.article-hoverable-img {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+}
+
+.articles-hoverable-div {
+    width: 50%;
+}
+
+.articles-hoverable-article {
+    width: 100%;
+    height: 10rem;
+    padding: 1rem;
+    text-align: left;
+    display: flex;
+    margin: 0;
+}
+
+.articles-hoverable-content a {
+    width: 47%;
+    margin: 0.5rem;
+}
+
+.articles-hoverable-article-content {
+    padding-left: 0.5rem;
+}
+
+.articles-hoverable-article h2 {
+    color: $color1;
+    background-color: $color2;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.navbar-link {
+    cursor: pointer;
+    color: $color2;
+    width: 50%;
+    transition: color 0.8s;
+}
+
+.navbar-link:hover {
+    color: $color5 !important;
+}
+
+.newsletter-link {
+    padding-left: 0.2rem;
+    padding-right: 0.2rem; 
+}
+
+.gold-button {
+    cursor: pointer;
+    transition: color 0.8s;
+    width: 30%;
+    padding: 0.7rem;
+    border-radius: 0.8rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.9rem;
+    margin-left: 1rem;
+    // background-color: $color2;
+    // color: black;
+    background-color: $color2;
+    color: $color1;
+    text-align: center;
+    transition: background-color 0.8s, color 0.8s;
+}
+
+.gold-button:visited {
+    color: $color1;
+}
+
+.gold-button:hover {
+    color: $color6;
+    background-color: $color5;
+    
+}
+
+.gold-button a {
+    color: inherit;
+}
+
+// 2.2 Dropdown //
+
+#dropdown-bars {
+    display: none;
+    cursor: pointer;
+    margin: auto 1rem auto 0;
+    color: $color2;
+}
+
+#dropdown {
+    right: 0;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: $color1;
+    position: fixed;
+    padding: 1rem 2rem 1rem 2rem;
+    margin-top: 5.1em;
+    transform: translateY(-40rem);
+    transition: transform 1s;
+}
+
+#dropdown.show {
+    transform: translateY(0);
+    z-index: 99;
+}
+
+#dropdown-acceder {
+    width: 90%;
+    cursor: pointer;
+    padding: 0.7rem;
+    border-radius: 0.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $color2;
+    color: $color1;
+    text-align: center;
+}
+
+.dropdown-navbar-link {
+    width: 100%;
+    text-align: center;
+    transition: transform 0.8s, color 0.8s;
+    display: none;
+}
+
+.dropdown-navbar-link.show {
+    display: block;
+}
+
+.dropdown-navbar-link:hover{
+    color: $color3;
+}
+
+.dropdown-access {
+    color: $color1;
+    display: none;
+}
+
+.dropdown-access.show {
+    display: block;
+}
+
+.dropdown-access:visited {
+    color: $color1;
+}
+
+.dropdown-articles-hoverable-div {
+    width: 100% !important;
+}
+
+.dropdown-articles-hoverable {
+    text-align: center;
+}
+
+// 3. ICONS //
+
+.fas {
+    font-size: 2rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: $color2;
+    cursor: pointer;
+}
+
+.articles-fas {
+    color: $color2;
+    text-decoration: none; 
+    position: fixed;
+    z-index: 10;
+}
+  
+.articles-fas:visited {
+    color: $color2;
+    text-decoration: none; 
+}
+  
+.articles-fas:hover {
+    color: $color2;
+    background-color: rgba(0, 0, 0, 0);
+    text-decoration: none; 
+}
+
+.back {
+    z-index: 30;
+
+    @media only screen and (max-width: 40rem) {
+        display: none;
+    }
+}
+
+i {
+    transition: transform 0.5s;
+    transform: translateX(0px);
+    font-style: normal;
+    color: $color2;
+}
+
+.back i:hover {
+    transform: translateX(-10px);
+}
+
+i:hover {
+    color: $color3;
+}
+
+i h3 {
+    margin-top: auto; 
+    margin-bottom: auto; 
+    font-size: 25px;
+
+    
+}
+
+// 4. VARIOUS //
+.more-link {
+    width: 10rem;
+    background-color: $color3;
+    color: $color1;
+    border-radius: 2rem;
+    display: flex;
+    vertical-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.8s;
+    height: auto;
+}
+
+.more-link a {
+    width: 100%;
+    display: flex;
+}
+
+.more-link .icon {
+    margin: 0.5rem;
+    color: $color1;
+}
+
+.more-text {
+    font-weight: bold;
+    line-height: 1.6;
+    color: $color1;
+}
+
+.more-link:hover {
+    background-color: $color5;
+}
+
+
+@media only screen and (max-width: 67rem) {
+    .element {
+        display: none;
+    }
+
+    #dropdown-bars {
+        display: block;
+    }
+
+    .input input {
+        font-size: 1rem;
+    }
+
+    .navbar-link {
+        display: none;
+    }
+}

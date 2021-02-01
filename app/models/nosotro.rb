@@ -1,0 +1,2 @@
+class Nosotro < ApplicationRecord
+end

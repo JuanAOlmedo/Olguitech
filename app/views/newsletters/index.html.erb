@@ -1,0 +1,22 @@
+<head>
+    <%= stylesheet_link_tag 'articles-index' %>
+</head>
+
+<h1 class='index-title'> Newsletters </h1>
+
+<div class='articles-div'>
+    <% @newsletters.each do |newsletter| %>
+        <div class='article still move'>
+            <div class='article-information' style='padding-top: 3rem;'>
+                <h2 class='article-title'> <%= newsletter.title %> </h2>
+                <p class='article-text'> 
+                    <%= newsletter.subject %> <br>
+                </p>
+
+                <%= link_to newsletter_path(newsletter) do %>
+                    <%= render 'layouts/more' %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+</div>

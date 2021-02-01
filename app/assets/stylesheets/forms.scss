@@ -1,0 +1,105 @@
+@import "settings";
+
+.gold {
+    color: $color2;
+}
+
+.input input {
+    width: 20rem;
+    display: block;
+    height: 1.5rem; 
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    padding: 0.4rem;
+    border-radius: 0.5rem;
+    border-color: $color2;
+}
+
+.hint {
+    color: $color2;
+}
+
+.checkbox {
+    color: $color2;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    width: 30%;
+}
+
+#user_remember_me, #admin_remember_me, #user_newsletter {
+    margin-top: 2rem;
+    width: auto;
+    height: auto;
+    display: inline-block;
+}
+
+.form-div {
+    background-color: $color1;
+    padding: 3rem;
+}
+
+.form-inputs {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.form-title {
+    color: $color2;
+    font-size: 3rem;
+}
+
+.shared-links {
+    color: $color2;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    text-decoration: none; 
+}
+  
+.shared-links:visited {
+    color: $color2;
+    text-decoration: none; 
+}
+  
+.shared-links:hover {
+    color: $color3;
+    background-color: rgba(0, 0, 0, 0);
+    text-decoration: none; 
+}
+
+.error_notification {
+    color: $color2;
+}
+
+.error {
+    color: #ff5f5f;
+    display: block;
+}
+
+.field_with_errors input {
+    background-color: red;
+}
+
+#button {
+    margin-left: 0;
+    width: 12rem;
+    font-family: 'Varela Round', 'Gill Sans', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-style: none;
+
+    @media only screen and (max-width: 60rem) {
+        width: 15rem;
+    }
+}
+
+#user_password, #user_password_confirmation {
+    transition: background-color 0.5s;
+}
+
+.right {
+    background-color: greenyellow;
+}
+
+.wrong {
+    background-color: red;
+}

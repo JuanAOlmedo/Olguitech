@@ -1,0 +1,83 @@
+<head>
+    <%= stylesheet_link_tag 'forms' %>
+</head>
+
+<div class='form-div'>
+  <%= render 'layouts/back' %>
+
+  <h2 class='button' style='margin-top: 3rem;'><%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete, class:'access' %></h2>
+
+  <h2 class='form-title'>Editar Cuenta</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: true, 
+                  autofocus: true,
+                  label: false,
+                  placeholder: 'Email' %>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Esperando la confirmación de: <%= resource.unconfirmed_email %></p>
+      <% end %>
+
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "new-password" },
+                  label: false,
+                  placeholder: 'Contraseña ',
+                  class: 'input',
+                  hint: 'Dejar vacío si no se quiere cambiar' %>
+      <%= f.input :password_confirmation,
+                  required: false,
+                  input_html: { autocomplete: "new-password" },
+                  label: false,
+                  placeholder: 'Confrirmar contraseña',
+                  class: 'input' %>
+      <%= f.input :newsletter,
+                  inline_label: 'Newsletter',
+                  as: :boolean %>
+      <%= f.input :current_password,
+                  required: true,
+                  input_html: { autocomplete: "current-password" },
+                  label: false,
+                  class: 'input',
+                  hint: 'Necesitamos tu contraseña actual' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Editar", class:'gold-button', id:'button' %>
+    </div>
+  <% end %>
+
+  <script>
+    const password = document.querySelector('#user_password')
+          passwordConfirmation = document.querySelector('#user_password_confirmation')
+
+    passwordConfirmation.addEventListener('input', checkPassword)
+    password.addEventListener('input', checkPasswordLength)
+
+    function checkPassword() {
+      if (password.value != passwordConfirmation.value) {
+        passwordConfirmation.style.backgroundColor = 'red'
+      } else {
+        passwordConfirmation.style.backgroundColor = 'greenyellow'
+      }
+    }
+
+    function checkPasswordLength() {
+      if (password.value.length <= 7) {
+        password.style.backgroundColor = 'red'
+      } else {
+        password.style.backgroundColor = 'greenyellow'
+      }
+    }
+    </script>
+  <%= javascript_pack_tag 'user' %>
+
+  <h2 class='form-title'>Cancelar Cuenta</h2>
+
+  <h2 class='button'><%= link_to "Cancelar", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, class:'access' %></h2>
+</div>

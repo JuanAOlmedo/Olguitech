@@ -1,0 +1,18 @@
+<head>
+  <%= stylesheet_link_tag 'actiontext' %>
+
+  <style>
+    .proyectos-link {
+        transform: perspective(500px) translate3d(0, 0 , 1.5rem);
+        color: #656565;
+    }
+  </style>
+</head>
+
+<div id='edit'>
+    <%= render 'layouts/back' %>
+
+    <h1 class='show-title gold'>Crear Artículo (Proyecto)</h1>
+
+    <%= render 'form', proyecto: @proyecto %>
+</div>

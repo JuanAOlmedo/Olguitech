@@ -1,0 +1,116 @@
+@import "settings";
+
+// @font-face {
+//     font-family: 'Playfair Display';
+//     src: url(PlayfairDisplay-VariableFont_wght.ttf);
+// }
+
+#equipo-div {
+    width: 100%;
+    height: 100%;
+    background-color: $color1;
+    padding-top: 0.5rem;
+}
+
+.nosotros-title {
+    color: $color2;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.profiles {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    padding-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    transition: all 1s;
+}
+
+.profiles.move {
+    padding-top: 0rem;
+}
+
+.profile {
+    min-width: 30%;
+    max-width: 30%;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-img {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 100%;
+}
+
+.profile-title {
+    font-size: 1.4rem;
+    color: $color2;
+}
+
+.profile-profession {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: $color3;
+}
+
+.nosotros-front {
+    margin: 0;
+    color: $color2;
+    background-color: $color4;
+    padding: 1rem;
+}
+
+.quienes-somos {
+    color: $accent-color;
+    font-size: 2rem;
+    background-color: $color1;
+    width: 40%;
+    padding: 0.3rem;
+
+    @media only screen and (max-width: 60rem) {
+        width: 70%;
+    }
+}
+
+.quienes-somos-text {
+    font-size: 1.4rem;
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.nosotros-front-part {
+    border-bottom-color: $color2;
+    border-bottom-style: solid;
+    border-bottom-width: 0.5rem;
+}
+
+@media only screen and (max-width: 70rem) {
+    .profile-img {
+        width: 12rem;
+        height: 12rem;
+    }
+}
+
+@media only screen and (max-width: 60rem) {
+    .profile {
+        min-width: 40%;
+        max-width: 40%;
+    }
+
+    .profile-img {
+        width: 11rem;
+        height: 11rem;
+    }
+
+    .profile-title {
+        font-size: 1.2rem;
+    }
+    
+    .profile-profession {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,48 @@
+.alert, .notice {
+    padding: 0.6rem;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    width: 100%;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 10;
+    font-family: 'Varela Round', 'Gill Sans', sans-serif;
+    font-weight: bold;
+}
+
+.notice {
+    background-color: rgb(157, 255, 0);
+    color: black;
+}
+
+.alert {
+    color: white;
+    background-color: rgb(211, 37, 37);
+}
+
+.close-notice, .close-alert {
+    cursor: pointer;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.close-notice svg, .close-alert svg {
+    vertical-align: middle;
+}
+
+.close-notice {
+    color: black;
+}
+
+.alert p, .notice p {
+    width: 96%;
+
+    @media only screen and (max-width: 70rem) {
+        width: 94%;
+    }
+
+    @media only screen and (max-width: 40rem) {
+        width: 90%;
+    }
+}

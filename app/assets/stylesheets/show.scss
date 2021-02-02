@@ -8,24 +8,37 @@
     min-height: 35rem;
 }
 
+.content {
+    width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .article-title {
-    color: $accent-color;
-    padding: 0.3rem;
-    font-size: 2rem;
+    color: $color2;
+    font-size: 3rem;
+    margin-bottom: 0;
 
     @media screen and (max-width: 40rem) {
         font-size: 1.7rem;
     }
 }
 
+.article-description {
+  font-size: 1.3rem;
+  font-family: 'Montserrat';
+  margin-top: 0;
+}
+
+.article-img {
+  width: 100%;
+  height: auto;
+}
+
 .show-text {
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 2rem;
+  font-size: 1.1rem;
 
     @media only screen and (max-width: 50rem) {
-      width: 93%;
       text-align: justify;
     }
 }
@@ -70,13 +83,15 @@
 }
 
 .trix-content {
-    line-height: 1.5; }
+    line-height: 1.8;
+    font-family: 'Libre Baskerville'; }
     .trix-content * {
       box-sizing: border-box; }
     .trix-content h1 {
-      font-size: 1.2em;
-      line-height: 1.2;
-      margin: 0; }
+      font-size: 1.7rem;
+      line-height: 1.5;
+      margin: 0;
+      font-family: 'Montserrat'; }
     .trix-content blockquote {
       margin: 0 0 0 0.3em;
       padding: 0 0 0 0.6em;

@@ -6,6 +6,8 @@ body {
     font-family: 'Varela Round', 'Gill Sans', sans-serif;
     overflow-x: hidden;
     background-color: $color1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 p {
@@ -66,7 +68,6 @@ nav {
 .right-navbar-section {
     text-align: right;
     display: flex;
-    // width: 47%;
     width: 62%;
     margin-top: auto;
     margin-bottom: auto;
@@ -74,12 +75,23 @@ nav {
     margin-right: 0.5rem;
 
     @media only screen and (max-width: 80rem) {
-        // width: 60%;
         width: 65%;
     }
 
     @media only screen and (max-width: 70rem) {
         width: 70%;
+    }
+}
+
+.normal-right {
+    width: 47%;
+
+    @media only screen and (max-width: 80rem) {
+        width: 60%;
+    }
+
+    @media only screen and (max-width: 70rem) {
+        width: 65%;
     }
 }
 

@@ -39,9 +39,13 @@
       </div>
 
       <% if !admin_signed_in? %>
-      <div class="right-navbar-section">
+        <% if user_signed_in? %>
+          <div class="right-navbar-section">
+        <% else %>
+          <div class="right-navbar-section normal-right">
+        <% end %>
       <% else %>
-      <div class="right-navbar-section admin-right">
+        <div class="right-navbar-section admin-right">
       <% end %>
 
         <%= render 'layouts/articles' %>

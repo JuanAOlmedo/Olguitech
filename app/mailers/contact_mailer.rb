@@ -1,4 +1,5 @@
 class ContactMailer < ApplicationMailer
+  default from: ENV['EMAIL_USERNAME']
   layout 'mailer'
   
   def contacto(user, preference, preference2)

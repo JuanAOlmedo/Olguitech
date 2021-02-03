@@ -1,7 +1,7 @@
 @import "settings";
 
 .front {
-    background: url('/Fondo.webp') no-repeat fixed;
+    background: url("/Fondo.webp") no-repeat fixed;
     // background-image: linear-gradient(180deg, #001336, #d3270e);
     background-size: cover;
     padding: 1rem 0 5rem;
@@ -63,7 +63,8 @@
     }
 }
 
-.subtitle-div1.move, .subtitle-div2.move {
+.subtitle-div1.move,
+.subtitle-div2.move {
     opacity: 1;
     margin-top: 3rem;
 }
@@ -89,7 +90,7 @@
     margin-right: 2%;
     margin-left: 28%;
     padding: 0.5rem 0 0 1rem;
-    
+
     @media only screen and (max-width: 60rem) {
         width: 96%;
         margin-left: 2%;
@@ -108,7 +109,7 @@
 .articles-section {
     border-bottom-width: 0.5rem;
     border-bottom-color: $color2;
-    border-bottom-style: dotted;;
+    border-bottom-style: dotted;
     background-color: $color1;
     padding: 2rem;
     padding-top: 7rem;
@@ -173,7 +174,8 @@
     width: 100%;
 }
 
-#next, #previous {
+#next,
+#previous {
     margin-left: 2%;
     margin-right: 2%;
     cursor: pointer;
@@ -182,17 +184,13 @@
     position: absolute;
     margin-top: 10rem;
     margin-bottom: 10rem;
-    height: 5rem;
+    height: auto;
 
     @media screen and (max-width: 50rem) {
         width: 0;
         margin: 0;
         display: none;
     }
-}
-
-#next:focus, #previous:focus {
-    outline: none;
 }
 
 #next {
@@ -219,9 +217,9 @@
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    transition: box-shadow 1s, border-radius 1s, transform  1s, opacity 1s;
+    transition: box-shadow 1s, border-radius 1s, transform 1s, opacity 1s;
     display: flex;
-    transform: perspective(500px) translate3d(0, 0 , 0);
+    transform: perspective(500px) translate3d(0, 0, 0);
     opacity: 0;
     z-index: 1;
     right: 0;
@@ -244,7 +242,7 @@
 .article:hover {
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.7);
     border-radius: 0.4rem;
-    transform: perspective(500px) translate3d(0, 0 , 0.2rem);
+    transform: perspective(500px) translate3d(0, 0, 0.2rem);
     z-index: 2;
 
     .article-img {
@@ -255,19 +253,19 @@
     @media only screen and (max-width: 50rem) {
         box-shadow: 9px 9px 9px rgba(0, 0, 0, 0.5);
         border-radius: 0;
-        transform: perspective(500px) translate3d(0, 0 , 0);
+        transform: perspective(500px) translate3d(0, 0, 0);
         z-index: 2;
 
         .article-img {
-            border-bottom-left-radius: 0;
-            border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
         }
     }
 }
 
 .article-information {
     padding: 3rem;
-    
+
     @media screen and (max-width: 40rem) {
         padding: 1rem;
     }
@@ -316,7 +314,6 @@
     }
 }
 
-
 .proyects-section {
     border-bottom-width: 0.5rem;
     border-bottom-color: $color4;
@@ -363,7 +360,8 @@
     }
 }
 
-#proyects-next, #proyects-previous {
+#proyects-next,
+#proyects-previous {
     margin-left: 2%;
     margin-right: 2%;
     cursor: pointer;
@@ -372,15 +370,11 @@
     position: absolute;
     margin-top: 10rem;
     margin-bottom: 10rem;
-    height: 5rem;
+    height: auto;
 
     @media screen and (max-width: 50rem) {
         display: none;
     }
-}
-
-#proyects-next:focus, #proyects-previous:focus {
-    outline: none;
 }
 
 #proyects-next {
@@ -418,16 +412,16 @@
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    transition: box-shadow 1s, border-radius 1s, transform  1s, opacity 0.5s;
+    transition: box-shadow 1s, border-radius 1s, transform 1s, opacity 0.5s;
     display: flex;
-    transform: perspective(500px) translate3d(0, 0 , 0);
+    transform: perspective(500px) translate3d(0, 0, 0);
     opacity: 0;
     z-index: 1;
     right: 0;
     left: 0;
     top: 0;
     bottom: 0;
-    
+
     @media screen and (max-width: 50rem) {
         height: 35rem;
         width: 100%;
@@ -452,18 +446,11 @@
 }
 
 .information-section {
-    padding-bottom: 3rem;
-    padding-top: 2rem;
+    padding-bottom: 5rem;
+    padding-top: 4rem;
     margin: 0;
     width: 100%;
     background-color: $accent-color;
-    border-bottom-width: 0.5rem;
-    border-bottom-color: $color4;
-    border-bottom-style: dotted;
-}
-
-.contacto {
-    border-bottom-style: solid;
 }
 
 .information-title {
@@ -476,10 +463,9 @@
 }
 
 .information-subtitle {
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 1;
     color: black;
+    width: 100%;
+    text-align: center;
 }
 
 .information-text {
@@ -488,7 +474,7 @@
     margin-right: auto;
     text-align: center;
     font-size: 1.3rem;
-    color: black;
+    color: black !important;
 }
 
 .information-subsection {
@@ -504,7 +490,7 @@
     .article-title {
         font-size: 1.6rem;
     }
-    
+
     .article-text {
         font-size: 0.9rem;
     }

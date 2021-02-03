@@ -7,26 +7,26 @@
   
   <div class='subtitle-div subtitle-div1 still'>
     <h3 class='subtitle'> Que hacemos? </h3>
-    <p class='subtitle-information'> Brindamos soluciones en Ingeniería Eléctrica a diferentes empresas y representamos a estas mismas a nivel regional y en Uruguay. <br> <br>
+    <p class='subtitle-information'> Brindamos soluciones en Ingeniería Eléctrica a diferentes empresas y representamos a estas mismas a nivel regional y en Uruguay. <br> <br> </p>
       <%= link_to nosotros_path do %>
           <%= render 'layouts/more' %>
       <% end %>
-    </p>
   </div>
 
   <div class='subtitle-div subtitle-div2 still'>
     <h3 class='subtitle'> Quienes Somos? </h3>
-    <p class='subtitle-information'> En Olguitech amamos lo que hacemos, por eso nos esforzamos para brindarle el mejor servicio y los mejores productos. Lo asesoramos en la selección de un producto o en la instalación de este y nos aseguramos que nuestro vínculo con usted sea duradero. <br> <br> 
+    <p class='subtitle-information'> En Olguitech amamos lo que hacemos, por eso nos esforzamos para brindarle el mejor servicio y los mejores productos. Lo asesoramos en la selección de un producto o en la instalación de este y nos aseguramos que nuestro vínculo con usted sea duradero. <br> <br> </p>
       <%= link_to nosotros_path do %>
           <%= render 'layouts/more' %>
       <% end %>
-    </p>
   </div>
 </div>
 
-<%= render 'slideshow' %>
+<% if @articles.any? %>
+  <%= render 'slideshow' %>
 
-<%= render 'slideshow2' %>
+  <%= render 'slideshow2' %>
+<% end %>
 
 <%= render 'contacto' %>
 

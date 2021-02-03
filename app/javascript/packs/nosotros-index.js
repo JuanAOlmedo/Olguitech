@@ -2,8 +2,8 @@ const docEl = document.documentElement;
 
 function animateOnScroll(element, scrollTop) {
   const elemRect = element.getBoundingClientRect(),
-    bodyRect = document.body.getBoundingClientRect(),
-    offset = elemRect.top - bodyRect.top;
+        bodyRect = document.body.getBoundingClientRect(),
+        offset = elemRect.top - bodyRect.top;
 
   if (offset < scrollTop + 400) {
     return true;

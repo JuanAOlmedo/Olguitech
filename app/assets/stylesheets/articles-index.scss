@@ -34,7 +34,7 @@
     padding: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     transform: translateY(4rem);
-    transition: transform 1s, opacity 1s; 
+    transition: transform 1s, opacity 1s;
     opacity: 0.05;
 
     @media only screen and (max-width: 70rem) {
@@ -80,4 +80,3 @@
     margin: 0;
     bottom: 0;
 }
-

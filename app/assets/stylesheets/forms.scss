@@ -7,7 +7,7 @@
 .input input {
     width: 20rem;
     display: block;
-    height: 1.5rem; 
+    height: 1.5rem;
     font-size: 1.2rem;
     margin-top: 2rem;
     padding: 0.4rem;
@@ -22,11 +22,13 @@
 .checkbox {
     color: $color2;
     font-size: 1.2rem;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     width: 30%;
 }
 
-#user_remember_me, #admin_remember_me, #user_newsletter {
+#user_remember_me,
+#admin_remember_me,
+#user_newsletter {
     margin-top: 2rem;
     width: auto;
     height: auto;
@@ -50,20 +52,20 @@
 
 .shared-links {
     color: $color2;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 1.4rem;
-    text-decoration: none; 
+    text-decoration: none;
 }
-  
+
 .shared-links:visited {
     color: $color2;
-    text-decoration: none; 
+    text-decoration: none;
 }
-  
+
 .shared-links:hover {
     color: $color3;
     background-color: rgba(0, 0, 0, 0);
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .error_notification {
@@ -82,7 +84,7 @@
 #button {
     margin-left: 0;
     width: 12rem;
-    font-family: 'Varela Round', 'Gill Sans', sans-serif;
+    font-family: "Varela Round", "Gill Sans", sans-serif;
     font-weight: bold;
     font-size: 1.5em;
     border-style: none;
@@ -92,7 +94,8 @@
     }
 }
 
-#user_password, #user_password_confirmation {
+#user_password,
+#user_password_confirmation {
     transition: background-color 0.5s;
 }
 

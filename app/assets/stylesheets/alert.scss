@@ -1,4 +1,5 @@
-.alert, .notice {
+.alert,
+.notice {
     padding: 0.6rem;
     margin: 0;
     text-align: center;
@@ -7,7 +8,7 @@
     box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     z-index: 10;
-    font-family: 'Varela Round', 'Gill Sans', sans-serif;
+    font-family: "Varela Round", "Gill Sans", sans-serif;
     font-weight: bold;
 }
 
@@ -21,13 +22,15 @@
     background-color: rgb(211, 37, 37);
 }
 
-.close-notice, .close-alert {
+.close-notice,
+.close-alert {
     cursor: pointer;
     margin-top: auto;
     margin-bottom: auto;
 }
 
-.close-notice svg, .close-alert svg {
+.close-notice svg,
+.close-alert svg {
     vertical-align: middle;
 }
 
@@ -35,7 +38,8 @@
     color: black;
 }
 
-.alert p, .notice p {
+.alert p,
+.notice p {
     width: 96%;
 
     @media only screen and (max-width: 70rem) {

@@ -19,7 +19,7 @@
 
   <body>
 
-  <% if flash[:alert] || true %>
+  <% if flash[:alert] %>
     <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
   <% end %>
 
@@ -83,17 +83,6 @@
     <% if flash[:alert] %>
       <div class='alert'>
         <p> <%= alert %> </p>
-        <i class='close-alert' cursor='pointer' tabindex='0'> 
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z"/>
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        </i>
-      </div>
-    <% elsif !flash[:notice] %>
-      <div class='alert'>
-        <p> Actualmente la página está en mantenimiento, puede ser que no todo fucione correctamente </p>
         <i class='close-alert' cursor='pointer' tabindex='0'> 
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z"/>
@@ -204,7 +193,7 @@
 
     <%= javascript_pack_tag 'all' %>
 
-    <% if flash[:alert] || true %>
+    <% if flash[:alert] %>
       <%= javascript_pack_tag 'alert' %>
     <% end %>
 

@@ -61,10 +61,10 @@
 #   }
 
 
-server ENV["SSH_IP"], 
-    user: 'deploy', 
-    roles: %w{app db web},
-    ssh_options: {
-        user: 'deploy', 
-        password: ENV["SSH_PASSWORD"]
-    }
+# server ENV["SSH_IP"], 
+#     user: 'deploy', 
+#     roles: %w{app db web},
+#     ssh_options: {
+#         user: 'deploy', 
+#         password: ENV["SSH_PASSWORD"]
+#     }

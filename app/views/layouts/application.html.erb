@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang='es'>
-  <head>
-    <title>Olguitech s.a.s.</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Olguitech s.a. Soluciones en ingeniería -- Uruguay">
-    <meta name="theme-color" content="hsl(210, 60%, 20%)">
-    <%# <link rel="manifest" href="/manifest.webmanifest"> %>
+    <head>
+        <title>Olguitech s.a.s.</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Olguitech s.a. Soluciones en ingeniería -- Uruguay">
+        <meta name="theme-color" content="hsl(210, 60%, 20%)">
+        <%# <link rel="manifest" href="/manifest.webmanifest"> %>
 
-    <%= javascript_pack_tag 'application', :defer => "defer"  %>
-    
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_pack_tag 'application', :defer => "defer"  %>
+        
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="//fonts.googleapis.com/css2?family=Montserrat&family=Varela+Round&display=swap" rel="stylesheet">
-  </head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="//fonts.googleapis.com/css2?family=Montserrat&family=Varela+Round&display=swap" rel="stylesheet">
+    </head>
 
-  <body>
+    <body>
 
-  <% if flash[:alert] %>
-    <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <% end %>
+    <% if flash[:alert] %>
+        <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
 
-  <% if flash[:notice] %>
-    <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <% end %>
+    <% if flash[:notice] %>
+        <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %>
 
-  <% if admin_signed_in? %> 
-    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <% end %> 
+    <% if admin_signed_in? %> 
+        <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% end %> 
 
     <nav>
-      <div class="left-navbar-section">
-        <%= link_to root_path, method: :get do %>
-          <img src='/LogoA1.webp' alt='Logo De Olguitech' class='logo'>
-        <% end %>
-      </div>
+        <div class="left-navbar-section">
+                <%= link_to root_path, method: :get do %>
+                    <img src='/LogoA1.webp' alt='Logo De Olguitech' class='logo'>
+                <% end %>
+        </div>
 
-      <% if !admin_signed_in? %>
-        <% if user_signed_in? %>
-          <div class="right-navbar-section">
+        <% if !admin_signed_in? %>
+            <% if user_signed_in? %>
+            <div class="right-navbar-section">
+            <% else %>
+            <div class="right-navbar-section normal-right">
+            <% end %>
         <% else %>
-          <div class="right-navbar-section normal-right">
-        <% end %>
-      <% else %>
-        <div class="right-navbar-section admin-right">
-      <% end %>
-
-        <%= render 'layouts/articles' %>
-        <%= render 'layouts/proyects' %>
-
-
-        <h2 class='element navbar-link-title nosotros-link navbar-link'>
-          <%= link_to 'Nosotros', nosotros_path, method: :get, class:'navbar-link nosotros-link' %>
-        </h2>
-
-        <h2 class='element navbar-link-title contacto-link navbar-link'>
-          <%= link_to 'Contacto', contactos_path, method: :get, class:'navbar-link contacto-link' %>
-        </h2>
-
-        <% if user_signed_in? %>
-          <h2 class='element navbar-link-title newsletter-link navbar-link'>
-            <%= link_to 'Newsletters', newsletters_path, method: :get, class:'navbar-link newsletter-link' %>
-          </h2>
+            <div class="right-navbar-section admin-right">
         <% end %>
 
-        <% if user_signed_in? %>
-          <h2 class='element gold-button'><%= link_to 'Perfil', edit_user_registration_path %></h2>
-        <% else %>
-          <h2 class='element gold-button'><%= link_to 'Acceder', new_user_session_path %></h2>
-        <% end %>
+            <%= render 'layouts/articles' %>
+            <%= render 'layouts/proyects' %>
 
-        <% if admin_signed_in? %>
-          <h2 class='element gold-button'><%= link_to 'Admin', edit_admin_registration_path %></h2>
-        <% end %>
-      </div>
-      <%= render 'layouts/dropdown' %>
+
+            <h2 class='element navbar-link-title nosotros-link navbar-link'>
+                <%= link_to 'Nosotros', nosotros_path, method: :get, class:'navbar-link nosotros-link' %>
+            </h2>
+
+            <h2 class='element navbar-link-title contacto-link navbar-link'>
+                <%= link_to 'Contacto', '/contacto', method: :get, class:'navbar-link contacto-link' %>
+            </h2>
+
+            <% if user_signed_in? %>
+                <h2 class='element navbar-link-title newsletter-link navbar-link'>
+                    <%= link_to 'Newsletters', newsletters_path, method: :get, class:'navbar-link newsletter-link' %>
+                </h2>
+            <% end %>
+
+            <% if user_signed_in? %>
+                <h2 class='element gold-button'><%= link_to 'Perfil', edit_user_registration_path %></h2>
+            <% else %>
+                <h2 class='element gold-button'><%= link_to 'Acceder', new_user_session_path %></h2>
+            <% end %>
+
+            <% if admin_signed_in? %>
+                <h2 class='element gold-button'><%= link_to 'Admin', edit_admin_registration_path %></h2>
+            <% end %>
+        </div>
+        <%= render 'layouts/dropdown' %>
     </nav>
 
 
@@ -121,7 +121,7 @@
       </h2>
 
       <h2 class='navbar-link-title dropdown-navbar-link'>
-          <%= link_to 'Contacto', contactos_path, method: :get, class:'dropdown-navbar-link' %>
+          <%= link_to 'Contacto', '/contacto', method: :get, class:'dropdown-navbar-link' %>
       </h2>
 
       <% if user_signed_in? %>

@@ -23,7 +23,7 @@ class ContactosController < ApplicationController
       @user.save
 
       @mail = ContactMailer.contacto(current_user, @contacto.preference, @contacto.preference2).deliver_now!
-      redirect_to contactos_path, notice: 'Un email ha sido enviado.'
+      redirect_to '/contacto', notice: 'Un email ha sido enviado.'
       @contacto.destroy
     end
   end

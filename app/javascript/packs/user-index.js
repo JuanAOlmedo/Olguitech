@@ -1,17 +1,16 @@
 const searchBar = document.querySelector("#searchbar");
 
 function search() {
-    let input = document.getElementById("searchbar").value;
-    input = input.toLowerCase();
-    let x = document.getElementsByClassName("user-row");
+    let input = document.getElementById("searchbar").value.toLowerCase();
+    let rows = document.getElementsByClassName("user-row");
 
-    for (i = 0; i < x.length; i++) {
-        if (!x[i].innerText.toLowerCase().includes(input)) {
-        x[i].style.display = "none";
+    rows.forEach((row) => {
+        if (!row.innerText.toLowerCase().includes(input)) {
+            row.style.display = "none";
         } else {
-        x[i].style.display = "table-row";
+            row.style.display = "table-row";
         }
-    }
+    });
 }
 
 searchBar.addEventListener("input", search);

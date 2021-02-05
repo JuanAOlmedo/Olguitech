@@ -11,7 +11,7 @@ en:
       inactive: "Tu cuenta todavía no ha sido activada."
       invalid: "%{authentication_keys} o contraseña inválidos."
       locked: "Tu cuenta está bloqueada."
-      last_attempt: "Tenés un intento más hasta que se bloqueé tu cuenta."
+      last_attempt: "Tenés un intento más hasta que se bloquee tu cuenta."
       not_found_in_database: "%{authentication_keys} o contraseña inválidos."
       timeout: "Tu sesión expiró. Por favor accede de vuelta."
       unauthenticated: "Tenés que acceder o registrarte antes de continuar."
@@ -31,10 +31,10 @@ en:
       failure: "No te pudimos autenticar de %{kind} porque \"%{reason}\"."
       success: "Autenticado exitosamente de %{kind}."
     passwords:
-      no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
-      send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
-      updated: " contraseña ha sido cambiada con éxito. Ya has accedido."
+      no_token: "No podés acceder esta página sin venir de un email de cambio de contraseña. Si venís de un email, asegurate de que hayas usado la URL entera."
+      send_instructions: "Vas a recibir instrucciones de como cambiar tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu email existe en nuestra base de datos, vas a recibir instrucciones de como cambiar tu contraseña en unos minutos."
+      updated: "Tu contraseña ha sido cambiada con éxito. Ya has accedido."
       updated_not_active: "Tu contraseña ha sido cambiada con éxito."
     registrations:
       destroyed: "Tu cuenta ha sido cancelada con éxito. Esperamos verte de vuelta."

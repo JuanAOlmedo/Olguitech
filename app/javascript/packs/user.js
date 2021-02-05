@@ -1,5 +1,7 @@
 const password = document.querySelector("#user_password"),
-      passwordConfirmation = document.querySelector("#user_password_confirmation");
+    passwordConfirmation = document.querySelector(
+        "#user_password_confirmation"
+    );
 
 passwordConfirmation.addEventListener("input", checkPassword);
 password.addEventListener("input", checkPasswordLength);

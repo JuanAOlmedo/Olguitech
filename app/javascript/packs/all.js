@@ -1,108 +1,101 @@
 const dropdownBars = document.querySelector("#dropdown-bars"),
-      dropdown = document.querySelector("#dropdown"),
-      dropdownNavLinks = document.querySelectorAll(".dropdown-navbar-link"),
-      dropdownAccess = document.querySelector(".dropdown-access");
+    dropdown = document.querySelector("#dropdown"),
+    dropdownNavLinks = document.querySelectorAll(".dropdown-navbar-link"),
+    dropdownAccess = document.querySelector(".dropdown-access");
 
 window.onclick = function (event) {
-  if (
-    !event.target.matches(".dropdown") &&
-    dropdown.classList.contains("show")
-  ) {
-    dropdown.classList.remove("show");
-  }
+    if (
+        !event.target.matches(".dropdown") &&
+        dropdown.classList.contains("show")
+    ) {
+        dropdown.classList.remove("show");
+    }
 };
+
 
 dropdownBars.onclick = () => {
-  dropdown.classList.toggle("show");
+    dropdown.classList.toggle("show");
 
-  dropdownNavLinks.forEach((link) => {
-    link.classList.toggle("show");
-  });
+    dropdownNavLinks.forEach((link) => {
+        link.classList.toggle("show");
+    });
 
-  dropdownAccess.classList.toggle("show");
+    dropdownAccess.classList.toggle("show");
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  const lazyloadImages = document.querySelectorAll("img.lazy");
-  let lazyloadThrottleTimeout;
+const lazyLoadImages = document.querySelectorAll("img.lazy");
+let lazyLoadThrottleTimeout;
 
-  function lazyload() {
-    if (lazyloadThrottleTimeout) {
-      clearTimeout(lazyloadThrottleTimeout);
+function lazyLoad() {
+    if (lazyLoadThrottleTimeout) {
+        clearTimeout(lazyLoadThrottleTimeout);
     }
 
-    lazyloadThrottleTimeout = setTimeout(function () {
-      const scrollTop = window.pageYOffset;
-      lazyloadImages.forEach(function (img) {
-        if (img.offsetTop < window.innerHeight + scrollTop) {
-          img.src = img.dataset.src;
-          img.classList.remove("lazy");
+    lazyLoadThrottleTimeout = setTimeout(function () {
+        lazyLoadImages.forEach(function (img) {
+            if (defineElementOffset(img, 0)) {
+                img.src = img.dataset.src;
+                img.classList.remove("lazy");
+            }
+        });
+        if (lazyLoadImages.length == 0) {
+            document.removeEventListener("scroll", lazyLoad);
+            window.removeEventListener("resize", lazyLoad);
+            window.removeEventListener("orientationChange", lazyLoad);
         }
-      });
-      if (lazyloadImages.length == 0) {
-        document.removeEventListener("scroll", lazyload);
-        window.removeEventListener("resize", lazyload);
-        window.removeEventListener("orientationChange", lazyload);
-      }
     }, 20);
-  }
+}
 
-  document.addEventListener("scroll", lazyload);
-  window.addEventListener("resize", lazyload);
-  window.addEventListener("orientationChange", lazyload);
-  window.addEventListener("DOMContentLoaded", lazyload);
-});
+function defineElementOffset(element, change) {
+    const scrollTop = window.pageYOffset;
+
+    if (element.offsetTop < window.innerHeight + scrollTop - change) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+document.addEventListener("scroll", lazyLoad);
+window.addEventListener("resize", lazyLoad);
+window.addEventListener("orientationChange", lazyLoad);
+window.addEventListener("DOMContentLoaded", lazyLoad);
 
 const articlesHoverableDiv = document.querySelector(".articles-hoverable-div");
 const proyectsHoverableDiv = document.querySelector(".proyects-hoverable-div");
 
-function lazyload2() {
-  const lazyloadImages2 = document.querySelectorAll("img.articles-lazy");
+function lazyLoad2() {
+    const lazyLoadImages2 = document.querySelectorAll("img.articles-lazy");
 
-  lazyloadImages2.forEach(function (img) {
-    img.src = img.dataset.src;
-    img.classList.remove("lazy2");
-  });
+    lazyLoadImages2.forEach(function (img) {
+        img.src = img.dataset.src;
+        img.classList.remove("lazy2");
+    });
 }
 
-articlesHoverableDiv.addEventListener("mouseover", lazyload2);
+articlesHoverableDiv.addEventListener("mouseover", lazyLoad2);
 
-function lazyload3() {
-  const lazyloadImages3 = document.querySelectorAll("img.proyects-lazy");
+function lazyLoad3() {
+    const lazyLoadImages3 = document.querySelectorAll("img.proyects-lazy");
 
-  lazyloadImages3.forEach(function (img) {
-    img.src = img.dataset.src;
-    img.classList.remove("lazy2");
-  });
+    lazyLoadImages3.forEach(function (img) {
+        img.src = img.dataset.src;
+        img.classList.remove("lazy2");
+    });
 }
 
-proyectsHoverableDiv.addEventListener("mouseover", lazyload3);
-
-const docEl = document.documentElement;
-
-function animateOnScroll(element) {
-  const elemRect = element.getBoundingClientRect(),
-    bodyRect = document.body.getBoundingClientRect(),
-    offset = elemRect.top - bodyRect.top,
-    scrollTop = this.pageYOffset - docEl.clientTop;
-
-  if (offset < scrollTop + 400) {
-    return true;
-  } else {
-    return false;
-  }
-}
+proyectsHoverableDiv.addEventListener("mouseover", lazyLoad3);
 
 const stills = document.querySelectorAll(".still");
 
 function scroll() {
-  stills.forEach(function (still) {
-    if (animateOnScroll(still)) {
-      still.classList.add("move");
-    } else {
-      still.classList.remove("move");
-    }
-  });
+    stills.forEach(function (still) {
+        if (defineElementOffset(still, 200)) {
+            still.classList.add("move");
+        } else {
+            still.classList.remove("move");
+        }
+    });
 }
 
 document.addEventListener("scroll", scroll);

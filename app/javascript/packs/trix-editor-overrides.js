@@ -4,5 +4,4 @@ window.addEventListener("trix-file-accept", function (event) {
         event.preventDefault();
         alert("Solo se soportan imagenes de tipo jpeg o png");
     }
-  });
-  
+});

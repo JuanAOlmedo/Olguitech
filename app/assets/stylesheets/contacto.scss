@@ -24,6 +24,33 @@
     font-size: 3rem;
 }
 
+.contact-button {
+    cursor: pointer;
+    transition: color 0.8s;
+    width: auto;
+    padding: 0.7rem;
+    border-radius: 0.8rem;
+    margin: 0;
+    background-color: $color2;
+    color: $color1;
+    text-align: center;
+    transition: background-color 0.8s, color 0.8s;
+}
+
+.contact-button:visited {
+    color: $color1;
+}
+
+.contact-button:hover {
+    color: $color6;
+    background-color: $color5;
+}
+
+.contact-button a {
+    color: inherit;
+}
+
+
 .location-container {
     width: 60%;
     height: 37rem;

@@ -81,6 +81,10 @@
 .contact-mail {
     color: $accent-color;
     padding: 0 0.2rem 0 0.2rem;
+
+    @media only screen and (max-width: 40rem) {
+        font-size: 1.4rem;
+    }
 }
 
 .field {

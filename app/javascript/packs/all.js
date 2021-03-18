@@ -12,7 +12,6 @@ window.onclick = function (event) {
     }
 };
 
-
 dropdownBars.onclick = () => {
     dropdown.classList.toggle("show");
 

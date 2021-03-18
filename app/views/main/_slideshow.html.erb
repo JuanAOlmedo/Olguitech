@@ -1,39 +1,38 @@
 <div class="articles-section still">
     <% @articles.each do |article| %>
-      <div class='article'>
+    <div class='article'>
         <% if article.image.attached? %>
-          <img data-src='<%= url_for(article.image) %>' class='article-img lazy' alt='<%= article.image.filename %>'>
+        <img data-src='<%= url_for(article.image) %>' class='article-img lazy' alt='<%= article.image.filename %>'>
         <% end %>
-        
+
         <div class='sub-article-information'>
             <div class='article-information'>
                 <h1 class='articles-title'> Nuestras Soluciones </h1>
 
-                <h2 class='article-title'> <%= article.title %> </h2>
-                <p class='article-text'> 
-                    <%= article.description %> <br> 
+                <h2 class='article-title'> <%= article.title.length > 50 ? article.title[0...50] + '...' : article.title %> </h2>
+                <p class='article-text'>
+                    <%= article.description %> <br>
                 </p>
 
                 <%= link_to article_path(article), class:'article-link' do %>
-                    <%= render 'layouts/more' %>
+                <%= render 'layouts/more' %>
                 <% end %>
             </div>
         </div>
-      </div>
+    </div>
     <% end %>
 
     <i id='previous' tabindex='0' role="button" aria-pressed="false">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z"/>
+            <path stroke="none" d="M0 0h24v24H0z" />
             <polyline points="15 6 9 12 15 18" />
         </svg>
     </i>
 
     <i id='next' tabindex='0' role="button" aria-pressed="false">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z"/>
+            <path stroke="none" d="M0 0h24v24H0z" />
             <polyline points="9 6 15 12 9 18" />
         </svg>
     </i>
 </div>
-

@@ -1,4 +1,6 @@
 Rails.application.configure do
+    config.annotations.register_extensions("scss", "sass") { |annotation| /\/\/\s*(#{annotation}):?\s*(.*)$/ }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -64,7 +66,7 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     address: "olguitech.com",
-    port: 25,
+    port: 587,
     domain: "olguitech.com",
     authentication: "plain",
     # enable_starttls_auto: true,

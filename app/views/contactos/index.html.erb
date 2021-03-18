@@ -1,14 +1,14 @@
 <head>
     <%= stylesheet_link_tag 'contacto' %>
     <style>
-    .contacto-link {
-        transform: perspective(500px) translate3d(0, 0 , 1rem);
-        color: #CCC !important;
-    }
+        .contacto-link {
+            transform: perspective(500px) translate3d(0, 0, 1rem);
+            color: #CCC !important;
+        }
     </style>
 
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
-	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 </head>
 
 <div class='contact-div'>
@@ -20,9 +20,13 @@
         <h1 class='contact-title'> Cómo podemos ayudarte? </h1>
 
         <% if user_signed_in? %>
-            <h2 class='contact-button'><%= link_to 'Contactarse', '/contacto/new', class:'access' %></h2>
+        <%= link_to '/contacto/new', class:'access' do %>
+        <h2 class='contact-button'>Contactarse</h2>
+        <% end %>
         <% else %>
-            <h2 class='contact-button'><%= link_to 'Iniciar Sesión y Contactarse', '/contacto/new', class:'access', style:'width: 50%;' %></h2>
+        <%= link_to '/contacto/new', class:'access' do %>
+        <h2 class='contact-button'>Iniciar Sesión y Contactarse</h2>
+        <% end %>
         <% end %>
 
         <h3 class='contact-alternative'> O contactate a <span class='contact-mail'>olguitech@olguitech.com</span> </h3>

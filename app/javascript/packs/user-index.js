@@ -2,7 +2,7 @@ const searchBar = document.querySelector("#searchbar");
 
 function search() {
     let input = document.getElementById("searchbar").value.toLowerCase();
-    let rows = document.getElementsByClassName("user-row");
+    let rows = document.querySelectorAll(".user-row");
 
     rows.forEach((row) => {
         if (!row.innerText.toLowerCase().includes(input)) {

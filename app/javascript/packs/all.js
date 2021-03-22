@@ -1,7 +1,9 @@
 const dropdownBars = document.querySelector("#dropdown-bars"),
     dropdown = document.querySelector("#dropdown"),
     dropdownNavLinks = document.querySelectorAll(".dropdown-navbar-link"),
-    dropdownAccess = document.querySelector(".dropdown-access");
+    dropdownAccessLinks = document.querySelectorAll(".dropdown-access");
+
+let showing = false;
 
 window.onclick = function (event) {
     if (
@@ -15,12 +17,20 @@ window.onclick = function (event) {
 dropdownBars.onclick = () => {
     dropdown.classList.toggle("show");
 
+    setTimeout(() => showLinks(), showing ? 400 : 0);
+
+    showing = showing ? false : true 
+};
+
+function showLinks() {
     dropdownNavLinks.forEach((link) => {
         link.classList.toggle("show");
     });
 
-    dropdownAccess.classList.toggle("show");
-};
+    dropdownAccessLinks.forEach((link) => {
+        link.classList.toggle("show");
+    });
+}
 
 const lazyLoadImages = document.querySelectorAll("img.lazy");
 let lazyLoadThrottleTimeout;

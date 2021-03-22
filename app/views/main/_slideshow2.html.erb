@@ -8,7 +8,7 @@
 
                 <h2 class='article-title'> <%= article.title.length > 50 ? article.title[0...50] + '...' : article.title %> </h2>
                 <p class='article-text'>
-                    <%= article.description %> <br>
+                    <%= article.description.length > 100 ? article.description[0...100] + '...' : article.description %><br>
                 </p>
 
                 <%= link_to proyecto_path(article), class:'article-link' do %>

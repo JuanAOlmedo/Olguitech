@@ -3,15 +3,14 @@
 
     <style>
         .proyectos-link {
-            transform: perspective(500px) translate3d(0, 0, 1.5rem);
-            color: #656565;
+            color: #CCC !important;
         }
     </style>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<div class='show'>
+<div id='show'>
     <%= render 'layouts/back' %>
 
     <% if admin_signed_in? %>

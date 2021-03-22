@@ -12,7 +12,7 @@
 
             <div class='articles-hoverable-article-content'>
                 <h2> <%= article.title.length > 50 ? article.title[0...50] + '...' : article.title %> </h2>
-                <p> <%= article.description %> </p>
+                <p> <%= article.description.length > 100 ? article.description[0...100] + '...' : article.description %> </p>
             </div>
         </div>
         <% end %>

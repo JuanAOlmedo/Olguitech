@@ -3,7 +3,7 @@
 
     <style>
         .articles-link {
-            color: #656565;
+            color: #CCC !important;
         }
     </style>
 </head>
@@ -12,21 +12,21 @@
 
 <div class='articles-div'>
     <% @articles.each do |article| %>
-        <div class='article still move'>
-            <% if article.image.attached? %>
-                <img src='<%= url_for(article.image) %>' class='article-img' alt='<%= article.image.filename %>'>
+    <div class='article still move'>
+        <% if article.image.attached? %>
+        <img src='<%= url_for(article.image) %>' class='article-img' alt='<%= article.image.filename %>'>
+        <% end %>
+
+        <div class='article-information'>
+            <h2 class='article-title'> <%= article.title %> </h2>
+            <p class='article-text'>
+                <%= article.description %> <br>
+            </p>
+
+            <%= link_to article_path(article) do %>
+            <%= render 'layouts/more' %>
             <% end %>
-
-            <div class='article-information'>
-                <h2 class='article-title'> <%= article.title %> </h2>
-                <p class='article-text'> 
-                    <%= article.description %> <br>
-                </p>
-
-                <%= link_to article_path(article) do %>
-                    <%= render 'layouts/more' %>
-                <% end %>
-            </div>
         </div>
+    </div>
     <% end %>
 </div>

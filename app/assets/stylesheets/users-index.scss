@@ -12,9 +12,16 @@ table, th, td {
     border-collapse: collapse;
 }
 
+.table {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
 .user {
     color: $color2;
-    width: 100%;
+    min-width: 100%;
+    margin-top: 18px;
 }
 
 th {

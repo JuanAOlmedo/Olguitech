@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Olguitech s.a. Soluciones en ingeniería -- Uruguay">
     <meta name="theme-color" content="hsl(210, 60%, 20%)">
-    <%# <link rel="manifest" href="/manifest.webmanifest"> %>
+    <link rel="manifest" href="/manifest.webmanifest">
 
-    <%= javascript_pack_tag 'application', :defer => "defer"  %>
+    <%= javascript_pack_tag 'application', :defer => "defer" %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
@@ -145,51 +145,54 @@
 
     <div id='all'>
         <%= yield %>
+
         <% if admin_signed_in? %>
-        <%= link_to new_article_path, class: 'right-tool', method: :get do %>
-        <i class='articles-fas right-tool'>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <circle cx="12" cy="12" r="9" />
-                <line x1="9" y1="12" x2="15" y2="12" />
-                <line x1="12" y1="9" x2="12" y2="15" />
-            </svg>
-        </i>
-        <% end %>
-        <%= link_to new_proyecto_path, class: 'right-tool-proyecto', method: :get do %>
-        <i class='articles-fas right-tool right-tool-proyecto'>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <rect x="4" y="4" width="16" height="16" rx="2" />
-                <line x1="9" y1="12" x2="15" y2="12" />
-                <line x1="12" y1="9" x2="12" y2="15" />
-            </svg>
-        </i>
-        <% end %>
+        <div id='admin-tools'>
+            <%= link_to new_article_path, class: 'right-tool', method: :get do %>
+            <i class='articles-fas'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <circle cx="12" cy="12" r="9" />
+                    <line x1="9" y1="12" x2="15" y2="12" />
+                    <line x1="12" y1="9" x2="12" y2="15" />
+                </svg>
+            </i>
+            <% end %>
+            <%= link_to new_proyecto_path, class: 'right-tool', method: :get do %>
+            <i class='articles-fas'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <line x1="9" y1="12" x2="15" y2="12" />
+                    <line x1="12" y1="9" x2="12" y2="15" />
+                </svg>
+            </i>
+            <% end %>
 
-        <%= link_to new_newsletter_path, class: 'right-tool-news', method: :get do %>
-        <i class='articles-fas right-tool right-tool-news'>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
-                <line x1="8" y1="8" x2="12" y2="8" />
-                <line x1="8" y1="12" x2="12" y2="12" />
-                <line x1="8" y1="16" x2="12" y2="16" />
-            </svg>
-        </i>
-        <% end %>
+            <%= link_to new_newsletter_path, class: 'right-tool', method: :get do %>
+            <i class='articles-fas'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
+                    <line x1="8" y1="8" x2="12" y2="8" />
+                    <line x1="8" y1="12" x2="12" y2="12" />
+                    <line x1="8" y1="16" x2="12" y2="16" />
+                </svg>
+            </i>
+            <% end %>
 
-        <%= link_to users_path, class: 'right-tool-users', method: :get do %>
-        <i class='articles-fas right-tool right-tool-users'>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-            </svg>
-        </i>
-        <% end %>
+            <%= link_to users_path, class: 'right-tool', method: :get do %>
+            <i class='articles-fas'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                </svg>
+            </i>
+            <% end %>
+        </div>
         <% end %>
     </div>
 

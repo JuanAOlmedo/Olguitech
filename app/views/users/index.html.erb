@@ -5,20 +5,21 @@
 <div class='form-div'>
     <h1 class='form-title'> Usuarios </h1>
 
-    <input id="searchbar" type="text" name="search" placeholder="Buscar usuarios.."> 
-    
-    <table class="user">
-        <tr>
-            <th> ID </th>
-            <th> Nombre </th>
-            <th> Email </th>
-            <th> Compañía </th>
-            <th> Teléfono </th>
-            <th> Newsletter? </th>
-            <th> Solución </th>
-            <th> Proyecto </th>
-        </tr>
-        <% @users.each do |user| %>
+    <input id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
+
+    <div class='table'>
+        <table class="user">
+            <tr>
+                <th> ID </th>
+                <th> Nombre </th>
+                <th> Email </th>
+                <th> Compañía </th>
+                <th> Teléfono </th>
+                <th> Newsletter? </th>
+                <th> Solución </th>
+                <th> Proyecto </th>
+            </tr>
+            <% @users.each do |user| %>
             <tr class='user-row'>
                 <td> <%= user.id %> </td>
 
@@ -36,7 +37,9 @@
 
                 <td> <%= user.preference2 %> </td>
             </tr>
-        <% end %>
+            <% end %>
+        </table>
+    </div>
 </div>
 
 <%= javascript_pack_tag 'user-index' %>

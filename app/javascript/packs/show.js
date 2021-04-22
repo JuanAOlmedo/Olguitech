@@ -10,7 +10,7 @@ window.onscroll = function () {
 
 backToTop.onclick = function (event) {
     event.preventDefault();
-    document.animate({ scrollTop: 0 }, "slow");
+    scrollToTop();
 };
 backToTop.addEventListener("keyup", actionButtonKeyupHandler);
 backToTop.addEventListener("keydown", actionButtonKeydownHandler);
@@ -20,14 +20,14 @@ function actionButtonKeydownHandler(event) {
         event.preventDefault();
     } else if (event.keyCode === 13) {
         event.preventDefault();
-        document.animate({ scrollTop: 0 }, "slow");
+        scrollToTop();
     }
 }
 
 function actionButtonKeyupHandler(event) {
     if (event.keyCode === 32) {
         event.preventDefault();
-        document.animate({ scrollTop: 0 }, "slow");
+        scrollToTop();
     }
 }
 
@@ -37,9 +37,4 @@ const scrollToTop = () => {
         window.requestAnimationFrame(scrollToTop);
         window.scrollTo(0, c - c / 15);
     }
-};
-
-backToTop.onclick = function (e) {
-    e.preventDefault();
-    scrollToTop();
 };

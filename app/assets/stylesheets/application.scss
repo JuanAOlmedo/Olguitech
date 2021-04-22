@@ -105,7 +105,7 @@ nav {
     top: 5.15em;
     left: 2rem;
     right: 2rem;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 29rem;
 }
 
@@ -128,16 +128,11 @@ nav {
 ////////////
 
 .articles-hoverable-div:hover {
-    // .articles-hoverable-div {
-    //     background-color: #CCC;
-    // }
-
     .articles-hoverable-content {
         display: flex;
     }
 
     #articles-hoverable {
-        // transform: perspective(500px) translate3d(0, 0 , 1.5rem);
         color: $color5 !important;
     }
 }
@@ -415,7 +410,6 @@ i h3 {
     .input input {
         font-size: 1rem;
     }
-
     .navbar-link {
         display: none;
     }

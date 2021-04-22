@@ -1,3 +1,27 @@
+class Clicker {
+    constructor(element, action, parameters = null) {
+        this.element = element;
+        this.action = action;
+        this.parameters = parameters;
+
+        this.createClick = function () {
+            element.tabIndex = 0;
+            element.style.cursor = "pointer";
+
+            element.onclick = function () {
+                action(parameters);
+            };
+
+            element.onkeydown = function (event) {
+                if (event.keyCode == 32 || event.keyCode == 13) {
+                    event.preventDefault();
+                    action(parameters);
+                }
+            };
+        };
+    }
+}
+
 const dropdownBars = document.querySelector("#dropdown-bars"),
     dropdown = document.querySelector("#dropdown"),
     dropdownNavLinks = document.querySelectorAll(".dropdown-navbar-link"),
@@ -14,13 +38,16 @@ window.onclick = function (event) {
     }
 };
 
-dropdownBars.onclick = () => {
+dropdownBarsClicker = new Clicker(dropdownBars, dropdownClickHandler);
+dropdownBarsClicker.createClick();
+
+function dropdownClickHandler() {
     dropdown.classList.toggle("show");
 
     setTimeout(() => showLinks(), showing ? 400 : 0);
 
-    showing = showing ? false : true 
-};
+    showing = showing ? false : true;
+}
 
 function showLinks() {
     dropdownNavLinks.forEach((link) => {

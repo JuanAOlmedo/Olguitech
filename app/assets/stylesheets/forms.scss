@@ -88,6 +88,9 @@
     font-weight: bold;
     font-size: 1.5em;
     border-style: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
     @media only screen and (max-width: 60rem) {
         width: 15rem;

@@ -16,12 +16,12 @@ table, th, td {
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
+    margin-top: 18px;
 }
 
 .user {
     color: $color2;
     min-width: 100%;
-    margin-top: 18px;
 }
 
 th {
@@ -37,8 +37,8 @@ td {
 input {
     margin-left: 5%;
     margin-right: 5%;
-    width: 90%;
-    padding: 0.5rem;
+    width: 85%;
+    padding: 2.5%;
     height: 1.5rem; 
     text-align: center;
     font-size: 1.2rem;

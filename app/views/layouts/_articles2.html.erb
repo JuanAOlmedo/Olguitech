@@ -1,0 +1,25 @@
+<div class='articles-hoverable dropdown-articles-hoverable articles-link dropdown-clickable-div'>
+    <h2 class='dropdown-clickable dropdown-navbar-link articles-link'>Soluciones
+        <svg xmlns="http://www.w3.org/2000/svg" class="dropdown-clickable icon icon-tabler icon-tabler-chevron-down" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" class="dropdown-clickable" />
+            <polyline points="6 9 12 15 18 9" class="dropdown-clickable" />
+        </svg>
+    </h2>
+
+    <div class="dropdown-clickable-extensible">
+        <% Article.all.order(created_at: :desc).each do |article| %>
+        <%= link_to article_path(article) do %>
+        <div class='articles-hoverable-article article-hoverable-article2'>
+            <% if article.image.attached? %>
+            <img data-src='<%= url_for(article.image) %>' class='article-hoverable-img article-hoverable-img2 articles-lazy2' alt='<%= article.image.filename %>'>
+            <% end %>
+
+            <div class='articles-hoverable-article-content article-hoverable-content2'>
+                <h2> <%= article.title.length > 50 ? article.title[0...50] + '...' : article.title %> </h2>
+                <p> <%= article.description.length > 100 ? article.description[0...100] + '...' : article.description %> </p>
+            </div>
+        </div>
+        <% end %>
+        <% end %>
+    </div>
+</div>

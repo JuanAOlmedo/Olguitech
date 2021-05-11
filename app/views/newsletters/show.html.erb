@@ -2,6 +2,8 @@
     <%= stylesheet_link_tag 'show' %>
 </head>
 
+<% content_for :title, "#{@newsletter.title} | Olguitech s.a.s." %>
+
 <div id='show'>
     <%= render 'layouts/back' %>
 

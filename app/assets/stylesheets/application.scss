@@ -305,6 +305,7 @@ nav {
 
 .dropdown-articles-hoverable {
     text-align: center;
+    background-color: black;
 }
 
 // 3. ICONS //
@@ -413,4 +414,82 @@ i h3 {
     .navbar-link {
         display: none;
     }
+}
+
+.dropdown-clickable-div {
+    color: white;
+    position: relative;
+    background-color: black;
+}
+
+.dropdown-clickable-extensible {
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 20rem;
+    height: 0;
+}
+
+.dropdown-clickable-extensible.extend {
+    animation-name: extend;
+    animation-duration: 1s;
+    display: block;
+    height: 20rem;
+}
+
+.dropdown-clickable h2 {
+    display: flex;
+}
+
+.icon-tabler-chevron-down {
+    position: absolute;
+    top: -0.5rem;
+    transition: transform 1s;
+}
+
+.icon-tabler-chevron-down.extend {
+    transform: rotateZ(180deg);
+}
+
+@keyframes extend {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 20rem;
+    }
+}
+
+.dropdown-clickable-extensible.de-extend {
+    height: 20rem;
+    display: block;
+    animation-name: de-extend;
+    animation-duration: 0.8s;
+}
+
+@keyframes de-extend {
+    0% {
+        height: 20rem;
+    }
+    100% {
+        height: 0;
+        min-height: 0;
+        max-height: 0;
+    }
+}
+
+.article-hoverable-img2 {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.article-hoverable-article2 {
+    display: block;
+    height: auto;
+    padding: 0;
+}
+
+.article-hoverable-content2 {
+    padding-left: 0;
 }

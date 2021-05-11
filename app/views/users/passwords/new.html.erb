@@ -2,24 +2,26 @@
     <%= stylesheet_link_tag 'forms' %>
 </head>
 
-<div class='form-div'>
-  <h2 class='form-title'>Olvidaste tu contraseña?</h2>
+<% content_for :title, "¿Olvidaste tu contraseña?" %>
 
-  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<div class='form-div'>
+    <h2 class='form-title'>¿Olvidaste tu contraseña?</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :email,
+        <%= f.input :email,
                   required: true, 
                   autofocus: true,
                   label: false,
                   class: 'input',
                   placeholder: 'Email' %>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Cambiar", class:'gold-button', id:'button' %>
-    </div>
-  <% end %>
+        <div class="form-actions">
+            <%= f.button :submit, "Cambiar", class:'gold-button', id:'button' %>
+        </div>
+        <% end %>
 
-  <%= render "users/shared/links" %>
-</div>
+        <%= render "users/shared/links" %>
+    </div>

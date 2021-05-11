@@ -2,13 +2,17 @@
 <html lang='es'>
 
 <head>
-    <title>Olguitech s.a.s.</title>
+    <title><%= yield(:title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Olguitech s.a. Soluciones en ingeniería -- Uruguay">
     <meta name="theme-color" content="hsl(210, 60%, 20%)">
     <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/favicons/favicon1.png" sizes="32x32">
+    <link rel="icon" href="/favicons/favicon.png" sizes="96x96">
+    <link rel="icon" href="/favicons/favicon2.png" sizes="16x16">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="/Icon.png">
 
     <%= javascript_pack_tag 'application', :defer => "defer" %>
 
@@ -110,13 +114,8 @@
     <% end %>
 
     <div id='dropdown' class='dropdown'>
-        <h2 class='articles-hoverable dropdown-articles-hoverable articles-link'>
-            <%= link_to 'Soluciones', articles_path, class:'dropdown-navbar-link articles-link' %>
-        </h2>
-
-        <h2 class='articles-hoverable dropdown-articles-hoverable proyectos-link'>
-            <%= link_to 'Proyectos', proyectos_path, class:'dropdown-navbar-link proyectos-link' %>
-        </h2>
+        <%= render 'layouts/articles2' %>
+        <%= render 'layouts/proyects2' %>
 
         <h2 class='navbar-link-title dropdown-navbar-link'>
             <%= link_to 'Nosotros', nosotros_path, method: :get, class:'dropdown-navbar-link' %>

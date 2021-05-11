@@ -1,13 +1,16 @@
 <head>
-  <%= stylesheet_link_tag 'actiontext' %>
+    <%= stylesheet_link_tag 'actiontext' %>
 
-  <style>
-    .articles-link {
-        transform: perspective(500px) translate3d(0, 0 , 1.5rem);
-        color: #656565;
-    }
-  </style>
+    <style>
+        .articles-link {
+            transform: perspective(500px) translate3d(0, 0, 1.5rem);
+            color: #656565;
+        }
+    </style>
 </head>
+
+
+<% content_for :title, "Editar artículo #{@article.title}" %>
 
 <div id='edit'>
     <%= render 'layouts/back' %>

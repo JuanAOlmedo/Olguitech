@@ -2,29 +2,31 @@
     <%= stylesheet_link_tag 'forms' %>
 </head>
 
-<div class='form-div'>
-  <h2 class='form-title'>Acceder</h2>
+<% content_for :title, "Acceder" %>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class='form-div'>
+    <h2 class='form-title'>Acceder</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
-      <%= f.input :email,
+        <%= f.input :email,
                   placeholder: 'Email',
                   label: false,
                   required: false,
                   autofocus: true,
                   input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
+        <%= f.input :password,
                   placeholder: 'Contraseña',
                   label: false,
                   required: false,
                   input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
+        <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Acceder", class:'gold-button', id:'button' %>
+        <%= f.button :submit, "Acceder", class:'gold-button', id:'button' %>
     </div>
-  <% end %>
+    <% end %>
 
-  <%= render "admins/shared/links" %>
+    <%= render "admins/shared/links" %>
 </div>

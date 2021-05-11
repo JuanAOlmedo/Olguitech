@@ -2,33 +2,35 @@
     <%= stylesheet_link_tag 'forms' %>
 </head>
 
-<div class='form-div'>
-  <h2 class='form-title'>Crear Cuenta</h2>
+<% content_for :title, "Crear Cuenta" %>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class='form-div'>
+    <h2 class='form-title'>Crear Cuenta</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :name,
+        <%= f.input :name,
                   placeholder: 'Nombre',
                   label: false,
                   required: true,
                   autofocus: true,
                   class: 'input',
                   input_html: { autocomplete: "name" }%>
-      <%= f.input :email,
+        <%= f.input :email,
                   placeholder: 'Email',
                   label: false,
                   required: true,
                   class: 'input',
                   input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
+        <%= f.input :password,
                   placeholder: "Contraseña, #{@minimum_password_length} caracteres mínimo",
                   label: false,
                   required: true,
                   class: 'input',
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
+        <%= f.input :password_confirmation,
                   placeholder: 'Confirmar contraseña',
                   label: false,
                   required: true,
@@ -37,33 +39,33 @@
     </div>
 
     <script>
-    const password = document.querySelector('#user_password')
-          passwordConfirmation = document.querySelector('#user_password_confirmation')
+        const password = document.querySelector('#user_password')
+        passwordConfirmation = document.querySelector('#user_password_confirmation')
 
-    passwordConfirmation.addEventListener('input', checkPassword)
-    password.addEventListener('input', checkPasswordLength)
+        passwordConfirmation.addEventListener('input', checkPassword)
+        password.addEventListener('input', checkPasswordLength)
 
-    function checkPassword() {
-      if (password.value != passwordConfirmation.value) {
-        passwordConfirmation.style.backgroundColor = 'red'
-      } else {
-        passwordConfirmation.style.backgroundColor = 'greenyellow'
-      }
-    }
+        function checkPassword() {
+            if (password.value != passwordConfirmation.value) {
+                passwordConfirmation.style.backgroundColor = 'red'
+            } else {
+                passwordConfirmation.style.backgroundColor = 'greenyellow'
+            }
+        }
 
-    function checkPasswordLength() {
-      if (password.value.length <= 7) {
-        password.style.backgroundColor = 'red'
-      } else {
-        password.style.backgroundColor = 'greenyellow'
-      }
-    }
+        function checkPasswordLength() {
+            if (password.value.length <= 7) {
+                password.style.backgroundColor = 'red'
+            } else {
+                password.style.backgroundColor = 'greenyellow'
+            }
+        }
     </script>
 
     <div class="form-actions">
-      <%= f.button :submit, 'Crear Cuenta', class:'gold-button', id:'button' %>
+        <%= f.button :submit, 'Crear Cuenta', class:'gold-button', id:'button' %>
     </div>
-  <% end %>
+    <% end %>
 
-  <%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
 </div>

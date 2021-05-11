@@ -1,0 +1,26 @@
+<style>
+    div {
+        background-color: #222;
+    }
+
+    h1 {
+        color: #f5a639;
+    }
+</style>
+
+<div>
+    <h1><%= @user.name %> se ha contactado</h1>
+
+    <p>
+        <%= @message %>
+    </p>
+    <p>
+        Prefiere: <%= @preference %>, y: <%= @preference2 %>
+    </p>
+    <p>
+        Email: <%= @user.email %>
+    </p>
+    <p>
+        Id: <%= @user.id %>
+    </p>
+</div>

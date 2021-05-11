@@ -136,3 +136,12 @@ select {
         width: 10rem;
     }
 }
+
+textarea {
+    width: 40rem;
+    height: 10rem;
+    background-color: $color6;
+    color: #FFF;
+    font-size: 1rem;
+    resize: vertical;
+}

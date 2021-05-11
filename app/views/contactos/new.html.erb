@@ -17,6 +17,9 @@
     <h2 class='preference'> Cuál de nuestros proyectos te interesó más? </h2>
     <%= form.collection_select :preference2, Proyecto.all, :id, :title %> <br>
 
-    <%= form.button :submit, 'Recibir Mail', class:'gold-button', id:'button' %>
+    <%= form.label :message, "Mensaje", class: 'preference' %> <br>
+    <%= form.text_area :message %> <br>
+
+    <%= form.button :submit, 'Enviar Mail', class:'gold-button', id:'button' %>
 </div>
 <% end %>

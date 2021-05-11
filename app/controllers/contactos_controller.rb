@@ -9,27 +9,19 @@ class ContactosController < ApplicationController
   end
 
   def create
-    @contacto = Contacto.new(contacto_params)
+    @contacto = current_user.contactos.new(contacto_params)
+    @contacto.preference = @contacto.preference.to_i
+    @contacto.preference2 = @contacto.preference2.to_i
 
     if @contacto.save 
-      @preference = Article.find(@contacto.preference.to_i).title
-      @preference2 = Proyecto.find(@contacto.preference2.to_i).title
-
-      @user = current_user
-
-      @user.preference1 = @preference
-      @user.preference2 = @preference2
-
-      @user.save
-
-      @mail = ContactMailer.contacto(current_user, @contacto.preference, @contacto.preference2).deliver_now!
+      @mail = ContactMailer.contacto(current_user, Article.find(@contacto.preference).title, Proyecto.find(@contacto.preference2).title, @contacto.message).deliver_now!
+      @mail = ContactMailer.admin_contacto(current_user, Article.find(@contacto.preference).title, Proyecto.find(@contacto.preference2).title, @contacto.message).deliver_now!
       redirect_to '/contacto', notice: 'Un email ha sido enviado.'
-      @contacto.destroy
     end
   end
 
   private
     def contacto_params
-      params.require(:contacto).permit(:preference, :preference2)
+      params.require(:contacto).permit(:preference, :preference2, :message)
     end
 end

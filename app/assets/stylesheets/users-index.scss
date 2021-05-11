@@ -1,4 +1,4 @@
-@import 'settings';
+@import "settings";
 
 h1 {
     color: $color2;
@@ -7,7 +7,9 @@ h1 {
     padding-top: 2rem;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid $color2;
     border-collapse: collapse;
 }
@@ -38,12 +40,18 @@ input {
     margin-left: 5%;
     margin-right: 5%;
     width: 85%;
-    padding: 2.5%;
-    height: 1.5rem; 
+    padding: 1rem;
+    height: 1.5rem;
     text-align: center;
     font-size: 1.2rem;
     background-color: $color6;
     border-radius: 0.5rem;
     border-style: none;
     color: $color2;
+}
+
+@media only screen and (max-width: 50rem) {
+    input {
+        padding: 2.5%;
+    }
 }

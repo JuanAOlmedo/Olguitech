@@ -35,9 +35,9 @@
 
                 <td> <%= user.newsletter %> </td>
 
-                <td> <%= user.preference1 %> </td>
+                <td> <%= user.contactos.last ? user.contactos.last.preference : "" %> </td>
 
-                <td> <%= user.preference2 %> </td>
+                <td> <%= user.contactos.last ? user.contactos.last.preference2 : "" %> </td>
             </tr>
             <% end %>
         </table>

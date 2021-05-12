@@ -18,8 +18,7 @@
                 <th> Compañía </th>
                 <th> Teléfono </th>
                 <th> Newsletter? </th>
-                <th> Solución </th>
-                <th> Proyecto </th>
+                <th> Veces Contactadas </th>
             </tr>
             <% @users.each do |user| %>
             <tr class='user-row'>
@@ -35,13 +34,28 @@
 
                 <td> <%= user.newsletter %> </td>
 
-                <td> <%= user.contactos.last ? user.contactos.last.preference : "" %> </td>
-
-                <td> <%= user.contactos.last ? user.contactos.last.preference2 : "" %> </td>
+                <td> <span class='times-contacted' data-id="<%= user.id %>"><%= user.contactos.length %></span> </td>
             </tr>
             <% end %>
         </table>
     </div>
 </div>
+
+<% @users.each do |user| %>
+<% if user.contactos.length > 0 %>
+<div class='contact-info' id='article-<%= user.id %>'>
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" data-id="<%= user.id %>">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+    <% user.contactos.each do |contact| %>
+    <p> Mensaje: <%= contact.message %> </p>
+    <p> Articulo 1: <%= Article.find(contact.preference).title %> </p>
+    <p> Articulo 2: <%= Proyecto.find(contact.preference2).title %> </p>
+    <% end %>
+</div>
+<% end %>
+<% end %>
 
 <%= javascript_pack_tag 'user-index' %>

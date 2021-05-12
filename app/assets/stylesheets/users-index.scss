@@ -50,8 +50,26 @@ input {
     color: $color2;
 }
 
+.times-contacted {
+    color: hsl(200, 60, 40);
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 50rem) {
     input {
         padding: 2.5%;
     }
+}
+
+.contact-info {
+    position: fixed;
+    top: 5.15em;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: white;
+    background-color: black;
+    padding: 2rem;
+    overflow-y: auto;
+    display: none;
 }

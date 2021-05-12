@@ -2,10 +2,12 @@
     <%= stylesheet_link_tag 'forms' %>
 </head>
 
-<% content_for :title, "Reenviar instrucciones de confirmación" %>
+<% content_for :title, "#{I18n.t "users.confirm"}" %>
 
 <div class='form-div'>
-    <h2 class='form-title'>Reenviar instrucciones de confirmación</h2>
+    <h2 class='form-title'>
+        <%= I18n.t "users.confirm" %>
+    </h2>
 
     <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
@@ -22,7 +24,7 @@
                   input_html: { autocomplete: "email" } %>
 
         <div class="form-actions">
-            <%= f.button :submit, "Reenviar", class:'gold-button', id:'button' %>
+            <%= f.button :submit, "#{I18n.t "users.resend"}", class:'gold-button', id:'button' %>
         </div>
         <% end %>
 

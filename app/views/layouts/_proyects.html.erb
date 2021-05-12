@@ -1,6 +1,6 @@
 <div class='articles-hoverable-div proyects-hoverable-div'>
     <h2 class='element navbar-link' id='articles-hoverable'>
-        <%= link_to 'Proyectos', proyectos_path,class:'proyectos-link' %>
+        <%= link_to (I18n.t 'nav.proyects'), proyectos_path,class:'proyectos-link' %>
     </h2>
     <div class='articles-hoverable-content'>
         <% Proyecto.all.order(created_at: :desc).each do |article| %>

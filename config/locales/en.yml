@@ -1,33 +1,62 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  main:
+    what_do_we_do: "What do we do?"
+    what_do_we_do_message: "We provide electrical engineering solutions to different companies. We represent first level brands at a regional level and in Uruguay. "
+    who_are_we: "Who are we?"
+    who_are_we_message: "We are a young company. We strive to provide the best products and services with world-class brands. When you are about to define a technology, require advice in the selection of a product or require assistance in the installation please contact us."
+    contact: "Contact"
+    can_we_help_you: "Can we help you?"
+    get_in_touch: "Please get in touch"
+  nav: 
+    solutions: "Solutions"
+    proyects: "Projects"
+    about_us: "About Us"
+    contact: "Contact"
+    sign_in: "Sign In"
+    profile: "Profile"
+  nosotros:
+    who_are_we: "Who are we?"
+    who_are_we_message: "We are a young company. We strive to provide the best products and services with world-class brands. When you are about to define a technology, require advice in the selection of a product or require assistance in the installation please contact us. Our technicians are internationally trained by our suppliers. At Olguitech we give our best to ensure that our relationship with you or your company is a lasting one."
+    how_are_we_different: "How are we different?"
+    how_are_we_different_message: "Our difference is the service and the will to continuously improve. When you are analyzing to define the purchase of a product whatever your activity is, when you are looking for a way to improve your process or installation, call us and we will advise you. At Olguitech we are committed to be technological partners of our customers."
+  contact:
+    direction_alt: "Map of 21 de Setiembre 2819 off. 703 esq. Ellauri"
+    direction: "Find us at 21 de Setiembre 2819 off. 703 esq. Ellauri"
+    how_can_we_help_you: "How can we help you?"
+    contact: "Contact"
+    sign_in_and_contact: "Sign In and Contact"
+    contact_html: "Or contact to <span class='contact-mail'>olguitech@olguitech.com</span> <br> or to <span class='contact-mail'>+598 2716 2524</span>"
+    preference: "Which of our solutions interested you the most?"
+    preference2: "Which of our projects interested you the most?"
+    message: "Message"
+    send: "Send Mail"
+  users:
+    sign_out: "Sign Out"
+    sign_up: "Sign Up"
+    sign_in: "Sign In"
+    edit_account: "Edit Account"
+    delete_account: "Cancel Account"
+    edit: "Edit"
+    confirm: "Resend confirmation instructions"
+    resend: "Resend"
+    change_password: "Change password"
+    change: "Change"
+    new_password: "New password"
+    confirm_new_password: "Confirm new password"
+    minimum_characters: "characters minimum"
+    forgot_password: "Forgot your password?"
+    waiting_confirmation: "Waiting confirmation from: "
+    password: "Password"
+    confirm_password: "Confirm password"
+    company: "Company"
+    name: "Name"
+    leave_empty: "Leave empty if you don't want to change it"
+    need_current_password: "We need your current password"
+    phone: "Phone"
+    remember_me: "Remember me"
+    didnt_recieve: "Didn't recieve confirmation instructions?"  
+  shared:
+    see_more: "See More"
+    our_solutions: "Our Solutions"
+    our_proyects: "Our Projects"
+    back: "Back"

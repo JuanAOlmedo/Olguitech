@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='es'>
+<html lang='<%= I18n.locale %>'>
 
 <head>
     <title><%= yield(:title) %></title>
@@ -59,11 +59,11 @@
 
 
                     <h2 class='element navbar-link-title nosotros-link navbar-link'>
-                        <%= link_to 'Nosotros', nosotros_path, method: :get, class:'navbar-link nosotros-link' %>
+                        <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, class:'navbar-link nosotros-link' %>
                     </h2>
 
                     <h2 class='element navbar-link-title contacto-link navbar-link'>
-                        <%= link_to 'Contacto', '/contacto', method: :get, class:'navbar-link contacto-link' %>
+                        <%= link_to (I18n.t 'nav.contact'), "/contacto?l=#{I18n.locale}", method: :get, class:'navbar-link contacto-link' %>
                     </h2>
 
                     <% if user_signed_in? %>
@@ -73,9 +73,9 @@
                     <% end %>
 
                     <% if user_signed_in? %>
-                    <h2 class='element gold-button'><%= link_to 'Perfil', edit_user_registration_path %></h2>
+                    <h2 class='element gold-button'><%= link_to (I18n.t 'nav.profile'), edit_user_registration_path %></h2>
                     <% else %>
-                    <h2 class='element gold-button'><%= link_to 'Acceder', new_user_session_path %></h2>
+                    <h2 class='element gold-button'><%= link_to (I18n.t 'nav.sign_in'), new_user_session_path %></h2>
                     <% end %>
 
                     <% if admin_signed_in? %>
@@ -118,11 +118,11 @@
         <%= render 'layouts/proyects2' %>
 
         <h2 class='navbar-link-title dropdown-navbar-link'>
-            <%= link_to 'Nosotros', nosotros_path, method: :get, class:'dropdown-navbar-link' %>
+            <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, class:'dropdown-navbar-link' %>
         </h2>
 
         <h2 class='navbar-link-title dropdown-navbar-link'>
-            <%= link_to 'Contacto', '/contacto', method: :get, class:'dropdown-navbar-link' %>
+            <%= link_to (I18n.t 'nav.contact'), '/contacto', method: :get, class:'dropdown-navbar-link' %>
         </h2>
 
         <% if user_signed_in? %>
@@ -132,9 +132,9 @@
         <% end %>
 
         <% if user_signed_in? %>
-        <h2 id='dropdown-acceder'><%= link_to 'Perfil', edit_user_registration_path, class:'dropdown-access' %></h2>
+        <h2 id='dropdown-acceder'><%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class:'dropdown-access' %></h2>
         <% else %>
-        <h2 id='dropdown-acceder'><%= link_to 'Acceder', new_user_session_path, class:'dropdown-access' %></h2>
+        <h2 id='dropdown-acceder'><%= link_to (I18n.t 'nav.sign_in'), new_user_session_path, class:'dropdown-access' %></h2>
         <% end %>
 
         <% if admin_signed_in? %>

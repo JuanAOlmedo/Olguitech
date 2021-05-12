@@ -17,8 +17,10 @@ module Gliston
 
     config.i18n.fallbacks = true
   
-    # config.i18n.available_locales = [:es, :en]
-    config.i18n.default_locale = :en
+    config.i18n.available_locales = [:es, :en]
+    config.i18n.default_locale = :es
+
+    config.annotations.register_tags("TRANSLATE")
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

@@ -2,14 +2,16 @@
     <%= stylesheet_link_tag 'forms' %>
 </head>
 
-<% content_for :title, "Editar Cuenta" %>
+<% content_for :title, "#{I18n.t "users.edit_account"}" %>
 
 <div class='form-div'>
     <%= render 'layouts/back' %>
 
-    <h2 class='button' style='margin-top: 3rem;'><%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete, class:'access' %></h2>
+    <h2 class='button' style='margin-top: 3rem;'><%= link_to "#{I18n.t "users.sign_out"}", destroy_user_session_path, method: :delete, class:'access' %></h2>
 
-    <h2 class='form-title'>Editar Cuenta</h2>
+    <h2 class='form-title'>
+        <%= I18n.t "users.edit_account" %>
+    </h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -22,21 +24,23 @@
                   placeholder: 'Email' %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Esperando la confirmación de: <%= resource.unconfirmed_email %></p>
+        <p>
+            <%= "#{I18n.t "users.waiting_confirmation"}" %> <%= resource.unconfirmed_email %>
+        </p>
         <% end %>
 
         <%= f.input :password,
                   required: false,
                   input_html: { autocomplete: "new-password" },
                   label: false,
-                  placeholder: 'Contraseña ',
+                  placeholder: "#{I18n.t "users.password"}",
                   class: 'input',
-                  hint: 'Dejar vacío si no se quiere cambiar' %>
+                  hint: "#{I18n.t "users.leave_empty"}" %>
         <%= f.input :password_confirmation,
                   required: false,
                   input_html: { autocomplete: "new-password" },
                   label: false,
-                  placeholder: 'Confrirmar contraseña',
+                  placeholder: "#{I18n.t "users.confirm_password"}",
                   class: 'input' %>
         <%= f.input :newsletter,
                   inline_label: 'Newsletter',
@@ -46,11 +50,11 @@
                   input_html: { autocomplete: "current-password" },
                   label: false,
                   class: 'input',
-                  hint: 'Necesitamos tu contraseña actual' %>
+                  hint: "#{I18n.t "users.need_current_password"}" %>
     </div>
 
     <div class="form-actions">
-        <%= f.button :submit, "Editar", class:'gold-button', id:'button' %>
+        <%= f.button :submit, "#{I18n.t "users.edit"}", class:'gold-button', id:'button' %>
     </div>
     <% end %>
 
@@ -79,7 +83,9 @@
     </script>
     <%= javascript_pack_tag 'user' %>
 
-    <h2 class='form-title'>Cancelar Cuenta</h2>
+    <h2 class='form-title'>
+        <%= I18n.t "users.delete_account" %>
+    </h2>
 
-    <h2 class='button'><%= link_to "Cancelar", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, class:'access' %></h2>
+    <h2 class='button'><%= link_to "#{I18n.t "users.delete_account"}", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, class:'access' %></h2>
 </div>

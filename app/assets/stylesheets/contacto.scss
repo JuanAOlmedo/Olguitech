@@ -37,7 +37,7 @@
 .contact-button {
     cursor: pointer;
     transition: color 0.8s;
-    width: auto;
+    width: 15rem;
     padding: 0.7rem;
     border-radius: 0.8rem;
     margin: 0;
@@ -45,10 +45,6 @@
     color: $color1;
     text-align: center;
     transition: background-color 0.8s, color 0.8s;
-
-    @media only screen and (max-width: 70rem) {
-        width: 15rem;
-    }
 }
 
 .contact-button:visited {
@@ -78,8 +74,8 @@
 .location-info {
     position: absolute;
     z-index: 2;
-    left: 0;
-    bottom: 0;
+    right: 0;
+    top: 0;
     background-color: $color2;
     padding: 0.6rem;
     font-size: 1.2rem;

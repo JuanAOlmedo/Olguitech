@@ -8,18 +8,20 @@
     </style>
 </head>
 
-<% content_for :title, "¿Quiénes Somos? | Olguitech s.a.s." %>
+<% content_for :title, "#{I18n.t "nosotros.who_are_we"} | Olguitech s.a.s." %>
 
 <div class='nosotros-front'>
     <div class='nosotros-front-part'>
-        <h2 class='quienes-somos'> ¿Quiénes Somos? </h2>
+        <h2 class='quienes-somos'>
+            <%= I18n.t "nosotros.who_are_we" %>
+        </h2>
         <p class='quienes-somos-text'>
-            Somos una empresa joven. Nos esforzamos para brindarle los mejores productos y servicios con marcas de primer nivel mundial. Cuando este por definir una tecnología, requiera ser asesorado en la selección de un producto, requiera asistencia en la instalación o su puesta en marcha consúltenos. Nuestros técnicos son formados internacionalmente por nuestros proveedores. En Olguitech damos todo de nosotros mismos para que nuestro vínculo con usted o su empresa sea duradero.
+            <%= I18n.t "nosotros.who_are_we_message" %>
         </p>
     </div>
-    <h2 class='quienes-somos'> ¿Cómo Somos Diferentes? </h2>
+    <h2 class='quienes-somos'> <%= I18n.t "nosotros.how_are_we_different" %> </h2>
     <p class='quienes-somos-text'>
-        Nuestro diferencial es el servicio y la voluntad de mejorar continuamente. Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos. En Olguitech apostamos a ser socios tecnológicos de nuestros clientes
+        <%= I18n.t "nosotros.how_are_we_different_message" %>
     </p>
 </div>
 

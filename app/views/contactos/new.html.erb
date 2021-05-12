@@ -7,19 +7,23 @@
     </style>
 </head>
 
-<% content_for :title, "Contacto | Olguitech s.a.s." %>
+<% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
 
 <%= simple_form_for @contacto do |form| %>
 <div class="field">
-    <h2 class='preference'> Cuál de nuestras soluciones te interesó más? </h2>
+    <h2 class='preference'>
+        <%= I18n.t "contact.preference" %>
+    </h2>
     <%= form.collection_select :preference, Article.all, :id, :title %>
 
-    <h2 class='preference'> Cuál de nuestros proyectos te interesó más? </h2>
+    <h2 class='preference'>
+        <%= I18n.t "contact.preference2" %>
+    </h2>
     <%= form.collection_select :preference2, Proyecto.all, :id, :title %> <br>
 
-    <%= form.label :message, "Mensaje", class: 'preference' %> <br>
+    <%= form.label :message, "#{I18n.t "contact.message"}", class: 'preference' %> <br>
     <%= form.text_area :message %> <br>
 
-    <%= form.button :submit, 'Enviar Mail', class:'gold-button', id:'button' %>
+    <%= form.button :submit, "#{I18n.t "contact.send"}", class:'gold-button', id:'button' %>
 </div>
 <% end %>

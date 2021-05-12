@@ -8,16 +8,16 @@
     <h2 class="title">Olguitech s.a.s.</h2>
 
     <div class='subtitle-div subtitle-div1 still'>
-        <h3 class='subtitle'> Que hacemos? </h3>
-        <p class='subtitle-information'> Brindamos soluciones en Ingeniería Eléctrica a diferentes empresas. Representamos marcas de primer nivel a nivel regional y en Uruguay. <br> <br> </p>
+        <h3 class='subtitle'> <%= I18n.t 'main.what_do_we_do' %> </h3>
+        <p class='subtitle-information'> <%= I18n.t 'main.what_do_we_do_message' %> <br> <br> </p>
         <%= link_to nosotros_path do %>
         <%= render 'layouts/more' %>
         <% end %>
     </div>
 
     <div class='subtitle-div subtitle-div2 still'>
-        <h3 class='subtitle'> Quienes Somos? </h3>
-        <p class='subtitle-information'> Somos una empresa joven. Nos esforzamos para brindarle los mejores productos y servicios con marcas de primer nivel mundial. Cuando este por definir una tecnología, requiera ser asesorado en la selección de un producto, requiera asistencia en la instalación o su puesta en marcha consúltenos. <br> <br> </p>
+        <h3 class='subtitle'> <%= I18n.t 'main.who_are_we' %> </h3>
+        <p class='subtitle-information'> <%= I18n.t 'main.who_are_we_message' %> <br> <br> </p>
         <%= link_to nosotros_path do %>
         <%= render 'layouts/more' %>
         <% end %>

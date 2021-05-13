@@ -44,45 +44,44 @@
             <% end %>
         </div>
 
-        <% if !admin_signed_in? %>
-        <% if user_signed_in? %>
         <div class="right-navbar-section">
+            <%= render 'layouts/articles' %>
+            <%= render 'layouts/proyects' %>
+
+            <h2 class='element navbar-link'>
+                <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, id: "nosotros-link" %>
+            </h2>
+
+            <h2 class='element navbar-link'>
+                <%= link_to (I18n.t 'nav.contact'), "/contacto?l=#{I18n.locale}", method: :get, id: "contacto-link" %>
+            </h2>
+
+            <% if user_signed_in? && current_user.newsletter %>
+            <h2 class='element navbar-link' id="newsletter-link">
+                <%= link_to 'Newsletters', newsletters_path, method: :get, id: "newsletter-link" %>
+            </h2>
+            <% end %>
+
+            <%= link_to url_for( :l => 'en' ), class: "flag element" do %>
+            <img src="/flag1.png">
+            <% end %>
+
+            <%= link_to url_for( :l => 'es' ), class: "flag element" do %>
+            <img src="/flag2.png">
+            <% end %>
+
+            <% if user_signed_in? %>
+            <h2 class='element gold-button'><%= link_to (I18n.t 'nav.profile'), edit_user_registration_path %></h2>
             <% else %>
-            <div class="right-navbar-section normal-right">
-                <% end %>
-                <% else %>
-                <div class="right-navbar-section admin-right">
-                    <% end %>
+            <h2 class='element gold-button'><%= link_to (I18n.t 'nav.sign_in'), new_user_session_path %></h2>
+            <% end %>
 
-                    <%= render 'layouts/articles' %>
-                    <%= render 'layouts/proyects' %>
+            <% if admin_signed_in? %>
+            <h2 class='element gold-button'><%= link_to 'Admin', edit_admin_registration_path %></h2>
+            <% end %>
+        </div>
 
-
-                    <h2 class='element navbar-link-title nosotros-link navbar-link'>
-                        <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, class:'navbar-link nosotros-link' %>
-                    </h2>
-
-                    <h2 class='element navbar-link-title contacto-link navbar-link'>
-                        <%= link_to (I18n.t 'nav.contact'), "/contacto?l=#{I18n.locale}", method: :get, class:'navbar-link contacto-link' %>
-                    </h2>
-
-                    <% if user_signed_in? %>
-                    <h2 class='element navbar-link-title newsletter-link navbar-link'>
-                        <%= link_to 'Newsletters', newsletters_path, method: :get, class:'navbar-link newsletter-link' %>
-                    </h2>
-                    <% end %>
-
-                    <% if user_signed_in? %>
-                    <h2 class='element gold-button'><%= link_to (I18n.t 'nav.profile'), edit_user_registration_path %></h2>
-                    <% else %>
-                    <h2 class='element gold-button'><%= link_to (I18n.t 'nav.sign_in'), new_user_session_path %></h2>
-                    <% end %>
-
-                    <% if admin_signed_in? %>
-                    <h2 class='element gold-button'><%= link_to 'Admin', edit_admin_registration_path %></h2>
-                    <% end %>
-                </div>
-                <%= render 'layouts/dropdown' %>
+        <%= render 'layouts/dropdown' %>
     </nav>
 
 
@@ -131,6 +130,16 @@
         </h2>
         <% end %>
 
+        <div class="flags-div">
+            <%= link_to url_for( :l => 'en' ), class: "flag" do %>
+            <img src="/flag1.png">
+            <% end %>
+
+            <%= link_to url_for( :l => 'es' ), class: "flag" do %>
+            <img src="/flag2.png">
+            <% end %>
+        </div>
+
         <% if user_signed_in? %>
         <h2 id='dropdown-acceder'><%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class:'dropdown-access' %></h2>
         <% else %>
@@ -142,7 +151,7 @@
         <% end %>
     </div>
 
-    <div id='all'>
+    <main>
         <%= yield %>
 
         <% if admin_signed_in? %>
@@ -193,7 +202,7 @@
             <% end %>
         </div>
         <% end %>
-    </div>
+    </main>
 
     <%= javascript_pack_tag 'all' %>
 

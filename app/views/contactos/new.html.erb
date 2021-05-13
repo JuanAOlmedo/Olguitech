@@ -1,10 +1,5 @@
 <head>
     <%= stylesheet_link_tag 'contacto' %>
-    <style>
-        .contacto-link {
-            color: #CCC !important;
-        }
-    </style>
 </head>
 
 <% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
@@ -14,12 +9,12 @@
     <h2 class='preference'>
         <%= I18n.t "contact.preference" %>
     </h2>
-    <%= form.collection_select :preference, Article.all, :id, :title %>
+    <%= form.collection_select :preference, Article.all, :id, I18n.locale == :en ? :title2 : :title %>
 
     <h2 class='preference'>
         <%= I18n.t "contact.preference2" %>
     </h2>
-    <%= form.collection_select :preference2, Proyecto.all, :id, :title %> <br>
+    <%= form.collection_select :preference2, Proyecto.all, :id, I18n.locale == :en ? :title2 : :title %> <br>
 
     <%= form.label :message, "#{I18n.t "contact.message"}", class: 'preference' %> <br>
     <%= form.text_area :message %> <br>

@@ -20,6 +20,7 @@
     font-weight: bolder;
     font-family: Montserrat, sans-serif;
     letter-spacing: 10px;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
 
     @media only screen and (max-width: 70rem) {
         font-size: 4rem;
@@ -29,6 +30,11 @@
     @media only screen and (max-width: 50rem) {
         font-size: 3.5rem;
         letter-spacing: 7px;
+    }
+
+    @media only screen and (max-width: 50rem) {
+        font-size: 3rem;
+        letter-spacing: 6px;
     }
 }
 
@@ -40,7 +46,7 @@
     padding: 4%;
     transition: opacity 1s, transform 1s;
     opacity: 0.8;
-    box-shadow: 10px 10px 14px hsla(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
     height: auto;
 
     @media only screen and (max-width: 70rem) {
@@ -49,11 +55,12 @@
 }
 
 .subtitle-div1 {
+    transform: translateY(1.5rem);
     margin-bottom: 10rem;
 }
 
 .subtitle-div2 {
-    transform: translateY(3rem);
+    transform: translateY(1.5rem);
 }
 
 .subtitle-div1.move,

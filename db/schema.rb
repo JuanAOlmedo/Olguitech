@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_185717) do
+ActiveRecord::Schema.define(version: 2021_05_12_203328) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -78,6 +78,9 @@ ActiveRecord::Schema.define(version: 2021_05_11_185717) do
     t.text "title"
     t.text "content"
     t.text "description"
+    t.text "content2"
+    t.text "title2"
+    t.text "description2"
   end
 
   create_table "contactos", force: :cascade do |t|
@@ -112,6 +115,9 @@ ActiveRecord::Schema.define(version: 2021_05_11_185717) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
     t.text "title"
+    t.text "content2"
+    t.text "title2"
+    t.text "description2"
   end
 
 # Could not dump table "users" because of following StandardError

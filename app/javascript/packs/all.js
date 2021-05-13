@@ -57,6 +57,8 @@ dropdownBarsClicker.createClick();
 
 function dropdownClickHandler() {
     dropdown.classList.toggle("show");
+    document.querySelector(".line1").classList.toggle("move");
+    document.querySelector(".line2").classList.toggle("move");
 
     setTimeout(() => showLinks(), showing ? 400 : 0);
 

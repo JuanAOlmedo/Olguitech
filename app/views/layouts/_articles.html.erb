@@ -1,4 +1,4 @@
-<div class='articles-hoverable-div'>
+<div class='element articles-hoverable-div navbar-link'>
     <h2 class='element navbar-link' id='articles-hoverable'>
         <%= link_to (I18n.t 'nav.solutions'), articles_path, class:'articles-link' %>
     </h2>
@@ -11,8 +11,10 @@
             <% end %>
 
             <div class='articles-hoverable-article-content'>
-                <h2> <%= article.title.length > 50 ? article.title[0...50] + '...' : article.title %> </h2>
-                <p> <%= article.description.length > 100 ? article.description[0...100] + '...' : article.description %> </p>
+                <% title =  I18n.locale == :en && article.title2 != "" && article.title2 != nil ? article.title2 : article.title %>
+                <% description =  I18n.locale == :en && article.description2 != "" && article.description2 != nil ? article.description2 : article.description %>
+                <h2> <%= title.length > 50 ? title[0...50] + '...' : title %> </h2>
+                <p> <%= description.length > 100 ? description[0...100] + '...' : description %> </p>
             </div>
         </div>
         <% end %>

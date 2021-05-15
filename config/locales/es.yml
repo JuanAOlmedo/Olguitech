@@ -55,8 +55,40 @@ es:
     phone: "Teléfono"
     remember_me: "Recuérdame"
     didnt_recieve: "No recibiste instrucciones para confirmar la cuenta?"
+    confirm_account: "Confirmar mi cuenta"
   shared:
     see_more: "Ver más"
     our_solutions: "Nuestras Soluciones"
     our_proyects: "Nuestros Proyectos"
     back: "Atrás"
+    all: "Todos"
+  mail:
+    contact_mailer_html: "Hola %{name}, gracias por contactarte con Olguitech s.a.s.! <br>
+
+        La solución que ofrecemos que más le ha interesado fue: %{preference}, y el proyecto: %{preference2}.<br>
+        Tu mensaje fue: %{message} <br>
+
+        Alguien se contactará a la brevedad con usted con respecto a ambos artículos y a su mensaje.
+        Esperamos escuchar de ti y de %{company} de vuelta."
+    contact_mailer: "Hola %{name}, gracias por contactarte con Olguitech s.a.s.!
+
+        La solución que ofrecemos que más le ha interesado fue: %{preference}, y el proyecto: %{preference2}.
+        Tu mensaje fue: %{message}
+
+        Alguien se contactará a la brevedad con usted con respecto a ambos artículos y a su mensaje.
+        Esperamos escuchar de ti y de %{company} de vuelta."
+    confirm:
+      html: "<p>Bienvenido %{email}!</p>
+
+<p>Puedes confirmar tu cuenta con el link de abajo:</p>"
+    password: 
+      html: "<p>Hola %{email}!</p>
+
+<p>Te contactamos para informarte que tu contraseña a cambiado.</p>"
+    reset:
+      1_html: "<p>Hola %{email}!</p>
+
+<p>Has pedido un link para cambiar tu contraseña. Puedes hacerlo con el link de abajo.</p>"
+      2_html: "<p>Si no pediste esto, puedes ignorar este email.</p>
+
+<p>Tu contraseña no cambiará hasta que no accedas a este link y crees una nueva contraseña.</p>"

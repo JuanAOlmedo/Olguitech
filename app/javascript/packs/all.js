@@ -178,7 +178,7 @@ dropdownClickableClicker = new Clicker(dropdownClickable, extend).createClick();
 let extended = false;
 
 function extend() {
-    lazyLoad4()
+    lazyLoad4();
 
     dropdownExtensible.classList.toggle("extend");
     document
@@ -202,7 +202,7 @@ dropdownClickableClicker1 = new Clicker(
 let extended1 = false;
 
 function extend1() {
-    lazyLoad5()
+    lazyLoad5();
 
     dropdownExtensible1.classList.toggle("extend");
     document

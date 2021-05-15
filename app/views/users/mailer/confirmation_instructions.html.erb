@@ -1,5 +1,3 @@
-<p>Bienvenido <%= @email %>!</p>
+<%= t("mail.confirm.html", email: @email) %>
 
-<p>Puedes confirmar tu cuenta con el link de abajo:</p>
-
-<p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to I18n.t("users.confirm_account"), (confirmation_url(@resource, confirmation_token: @token) + "&l=" + "#{I18n.locale}") %></p>

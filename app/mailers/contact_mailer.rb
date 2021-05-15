@@ -7,6 +7,7 @@ class ContactMailer < ApplicationMailer
     @preference = preference
     @preference2 = preference2
     @message = message
+    @variables = { user: user, preference: preference, preference2: preference2, message: message }
     
     mail(to: @user.email, subject: 'Olguitech s.a.s.')
   end
@@ -16,7 +17,8 @@ class ContactMailer < ApplicationMailer
     @preference = preference
     @preference2 = preference2
     @message = message
+    @locale = I18n.locale == :es ? "Español" : "Inglés"
     
-    mail(to: ENV['EMAIL_USERNAME'], subject: 'Una nueva persona se ha contactado')
+    mail(to: "olmedo.juanandres5@gmail.com", subject: 'Una nueva persona se ha contactado')
   end
 end

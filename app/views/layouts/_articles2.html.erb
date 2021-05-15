@@ -7,6 +7,7 @@
     </h2>
 
     <div class="dropdown-clickable-extensible">
+        <%= link_to I18n.t("shared.all"), articles_path, id: "extensible-link" %>
         <% Article.all.order(created_at: :desc).each do |article| %>
         <%= link_to article_path(article) do %>
         <div class='articles-hoverable-article article-hoverable-article2'>

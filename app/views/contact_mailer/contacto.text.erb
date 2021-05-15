@@ -1,9 +1,3 @@
 Olguitech s.a.s.
 
-Hola <%= @user.name %>, gracias por contactarte con Olguitech s.a.s.!
-
-La solución que ofrecemos que más le ha interesado fue: <%= @preference %>, y el proyecto: <%= @preference2 %>. Alguien se contactará a la brevedad con usted con respecto a ambos artículos.
-
-Esperamos escuchar de ti y de <%= @user.company %> de vuelta.
-
-Tu mensaje fue: <%= @message %>
+<%= t("mail.contact_mailer", name: @user.name, company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>

@@ -1,26 +1,7 @@
-<style>
-    div {
-        background-color: #222;
-    }
-
-    h1 {
-        color: #f5a639;
-    }
-</style>
-
 <div>
     <h1>Olguitech s.a.s.</h1>
 
     <p>
-        Hola <%= @user.name %>, gracias por contactarte con Olguitech s.a.s.!
-    </p>
-    <p>
-        La solución que ofrecemos que más le ha interesado fue: <%= @preference %>, y el proyecto: <%= @preference2 %>. Alguien se contactará a la brevedad con usted con respecto a ambos artículos.
-    </p>
-    <p>
-        Esperamos escuchar de ti y de <%= @user.company %> de vuelta.
-    </p>
-    <p>
-        Tu mensaje fue: <%= @message %>
+        <%= t("mail.contact_mailer_html", name: @user.name, company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>
     </p>
 </div>

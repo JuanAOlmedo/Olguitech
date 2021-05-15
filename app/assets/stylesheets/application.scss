@@ -188,7 +188,7 @@ nav {
     width: 7.5rem;
     transition: color 0.8s;
 
-    @media only screen and (max-width: 1150px) {
+    @media only screen and (max-width: 1200px) {
         width: 7.3rem;
         padding-right: 0.4rem;
     }
@@ -380,6 +380,18 @@ nav {
     }
 }
 
+#extensible-link {
+    color: $link;
+    text-decoration: underline;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+#extensible-link:hover {
+    color: $link-h;
+    text-decoration: none;
+}
+
 // 3. ICONS //
 
 .fas {
@@ -471,7 +483,7 @@ i h3 {
     background-color: $color5;
 }
 
-@media only screen and (max-width: 67rem) {
+@media only screen and (max-width: 70rem) {
     .element {
         display: none;
     }

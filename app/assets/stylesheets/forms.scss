@@ -13,6 +13,10 @@
     padding: 0.4rem;
     border-radius: 0.5rem;
     border-color: $color2;
+
+    @media only screen and (max-width: 380px) {
+        width: 90%;        
+    }
 }
 
 .hint {
@@ -38,6 +42,13 @@
 .form-div {
     background-color: $color1;
     padding: 3rem;
+
+    @media only screen and (max-width: 500px) {
+        padding: 1.5rem;        
+    }
+    @media only screen and (max-width: 380px) {
+        padding: 1rem;        
+    }
 }
 
 .form-inputs {

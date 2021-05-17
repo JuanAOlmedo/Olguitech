@@ -2,14 +2,6 @@ class AdminRegistrationsController < Devise::RegistrationsController
     before_action :authenticate_admin!, :redirect_unless_admin,  only: [:new, :create]
     skip_before_action :require_no_authentication
 
-    private
-    def redirect_unless_admin
-        if !admin_signed_in?
-            flash[:alert] = "Solo administradores pueden hacer eso"
-            redirect_to root_path
-        end
-    end
-
     def sign_up(resource_name, resource)
         true
     end
@@ -39,11 +31,16 @@ class AdminRegistrationsController < Devise::RegistrationsController
         end
     end
     
-    # def destroy 
-    #     resource.destroy 
-    #     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name) 
-    #     set_flash_message! :notice, :destroyed 
-    #     yield resource if block_given? 
-    #     respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) } 
-    # end
+    def destroy 
+        flash[:alert] = I18n.t("shared.cant_cancel")
+        redirect_to root_path
+    end
+
+    private
+    def redirect_unless_admin
+        if !admin_signed_in?
+            flash[:alert] = I18n.t("shared.admins")
+            redirect_to root_path
+        end
+    end
 end

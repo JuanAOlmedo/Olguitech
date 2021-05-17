@@ -19,6 +19,7 @@
                 <th> Teléfono </th>
                 <th> Newsletter? </th>
                 <th> Veces Contactadas </th>
+                <th> Idioma </th>
             </tr>
             <% @users.each do |user| %>
             <tr class='user-row'>
@@ -35,6 +36,8 @@
                 <td> <%= user.newsletter %> </td>
 
                 <td> <span class='times-contacted' data-id="<%= user.id %>"><%= user.contactos.length %></span> </td>
+
+                <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
             </tr>
             <% end %>
         </table>

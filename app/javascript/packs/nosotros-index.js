@@ -12,14 +12,14 @@ function animateOnScroll(element, scrollTop) {
     }
 }
 
-const $profiles = document.querySelector(".profiles");
+const profiles = document.querySelector(".profiles");
 
 window.onscroll = function () {
     const scrollTop = this.pageYOffset - docEl.clientTop;
 
-    if (animateOnScroll($profiles, scrollTop)) {
-        $profiles.classList.add("move");
+    if (animateOnScroll(profiles, scrollTop)) {
+        profiles.classList.add("move");
     } else {
-        $profiles.classList.remove("move");
+        profiles.classList.remove("move");
     }
 };

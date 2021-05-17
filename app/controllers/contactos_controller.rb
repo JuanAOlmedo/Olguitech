@@ -14,9 +14,15 @@ class ContactosController < ApplicationController
     @contacto.preference2 = @contacto.preference2.to_i
 
     if @contacto.save 
-      @mail = ContactMailer.contacto(current_user, Article.find(@contacto.preference).title, Proyecto.find(@contacto.preference2).title, @contacto.message).deliver_now!
+      article = Article.find(@contacto.preference)
+      proyecto = Proyecto.find(@contacto.preference2)
+
+      article = I18n.locale == :en && article.title2 != "" && article.title2 != nil ? article.title2 : article.title
+      proyecto = I18n.locale == :en && proyecto.title2 != "" && proyecto.title2 != nil ? proyecto.title2 : proyecto.title
+
+      @mail = ContactMailer.contacto(current_user, article, proyecto, @contacto.message).deliver_now!
       @mail = ContactMailer.admin_contacto(current_user, Article.find(@contacto.preference).title, Proyecto.find(@contacto.preference2).title, @contacto.message).deliver_now!
-      redirect_to '/contacto', notice: 'Un email ha sido enviado.'
+      redirect_to "/#{I18n.locale}/contacto", notice: I18n.t("contact.sent")
     end
   end
 

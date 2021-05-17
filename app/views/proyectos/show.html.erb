@@ -41,7 +41,7 @@
     <% end %>
     <% end %>
 
-    <div class='content'>
+    <article>
         <h2 class='article-title'> <%= I18n.locale == :en && @proyecto.title2 != "" && @proyecto.title2 != nil ? @proyecto.title2 : @proyecto.title %> </h2>
 
         <p class='article-description'> <%= I18n.locale == :en && @proyecto.description2 != "" && @proyecto.description2 != nil ? @proyecto.description2 : @proyecto.description %> </p>
@@ -59,7 +59,7 @@
                 <polyline points="6 15 12 9 18 15" />
             </svg>
         </i>
-    </div>
+    </article>
 
     <%= javascript_pack_tag 'show' %>
 </div>

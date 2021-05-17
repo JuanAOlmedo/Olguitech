@@ -238,3 +238,6 @@ function lazyLoad5() {
         img.classList.remove("proyects-lazy2");
     });
 }
+
+// var userLang = navigator.language || navigator.userLanguage; 
+// alert ("The language is: " + userLang);

@@ -54,7 +54,7 @@
             </h2>
 
             <h2 class='element navbar-link'>
-                <%= link_to (I18n.t 'nav.contact'), "/contacto?l=#{I18n.locale}", method: :get, id: "contacto-link" %>
+                <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", method: :get, id: "contacto-link" %>
             </h2>
 
             <% if user_signed_in? && current_user.newsletter %>
@@ -63,11 +63,11 @@
             </h2>
             <% end %>
 
-            <%= link_to url_for( :l => 'en' ), class: "flag element" do %>
+            <%= link_to url_for( :locale => 'en' ), class: "flag element" do %>
             <img src="/flag1.png">
             <% end %>
 
-            <%= link_to url_for( :l => 'es' ), class: "flag element" do %>
+            <%= link_to url_for( :locale => 'es' ), class: "flag element" do %>
             <img src="/flag2.png">
             <% end %>
 
@@ -122,7 +122,7 @@
         </h2>
 
         <h2 class='navbar-link-title dropdown-navbar-link'>
-            <%= link_to (I18n.t 'nav.contact'), '/contacto', method: :get, class:'dropdown-navbar-link' %>
+            <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", method: :get, class:'dropdown-navbar-link' %>
         </h2>
 
         <% if user_signed_in? %>
@@ -132,11 +132,11 @@
         <% end %>
 
         <div class="flags-div">
-            <%= link_to url_for( :l => 'en' ), class: "flag" do %>
+            <%= link_to url_for( :locale => 'en' ), class: "flag", title: "Ingles" do %>
             <img src="/flag1.png">
             <% end %>
 
-            <%= link_to url_for( :l => 'es' ), class: "flag" do %>
+            <%= link_to url_for( :locale => 'es' ), class: "flag", title: "Espaniol" do %>
             <img src="/flag2.png">
             <% end %>
         </div>

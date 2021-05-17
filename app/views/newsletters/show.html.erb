@@ -12,17 +12,19 @@
 <div id='show'>
     <%= render 'layouts/back' %>
 
-    <h2 class='article-title' style="text-align: center;"> <%= @newsletter.title %> </h2>
+    <article>
+        <h2 class='article-title' style="text-align: center;"> <%= @newsletter.title %> </h2>
 
-    <div class='show-text'>
-        <p class='article-text'> <%= @newsletter.content %> </p>
-    </div>
-    <i id='back-to-top' tabindex='0'>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <polyline points="6 15 12 9 18 15" />
-        </svg>
-    </i>
+        <div class='show-text'>
+            <p class='article-text'> <%= @newsletter.content %> </p>
+        </div>
+        <i id='back-to-top' tabindex='0'>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" />
+                <polyline points="6 15 12 9 18 15" />
+            </svg>
+        </i>
+    </article>
 
     <%= javascript_pack_tag 'show' %>
 </div>

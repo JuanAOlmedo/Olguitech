@@ -30,6 +30,7 @@ es:
     preference2: "Cuál de nuestros proyectos te interesó más?"
     message: "Mensaje"
     send: "Enviar Mail"
+    sent: "Un email ha sido enviado."
   users:
     sign_out: "Cerrar sesión"
     sign_up: "Crear Cuenta"
@@ -56,12 +57,15 @@ es:
     remember_me: "Recuérdame"
     didnt_recieve: "No recibiste instrucciones para confirmar la cuenta?"
     confirm_account: "Confirmar mi cuenta"
+    are_you_sure: "Estas seguro?"
   shared:
     see_more: "Ver más"
     our_solutions: "Nuestras Soluciones"
     our_proyects: "Nuestros Proyectos"
     back: "Atrás"
     all: "Todos"
+    admins: "Solo administradores pueden hacer eso"
+    cant_cancel: "No podes destruir tu cuenta de administrador."
   mail:
     contact_mailer_html: "Hola %{name}, gracias por contactarte con Olguitech s.a.s.! <br>
 

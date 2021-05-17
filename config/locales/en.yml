@@ -30,6 +30,7 @@ en:
     preference2: "Which of our projects interested you the most?"
     message: "Message"
     send: "Send Mail"
+    sent: "An email has been sent."
   users:
     sign_out: "Sign Out"
     sign_up: "Sign Up"
@@ -56,12 +57,15 @@ en:
     remember_me: "Remember me"
     didnt_recieve: "Didn't recieve confirmation instructions?"  
     confirm_account: "Confirm my account"
+    are_you_sure: "Are you sure?"
   shared:
     see_more: "See More"
     our_solutions: "Our Solutions"
     our_proyects: "Our Projects"
     back: "Back"
     all: "All"
+    admins: "Only admins can do that"
+    cant_cancel: "You can't destroy your admin account."
   mail:
     contact_mailer_html: "Hello %{name}, thank you for contacting Olguitech s.a.s.! <br>
 

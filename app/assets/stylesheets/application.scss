@@ -134,6 +134,16 @@ nav {
     }
 }
 
+.articles-hoverable-div:focus {
+    .articles-hoverable-content {
+        display: flex;
+    }
+
+    #articles-hoverable {
+        color: $color5 !important;
+    }
+}
+
 .dropdown-articles-hoverable-div:hover {
     .articles-hoverable-content {
         display: none;
@@ -247,11 +257,11 @@ nav {
     margin-top: 5.1em;
     transform: translateY(-40rem);
     transition: transform 1s;
+    will-change: transform;
 }
 
 #dropdown.show {
     transform: translateY(0);
-    z-index: 99;
 }
 
 #dropdown-acceder {

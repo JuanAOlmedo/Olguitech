@@ -8,8 +8,8 @@
     </style>
 </head>
 
-<% content_for :title, "Nuestros Proyectos | Olguitech s.a.s." %>
-<h1 class='index-title'> Nuestros Proyectos </h1>
+<% content_for :title, "#{I18n.t "shared.our_proyects"} | Olguitech s.a.s." %>
+<h1 class='index-title'> <%= I18n.t "shared.our_proyects" %> </h1>
 
 <div class='articles-div'>
     <% @proyectos.each do |article| %>

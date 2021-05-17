@@ -16,11 +16,11 @@
         <h1 class='contact-title'> <%= I18n.t "contact.how_can_we_help_you" %> </h1>
 
         <% if user_signed_in? %>
-        <%= link_to "/contacto/new?l=#{I18n.locale}", class:'access' do %>
+        <%= link_to "/#{I18n.locale}/contacto/new", class:'access' do %>
         <h2 class='contact-button'><%= I18n.t "contact.contact" %></h2>
         <% end %>
         <% else %>
-        <%= link_to "/contacto/new?l=#{I18n.locale}", class:'access' do %>
+        <%= link_to "/#{I18n.locale}/contacto/new", class:'access' do %>
         <h2 class='contact-button'><%= I18n.t "contact.sign_in_and_contact" %></h2>
         <% end %>
         <% end %>

@@ -2,7 +2,6 @@
 
 .front {
     background: url("/Fondo.webp") no-repeat fixed;
-    // background-image: linear-gradient(180deg, #001336, #d3270e);
     background-size: cover;
     padding: 1rem 0 5rem;
 
@@ -18,9 +17,15 @@
     margin-bottom: 22rem;
     text-align: center;
     font-weight: bolder;
-    font-family: "Montserrat", sans-serif;
-    letter-spacing: 10px;
+    font-family: "Varela Round", sans-serif;
+    letter-spacing: 9px;
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+    // background: linear-gradient(-10deg, hsl(0, 100%, 40%), hsl(0, 90%, 60%), hsl(27, 99%, 50%), hsl(27, 100%, 48%));
+    // -webkit-background-clip: text;
+    // -ms-background-clip: text;
+    // background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // color: white;
 
     @media only screen and (max-width: 70rem) {
         font-size: 4rem;
@@ -39,7 +44,7 @@
 }
 
 .subtitle-div {
-    background-color: $color1;
+    background-color: $color4;
     width: 65%;
     margin: 6rem auto 6rem auto;
     border-radius: 0.8rem;

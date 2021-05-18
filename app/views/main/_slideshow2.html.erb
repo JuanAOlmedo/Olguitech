@@ -6,12 +6,8 @@
             <div class='article-information'>
                 <h1 class='articles-title'> <%= I18n.t 'shared.our_proyects' %> </h1>
 
-                <% title =  I18n.locale == :en && article.title2 != "" && article.title2 != nil ? article.title2 : article.title %>
-                <% description =  I18n.locale == :en && article.description2 != "" && article.description2 != nil ? article.description2 : article.description %>
-                <h2 class='article-title'> <%= title.length > 50 ? title[0...50] + '...' : title %> </h2>
-                <p class='article-text'>
-                    <%= description.length > 100 ? description[0...100] + '...' : description %> <br>
-                </p>
+                <h2 class='article-title'> <%= article.get_short_title %> </h2>
+                <p class='article-text'> <%= article.get_short_desc %> </p>
 
                 <%= link_to proyecto_path(article), class:'article-link' do %>
                 <%= render 'layouts/more' %>

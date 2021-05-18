@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<% content_for :title, "#{I18n.locale == :en && @proyecto.title2 != "" && @proyecto.title2 != nil ? @proyecto.title2 : @proyecto.title} | Olguitech s.a.s." %>
-<% content_for :description, "#{I18n.locale == :en && @proyecto.description2 != "" && @proyecto.description2 != nil ? @proyecto.description2 : @proyecto.description}" %>
+<% content_for :title, "#{@proyecto.get_title} | Olguitech s.a.s." %>
+<% content_for :description, "#{@proyecto.get_desc}" %>
 
 
 <div id='show'>
@@ -44,16 +44,16 @@
     <% end %>
 
     <article>
-        <h2 class='article-title'> <%= I18n.locale == :en && @proyecto.title2 != "" && @proyecto.title2 != nil ? @proyecto.title2 : @proyecto.title %> </h2>
+        <h2 class='article-title'> <%= @proyecto.get_title %> </h2>
 
-        <p class='article-description'> <%= I18n.locale == :en && @proyecto.description2 != "" && @proyecto.description2 != nil ? @proyecto.description2 : @proyecto.description %> </p>
+        <p class='article-description'> <%= @proyecto.get_desc %> </p>
 
         <% if @proyecto.image.attached? %>
         <img src='<%= url_for(@proyecto.image) %>' class='article-img' alt='<%= @proyecto.image.filename %>'>
         <% end %>
 
         <div class='show-text'>
-            <p class='article-text'> <%= I18n.locale == :en && !@proyecto.content2.empty? ? @proyecto.content2 : @proyecto.content %> </p>
+            <p class='article-text'> <%= @proyecto.get_content %> </p>
         </div>
         <i id='back-to-top' tabindex='0'>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

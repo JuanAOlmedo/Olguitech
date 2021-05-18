@@ -22,6 +22,23 @@ class Clicker {
     }
 }
 
+const imgObserver = new IntersectionObserver(
+    (entries, imgObserver) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const img = entry.target;
+            img.src = img.dataset.src ? img.dataset.src : img.src;
+            imgObserver.unobserve(entry.target);
+        });
+    },
+    { threshold: 0 }
+);
+
+document.querySelectorAll("img").forEach((img) => {
+    imgObserver.observe(img);
+});
+
 const dropdownClickable = document.querySelectorAll(
         ".dropdown-clickable-div"
     )[0],
@@ -33,9 +50,8 @@ const dropdownClickable = document.querySelectorAll(
     )[1],
     dropdownExtensible1 = document.querySelectorAll(
         ".dropdown-clickable-extensible"
-    )[1];
-
-const dropdownBars = document.querySelector("#dropdown-bars"),
+    )[1],
+    dropdownBars = document.querySelector("#dropdown-bars"),
     dropdown = document.querySelector("#dropdown"),
     dropdownNavLinks = document.querySelectorAll(".dropdown-navbar-link"),
     dropdownAccessLinks = document.querySelectorAll(".dropdown-access");
@@ -83,20 +99,6 @@ function dropdownClickHandler() {
     }
 }
 
-const imgObserver = new IntersectionObserver((entries, imgObserver) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      
-      const img = entry.target;
-      img.src = img.dataset.src ? img.dataset.src : img.src;
-      imgObserver.unobserve(entry.target);
-    });
-}, {threshold: 0});
-
-document.querySelectorAll("img").forEach((img) => {
-    imgObserver.observe(img);
-});
-
 function defineElementOffset(element, change) {
     const scrollTop = window.pageYOffset;
 
@@ -107,10 +109,9 @@ function defineElementOffset(element, change) {
     }
 }
 
-const articlesHoverableDiv = document.querySelector(".articles-hoverable-div");
-const proyectsHoverableDiv = document.querySelector(".proyects-hoverable-div");
-
-const stills = document.querySelectorAll(".still");
+const articlesHoverableDiv = document.querySelector(".articles-hoverable-div"),
+    proyectsHoverableDiv = document.querySelector(".proyects-hoverable-div"),
+    stills = document.querySelectorAll(".still");
 
 function scroll() {
     stills.forEach(function (still) {
@@ -122,10 +123,12 @@ function scroll() {
     });
 }
 
-document.addEventListener("scroll", scroll);
-window.addEventListener("DOMContentLoaded", scroll);
-window.addEventListener("resize", scroll);
-window.addEventListener("orientationChange", scroll);
+if (stills.length > 0) {
+    document.addEventListener("scroll", scroll);
+    window.addEventListener("DOMContentLoaded", scroll);
+    window.addEventListener("resize", scroll);
+    window.addEventListener("orientationChange", scroll);
+}
 
 dropdownClickableClicker = new Clicker(dropdownClickable, extend).createClick();
 

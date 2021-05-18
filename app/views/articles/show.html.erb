@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<% content_for :title, "#{I18n.locale == :en && @article.title2 != "" && @article.title2 != nil ? @article.title2 : @article.title} | Olguitech s.a.s." %>
-<% content_for :description, "#{I18n.locale == :en && @article.description2 != "" && @article.description2 != nil ? @article.description2 : @article.description}" %>
+<% content_for :title, "#{@article.get_title} | Olguitech s.a.s." %>
+<% content_for :description, "#{@article.get_desc}" %>
 
 <div id='show'>
     <%= render 'layouts/back' %>
@@ -43,16 +43,16 @@
     <% end %>
 
     <article>
-        <h2 class='article-title'> <%= I18n.locale == :en && @article.title2 != "" && @article.title2 != nil ? @article.title2 : @article.title %> </h2>
+        <h2 class='article-title'> <%= @article.get_title %> </h2>
 
-        <p class='article-description'> <%= I18n.locale == :en && @article.description2 != "" && @article.description2 != nil ? @article.description2 : @article.description %> </p>
+        <p class='article-description'> <%= @article.get_desc %> </p>
 
         <% if @article.image.attached? %>
         <img src='<%= url_for(@article.image) %>' class='article-img' alt='<%= @article.image.filename %>'>
         <% end %>
 
         <div class='show-text'>
-            <p class='article-text'> <%= I18n.locale == :en && !@article.content2.empty? ? @article.content2 : @article.content %> </p>
+            <p class='article-text'> <%= @article.get_content %> </p>
         </div>
         <i id='back-to-top' tabindex='0'>
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

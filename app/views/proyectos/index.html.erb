@@ -19,9 +19,9 @@
         <% end %>
 
         <div class='article-information'>
-            <h2 class='article-title'> <%= I18n.locale == :en && article.title2 != "" && article.title2 != nil ? article.title2 : article.title %> </h2>
+            <h2 class='article-title'> <%= article.get_title %> </h2>
             <p class='article-text'>
-                <%= I18n.locale == :en && article.description2 != "" && article.description2 != nil ? article.description2 : article.description %> <br>
+                <%= article.get_desc %> <br>
             </p>
 
             <%= link_to proyecto_path(article) do %>

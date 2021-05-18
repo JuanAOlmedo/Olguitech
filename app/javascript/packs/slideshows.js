@@ -34,10 +34,10 @@ if (articles.length > 0) {
     articles[0].classList.add("show");
 
     articles.forEach((article) => {
-        article.children[1].children[0].children[2].style.display = "none";
+        article.children[1].children[0].children[3].style.display = "none";
     });
 
-    articles[0].children[1].children[0].children[2].style.display = "block";
+    articles[0].children[1].children[0].children[3].style.display = "block";
 
     sliderVariable = 0;
 
@@ -52,7 +52,7 @@ if (articles.length > 0) {
             articles[sliderVariable].classList.remove("show");
             articles[
                 sliderVariable
-            ].children[1].children[0].children[2].style.display = "none";
+            ].children[1].children[0].children[3].style.display = "none";
 
             if (sliderVariable === articles.length - 1 && num === 1) {
                 sliderVariable = 0;
@@ -65,7 +65,7 @@ if (articles.length > 0) {
             articles[sliderVariable].classList.add("show");
             articles[
                 sliderVariable
-            ].children[1].children[0].children[2].style.display = "block";
+            ].children[1].children[0].children[3].style.display = "block";
         }
     }
 
@@ -86,10 +86,10 @@ if (proyects.length > 0) {
     proyects[0].classList.add("show");
 
     proyects.forEach((article) => {
-        article.children[0].children[0].children[2].style.display = "none";
+        article.children[0].children[0].children[3].style.display = "none";
     });
 
-    proyects[0].children[0].children[0].children[2].style.display = "block";
+    proyects[0].children[0].children[0].children[3].style.display = "block";
 
     sliderVariableP = 0;
 
@@ -104,7 +104,7 @@ if (proyects.length > 0) {
             proyects[sliderVariableP].classList.remove("show");
             proyects[
                 sliderVariableP
-            ].children[0].children[0].children[2].style.display = "none";
+            ].children[0].children[0].children[3].style.display = "none";
 
             if (sliderVariableP === proyects.length - 1 && num === 1) {
                 sliderVariableP = 0;
@@ -117,7 +117,7 @@ if (proyects.length > 0) {
             proyects[sliderVariableP].classList.add("show");
             proyects[
                 sliderVariableP
-            ].children[0].children[0].children[2].style.display = "block";
+            ].children[0].children[0].children[3].style.display = "block";
         }
     }
 

@@ -3,7 +3,7 @@
         <%= link_to (I18n.t 'nav.solutions'), articles_path, class:'articles-link' %>
     </h2>
     <div class='articles-hoverable-content' id="articles-hoverable-content" tabindex="1">
-        <% Article.all.order(created_at: :desc).each do |article| %>
+        <% @articles.each do |article| %>
         <%= link_to article_path(article) do %>
         <div class='articles-hoverable-article'>
             <% if article.image.attached? %>

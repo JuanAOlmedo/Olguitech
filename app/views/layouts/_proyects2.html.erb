@@ -8,7 +8,7 @@
 
     <div class="dropdown-clickable-extensible">
         <%= link_to I18n.t("shared.all"), proyectos_path, id: "extensible-link" %>
-        <% Proyecto.all.order(created_at: :desc).each do |article| %>
+        <% @proyectos.each do |article| %>
         <%= link_to proyecto_path(article) do %>
         <div class='articles-hoverable-article article-hoverable-article2'>
             <% if article.image.attached? %>

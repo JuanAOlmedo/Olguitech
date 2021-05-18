@@ -2,12 +2,12 @@
 <html lang='<%= I18n.locale %>'>
 
 <head>
-    <title><%= yield(:title) %></title>
+    <title><%= request.original_url.include?(yield(:title)) ? "Olguitech s.a.s." : yield(:title) %></title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Olguitech s.a. Soluciones en ingeniería -- Uruguay">
+    <meta name="description" content="<%= request.original_url.include?(yield(:description)) ? "Olguitech s.a.s. Soluciones en ingeniería -- Uruguay" : yield(:description) %>">
     <meta name="theme-color" content="hsl(210, 60%, 20%)">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicons/favicon1.png" sizes="32x32">
@@ -25,6 +25,9 @@
 </head>
 
 <body>
+    <% @articles = Article.all.order(created_at: :desc)
+
+       @proyectos = Proyecto.all.order(created_at: :desc) %>
 
     <% if flash[:alert] %>
     <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -63,12 +66,12 @@
             </h2>
             <% end %>
 
-            <%= link_to url_for( :locale => 'en' ), class: "flag element" do %>
-            <img src="/flag1.png">
+            <%= link_to url_for( :locale => 'en' ), class: "flag element", title: I18n.t("shared.flag1") do %>
+            <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>">
             <% end %>
 
-            <%= link_to url_for( :locale => 'es' ), class: "flag element" do %>
-            <img src="/flag2.png">
+            <%= link_to url_for( :locale => 'es' ), class: "flag element", title: I18n.t("shared.flag2") do %>
+            <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>">
             <% end %>
 
             <% if user_signed_in? %>
@@ -190,7 +193,7 @@
             </i>
             <% end %>
 
-            <%= link_to users_path, class: 'right-tool', method: :get do %>
+            <%= link_to user_index_path, class: 'right-tool', method: :get do %>
             <i class='articles-fas'>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />

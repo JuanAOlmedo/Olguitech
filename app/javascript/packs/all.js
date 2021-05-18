@@ -60,7 +60,7 @@ function dropdownClickHandler() {
     document.querySelector(".line1").classList.toggle("move");
     document.querySelector(".line2").classList.toggle("move");
 
-    setTimeout(() => showLinks(), showing ? 400 : 0);
+    setTimeout(() => dropdown.classList.toggle("visible"), showing ? 450 : 0);
 
     showing = showing ? false : true;
 
@@ -83,38 +83,19 @@ function dropdownClickHandler() {
     }
 }
 
-function showLinks() {
-    dropdownNavLinks.forEach((link) => {
-        link.classList.toggle("show");
+const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      
+      const img = entry.target;
+      img.src = img.dataset.src ? img.dataset.src : img.src;
+      imgObserver.unobserve(entry.target);
     });
+}, {threshold: 0});
 
-    dropdownAccessLinks.forEach((link) => {
-        link.classList.toggle("show");
-    });
-}
-
-const lazyLoadImages = document.querySelectorAll("img.lazy");
-let lazyLoadThrottleTimeout;
-
-function lazyLoad() {
-    if (lazyLoadThrottleTimeout) {
-        clearTimeout(lazyLoadThrottleTimeout);
-    }
-
-    lazyLoadThrottleTimeout = setTimeout(function () {
-        lazyLoadImages.forEach(function (img) {
-            if (defineElementOffset(img, 0)) {
-                img.src = img.dataset.src;
-                img.classList.remove("lazy");
-            }
-        });
-        if (lazyLoadImages.length == 0) {
-            document.removeEventListener("scroll", lazyLoad);
-            window.removeEventListener("resize", lazyLoad);
-            window.removeEventListener("orientationChange", lazyLoad);
-        }
-    }, 20);
-}
+document.querySelectorAll("img").forEach((img) => {
+    imgObserver.observe(img);
+});
 
 function defineElementOffset(element, change) {
     const scrollTop = window.pageYOffset;
@@ -126,35 +107,8 @@ function defineElementOffset(element, change) {
     }
 }
 
-document.addEventListener("scroll", lazyLoad);
-window.addEventListener("resize", lazyLoad);
-window.addEventListener("orientationChange", lazyLoad);
-window.addEventListener("DOMContentLoaded", lazyLoad);
-
 const articlesHoverableDiv = document.querySelector(".articles-hoverable-div");
 const proyectsHoverableDiv = document.querySelector(".proyects-hoverable-div");
-
-function lazyLoad2() {
-    const lazyLoadImages2 = document.querySelectorAll("img.articles-lazy");
-
-    lazyLoadImages2.forEach(function (img) {
-        img.src = img.dataset.src;
-        img.classList.remove("lazy2");
-    });
-}
-
-articlesHoverableDiv.addEventListener("mouseover", lazyLoad2);
-
-function lazyLoad3() {
-    const lazyLoadImages3 = document.querySelectorAll("img.proyects-lazy");
-
-    lazyLoadImages3.forEach(function (img) {
-        img.src = img.dataset.src;
-        img.classList.remove("lazy2");
-    });
-}
-
-proyectsHoverableDiv.addEventListener("mouseover", lazyLoad3);
 
 const stills = document.querySelectorAll(".still");
 
@@ -178,8 +132,6 @@ dropdownClickableClicker = new Clicker(dropdownClickable, extend).createClick();
 let extended = false;
 
 function extend() {
-    lazyLoad4();
-
     dropdownExtensible.classList.toggle("extend");
     document
         .querySelectorAll(".icon-tabler-chevron-down")[0]
@@ -202,8 +154,6 @@ dropdownClickableClicker1 = new Clicker(
 let extended1 = false;
 
 function extend1() {
-    lazyLoad5();
-
     dropdownExtensible1.classList.toggle("extend");
     document
         .querySelectorAll(".icon-tabler-chevron-down")[1]
@@ -220,24 +170,3 @@ function extend1() {
         extended1 = true;
     }
 }
-
-function lazyLoad4() {
-    const lazyLoadImages2 = document.querySelectorAll("img.articles-lazy2");
-
-    lazyLoadImages2.forEach(function (img) {
-        img.src = img.dataset.src;
-        img.classList.remove("articles-lazy2");
-    });
-}
-
-function lazyLoad5() {
-    const lazyLoadImages2 = document.querySelectorAll("img.proyects-lazy2");
-
-    lazyLoadImages2.forEach(function (img) {
-        img.src = img.dataset.src;
-        img.classList.remove("proyects-lazy2");
-    });
-}
-
-// var userLang = navigator.language || navigator.userLanguage; 
-// alert ("The language is: " + userLang);

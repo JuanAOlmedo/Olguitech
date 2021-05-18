@@ -258,10 +258,16 @@ nav {
     transform: translateY(-40rem);
     transition: transform 1s;
     will-change: transform;
+    visibility: hidden;
 }
 
 #dropdown.show {
     transform: translateY(0);
+    visibility: visible;
+}
+
+#dropdown.visible {
+    visibility: visible;
 }
 
 #dropdown-acceder {
@@ -280,11 +286,6 @@ nav {
     width: 100%;
     text-align: center;
     transition: transform 0.8s, color 0.8s;
-    display: none;
-}
-
-.dropdown-navbar-link.show {
-    display: block;
 }
 
 .dropdown-navbar-link:hover {
@@ -293,11 +294,6 @@ nav {
 
 .dropdown-access {
     color: $color1;
-    display: none;
-}
-
-.dropdown-access.show {
-    display: block;
 }
 
 .dropdown-access:visited {

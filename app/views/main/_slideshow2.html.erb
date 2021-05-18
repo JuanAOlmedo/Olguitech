@@ -6,9 +6,11 @@
             <div class='article-information'>
                 <h1 class='articles-title'> <%= I18n.t 'shared.our_proyects' %> </h1>
 
-                <h2 class='article-title'> <%= article.title.length > 50 ? article.title[0...50] + '...' : article.title %> </h2>
+                <% title =  I18n.locale == :en && article.title2 != "" && article.title2 != nil ? article.title2 : article.title %>
+                <% description =  I18n.locale == :en && article.description2 != "" && article.description2 != nil ? article.description2 : article.description %>
+                <h2 class='article-title'> <%= title.length > 50 ? title[0...50] + '...' : title %> </h2>
                 <p class='article-text'>
-                    <%= article.description.length > 100 ? article.description[0...100] + '...' : article.description %><br>
+                    <%= description.length > 100 ? description[0...100] + '...' : description %> <br>
                 </p>
 
                 <%= link_to proyecto_path(article), class:'article-link' do %>
@@ -23,17 +25,21 @@
     </div>
     <% end %>
 
-    <i id='proyects-previous' tabindex='0' role="button" aria-pressed="false">
+    <% if @proyectos.length > 1 %>
+    <i id='proyects-previous' tabindex='0' role="button" aria-label="<%= I18n.t("shared.previous_article") %>">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <title> <%= I18n.t("shared.previous_article") %> </title>
             <path stroke="none" d="M0 0h24v24H0z" />
             <polyline points="15 6 9 12 15 18" />
         </svg>
     </i>
 
-    <i id='proyects-next' tabindex='0' role="button" aria-pressed="false">
+    <i id='proyects-next' tabindex='0' role="button" aria-label="<%= I18n.t("shared.next_article") %>">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <title> <%= I18n.t("shared.next_article") %> </title>
             <path stroke="none" d="M0 0h24v24H0z" />
             <polyline points="9 6 15 12 9 18" />
         </svg>
     </i>
+    <% end %>
 </div>

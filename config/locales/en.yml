@@ -66,6 +66,11 @@ en:
     all: "All"
     admins: "Only admins can do that"
     cant_cancel: "You can't destroy your admin account."
+    flag1: "Link a versión en inglés - Link to english version"
+    flag2: "Link to english version - Link a versión en inglés"
+    plus: "Plus symbol"
+    next_article: "Anterior artículo"
+    previous_article: "Siguiente artículo"
   mail:
     contact_mailer_html: "Hello %{name}, thank you for contacting Olguitech s.a.s.! <br>
 

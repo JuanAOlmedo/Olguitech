@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<% content_for :title, "#{@article.title} | Olguitech s.a.s." %>
+<% content_for :title, "#{I18n.locale == :en && @article.title2 != "" && @article.title2 != nil ? @article.title2 : @article.title} | Olguitech s.a.s." %>
+<% content_for :description, "#{I18n.locale == :en && @article.description2 != "" && @article.description2 != nil ? @article.description2 : @article.description}" %>
 
 <div id='show'>
     <%= render 'layouts/back' %>

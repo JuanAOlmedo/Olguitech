@@ -13,15 +13,14 @@ class ApplicationController < ActionController::Base
                 I18n.with_locale("es", &action)
             end
 
-            if user_signed_in?
+            if user_signed_in? && current_user.locale != locale
                 current_user.locale = locale
-                current_user.save!
+                current_user.save
             end
         end
     end
 
     def default_url_options
-        locale = current_user.try(:locale) || I18n.locale
-        { locale: locale }
+        { locale: I18n.locale }
     end
 end

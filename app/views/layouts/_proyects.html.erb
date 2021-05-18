@@ -4,7 +4,7 @@
     </h2>
 
     <div class='articles-hoverable-content' tabindex="1">
-        <% Proyecto.all.order(created_at: :desc).each do |article| %>
+        <% @proyectos.each do |article| %>
         <%= link_to proyecto_path(article) do %>
         <div class='articles-hoverable-article'>
             <% if article.image.attached? %>

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :proyectos
 
     devise_for :users, :controllers => { registrations: 'registrations' }
-    get '/users', to: 'users#index'
+    get '/user_index', to: 'users#index'
 
     devise_for :admins, :controllers => { registrations: 'admin_registrations' }
 

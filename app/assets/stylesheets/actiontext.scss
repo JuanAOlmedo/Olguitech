@@ -21,6 +21,14 @@ trix-editor {
     padding: 0.4em 0.6em;
     min-height: 5em;
     outline: none;
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+}
+trix-editor h1 {
+    font-size: 1.6em;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    font-family: "Montserrat", "Helvetica", sans-serif;
 }
 trix-toolbar * {
     box-sizing: border-box;
@@ -68,7 +76,7 @@ trix-toolbar .trix-button {
     border: none;
     border-bottom: 1px solid #ddd;
     border-radius: 0;
-    background: transparent;
+    background-color: #fff;
 }
 trix-toolbar .trix-button:not(:first-child) {
     border-left: 1px solid #ccc;
@@ -285,7 +293,7 @@ trix-editor .attachment__caption-editor {
     font-size: inherit;
     font-family: inherit;
     line-height: inherit;
-    color: black;
+    color: inherit;
     text-align: center;
     vertical-align: top;
     border: none;
@@ -386,16 +394,70 @@ trix-editor .attachment__metadata .attachment__size {
     margin-left: 0.2em;
     white-space: nowrap;
 }
-trix-editor .attachment__metadata .attachment__size {
-    margin-left: 0.2em;
-    white-space: nowrap;
+trix-editor blockquote {
+    border: 0 solid #FFF;
+    border-left-width: 0.3em;
+    margin-left: 0.3em;
+    padding-left: 0.6em;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.trix-content {
+    line-height: 1.5;
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+}
+.trix-content * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.trix-content h1 {
+    font-size: 1.6em;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    font-family: "Montserrat", "Helvetica", sans-serif;
+}
+.trix-content blockquote {
+    border: 0 solid #FFF;
+    border-left-width: 0.3em;
+    margin-left: 0.3em;
+    padding-left: 0.6em;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.trix-content [dir="rtl"] blockquote,
+.trix-content blockquote[dir="rtl"] {
+    border-width: 0;
+    border-right-width: 0.3em;
+    margin-right: 0.3em;
+    padding-right: 0.6em;
+}
+.trix-content li {
+    margin-left: 1em;
+}
+.trix-content [dir="rtl"] li {
+    margin-right: 1em;
+}
+.trix-content pre {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    font-family: monospace;
+    font-size: 0.9em;
+    padding: 0.5em;
+    white-space: pre;
+    background-color: #eee;
+    overflow-x: auto;
+}
+.trix-content img {
+    max-width: 100%;
+    height: auto;
 }
 .trix-content .attachment {
     display: inline-block;
     position: relative;
     max-width: 100%;
-    margin: 0;
-    padding: 0;
 }
 .trix-content .attachment a {
     color: inherit;
@@ -406,7 +468,6 @@ trix-editor .attachment__metadata .attachment__size {
     color: inherit;
 }
 .trix-content .attachment__caption {
-    padding: 0;
     text-align: center;
 }
 .trix-content
@@ -427,7 +488,7 @@ trix-editor .attachment__metadata .attachment__size {
 .trix-content .attachment--file {
     color: #333;
     line-height: 1;
-    margin: 0 2px 2px 0;
+    margin: 0 2px 2px 2px;
     padding: 0.4em 1em;
     border: 1px solid #bbb;
     border-radius: 5px;
@@ -436,8 +497,6 @@ trix-editor .attachment__metadata .attachment__size {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    margin: 0;
-    padding: 0;
 }
 .trix-content .attachment-gallery .attachment {
     flex: 1 0 33%;
@@ -446,133 +505,6 @@ trix-editor .attachment__metadata .attachment__size {
 }
 .trix-content .attachment-gallery.attachment-gallery--2 .attachment,
 .trix-content .attachment-gallery.attachment-gallery--4 .attachment {
-    flex-basis: 50%;
-    max-width: 50%;
-}
-
-trix-toolbar button.trix-button {
-    background-color: white;
-}
-
-.article-text a {
-    color: rgb(157, 183, 255);
-    text-decoration: underline;
-}
-
-.article-text a:visited {
-    color: rgb(186, 157, 255);
-    text-decoration: underline;
-}
-
-.article-text a:hover {
-    color: rgb(133, 166, 255);
-    background-color: rgba(0, 0, 0, 0);
-    text-decoration: none;
-}
-
-.article-text {
-    line-height: 1.8;
-    font-family: "Open Sans";
-}
-.article-text * {
-    box-sizing: border-box;
-}
-.article-text h1 {
-    font-size: 1.7rem;
-    line-height: 1.5;
-    margin: 0;
-    font-family: "Montserrat";
-}
-.article-text blockquote {
-    margin: 1em 0 1em 1em;
-    padding: 0 0 0 0.6em;
-    border-left: 0.3em solid #ccc;
-}
-.article-text pre {
-    display: inline-block;
-    width: 100%;
-    vertical-align: top;
-    font-family: monospace;
-    font-size: 0.9em;
-    margin: 0;
-    padding: 0.5em;
-    white-space: pre;
-    background-color: #eee;
-    overflow-x: auto;
-}
-.article-text ul,
-.article-text ol,
-.article-text li {
-    margin: 0;
-    padding: 0;
-}
-.article-text ul li,
-.article-text ol li,
-.article-text li li {
-    margin-left: 1em;
-}
-.article-text img {
-    min-width: 45%;
-    max-width: 90%;
-    margin: 1rem;
-    height: auto;
-}
-.article-text .attachment {
-    display: inline-block;
-    position: relative;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-}
-.article-text .attachment a {
-    color: inherit;
-    text-decoration: none;
-}
-.article-text .attachment a:hover,
-.article-text .attachment a:visited:hover {
-    color: inherit;
-}
-.article-text .attachment__caption {
-    padding: 0;
-    text-align: center;
-}
-.article-text
-    .attachment__caption
-    .attachment__name
-    + .attachment__size::before {
-    content: " · ";
-}
-.article-text .attachment--preview {
-    width: 100%;
-    text-align: center;
-}
-.article-text .attachment--preview .attachment__caption {
-    color: $color5;
-    font-size: 0.9em;
-    line-height: 1.2;
-}
-.article-text .attachment--file {
-    color: #333;
-    line-height: 1;
-    margin: 0 2px 2px 0;
-    padding: 0.4em 1em;
-    border: 1px solid #bbb;
-    border-radius: 5px;
-}
-.article-text .attachment-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    margin: 0;
-    padding: 0;
-}
-.article-text .attachment-gallery .attachment {
-    flex: 1 0 33%;
-    padding: 0 0.5em;
-}
-
-.article-text .attachment-gallery.attachment-gallery--2 action-text-attachment,
-.article-text .attachment-gallery.attachment-gallery--4 action-text-attachment {
     flex-basis: 50%;
     max-width: 50%;
 }

@@ -17,7 +17,7 @@
     <%= form.collection_select :preference2, Proyecto.all, :id, I18n.locale == :en ? :title2 : :title %> <br>
 
     <%= form.label :message, "#{I18n.t "contact.message"}", class: 'preference' %> <br>
-    <%= form.text_area :message %> <br>
+    <%= form.text_area :message, maxlength: "4000" %> <br>
 
     <%= form.button :submit, "#{I18n.t "contact.send"}", class:'gold-button', id:'button' %>
 </div>

@@ -155,3 +155,11 @@ textarea {
         width: 100%;
     }
 }
+
+#map a {
+    color: $link;
+}
+
+#map a:hover {
+    color: $link-h;
+}

@@ -10,6 +10,7 @@ class ContactosController < ApplicationController
 
   def create
     @contacto = current_user.contactos.new(contacto_params)
+    @contacto.message = @contacto.message.length > 4000 ? @contacto.message + "... [Mensaje muy largo]" : @contacto.message
     @contacto.preference = @contacto.preference.to_i
     @contacto.preference2 = @contacto.preference2.to_i
 

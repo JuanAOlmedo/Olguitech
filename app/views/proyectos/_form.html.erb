@@ -8,6 +8,7 @@
 
     <%= form.label :image, 'Imagen' %>
     <%= form.file_field :image, class:'image-attacher', id:"fileInput" %> <br>
+    <img class="image-upload" src="<%= url_for(@proyecto.image) rescue "https://" %>" /> <br>
 
     <%= form.label :content, "Contenido" %>
     <%= form.rich_text_area :content, class:'rich-text' %>
@@ -24,3 +25,33 @@
     <%= form.submit 'Crear' %>
 </div>
 <% end %>
+
+<button id="preview"> Previsualizar </button>
+
+<div id='show'>
+    <div class="preview-header">
+        <h2> Previsualizacion </h2>
+        <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>" class="flag preview-flag">
+
+        <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>" class="flag preview-flag">
+
+        <svg xmlns="http://www.w3.org/2000/svg" class="x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+    </div>
+    <article>
+        <h2 class='article-title'> </h2>
+
+        <p class='article-description'> </p>
+
+        <img src='' class='article-img' alt=''>
+
+        <div class='show-text'>
+            <p class='article-text'> </p>
+        </div>
+    </article>
+</div>
+
+<%= javascript_pack_tag 'proyecto-creator' %>

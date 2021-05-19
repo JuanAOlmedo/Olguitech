@@ -1,5 +1,47 @@
 @import "settings";
 
+.nosotros-front {
+    margin: 0;
+    color: $color2;
+    background-color: $color1;
+    padding: 1rem;
+}
+
+.title {
+    font-size: 4rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    transform: translateY(5px);
+    opacity: 0.7;
+    transition: transform 1s, opacity 1s;
+    transition-timing-function: ease-in-out;
+
+    @media only screen and (max-width: 1000px) {
+        font-size: 2.9rem;
+    }
+}
+
+.title.move {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.text {
+    font-size: 1.4rem;
+    text-align: center;
+    width: 50rem;
+    margin: 0 auto 3rem auto;
+
+    @media only screen and (max-width: 1000px) {
+        width: 95%;
+    }
+}
+
+.space {
+    margin-top: 8rem;
+}
+
 #equipo-div {
     width: 100%;
     height: 100%;
@@ -53,38 +95,6 @@
     font-style: italic;
     font-size: 1.2rem;
     color: $color3;
-}
-
-.nosotros-front {
-    margin: 0;
-    color: $color2;
-    background-color: $color4;
-    padding: 1rem;
-}
-
-.quienes-somos {
-    color: $accent-color;
-    font-size: 2rem;
-    background-color: $color1;
-    width: 40%;
-    padding: 0.3rem;
-
-    @media only screen and (max-width: 60rem) {
-        width: 70%;
-    }
-}
-
-.quienes-somos-text {
-    font-size: 1.4rem;
-    padding: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-.nosotros-front-part {
-    border-bottom-color: $color2;
-    border-bottom-style: solid;
-    border-bottom-width: 0.5rem;
 }
 
 @media only screen and (max-width: 70rem) {

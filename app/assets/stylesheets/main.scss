@@ -1,7 +1,7 @@
 @import "settings";
 
 .front {
-    background: url("/Background.jpg") no-repeat scroll left top;
+    background: url("/Background.webp") no-repeat scroll left top;
     background-size: cover;
     padding: 1rem 2rem 5rem 2rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -40,7 +40,6 @@ main {
 
     @media only screen and (max-width: 600px) {
         font-size: 3.1rem;
-        margin-top: 9rem;
     }
 
     @media only screen and (max-width: 400px) {
@@ -65,10 +64,6 @@ main {
     margin-bottom: 8rem;
     width: 10rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0);
-
-    @media only screen and (max-width: 600px) {
-        margin-bottom: 6rem;
-    }
 }
 
 .alert,
@@ -365,7 +360,7 @@ main {
     padding-top: 8rem;
     margin: 0;
     width: 100%;
-    background: url("/Contact2.jpg") no-repeat center top;
+    background: url("/Contact2.webp") no-repeat center top;
     background-size: cover;
     color: white;
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);

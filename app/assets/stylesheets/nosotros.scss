@@ -73,7 +73,7 @@ main {
     width: 100%;
     height: 100%;
     z-index: -5;
-    background: url("/Background.jpg") no-repeat fixed;
+    background: url("/Background.webp") no-repeat fixed;
     background-size: cover;
     -webkit-filter: blur(2px);
     /* Chrome, Opera */
@@ -82,18 +82,18 @@ main {
     filter: blur(2px);
 
     @supports (-webkit-touch-callout: none) {
-        background: url('/Background.jpg') center top no-repeat scroll;
+        background: url('/Background.webp') center top no-repeat scroll;
     }
 }
 
 #a2 {
-    background: url("/Background1.jpg") no-repeat fixed;
+    background: url("/Background1.webp") no-repeat fixed;
     background-size: cover;
     padding: 10rem 1rem 9rem 1rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
     @supports (-webkit-touch-callout: none) {
-        background: url('/Background1.jpg') center no-repeat scroll;
+        background: url('/Background1.webp') center no-repeat scroll;
     }
 }
 

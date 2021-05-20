@@ -1,6 +1,14 @@
 @import "settings";
 
 // 1. GENERAL //
+* {
+    outline: none;
+}
+
+*:focus {
+    outline: 2px solid $link;
+}
+
 body {
     margin: 0;
     font-family: "Varela Round", "Gill Sans", sans-serif;

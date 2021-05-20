@@ -346,20 +346,8 @@ nav {
     outline: none;
 
     .icon-tabler-chevron-down {
-        animation: chevron-down-animation 0.3s;
-    }
-}
-
-@keyframes chevron-down-animation {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
         transform: translateY(3px);
         color: $color5;
-    }
-    100% {
-        transform: translateY(0);
     }
 }
 

@@ -67,6 +67,7 @@ en:
     flag2: "Link a versión en español - Link to spanish version"
     next_article: "Anterior artículo"
     previous_article: "Siguiente artículo"
+    dropdown: "dropdown menu"
   mail:
     contact_mailer_html: "Hello %{name}, thank you for contacting Olguitech s.a.s.! <br>
 

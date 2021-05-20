@@ -20,7 +20,7 @@
                 <%= newsletter.subject %> <br>
             </p>
 
-            <%= link_to newsletter_path(newsletter) do %>
+            <%= link_to newsletter_path(newsletter), title: t('shared.see_more') do %>
             <%= render 'layouts/more' %>
             <% end %>
         </div>

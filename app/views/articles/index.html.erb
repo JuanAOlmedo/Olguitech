@@ -26,7 +26,7 @@
                 <%= article.get_desc %> <br>
             </p>
 
-            <%= link_to article_path(article) do %>
+            <%= link_to article_path(article), title: t('shared.see_more') do %>
             <%= render 'layouts/more' %>
             <% end %>
         </div>

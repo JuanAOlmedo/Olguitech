@@ -402,6 +402,18 @@ trix-editor blockquote {
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
+trix-editor  a {
+    color: $link;
+    text-decoration: underline;
+}
+trix-editor  a:hover {
+    color: $link-h;
+    text-decoration: none;
+}
+trix-editor  a:visited {
+    color: $link-h;
+    text-decoration: underline;
+}
 .trix-content {
     line-height: 1.5;
     font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
@@ -435,6 +447,18 @@ trix-editor blockquote {
 }
 .trix-content li {
     margin-left: 1em;
+}
+.trix-content  a {
+    color: $link;
+    text-decoration: underline;
+}
+.trix-content  a:hover {
+    color: $link-h;
+    text-decoration: none;
+}
+.trix-content  a:visited {
+    color: $link-h;
+    text-decoration: underline;
 }
 .trix-content [dir="rtl"] li {
     margin-right: 1em;

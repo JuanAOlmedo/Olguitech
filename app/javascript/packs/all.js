@@ -22,22 +22,30 @@ class Clicker {
     }
 }
 
-const imgObserver = new IntersectionObserver(
-    (entries, imgObserver) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
+if ('IntersectionObserver' in window) {
+    const imgObserver = new IntersectionObserver(
+        (entries, imgObserver) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
 
-            const img = entry.target;
-            img.src = img.dataset.src ? img.dataset.src : img.src;
-            imgObserver.unobserve(entry.target);
-        });
-    },
-    { threshold: 0 }
-);
+                const img = entry.target;
+                img.src = img.dataset.src ? img.dataset.src : img.src;
+                imgObserver.unobserve(entry.target);
+                img.classList.remove("lazy");
+            });
+        },
+        { threshold: 0 }
+    );
 
-document.querySelectorAll("img").forEach((img) => {
-    imgObserver.observe(img);
-});
+    document.querySelectorAll("img.lazy").forEach((img) => {
+        imgObserver.observe(img);
+    });
+}  else {
+    document.querySelectorAll("img.lazy").forEach((img) => {
+        img.src = img.dataset.src ? img.dataset.src : img.src;
+        img.classList.remove("lazy");
+    });
+}
 
 const dropdownClickable = document.querySelectorAll(
         ".dropdown-clickable-div"
@@ -71,10 +79,15 @@ window.onclick = function (event) {
 dropdownBarsClicker = new Clicker(dropdownBars, dropdownClickHandler);
 dropdownBarsClicker.createClick();
 
+let navBool = false;
+
 function dropdownClickHandler() {
     dropdown.classList.toggle("show");
     document.querySelector(".line1").classList.toggle("move");
     document.querySelector(".line2").classList.toggle("move");
+
+    document.querySelector("nav").classList.add("show-lock")
+    
 
     setTimeout(() => dropdown.classList.toggle("visible"), showing ? 450 : 0);
 
@@ -96,6 +109,8 @@ function dropdownClickHandler() {
 
         dropdownExtensible1.classList.remove("de-extend");
         extended1 = false;
+
+        document.querySelector("nav").classList.remove("show-lock")
     }
 }
 

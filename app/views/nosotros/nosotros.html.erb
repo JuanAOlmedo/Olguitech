@@ -5,19 +5,22 @@
 <% content_for :title, "#{I18n.t "nosotros.who_are_we"} | Olguitech s.a.s." %>
 
 <div class='nosotros-front'>
-    <h1 class="still title">
-        <%= I18n.t "nosotros.who_are_we" %>
-    </h1>
-    <p class="text">
-        <%= I18n.t "nosotros.who_are_we_message" %>
-    </p>
-    <div class='space'> </div>
-    <h1 class="still title">
-        <%= I18n.t "nosotros.how_are_we_different" %>
-    </h1>
-    <p class="text">
-        <%= I18n.t "nosotros.how_are_we_different_message" %>
-    </p>
+    <div id="a1">
+        <h1 class="still title">
+            <%= I18n.t "nosotros.who_are_we" %>
+        </h1>
+        <p class="text">
+            <%= I18n.t "nosotros.who_are_we_message" %>
+        </p>
+    </div>
+    <div id="a2">
+        <h1 class="still title">
+            <%= I18n.t "nosotros.how_are_we_different" %>
+        </h1>
+        <p class="text">
+            <%= I18n.t "nosotros.how_are_we_different_message" %>
+        </p>
+    </div>
 </div>
 
 <% if false %>
@@ -114,6 +117,6 @@
         </div>
     </div>
 </div>
+<% end %>
 
 <%= javascript_pack_tag 'nosotros-index' %>
-<% end %>

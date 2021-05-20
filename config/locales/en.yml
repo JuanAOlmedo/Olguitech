@@ -1,9 +1,6 @@
 en:
   main:
-    what_do_we_do: "What do we do?"
-    what_do_we_do_message: "We provide electrical engineering solutions to different companies. We represent first level brands at a regional level and in Uruguay. "
-    who_are_we: "Who are we?"
-    who_are_we_message: "We are a young company. We strive to provide the best products and services with world-class brands."
+    what_do_we_do_message: "We provide electrical engineering solutions to different companies. We represent first level brands regionally and in Uruguay. "
     contact: "Contact"
     can_we_help_you: "Can we help you?"
     get_in_touch: "Please get in touch"
@@ -66,9 +63,8 @@ en:
     all: "All"
     admins: "Only admins can do that"
     cant_cancel: "You can't destroy your admin account."
-    flag1: "Link a versión en inglés - Link to english version"
-    flag2: "Link to english version - Link a versión en inglés"
-    plus: "Plus symbol"
+    flag1: "Link to english version - Link a versión en inglés"
+    flag2: "Link a versión en español - Link to spanish version"
     next_article: "Anterior artículo"
     previous_article: "Siguiente artículo"
   mail:

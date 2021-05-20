@@ -3,19 +3,9 @@
 </head>
 
 <div class="front">
-    <h2 class="title">Olguitech s.a.s.</h2>
-
-    <div class='subtitle-div subtitle-div1 still'>
-        <h3 class='subtitle'> <%= I18n.t 'main.what_do_we_do' %> </h3>
-        <p class='subtitle-information'> <%= I18n.t 'main.what_do_we_do_message' %> <br> <br> </p>
-        <%= link_to nosotros_path do %>
-        <%= render 'layouts/more' %>
-        <% end %>
-    </div>
-
-    <div class='subtitle-div subtitle-div2 still'>
-        <h3 class='subtitle'> <%= I18n.t 'main.who_are_we' %> </h3>
-        <p class='subtitle-information'> <%= I18n.t 'main.who_are_we_message' %> <br> <br> </p>
+    <h2 class="title">Olguitech</h2>
+    <p class='subtitle'> <%= I18n.t 'main.what_do_we_do_message' %> <br> <br> </p>
+    <div class='subtitle-more-link'>
         <%= link_to nosotros_path do %>
         <%= render 'layouts/more' %>
         <% end %>
@@ -32,4 +22,4 @@
 
 <%= render 'contacto' %>
 
-<%= javascript_pack_tag 'slideshows' %>
+<%= javascript_pack_tag 'main' %>

@@ -1,106 +1,83 @@
 @import "settings";
 
 .front {
-    background: url("/Fondo.webp") no-repeat fixed;
+    background: url("/Background.jpg") no-repeat fixed left top;
     background-size: cover;
-    padding: 1rem 0 5rem;
+    padding: 1rem 2rem 5rem 2rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
-    @media only screen and (max-width: 65rem) {
-        background-image: linear-gradient(180deg, #001336, #d3270e);
+    @supports (-webkit-touch-callout: none) {
+        background: url('/Background.jpg') no-repeat scroll;
     }
+}
+
+nav {
+    background-color: transparent;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0);
+    transition: background-color 0.7s, box-shadow 0.7s;
+}
+
+nav.show {
+    background-color: #121212;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+nav.show-lock {
+    background-color: #121212;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+main {
+    margin: 0;
 }
 
 .title {
-    color: $color2;
-    width: 100%;
-    font-size: 5rem;
-    margin-bottom: 22rem;
-    text-align: center;
+    color: #FFF;
+    font-size: 4rem;
+    margin-top: 12rem;
+    margin-bottom: 2rem;
     font-weight: bolder;
     font-family: "Varela Round", sans-serif;
-    letter-spacing: 9px;
+    letter-spacing: 5px;
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
-    // background: linear-gradient(-10deg, hsl(0, 100%, 40%), hsl(0, 90%, 60%), hsl(27, 99%, 50%), hsl(27, 100%, 48%));
-    // -webkit-background-clip: text;
-    // -ms-background-clip: text;
-    // background-clip: text;
-    // -webkit-text-fill-color: transparent;
-    // color: white;
+    // color: $accent-color;
 
-    @media only screen and (max-width: 70rem) {
-        font-size: 4rem;
-        letter-spacing: 9px;
+    @media only screen and (max-width: 600px) {
+        font-size: 3.1rem;
+        margin-top: 9rem;
     }
 
-    @media only screen and (max-width: 50rem) {
-        font-size: 3.5rem;
-        letter-spacing: 7px;
-    }
-
-    @media only screen and (max-width: 50rem) {
-        font-size: 3rem;
-        letter-spacing: 6px;
+    @media only screen and (max-width: 400px) {
+        letter-spacing: normal;
     }
 }
-
-.subtitle-div {
-    background-color: $color4;
-    width: 65%;
-    margin: 6rem auto 6rem auto;
-    border-radius: 0.8rem;
-    padding: 4%;
-    transition: opacity 1s, transform 1s;
-    opacity: 0.8;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-    height: auto;
-
-    @media only screen and (max-width: 70rem) {
-        width: 80%;
-    }
-}
-
-.subtitle-div1 {
-    transform: translateY(1.5rem);
-    margin-bottom: 10rem;
-}
-
-.subtitle-div2 {
-    transform: translateY(1.5rem);
-}
-
-.subtitle-div1.move,
-.subtitle-div2.move {
-    opacity: 1;
-    transform: translateY(0);
-}
-
 
 .subtitle {
-    font-size: 3.5rem;
-    color: $color2;
-    // padding: 1rem;
-    letter-spacing: 0.7px;
-    margin: 0;
+    color: #FFF;
+    width: 60%;
+    font-size: 1.5rem;
 
-    @media only screen and (max-width: 40rem) {
-        font-size: 3rem;
+    @media only screen and (max-width: 800px) {
+        width: 100%;
+    }
+    @media only screen and (max-width: 500px) {
+        font-size: 1.3rem;
     }
 }
 
-.subtitle-information {
-    font-size: 1.5rem;
-    color: $color3;
-    text-align: justify;
-    letter-spacing: 0.7px;
-    // padding: 2rem;
+.subtitle-more-link {
+    margin-bottom: 8rem;
+    width: 10rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0);
 
-    @media only screen and (max-width: 60rem) {
-        width: 96%;
-        margin-left: 2%;
-        margin-right: 2%;
-        text-align: left;
-        padding: 0.5rem 0 0 0;
+    @media only screen and (max-width: 600px) {
+        margin-bottom: 6rem;
     }
+}
+
+.alert,
+.notice {
+    margin-top: 5.15rem;
 }
 
 .article-link .more-link {
@@ -441,9 +418,11 @@
 @media only screen and (max-width: 60rem) {
     .information-text {
         width: 80%;
+        font-size: 1.2rem;
     }
 
     .information-subsection {
         width: 50%;
+        font-size: 1.3rem;
     }
 }

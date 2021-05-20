@@ -1,18 +1,37 @@
 @import "settings";
 
+nav {
+    background-color: transparent;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0);
+    transition: background-color 0.7s, box-shadow 0.7s;
+}
+
+nav.show {
+    background-color: #121212;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+nav.show-lock {
+    background-color: #121212;
+    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+main {
+    margin: 0;
+}
+
 .nosotros-front {
     margin: 0;
     color: $color2;
     background-color: $color1;
-    padding: 1rem;
 }
 
 .title {
     font-size: 4rem;
     width: 100%;
     text-align: center;
-    margin-top: 2rem;
-    transform: translateY(5px);
+    margin-top: 0;
+    transform: translateY(3px);
     opacity: 0.7;
     transition: transform 1s, opacity 1s;
     transition-timing-function: ease-in-out;
@@ -31,15 +50,33 @@
     font-size: 1.4rem;
     text-align: center;
     width: 50rem;
-    margin: 0 auto 3rem auto;
+    margin: 0 auto 0 auto;
 
     @media only screen and (max-width: 1000px) {
         width: 95%;
     }
 }
 
-.space {
-    margin-top: 8rem;
+#a1 {
+    background: url("/Background.jpg") no-repeat fixed;
+    background-size: cover;
+    padding: 12rem 1rem 10rem 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    @supports (-webkit-touch-callout: none) {
+        background: url('/Background.jpg') center top no-repeat scroll;
+    }
+}
+
+#a2 {
+    background: url("/Background1.jpg") no-repeat fixed;
+    background-size: cover;
+    padding: 10rem 1rem 9rem 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    @supports (-webkit-touch-callout: none) {
+        background: url('/Background1.jpg') center no-repeat scroll;
+    }
 }
 
 #equipo-div {

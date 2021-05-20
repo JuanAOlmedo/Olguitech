@@ -1,25 +1,40 @@
-const docEl = document.documentElement;
+// const docEl = document.documentElement;
 
-function animateOnScroll(element, scrollTop) {
-    const elemRect = element.getBoundingClientRect(),
-        bodyRect = document.body.getBoundingClientRect(),
-        offset = elemRect.top - bodyRect.top;
+// function animateOnScroll(element, scrollTop) {
+//     const elemRect = element.getBoundingClientRect(),
+//         bodyRect = document.body.getBoundingClientRect(),
+//         offset = elemRect.top - bodyRect.top;
 
-    if (offset < scrollTop + 400) {
-        return true;
+//     if (offset < scrollTop + 400) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+// const profiles = document.querySelector(".profiles");
+
+// window.onscroll = function () {
+//     const scrollTop = this.pageYOffset - docEl.clientTop;
+
+//     if (animateOnScroll(profiles, scrollTop)) {
+//         profiles.classList.add("move");
+//     } else {
+//         profiles.classList.remove("move");
+//     }
+// };
+
+const nav = document.querySelector("nav");
+
+function navbar() {
+    if (window.pageYOffset > 50) {
+        nav.classList.add("show");
     } else {
-        return false;
+        nav.classList.remove("show");
     }
 }
 
-const profiles = document.querySelector(".profiles");
-
-window.onscroll = function () {
-    const scrollTop = this.pageYOffset - docEl.clientTop;
-
-    if (animateOnScroll(profiles, scrollTop)) {
-        profiles.classList.add("move");
-    } else {
-        profiles.classList.remove("move");
-    }
-};
+document.addEventListener("scroll", navbar);
+window.addEventListener("DOMContentLoaded", navbar);
+window.addEventListener("resize", navbar);
+window.addEventListener("orientationChange", navbar);

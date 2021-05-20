@@ -1,13 +1,6 @@
 @import "settings";
 
 // 1. GENERAL //
-* {
-    outline: none;
-}
-
-*:focus {
-    outline: 2px solid $link;
-}
 
 body {
     margin: 0;
@@ -252,6 +245,19 @@ nav {
     right: 0.4rem;
     top: 1rem;
     bottom: 1rem;
+    transition: color 1s;
+}
+
+#dropdown-bars:focus {
+    color: $color5;
+    outline: none;
+
+    .line1 {
+        transform: translateY(-0.07rem);
+    }
+    .line2 {
+        transform: translateY(0.07rem);
+    }
 }
 
 #dropdown {
@@ -323,17 +329,38 @@ nav {
 }
 
 .line1.move {
-    transform: rotateZ(45deg) translateX(0.3rem) translateY(-0.25rem);
+    transform: rotateZ(45deg) translateX(0.3rem) translateY(-0.25rem) !important;
 }
 
 .line2.move {
-    transform: rotateZ(-45deg) translateX(-1.01rem) translateY(0.04rem);
+    transform: rotateZ(-45deg) translateX(-1.01rem) translateY(0.04rem) !important;
 }
 
 .dropdown-clickable-div {
     color: white;
     position: relative;
     background-color: black;
+}
+
+.dropdown-clickable-div:focus {
+    outline: none;
+
+    .icon-tabler-chevron-down {
+        animation: chevron-down-animation 0.3s;
+    }
+}
+
+@keyframes chevron-down-animation {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(3px);
+        color: $color5;
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .dropdown-clickable-extensible {
@@ -363,7 +390,7 @@ nav {
 }
 
 .icon-tabler-chevron-down.extend {
-    transform: rotateZ(180deg);
+    transform: rotateZ(180deg) translateY(0) !important;
 }
 
 @keyframes extend {

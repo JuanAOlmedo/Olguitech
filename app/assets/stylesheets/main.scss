@@ -136,12 +136,14 @@ main {
     }
 }
 
-#previous:hover {
+#previous:hover, #previous:focus {
     transform: translateX(-10px);
+    outline: none;
 }
 
-#next:hover {
+#next:hover, #next:focus {
     transform: translateX(10px);
+    outline: none;
 }
 
 .article {
@@ -305,12 +307,14 @@ main {
         left: auto;
     }
 }
-#proyects-previous:hover {
+#proyects-previous:hover, #proyects-previous:focus {
     transform: translateX(-10px);
+    outline: none;
 }
 
-#proyects-next:hover {
+#proyects-next:hover, #proyects-next:focus {
     transform: translateX(10px);
+    outline: none;
 }
 
 .proyect {

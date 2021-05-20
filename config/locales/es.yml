@@ -1,6 +1,8 @@
 es:
   main:
     what_do_we_do_message: "Brindamos soluciones en Ingeniería Eléctrica a diferentes empresas. Representamos marcas de primer nivel regionalmente y en Uruguay. "
+    next_article: "Siguiente artículo"
+    previous_article: "Artículo anterior"
     contact: "Contacto"
     can_we_help_you: "Te podemos ayudar en algo?"
     get_in_touch: "Contactate con nosotros"
@@ -65,8 +67,6 @@ es:
     cant_cancel: "No podes destruir tu cuenta de administrador."
     flag1: "Link to english version - Link a versión en inglés"
     flag2: "Link a versión en español - Link to spanish version"
-    next_article: "Siguiente artículo"
-    previous_article: "Anterior artículo"
     dropdown: "Menú desplegable"
   mail:
     contact_mailer_html: "Hola %{name}, gracias por contactarte con Olguitech s.a.s.! <br>

@@ -4,6 +4,8 @@ en:
     contact: "Contact"
     can_we_help_you: "Can we help you?"
     get_in_touch: "Please get in touch"
+    next_article: "Next article"
+    previous_article: "Previous article"
   nav: 
     solutions: "Solutions"
     proyects: "Projects"
@@ -65,8 +67,6 @@ en:
     cant_cancel: "You can't destroy your admin account."
     flag1: "Link to english version - Link a versión en inglés"
     flag2: "Link a versión en español - Link to spanish version"
-    next_article: "Anterior artículo"
-    previous_article: "Siguiente artículo"
     dropdown: "dropdown menu"
   mail:
     contact_mailer_html: "Hello %{name}, thank you for contacting Olguitech s.a.s.! <br>

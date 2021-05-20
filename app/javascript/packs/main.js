@@ -37,23 +37,18 @@ window.addEventListener("DOMContentLoaded", navbar);
 window.addEventListener("resize", navbar);
 window.addEventListener("orientationChange", navbar);
 
-
 // SLIDESHOW 1 //
 const articles = document.querySelectorAll(".article");
 
-if (articles.length > 0) {
+if (articles.length > 1) {
     const next = document.querySelector("#next");
     const previous = document.querySelector("#previous");
 
     let sliderVariable = 0;
 
     articles[0].classList.add("show");
-
-    articles.forEach((article) => {
-        article.children[1].children[0].children[3].style.display = "none";
-    });
-
-    articles[0].children[1].children[0].children[3].style.display = "block";
+    articles[0].classList.add("visible");
+    articles[0].classList.add("visible-fix");
 
     sliderVariable = 0;
 
@@ -64,50 +59,53 @@ if (articles.length > 0) {
     previousClicker.createClick();
 
     function display(num) {
-        if (articles.length > 1) {
-            articles[sliderVariable].classList.remove("show");
-            articles[
-                sliderVariable
-            ].children[1].children[0].children[3].style.display = "none";
+        let article = articles[sliderVariable];
 
-            if (sliderVariable === articles.length - 1 && num === 1) {
-                sliderVariable = 0;
-            } else if (sliderVariable === 0 && num === -1) {
-                sliderVariable = articles.length - 1;
-            } else {
-                sliderVariable += num;
-            }
+        article.classList.remove("show");
+        article.classList.remove("visible-fix");
+        func(article);
 
-            articles[sliderVariable].classList.add("show");
-            articles[
-                sliderVariable
-            ].children[1].children[0].children[3].style.display = "block";
+        function func(element) {
+            setTimeout(() => element.classList.remove("visible"), 500);
         }
+
+        if (sliderVariable === articles.length - 1 && num === 1) {
+            sliderVariable = 0;
+        } else if (sliderVariable === 0 && num === -1) {
+            sliderVariable = articles.length - 1;
+        } else {
+            sliderVariable += num;
+        }
+
+        let article2 = articles[sliderVariable];
+
+        article2.classList.add("show");
+        article2.classList.add("visible");
+        article2.classList.add("visible-fix");
     }
 
     window.setInterval(function () {
         display(1);
     }, 10000);
+} else if (articles.length > 0) {
+    articles[0].classList.add("show");
+    articles[0].classList.add("visible");
 }
 // SLIDESHOW 2 //
 
 const proyects = document.querySelectorAll(".proyect");
 
-if (proyects.length > 0) {
+if (proyects.length > 1) {
     const nextP = document.querySelector("#proyects-next");
     const previousP = document.querySelector("#proyects-previous");
 
-    let sliderVariableP = 0;
+    let sliderVariable = 0;
 
     proyects[0].classList.add("show");
+    proyects[0].classList.add("visible");
+    proyects[0].classList.add("visible-fix");
 
-    proyects.forEach((article) => {
-        article.children[0].children[0].children[3].style.display = "none";
-    });
-
-    proyects[0].children[0].children[0].children[3].style.display = "block";
-
-    sliderVariableP = 0;
+    sliderVariable = 0;
 
     nextPClicker = new Clicker(nextP, displayP, 1);
     nextPClicker.createClick();
@@ -116,28 +114,35 @@ if (proyects.length > 0) {
     previousPClicker.createClick();
 
     function displayP(num) {
-        if (proyects.length > 1) {
-            proyects[sliderVariableP].classList.remove("show");
-            proyects[
-                sliderVariableP
-            ].children[0].children[0].children[3].style.display = "none";
+        let article = proyects[sliderVariable];
 
-            if (sliderVariableP === proyects.length - 1 && num === 1) {
-                sliderVariableP = 0;
-            } else if (sliderVariableP === 0 && num === -1) {
-                sliderVariableP = proyects.length - 1;
-            } else {
-                sliderVariableP += num;
-            }
+        article.classList.remove("show");
+        article.classList.remove("visible-fix");
+        func(article);
 
-            proyects[sliderVariableP].classList.add("show");
-            proyects[
-                sliderVariableP
-            ].children[0].children[0].children[3].style.display = "block";
+        function func(element) {
+            setTimeout(() => element.classList.remove("visible"), 500);
         }
+
+        if (sliderVariable === proyects.length - 1 && num === 1) {
+            sliderVariable = 0;
+        } else if (sliderVariable === 0 && num === -1) {
+            sliderVariable = proyects.length - 1;
+        } else {
+            sliderVariable += num;
+        }
+
+        let article2 = proyects[sliderVariable];
+
+        article2.classList.add("show");
+        article2.classList.add("visible");
+        article2.classList.add("visible-fix");
     }
 
     window.setInterval(function () {
         displayP(1);
     }, 10000);
+} else if (proyects.length > 0) {
+    proyects[0].classList.add("show");
+    proyects[0].classList.add("visible");
 }

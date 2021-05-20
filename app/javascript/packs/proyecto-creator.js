@@ -34,8 +34,8 @@ let formTitle = document.querySelector("#proyecto_title"),
     formDescription = document.querySelector("#proyecto_description"),
     formContent = document.querySelector("#proyecto_content"),
     formTitle2 = document.querySelector("#proyecto_title2"),
-    formDescription2 = document.querySelector("#article_description2"),
-    formContent2 = document.querySelector("#article_content2");
+    formDescription2 = document.querySelector("#proyecto_description2"),
+    formContent2 = document.querySelector("#proyecto_content2");
 
 fileInput.onchange = () => {
     const [file] = fileInput.files;

@@ -86,7 +86,7 @@ article {
     font-family: "Montserrat", "Helvetica", sans-serif;
 }
 .trix-content blockquote {
-    border: 0 solid #FFF;
+    border: 0 solid #fff;
     border-left-width: 0.3em;
     margin-left: 0.3em;
     padding-left: 0.6em;
@@ -103,15 +103,15 @@ article {
 .trix-content li {
     margin-left: 1em;
 }
-.trix-content  a {
+.trix-content a {
     color: $link;
     text-decoration: underline;
 }
-.trix-content  a:hover {
+.trix-content a:hover {
     color: $link-h;
     text-decoration: none;
 }
-.trix-content  a:visited {
+.trix-content a:visited {
     color: $link-h;
     text-decoration: underline;
 }
@@ -177,13 +177,13 @@ article {
     flex-wrap: wrap;
     position: relative;
 }
-.trix-content .attachment-gallery .attachment {
+.trix-content .attachment-gallery action-text-attachment {
     flex: 1 0 33%;
     padding: 0 0.5em;
     max-width: 33%;
 }
-.trix-content .attachment-gallery.attachment-gallery--2 .attachment,
-.trix-content .attachment-gallery.attachment-gallery--4 .attachment {
+.trix-content .attachment-gallery.attachment-gallery--2 action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 action-text-attachment {
     flex-basis: 50%;
     max-width: 50%;
 }

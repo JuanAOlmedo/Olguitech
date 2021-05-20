@@ -58,10 +58,28 @@ main {
 }
 
 #a1 {
-    background: url("/Background.jpg") no-repeat fixed;
-    background-size: cover;
     padding: 12rem 1rem 10rem 1rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    background: transparent;
+    position: relative;
+}
+
+#a1::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    background: url("/Background.jpg") no-repeat fixed;
+    background-size: cover;
+    -webkit-filter: blur(2px);
+    /* Chrome, Opera */
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
 
     @supports (-webkit-touch-callout: none) {
         background: url('/Background.jpg') center top no-repeat scroll;

@@ -53,6 +53,7 @@
         <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
     <% user.contactos.each do |contact| %>
+    <p> Fecha: <%= contact.created_at.to_formatted_s(:long) %> </p>
     <p> Mensaje: <%= contact.message %> </p>
     <p> Articulo 1: <%= Article.find(contact.preference).title rescue "Articluo eliminado" %> </p>
     <p> Articulo 2: <%= Proyecto.find(contact.preference2).title rescue "Articluo eliminado" %> </p>

@@ -143,6 +143,8 @@ if (stills.length > 0) {
     window.addEventListener("DOMContentLoaded", scroll);
     window.addEventListener("resize", scroll);
     window.addEventListener("orientationChange", scroll);
+
+    scroll();
 }
 
 dropdownClickableClicker = new Clicker(dropdownClickable, extend).createClick();

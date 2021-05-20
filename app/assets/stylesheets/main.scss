@@ -1,14 +1,10 @@
 @import "settings";
 
 .front {
-    background: url("/Background.jpg") no-repeat fixed left top;
+    background: url("/Background.jpg") no-repeat scroll left top;
     background-size: cover;
     padding: 1rem 2rem 5rem 2rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-    @supports (-webkit-touch-callout: none) {
-        background: url('/Background.jpg') no-repeat scroll;
-    }
 }
 
 nav {
@@ -365,15 +361,17 @@ main {
 }
 
 .information-section {
-    padding-bottom: 5rem;
-    padding-top: 4rem;
+    padding-bottom: 8rem;
+    padding-top: 8rem;
     margin: 0;
     width: 100%;
-    background-color: $accent-color;
+    background: url("/Contact2.jpg") no-repeat center top;
+    background-size: cover;
+    color: white;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
 }
 
 .information-title {
-    color: black;
     padding: 0.5rem;
     font-size: 3rem;
     text-align: center;
@@ -382,7 +380,6 @@ main {
 }
 
 .information-subtitle {
-    color: black;
     width: 100%;
     text-align: center;
 }
@@ -392,8 +389,7 @@ main {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    font-size: 1.3rem;
-    color: black !important;
+    font-size: 1.4rem;
 }
 
 .information-subsection {
@@ -418,7 +414,7 @@ main {
 @media only screen and (max-width: 60rem) {
     .information-text {
         width: 80%;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .information-subsection {

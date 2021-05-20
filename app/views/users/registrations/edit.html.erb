@@ -58,29 +58,6 @@
     </div>
     <% end %>
 
-    <script>
-        const password = document.querySelector('#user_password')
-        passwordConfirmation = document.querySelector('#user_password_confirmation')
-
-        passwordConfirmation.addEventListener('input', checkPassword)
-        password.addEventListener('input', checkPasswordLength)
-
-        function checkPassword() {
-            if (password.value != passwordConfirmation.value) {
-                passwordConfirmation.style.backgroundColor = 'red'
-            } else {
-                passwordConfirmation.style.backgroundColor = 'greenyellow'
-            }
-        }
-
-        function checkPasswordLength() {
-            if (password.value.length <= 7) {
-                password.style.backgroundColor = 'red'
-            } else {
-                password.style.backgroundColor = 'greenyellow'
-            }
-        }
-    </script>
     <%= javascript_pack_tag 'user' %>
 
     <h2 class='form-title'>

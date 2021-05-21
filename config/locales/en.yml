@@ -67,7 +67,11 @@ en:
     cant_cancel: "You can't destroy your admin account."
     flag1: "Link to english version - Link a versión en inglés"
     flag2: "Link a versión en español - Link to spanish version"
-    dropdown: "dropdown menu"
+    dropdown: "Dropdown menu"
+    alert: "Close alert"
+    notice: "Close notice"
+    engineering_solutions: "Engineering solutions"
+    logo: "Olguitech logo"
   mail:
     contact_mailer_html: "Hello %{name}, thank you for contacting Olguitech s.a.s.! <br>
 

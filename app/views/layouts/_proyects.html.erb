@@ -8,7 +8,7 @@
         <%= link_to proyecto_path(article) do %>
         <div class='articles-hoverable-article'>
             <% if article.image.attached? %>
-            <%= image_tag article.image.variant(resize_to_limit: [35, 35]), data: {src: url_for(article.image)}, class: "article-hoverable-img lazy", alt: article.image.filename %>
+            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img lazy", alt: article.image.filename %>
             <% end %>
 
             <div class='articles-hoverable-article-content'>

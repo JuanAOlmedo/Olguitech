@@ -7,7 +7,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<%= request.original_url.include?(yield(:description)) ? "Olguitech s.a.s. Soluciones en ingeniería -- Uruguay" : yield(:description) %>">
+    <meta name="description" content="<%= request.original_url.include?(yield(:description)) ? "Olguitech s.a.s. #{t "shared.engineering_solutions"} -- Uruguay" : yield(:description) %>">
     <meta name="theme-color" content="hsl(210, 60%, 20%)">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicons/favicon1.png" sizes="32x32">
@@ -44,7 +44,7 @@
     <nav>
         <div class="left-navbar-section">
             <%= link_to root_path, method: :get do %>
-            <img src='/LogoA1.webp' alt='Logo De Olguitech' class='logo'>
+            <img src='/LogoA1.webp' alt="<%= t "shared.logo" %>" class='logo'>
             <% end %>
         </div>
 
@@ -66,11 +66,11 @@
             </h2>
             <% end %>
 
-            <%= link_to url_for( :locale => 'en' ), class: "flag element", title: I18n.t("shared.flag1") do %>
+            <%= link_to url_for( :locale => 'en' ), class: "flag element", title: I18n.t("shared.flag1"), rel: "alternate", hreflang: "en" do %>
             <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>">
             <% end %>
 
-            <%= link_to url_for( :locale => 'es' ), class: "flag element", title: I18n.t("shared.flag2") do %>
+            <%= link_to url_for( :locale => 'es' ), class: "flag element", title: I18n.t("shared.flag2"), rel: "alternate", hreflang: "es" do %>
             <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>">
             <% end %>
 
@@ -91,8 +91,8 @@
 
     <% if flash[:alert] %>
     <div class='alert'>
-        <p> <%= alert %> </p>
-        <i class='close-alert' cursor='pointer' tabindex='0'>
+        <p role="alert"> <%= alert %> </p>
+        <i class='close-alert' cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.alert" %>">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" />
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -105,8 +105,8 @@
 
     <% if flash[:notice] %>
     <div class='notice'>
-        <p> <%= notice %> </p>
-        <i class='close-notice' cursor='pointer' tabindex='0'>
+        <p role="alert"> <%= notice %> </p>
+        <i class='close-notice' cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.notice" %>">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" />
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -135,12 +135,12 @@
         <% end %>
 
         <div class="flags-div">
-            <%= link_to url_for( :locale => 'en' ), class: "flag", title: "Ingles" do %>
-            <img src="/flag1.png">
+            <%= link_to url_for( :locale => 'en' ), class: "flag", title: I18n.t("shared.flag1"), rel: "alternate", hreflang: "en" do %>
+            <img src="/flag1.png" alt="<%= I18n.t("shared.flag1") %>">
             <% end %>
 
-            <%= link_to url_for( :locale => 'es' ), class: "flag", title: "Espaniol" do %>
-            <img src="/flag2.png">
+            <%= link_to url_for( :locale => 'es' ), class: "flag", title: I18n.t("shared.flag2"), rel: "alternate", hreflang: "es" do %>
+            <img src="/flag2.png" alt="<%= I18n.t("shared.flag2") %>">
             <% end %>
         </div>
 

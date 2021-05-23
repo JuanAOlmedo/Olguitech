@@ -55,36 +55,35 @@
             <%= render 'layouts/articles' %>
             <%= render 'layouts/proyects' %>
 
-            <h2 class='element navbar-link'>
+            <h2 class='navbar-link'>
                 <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, id: "nosotros-link" %>
             </h2>
 
-            <h2 class='element navbar-link'>
+            <h2 class='navbar-link'>
                 <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", method: :get, id: "contacto-link" %>
             </h2>
 
-            <% if user_signed_in? && current_user.newsletter %>
-            <h2 class='element navbar-link' id="newsletter-link">
+            <% if admin_signed_in? %>
+            <h2 class='navbar-link' id="newsletter-link">
                 <%= link_to 'Newsletters', newsletters_path, method: :get, id: "newsletter-link" %>
             </h2>
             <% end %>
 
-            <%= link_to url_for( :locale => 'en' ), class: "flag element", title: I18n.t("shared.flag1"), rel: "alternate", hreflang: "en" do %>
+            <%= link_to url_for( :locale => 'en' ), class: "flag", title: I18n.t("shared.flag1"), rel: "alternate", hreflang: "en" do %>
             <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>">
             <% end %>
-
-            <%= link_to url_for( :locale => 'es' ), class: "flag element", title: I18n.t("shared.flag2"), rel: "alternate", hreflang: "es" do %>
+            <%= link_to url_for( :locale => 'es' ), class: "flag", title: I18n.t("shared.flag2"), rel: "alternate", hreflang: "es" do %>
             <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>">
             <% end %>
 
             <% if user_signed_in? %>
-            <h2 class='element gold-button'><%= link_to (I18n.t 'nav.profile'), edit_user_registration_path %></h2>
+            <%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class: "big-navbar-link" %>
             <% else %>
-            <h2 class='element gold-button'><%= link_to (I18n.t 'nav.sign_in'), new_user_session_path %></h2>
+            <%= link_to (I18n.t 'nav.sign_in'), new_user_session_path, class: "big-navbar-link" %>
             <% end %>
 
             <% if admin_signed_in? %>
-            <h2 class='element gold-button'><%= link_to 'Admin', edit_admin_registration_path %></h2>
+            <%= link_to 'Admin', edit_admin_registration_path, class: "big-navbar-link" %>
             <% end %>
         </div>
 
@@ -120,22 +119,17 @@
     <% end %>
 
     <div id='dropdown' class='dropdown'>
+        <%= render 'layouts/products2' %>
         <%= render 'layouts/articles2' %>
         <%= render 'layouts/proyects2' %>
 
-        <h2 class='navbar-link-title dropdown-navbar-link'>
-            <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, class:'dropdown-navbar-link' %>
+        <h2 class='dropdown-navbar-link navbar-link'>
+            <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, class:'dropdown-navbar-link navbar-link' %>
         </h2>
 
-        <h2 class='navbar-link-title dropdown-navbar-link'>
-            <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", method: :get, class:'dropdown-navbar-link' %>
+        <h2 class='dropdown-navbar-link navbar-link'>
+            <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", method: :get, class:'dropdown-navbar-link navbar-link' %>
         </h2>
-
-        <% if user_signed_in? %>
-        <h2 class='navbar-link-title dropdown-navbar-link'>
-            <%= link_to 'Newsletters', newsletters_path, method: :get, class:'dropdown-navbar-link' %>
-        </h2>
-        <% end %>
 
         <div class="flags-div">
             <%= link_to url_for( :locale => 'en' ), class: "flag", title: I18n.t("shared.flag1"), rel: "alternate", hreflang: "en" do %>
@@ -148,13 +142,13 @@
         </div>
 
         <% if user_signed_in? %>
-        <h2 id='dropdown-acceder'><%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class:'dropdown-access' %></h2>
+        <%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class:'dropdown-big-button big-navbar-link' %>
         <% else %>
-        <h2 id='dropdown-acceder'><%= link_to (I18n.t 'nav.sign_in'), new_user_session_path, class:'dropdown-access' %></h2>
+        <%= link_to (I18n.t 'nav.sign_in'), new_user_session_path, class:'dropdown-big-button big-navbar-link' %>
         <% end %>
 
         <% if admin_signed_in? %>
-        <h2 id='dropdown-acceder'><%= link_to 'Admin', edit_admin_registration_path, class:'dropdown-access' %></h2>
+        <%= link_to 'Admin', edit_admin_registration_path, class:'dropdown-big-button big-navbar-link' %>
         <% end %>
     </div>
 

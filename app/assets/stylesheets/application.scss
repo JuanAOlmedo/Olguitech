@@ -125,6 +125,11 @@ nav {
 }
 ////////////
 
+.articles-hoverable-div {
+    height: 100% !important;
+    margin-bottom: 0 !important;
+}
+
 .articles-hoverable-div:hover {
     .articles-hoverable-content {
         display: flex;
@@ -200,7 +205,7 @@ nav {
     transition: color 0.8s;
 
     @media only screen and (max-width: 1200px) {
-        width: 7.3rem;
+        width: 7.4rem;
         padding-right: 0.4rem;
     }
 }
@@ -209,7 +214,7 @@ nav {
     color: $color5 !important;
 }
 
-.gold-button {
+.big-navbar-link {
     cursor: pointer;
     transition: color 0.8s;
     width: 5.5rem;
@@ -219,18 +224,27 @@ nav {
     background-color: $color2;
     color: $color1;
     transition: background-color 0.8s, color 0.8s;
+    font-weight: bold;
+    font-family: "Varela Round", "Gill Sans", sans-serif;
+    font-size: 1.35rem;
+    text-align: center;
+
+    @media only screen and (max-width: 1200px) {
+        width: 5.4rem;
+        margin: auto 0.3rem auto 0.3rem;
+    }
 }
 
-.gold-button:visited {
+.big-navbar-link:visited {
     color: $color1;
 }
 
-.gold-button:hover {
+.big-navbar-link:hover {
     color: $color6;
     background-color: $color5;
 }
 
-.gold-button a {
+.big-navbar-link a {
     color: inherit;
 }
 
@@ -264,19 +278,21 @@ nav {
     right: 0;
     top: 0;
     left: 0;
+    bottom: 0;
     z-index: 99;
     background-color: $color1;
     position: fixed;
     padding: 1rem 2rem 1rem 2rem;
     margin-top: 5.1em;
-    transform: translateY(-40rem);
+    transform: translateX(150%);
     transition: transform 1s;
     will-change: transform;
     visibility: hidden;
+    overflow-y: auto;
 }
 
 #dropdown.show {
-    transform: translateY(0);
+    transform: translateX(0);
     visibility: visible;
 }
 
@@ -284,34 +300,19 @@ nav {
     visibility: visible;
 }
 
-#dropdown-acceder {
-    width: 90%;
-    cursor: pointer;
-    padding: 0.7rem;
-    border-radius: 0.8rem;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: $color2;
-    color: $color1;
-    text-align: center;
+.dropdown-big-button {
+    display: block;
+    width: 14rem;
+    margin: 1rem auto 1rem auto;
 }
 
 .dropdown-navbar-link {
     width: 100%;
     text-align: center;
-    transition: transform 0.8s, color 0.8s;
 }
 
 .dropdown-navbar-link:hover {
     color: $color3;
-}
-
-.dropdown-access {
-    color: $color1;
-}
-
-.dropdown-access:visited {
-    color: $color1;
 }
 
 .dropdown-articles-hoverable-div {
@@ -323,7 +324,8 @@ nav {
     background-color: black;
 }
 
-.line1, .line2 {
+.line1,
+.line2 {
     transform: rotateZ(0deg);
     transition: transform 0.5s;
 }
@@ -506,14 +508,15 @@ i h3 {
     font-weight: bold;
     line-height: 1.6;
     color: $color1;
+    font-size: 1rem;
 }
 
 .more-link:hover {
     background-color: $color5;
 }
 
-@media only screen and (max-width: 70rem) {
-    .element {
+@media only screen and (max-width: 67rem) {
+    .right-navbar-section {
         display: none;
     }
 
@@ -524,9 +527,6 @@ i h3 {
     .input input {
         font-size: 1rem;
     }
-    // .navbar-link {
-    //     display: none;
-    // }
 }
 
 .article-hoverable-img2 {

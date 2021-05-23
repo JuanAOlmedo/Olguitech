@@ -1,7 +1,6 @@
 class NewslettersController < ApplicationController
   before_action :set_newsletter, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, :redirect_unless_admin, except: [:index, :show]
-  before_action :authenticate_user!, only: [:show]
+  before_action :authenticate_admin!
 
   def index
     @newsletters = Newsletter.all.order(created_at: :desc)

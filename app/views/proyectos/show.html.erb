@@ -62,6 +62,7 @@
             </svg>
         </i>
 
+        <% if !@proyecto.products.empty? %>
         <h2> Productos relacionados </h2>
         <% @proyecto.products.each do |product| %>
         <div class="product">
@@ -76,6 +77,7 @@
                 <% end %>
             </div>
         </div>
+        <% end %>
         <% end %>
     </article>
 

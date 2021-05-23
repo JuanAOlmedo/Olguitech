@@ -59,6 +59,12 @@ const dropdownClickable = document.querySelectorAll(
     dropdownExtensible1 = document.querySelectorAll(
         ".dropdown-clickable-extensible"
     )[1],
+    dropdownClickable2 = document.querySelectorAll(
+        ".dropdown-clickable-div"
+    )[2],
+    dropdownExtensible2 = document.querySelectorAll(
+        ".dropdown-clickable-extensible"
+    )[2],
     dropdownBars = document.querySelector("#dropdown-bars"),
     dropdown = document.querySelector("#dropdown"),
     dropdownNavLinks = document.querySelectorAll(".dropdown-navbar-link"),
@@ -109,6 +115,14 @@ function dropdownClickHandler() {
 
         dropdownExtensible1.classList.remove("de-extend");
         extended1 = false;
+
+        dropdownExtensible2.classList.remove("extend");
+        document
+            .querySelectorAll(".icon-tabler-chevron-down")[2]
+            .classList.remove("extend");
+
+        dropdownExtensible2.classList.remove("de-extend");
+        extended2 = false;
 
         document.querySelector("nav").classList.remove("show-lock")
     }
@@ -188,5 +202,30 @@ function extend1() {
         extended1 = false;
     } else {
         extended1 = true;
+    }
+}
+
+dropdownClickableClicker2 = new Clicker(
+    dropdownClickable2,
+    extend2
+).createClick();
+
+let extended2 = false;
+
+function extend2() {
+    dropdownExtensible2.classList.toggle("extend");
+    document
+        .querySelectorAll(".icon-tabler-chevron-down")[2]
+        .classList.toggle("extend");
+
+    if (extended2) {
+        dropdownExtensible2.classList.add("de-extend");
+        setTimeout(
+            () => dropdownExtensible2.classList.remove("de-extend"),
+            800
+        );
+        extended2 = false;
+    } else {
+        extended2 = true;
     }
 }

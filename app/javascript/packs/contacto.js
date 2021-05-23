@@ -1,5 +1,5 @@
 let map;
-const mapDefaultZoom = 16;
+const mapDefaultZoom = 15;
 
 function initialize_map() {
     map = new ol.Map({

@@ -1,8 +1,9 @@
-<div class='element articles-hoverable-div navbar-link' tabindex='0'>
-    <h2 class=' element navbar-link' id='articles-hoverable'>
+<div class='articles-hoverable-div navbar-link' tabindex='0'>
+    <h2 class='navbar-link' id='articles-hoverable'>
         <%= link_to (I18n.t 'nav.solutions'), articles_path, class:'articles-link' %>
     </h2>
-    <div class='articles-hoverable-content' id="articles-hoverable-content" tabindex="1">
+
+    <div class='articles-hoverable-content'>
         <% @articles.each do |article| %>
         <%= link_to article_path(article) do %>
         <div class='articles-hoverable-article'>

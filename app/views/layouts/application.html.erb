@@ -13,7 +13,7 @@
     <link rel="icon" href="/favicons/favicon1.png" sizes="32x32">
     <link rel="icon" href="/favicons/favicon.png" sizes="96x96">
     <link rel="icon" href="/favicons/favicon2.png" sizes="16x16">
-    <link rel="apple-touch-icon" sizes="1024x1024" href="/Icon.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/apple-touch-icon.png">
 
     <%= javascript_pack_tag 'application', :defer => "defer" %>
 
@@ -27,7 +27,9 @@
 <body>
     <% @articles = Article.all.order(created_at: :desc)
 
-       @proyectos = Proyecto.all.order(created_at: :desc) %>
+       @proyectos = Proyecto.all.order(created_at: :desc)
+       
+       @products = Product.all.order(created_at: :desc) %>
 
     <% if flash[:alert] %>
     <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -44,11 +46,12 @@
     <nav>
         <div class="left-navbar-section">
             <%= link_to root_path, method: :get do %>
-            <img src='/LogoA1.webp' alt="<%= t "shared.logo" %>" class='logo'>
+            <img src='/Logo.webp' alt="<%= t "shared.logo" %>" class='logo'>
             <% end %>
         </div>
 
         <div class="right-navbar-section">
+            <%= render 'layouts/products' %>
             <%= render 'layouts/articles' %>
             <%= render 'layouts/proyects' %>
 
@@ -160,6 +163,16 @@
 
         <% if admin_signed_in? %>
         <div id='admin-tools'>
+            <%= link_to new_product_path, class: 'right-tool', method: :get do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                <circle cx="12" cy="14" r="2" />
+                <polyline points="14 4 14 8 8 8 8 4" />
+            </svg>
+            <% end %>
+
+
             <%= link_to new_article_path, class: 'right-tool', method: :get do %>
             <i class='articles-fas'>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

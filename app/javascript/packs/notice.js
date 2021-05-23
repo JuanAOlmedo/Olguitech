@@ -2,7 +2,9 @@ const closeNotice = document.querySelector(".close-notice"),
       notice = document.querySelector(".notice");
 
 function close() {
-    notice.style.display = "none";
+    notice.classList.add("disappear")
+
+    setTimeout(() => notice.style.display = "none", 1000)
 }
 
 closeNotice.onclick = () => {

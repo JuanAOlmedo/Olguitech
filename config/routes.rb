@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :newsletters
     resources :articles
     resources :proyectos
+    resources :products
 
     devise_for :users, :controllers => { registrations: 'registrations' }
     get '/user_index', to: 'users#index'

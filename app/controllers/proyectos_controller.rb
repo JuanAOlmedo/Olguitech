@@ -23,7 +23,22 @@ class ProyectosController < ApplicationController
   # POST /proyectos
   # POST /proyectos.json
   def create
-    @proyecto = Proyecto.new(proyecto_params)
+    parameters = proyecto_params
+    products = parameters[:products]
+    parameters.delete(:products)
+
+    @proyecto = Proyecto.new(parameters)
+
+    if products != nil
+        products.each_with_index do |product, i|
+            products[i] = Product.find(product.to_i)
+            if !@proyecto.products.include? products[i]
+                products[i].proyectos << @proyecto
+            end
+        end
+    else
+        products = []
+    end
 
     respond_to do |format|
       if @proyecto.save
@@ -45,8 +60,29 @@ class ProyectosController < ApplicationController
   # PATCH/PUT /proyectos/1
   # PATCH/PUT /proyectos/1.json
   def update
+    parameters = proyecto_params
+    products = parameters[:products]
+    parameters.delete(:products)
+
     respond_to do |format|
-      if @proyecto.update(proyecto_params)
+      if @proyecto.update(parameters)
+        if products != nil
+            products.each_with_index do |product, i|
+                products[i] = Product.find(product.to_i)
+                if !@proyecto.products.include? products[i]
+                    products[i].proyectos << @proyecto
+                end
+            end
+        else
+            products = []
+        end
+
+        @proyecto.products.each do |product|
+            if !products.include? product
+                @proyecto.product_referenceables.find_by(product_id: product.id).destroy
+            end
+        end
+
         format.html { redirect_to @proyecto, notice: 'Artículo actualizdo exitosamente.' }
         format.json { render :show, status: :ok, location: @proyecto }
       else
@@ -74,6 +110,6 @@ class ProyectosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def proyecto_params
-      params.require(:proyecto).permit(:title, :title2, :content, :content2, :description, :description2, :image)
+      params.require(:proyecto).permit(:title, :title2, :content, :content2, :description, :description2, {:products => []}, :image)
     end
 end

@@ -22,6 +22,16 @@
     <%= form.label :description2, "Descripción en ingles" %>
     <%= form.text_area :description2, class:'description-textarea' %>
 
+    <h2> Productos </h2>
+    <%= form.collection_check_boxes :products, Product.all, :id, :title, include_hidden: false do |b| %>
+    <% product = Product.find_by(title: b.text) %>
+    <% if !@proyecto.products.include? product %>
+    <%= b.check_box %><%= b.label { b.text } %> <br>
+    <% else %>
+    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
+    <% end %>
+    <% end %>
+
     <%= form.submit 'Crear' %>
 </div>
 <% end %>

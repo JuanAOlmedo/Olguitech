@@ -4,19 +4,9 @@
     "description": "Soluciones en ingenieria",
     "icons": [
         {
-            "src": "./Icon.png",
-            "type": "image/png",
-            "sizes": "1024x1024"
-        },
-        {
-            "src": "./Icon1.png",
+            "src": "./apple-touch-icon.png",
             "type": "image/png",
             "sizes": "512x512"
-        },
-        {
-            "src": "./Icon2.png",
-            "type": "image/png",
-            "sizes": "256x256"
         }
     ],
     "start_url": "/",

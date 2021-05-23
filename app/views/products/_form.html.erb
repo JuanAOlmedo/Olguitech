@@ -1,0 +1,41 @@
+<%= form_with model: @product do |form| %>
+<div class="field">
+    <%= form.label :title, "Título" %>
+    <%= form.text_area :title, class:'title-textarea article-title show-title' %>
+
+    <%= form.label :title2, "Título en ingles" %>
+    <%= form.text_area :title2, class:'title-textarea article-title show-title' %>
+
+    <%= form.label :image, 'Imagen' %>
+    <%= form.file_field :image, class:'image-attacher', id:"fileInput" %> <br>
+    <img class="image-upload" src="<%= url_for(@product.image) rescue "https://" %>" /> <br>
+
+    <%= form.label :description, "Descripción" %>
+    <%= form.text_area :description, class:'description-textarea' %>
+
+    <%= form.label :description2, "Descripción en ingles" %>
+    <%= form.text_area :description2, class:'description-textarea' %>
+
+    <h2> Soluciones relacionadas </h2>
+    <%= form.collection_check_boxes :articles, Article.all, :id, :title, include_hidden: false do |b| %>
+    <% article = Article.find_by(title: b.text) %>
+    <% if !@product.articles.include? article %>
+    <%= b.check_box %><%= b.label { b.text } %> <br>
+    <% else %>
+    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
+    <% end %>
+    <% end %>
+
+    <h2> Proyectos relacionados </h2>
+    <%= form.collection_check_boxes :proyectos, Proyecto.all, :id, :title, include_hidden: false do |b| %>
+    <% article = Proyecto.find_by(title: b.text) %>
+    <% if !@product.proyectos.include? article %>
+    <%= b.check_box %><%= b.label { b.text } %> <br>
+    <% else %>
+    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
+    <% end %>
+    <% end %>
+
+    <%= form.submit 'Crear' %>
+</div>
+<% end %>

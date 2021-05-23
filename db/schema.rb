@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_180457) do
+ActiveRecord::Schema.define(version: 2021_05_22_165312) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,23 @@ ActiveRecord::Schema.define(version: 2021_05_17_180457) do
   end
 
   create_table "nosotros", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "product_referenceables", force: :cascade do |t|
+    t.integer "referenceable_id"
+    t.string "referenceable_type"
+    t.integer "product_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.string "title2"
+    t.string "description"
+    t.string "description2"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

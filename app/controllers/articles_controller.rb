@@ -25,7 +25,22 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    parameters = article_params
+    products = parameters[:products]
+    parameters.delete(:products)
+
+    @article = Article.new(parameters)
+
+    if products != nil
+        products.each_with_index do |product, i|
+            products[i] = Product.find(product.to_i)
+            if !@article.products.include? products[i]
+                products[i].articles << @article
+            end
+        end
+    else
+        products = []
+    end
 
     respond_to do |format|
       if @article.save
@@ -47,8 +62,29 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    parameters = article_params
+    products = parameters[:products]
+    parameters.delete(:products)
+
     respond_to do |format|
-      if @article.update(article_params)
+      if @article.update(parameters)
+        if products != nil
+            products.each_with_index do |product, i|
+                products[i] = Product.find(product.to_i)
+                if !@article.products.include? products[i]
+                    products[i].articles << @article
+                end
+            end
+        else
+            products = []
+        end
+
+        @article.products.each do |product|
+            if !products.include? product
+                @article.product_referenceables.find_by(product_id: product.id).destroy
+            end
+        end
+
         format.html { redirect_to @article, notice: 'Artículo actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @article }
       else
@@ -76,6 +112,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :title2, :content, :content2, :description, :description2, :image)
+      params.require(:article).permit(:title, :title2, :content, :content2, :description, :description2, {:products => []}, :image)
     end
 end

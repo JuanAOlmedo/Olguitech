@@ -24,5 +24,7 @@ function actionButtonKeyupHandler(event) {
 }
 
 function close() {
-    alertPrompt.style.display = "none";
+    alertPrompt.classList.add("disappear")
+
+    setTimeout(() => alertPrompt.style.display = "none", 1000)
 }

@@ -7,6 +7,7 @@ en:
     next_article: "Next article"
     previous_article: "Previous article"
   nav: 
+    products: "Products"
     solutions: "Solutions"
     proyects: "Projects"
     about_us: "About Us"
@@ -59,6 +60,7 @@ en:
     are_you_sure: "Are you sure?"
   shared:
     see_more: "See More"
+    our_products: "Our Products"
     our_solutions: "Our Solutions"
     our_proyects: "Our Projects"
     back: "Back"

@@ -1,0 +1,29 @@
+<head>
+    <%= stylesheet_link_tag 'products-index' %>
+
+    <style>
+        .proyectos-link {
+            color: #CCC !important;
+        }
+    </style>
+</head>
+
+<% content_for :title, "#{I18n.t "shared.our_products"} | Olguitech s.a.s." %>
+<h1 class='index-title'> <%= I18n.t "shared.our_products" %> </h1>
+
+<div class='products-div'>
+    <% @products.each do |product| %>
+    <div class="product">
+        <% if product.image.attached? %>
+        <img src='<%= url_for(product.image) %>' alt='<%= product.image.filename %>' class='product-img'>
+        <% end %>
+        <div class='product-info'>
+            <h2 class="product-title"> <%= product.get_title %> </h2>
+            <p class="product-desc"> <%= product.get_desc %> </p>
+            <%= link_to product_path(product), class: "product-more-link" do %>
+            <%= render 'layouts/more' %>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+</div>

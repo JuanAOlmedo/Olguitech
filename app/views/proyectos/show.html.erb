@@ -61,6 +61,22 @@
                 <polyline points="6 15 12 9 18 15" />
             </svg>
         </i>
+
+        <h2> Productos relacionados </h2>
+        <% @proyecto.products.each do |product| %>
+        <div class="product">
+            <% if product.image.attached? %>
+            <img src='<%= url_for(product.image) %>' alt='<%= product.image.filename %>' class='product-img'>
+            <% end %>
+            <div class='product-info'>
+                <h2 class="product-title"> <%= product.get_title %> </h2>
+                <p class="product-desc"> <%= product.get_desc %> </p>
+                <%= link_to product_path(product), class: "product-more-link" do %>
+                <%= render 'layouts/more' %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
     </article>
 
     <%= javascript_pack_tag 'show' %>

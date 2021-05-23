@@ -2,6 +2,9 @@ class Article < ApplicationRecord
     has_rich_text :content
     has_rich_text :content2
     has_one_attached :image
+
+    has_many :product_referenceables, foreign_key: :referenceable_id
+    has_many :products, through: :product_referenceables, as: :referenceable
     
     def get_title
         I18n.locale == :en && self.title2 != "" && self.title2 != nil ? self.title2 : self.title

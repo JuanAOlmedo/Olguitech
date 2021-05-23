@@ -1,10 +1,9 @@
-class Proyecto < ApplicationRecord
-    has_rich_text :content
-    has_rich_text :content2
+class Product < ApplicationRecord
+    has_many :product_referenceables
+    has_many :articles, through: :product_referenceables, source: :referenceable, source_type: "Article"
+    has_many :proyectos, through: :product_referenceables, source: :referenceable, source_type: "Proyecto"
+    
     has_one_attached :image
-
-    has_many :product_referenceables, foreign_key: :referenceable_id
-    has_many :products, through: :product_referenceables, as: :referenceable
 
     def get_title
         I18n.locale == :en && self.title2 != "" && self.title2 != nil ? self.title2 : self.title
@@ -22,9 +21,5 @@ class Proyecto < ApplicationRecord
     def get_short_desc
         description = self.get_desc
         return description.length > 100 ? description[0...100] + '...' : description
-    end
-
-    def get_content
-        I18n.locale == :en && !self.content2.empty? ? self.content2 : self.content
     end
 end

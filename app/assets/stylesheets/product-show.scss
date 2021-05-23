@@ -1,0 +1,40 @@
+@import "settings";
+
+#show {
+    padding: 1rem;
+    background-color: $color1;
+    color: $color3;
+    font-size: 1.1rem;
+    min-height: 35rem;
+}
+
+.product {
+    width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media only screen and (max-width: 55.6rem) {
+        width: 95%;
+    }
+}
+
+.product-title {
+    color: $color2;
+    font-size: 3rem;
+    margin-bottom: 0;
+
+    @media screen and (max-width: 40rem) {
+        font-size: 1.7rem;
+    }
+}
+
+.product-description {
+    font-size: 1.3rem;
+    font-family: "Montserrat";
+    margin-top: 0;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+}

@@ -7,6 +7,7 @@ es:
     can_we_help_you: "Te podemos ayudar en algo?"
     get_in_touch: "Contactate con nosotros"
   nav: 
+    products: "Productos"
     solutions: "Soluciones"
     proyects: "Proyectos"
     about_us: "Nosotros"
@@ -59,6 +60,7 @@ es:
     are_you_sure: "Estas seguro?"
   shared:
     see_more: "Ver más"
+    our_products: "Nuestros Productos"
     our_solutions: "Nuestras Soluciones"
     our_proyects: "Nuestros Proyectos"
     back: "Atrás"

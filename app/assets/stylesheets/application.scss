@@ -96,16 +96,13 @@ nav {
 
 .articles-hoverable-content {
     position: fixed;
-    display: flex;
     background-color: $color6;
     background-color: #121212;
     top: 5.15em;
     left: 2rem;
     right: 2rem;
     overflow-y: auto;
-    height: 29rem;
-    visibility: hidden;
-    transition: 0.1s 0.1s;
+    display: none;
 }
 
 // 2.1 Scrollbar //
@@ -133,12 +130,18 @@ nav {
 
 .articles-hoverable-div:hover {
     .articles-hoverable-content {
-        visibility: visible;
-        transition-delay: 0s;
+        display: block;
     }
 
     #articles-hoverable {
         color: $color5 !important;
+    }
+
+    .icon-tabler-chevron-down2 {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(2px);
+        transition-delay: 0s;
     }
 }
 
@@ -204,10 +207,12 @@ nav {
     overflow-y: auto;
     overflow-x: hidden;
     height: 29rem;
+    direction: rtl;
 }
 .category-hoverable-div {
     width: 100%;
     transition: background-color 1s;
+    direction: ltr;
 }
 
 .category-hoverable-title {
@@ -241,7 +246,7 @@ nav {
     flex-wrap: wrap;
     display: flex;
     overflow-y: auto;
-    transition: 0.1s 0.1s;
+    transition: 0s 0.2s;
     visibility: hidden;
 }
 
@@ -261,7 +266,6 @@ nav {
 }
 
 .navbar-link {
-    cursor: pointer;
     color: $color2;
     padding-right: 0.5rem;
     width: 7.5rem;
@@ -309,6 +313,15 @@ nav {
 
 .big-navbar-link a {
     color: inherit;
+}
+
+.icon-tabler-chevron-down2 {
+    position: relative;
+    bottom: 0.7rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-2px);
+    transition: opacity 0.7s 0.1s, transform 0.7s 0.1s, visibility 0.6s 0.1s;
 }
 
 // 2.2 Dropdown //

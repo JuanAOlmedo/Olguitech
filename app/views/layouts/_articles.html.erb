@@ -1,10 +1,37 @@
 <div class='articles-hoverable-div navbar-link' tabindex='0'>
-    <h2 class='navbar-link' id='articles-hoverable'>
-        <%= link_to (I18n.t 'nav.solutions'), articles_path, class:'articles-link' %>
+    <h2 class='navbar-link articles-link' id='articles-hoverable'>
+        <%= I18n.t 'nav.solutions' %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-chevron-down2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" />
+            <polyline points="6 9 12 15 18 9" />
+        </svg>
     </h2>
 
     <div class='articles-hoverable-content'>
         <div class="category-hoverable-div-holder">
+            <div class="category-hoverable-div">
+                <h2 class="category-hoverable-title">
+                    <%= link_to I18n.t("shared.all"), articles_path %>
+                </h2>
+
+                <div class="category-hoverable-content">
+                    <% @articles.each do |article| %>
+                    <%= link_to article_path(article) do %>
+                    <div class='articles-hoverable-article'>
+                        <% if article.image.attached? %>
+                        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img lazy", alt: article.image.filename %>
+                        <% end %>
+
+                        <div class='articles-hoverable-article-content'>
+                            <h2> <%= article.get_short_title %> </h2>
+                            <p> <%= article.get_short_desc %> </p>
+                        </div>
+                    </div>
+                    <% end %>
+                    <% end %>
+                </div>
+            </div>
+
             <% @categories.each do |category| %>
             <% if !category.articles.empty? %>
             <div class="category-hoverable-div">

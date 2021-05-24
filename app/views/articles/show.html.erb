@@ -43,6 +43,14 @@
     <% end %>
 
     <article>
+        <% if !@article.categories.empty? %>
+        <p>
+            <%= @article.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
+            <% @article.categories.each do |category| %>
+            <%= link_to (@article.categories.last == category ? category.get_title : (category.get_title + ", ")), category_path(category) %>
+            <% end %>
+        </p>
+        <% end %>
         <h2 class='article-title'> <%= @article.get_title %> </h2>
 
         <p class='article-description'> <%= @article.get_desc %> </p>

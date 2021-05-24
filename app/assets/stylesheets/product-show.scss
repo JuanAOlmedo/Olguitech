@@ -21,7 +21,17 @@
 .product-title {
     color: $color2;
     font-size: 3rem;
-    margin-bottom: 0;
+    margin: 0;
+
+    @media screen and (max-width: 40rem) {
+        font-size: 1.7rem;
+    }
+}
+
+.category-title {
+    color: $color2;
+    font-size: 3rem;
+    margin: 0;
 
     @media screen and (max-width: 40rem) {
         font-size: 1.7rem;
@@ -64,4 +74,13 @@
     background-color: $color2;
     padding: 0.5rem;
     margin: 0;
+}
+
+#all-categories {
+    display: flex;
+}
+
+#all-categories p {
+    margin-top: auto;
+    margin-bottom: auto;
 }

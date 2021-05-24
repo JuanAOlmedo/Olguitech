@@ -32,6 +32,16 @@
     <% end %>
     <% end %>
 
+    <h2> Categorias </h2>
+    <%= form.collection_check_boxes :categories, Category.all, :id, :title, include_hidden: false do |b| %>
+    <% category = Category.find_by(title: b.text) %>
+    <% if !@article.categories.include? category %>
+    <%= b.check_box %><%= b.label { b.text } %> <br>
+    <% else %>
+    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
+    <% end %>
+    <% end %>
+
     <%= form.submit 'Crear', class: "big-navbar-link", id: "button" %>
 </div>
 <% end %>

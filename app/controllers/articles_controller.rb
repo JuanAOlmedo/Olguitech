@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
+    # order_by = params[:order_by] == "created_at" || params[:order_by] == "title" || params[:order_by] == "title2" ? params[:order_by] : "created_at"
+    # order_by = order_by == "title" && I18n.locale == "en" ? "title2" : "title"
+    # asc_desc = params[:asc_desc] == "asc" || params[:asc_desc] == "desc" ? params[:asc_desc] : "desc"
     @articles = Article.all.order(created_at: :desc)
   end
 
@@ -29,6 +32,9 @@ class ArticlesController < ApplicationController
     products = parameters[:products]
     parameters.delete(:products)
 
+    categories = parameters[:categories]
+    parameters.delete(:categories)
+
     @article = Article.new(parameters)
 
     if products != nil
@@ -40,6 +46,17 @@ class ArticlesController < ApplicationController
         end
     else
         products = []
+    end
+
+    if categories != nil
+        categories.each_with_index do |category, i|
+            categories[i] = Category.find(category.to_i)
+            if !@article.categories.include? categories[i]
+                categories[i].articles << @article
+            end
+        end
+    else
+        categories = []
     end
 
     respond_to do |format|
@@ -66,6 +83,9 @@ class ArticlesController < ApplicationController
     products = parameters[:products]
     parameters.delete(:products)
 
+    categories = parameters[:categories]
+    parameters.delete(:categories)
+
     respond_to do |format|
       if @article.update(parameters)
         if products != nil
@@ -82,6 +102,23 @@ class ArticlesController < ApplicationController
         @article.products.each do |product|
             if !products.include? product
                 @article.product_referenceables.find_by(product_id: product.id).destroy
+            end
+        end
+
+        if categories != nil
+            categories.each_with_index do |category, i|
+                categories[i] = Category.find(category.to_i)
+                if !@article.categories.include? categories[i]
+                    categories[i].articles << @article
+                end
+            end
+        else
+            categories = []
+        end
+
+        @article.categories.each do |category|
+            if !categories.include? category
+                @article.category_categorizables.find_by(category_id: category.id).destroy
             end
         end
 
@@ -112,6 +149,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :title2, :content, :content2, :description, :description2, {:products => []}, :image)
+      params.require(:article).permit(:title, :title2, :content, :content2, :description, :description2, {:products => []}, {:categories => []}, :image)
     end
 end

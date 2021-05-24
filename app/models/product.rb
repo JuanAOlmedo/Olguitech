@@ -1,9 +1,12 @@
 class Product < ApplicationRecord
-    has_many :product_referenceables
+    has_many :product_referenceables, dependent: :destroy
     has_many :articles, through: :product_referenceables, source: :referenceable, source_type: "Article"
     has_many :proyectos, through: :product_referenceables, source: :referenceable, source_type: "Proyecto"
     
     has_one_attached :image
+
+    has_many :category_categorizables, as: :categorizable, dependent: :destroy
+    has_many :categories, through: :category_categorizables, as: :categorizable
 
     def get_title
         I18n.locale == :en && self.title2 != "" && self.title2 != nil ? self.title2 : self.title

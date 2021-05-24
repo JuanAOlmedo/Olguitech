@@ -2,15 +2,14 @@
     <%= stylesheet_link_tag 'product-show' %>
 </head>
 
-<% content_for :title, "#{@product.get_title} | Olguitech s.a.s." %>
-<% content_for :description, "#{@product.get_desc}" %>
+<% content_for :title, "#{@category.get_title} | Olguitech s.a.s." %>
 
 
 <div id='show'>
     <%= render 'layouts/back' %>
 
     <% if admin_signed_in? %>
-    <%= link_to edit_product_path(@product), class: 'edit', method: :get do %>
+    <%= link_to edit_category_path(@category), class: 'edit', method: :get do %>
     <i class='articles-fas'>
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
@@ -21,7 +20,7 @@
     </i>
     <% end %>
 
-    <%= link_to @product, method: :delete, data: { confirm: 'Estas seguro de que queres eliminar el articulo?' }, class: 'destroy' do %>
+    <%= link_to @category, method: :delete, data: { confirm: 'Estas seguro de que queres eliminar el articulo?' }, class: 'destroy' do %>
     <i class='articles-fas fas fa-trash'>
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
@@ -36,25 +35,47 @@
     <% end %>
 
     <div class="product">
-        <% if !@product.categories.empty? %>
-        <p>
-            <%= @product.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
-            <% @product.categories.each do |category| %>
-            <%= link_to (@product.categories.last == category ? category.get_title : (category.get_title + ", ")), category_path(category) %>
+        <%= link_to categories_path do %>
+        <div id="all-categories">
+            <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <polyline points="15 6 9 12 15 18" />
+            </svg>
+            <p>
+                <%= t "categories.all" %>
+            </p>
+        </div>
+        <% end %>
+
+        <h2 class='category-title'> <%= @category.get_title %> </h2>
+        <p class='product-description'> <%= @category.get_desc %> </p>
+
+        <% if !@category.products.empty? %>
+        <h2>
+            <%= t "nav.products" %>
+        </h2>
+        <% @category.products.each do |article| %>
+        <%= link_to product_path(article) do %>
+        <div class='product-article'>
+            <% if article.image.attached? %>
+            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "product-article-img lazy", alt: article.image.filename %>
             <% end %>
-        </p>
+
+            <div class='product-article-content'>
+                <h2> <%= article.get_short_title %> </h2>
+                <p> <%= article.get_short_desc %> </p>
+            </div>
+        </div>
         <% end %>
-        <h2 class='product-title'> <%= @product.get_title %> </h2>
-
-        <p class='product-description'> <%= @product.get_desc %> </p>
-
-        <% if @product.image.attached? %>
-        <img src='<%= url_for(@product.image) %>' class='product-img' alt='<%= @product.image.filename %>'>
+        <% end %>
         <% end %>
 
-        <% if !@product.articles.empty? %>
-        <h2> Articulos relacionados </h2>
-        <% @product.articles.each do |article| %>
+        <% if !@category.articles.empty? %>
+        <h2>
+            <%= t "nav.solutions" %>
+        </h2>
+
+        <% @category.articles.each do |article| %>
         <%= link_to article_path(article) do %>
         <div class='product-article'>
             <% if article.image.attached? %>
@@ -70,9 +91,11 @@
         <% end %>
         <% end %>
 
-        <% if !@product.proyectos.empty? %>
-        <h2> Proyectos relacionados </h2>
-        <% @product.proyectos.each do |article| %>
+        <% if !@category.proyectos.empty? %>
+        <h2>
+            <%= t "nav.proyects" %>
+        </h2>
+        <% @category.proyectos.each do |article| %>
         <%= link_to proyecto_path(article) do %>
         <div class='product-article'>
             <% if article.image.attached? %>

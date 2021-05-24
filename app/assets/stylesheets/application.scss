@@ -96,15 +96,16 @@ nav {
 
 .articles-hoverable-content {
     position: fixed;
-    display: none;
-    flex-wrap: wrap;
+    display: flex;
     background-color: $color6;
     background-color: #121212;
     top: 5.15em;
     left: 2rem;
     right: 2rem;
     overflow-y: auto;
-    max-height: 29rem;
+    height: 29rem;
+    visibility: hidden;
+    transition: 0.1s 0.1s;
 }
 
 // 2.1 Scrollbar //
@@ -132,7 +133,8 @@ nav {
 
 .articles-hoverable-div:hover {
     .articles-hoverable-content {
-        display: flex;
+        visibility: visible;
+        transition-delay: 0s;
     }
 
     #articles-hoverable {
@@ -142,7 +144,7 @@ nav {
 
 .articles-hoverable-div:focus {
     .articles-hoverable-content {
-        display: flex;
+        display: block;
     }
 
     #articles-hoverable {
@@ -175,7 +177,7 @@ nav {
 .articles-hoverable-article {
     width: 100%;
     height: 10rem;
-    padding: 1rem;
+    padding: 0;
     text-align: left;
     display: flex;
     margin: 0;
@@ -183,7 +185,7 @@ nav {
 
 .articles-hoverable-content a {
     width: 47%;
-    margin: 0.5rem;
+    margin: 1.5%;
 }
 
 .articles-hoverable-article-content {
@@ -195,6 +197,67 @@ nav {
     background-color: $color2;
     padding: 0.5rem;
     margin: 0;
+}
+
+.category-hoverable-div-holder {
+    width: 20%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 29rem;
+}
+.category-hoverable-div {
+    width: 100%;
+    transition: background-color 1s;
+}
+
+.category-hoverable-title {
+    width: 84%;
+    text-align: left;
+    height: 2rem;
+    margin: 0;
+    padding: 8%;
+    display: flex;
+}
+
+.category-hoverable-title img {
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+    margin-right: 0.3rem;
+}
+
+.category-hoverable-title a {
+    width: 100%;
+    display: block;
+}
+
+.category-hoverable-content {
+    background-color: $color6;
+    position: absolute;
+    width: 80%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    flex-wrap: wrap;
+    display: flex;
+    overflow-y: auto;
+    transition: 0.1s 0.1s;
+    visibility: hidden;
+}
+
+.category-hoverable-content a {
+    height: 10rem;
+}
+
+.category-hoverable-div:hover {
+    background-color: $color6;
+
+    .category-hoverable-content {
+        visibility: visible;
+        transition-delay: 0s;
+    }
+
+    transition-delay: 0s;
 }
 
 .navbar-link {
@@ -369,6 +432,15 @@ nav {
     height: 20rem;
 }
 
+@keyframes extend {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 20rem;
+    }
+}
+
 .dropdown-clickable h2 {
     display: flex;
 }
@@ -381,15 +453,6 @@ nav {
 
 .icon-tabler-chevron-down.extend {
     transform: rotateZ(180deg) translateY(0) !important;
-}
-
-@keyframes extend {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: 20rem;
-    }
 }
 
 .dropdown-clickable-extensible.de-extend {

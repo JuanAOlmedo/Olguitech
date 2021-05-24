@@ -21,7 +21,7 @@ article {
 .article-title {
     color: $color2;
     font-size: 3rem;
-    margin-bottom: 0;
+    margin: 0;
 
     @media screen and (max-width: 40rem) {
         font-size: 1.7rem;

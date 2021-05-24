@@ -27,6 +27,9 @@ class ProyectosController < ApplicationController
     products = parameters[:products]
     parameters.delete(:products)
 
+    categories = parameters[:categories]
+    parameters.delete(:categories)
+
     @proyecto = Proyecto.new(parameters)
 
     if products != nil
@@ -38,6 +41,17 @@ class ProyectosController < ApplicationController
         end
     else
         products = []
+    end
+
+    if categories != nil
+        categories.each_with_index do |category, i|
+            categories[i] = Category.find(category.to_i)
+            if !@proyecto.categories.include? categories[i]
+                categories[i].proyectos << @proyecto
+            end
+        end
+    else
+        categories = []
     end
 
     respond_to do |format|
@@ -64,6 +78,9 @@ class ProyectosController < ApplicationController
     products = parameters[:products]
     parameters.delete(:products)
 
+    categories = parameters[:categories]
+    parameters.delete(:categories)
+
     respond_to do |format|
       if @proyecto.update(parameters)
         if products != nil
@@ -80,6 +97,23 @@ class ProyectosController < ApplicationController
         @proyecto.products.each do |product|
             if !products.include? product
                 @proyecto.product_referenceables.find_by(product_id: product.id).destroy
+            end
+        end
+
+        if categories != nil
+            categories.each_with_index do |category, i|
+                categories[i] = Category.find(category.to_i)
+                if !@proyecto.categories.include? categories[i]
+                    categories[i].proyectos << @proyecto
+                end
+            end
+        else
+            categories = []
+        end
+
+        @proyecto.categories.each do |category|
+            if !categories.include? category
+                @proyecto.category_categorizables.find_by(category_id: category.id).destroy
             end
         end
 
@@ -110,6 +144,6 @@ class ProyectosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def proyecto_params
-      params.require(:proyecto).permit(:title, :title2, :content, :content2, :description, :description2, {:products => []}, :image)
+      params.require(:proyecto).permit(:title, :title2, :content, :content2, :description, :description2, {:products => []}, {:categories => []}, :image)
     end
 end

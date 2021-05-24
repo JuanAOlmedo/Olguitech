@@ -29,6 +29,9 @@ class ProductsController < ApplicationController
     proyectos = parameters[:proyectos]
     parameters.delete(:proyectos)
 
+    categories = parameters[:categories]
+    parameters.delete(:categories)
+
     @product = Product.new(parameters)
 
     if articles != nil
@@ -47,6 +50,17 @@ class ProductsController < ApplicationController
         end
     else
         proyectos = []
+    end
+
+    if categories != nil
+        categories.each_with_index do |category, i|
+            categories[i] = Category.find(category.to_i)
+            if !@product.categories.include? categories[i]
+                categories[i].products << @product
+            end
+        end
+    else
+        categories = []
     end
 
     respond_to do |format|
@@ -68,6 +82,9 @@ class ProductsController < ApplicationController
 
     proyectos = parameters[:proyectos]
     parameters.delete(:proyectos)
+
+    categories = parameters[:categories]
+    parameters.delete(:categories)
 
     respond_to do |format|
       if @product.update(parameters)
@@ -105,6 +122,23 @@ class ProductsController < ApplicationController
             end
         end
 
+        if categories != nil
+            categories.each_with_index do |category, i|
+                categories[i] = Category.find(category.to_i)
+                if !@product.categories.include? categories[i]
+                    categories[i].products << @product
+                end
+            end
+        else
+            categories = []
+        end
+
+        @product.categories.each do |category|
+            if !categories.include? category
+                @product.category_categorizables.find_by(category_id: category.id).destroy
+            end
+        end
+
         format.html { redirect_to @product, notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -131,6 +165,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-        params.require(:product).permit(:title, :title2, :description, :description2, {:articles => []}, {:proyectos => []}, :image)
+        params.require(:product).permit(:title, :title2, :description, :description2, {:articles => []}, {:proyectos => []}, {:categories => []}, :image)
     end
 end

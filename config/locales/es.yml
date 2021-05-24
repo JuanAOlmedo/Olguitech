@@ -58,6 +58,10 @@ es:
     didnt_recieve: "No recibiste instrucciones para confirmar la cuenta?"
     confirm_account: "Confirmar mi cuenta"
     are_you_sure: "Estas seguro?"
+  categories:
+    category: "Categoría"
+    categories: "Categorías"
+    all: "Todas las categorías"
   shared:
     see_more: "Ver más"
     our_products: "Nuestros Productos"

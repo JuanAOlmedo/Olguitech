@@ -1,22 +1,39 @@
-<div class='articles-hoverable-div proyects-hoverable-div navbar-link' tabindex='0'>
+<div class='articles-hoverable-div navbar-link' tabindex='0'>
     <h2 class='navbar-link' id='articles-hoverable'>
         <%= link_to (I18n.t 'nav.proyects'), proyectos_path, class:'proyectos-link' %>
     </h2>
 
     <div class='articles-hoverable-content'>
-        <% @proyectos.each do |article| %>
-        <%= link_to proyecto_path(article) do %>
-        <div class='articles-hoverable-article'>
-            <% if article.image.attached? %>
-            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img lazy", alt: article.image.filename %>
-            <% end %>
+        <div class="category-hoverable-div-holder">
+            <% @categories.each do |category| %>
+            <% if !category.proyectos.empty? %>
+            <div class="category-hoverable-div">
+                <h2 class="category-hoverable-title">
+                    <% if category.image.attached? %>
+                    <%= image_tag category.image.variant(resize_to_limit: [50, 50]), alt: category.image.filename, class: "category-img" %>
+                    <% end %>
+                    <%= link_to category.get_short_title, category_path(category) %>
+                </h2>
 
-            <div class='articles-hoverable-article-content'>
-                <h2> <%= article.get_short_title %> </h2>
-                <p> <%= article.get_short_desc %> </p>
+                <div class="category-hoverable-content">
+                    <% category.proyectos.each do |article| %>
+                    <%= link_to proyecto_path(article) do %>
+                    <div class='articles-hoverable-article'>
+                        <% if article.image.attached? %>
+                        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img lazy", alt: article.image.filename %>
+                        <% end %>
+
+                        <div class='articles-hoverable-article-content'>
+                            <h2> <%= article.get_short_title %> </h2>
+                            <p> <%= article.get_short_desc %> </p>
+                        </div>
+                    </div>
+                    <% end %>
+                    <% end %>
+                </div>
             </div>
+            <% end %>
+            <% end %>
         </div>
-        <% end %>
-        <% end %>
     </div>
 </div>

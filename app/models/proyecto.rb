@@ -3,8 +3,11 @@ class Proyecto < ApplicationRecord
     has_rich_text :content2
     has_one_attached :image
 
-    has_many :product_referenceables, foreign_key: :referenceable_id
+    has_many :product_referenceables, as: :referenceable, dependent: :destroy
     has_many :products, through: :product_referenceables, as: :referenceable
+
+    has_many :category_categorizables, as: :categorizable, dependent: :destroy
+    has_many :categories, through: :category_categorizables, as: :categorizable
 
     def get_title
         I18n.locale == :en && self.title2 != "" && self.title2 != nil ? self.title2 : self.title

@@ -94,7 +94,7 @@ nav {
     margin-right: auto;
 }
 
-.articles-hoverable-content {
+.hoverable-content {
     position: fixed;
     background-color: $color6;
     background-color: #121212;
@@ -105,31 +105,44 @@ nav {
     display: none;
 }
 
+.triangle-svg {
+    position: fixed;
+    pointer-events: none;
+    display: none;
+    opacity: 0;
+}
+
+.triangle,
+.triangle2 {
+    pointer-events: auto;
+}
+
 // 2.1 Scrollbar //
 /* width */
-.articles-hoverable-content::-webkit-scrollbar {
+.hoverable-content::-webkit-scrollbar {
     width: 10px;
 }
 
 /* Track */
-.articles-hoverable-content::-webkit-scrollbar-track {
+.hoverable-content::-webkit-scrollbar-track {
     background-color: $color6;
 }
 
 /* Handle */
-.articles-hoverable-content::-webkit-scrollbar-thumb {
+.hoverable-content::-webkit-scrollbar-thumb {
     background: $color3;
     border-radius: 5px;
 }
 ////////////
 
-.articles-hoverable-div {
+.hoverable {
     height: 100% !important;
     margin-bottom: 0 !important;
 }
 
-.articles-hoverable-div:hover {
-    .articles-hoverable-content {
+.hoverable:hover,
+.hoverable:focus-within {
+    .hoverable-content {
         display: block;
     }
 
@@ -145,18 +158,8 @@ nav {
     }
 }
 
-.articles-hoverable-div:focus {
-    .articles-hoverable-content {
-        display: block;
-    }
-
-    #articles-hoverable {
-        color: $color5 !important;
-    }
-}
-
 .dropdown-articles-hoverable-div:hover {
-    .articles-hoverable-content {
+    .hoverable-content {
         display: none;
     }
 }
@@ -170,14 +173,14 @@ nav {
     color: inherit;
 }
 
-.article-hoverable-img {
+.card-img {
     min-width: 50%;
     max-width: 50%;
     height: auto;
     object-fit: cover;
 }
 
-.articles-hoverable-article {
+.card {
     width: 100%;
     height: 10rem;
     padding: 0;
@@ -186,36 +189,49 @@ nav {
     margin: 0;
 }
 
-.articles-hoverable-content a {
+.hoverable-content a {
     width: 47%;
     margin: 1.5%;
+
+    @media only screen and (max-width: 80rem) {
+        wdith: 49%;
+        margin: 0.5%;
+    }
 }
 
-.articles-hoverable-article-content {
+.card-content {
     padding-left: 0.5rem;
 }
 
-.articles-hoverable-article h2 {
+.card h2 {
     color: $color1;
     background-color: $color2;
     padding: 0.5rem;
     margin: 0;
+
+    @media only screen and (max-width: 80rem) {
+        font-size: 1.2rem;
+    }
 }
 
-.category-hoverable-div-holder {
+.hoverable2-holder {
     width: 20%;
     overflow-y: auto;
     overflow-x: hidden;
     height: 29rem;
     direction: rtl;
+
+    @media only screen and (max-width: 80rem) {
+        width: 23%;
+    }
 }
-.category-hoverable-div {
+.hoverable2 {
     width: 100%;
     transition: background-color 1s;
     direction: ltr;
 }
 
-.category-hoverable-title {
+.hoverable2-title {
     width: 84%;
     text-align: left;
     height: 2rem;
@@ -224,19 +240,27 @@ nav {
     display: flex;
 }
 
-.category-hoverable-title img {
+.hoverable2-title a svg {
+    color: $link;
+}
+
+.hoverable2-title a svg:hover {
+    color: $link-h;
+}
+
+.hoverable2-title img {
     width: 2rem;
     height: 2rem;
     object-fit: cover;
     margin-right: 0.3rem;
 }
 
-.category-hoverable-title a {
+.hoverable2-title a {
     width: 100%;
     display: block;
 }
 
-.category-hoverable-content {
+.hoverable2-content {
     background-color: $color6;
     position: absolute;
     width: 80%;
@@ -244,25 +268,25 @@ nav {
     right: 0;
     bottom: 0;
     flex-wrap: wrap;
-    display: flex;
+    display: none;
     overflow-y: auto;
-    transition: 0s 0.2s;
-    visibility: hidden;
+
+    @media only screen and (max-width: 80rem) {
+        width: 77%;
+    }
 }
 
-.category-hoverable-content a {
+.hoverable2-content a {
     height: 10rem;
 }
 
-.category-hoverable-div:hover {
+.hoverable2:hover,
+.hoverable2:focus {
     background-color: $color6;
 
-    .category-hoverable-content {
-        visibility: visible;
-        transition-delay: 0s;
+    .hoverable2-content {
+        display: flex;
     }
-
-    transition-delay: 0s;
 }
 
 .navbar-link {

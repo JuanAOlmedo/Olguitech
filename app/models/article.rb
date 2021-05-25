@@ -15,7 +15,7 @@ class Article < ApplicationRecord
 
     def get_short_title
         title = self.get_title
-        return title.length > 50 ? title[0...50] + '...' : title
+        return title.length > 35 ? title[0...35] + '...' : title
     end
 
     def get_desc
@@ -24,7 +24,7 @@ class Article < ApplicationRecord
 
     def get_short_desc
         description = self.get_desc
-        return description.length > 100 ? description[0...100] + '...' : description
+        return description.length > 90 ? description[0...90] + '...' : description
     end
 
     def get_content

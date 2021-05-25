@@ -81,30 +81,6 @@ function dropdownClickHandler() {
     showing = showing ? false : true;
 
     if (!showing) {
-        // dropdownExtensible.classList.remove("extend");
-        // document
-        //     .querySelectorAll(".icon-tabler-chevron-down")[0]
-        //     .classList.remove("extend");
-
-        // dropdownExtensible.classList.remove("de-extend");
-        // extended = false;
-
-        // dropdownExtensible1.classList.remove("extend");
-        // document
-        //     .querySelectorAll(".icon-tabler-chevron-down")[1]
-        //     .classList.remove("extend");
-
-        // dropdownExtensible1.classList.remove("de-extend");
-        // extended1 = false;
-
-        // dropdownExtensible2.classList.remove("extend");
-        // document
-        //     .querySelectorAll(".icon-tabler-chevron-down")[2]
-        //     .classList.remove("extend");
-
-        // dropdownExtensible2.classList.remove("de-extend");
-        // extended2 = false;
-
         document.querySelector("nav").classList.remove("show-lock");
     }
 }
@@ -141,75 +117,6 @@ if (stills.length > 0) {
 
     scroll();
 }
-
-// dropdownClickableClicker = new Clicker(dropdownClickable, extend).createClick();
-
-// let extended = false;
-
-// function extend() {
-//     dropdownExtensible.classList.toggle("extend");
-//     document
-//         .querySelectorAll(".icon-tabler-chevron-down")[0]
-//         .classList.toggle("extend");
-
-//     if (extended) {
-//         dropdownExtensible.classList.add("de-extend");
-//         setTimeout(() => dropdownExtensible.classList.remove("de-extend"), 800);
-//         extended = false;
-//     } else {
-//         extended = true;
-//     }
-// }
-
-// dropdownClickableClicker1 = new Clicker(
-//     dropdownClickable1,
-//     extend1
-// ).createClick();
-
-// let extended1 = false;
-
-// function extend1() {
-//     dropdownExtensible1.classList.toggle("extend");
-//     document
-//         .querySelectorAll(".icon-tabler-chevron-down")[1]
-//         .classList.toggle("extend");
-
-//     if (extended1) {
-//         dropdownExtensible1.classList.add("de-extend");
-//         setTimeout(
-//             () => dropdownExtensible1.classList.remove("de-extend"),
-//             800
-//         );
-//         extended1 = false;
-//     } else {
-//         extended1 = true;
-//     }
-// }
-
-// dropdownClickableClicker2 = new Clicker(
-//     dropdownClickable2,
-//     extend2
-// ).createClick();
-
-// let extended2 = false;
-
-// function extend2() {
-//     dropdownExtensible2.classList.toggle("extend");
-//     document
-//         .querySelectorAll(".icon-tabler-chevron-down")[2]
-//         .classList.toggle("extend");
-
-//     if (extended2) {
-//         dropdownExtensible2.classList.add("de-extend");
-//         setTimeout(
-//             () => dropdownExtensible2.classList.remove("de-extend"),
-//             800
-//         );
-//         extended2 = false;
-//     } else {
-//         extended2 = true;
-//     }
-// }
 
 class Clickable {
     constructor(element, chevron, dropdownExtensible) {
@@ -257,3 +164,96 @@ for (i = 0; i < dropdownClickables.length; i++) {
         dropdownExtensibles[i]
     );
 }
+
+let anchors = document.querySelectorAll("#articles-hoverable"),
+    menus = document.querySelectorAll(".hoverable-content"),
+    hoverables = document.querySelectorAll(".hoverable"),
+    triangles = document.querySelectorAll(".triangle"),
+    anchors2 = document.querySelectorAll(".hoverable2-title"),
+    menus2 = document.querySelectorAll(".hoverable2-content"),
+    hoverables2 = document.querySelectorAll(".hoverable2"),
+    triangles2 = document.querySelectorAll(".triangle2");
+
+function setSvg(anchor, menu, triangle) {
+    tParent = triangle.parentElement;
+    tParent.style.height = `${menu.y}px`;
+    tParent.style.width = `${menu.x + menu.width}px`;
+    tParent.style.top = `${0}px`;
+    tParent.style.left = `${0}px`;
+
+    tParent.style.display = "block";
+
+    triangle.attributes.d.value = `
+    M ${anchor.x} ${anchor.y}
+    Q ${anchor.x} ${menu.y}
+      ${menu.x} ${menu.y}
+    h ${menu.width}
+    Q ${anchor.x + anchor.width} ${menu.y}
+      ${anchor.x + anchor.width} ${anchor.y}
+    V ${menu.y}
+    h ${-anchor.width}
+    z`;
+}
+
+function setSvg2(anchor, menu, triangle) {
+    tParent = triangle.parentElement;
+    tParent.style.height = `${menu.height + menu.y}px`;
+    tParent.style.width = `${anchor.width + anchor.x}px`;
+    tParent.style.top = "0"
+    tParent.style.left = "0"
+    tParent.style.display = "block";
+
+    triangle.attributes.d.value = `
+    M ${anchor.x} ${anchor.y}
+    Q ${menu.x} ${anchor.y}
+      ${menu.x} ${menu.y}
+    v ${menu.height}
+    Q ${menu.x} ${anchor.y + anchor.height}
+      ${anchor.x} ${anchor.y + anchor.height}
+    h ${anchor.width}
+    v ${-anchor.height}
+    z`;
+}
+
+function deSetSvg(triangle) {
+    triangle.parentElement.style.display = "none";
+}
+
+let i2;
+for (i2 = 0; i2 < hoverables.length; i2++) {
+    setMouseOver(i2);
+}
+
+let i3;
+for (i3 = 0; i3 < hoverables2.length; i3++) {
+    setMouseOver2(i3);
+}
+
+function setMouseOver(index) {
+    hoverables[index].onmouseover = function () {
+        setSvg(
+            anchors[index].getBoundingClientRect(),
+            menus[index].getBoundingClientRect(),
+            triangles[index]
+        );
+    };
+
+    hoverables[index].onmouseout = function () {
+        deSetSvg(triangles[index]);
+    };
+}
+
+function setMouseOver2(index) {
+    hoverables2[index].onmouseover = function () {
+        setSvg2(
+            anchors2[index].getBoundingClientRect(),
+            menus2[index].getBoundingClientRect(),
+            triangles2[index]
+        );
+    };
+
+    hoverables2[index].onmouseout = function () {
+        deSetSvg(triangles2[index]);
+    };
+}
+

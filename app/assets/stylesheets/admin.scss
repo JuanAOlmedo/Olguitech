@@ -8,11 +8,6 @@
 }
 
 #admin-tools {
-    // background-color: rgba(0, 0, 0, 0.3);
-    // box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    // backdrop-filter: blur(10px);
-    // filter: blur(2px);
-    // border-top-left-radius: 3rem;
     right: 0;
     bottom: 0;
     z-index: 9;
@@ -22,7 +17,6 @@
 }
 
 .right-navbar-section.admin-right {
-    // width: 60%;
     width: 67%;
 
     @media only screen and (max-width: 80rem) {
@@ -51,7 +45,6 @@
 }
 
 .right-tool {
-    filter: blur(0px);
     display: block;
     right: 0;
     bottom: 0;
@@ -62,15 +55,3 @@
     color: $accent-color;
     position: relative;
 }
-
-// .right-tool-proyecto {
-//     margin-right: 5rem;
-// }
-
-// .right-tool-news {
-//     margin-right: 9rem;
-// }
-
-// .right-tool-users {
-//     margin-right: 13rem;
-// }

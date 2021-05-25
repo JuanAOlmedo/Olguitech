@@ -1,28 +1,43 @@
-<div class='articles-hoverable-div navbar-link' tabindex='0'>
-    <h2 class='navbar-link' id='articles-hoverable'>
-        <%= link_to (I18n.t 'nav.products'), products_path, class:'products-link' %>
+<div class='hoverable navbar-link' tabindex='0'>
+    <h2 class='navbar-link products-link' id='articles-hoverable'>
+        <%= I18n.t 'nav.products' %>
         <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-chevron-down2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
             <polyline points="6 9 12 15 18 9" />
         </svg>
+        <svg class="triangle-svg" fill="rgba(0, 255, 0, 0.2)">
+            <path class="triangle" stroke="#0F0" stroke-width="2" d="" />
+        </svg>
     </h2>
 
-    <div class='articles-hoverable-content'>
-        <div class="category-hoverable-div-holder">
-            <div class="category-hoverable-div">
-                <h2 class="category-hoverable-title">
-                    <%= link_to I18n.t("shared.all"), products_path %>
+    <div class='hoverable-content articles-hoverable-content1'>
+        <div class="hoverable2-holder">
+            <div class="hoverable2" tabindex="0">
+                <h2 class="hoverable2-title">
+                    <%= I18n.t("shared.all") %>
+                    <%= link_to products_path do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />
+                        <line x1="10" y1="14" x2="20" y2="4" />
+                        <polyline points="15 4 20 4 20 9" />
+                    </svg>
+                    <% end %>
+
+                    <svg class="triangle-svg" fill="rgba(0, 255, 0, 0.2)">
+                        <path class="triangle2" stroke="#0F0" stroke-width="2" d="" />
+                    </svg>
                 </h2>
 
-                <div class="category-hoverable-content">
+                <div class="hoverable2-content">
                     <% @products.each do |article| %>
                     <%= link_to product_path(article) do %>
-                    <div class='articles-hoverable-article'>
+                    <div class='card'>
                         <% if article.image.attached? %>
-                        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img lazy", alt: article.image.filename %>
+                        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "card-img lazy", alt: article.image.filename %>
                         <% end %>
 
-                        <div class='articles-hoverable-article-content'>
+                        <div class='card-content'>
                             <h2> <%= article.get_short_title %> </h2>
                             <p> <%= article.get_short_desc %> </p>
                         </div>
@@ -34,23 +49,35 @@
 
             <% @categories.each do |category| %>
             <% if !category.products.empty? %>
-            <div class="category-hoverable-div">
-                <h2 class="category-hoverable-title">
+            <div class="hoverable2" tabindex="0">
+                <h2 class="hoverable2-title">
                     <% if category.image.attached? %>
                     <%= image_tag category.image.variant(resize_to_limit: [50, 50]), alt: category.image.filename, class: "category-img" %>
                     <% end %>
-                    <%= link_to category.get_short_title, category_path(category) %>
+                    <%= category.get_short_title %>
+                    <%= link_to category_path(category) do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-external-link" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />
+                        <line x1="10" y1="14" x2="20" y2="4" />
+                        <polyline points="15 4 20 4 20 9" />
+                    </svg>
+                    <% end %>
+
+                    <svg class="triangle-svg" fill="rgba(0, 255, 0, 0.2)">
+                        <path class="triangle2" stroke="#0F0" stroke-width="2" d="" />
+                    </svg>
                 </h2>
 
-                <div class="category-hoverable-content">
+                <div class="hoverable2-content">
                     <% category.products.each do |article| %>
                     <%= link_to product_path(article) do %>
-                    <div class='articles-hoverable-article'>
+                    <div class='card'>
                         <% if article.image.attached? %>
-                        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img lazy", alt: article.image.filename %>
+                        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "card-img lazy", alt: article.image.filename %>
                         <% end %>
 
-                        <div class='articles-hoverable-article-content'>
+                        <div class='card-content'>
                             <h2> <%= article.get_short_title %> </h2>
                             <p> <%= article.get_short_desc %> </p>
                         </div>

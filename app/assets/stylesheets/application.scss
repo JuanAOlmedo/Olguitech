@@ -139,6 +139,7 @@ nav {
 .hoverable {
     height: 100% !important;
     margin-bottom: 0 !important;
+    cursor: auto !important;
 }
 
 .hoverable:hover,
@@ -315,30 +316,6 @@ nav {
     }
 }
 
-.dropdown-big-button {
-    display: block;
-    width: 14rem;
-    margin: 1rem auto 1rem auto;
-}
-
-.dropdown-navbar-link {
-    width: 100%;
-    text-align: center;
-}
-
-.dropdown-navbar-link:hover {
-    color: $color3;
-}
-
-.dropdown-articles-hoverable-div {
-    width: 100% !important;
-}
-
-.dropdown-articles-hoverable {
-    text-align: center;
-    background-color: black;
-}
-
 .line1,
 .line2 {
     transform: rotateZ(0deg);
@@ -353,37 +330,6 @@ nav {
     transform: rotateZ(-45deg) translateX(-1.01rem) translateY(0.04rem) !important;
 }
 
-.dropdown-clickable-div {
-    color: white;
-    position: relative;
-    background-color: black;
-}
-
-.dropdown-clickable-div:focus {
-    outline: none;
-
-    .icon-tabler-chevron-down {
-        transform: translateY(3px);
-        color: $color5;
-    }
-}
-
-.dropdown-clickable-extensible {
-    display: none;
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: 20rem;
-    height: 0;
-}
-
-.dropdown-clickable-extensible.extend {
-    animation-name: extend;
-    animation-duration: 1s;
-    animation-timing-function: ease-out;
-    display: block;
-    height: 20rem;
-}
-
 @keyframes extend {
     0% {
         height: 0;
@@ -391,18 +337,6 @@ nav {
     100% {
         height: 20rem;
     }
-}
-
-.dropdown-clickable h2 {
-    display: flex;
-}
-
-.dropdown-clickable-extensible.de-extend {
-    height: 20rem;
-    display: block;
-    animation-name: de-extend;
-    animation-timing-function: ease-in;
-    animation-duration: 0.8s;
 }
 
 @keyframes de-extend {
@@ -414,18 +348,6 @@ nav {
         min-height: 0;
         max-height: 0;
     }
-}
-
-#extensible-link {
-    color: $link;
-    text-decoration: underline;
-    display: block;
-    margin-bottom: 1rem;
-}
-
-#extensible-link:hover {
-    color: $link-h;
-    text-decoration: none;
 }
 
 // 3. ICONS //
@@ -530,26 +452,36 @@ i h3 {
         background-color: $color1;
         position: fixed;
         padding: 1rem 2rem 1rem 2rem;
-        margin-top: 5.4em;
+        margin-top: 5.15em;
         transform: translateX(150%);
         transition: transform 1s;
         will-change: transform;
         visibility: hidden;
         overflow-y: auto;
         display: block;
+        font-size: 1rem;
     }
 
     .right-navbar-section.show {
         transform: translateX(0);
         visibility: visible;
+
+        .icon-tabler-chevron-down2 {
+            visibility: visible;
+        }
     }
 
     .right-navbar-section.visible {
         visibility: visible;
+
+        .icon-tabler-chevron-down2 {
+            visibility: visible;
+        }
     }
 
     .hoverable {
         height: auto !important;
+        cursor: pointer;
     }
 
     .hoverable-content {
@@ -582,13 +514,34 @@ i h3 {
         position: absolute;
         transition: transform 1s;
         bottom: unset;
-        visibility: visible;
+        visibility: hidden;
         opacity: 1;
         transform: translateY(-0.5rem);
     }
 
     .icon-tabler-chevron-down2.extend {
         transform: rotateZ(180deg) translateY(0.5rem) !important;
+    }
+
+    #articles-hoverable {
+        cursor: pointer;
+    }
+
+    .card {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .card-content {
+        padding: 0;
+    }
+
+    .card-img {
+        width: 100%;
+        min-width: none;
+        max-width: none;
+        height: 15rem;
     }
 
     .hoverable:hover,
@@ -628,6 +581,7 @@ i h3 {
         display: block;
         width: 14rem;
         margin: 1rem auto 1rem auto;
+        font-size: 1.45rem;
     }
 
     #dropdown-bars {

@@ -18,9 +18,11 @@ nav.show {
     box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
 }
 
-nav.show-lock {
-    background-color: #121212;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+@media only screen and (max-width: 67rem) {
+    nav.show-lock {
+        background-color: #121212;
+        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+    }
 }
 
 main {

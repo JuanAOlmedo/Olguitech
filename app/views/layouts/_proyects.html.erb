@@ -50,7 +50,7 @@
             <% @categories.each do |category| %>
             <% if !category.proyectos.empty? %>
             <div class="hoverable2" tabindex="0">
-                <h2 class="hoverable2-title">
+                <h3 class="hoverable2-title">
                     <% if category.image.attached? %>
                     <%= image_tag category.image.variant(resize_to_limit: [50, 50]), alt: category.image.filename, class: "category-img" %>
                     <% end %>
@@ -67,7 +67,7 @@
                     <svg class="triangle-svg" fill="rgba(0, 255, 0, 0.2)">
                         <path class="triangle2" stroke="#0F0" stroke-width="2" d="" />
                     </svg>
-                </h2>
+                </h3>
 
                 <div class="hoverable2-content">
                     <% category.proyectos.each do |article| %>

@@ -48,7 +48,7 @@ if ("IntersectionObserver" in window) {
 }
 
 const dropdownBars = document.querySelector("#dropdown-bars"),
-    dropdown = document.querySelector("#dropdown"),
+    dropdown = document.querySelector(".right-navbar-section"),
     dropdownNavLinks = document.querySelectorAll(".dropdown-navbar-link"),
     dropdownAccessLinks = document.querySelectorAll(".dropdown-access");
 

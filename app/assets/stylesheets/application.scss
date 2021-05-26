@@ -147,7 +147,7 @@ nav {
     }
 
     #articles-hoverable {
-        color: $color5 !important;
+        color: $color5;
     }
 
     .icon-tabler-chevron-down2 {
@@ -238,6 +238,8 @@ nav {
     margin: 0;
     padding: 8%;
     display: flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .hoverable2-title a svg {
@@ -299,10 +301,6 @@ nav {
         width: 7.4rem;
         padding-right: 0.4rem;
     }
-}
-
-.navbar-link:hover {
-    color: $color5 !important;
 }
 
 .big-navbar-link {
@@ -372,32 +370,6 @@ nav {
     .line2 {
         transform: translateY(0.07rem);
     }
-}
-
-#dropdown {
-    right: 0;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 99;
-    background-color: $color1;
-    position: fixed;
-    padding: 1rem 2rem 1rem 2rem;
-    margin-top: 5.1em;
-    transform: translateX(150%);
-    transition: transform 1s;
-    will-change: transform;
-    visibility: hidden;
-    overflow-y: auto;
-}
-
-#dropdown.show {
-    transform: translateX(0);
-    visibility: visible;
-}
-
-#dropdown.visible {
-    visibility: visible;
 }
 
 .dropdown-big-button {
@@ -617,7 +589,46 @@ i h3 {
 
 @media only screen and (max-width: 67rem) {
     .right-navbar-section {
-        display: none;
+        right: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 99;
+        background-color: $color1;
+        position: fixed;
+        padding: 1rem 2rem 1rem 2rem;
+        margin-top: 5.4em;
+        transform: translateX(150%);
+        transition: transform 1s;
+        will-change: transform;
+        visibility: hidden;
+        overflow-y: auto;
+        display: block;
+    }
+    
+    .right-navbar-section.show {
+        transform: translateX(0);
+        visibility: visible;
+    }
+    
+    .right-navbar-section.visible {
+        visibility: visible;
+    }
+
+    .navbar-link {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .navbar-link:hover {
+        color: $color3;
+    }
+
+    .big-navbar-link {
+        padding: 0.6rem;
+        display: block;
+        width: 14rem;
+        margin: 1rem auto 1rem auto;
     }
 
     #dropdown-bars {

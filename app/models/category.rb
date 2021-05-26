@@ -12,7 +12,7 @@ class Category < ApplicationRecord
 
     def get_short_title
         title = self.get_title
-        return title.length > 10 ? title[0...10] + '...' : title
+        return title.length > 15 ? title[0...15] + '...' : title
     end
 
     def get_desc

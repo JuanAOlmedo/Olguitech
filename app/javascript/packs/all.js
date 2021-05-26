@@ -56,12 +56,15 @@ let showing = false;
 
 window.onclick = function (event) {
     if (
-        !event.target.matches(".dropdown") &&
-        !event.target.matches(".dropdown-clickable") &&
+        !dropdown.contains(event.target) &&
+        !dropdownBars.contains(event.target) &&
         dropdown.classList.contains("show")
     ) {
         dropdownClickHandler();
     }
+    console.log(dropdown.contains(event.target));
+    console.log(dropdown);
+    console.log(event.target);
 };
 
 dropdownBarsClicker = new Clicker(dropdownBars, dropdownClickHandler);
@@ -150,11 +153,9 @@ class Clickable {
     }
 }
 
-const dropdownClickables = document.querySelectorAll(".dropdown-clickable-div"),
-    chevrons = document.querySelectorAll(".icon-tabler-chevron-down");
-dropdownExtensibles = document.querySelectorAll(
-    ".dropdown-clickable-extensible"
-);
+const dropdownClickables = document.querySelectorAll(".hoverable"),
+    chevrons = document.querySelectorAll(".icon-tabler-chevron-down2"),
+    dropdownExtensibles = document.querySelectorAll(".hoverable-content");
 
 let i;
 for (i = 0; i < dropdownClickables.length; i++) {
@@ -168,11 +169,7 @@ for (i = 0; i < dropdownClickables.length; i++) {
 let anchors = document.querySelectorAll("#articles-hoverable"),
     menus = document.querySelectorAll(".hoverable-content"),
     hoverables = document.querySelectorAll(".hoverable"),
-    triangles = document.querySelectorAll(".triangle"),
-    anchors2 = document.querySelectorAll(".hoverable2-title"),
-    menus2 = document.querySelectorAll(".hoverable2-content"),
-    hoverables2 = document.querySelectorAll(".hoverable2"),
-    triangles2 = document.querySelectorAll(".triangle2");
+    triangles = document.querySelectorAll(".triangle");
 
 function setSvg(anchor, menu, triangle) {
     tParent = triangle.parentElement;
@@ -195,26 +192,6 @@ function setSvg(anchor, menu, triangle) {
     z`;
 }
 
-function setSvg2(anchor, menu, triangle) {
-    tParent = triangle.parentElement;
-    tParent.style.height = `${menu.height + menu.y}px`;
-    tParent.style.width = `${anchor.width + anchor.x}px`;
-    tParent.style.top = "0"
-    tParent.style.left = "0"
-    tParent.style.display = "block";
-
-    triangle.attributes.d.value = `
-    M ${anchor.x} ${anchor.y}
-    Q ${menu.x} ${anchor.y}
-      ${menu.x} ${menu.y}
-    v ${menu.height}
-    Q ${menu.x} ${anchor.y + anchor.height}
-      ${anchor.x} ${anchor.y + anchor.height}
-    h ${anchor.width}
-    v ${-anchor.height}
-    z`;
-}
-
 function deSetSvg(triangle) {
     triangle.parentElement.style.display = "none";
 }
@@ -222,11 +199,6 @@ function deSetSvg(triangle) {
 let i2;
 for (i2 = 0; i2 < hoverables.length; i2++) {
     setMouseOver(i2);
-}
-
-let i3;
-for (i3 = 0; i3 < hoverables2.length; i3++) {
-    setMouseOver2(i3);
 }
 
 function setMouseOver(index) {
@@ -242,18 +214,3 @@ function setMouseOver(index) {
         deSetSvg(triangles[index]);
     };
 }
-
-function setMouseOver2(index) {
-    hoverables2[index].onmouseover = function () {
-        setSvg2(
-            anchors2[index].getBoundingClientRect(),
-            menus2[index].getBoundingClientRect(),
-            triangles2[index]
-        );
-    };
-
-    hoverables2[index].onmouseout = function () {
-        deSetSvg(triangles2[index]);
-    };
-}
-

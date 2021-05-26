@@ -103,6 +103,8 @@ nav {
     right: 2rem;
     overflow-y: auto;
     display: none;
+    flex-wrap: wrap;
+    max-height: 29rem;
 }
 
 .triangle-svg {
@@ -112,8 +114,7 @@ nav {
     opacity: 0;
 }
 
-.triangle,
-.triangle2 {
+.triangle {
     pointer-events: auto;
 }
 
@@ -143,7 +144,7 @@ nav {
 .hoverable:hover,
 .hoverable:focus-within {
     .hoverable-content {
-        display: block;
+        display: flex;
     }
 
     #articles-hoverable {
@@ -173,6 +174,16 @@ nav {
     color: inherit;
 }
 
+.hoverable-title2 {
+    width: 97%;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.hoverable-title2 a {
+    margin: 0 !important;
+}
+
 .card-img {
     min-width: 50%;
     max-width: 50%;
@@ -194,7 +205,7 @@ nav {
     margin: 1.5%;
 
     @media only screen and (max-width: 80rem) {
-        wdith: 49%;
+        width: 49%;
         margin: 0.5%;
     }
 }
@@ -214,81 +225,13 @@ nav {
     }
 }
 
-.hoverable2-holder {
-    width: 20%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 29rem;
-    direction: rtl;
-
-    @media only screen and (max-width: 80rem) {
-        width: 23%;
-    }
-}
-.hoverable2 {
-    width: 100%;
-    transition: background-color 1s;
-    direction: ltr;
-}
-
-.hoverable2-title {
-    width: 84%;
-    text-align: left;
-    height: 2rem;
-    margin: 0;
-    padding: 8%;
-    display: flex;
-    align-items:center;
-    justify-content:center;
-}
-
-.hoverable2-title a svg {
+.icon-tabler-external-link {
     color: $link;
 }
 
-.hoverable2-title a svg:hover {
-    color: $link-h;
-}
-
-.hoverable2-title img {
-    width: 2rem;
-    height: 2rem;
-    object-fit: cover;
-    margin-right: 0.3rem;
-}
-
-.hoverable2-title a {
-    width: 100%;
-    display: block;
-}
-
-.hoverable2-content {
-    background-color: $color6;
-    position: absolute;
-    width: 80%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    flex-wrap: wrap;
-    display: none;
-    overflow-y: auto;
-
-    @media only screen and (max-width: 80rem) {
-        width: 77%;
-    }
-}
-
-.hoverable2-content a {
-    height: 10rem;
-}
-
-.hoverable2:hover,
-.hoverable2:focus {
-    background-color: $color6;
-
-    .hoverable2-content {
-        display: flex;
-    }
+.icon-tabler-external-link:hover,
+.icon-tabler-external-link:visited {
+    color: $link;
 }
 
 .navbar-link {
@@ -454,16 +397,6 @@ nav {
     display: flex;
 }
 
-.icon-tabler-chevron-down {
-    position: absolute;
-    top: -0.5rem;
-    transition: transform 1s;
-}
-
-.icon-tabler-chevron-down.extend {
-    transform: rotateZ(180deg) translateY(0) !important;
-}
-
 .dropdown-clickable-extensible.de-extend {
     height: 20rem;
     display: block;
@@ -605,21 +538,87 @@ i h3 {
         overflow-y: auto;
         display: block;
     }
-    
+
     .right-navbar-section.show {
         transform: translateX(0);
         visibility: visible;
     }
-    
+
     .right-navbar-section.visible {
         visibility: visible;
+    }
+
+    .hoverable {
+        height: auto !important;
+    }
+
+    .hoverable-content {
+        display: none;
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 20rem;
+        height: 0;
+        background-color: $color1;
+        position: unset;
+    }
+
+    .hoverable-content.extend {
+        animation-name: extend;
+        animation-duration: 1s;
+        animation-timing-function: ease-out;
+        display: block;
+        height: 20rem;
+    }
+
+    .hoverable-content.de-extend {
+        height: 20rem;
+        display: block;
+        animation-name: de-extend;
+        animation-timing-function: ease-in;
+        animation-duration: 0.8s;
+    }
+
+    .icon-tabler-chevron-down2 {
+        position: absolute;
+        transition: transform 1s;
+        bottom: unset;
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(-0.5rem);
+    }
+
+    .icon-tabler-chevron-down2.extend {
+        transform: rotateZ(180deg) translateY(0.5rem) !important;
+    }
+
+    .hoverable:hover,
+    .hoverable:focus-within {
+        outline: none;
+
+        .hoverable-content {
+            display: none;
+        }
+
+        .hoverable-content.extend,
+        .hoverable-content.de-extend {
+            display: block;
+        }
+
+        #articles-hoverable {
+            color: $color5;
+        }
+
+        .icon-tabler-chevron-down2 {
+            transform: translateY(-0.35rem);
+            color: $color5;
+        }
     }
 
     .navbar-link {
         width: 100%;
         text-align: center;
     }
-    
+
     .navbar-link:hover {
         color: $color3;
     }

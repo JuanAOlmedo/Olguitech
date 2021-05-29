@@ -2,32 +2,61 @@
     <%= stylesheet_link_tag 'articles-index' %>
 
     <style>
-        .proyectos-link {
+        .proyects-link {
             color: #CCC !important;
         }
     </style>
 </head>
 
 <% content_for :title, "#{I18n.t "shared.our_proyects"} | Olguitech s.a.s." %>
-<h1 class='index-title'> <%= I18n.t "shared.our_proyects" %> </h1>
+<h1 class='index-title'>
+    <%= I18n.t "shared.our_proyects" %>
+</h1>
 
-<div class='articles-div'>
-    <% @proyectos.each do |article| %>
-    <div class='article still move'>
-        <% if article.image.attached? %>
-        <img src='<%= url_for(article.image) %>' class='article-img' alt='<%= article.image.filename %>'>
-        <% end %>
+<div class="menu">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="currentColor" fill="none">
+        <path d="" />
+    </svg>
 
-        <div class='article-information'>
-            <h2 class='article-title'> <%= article.get_title %> </h2>
-            <p class='article-text'>
-                <%= article.get_desc %> <br>
-            </p>
-
-            <%= link_to proyecto_path(article), title: t('shared.see_more') do %>
-            <%= render 'layouts/more' %>
-            <% end %>
-        </div>
-    </div>
+    <% @categories.each do |category| %>
+    <% if !category.proyectos.empty? %>
+    <h4 class="menu-title">
+        <a class="menu-link" href="#<%= category.id %>"><%= category.get_title%></a>
+    </h4>
+    <% else %>
+    <h4 style="display: none;">
+        <a class="menu-link" href="#<%= category.id %>"><%= category.get_title%></a>
+    </h4>
+    <% end %>
     <% end %>
 </div>
+
+<div class='articles-div'>
+    <% @categories.each_with_index do |category, index| %>
+    <% if !category.proyectos.empty? %>
+    <div class="category" data-title="<%= category.get_title %>" id="<%= category.id %>" data-index="<%= index %>">
+        <h2> <%= category.get_title %> </h2>
+        <% category.proyectos.each do |article| %>
+        <div class='article still move'>
+            <% if article.image.attached? %>
+            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
+            <% end %>
+
+            <div class='article-information'>
+                <h2 class='article-title'> <%= article.get_title %> </h2>
+                <p class='article-text'>
+                    <%= article.get_desc %> <br>
+                </p>
+
+                <%= link_to article_path(article), title: t('shared.see_more') do %>
+                <%= render 'layouts/more' %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+    <% end %>
+</div>
+
+<%= javascript_pack_tag "index" %>

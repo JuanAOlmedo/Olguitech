@@ -452,7 +452,7 @@ i h3 {
         background-color: $color1;
         position: fixed;
         padding: 1rem 2rem 1rem 2rem;
-        margin-top: 5.15em;
+        margin-top: 5.1em;
         transform: translateX(150%);
         transition: transform 1s;
         will-change: transform;
@@ -516,7 +516,7 @@ i h3 {
         bottom: unset;
         visibility: hidden;
         opacity: 1;
-        transform: translateY(-0.5rem);
+        top: -0.5rem;
     }
 
     .icon-tabler-chevron-down2.extend {

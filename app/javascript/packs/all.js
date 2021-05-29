@@ -62,9 +62,6 @@ window.onclick = function (event) {
     ) {
         dropdownClickHandler();
     }
-    console.log(dropdown.contains(event.target));
-    console.log(dropdown);
-    console.log(event.target);
 };
 
 dropdownBarsClicker = new Clicker(dropdownBars, dropdownClickHandler);

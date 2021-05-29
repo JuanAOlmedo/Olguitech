@@ -4,7 +4,11 @@ class ProyectosController < ApplicationController
 
   # GET /proyectos
   def index
-    @proyectos = Proyecto.all.order(created_at: :desc)
+    # order_by = params[:order_by] == "created_at" || params[:order_by] == "title" || params[:order_by] == "title2" ? params[:order_by] : "created_at"
+    order_by = I18n.locale == 'en' ? 'title2' : 'title'
+
+    # asc_desc = params[:asc_desc] == "asc" || params[:asc_desc] == "desc" ? params[:asc_desc] : "desc"
+    @categories = Category.all.order(order_by => :desc)
   end
 
   # GET /proyectos/1

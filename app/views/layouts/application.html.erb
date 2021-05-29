@@ -20,8 +20,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="//fonts.googleapis.com/css2?family=Montserrat&family=Varela+Round&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Montserrat&family=Varela+Round&family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -51,6 +50,8 @@
             <img src='/Logo.webp' alt="<%= t "shared.logo" %>" class='logo'>
             <% end %>
         </div>
+
+        <%= render 'layouts/dropdown' %>
 
         <div class="right-navbar-section">
             <%= render 'layouts/products' %>
@@ -88,8 +89,6 @@
             <%= link_to 'Admin', edit_admin_registration_path, class: "big-navbar-link" %>
             <% end %>
         </div>
-
-        <%= render 'layouts/dropdown' %>
     </nav>
 
 

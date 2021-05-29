@@ -13,23 +13,50 @@
     <%= I18n.t "shared.our_solutions" %>
 </h1>
 
-<div class='articles-div'>
-    <% @articles.each do |article| %>
-    <div class='article still move'>
-        <% if article.image.attached? %>
-        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
-        <% end %>
+<div class="menu">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="currentColor" fill="none">
+        <path d="" />
+    </svg>
 
-        <div class='article-information'>
-            <h2 class='article-title'> <%= article.get_title %> </h2>
-            <p class='article-text'>
-                <%= article.get_desc %> <br>
-            </p>
-
-            <%= link_to article_path(article), title: t('shared.see_more') do %>
-            <%= render 'layouts/more' %>
-            <% end %>
-        </div>
-    </div>
+    <% @categories.each do |category| %>
+    <% if !category.articles.empty? %>
+    <h4 class="menu-title">
+        <a class="menu-link" href="#<%= category.id %>"><%= category.get_title%></a>
+    </h4>
+    <% else %>
+    <h4 style="display: none;">
+        <a class="menu-link" href="#<%= category.id %>"><%= category.get_title%></a>
+    </h4>
+    <% end %>
     <% end %>
 </div>
+
+<div class='articles-div'>
+    <% @categories.each_with_index do |category, index| %>
+    <% if !category.articles.empty? %>
+    <div class="category" data-title="<%= category.get_title %>" id="<%= category.id %>" data-index="<%= index %>">
+        <h2> <%= category.get_title %> </h2>
+        <% category.articles.each do |article| %>
+        <div class='article still move'>
+            <% if article.image.attached? %>
+            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
+            <% end %>
+
+            <div class='article-information'>
+                <h2 class='article-title'> <%= article.get_title %> </h2>
+                <p class='article-text'>
+                    <%= article.get_desc %> <br>
+                </p>
+
+                <%= link_to article_path(article), title: t('shared.see_more') do %>
+                <%= render 'layouts/more' %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+    <% end %>
+</div>
+
+<%= javascript_pack_tag "index" %>

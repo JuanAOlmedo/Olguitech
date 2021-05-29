@@ -6,7 +6,7 @@ children.splice(0, 1);
 
 if ("IntersectionObserver" in window) {
     const categoryObserver = new IntersectionObserver(
-        (entries, imgObserver) => {
+        (entries, categoryObserver) => {
             entries.forEach((entry) => {
                 if (!entry.isIntersecting) {
                     entry.target.classList.remove("visible1");

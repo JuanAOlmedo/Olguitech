@@ -151,7 +151,7 @@ class Clickable {
 }
 
 const dropdownClickables = document.querySelectorAll(".hoverable"),
-    chevrons = document.querySelectorAll(".icon-tabler-chevron-down2"),
+    chevrons = document.querySelectorAll(".icon-tabler-chevron-down"),
     dropdownExtensibles = document.querySelectorAll(".hoverable-content");
 
 let i;

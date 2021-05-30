@@ -316,6 +316,17 @@ nav {
     }
 }
 
+.icon-tabler-chevron-down {
+    position: absolute;
+    // top: -0.5rem;
+    transition: transform 1s;
+    display: none;
+}
+
+.icon-tabler-chevron-down.extend {
+    transform: rotateZ(180deg) translateY(0) !important;
+}
+
 .line1,
 .line2 {
     transform: rotateZ(0deg);
@@ -511,16 +522,11 @@ i h3 {
     }
 
     .icon-tabler-chevron-down2 {
-        position: absolute;
-        transition: transform 1s;
-        bottom: unset;
-        visibility: hidden;
-        opacity: 1;
-        transform: translateY(-0.5rem);
+        display: none;
     }
 
-    .icon-tabler-chevron-down2.extend {
-        transform: rotateZ(180deg) translateY(0.5rem) !important;
+    .icon-tabler-chevron-down {
+        display: inline;
     }
 
     #articles-hoverable {

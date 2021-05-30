@@ -318,13 +318,14 @@ nav {
 
 .icon-tabler-chevron-down {
     position: absolute;
-    // top: -0.5rem;
+    transform: translateY(-0.5rem);
     transition: transform 1s;
     display: none;
+    pointer-events: none;
 }
 
 .icon-tabler-chevron-down.extend {
-    transform: rotateZ(180deg) translateY(0) !important;
+    transform: rotateZ(180deg) translateY(0.5rem) !important;
 }
 
 .line1,
@@ -526,7 +527,7 @@ i h3 {
     }
 
     .icon-tabler-chevron-down {
-        display: inline;
+        display: inline-block;
     }
 
     #articles-hoverable {

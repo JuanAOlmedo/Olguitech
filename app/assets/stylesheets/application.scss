@@ -156,7 +156,10 @@ nav {
         visibility: visible;
         opacity: 1;
         transform: translateY(2px);
-        transition-delay: 0s;
+    }
+
+    .icon-tabler-chevron-down {
+        transform: translateY(3px);
     }
 }
 
@@ -318,14 +321,13 @@ nav {
 
 .icon-tabler-chevron-down {
     position: absolute;
-    transform: translateY(-0.5rem);
+    top: -0.5rem;
     transition: transform 1s;
     display: none;
-    pointer-events: none;
 }
 
 .icon-tabler-chevron-down.extend {
-    transform: rotateZ(180deg) translateY(0.5rem) !important;
+    transform: rotateZ(180deg) translateY(0) !important;
 }
 
 .line1,
@@ -466,7 +468,7 @@ i h3 {
         padding: 1rem 2rem 1rem 2rem;
         margin-top: 5.1em;
         transform: translateX(150%);
-        transition: transform 1s;
+        transition: transform 0.8s;
         will-change: transform;
         visibility: hidden;
         overflow-y: auto;
@@ -494,6 +496,7 @@ i h3 {
     .hoverable {
         height: auto !important;
         cursor: pointer;
+        position: relative;
     }
 
     .hoverable-content {
@@ -532,6 +535,7 @@ i h3 {
 
     #articles-hoverable {
         cursor: pointer;
+        // display: inline-block;
     }
 
     .card {
@@ -576,6 +580,7 @@ i h3 {
 
     .navbar-link {
         width: 100%;
+        padding: 0;
         text-align: center;
     }
 

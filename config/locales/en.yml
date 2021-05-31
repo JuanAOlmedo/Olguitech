@@ -58,6 +58,14 @@ en:
     didnt_recieve: "Didn't recieve confirmation instructions?"  
     confirm_account: "Confirm my account"
     are_you_sure: "Are you sure?"
+  index:
+    sort_by: "Sort By"
+    category: "Category"
+    up_desc: "Last edited"
+    created_desc: "Last created"
+    created_asc: "First created"
+    title_asc: "Title AZ"
+    title_desc: "Title ZA"
   categories:
     category: "Category"
     categories: "Categories"

@@ -39,6 +39,14 @@
     }
 }
 
+.articles-div2 {
+    margin: 0 20% 5rem 20%;
+
+    @media only screen and (max-width: 72rem) {
+        margin: 0 15% 5rem 15%;
+    }
+}
+
 .article {
     background-color: $color4;
     height: auto;
@@ -133,7 +141,7 @@
 }
 
 .category {
-    padding-top: 6rem;
+    padding-top: 3rrem;
     border-bottom: solid $color6 2px;
 }
 
@@ -162,7 +170,7 @@ h4.visible {
     .menu {
         left: 0;
         right: 0;
-        top: 5.15em;
+        top: 5.1em;
         bottom: unset;
         height: auto;
         transition: height 0.5s;
@@ -178,4 +186,39 @@ h4.visible {
     h4.visible {
         display: block;
     }
+}
+
+.popup .info {
+    display: flex;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.popup .info h2 {
+    margin: auto 0 auto 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.popup .popuptext {
+    display: none;
+    width: 160px;
+    background-color: $color7;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s;
+    line-height: 45px;
+}
+
+.sort {
+    margin: 0;
+}
+
+.popup .show {
+    display: block;
+    opacity: 1;
 }

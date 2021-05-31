@@ -322,6 +322,7 @@ nav {
 .icon-tabler-chevron-down {
     position: absolute;
     top: -0.5rem;
+    right: 0;
     transition: transform 1s;
     display: none;
 }
@@ -511,7 +512,7 @@ i h3 {
 
     .hoverable-content.extend {
         animation-name: extend;
-        animation-duration: 1s;
+        animation-duration: 0.8s;
         animation-timing-function: ease-out;
         display: block;
         height: 20rem;
@@ -530,7 +531,7 @@ i h3 {
     }
 
     .icon-tabler-chevron-down {
-        display: inline-block;
+        display: block;
     }
 
     #articles-hoverable {

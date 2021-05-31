@@ -1,3 +1,52 @@
+class Clicker {
+    constructor(element, action, parameters = null) {
+        this.element = element;
+        this.action = action;
+        this.parameters = parameters;
+
+        this.createClick = function () {
+            element.tabIndex = 0;
+            element.style.cursor = "pointer";
+
+            if (parameters == "event") {
+                element.onclick = function (e) {
+                    action(e);
+                };
+                element.onkeydown = function (event) {
+                    if (event.keyCode == 32 || event.keyCode == 13) {
+                        event.preventDefault();
+                        action(event);
+                    }
+                };
+            } else {
+                element.onclick = function () {
+                    action(parameters);
+                };
+                element.onkeydown = function (event) {
+                    if (event.keyCode == 32 || event.keyCode == 13) {
+                        event.preventDefault();
+                        action(parameters);
+                    }
+                };
+            }
+        };
+    }
+}
+
+sortClicker = new Clicker(
+    document.querySelector(".popup .info"),
+    showSort,
+    true
+);
+sortClicker.createClick();
+
+function showSort(add) {
+    if (add) {
+        document.querySelector(".popuptext").classList.toggle("show");
+    }
+}
+
+
 const icon = document.querySelector(".icon-tabler-minus-vertical"),
     path = document.querySelector(".icon-tabler-minus-vertical path"),
     menu = document.querySelector(".menu"),

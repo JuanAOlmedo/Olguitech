@@ -10,6 +10,7 @@
 
 <% content_for :title, "#{I18n.t "shared.our_solutions"} | Olguitech s.a.s." %>
 
+<% if @categories %>
 <div class="menu">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="currentColor" fill="none">
         <path d="" />
@@ -22,7 +23,6 @@
     </h4>
     <% else %>
     <h4 style="display: none;">
-        <%= category.get_title%>
     </h4>
     <% end %>
     <% end %>
@@ -32,6 +32,27 @@
     <h1 class='index-title'>
         <%= I18n.t "shared.our_solutions" %>
     </h1>
+
+    <div class="popup">
+        <div class="info">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 9l4 -4l4 4m-4 -4v14" />
+                <path d="M21 15l-4 4l-4 -4m4 4v-14" />
+            </svg>
+            <h2>
+                <%= t "index.sort_by" %>
+            </h2>
+        </div>
+        <div class="popuptext">
+            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories) %></p>
+            <p class="sort"><%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_asc"), url_for(order_by: :created_at, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_asc"), url_for(order_by: :title, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_desc"), url_for(order_by: :title, asc_desc: :desc) %></p>
+        </div>
+    </div>
 
     <% @categories.each_with_index do |category, index| %>
     <% if !category.articles.empty? %>
@@ -59,5 +80,52 @@
     <% end %>
     <% end %>
 </div>
+<% else %>
+<div class='articles-div articles-div2'>
+    <h1 class='index-title'>
+        <%= I18n.t "shared.our_solutions" %>
+    </h1>
+
+    <div class="popup">
+        <div class="info">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 9l4 -4l4 4m-4 -4v14" />
+                <path d="M21 15l-4 4l-4 -4m4 4v-14" />
+            </svg>
+            <h2>
+                <%= t "index.sort_by" %>
+            </h2>
+        </div>
+        <div class="popuptext">
+            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories) %></p>
+            <p class="sort"><%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_asc"), url_for(order_by: :created_at, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_asc"), url_for(order_by: :title, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_desc"), url_for(order_by: :title, asc_desc: :desc) %></p>
+        </div>
+    </div>
+
+    <% @articles.each do |article| %>
+    <div class='article still move'>
+        <% if article.image.attached? %>
+        <%= image_tag article.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
+        <% end %>
+
+        <div class='article-information'>
+            <h2 class='article-title'> <%= article.get_title %> </h2>
+            <p class='article-text'>
+                <%= article.get_desc %> <br>
+            </p>
+
+            <%= link_to article_path(article), title: t('shared.see_more') do %>
+            <%= render 'layouts/more' %>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+</div>
+<% end %>
 
 <%= javascript_pack_tag "index" %>

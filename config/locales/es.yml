@@ -58,6 +58,14 @@ es:
     didnt_recieve: "No recibiste instrucciones para confirmar la cuenta?"
     confirm_account: "Confirmar mi cuenta"
     are_you_sure: "Estas seguro?"
+  index:
+    sort_by: "Ordenar por"
+    category: "Categoría"
+    up_desc: "Último editado"
+    created_desc: "Último creado"
+    created_asc: "Primero creado"
+    title_asc: "Título AZ"
+    title_desc: "Título ZA"
   categories:
     category: "Categoría"
     categories: "Categorías"

@@ -4,7 +4,15 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    order_by = params[:order_by] == "created_at" || params[:order_by] == "updated_at" || params[:order_by] == "title" || params[:order_by] == "categories" ? params[:order_by] : "categories"
+    order_by = order_by == "title" && I18n.locale == :en ? "title2" : order_by
+    asc_desc = params[:asc_desc] == "asc" || params[:asc_desc] == "desc" ? params[:asc_desc] : "desc"
+
+    if order_by == "categories"
+        @categories = Category.all.order(created_at: :desc)
+    else 
+        @products = Product.all.order(order_by => asc_desc) 
+    end
   end
 
   # GET /products/1 or /products/1.json

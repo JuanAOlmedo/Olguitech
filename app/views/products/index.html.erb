@@ -9,21 +9,121 @@
 </head>
 
 <% content_for :title, "#{I18n.t "shared.our_products"} | Olguitech s.a.s." %>
-<h1 class='index-title'> <%= I18n.t "shared.our_products" %> </h1>
 
-<div class='products-div'>
-    <% @products.each do |product| %>
-    <div class="product">
-        <% if product.image.attached? %>
-        <img src='<%= url_for(product.image) %>' alt='<%= product.image.filename %>' class='product-img'>
-        <% end %>
-        <div class='product-info'>
-            <h2 class="product-title"> <%= product.get_title %> </h2>
-            <p class="product-desc"> <%= product.get_desc %> </p>
-            <%= link_to product_path(product), class: "product-more-link" do %>
-            <%= render 'layouts/more' %>
-            <% end %>
-        </div>
-    </div>
+<% if @categories %>
+<div class="menu">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="currentColor" fill="none">
+        <path d="" />
+    </svg>
+
+    <% @categories.each do |category| %>
+    <% if !category.products.empty? %>
+    <h4 class="menu-title">
+        <%= category.get_title%>
+    </h4>
+    <% else %>
+    <h4 style="display: none;">
+    </h4>
+    <% end %>
     <% end %>
 </div>
+
+<div class='products-div'>
+    <h1 class='index-title'>
+        <%= I18n.t "shared.our_products" %>
+    </h1>
+
+    <div class="popup">
+        <div class="info">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 9l4 -4l4 4m-4 -4v14" />
+                <path d="M21 15l-4 4l-4 -4m4 4v-14" />
+            </svg>
+            <h2>
+                <%= t "index.sort_by" %>
+            </h2>
+        </div>
+        <div class="popuptext">
+            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories) %></p>
+            <p class="sort"><%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_asc"), url_for(order_by: :created_at, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_asc"), url_for(order_by: :title, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_desc"), url_for(order_by: :title, asc_desc: :desc) %></p>
+        </div>
+    </div>
+
+    <% @categories.each_with_index do |category, index| %>
+    <% if !category.products.empty? %>
+    <h2> <%= category.get_title %> </h2>
+    <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
+        <% category.products.each do |product| %>
+        <div class='product'>
+            <%= link_to product_path(product) do %>
+            <% if product.image.attached? %>
+            <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
+            <% end %>
+
+            <div class='product-info'>
+                <h2 class='product-title'> <%= product.get_title %> </h2>
+                <p class='product-text'>
+                    <%= product.get_desc %> <br>
+                </p>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+    <% end %>
+</div>
+<% else %>
+<div class='products-div products-div2'>
+    <h1 class='index-title'>
+        <%= I18n.t "shared.our_products" %>
+    </h1>
+
+    <div class="popup">
+        <div class="info">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 9l4 -4l4 4m-4 -4v14" />
+                <path d="M21 15l-4 4l-4 -4m4 4v-14" />
+            </svg>
+            <h2>
+                <%= t "index.sort_by" %>
+            </h2>
+        </div>
+        <div class="popuptext">
+            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories) %></p>
+            <p class="sort"><%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc) %></p>
+            <p class="sort"><%= link_to t("index.created_asc"), url_for(order_by: :created_at, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_asc"), url_for(order_by: :title, asc_desc: :asc) %></p>
+            <p class="sort"><%= link_to t("index.title_desc"), url_for(order_by: :title, asc_desc: :desc) %></p>
+        </div>
+    </div>
+
+    <div class="products-sub-div">
+        <% @products.each do |product| %>
+        <div class='product'>
+            <%= link_to product_path(product) do %>
+            <% if product.image.attached? %>
+            <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
+            <% end %>
+
+            <div class='product-info'>
+                <h2 class='product-title'> <%= product.get_title %> </h2>
+                <p class='product-text'>
+                    <%= product.get_desc %> <br>
+                </p>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</div>
+<% end %>
+
+<%= javascript_pack_tag "index" %>

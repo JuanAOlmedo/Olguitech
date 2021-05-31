@@ -47,7 +47,7 @@
         <p>
             <%= @article.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
             <% @article.categories.each do |category| %>
-            <%= link_to (@article.categories.last == category ? category.get_title : (category.get_title + ", ")), category_path(category) %>
+            <%= link_to category.get_title, category_path(category), class: "category-link" %><%= "#{@article.categories.last != category ? ", " : ""}" %>
             <% end %>
         </p>
         <% end %>
@@ -72,22 +72,20 @@
         <% if !@article.products.empty? %>
         <h2> Productos relacionados </h2>
         <% @article.products.each do |product| %>
-        <div class="product">
+        <%= link_to product_path(product) do %>
+        <div class="card">
             <% if product.image.attached? %>
-            <img src='<%= url_for(product.image) %>' alt='<%= product.image.filename %>' class='product-img'>
+            <%= image_tag product.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(product.image)}, class: "card-img lazy", alt: product.image.filename %>
             <% end %>
-            <div class='product-info'>
-                <h2 class="product-title"> <%= product.get_title %> </h2>
-                <p class="product-desc"> <%= product.get_desc %> </p>
-                <%= link_to product_path(product), class: "product-more-link" do %>
-                <%= render 'layouts/more' %>
-                <% end %>
+            <div class='card-content'>
+                <h2> <%= product.get_title %> </h2>
+                <p> <%= product.get_desc %> </p>
             </div>
         </div>
+        <% end %>
         <% end %>
         <% end %>
     </article>
 
     <%= javascript_pack_tag 'show' %>
-</div>= javascript_pack_tag 'show' %>
 </div>

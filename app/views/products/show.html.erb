@@ -46,7 +46,7 @@
         <p>
             <%= @product.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
             <% @product.categories.each do |category| %>
-            <%= link_to (@product.categories.last == category ? category.get_title : (category.get_title + ", ")), category_path(category) %>
+            <%= link_to category.get_title, category_path(category), class: "category-link" %><%= "#{@product.categories.last != category ? ", " : ""}" %>
             <% end %>
         </p>
         <% end %>
@@ -62,12 +62,12 @@
         <h2> Articulos relacionados </h2>
         <% @product.articles.each do |article| %>
         <%= link_to article_path(article) do %>
-        <div class='product-article'>
+        <div class='card'>
             <% if article.image.attached? %>
-            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "product-article-img lazy", alt: article.image.filename %>
+            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "card-img lazy", alt: article.image.filename %>
             <% end %>
 
-            <div class='product-article-content'>
+            <div class='card-content'>
                 <h2> <%= article.get_short_title %> </h2>
                 <p> <%= article.get_short_desc %> </p>
             </div>
@@ -80,12 +80,12 @@
         <h2> Proyectos relacionados </h2>
         <% @product.proyectos.each do |article| %>
         <%= link_to proyecto_path(article) do %>
-        <div class='product-article'>
+        <div class='card'>
             <% if article.image.attached? %>
-            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "product-article-img lazy", alt: article.image.filename %>
+            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "card-img lazy", alt: article.image.filename %>
             <% end %>
 
-            <div class='product-article-content'>
+            <div class='card-content'>
                 <h2> <%= article.get_short_title %> </h2>
                 <p> <%= article.get_short_desc %> </p>
             </div>

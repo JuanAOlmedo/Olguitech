@@ -36,6 +36,14 @@
     margin: 1.5%;
     height: 25rem;
     padding: 0;
+
+    @media only screen and (max-width: 70rem) {
+        width: 47%;
+    }
+
+    @media only screen and (max-width: 40rem) {
+        width: 97%;
+    }
 }
 
 .category {

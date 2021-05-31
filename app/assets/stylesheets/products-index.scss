@@ -16,7 +16,7 @@
     }
 
     @media only screen and (max-width: 45rem) {
-        margin: 11rem 5% 0 5%;
+        margin: 8rem 5% 0 5%;
         width: 90%;
         font-size: 3rem;
     }
@@ -50,12 +50,21 @@
 .products-sub-div {
     display: flex;
     flex-wrap: wrap;
+
+    @media only screen and (max-width: 50rem) {
+        display: block;
+    }
 }
 
 .product {
     width: 47%;
     margin: 1.5%;
     height: 13rem;
+
+    @media only screen and (max-width: 50rem) {
+        width: 100%;
+        margin: 1rem 0 1rem 0;
+    }
 }
 
 .product a {
@@ -92,6 +101,10 @@
     bottom: 0rem;
     overflow-y: auto;
     color: $color2;
+
+    @media only screen and (max-width: 50rem) {
+        display: none;
+    }
 }
 
 .icon-tabler-minus-vertical {
@@ -127,6 +140,10 @@
     display: flex;
     flex-wrap: wrap;
     padding: 1rem 0 1rem 0;
+
+    @media only screen and (max-width: 50rem) {
+        display: block;
+    }
 }
 
 h4.visible {
@@ -146,31 +163,7 @@ h4.visible {
     color: $color2;
 }
 
-@media only screen and (max-width: 50rem) {
-    .icon-tabler-minus-vertical {
-        display: none;
-    }
 
-    .menu {
-        left: 0;
-        right: 0;
-        top: 5.1em;
-        bottom: unset;
-        height: auto;
-        transition: height 0.5s;
-        padding: 0.5rem 1rem 0.5rem 1rem;
-        background-color: $color6;
-        z-index: 5;
-    }
-
-    .menu h4 {
-        display: none;
-    }
-
-    h4.visible {
-        display: block;
-    }
-}
 
 .popup .info {
     display: flex;

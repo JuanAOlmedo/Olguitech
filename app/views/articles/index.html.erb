@@ -19,7 +19,7 @@
     <% @categories.each do |category| %>
     <% if !category.articles.empty? %>
     <h4 class="menu-title">
-        <%= category.get_title%>
+        <%= link_to category.get_short_title, category_path(category), class: "menu-link" %>
     </h4>
     <% else %>
     <h4 style="display: none;">

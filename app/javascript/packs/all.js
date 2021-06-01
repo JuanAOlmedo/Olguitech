@@ -40,11 +40,34 @@ if ("IntersectionObserver" in window) {
     document.querySelectorAll("img.lazy").forEach((img) => {
         imgObserver.observe(img);
     });
+
+    const stillsObserver = new IntersectionObserver(
+        (entries, stillsObserver) => {
+            entries.forEach((entry) => {
+                const still = entry.target;
+                if (!entry.isIntersecting) {
+                    still.classList.remove("move");
+                    return;
+                }
+                
+                still.classList.add("move");
+            });
+        },
+        { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".still").forEach((still) => {
+        stillsObserver.observe(still);
+    });
 } else {
     document.querySelectorAll("img.lazy").forEach((img) => {
         img.src = img.dataset.src ? img.dataset.src : img.src;
         img.classList.remove("lazy");
     });
+
+    document.querySelectorAll(".still").forEach((still) => {
+        still.classList.add("move");
+    })
 }
 
 const dropdownBars = document.querySelector("#dropdown-bars"),
@@ -96,27 +119,7 @@ function defineElementOffset(element, change) {
 }
 
 const articlesHoverableDiv = document.querySelector(".articles-hoverable-div"),
-    proyectsHoverableDiv = document.querySelector(".proyects-hoverable-div"),
-    stills = document.querySelectorAll(".still");
-
-function scroll() {
-    stills.forEach(function (still) {
-        if (defineElementOffset(still, 200)) {
-            still.classList.add("move");
-        } else {
-            still.classList.remove("move");
-        }
-    });
-}
-
-if (stills.length > 0) {
-    document.addEventListener("scroll", scroll);
-    window.addEventListener("DOMContentLoaded", scroll);
-    window.addEventListener("resize", scroll);
-    window.addEventListener("orientationChange", scroll);
-
-    scroll();
-}
+    proyectsHoverableDiv = document.querySelector(".proyects-hoverable-div");
 
 class Clickable {
     constructor(element, chevron, dropdownExtensible) {

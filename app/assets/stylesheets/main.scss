@@ -34,7 +34,7 @@ main {
 }
 
 .title {
-    color: #FFF;
+    color: #fff;
     font-size: 4rem;
     margin-top: 12rem;
     margin-bottom: 2rem;
@@ -54,7 +54,7 @@ main {
 }
 
 .subtitle {
-    color: #FFF;
+    color: #fff;
     width: 60%;
     font-size: 1.5rem;
 
@@ -90,7 +90,6 @@ main {
     height: 30rem;
     opacity: 0.6;
     transition: opacity 1s;
-    
 
     @media screen and (max-width: 50rem) {
         height: 50rem;
@@ -142,12 +141,14 @@ main {
     }
 }
 
-#previous:hover, #previous:focus {
+#previous:hover,
+#previous:focus {
     transform: translateX(-10px);
     outline: none;
 }
 
-#next:hover, #next:focus {
+#next:hover,
+#next:focus {
     transform: translateX(10px);
     outline: none;
 }
@@ -229,7 +230,8 @@ main {
     min-width: 50%;
     max-width: 50%;
     height: auto;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     transition: border-radius 1s;
 
     @media screen and (max-width: 50rem) {
@@ -321,12 +323,14 @@ main {
         left: auto;
     }
 }
-#proyects-previous:hover, #proyects-previous:focus {
+#proyects-previous:hover,
+#proyects-previous:focus {
     transform: translateX(-10px);
     outline: none;
 }
 
-#proyects-next:hover, #proyects-next:focus {
+#proyects-next:hover,
+#proyects-next:focus {
     transform: translateX(10px);
     outline: none;
 }
@@ -373,7 +377,8 @@ main {
     min-width: 50%;
     max-width: 50%;
     height: auto;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 
     @media screen and (max-width: 50rem) {
         min-width: 100%;

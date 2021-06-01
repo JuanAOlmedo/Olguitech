@@ -49,7 +49,7 @@ if ("IntersectionObserver" in window) {
                     still.classList.remove("move");
                     return;
                 }
-                
+
                 still.classList.add("move");
             });
         },
@@ -67,7 +67,7 @@ if ("IntersectionObserver" in window) {
 
     document.querySelectorAll(".still").forEach((still) => {
         still.classList.add("move");
-    })
+    });
 }
 
 const dropdownBars = document.querySelector("#dropdown-bars"),

@@ -1,5 +1,5 @@
 const closeAlert = document.querySelector(".close-alert"),
-      alertPrompt = document.querySelector(".alert");
+    alertPrompt = document.querySelector(".alert");
 
 closeAlert.onclick = () => {
     close();
@@ -24,7 +24,7 @@ function actionButtonKeyupHandler(event) {
 }
 
 function close() {
-    alertPrompt.classList.add("disappear")
+    alertPrompt.classList.add("disappear");
 
-    setTimeout(() => alertPrompt.style.display = "none", 1000)
+    setTimeout(() => (alertPrompt.style.display = "none"), 1000);
 }

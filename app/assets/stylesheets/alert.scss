@@ -53,10 +53,11 @@
     }
 
     @media only screen and (max-width: 380px) {
-        width: 85%;        
+        width: 85%;
     }
 }
 
-.alert.disappear, .notice.disappear {
+.alert.disappear,
+.notice.disappear {
     transform: translateY(-20rem);
 }

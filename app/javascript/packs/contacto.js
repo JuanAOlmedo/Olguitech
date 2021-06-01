@@ -38,8 +38,7 @@ function add_map_point(lat, lng) {
                 anchor: [0.6, 0.8],
                 anchorXUnits: "fraction",
                 anchorYUnits: "fraction",
-                src:
-                    "https://upload.wikimedia.org/wikipedia/commons/0/0a/Marker_location.png",
+                src: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Marker_location.png",
             }),
         }),
     });

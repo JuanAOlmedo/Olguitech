@@ -33,21 +33,21 @@ class Clicker {
     }
 }
 
-document.querySelectorAll(".times-contacted").forEach(function(contacted) {
+document.querySelectorAll(".times-contacted").forEach(function (contacted) {
     contactClicker = new Clicker(contacted, clickerHandler, "event");
     contactClicker.createClick();
-})
+});
 
-document.querySelectorAll(".icon-tabler-x").forEach(function(x) {
+document.querySelectorAll(".icon-tabler-x").forEach(function (x) {
     xClicker = new Clicker(x, xClickerHandler, "event");
     xClicker.createClick();
-})
+});
 
 function clickerHandler(e) {
     const id = e.target.dataset.id;
     const info = document.querySelector("#article-" + id);
     if (info) {
-        info.style.display = 'block';
+        info.style.display = "block";
     }
 }
 
@@ -55,7 +55,7 @@ function xClickerHandler(e) {
     const id = e.target.dataset.id;
     const info = document.querySelector("#article-" + id);
     if (info) {
-        info.style.display = 'none';
+        info.style.display = "none";
     }
 }
 

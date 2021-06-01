@@ -242,6 +242,9 @@ trix-editor [data-trix-cursor-target]::-moz-selection,
 trix-editor [data-trix-mutable] ::-moz-selection {
     background: none;
 }
+trix-editor [data-trix-mutable]::-moz-selection, trix-editor [data-trix-cursor-target]::-moz-selection, trix-editor [data-trix-mutable] ::-moz-selection {
+    background: none;
+}
 trix-editor [data-trix-mutable]::selection,
 trix-editor [data-trix-cursor-target]::selection,
 trix-editor [data-trix-mutable] ::selection {
@@ -250,6 +253,9 @@ trix-editor [data-trix-mutable] ::selection {
 
 trix-editor
     [data-trix-mutable].attachment__caption-editor:focus::-moz-selection {
+    background: highlight;
+}
+trix-editor [data-trix-mutable].attachment__caption-editor:focus::-moz-selection {
     background: highlight;
 }
 trix-editor [data-trix-mutable].attachment__caption-editor:focus::selection {
@@ -395,22 +401,22 @@ trix-editor .attachment__metadata .attachment__size {
     white-space: nowrap;
 }
 trix-editor blockquote {
-    border: 0 solid #FFF;
+    border: 0 solid #fff;
     border-left-width: 0.3em;
     margin-left: 0.3em;
     padding-left: 0.6em;
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
-trix-editor  a {
+trix-editor a {
     color: $link;
     text-decoration: underline;
 }
-trix-editor  a:hover {
+trix-editor a:hover {
     color: $link-h;
     text-decoration: none;
 }
-trix-editor  a:visited {
+trix-editor a:visited {
     color: $link-h;
     text-decoration: underline;
 }
@@ -431,7 +437,7 @@ trix-editor  a:visited {
     font-family: "Montserrat", "Helvetica", sans-serif;
 }
 .trix-content blockquote {
-    border: 0 solid #FFF;
+    border: 0 solid #fff;
     border-left-width: 0.3em;
     margin-left: 0.3em;
     padding-left: 0.6em;
@@ -448,15 +454,15 @@ trix-editor  a:visited {
 .trix-content li {
     margin-left: 1em;
 }
-.trix-content  a {
+.trix-content a {
     color: $link;
     text-decoration: underline;
 }
-.trix-content  a:hover {
+.trix-content a:hover {
     color: $link-h;
     text-decoration: none;
 }
-.trix-content  a:visited {
+.trix-content a:visited {
     color: $link-h;
     text-decoration: underline;
 }

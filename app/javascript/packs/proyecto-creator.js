@@ -45,10 +45,7 @@ fileInput.onchange = () => {
 };
 
 preview.onclick = show;
-xClicker = new Clicker(
-    document.querySelector(".x"),
-    stopShow
-).createClick();
+xClicker = new Clicker(document.querySelector(".x"), stopShow).createClick();
 
 function stopShow() {
     document.querySelector("#show").style.display = "none";
@@ -74,13 +71,11 @@ flag2Clicker = new Clicker(
     "es"
 ).createClick();
 
-
-function changeLanguage(lang) {    
+function changeLanguage(lang) {
     if (lang == "es") {
         articleTitle.innerHTML = formTitle.value;
         articleDescription.innerHTML = formDescription.value;
-        articleText.innerHTML =
-        formContent.innerHTML;
+        articleText.innerHTML = formContent.innerHTML;
     } else {
         articleTitle.innerHTML =
             formTitle2.value != "" ? formTitle2.value : formTitle.value;

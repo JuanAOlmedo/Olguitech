@@ -78,6 +78,7 @@
     min-width: 50%;
     max-width: 50%;
     height: auto;
+    -o-object-fit: cover;
     object-fit: cover;
 }
 
@@ -120,19 +121,19 @@
 
 .menu h4 {
     transition: padding 0.5s;
-    color: #AAA;
+    color: #aaa;
 }
 
 .menu-link {
-    color: #AAA;
+    color: #aaa;
 }
 
 .menu-link:visited {
-    color: #AAA;
+    color: #aaa;
 }
 
 .menu-link:hover {
-    color: #AAA;
+    color: #aaa;
 }
 
 .category {
@@ -162,8 +163,6 @@ h4.visible {
 .visible .menu-link:hover {
     color: $color2;
 }
-
-
 
 .popup .info {
     display: flex;

@@ -47,7 +47,6 @@ function showSort(add) {
     }
 }
 
-
 const icon = document.querySelector(".icon-tabler-minus-vertical"),
     path = document.querySelector(".icon-tabler-minus-vertical path"),
     menu = document.querySelector(".menu"),

@@ -66,7 +66,7 @@ main {
 }
 
 #a1::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -82,7 +82,7 @@ main {
     filter: blur(2px);
 
     @supports (-webkit-touch-callout: none) {
-        background: url('/Background2.webp') center top no-repeat scroll;
+        background: url("/Background2.webp") center top no-repeat scroll;
     }
 }
 
@@ -90,7 +90,7 @@ main {
     background: url("/Background2.jpg") no-repeat fixed;
 
     @supports (-webkit-touch-callout: none) {
-        background: url('/Background2.jpg') center top no-repeat scroll;
+        background: url("/Background2.jpg") center top no-repeat scroll;
     }
 }
 
@@ -101,7 +101,7 @@ main {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
     @supports (-webkit-touch-callout: none) {
-        background: url('/Background3.webp') center no-repeat scroll;
+        background: url("/Background3.webp") center no-repeat scroll;
     }
 }
 
@@ -109,7 +109,7 @@ main {
     background: url("/Background3.jpg") no-repeat fixed;
 
     @supports (-webkit-touch-callout: none) {
-        background: url('/Background3.jpg') center top no-repeat scroll;
+        background: url("/Background3.jpg") center top no-repeat scroll;
     }
 }
 
@@ -121,7 +121,7 @@ main {
 }
 
 #nosotros-link {
-    color: #CCC !important;
+    color: #ccc !important;
 }
 
 .nosotros-title {
@@ -132,7 +132,7 @@ main {
 
 .profiles {
     text-align: center;
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: Georgia, "Times New Roman", serif;
     padding-top: 5rem;
     display: flex;
     flex-wrap: wrap;
@@ -189,7 +189,7 @@ main {
     .profile-title {
         font-size: 1.2rem;
     }
-    
+
     .profile-profession {
         font-size: 1rem;
     }

@@ -61,7 +61,8 @@
 
 .article img {
     height: 20rem;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
 }
 
 .article.move {
@@ -96,7 +97,8 @@
     width: 100%;
     height: auto;
     max-height: 40rem;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     margin: 0;

@@ -103,15 +103,18 @@ article {
 .trix-content li {
     margin-left: 1em;
 }
-.trix-content a, .category-link {
+.trix-content a,
+.category-link {
     color: $link;
     text-decoration: underline;
 }
-.trix-content a:hover, .category-link:hover {
+.trix-content a:hover,
+.category-link:hover {
     color: $link-h;
     text-decoration: none;
 }
-.trix-content a:visited, .category-link:visited {
+.trix-content a:visited,
+.category-link:visited {
     color: $link-h;
     text-decoration: underline;
 }

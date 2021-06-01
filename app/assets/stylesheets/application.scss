@@ -102,9 +102,13 @@ nav {
     left: 2rem;
     right: 2rem;
     overflow-y: auto;
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     max-height: 29rem;
+    visibility: hidden;
+    opacity: 0.3;
+    transform: translateY(-0.25rem);
+    transition: opacity 0.3s, transform 0.3s;
 }
 
 .triangle-svg {
@@ -145,7 +149,9 @@ nav {
 .hoverable:hover,
 .hoverable:focus-within {
     .hoverable-content {
-        display: flex;
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     #articles-hoverable {

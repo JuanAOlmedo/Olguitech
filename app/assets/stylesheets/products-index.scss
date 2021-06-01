@@ -43,7 +43,7 @@
     margin: 0 15% 5rem 15%;
 
     @media only screen and (max-width: 72rem) {
-        margin: 0 15% 5rem 15%;
+        margin: 0 auto 5rem auto;
     }
 }
 
@@ -178,7 +178,7 @@ h4.visible {
 }
 
 .popup .popuptext {
-    display: none;
+    visibility: hidden;
     width: 160px;
     background-color: $color7;
     color: #fff;
@@ -187,7 +187,8 @@ h4.visible {
     position: absolute;
     z-index: 10;
     opacity: 0;
-    transition: opacity 0.3s;
+    transform: translateY(-0.2rem);
+    transition: opacity 0.1s, transform 0.2s, visibility 1s;
     line-height: 45px;
 }
 
@@ -195,7 +196,26 @@ h4.visible {
     margin: 0;
 }
 
+.sort:hover,
+.sort:focus-within {
+    background-color: $color6;
+}
+
 .popup .show {
-    display: block;
+    visibility: visible;
     opacity: 1;
+    transform: translateY(0rem);
+}
+
+.arrow1,
+.arrow2 {
+    transition: transform 0.5s;
+}
+
+.clicked .arrow1 {
+    transform: translateY(-0.1rem);
+}
+
+.clicked .arrow2 {
+    transform: translateY(0.1rem);
 }

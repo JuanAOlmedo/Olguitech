@@ -42,6 +42,7 @@ sortClicker.createClick();
 
 function showSort(add) {
     if (add) {
+        document.querySelector(".popup .info").classList.toggle("clicked");
         document.querySelector(".popuptext").classList.toggle("show");
     }
 }

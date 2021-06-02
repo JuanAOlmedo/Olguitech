@@ -14,6 +14,14 @@ class ArticlesController < ApplicationController
         else 
             @articles = Article.all.order(order_by => asc_desc) 
         end
+
+        @uncategorized = []
+
+        Article.all.each do |article|
+            if article.categories.empty?
+                @uncategorized << article
+            end
+        end
     end
 
     # GET /articles/1

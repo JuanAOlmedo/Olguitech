@@ -13,6 +13,14 @@ class ProyectosController < ApplicationController
     else 
         @proyectos = Proyecto.all.order(order_by => asc_desc) 
     end
+
+    @uncategorized = []
+
+    Proyecto.all.each do |proyecto|
+        if proyecto.categories.empty?
+            @uncategorized << proyecto
+        end
+    end
   end
 
   # GET /proyectos/1

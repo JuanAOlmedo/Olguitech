@@ -59,6 +59,7 @@ en:
     confirm_account: "Confirm my account"
     are_you_sure: "Are you sure?"
   index:
+    uncategorized: "Uncategorized"
     sort_by: "Sort By"
     category: "Category"
     up_desc: "Last edited"
@@ -66,6 +67,10 @@ en:
     created_asc: "First created"
     title_asc: "Title AZ"
     title_desc: "Title ZA"
+  show:
+    articles: "Related solutions"
+    proyects: "Related projects"
+    products: "Related products"
   categories:
     category: "Category"
     categories: "Categories"

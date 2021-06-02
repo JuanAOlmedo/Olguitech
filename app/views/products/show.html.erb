@@ -59,7 +59,9 @@
         <% end %>
 
         <% if !@product.articles.empty? %>
-        <h2> Articulos relacionados </h2>
+        <h2>
+            <%= t "show.articles" %>
+        </h2>
         <% @product.articles.each do |article| %>
         <%= link_to article_path(article) do %>
         <div class='card'>
@@ -77,7 +79,9 @@
         <% end %>
 
         <% if !@product.proyectos.empty? %>
-        <h2> Proyectos relacionados </h2>
+        <h2>
+            <%= t "show.proyects" %>
+        </h2>
         <% @product.proyectos.each do |article| %>
         <%= link_to proyecto_path(article) do %>
         <div class='card'>

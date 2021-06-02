@@ -59,6 +59,7 @@ es:
     confirm_account: "Confirmar mi cuenta"
     are_you_sure: "Estas seguro?"
   index:
+    uncategorized: "Sin categoría"
     sort_by: "Ordenar por"
     category: "Categoría"
     up_desc: "Último editado"
@@ -66,6 +67,10 @@ es:
     created_asc: "Primero creado"
     title_asc: "Título AZ"
     title_desc: "Título ZA"
+  show:
+    articles: "Soluciones relacionadas"
+    proyects: "Proyectos relacionados"
+    products: "Productos relacionados"
   categories:
     category: "Categoría"
     categories: "Categorías"

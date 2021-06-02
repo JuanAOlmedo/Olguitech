@@ -26,6 +26,11 @@
     </h4>
     <% end %>
     <% end %>
+    <% if !@uncategorized.empty? %>
+    <h4 class="menu-title">
+        <%= t "index.uncategorized" %>
+    </h4>
+    <% end %>
 </div>
 
 <div class='products-div'>
@@ -76,6 +81,27 @@
         <% end %>
     </div>
     <% end %>
+    <% end %>
+    <% if !@uncategorized.empty? %>
+    <h2> <%= t "index.uncategorized" %> </h2>
+    <div class="category" data-index="<%= @categories.length %>">
+        <% @uncategorized.each do |product| %>
+        <div class='product'>
+            <%= link_to product_path(product) do %>
+            <% if product.image.attached? %>
+            <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
+            <% end %>
+
+            <div class='product-info'>
+                <h2 class='product-title'> <%= product.get_title %> </h2>
+                <p class='product-text'>
+                    <%= product.get_desc %> <br>
+                </p>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
     <% end %>
 </div>
 <% else %>

@@ -26,6 +26,11 @@
     </h4>
     <% end %>
     <% end %>
+    <% if !@uncategorized.empty? %>
+    <h4 class="menu-title">
+        <%= t "index.uncategorized" %>
+    </h4>
+    <% end %>
 </div>
 
 <div class='articles-div'>
@@ -78,6 +83,29 @@
         <% end %>
     </div>
     <% end %>
+    <% end %>
+    <% if !@uncategorized.empty? %>
+    <div class="category" data-index="<%= @categories.length %>">
+        <h2> <%= t "index.uncategorized" %> </h2>
+        <% @uncategorized.each do |article| %>
+        <div class='article still move'>
+            <% if article.image.attached? %>
+            <%= image_tag article.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
+            <% end %>
+
+            <div class='article-information'>
+                <h2 class='article-title'> <%= article.get_title %> </h2>
+                <p class='article-text'>
+                    <%= article.get_desc %> <br>
+                </p>
+
+                <%= link_to proyecto_path(article), title: t('shared.see_more') do %>
+                <%= render 'layouts/more' %>
+                <% end %>
+            </div>
+        </div>
+        <% end %>
+    </div>
     <% end %>
 </div>
 <% else %>

@@ -54,19 +54,17 @@
     border-radius: 2rem;
     padding: 0;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    transform: translateY(4rem);
-    transition: transform 1s, opacity 1s;
-    opacity: 0.05;
+    transition: opacity 1s;
+    opacity: 0.4;
 }
 
 .article img {
     height: 20rem;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
 }
 
 .article.move {
-    transform: translateY(0);
     opacity: 1;
 }
 
@@ -98,7 +96,7 @@
     height: auto;
     max-height: 40rem;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     margin: 0;

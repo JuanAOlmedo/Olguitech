@@ -13,6 +13,14 @@ class ProductsController < ApplicationController
     else 
         @products = Product.all.order(order_by => asc_desc) 
     end
+
+    @uncategorized = []
+
+    Product.all.each do |product|
+        if product.categories.empty?
+            @uncategorized << product
+        end
+    end
   end
 
   # GET /products/1 or /products/1.json
@@ -73,7 +81,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
+        format.html { redirect_to @product, notice: "Producto creado exitosamente." }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -147,7 +155,7 @@ class ProductsController < ApplicationController
             end
         end
 
-        format.html { redirect_to @product, notice: "Product was successfully updated." }
+        format.html { redirect_to @product, notice: "Producto actualizado exitosamente." }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -160,7 +168,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
+      format.html { redirect_to products_url, notice: "Producto destruido exitosamente." }
       format.json { head :no_content }
     end
   end

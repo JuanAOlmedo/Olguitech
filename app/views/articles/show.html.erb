@@ -70,7 +70,9 @@
         </i>
 
         <% if !@article.products.empty? %>
-        <h2> Productos relacionados </h2>
+        <h2>
+            <%= t "show.products" %>
+        </h2>
         <% @article.products.each do |product| %>
         <%= link_to product_path(product) do %>
         <div class="card">

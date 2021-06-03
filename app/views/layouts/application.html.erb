@@ -46,7 +46,7 @@
 
     <nav>
         <div class="left-navbar-section">
-            <%= link_to root_path, method: :get do %>
+            <%= link_to root_path do %>
             <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox=" 0 0 4519 1856">
                 <title><%= t "shared.logo" %></title>
                 <path fill="#ffb03c" stroke-width="0" d="M 251,891.5 C 214,574 363,325 676,266 988,222 1206,412 1263,607 1263,607.5 1262,607 1204,627 1142,383 901,257 660,302 437,360 285,536 333.5,868 295,878 331,869 251,891 Z" />
@@ -64,16 +64,16 @@
             <%= render 'layouts/proyects' %>
 
             <h2 class='navbar-link'>
-                <%= link_to (I18n.t 'nav.about_us'), nosotros_path, method: :get, id: "nosotros-link" %>
+                <%= link_to (I18n.t 'nav.about_us'), nosotros_path, id: "nosotros-link" %>
             </h2>
 
             <h2 class='navbar-link'>
-                <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", method: :get, id: "contacto-link" %>
+                <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", id: "contacto-link" %>
             </h2>
 
             <% if admin_signed_in? %>
             <h2 class='navbar-link' id="newsletter-link">
-                <%= link_to 'Newsletters', newsletters_path, method: :get, id: "newsletter-link" %>
+                <%= link_to 'Newsletters', newsletters_path, id: "newsletter-link" %>
             </h2>
             <% end %>
 

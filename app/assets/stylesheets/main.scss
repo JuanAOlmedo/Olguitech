@@ -392,10 +392,14 @@ main {
     padding-top: 8rem;
     margin: 0;
     width: 100%;
-    background: url("/Contact2.webp") no-repeat center top;
+    background: url("/Contact1.webp") no-repeat center top;
     background-size: cover;
     color: white;
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+}
+
+.no-webp .information-section {
+    background: url("/Contact.jpg") no-repeat center top;
 }
 
 .information-title {

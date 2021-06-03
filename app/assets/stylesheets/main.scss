@@ -402,6 +402,11 @@ main {
     background: url("/Contact.jpg") no-repeat center top;
 }
 
+.information-section.lazy {
+    background: url("/Contact3.webp") no-repeat center top;
+    background-size: cover;
+}
+
 .information-title {
     padding: 0.5rem;
     font-size: 3rem;

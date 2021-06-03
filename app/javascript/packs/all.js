@@ -29,15 +29,15 @@ if ("IntersectionObserver" in window) {
                 if (!entry.isIntersecting) return;
 
                 const img = entry.target;
-                img.src = img.dataset.src ? img.dataset.src : img.src;
-                imgObserver.unobserve(entry.target);
                 img.classList.remove("lazy");
+                imgObserver.unobserve(entry.target);
+                img.src = img.dataset.src ? img.dataset.src : img.src;
             });
         },
         { threshold: 0 }
     );
 
-    document.querySelectorAll("img.lazy").forEach((img) => {
+    document.querySelectorAll(".lazy").forEach((img) => {
         imgObserver.observe(img);
     });
 
@@ -60,9 +60,9 @@ if ("IntersectionObserver" in window) {
         stillsObserver.observe(still);
     });
 } else {
-    document.querySelectorAll("img.lazy").forEach((img) => {
-        img.src = img.dataset.src ? img.dataset.src : img.src;
+    document.querySelectorAll("lazy").forEach((img) => {
         img.classList.remove("lazy");
+        img.src = img.dataset.src ? img.dataset.src : img.src;
     });
 
     document.querySelectorAll(".still").forEach((still) => {

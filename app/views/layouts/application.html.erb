@@ -28,9 +28,7 @@
 
        @proyectos = Proyecto.all.order(created_at: :desc)
        
-       @products = Product.all.order(created_at: :desc)
-       
-       @categories = Category.all.order(created_at: :desc) %>
+       @products = Product.all.order(created_at: :desc) %>
 
     <% if flash[:alert] %>
     <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>

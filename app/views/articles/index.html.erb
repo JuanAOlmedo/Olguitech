@@ -50,7 +50,7 @@
             </h2>
         </div>
         <div class="popuptext">
-            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories) %></p>
+            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories, asc_desc: :desc) %></p>
             <p class="sort"><%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc) %></p>
             <p class="sort"><%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc) %></p>
             <p class="sort"><%= link_to t("index.created_asc"), url_for(order_by: :created_at, asc_desc: :asc) %></p>
@@ -126,7 +126,7 @@
             </h2>
         </div>
         <div class="popuptext">
-            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories) %></p>
+            <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories, asc_desc: :desc) %></p>
             <p class="sort"><%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc) %></p>
             <p class="sort"><%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc) %></p>
             <p class="sort"><%= link_to t("index.created_asc"), url_for(order_by: :created_at, asc_desc: :asc) %></p>

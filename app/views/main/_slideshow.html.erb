@@ -12,7 +12,7 @@
                 <h2 class='article-title'> <%= article.get_short_title %> </h2>
                 <p class='article-text'> <%= article.get_short_desc %> </p>
 
-                <%= link_to article_path(article), class:'article-link', title: t('shared.see_more') do %>
+                <%= link_to article_path(article), class:'article-link', title: article.get_title do %>
                 <%= render 'layouts/more' %>
                 <% end %>
             </div>

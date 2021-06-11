@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
 
             if locale == "es" || locale == "en"
                 I18n.with_locale(locale, &action)
+
+                if user_signed_in? && current_user.locale != locale
+                    current_user.locale = locale
+                    current_user.save
+                end
             else 
                 I18n.with_locale("es", &action)
-            end
-
-            if user_signed_in? && current_user.locale != locale
-                current_user.locale = locale
-                current_user.save
             end
         end
     end

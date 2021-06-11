@@ -1,5 +1,5 @@
 {
-  "name": "gliston",
+  "name": "olguitech",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -11,6 +11,7 @@
     "is-svg": "^4.2.2",
     "postcss": "^8.2.10",
     "ssri": "^8.0.1",
+    "trim-newlines": "3.0.1",
     "trix": "1.2.0",
     "turbolinks": "^5.2.0",
     "ws": "^7.4.6"

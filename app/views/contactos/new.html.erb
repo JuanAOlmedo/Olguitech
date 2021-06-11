@@ -9,12 +9,12 @@
     <h2 class='preference'>
         <%= I18n.t "contact.preference" %>
     </h2>
-    <%= form.collection_select :preference, Article.all, :id, I18n.locale == :en ? :title2 : :title %>
+    <%= form.collection_select :preference, Article.all, :id, :get_title %>
 
     <h2 class='preference'>
         <%= I18n.t "contact.preference2" %>
     </h2>
-    <%= form.collection_select :preference2, Proyecto.all, :id, I18n.locale == :en ? :title2 : :title %> <br>
+    <%= form.collection_select :preference2, Proyecto.all, :id, :get_title %> <br>
 
     <%= form.label :message, "#{I18n.t "contact.message"}", class: 'preference' %> <br>
     <%= form.text_area :message, maxlength: "4000" %> <br>

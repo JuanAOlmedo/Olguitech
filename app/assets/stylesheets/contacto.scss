@@ -95,15 +95,20 @@
 .contact-alternative {
     color: $color2;
     font-size: 1.7rem;
+
+    @media only screen and (max-width: 40rem) {
+        font-size: 1.4rem;
+    }
 }
 
 .contact-mail {
     color: $accent-color;
     padding: 0 0.2rem 0 0.2rem;
+}
 
-    @media only screen and (max-width: 40rem) {
-        font-size: 1.4rem;
-    }
+.contact-mail:hover {
+    color: $accent-color;
+    text-decoration: underline;
 }
 
 .field {

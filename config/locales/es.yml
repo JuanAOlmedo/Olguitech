@@ -25,7 +25,9 @@ es:
     how_can_we_help_you: "Cómo podemos ayudarte?"
     contact: "Contactarse"
     sign_in_and_contact: "Iniciar Sesión y Contactarse"
-    contact_html: "O contactate a <span class='contact-mail'>olguitech@olguitech.com</span> <br> o a <span class='contact-mail'>+598 2716 2524</span>"
+    contact_html: "O contactate a <a class='contact-mail' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
+                   al teléfono <a class='contact-mail' href='tel:+59827162524'>+598 2716 2524</a> <br> 
+                   o al celular <a class='contact-mail' href='tel:+59892898500'>+598 92 898 500</a>"
     preference: "Cuál de nuestras soluciones te interesó más?"
     preference2: "Cuál de nuestros proyectos te interesó más?"
     message: "Mensaje"

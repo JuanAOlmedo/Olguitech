@@ -2,6 +2,11 @@ class ContactosController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
+    require 'prime'
+
+    100000.times do |time|
+        Prime.prime?(time)
+    end
   end
 
   def new

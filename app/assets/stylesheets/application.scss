@@ -171,6 +171,7 @@ nav {
 
 #articles-hoverable {
     width: 100%;
+    height: 2.5rem;
 }
 
 #articles-hoverable a,
@@ -563,7 +564,7 @@ i h3 {
 
     #articles-hoverable {
         cursor: pointer;
-        // display: inline-block;
+        height: auto;
     }
 
     .card {

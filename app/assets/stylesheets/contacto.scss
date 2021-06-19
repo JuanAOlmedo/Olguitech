@@ -74,10 +74,10 @@
     position: fixed;
 
     @media only screen and (max-width: 70rem) {
-        width: 100% !important;
-        height: 25rem !important;
-        position: relative !important;
-        top: 0 !important;
+        width: 100%;
+        height: 25rem;
+        position: relative;
+        top: 0;
     }
 }
 

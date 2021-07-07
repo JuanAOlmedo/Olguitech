@@ -58,6 +58,10 @@
         <img src='<%= url_for(@product.image) %>' class='product-img' alt='<%= @product.image.filename %>'>
         <% end %>
 
+        <div class='show-text'>
+            <p class='article-text'> <%= @product.get_content %> </p>
+        </div>
+
         <% if !@product.articles.empty? %>
         <h2>
             <%= t "show.articles" %>

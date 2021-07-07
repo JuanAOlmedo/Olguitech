@@ -49,6 +49,14 @@
     height: auto;
 }
 
+.show-text {
+    font-size: 1.1rem;
+
+    @media only screen and (max-width: 50rem) {
+        text-align: justify;
+    }
+}
+
 #all-categories {
     display: flex;
 }
@@ -74,6 +82,137 @@
 }
 
 .product .card {
+    height: 16rem;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: 67rem) {
+        height: auto;
+    }
+}
+
+.trix-content {
+    line-height: 1.5;
+    font-family: "Open Sans", "Helvetica", "Arial", sans-serif;
+}
+.trix-content * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.trix-content h1 {
+    font-size: 1.6em;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    font-family: "Montserrat", "Helvetica", sans-serif;
+}
+.trix-content blockquote {
+    border: 0 solid #fff;
+    border-left-width: 0.3em;
+    margin-left: 0.3em;
+    padding-left: 0.6em;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.trix-content [dir="rtl"] blockquote,
+.trix-content blockquote[dir="rtl"] {
+    border-width: 0;
+    border-right-width: 0.3em;
+    margin-right: 0.3em;
+    padding-right: 0.6em;
+}
+.trix-content li {
+    margin-left: 1em;
+}
+.trix-content a,
+.category-link {
+    color: $link;
+    text-decoration: underline;
+}
+.trix-content a:hover,
+.category-link:hover {
+    color: $link-h;
+    text-decoration: none;
+}
+.trix-content a:visited,
+.category-link:visited {
+    color: $link-h;
+    text-decoration: underline;
+}
+.trix-content [dir="rtl"] li {
+    margin-right: 1em;
+}
+.trix-content pre {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    font-family: monospace;
+    font-size: 0.9em;
+    padding: 0.5em;
+    white-space: pre;
+    background-color: #222;
+    overflow-x: auto;
+}
+.trix-content img {
+    max-width: 100%;
+    height: auto;
+}
+.trix-content .attachment {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+}
+.trix-content .attachment a {
+    color: inherit;
+    text-decoration: none;
+}
+.trix-content .attachment a:hover,
+.trix-content .attachment a:visited:hover {
+    color: inherit;
+}
+.trix-content .attachment__caption {
+    text-align: center;
+}
+.trix-content
+    .attachment__caption
+    .attachment__name
+    + .attachment__size::before {
+    content: " · ";
+}
+.trix-content .attachment--preview {
+    width: 100%;
+    text-align: center;
+}
+.trix-content .attachment--preview .attachment__caption {
+    color: #666;
+    font-size: 0.9em;
+    line-height: 1.2;
+}
+.trix-content .attachment--file {
+    color: #333;
+    line-height: 1;
+    margin: 0 2px 2px 2px;
+    padding: 0.4em 1em;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+.trix-content .attachment-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+.trix-content .attachment-gallery action-text-attachment {
+    flex: 1 0 33%;
+    padding: 0 0.5em;
+    max-width: 33%;
+}
+.trix-content .attachment-gallery.attachment-gallery--2 action-text-attachment,
+.trix-content .attachment-gallery.attachment-gallery--4 action-text-attachment {
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+article .card {
     height: 16rem;
     margin-bottom: 2rem;
 

@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+    has_rich_text :content
+    has_rich_text :content2
+    
     has_many :product_referenceables, dependent: :destroy
     has_many :articles, through: :product_referenceables, source: :referenceable, source_type: "Article"
     has_many :proyectos, through: :product_referenceables, source: :referenceable, source_type: "Proyecto"
@@ -24,5 +27,9 @@ class Product < ApplicationRecord
     def get_short_desc
         description = self.get_desc
         return description.length > 90 ? description[0...90] + '...' : description
+    end
+
+    def get_content
+        I18n.locale == :en && !self.content2.empty? ? self.content2 : self.content
     end
 end

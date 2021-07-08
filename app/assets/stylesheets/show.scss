@@ -41,10 +41,6 @@ article {
 
 .show-text {
     font-size: 1.1rem;
-
-    @media only screen and (max-width: 50rem) {
-        text-align: justify;
-    }
 }
 
 #back-to-top {
@@ -140,6 +136,7 @@ article {
     display: inline-block;
     position: relative;
     max-width: 100%;
+    margin: 1rem 0 1rem 0;
 }
 .trix-content .attachment a {
     color: inherit;

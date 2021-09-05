@@ -4,10 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.1.4'
+gem 'rails', '6.1.4.1'
 # Use sqlite3 as the database for Active Record
-# gem 'pg'
-gem 'sqlite3'
+gem 'pg'
+# gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '5.3.2'
 # Use SCSS for stylesheets

@@ -59,12 +59,3 @@
 #     auth_methods: %w(publickey password)
 #     password: "please use keys"
 #   }
-
-
-# server ENV["SSH_IP"], 
-#     user: 'deploy', 
-#     roles: %w{app db web},
-#     ssh_options: {
-#         user: 'deploy', 
-#         password: ENV["SSH_PASSWORD"]
-#     }

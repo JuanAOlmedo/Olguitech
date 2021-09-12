@@ -1,4 +1,3 @@
-class NosotrosController < ApplicationController 
-  def nosotros
-  end
+class NosotrosController < ApplicationController
+    def nosotros; end
 end

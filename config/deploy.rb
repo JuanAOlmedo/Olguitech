@@ -3,6 +3,7 @@ lock "~> 3.16.0"
 
 set :application, "olguitech"
 set :repo_url, "https://github.com/VarillasFriend/Olguitech.git"
+set :branch, "main"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"

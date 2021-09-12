@@ -50,9 +50,6 @@
 # The server-based syntax can be used to override options:
 # ------------------------------------
 
-# server ENV["SSH_IP"], 
-#     user: 'deploy', 
-#     roles: %w{app db web},
-#     ssh_options: {
-#         user: 'deploy'
-#     }
+server ENV["IP"], 
+    user: ENV["USER"], 
+    roles: %w{app db web}

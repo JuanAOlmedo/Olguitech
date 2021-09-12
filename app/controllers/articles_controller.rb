@@ -5,22 +5,34 @@ class ArticlesController < ApplicationController
     # GET /articles
     # GET /articles.json
     def index
-        order_by = params[:order_by] == "created_at" || params[:order_by] == "updated_at" || params[:order_by] == "title" || params[:order_by] == "categories" ? params[:order_by] : "categories"
-        order_by = order_by == "title" && I18n.locale == :en ? "title2" : order_by
-        asc_desc = params[:asc_desc] == "asc" || params[:asc_desc] == "desc" ? params[:asc_desc] : "desc"
+        order_by =
+            if params[:order_by] == 'created_at' ||
+                   params[:order_by] == 'updated_at' ||
+                   params[:order_by] == 'title' ||
+                   params[:order_by] == 'categories'
+                params[:order_by]
+            else
+                'categories'
+            end
+        order_by =
+            order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
+        asc_desc =
+            if params[:asc_desc] == 'asc' || params[:asc_desc] == 'desc'
+                params[:asc_desc]
+            else
+                'desc'
+            end
 
-        if order_by == "categories"
+        if order_by == 'categories'
             @categories = Category.all.order(created_at: :desc)
-        else 
-            @articles = Article.all.order(order_by => asc_desc) 
+        else
+            @articles = Article.all.order(order_by => asc_desc)
         end
 
         @uncategorized = []
 
         Article.all.each do |article|
-            if article.categories.empty?
-                @uncategorized << article
-            end
+            @uncategorized << article if article.categories.empty?
         end
     end
 
@@ -48,27 +60,7 @@ class ArticlesController < ApplicationController
 
         @article = Article.new(parameters)
 
-        if products != nil
-            products.each_with_index do |product, i|
-                products[i] = Product.find(product.to_i)
-                if !@article.products.include? products[i]
-                    products[i].articles << @article
-                end
-            end
-        else
-            products = []
-        end
-
-        if categories != nil
-            categories.each_with_index do |category, i|
-                categories[i] = Category.find(category.to_i)
-                if !@article.categories.include? categories[i]
-                    categories[i].articles << @article
-                end
-            end
-        else
-            categories = []
-        end
+        @article.change_categories_and_products(categories, products)
 
         respond_to do |format|
             if @article.save
@@ -106,45 +98,7 @@ class ArticlesController < ApplicationController
 
         respond_to do |format|
             if @article.update(parameters)
-                if products != nil
-                    products.each_with_index do |product, i|
-                        products[i] = Product.find(product.to_i)
-                        if !@article.products.include? products[i]
-                            products[i].articles << @article
-                        end
-                    end
-                else
-                    products = []
-                end
-
-                @article.products.each do |product|
-                    if !products.include? product
-                        @article
-                            .product_referenceables
-                            .find_by(product_id: product.id)
-                            .destroy
-                    end
-                end
-
-                if categories != nil
-                    categories.each_with_index do |category, i|
-                        categories[i] = Category.find(category.to_i)
-                        if !@article.categories.include? categories[i]
-                            categories[i].articles << @article
-                        end
-                    end
-                else
-                    categories = []
-                end
-
-                @article.categories.each do |category|
-                    if !categories.include? category
-                        @article
-                            .category_categorizables
-                            .find_by(category_id: category.id)
-                            .destroy
-                    end
-                end
+                @article.change_categories_and_products(categories, products)
 
                 format.html do
                     redirect_to @article,

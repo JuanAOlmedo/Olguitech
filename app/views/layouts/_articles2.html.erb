@@ -9,18 +9,18 @@
     <div class="dropdown-clickable-extensible">
         <%= link_to I18n.t("shared.all"), articles_path, id: "extensible-link" %>
         <% @articles.each do |article| %>
-        <%= link_to article_path(article) do %>
-        <div class='articles-hoverable-article article-hoverable-article2'>
-            <% if article.image.attached? %>
-            <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img article-hoverable-img2 lazy", alt: article.image.filename %>
-            <% end %>
+            <%= link_to article_path(article) do %>
+                <div class='articles-hoverable-article article-hoverable-article2'>
+                    <% if article.image.attached? %>
+                        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-hoverable-img article-hoverable-img2 lazy", alt: article.image.filename %>
+                    <% end %>
 
-            <div class='articles-hoverable-article-content article-hoverable-content2'>
-                <h2> <%= article.get_short_title %> </h2>
-                <p> <%= article.get_short_desc %> </p>
-            </div>
-        </div>
-        <% end %>
+                    <div class='articles-hoverable-article-content article-hoverable-content2'>
+                        <h2> <%= article.get_short_title %> </h2>
+                        <p> <%= article.get_short_desc %> </p>
+                    </div>
+                </div>
+            <% end %>
         <% end %>
     </div>
 </div>

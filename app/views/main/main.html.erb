@@ -4,20 +4,22 @@
 
 <div class="front">
     <h2 class="title">Olguitech</h2>
-    <p class='subtitle'> <%= I18n.t 'main.what_do_we_do_message' %> <br> <br> </p>
+    <p class='subtitle'> <%= I18n.t 'main.what_do_we_do_message' %> <br>
+         <br>
+         </p>
     <div class='subtitle-more-link'>
         <%= link_to nosotros_path, title: t('nav.about_us') do %>
-        <%= render 'layouts/more' %>
+            <%= render 'layouts/more' %>
         <% end %>
     </div>
 </div>
 
 <% if @articles.any? %>
-<%= render 'slideshow' %>
+    <%= render 'slideshow' %>
 <% end %>
 
 <% if @proyectos.any? %>
-<%= render 'slideshow2' %>
+    <%= render 'slideshow2' %>
 <% end %>
 
 <%= render 'contacto' %>

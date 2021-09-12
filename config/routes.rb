@@ -1,27 +1,30 @@
 Rails.application.routes.draw do
     scope "(:locale)", locale: /es|en/ do
         resources :newsletters
+        resources :categories
+
+        resources :contactos
+        get '/contacto', to: 'contactos#index'
+        get '/contacto/new', to: 'contactos#new'
+
         resources :articles
         get '/articles/:order_by/:asc_desc', to: 'articles#index'
         resources :proyectos
         get '/proyectos/:order_by/:asc_desc', to: 'proyectos#index'
         resources :products
         get '/products/:order_by/:asc_desc', to: 'products#index'
-        resources :categories
 
         devise_for :users, :controllers => { registrations: 'registrations' }
         get '/user_index', to: 'users#index'
 
+        get '/user/unsubscribe/:newsletter_token', to: 'users#unsubscribe'
+
         devise_for :admins, :controllers => { registrations: 'admin_registrations' }
 
-        resources :contactos
-        get '/contacto', to: 'contactos#index'
-        get '/contacto/new', to: 'contactos#new'
-        
         get '/nosotros', to: 'nosotros#nosotros'
 
         root 'main#main'
     end
 
-    get '/:locale' => 'main#main'
+    get '/:locale' => 'main#main', locale: /es|en/
 end

@@ -8,5 +8,7 @@ class User < ApplicationRecord
            :validatable,
            :confirmable
 
+    has_secure_token :newsletter_token
+
     has_many :contactos, dependent: :destroy
 end

@@ -2,4 +2,4 @@ Hola, <%= @user.name %>
 
 Nos contactamos para informarte que hemos subido un nuevo artículo, <%= link_to @article.title, article_url(@article) %> a nuestra página
 
-Desubscribirse: https://olguitech.com/users/edit
+Desubscribirse: https://olguitech.com/user/unsubscribe/<%= @token %>

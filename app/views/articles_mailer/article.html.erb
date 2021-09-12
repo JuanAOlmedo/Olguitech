@@ -2,4 +2,4 @@
 
 <p> Nos contactamos para informarte que hemos subido un nuevo artículo, <%= link_to @article.title, article_url(@article) %> a nuestra página </p>
 
-<a href='https://olguitech.com/users/edit'> Desubscribirse </a>
+<a href='https://olguitech.com/user/unsubscribe/<%= @token %>'> Desubscribirse </a>

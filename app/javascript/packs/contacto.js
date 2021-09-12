@@ -25,7 +25,7 @@ function add_map_point(lat, lng) {
                 new ol.Feature({
                     geometry: new ol.geom.Point(
                         ol.proj.transform(
-                            [parseFloat(lng), parseFloat(lat)],
+                            [parseFloat(-56.15627), parseFloat(-34.918624)],
                             "EPSG:4326",
                             "EPSG:3857"
                         )
@@ -47,4 +47,4 @@ function add_map_point(lat, lng) {
 }
 
 initialize_map();
-add_map_point(-34.918624, -56.15627);
+add_map_point();

@@ -17,46 +17,46 @@
     <%= render 'layouts/back' %>
 
     <% if admin_signed_in? %>
-    <%= link_to edit_article_path(@article), class: 'edit', method: :get do %>
-    <i class='articles-fas'>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-            <line x1="16" y1="5" x2="19" y2="8" />
-        </svg>
-    </i>
-    <% end %>
+        <%= link_to edit_article_path(@article), class: 'edit', method: :get do %>
+            <i class='articles-fas'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                    <line x1="16" y1="5" x2="19" y2="8" />
+                </svg>
+            </i>
+        <% end %>
 
-    <%= link_to @article, method: :delete, data: { confirm: 'Estas seguro de que queres eliminar el articulo?' }, class: 'destroy' do %>
-    <i class='articles-fas fas fa-trash'>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" />
-            <line x1="4" y1="7" x2="20" y2="7" />
-            <line x1="10" y1="11" x2="10" y2="17" />
-            <line x1="14" y1="11" x2="14" y2="17" />
-            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-        </svg>
-    </i>
-    <% end %>
+        <%= link_to @article, method: :delete, data: { confirm: 'Estas seguro de que queres eliminar el articulo?' }, class: 'destroy' do %>
+            <i class='articles-fas fas fa-trash'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="4" y1="7" x2="20" y2="7" />
+                    <line x1="10" y1="11" x2="10" y2="17" />
+                    <line x1="14" y1="11" x2="14" y2="17" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                </svg>
+            </i>
+        <% end %>
     <% end %>
 
     <article>
         <% if !@article.categories.empty? %>
-        <p>
-            <%= @article.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
-            <% @article.categories.each do |category| %>
-            <%= link_to category.get_title, category_path(category), class: "category-link" %><%= "#{@article.categories.last != category ? ", " : ""}" %>
-            <% end %>
-        </p>
+            <p>
+                <%= @article.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
+                <% @article.categories.each do |category| %>
+                    <%= link_to category.get_title, category_path(category), class: "category-link" %><%= "#{@article.categories.last != category ? ", " : ""}" %>
+                <% end %>
+            </p>
         <% end %>
         <h2 class='article-title'> <%= @article.get_title %> </h2>
 
         <p class='article-description'> <%= @article.get_desc %> </p>
 
         <% if @article.image.attached? %>
-        <img src='<%= url_for(@article.image) %>' class='article-img' alt='<%= @article.image.filename %>'>
+            <img src='<%= url_for(@article.image) %>' class='article-img' alt='<%= @article.image.filename %>'>
         <% end %>
 
         <div class='show-text'>
@@ -70,22 +70,14 @@
         </i>
 
         <% if !@article.products.empty? %>
-        <h2>
-            <%= t "show.products" %>
-        </h2>
-        <% @article.products.each do |product| %>
-        <%= link_to product_path(product) do %>
-        <div class="card">
-            <% if product.image.attached? %>
-            <%= image_tag product.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(product.image)}, class: "card-img lazy", alt: product.image.filename %>
+            <h2>
+                <%= t "show.products" %>
+            </h2>
+            <% @article.products.each do |product| %>
+                <%= link_to product_path(product) do %>
+                    <%= render 'layouts/card', article: product %>
+                <% end %>
             <% end %>
-            <div class='card-content'>
-                <h2> <%= product.get_title %> </h2>
-                <p> <%= product.get_desc %> </p>
-            </div>
-        </div>
-        <% end %>
-        <% end %>
         <% end %>
     </article>
 

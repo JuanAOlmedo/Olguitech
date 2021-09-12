@@ -55,9 +55,9 @@
         <%= render 'layouts/dropdown' %>
 
         <div class="right-navbar-section">
-            <%= render 'layouts/products' %>
-            <%= render 'layouts/articles' %>
-            <%= render 'layouts/proyects' %>
+            <%= render 'layouts/hoverable', type: "products" %>
+            <%= render 'layouts/hoverable', type: "articles" %>
+            <%= render 'layouts/hoverable', type: "proyects" %>
 
             <h2 class='navbar-link'>
                 <%= link_to (I18n.t 'nav.about_us'), nosotros_path, id: "nosotros-link" %>

@@ -1,6 +1,6 @@
 <div class='hoverable navbar-link' tabindex='0'>
-    <h2 class='navbar-link hoverable-title proyectos-link' id='articles-hoverable'>
-        <%= I18n.t 'nav.proyects' %>
+    <h2 class="navbar-link hoverable-title <%= type %>-link" id='articles-hoverable'>
+        <%= I18n.t("nav.#{type == "articles" ? "solutions" : (type == "proyects" ? "proyects" : "products")}") %>
         <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-chevron-down2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" />
             <polyline points="6 9 12 15 18 9" />
@@ -17,7 +17,7 @@
     <div class='hoverable-content'>
         <h2 class="hoverable-title2">
             <%= I18n.t("shared.all") %>
-            <%= link_to proyectos_path do %>
+            <%= link_to(type == "articles" ? articles_path : (type == "proyects" ? proyectos_path : products_path)) do %>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon-tabler-external-link" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M11 7h-5a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-5" />
@@ -27,8 +27,8 @@
             <% end %>
         </h2>
 
-        <% @proyectos.each do |article| %>
-            <%= link_to proyecto_path(article) do %>
+        <% (type == "articles" ? @articles : (type == "proyects" ? @proyectos : @products)).each do |article| %>
+            <%= link_to(type == "articles" ? article_path(article) : (type == "proyects" ? proyecto_path(article) : product_path(article))) do %>
                 <%= render 'layouts/card', article: article %>
             <% end %>
         <% end %>

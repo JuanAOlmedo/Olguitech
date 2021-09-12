@@ -1,14 +1,14 @@
 @import "settings";
 
 .front {
-    background: url("/Background2.webp") no-repeat scroll left top;
+    background: url("/Background.webp") no-repeat scroll left top;
     background-size: cover;
     padding: 1rem 2rem 5rem 2rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .no-webp .front {
-    background: url("/Background2.jpg") no-repeat scroll left top;
+    background: url("/Background.jpg") no-repeat scroll left top;
 }
 
 nav {
@@ -403,7 +403,7 @@ main {
 }
 
 .information-section.lazy {
-    background: url("/Contact3.webp") no-repeat center top;
+    background: url("/Contact2.webp") no-repeat center top;
     background-size: cover;
 }
 

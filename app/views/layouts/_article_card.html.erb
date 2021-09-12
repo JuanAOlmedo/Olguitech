@@ -1,0 +1,16 @@
+<div class='article still move'>
+    <% if article.image.attached? %>
+        <%= image_tag article.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
+    <% end %>
+
+    <div class='article-information'>
+        <h2 class='article-title'> <%= article.get_title %> </h2>
+        <p class='article-text'>
+            <%= article.get_desc %> <br>
+        </p>
+
+        <%= link_to proyecto_path(article), title: t('shared.see_more') do %>
+            <%= render 'layouts/more' %>
+        <% end %>
+    </div>
+</div>

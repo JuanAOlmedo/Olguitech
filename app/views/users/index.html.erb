@@ -22,44 +22,44 @@
                 <th> Idioma </th>
             </tr>
             <% @users.each do |user| %>
-            <tr class='user-row'>
-                <td> <%= user.id %> </td>
+                <tr class='user-row'>
+                    <td> <%= user.id %> </td>
 
-                <td> <%= user.name %> </td>
+                    <td> <%= user.name %> </td>
 
-                <td> <%= user.email %> </td>
+                    <td> <%= user.email %> </td>
 
-                <td> <%= user.company %> </td>
+                    <td> <%= user.company %> </td>
 
-                <td> <%= user.phone %> </td>
+                    <td> <%= user.phone %> </td>
 
-                <td> <%= user.newsletter %> </td>
+                    <td> <%= user.newsletter %> </td>
 
-                <td> <span class='times-contacted' data-id="<%= user.id %>"><%= user.contactos.length %></span> </td>
+                    <td> <span class='times-contacted' data-id="<%= user.id %>"><%= user.contactos.length %></span> </td>
 
-                <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
-            </tr>
-            <% end %>
-        </table>
+                    <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
+                    </tr>
+                <% end %>
+            </table>
+        </div>
     </div>
-</div>
 
-<% @users.each do |user| %>
-<% if user.contactos.length > 0 %>
-<div class='contact-info' id='article-<%= user.id %>'>
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" data-id="<%= user.id %>">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <line x1="18" y1="6" x2="6" y2="18" />
-        <line x1="6" y1="6" x2="18" y2="18" />
-    </svg>
-    <% user.contactos.each do |contact| %>
-    <p> Fecha: <%= contact.created_at.to_formatted_s(:long) %> </p>
-    <p> Mensaje: <%= contact.message %> </p>
-    <p> Articulo 1: <%= Article.find(contact.preference).title rescue "Articluo eliminado" %> </p>
-    <p> Articulo 2: <%= Proyecto.find(contact.preference2).title rescue "Articluo eliminado" %> </p>
+    <% @users.each do |user| %>
+        <% if user.contactos.length > 0 %>
+            <div class='contact-info' id='article-<%= user.id %>'>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" data-id="<%= user.id %>">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+                <% user.contactos.each do |contact| %>
+                    <p> Fecha: <%= contact.created_at.to_formatted_s(:long) %> </p>
+                    <p> Mensaje: <%= contact.message %> </p>
+                    <p> Articulo 1: <%= Article.find(contact.preference).title rescue "Articluo eliminado" %> </p>
+                    <p> Articulo 2: <%= Proyecto.find(contact.preference2).title rescue "Articluo eliminado" %> </p>
+                <% end %>
+            </div>
+        <% end %>
     <% end %>
-</div>
-<% end %>
-<% end %>
 
-<%= javascript_pack_tag 'user-index' %>
+    <%= javascript_pack_tag 'user-index' %>

@@ -1,0 +1,20 @@
+<div class="popup">
+    <div class="info">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-sort" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path class="arrow1" d="M3 9l4 -4l4 4m-4 -4v14" />
+            <path class="arrow2" d="M21 15l-4 4l-4 -4m4 4v-14" />
+        </svg>
+        <h2>
+            <%= t "index.sort_by" %>
+        </h2>
+    </div>
+    <div class="popuptext">
+        <p class="sort"><%= link_to t("index.category"), url_for(order_by: :categories, asc_desc: :desc) %></p>
+        <p class="sort"><%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc) %></p>
+        <p class="sort"><%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc) %></p>
+        <p class="sort"><%= link_to t("index.created_asc"), url_for(order_by: :created_at, asc_desc: :asc) %></p>
+        <p class="sort"><%= link_to t("index.title_asc"), url_for(order_by: :title, asc_desc: :asc) %></p>
+        <p class="sort"><%= link_to t("index.title_desc"), url_for(order_by: :title, asc_desc: :desc) %></p>
+    </div>
+</div>

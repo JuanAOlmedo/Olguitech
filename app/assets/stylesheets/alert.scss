@@ -1,27 +1,37 @@
+@import "settings";
+
 .alert,
 .notice {
+    right: 0;
     padding: 0.6rem;
-    margin: 0;
-    text-align: center;
+    margin: 1rem 0.5rem;
     display: flex;
-    width: 100%;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.1);
+    width: 25rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     position: fixed;
     z-index: 10;
-    font-family: "Varela Round", "Gill Sans", sans-serif;
-    font-weight: bold;
+    font-size: 0.95rem;
+    font-family: "Montserrat", "Helvetica", sans-serif;
     transform: translateY(0);
     transition: transform 1s;
+    background-color: $color4;
+    border-radius: 0.7rem;
+    border: solid 2px;
+    color: white;
+
+    @media only screen and (max-width: 40rem) {
+        width: 85%;
+        padding: 2%;
+        margin-right: 5%;
+    }
 }
 
 .notice {
-    background-color: rgb(157, 255, 0);
-    color: black;
+    border-color: rgb(157, 255, 0);
 }
 
 .alert {
-    color: white;
-    background-color: rgb(211, 37, 37);
+    border-color: rgb(211, 37, 37);
 }
 
 .close-notice,
@@ -34,10 +44,6 @@
 .close-notice svg,
 .close-alert svg {
     vertical-align: middle;
-}
-
-.close-notice {
-    color: black;
 }
 
 .alert p,
@@ -59,5 +65,9 @@
 
 .alert.disappear,
 .notice.disappear {
-    transform: translateY(-20rem);
+    transform: translateX(30rem);
+
+    @media only screen and (max-width: 40rem) {
+        transform: translateY(-20rem);
+    }
 }

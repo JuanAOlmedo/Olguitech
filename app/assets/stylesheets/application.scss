@@ -7,8 +7,6 @@ body {
     font-family: "Varela Round", "Gill Sans", sans-serif;
     overflow-x: hidden;
     background-color: $color1;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
 }
 
 p {
@@ -264,7 +262,7 @@ nav {
     transition: background-color 0.8s, color 0.8s;
     font-weight: bold;
     font-family: "Varela Round", "Gill Sans", sans-serif;
-    font-size: 1.35rem;
+    font-size: 1.3rem;
     text-align: center;
 
     @media only screen and (max-width: 1200px) {

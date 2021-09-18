@@ -9,7 +9,7 @@
             <%= article.get_desc %> <br>
         </p>
 
-        <%= link_to proyecto_path(article), title: t('shared.see_more') do %>
+        <%= link_to( type == "article" ? article_path(article) : proyecto_path(article), title: t('shared.see_more') ) do %>
             <%= render 'layouts/more' %>
         <% end %>
     </div>

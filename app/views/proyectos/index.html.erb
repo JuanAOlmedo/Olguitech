@@ -45,7 +45,7 @@
                 <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
                     <h2> <%= category.get_title %> </h2>
                     <% category.proyectos.each do |article| %>
-                        <%= render 'layouts/article_card', article: article %>
+                        <%= render 'layouts/article_card', article: article, type: "proyecto" %>
                     <% end %>
                 </div>
             <% end %>
@@ -54,7 +54,7 @@
             <div class="category" data-index="<%= @categories.length %>">
                 <h2> <%= t "index.uncategorized" %> </h2>
                 <% @uncategorized.each do |article| %>
-                    <%= render 'layouts/article_card', article: article %>
+                    <%= render 'layouts/article_card', article: article, type: "proyecto" %>
                 <% end %>
             </div>
         <% end %>
@@ -68,7 +68,7 @@
         <%= render 'layouts/popup' %>
 
         <% @proyectos.each do |article| %>
-            <%= render 'layouts/article_card', article: article %>
+            <%= render 'layouts/article_card', article: article, type: "proyecto" %>
         <% end %>
     </div>
 <% end %>

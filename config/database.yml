@@ -30,7 +30,7 @@ development:
   pool: 5
   timeout: 5000
 test:
-  adapter: sqlite3
+  adapter: postgresql
   database: my_database_test
   pool: 5
   timeout: 5000

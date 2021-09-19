@@ -51,7 +51,7 @@ class Proyecto < ApplicationRecord
             products.each_with_index do |product, i|
                 products[i] = Product.find(product.to_i)
                 if !self.products.include? products[i]
-                    products[i].articles << self
+                    products[i].proyectos << self
                 end
             end
         else
@@ -71,7 +71,7 @@ class Proyecto < ApplicationRecord
             categories.each_with_index do |category, i|
                 categories[i] = Category.find(category.to_i)
                 if !self.categories.include? categories[i]
-                    categories[i].articles << self
+                    categories[i].proyectos << self
                 end
             end
         else

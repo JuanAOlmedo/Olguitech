@@ -5,13 +5,11 @@ class ArticlesMailer < ApplicationMailer
     def article(user, article)
         @user = user
 
-        if @user.newsletter_token == nil
-            @user.regenerate_newsletter_token
-        end
+        @user.regenerate_newsletter_token if @user.newsletter_token == nil
 
         @token = @user.newsletter_token
         @article = article
-        
+
         mail(to: @user.email, subject: 'Olguitech s.a.s., Nuevo Artículo')
     end
 end

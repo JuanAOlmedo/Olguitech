@@ -4,7 +4,10 @@ class ContactosControllerTest < ActionDispatch::IntegrationTest
     setup { @contacto = contactos(:one) }
 
     test 'should get index' do
-        get contactos_url
+        get '/contacto'
+        assert_response :success
+
+        get '/contactos'
         assert_response :success
     end
 end

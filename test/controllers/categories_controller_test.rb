@@ -7,4 +7,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         get categories_url
         assert_response :success
     end
+
+    test 'should show article' do
+        get '/categories/1'
+        assert_response :success
+    end
 end

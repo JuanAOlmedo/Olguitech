@@ -7,4 +7,9 @@ class ProyectosControllerTest < ActionDispatch::IntegrationTest
         get proyectos_url
         assert_response :success
     end
+
+    test 'should show project' do
+        get '/proyectos/1'
+        assert_response :success
+    end
 end

@@ -4,16 +4,14 @@ class NewsMailer < ApplicationMailer
 
     def newsletter(user, title, content, subject)
         @user = user
-        
-        if @user.newsletter_token == nil
-            @user.regenerate_newsletter_token
-        end
+
+        @user.regenerate_newsletter_token if @user.newsletter_token == nil
 
         @token = @user.newsletter_token
         @title = title
         @content = content
         @subject = subject
-        
+
         mail(to: @user.email, subject: @subject)
     end
 end

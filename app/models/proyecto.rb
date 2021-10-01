@@ -9,6 +9,33 @@ class Proyecto < ApplicationRecord
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
 
+    def self.uncategorized
+        self.includes(:categories).where(categories: { id: nil })
+    end
+
+    def self.get_ordered(order_by, asc_desc)
+        order_by =
+            if order_by == 'created_at' || order_by == 'updated_at' ||
+                   order_by == 'title' || order_by == 'categories'
+                order_by
+            else
+                'categories'
+            end
+
+        order_by =
+            order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
+
+        asc_desc = asc_desc == 'asc' || asc_desc == 'desc' ? asc_desc : 'desc'
+
+        if order_by == 'categories'
+            categories = Category.all.order(created_at: :desc)
+        else
+            ordered = self.all.order(order_by => asc_desc)
+        end
+
+        return categories, ordered
+    end
+
     def get_title
         if I18n.locale == :en && self.title2 != '' && self.title2 != nil
             self.title2
@@ -59,12 +86,7 @@ class Proyecto < ApplicationRecord
         end
 
         self.products.each do |product|
-            if !products.include? product
-                self
-                    .product_referenceables
-                    .find_by(product_id: product.id)
-                    .destroy
-            end
+            self.products.delete(product) if !products.include? product
         end
 
         if categories != nil
@@ -79,12 +101,7 @@ class Proyecto < ApplicationRecord
         end
 
         self.categories.each do |category|
-            if !categories.include? category
-                self
-                    .category_categorizables
-                    .find_by(category_id: category.id)
-                    .destroy
-            end
+            self.categories.delete(category) if !categories.include? category
         end
     end
 end

@@ -81,5 +81,23 @@ class ProductTest < ActiveSupport::TestCase
         assert_equal([Article.find(1)], @product.articles)
         assert_equal([Proyecto.find(2)], @product.proyectos)
         assert_equal([Category.find(1)], @product.categories)
+
+        @product.change_related([], [], [])
+
+        assert_equal([], @product.articles)
+        assert_equal([], @product.proyectos)
+        assert_equal([], @product.categories)
+    end
+
+    test 'should get uncategorized' do
+        @product.change_related([], [], [])
+        @product2.change_related([], [], [1])
+
+        assert_equal([@product], Product.uncategorized)
+
+        @product.change_related([], [], [1])
+        @product2.change_related([], [], [])
+
+        assert_equal([@product2], Product.uncategorized)
     end
 end

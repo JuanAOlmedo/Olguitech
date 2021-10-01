@@ -5,35 +5,12 @@ class ArticlesController < ApplicationController
     # GET /articles
     # GET /articles.json
     def index
-        order_by =
-            if params[:order_by] == 'created_at' ||
-                   params[:order_by] == 'updated_at' ||
-                   params[:order_by] == 'title' ||
-                   params[:order_by] == 'categories'
-                params[:order_by]
-            else
-                'categories'
-            end
-        order_by =
-            order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
-        asc_desc =
-            if params[:asc_desc] == 'asc' || params[:asc_desc] == 'desc'
-                params[:asc_desc]
-            else
-                'desc'
-            end
+        ordered = Article.get_ordered(params[:order_by], params[:asc_desc])
 
-        if order_by == 'categories'
-            @categories = Category.all.order(created_at: :desc)
-        else
-            @articles = Article.all.order(order_by => asc_desc)
-        end
+        @categories = ordered[0]
+        @articles = ordered[1]
 
-        @uncategorized = []
-
-        Article.all.each do |article|
-            @uncategorized << article if article.categories.empty?
-        end
+        @uncategorized = Article.uncategorized
     end
 
     # GET /articles/1

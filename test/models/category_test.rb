@@ -68,5 +68,11 @@ class CategoryTest < ActiveSupport::TestCase
         assert_equal([Article.find(1)], @category.articles)
         assert_equal([Proyecto.find(2)], @category.proyectos)
         assert_equal([Product.find(1)], @category.products)
+
+        @category.change_related([], [], [])
+
+        assert_equal([], @category.articles)
+        assert_equal([], @category.proyectos)
+        assert_equal([], @category.products)
     end
 end

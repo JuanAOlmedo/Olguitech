@@ -61,12 +61,7 @@ class Category < ApplicationRecord
         end
 
         self.articles.each do |article|
-            if !articles.include? article
-                self
-                    .category_categorizables
-                    .find_by(categorizable_id: article.id)
-                    .destroy
-            end
+            self.articles.delete(article) if !articles.include? article
         end
 
         if proyectos != nil
@@ -81,12 +76,7 @@ class Category < ApplicationRecord
         end
 
         self.proyectos.each do |article|
-            if !proyectos.include? article
-                self
-                    .category_categorizables
-                    .find_by(categorizable_id: article.id)
-                    .destroy
-            end
+            self.proyectos.delete(article) if !proyectos.include? article
         end
 
         if products != nil
@@ -101,12 +91,7 @@ class Category < ApplicationRecord
         end
 
         self.products.each do |article|
-            if !products.include? article
-                self
-                    .category_categorizables
-                    .find_by(categorizable_id: article.id)
-                    .destroy
-            end
+            self.products.delete(article) if !products.include? article
         end
     end
 end

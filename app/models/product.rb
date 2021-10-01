@@ -17,6 +17,33 @@ class Product < ApplicationRecord
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
 
+    def self.uncategorized
+        self.includes(:categories).where(categories: { id: nil })
+    end
+
+    def self.get_ordered(order_by, asc_desc)
+        order_by =
+            if order_by == 'created_at' || order_by == 'updated_at' ||
+                   order_by == 'title' || order_by == 'categories'
+                order_by
+            else
+                'categories'
+            end
+
+        order_by =
+            order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
+
+        asc_desc = asc_desc == 'asc' || asc_desc == 'desc' ? asc_desc : 'desc'
+
+        if order_by == 'categories'
+            categories = Category.all.order(created_at: :desc)
+        else
+            ordered = self.all.order(order_by => asc_desc)
+        end
+
+        return categories, ordered
+    end
+
     def get_title
         if I18n.locale == :en && self.title2 != '' && self.title2 != nil
             self.title2
@@ -67,12 +94,7 @@ class Product < ApplicationRecord
         end
 
         self.articles.each do |article|
-            if !articles.include? article
-                self
-                    .product_referenceables
-                    .find_by(referenceable_id: article.id)
-                    .destroy
-            end
+            self.articles.delete(article) if !articles.include? article
         end
 
         if proyectos != nil
@@ -87,12 +109,7 @@ class Product < ApplicationRecord
         end
 
         self.proyectos.each do |article|
-            if !proyectos.include? article
-                self
-                    .product_referenceables
-                    .find_by(referenceable_id: article.id)
-                    .destroy
-            end
+            self.proyectos.delete(article) if !proyectos.include? article
         end
 
         if categories != nil
@@ -107,12 +124,7 @@ class Product < ApplicationRecord
         end
 
         self.categories.each do |category|
-            if !categories.include? category
-                self
-                    .category_categorizables
-                    .find_by(category_id: category.id)
-                    .destroy
-            end
+            self.categories.delete(category) if !categories.include? category
         end
     end
 end

@@ -4,35 +4,12 @@ class ProductsController < ApplicationController
 
     # GET /products or /products.json
     def index
-        order_by =
-            if params[:order_by] == 'created_at' ||
-                   params[:order_by] == 'updated_at' ||
-                   params[:order_by] == 'title' ||
-                   params[:order_by] == 'categories'
-                params[:order_by]
-            else
-                'categories'
-            end
-        order_by =
-            order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
-        asc_desc =
-            if params[:asc_desc] == 'asc' || params[:asc_desc] == 'desc'
-                params[:asc_desc]
-            else
-                'desc'
-            end
+        ordered = Product.get_ordered(params[:order_by], params[:asc_desc])
 
-        if order_by == 'categories'
-            @categories = Category.all.order(created_at: :desc)
-        else
-            @products = Product.all.order(order_by => asc_desc)
-        end
+        @categories = ordered[0]
+        @products = ordered[1]
 
-        @uncategorized = []
-
-        Product.all.each do |product|
-            @uncategorized << product if product.categories.empty?
-        end
+        @uncategorized = Product.uncategorized
     end
 
     # GET /products/1 or /products/1.json

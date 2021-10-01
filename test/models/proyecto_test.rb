@@ -79,5 +79,22 @@ class ProyectoTest < ActiveSupport::TestCase
 
         assert_equal([Category.find(1)], @proyecto.categories)
         assert_equal([Product.find(2)], @proyecto.products)
+
+        @proyecto.change_categories_and_products([], [])
+
+        assert_equal([], @proyecto.categories)
+        assert_equal([], @proyecto.products)
+    end
+
+    test 'should get uncategorized' do
+        @proyecto.change_categories_and_products([], [])
+        @proyecto2.change_categories_and_products([1], [])
+
+        assert_equal([@proyecto], Proyecto.uncategorized)
+
+        @proyecto.change_categories_and_products([1], [])
+        @proyecto2.change_categories_and_products([], [])
+
+        assert_equal([@proyecto2], Proyecto.uncategorized)
     end
 end

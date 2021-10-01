@@ -60,17 +60,11 @@ class ArticleTest < ActiveSupport::TestCase
     test 'should get content and change it with locale' do
         I18n.locale = :es
 
-        assert_equal(
-            ActionText::RichText.find(1),
-            @article.get_content,
-        )
+        assert_equal(ActionText::RichText.find(1), @article.get_content)
 
         I18n.locale = :en
 
-        assert_equal(
-            ActionText::RichText.find(2),
-            @article.get_content,
-        )
+        assert_equal(ActionText::RichText.find(2), @article.get_content)
     end
 
     test 'should add categories and products' do
@@ -85,5 +79,22 @@ class ArticleTest < ActiveSupport::TestCase
 
         assert_equal([Category.find(1)], @article.categories)
         assert_equal([Product.find(2)], @article.products)
+
+        @article.change_categories_and_products([], [])
+
+        assert_equal([], @article.categories)
+        assert_equal([], @article.products)
+    end
+
+    test 'should get uncategorized' do
+        @article.change_categories_and_products([], [])
+        @article2.change_categories_and_products([1], [])
+
+        assert_equal([@article], Article.uncategorized)
+
+        @article.change_categories_and_products([1], [])
+        @article2.change_categories_and_products([], [])
+
+        assert_equal([@article2], Article.uncategorized)
     end
 end

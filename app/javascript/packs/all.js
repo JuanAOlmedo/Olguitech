@@ -4,15 +4,15 @@ class Clicker {
         this.action = action;
         this.parameters = parameters;
 
-        this.createClick = function() {
+        this.createClick = function () {
             element.tabIndex = 0;
             element.style.cursor = "pointer";
 
-            element.onclick = function() {
-                action(parameters)
+            element.onclick = function () {
+                action(parameters);
             };
 
-            element.onkeydown = function(event) {
+            element.onkeydown = function (event) {
                 if (event.keyCode == 32 || event.keyCode == 13) {
                     event.preventDefault();
                     action(parameters);
@@ -33,8 +33,9 @@ if ("IntersectionObserver" in window) {
                 imgObserver.unobserve(entry.target);
                 img.src = img.dataset.src ? img.dataset.src : img.src;
             });
-        }, {
-            threshold: 0
+        },
+        {
+            threshold: 0,
         }
     );
 
@@ -53,8 +54,9 @@ if ("IntersectionObserver" in window) {
 
                 still.classList.add("move");
             });
-        }, {
-            threshold: 0.2
+        },
+        {
+            threshold: 0.2,
         }
     );
 
@@ -79,7 +81,7 @@ const dropdownBars = document.querySelector("#dropdown-bars"),
 
 let showing = false;
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (
         !dropdown.contains(event.target) &&
         !dropdownBars.contains(event.target) &&
@@ -145,7 +147,7 @@ class Clickable {
             thisClass.dropdownExtensible.classList.add("de-extend");
             setTimeout(
                 () =>
-                thisClass.dropdownExtensible.classList.remove("de-extend"),
+                    thisClass.dropdownExtensible.classList.remove("de-extend"),
                 800
             );
             thisClass.extended = false;
@@ -204,7 +206,7 @@ for (i2 = 0; i2 < hoverables.length; i2++) {
 }
 
 function setMouseOver(index) {
-    hoverables[index].onmouseover = function() {
+    hoverables[index].onmouseover = function () {
         setSvg(
             anchors[index].getBoundingClientRect(),
             menus[index].getBoundingClientRect(),
@@ -212,7 +214,7 @@ function setMouseOver(index) {
         );
     };
 
-    hoverables[index].onmouseout = function() {
+    hoverables[index].onmouseout = function () {
         deSetSvg(triangles[index]);
     };
 }

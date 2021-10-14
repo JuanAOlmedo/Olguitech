@@ -27,11 +27,11 @@
 
                     <td> <%= user.name %> </td>
 
-                    <td> <%= user.email %> </td>
+                    <td> <%= mail_to user.email %> </td>
 
                     <td> <%= user.company %> </td>
 
-                    <td> <%= user.phone %> </td>
+                    <td> <%= link_to user.phone, "tel:#{user.phone}" %> </td>
 
                     <td> <%= user.newsletter %> </td>
 

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
+        @contacted = User.includes(:contactos).where.not(contactos: { id: nil })
     end
 
     def unsubscribe

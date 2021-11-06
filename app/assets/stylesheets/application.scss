@@ -4,7 +4,7 @@
 
 body {
     margin: 0;
-    font-family: "Varela Round", "Gill Sans", sans-serif;
+    font-family: "Varela Round", sans-serif;
     overflow-x: hidden;
     background-color: $color1;
 }
@@ -42,7 +42,7 @@ nav {
     background-color: #121212;
     box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
     font-size: 0.9rem;
-    font-family: "Varela Round", "Gill Sans", sans-serif;
+    font-family: "Varela Round", sans-serif;
     position: fixed;
     z-index: 100;
     top: 0;
@@ -192,7 +192,7 @@ nav {
     max-width: 50%;
     height: auto;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
 }
 
 .card {
@@ -261,7 +261,7 @@ nav {
     color: $color1;
     transition: background-color 0.8s, color 0.8s;
     font-weight: bold;
-    font-family: "Varela Round", "Gill Sans", sans-serif;
+    font-family: "Varela Round", sans-serif;
     font-size: 1.3rem;
     text-align: center;
 
@@ -532,11 +532,11 @@ i h3 {
 
     .hoverable-content.extend {
         -webkit-animation-name: extend;
-                animation-name: extend;
+        animation-name: extend;
         -webkit-animation-duration: 0.8s;
-                animation-duration: 0.8s;
+        animation-duration: 0.8s;
         -webkit-animation-timing-function: ease-out;
-                animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
         display: block;
         height: 20rem;
     }
@@ -545,11 +545,11 @@ i h3 {
         height: 20rem;
         display: block;
         -webkit-animation-name: de-extend;
-                animation-name: de-extend;
+        animation-name: de-extend;
         -webkit-animation-timing-function: ease-in;
-                animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
         -webkit-animation-duration: 0.8s;
-                animation-duration: 0.8s;
+        animation-duration: 0.8s;
     }
 
     .icon-tabler-chevron-down2 {
@@ -650,5 +650,5 @@ i h3 {
 
 img.lazy {
     -webkit-filter: blur(3px);
-            filter: blur(3px);
+    filter: blur(3px);
 }

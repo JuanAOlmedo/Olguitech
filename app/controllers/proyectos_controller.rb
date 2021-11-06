@@ -73,45 +73,7 @@ class ProyectosController < ApplicationController
 
         respond_to do |format|
             if @proyecto.update(parameters)
-                if products != nil
-                    products.each_with_index do |product, i|
-                        products[i] = Product.find(product.to_i)
-                        if !@proyecto.products.include? products[i]
-                            products[i].proyectos << @proyecto
-                        end
-                    end
-                else
-                    products = []
-                end
-
-                @proyecto.products.each do |product|
-                    if !products.include? product
-                        @proyecto
-                            .product_referenceables
-                            .find_by(product_id: product.id)
-                            .destroy
-                    end
-                end
-
-                if categories != nil
-                    categories.each_with_index do |category, i|
-                        categories[i] = Category.find(category.to_i)
-                        if !@proyecto.categories.include? categories[i]
-                            categories[i].proyectos << @proyecto
-                        end
-                    end
-                else
-                    categories = []
-                end
-
-                @proyecto.categories.each do |category|
-                    if !categories.include? category
-                        @proyecto
-                            .category_categorizables
-                            .find_by(category_id: category.id)
-                            .destroy
-                    end
-                end
+                @proyecto.change_categories_and_products(categories, products)
 
                 format.html do
                     redirect_to @proyecto,

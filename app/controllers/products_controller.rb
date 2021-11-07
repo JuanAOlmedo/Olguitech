@@ -13,7 +13,25 @@ class ProductsController < ApplicationController
     end
 
     # GET /products/1 or /products/1.json
-    def show; end
+    def show
+        if @product.views == nil
+            @product.views = 0
+        end
+
+        if session[:viewed_products] == nil
+            @product.views += 1
+
+            session[:viewed_products] = [@product.id]
+        elsif !@product.id.in? session[:viewed_products].to_a
+            @product.views += 1
+
+            a = session[:viewed_products].to_a
+            a << @product.id
+            session[:viewed_products] = a
+        end
+
+        @product.save
+    end
 
     # GET /products/new
     def new

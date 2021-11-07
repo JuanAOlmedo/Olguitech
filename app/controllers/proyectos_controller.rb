@@ -13,7 +13,25 @@ class ProyectosController < ApplicationController
     end
 
     # GET /proyectos/1
-    def show; end
+    def show
+        if @proyecto.views == nil
+            @proyecto.views = 0
+        end
+
+        if session[:viewed_proyectos] == nil
+            @proyecto.views += 1
+
+            session[:viewed_proyectos] = [@proyecto.id]
+        elsif !@proyecto.id.in? session[:viewed_proyectos].to_a
+            @proyecto.views += 1
+
+            a = session[:viewed_proyectos].to_a
+            a << @proyecto.id
+            session[:viewed_proyectos] = a
+        end
+
+        @proyecto.save
+    end
 
     # GET /proyectos/new
     def new

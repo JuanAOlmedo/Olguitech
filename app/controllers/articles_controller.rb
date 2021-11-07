@@ -15,7 +15,25 @@ class ArticlesController < ApplicationController
 
     # GET /articles/1
     # GET /articles/1.json
-    def show; end
+    def show
+        if @article.views == nil
+            @article.views = 0
+        end
+
+        if session[:viewed_articles] == nil
+            @article.views += 1
+
+            session[:viewed_articles] = [@article.id]
+        elsif !@article.id.in? session[:viewed_articles].to_a
+            @article.views += 1
+
+            a = session[:viewed_articles].to_a
+            a << @article.id
+            session[:viewed_articles] = a
+        end
+
+        @article.save
+    end
 
     # GET /articles/new
     def new

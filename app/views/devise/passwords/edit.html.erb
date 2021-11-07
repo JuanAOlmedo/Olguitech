@@ -5,7 +5,7 @@
 <% content_for :title, "Cambiar contraseña" %>
 
 <div class='form-div'>
-    <h2 class='form-title'>Cambiar contraseña</h2>
+    <h1 class='title white'>Cambiar contraseña</h1>
 
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -30,7 +30,7 @@
                   input_html: { autocomplete: "new-password" } %>
 
         <div class="form-actions">
-            <%= f.button :submit, "Cambiar", class:'big-navbar-link', id:'button' %>
+            <%= f.button :submit, "Cambiar", class:'big-navbar-link button' %>
         </div>
         <% end %>
         <script>

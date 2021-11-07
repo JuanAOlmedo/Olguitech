@@ -3,7 +3,7 @@
 .front {
     background: url("/Background.webp") no-repeat scroll left top;
     background-size: cover;
-    padding: 1rem 2rem 5rem 2rem;
+    padding: 14rem 2rem 5rem 2rem;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -31,24 +31,6 @@ nav.show {
 
 main {
     margin: 0;
-}
-
-.title {
-    color: #fff;
-    font-size: 4rem;
-    margin-top: 12rem;
-    margin-bottom: 2rem;
-    letter-spacing: 5px;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
-    // color: $accent-color;
-
-    @media only screen and (max-width: 600px) {
-        font-size: 3.1rem;
-    }
-
-    @media only screen and (max-width: 400px) {
-        letter-spacing: normal;
-    }
 }
 
 .subtitle {
@@ -81,7 +63,8 @@ main {
     margin-top: 2rem;
 }
 
-.articles-section {
+.articles-section,
+.proyects-section {
     background-color: $color1;
     position: relative;
     color: $color1;
@@ -95,7 +78,16 @@ main {
     }
 }
 
-.articles-section.move {
+.proyects-section {
+    margin: 0;
+
+    @media only screen and (max-width: 50rem) {
+        margin-bottom: 0rem;
+    }
+}
+
+.articles-section.move,
+.proyects-section.move {
     opacity: 1;
 }
 
@@ -106,7 +98,9 @@ main {
 }
 
 #next,
-#previous {
+#previous,
+#proyects-next,
+#proyects-previous {
     margin-left: 1rem;
     margin-right: 1rem;
     cursor: pointer;
@@ -127,6 +121,13 @@ main {
     }
 }
 
+@media screen and (max-width: 50rem) {
+    #proyects-next,
+    #proyects-previous {
+        margin-bottom: 26rem;
+    }
+}
+
 #next {
     right: 0;
 }
@@ -139,19 +140,42 @@ main {
     }
 }
 
+#proyects-next {
+    left: 43%;
+
+    @media screen and (max-width: 50rem) {
+        right: 0;
+        left: auto;
+    }
+}
+
+#proyects-previous {
+    left: 0;
+
+    @media screen and (max-width: 50rem) {
+        right: 20%;
+        left: auto;
+    }
+}
+
 #previous:hover,
-#previous:focus {
+#previous:focus,
+#proyects-previous:hover,
+#proyects-previous:focus {
     transform: translateX(-10px);
     outline: none;
 }
 
 #next:hover,
-#next:focus {
+#next:focus,
+#proyects-next:hover,
+#proyects-next:focus {
     transform: translateX(10px);
     outline: none;
 }
 
-.article {
+.article,
+.proyect {
     background-color: $color4;
     position: absolute;
     width: 100%;
@@ -177,16 +201,19 @@ main {
     }
 }
 
-.article.show {
+.article.show,
+.proyect.show {
     opacity: 1;
     z-index: 2;
 }
 
-.article.visible {
+.article.visible,
+.proyect.visible {
     visibility: visible;
 }
 
-.article.visible-fix {
+.article.visible-fix,
+.proyect.visible-fix {
     visibility: visible;
 }
 
@@ -224,159 +251,13 @@ main {
     }
 }
 
-.article-img {
-    min-width: 50%;
-    max-width: 50%;
-    height: auto;
-    -o-object-fit: cover;
-       object-fit: cover;
-    transition: border-radius 1s;
-
-    @media screen and (max-width: 50rem) {
-        min-width: 100%;
-        max-width: 100%;
-        height: 50%;
-    }
-}
-
-.proyects-section {
-    background-color: $color1;
-    position: relative;
-    color: $color1;
-    margin: 0;
-    height: 30rem;
-    opacity: 0.6;
-    transition: opacity 1s;
-
-    @media only screen and (max-width: 50rem) {
-        height: 50rem;
-    }
-}
-
-.proyects-section.move {
-    opacity: 1;
-}
-
-.proyects-slider-hider {
-    text-align: center;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-.proyects-slider-hider a {
-    color: $color2;
-}
-
-.proyects-slider-hider a:visited {
-    color: $color2;
-}
-
-.proyects-slider {
-    display: flex;
-    width: 100%;
-    position: relative;
-    height: 25rem;
-
-    @media only screen and (max-width: 50rem) {
-        height: 35rem;
-    }
-}
-
-#proyects-next,
-#proyects-previous {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    cursor: pointer;
-    transform: translateX(0px);
-    transition: transform 0.5s;
-    position: absolute;
-    margin-bottom: 2.5rem;
-    height: auto;
-    bottom: 0;
-    z-index: 10;
-
-    @media screen and (max-width: 70rem) {
-        margin-bottom: 2rem;
-    }
-
-    @media screen and (max-width: 50rem) {
-        margin-bottom: 26rem;
-    }
-}
-
-#proyects-next {
-    left: 43%;
-
-    @media screen and (max-width: 50rem) {
-        right: 0;
-        left: auto;
-    }
-}
-
-#proyects-previous {
-    left: 0;
-
-    @media screen and (max-width: 50rem) {
-        right: 20%;
-        left: auto;
-    }
-}
-#proyects-previous:hover,
-#proyects-previous:focus {
-    transform: translateX(-10px);
-    outline: none;
-}
-
-#proyects-next:hover,
-#proyects-next:focus {
-    transform: translateX(10px);
-    outline: none;
-}
-
-.proyect {
-    background-color: $color4;
-    position: absolute;
-    width: 100%;
-    height: 30rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
-    transition: opacity 1s;
-    display: flex;
-    opacity: 0;
-    z-index: 1;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    visibility: hidden;
-
-    @media screen and (max-width: 50rem) {
-        height: 50rem;
-        display: block;
-    }
-}
-
-.proyect.show {
-    opacity: 1;
-    z-index: 2;
-}
-
-.proyect.visible {
-    visibility: visible;
-}
-
-.proyect.visible-fix {
-    visibility: visible;
-}
-
+.article-img,
 .proyect-img {
     min-width: 50%;
     max-width: 50%;
     height: auto;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
 
     @media screen and (max-width: 50rem) {
         min-width: 100%;
@@ -405,34 +286,16 @@ main {
     background-size: cover;
 }
 
-.information-title {
-    padding: 0.5rem;
-    font-size: 3rem;
-    text-align: center;
-    margin-left: 2rem;
-    margin-right: 2rem;
-}
-
 .information-subtitle {
-    width: 100%;
-    text-align: center;
+    width: 50%;
+    margin: 3em auto 3rem auto;
 }
 
 .information-text {
     width: 50%;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
     font-size: 1.4rem;
-}
-
-.information-subsection {
-    width: 20%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    text-align: center;
-    font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 70rem) {
@@ -448,11 +311,6 @@ main {
 @media only screen and (max-width: 60rem) {
     .information-text {
         width: 80%;
-        font-size: 1.3rem;
-    }
-
-    .information-subsection {
-        width: 50%;
         font-size: 1.3rem;
     }
 }

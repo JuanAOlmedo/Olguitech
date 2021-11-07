@@ -33,6 +33,39 @@ a:hover {
     color: $color3;
 }
 
+.white {
+    color: #fff;
+}
+
+.main-title {
+    color: #fff;
+    font-size: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+
+    @media only screen and (max-width: 600px) {
+        font-size: 3.1rem;
+    }
+
+    @media only screen and (max-width: 400px) {
+        letter-spacing: normal;
+    }
+}
+
+.title {
+    font-size: 3rem;
+}
+
+.big-text {
+    font-size: 1.4rem;
+}
+
+.centered {
+    text-align: center;
+}
+
 // 2. NAVBAR //
 
 nav {
@@ -253,15 +286,14 @@ nav {
 .big-navbar-link {
     cursor: pointer;
     transition: color 0.8s;
-    width: 5.5rem;
-    padding: 0.6rem;
+    width: auto;
+    padding: 0.6rem 1rem 0.6rem 1rem;
     border-radius: 0.8rem;
     margin: auto 0.5rem auto 0.5rem;
     background-color: $color2;
     color: $color1;
     transition: background-color 0.8s, color 0.8s;
     font-weight: bold;
-    font-family: "Varela Round", sans-serif;
     font-size: 1.3rem;
     text-align: center;
 
@@ -282,6 +314,15 @@ nav {
 
 .big-navbar-link a {
     color: inherit;
+}
+
+.button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-style: none;
+    font-family: "Varela Round", sans-serif;
+    margin: 1rem 0 2rem 0;
 }
 
 .icon-tabler-chevron-down2 {

@@ -56,11 +56,6 @@
     margin-bottom: 2rem;
 }
 
-.form-title {
-    color: $color2;
-    font-size: 3rem;
-}
-
 .shared-links {
     color: $color2;
     font-family: "Montserrat", sans-serif;
@@ -90,24 +85,6 @@
 
 .field_with_errors input {
     background-color: red;
-}
-
-#button {
-    margin-left: 0;
-    width: 12rem;
-    font-family: "Varela Round", sans-serif;
-    font-weight: bold;
-    font-size: 1.5em;
-    border-style: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-
-    @media only screen and (max-width: 60rem) {
-        width: 15rem;
-    }
 }
 
 #user_password,

@@ -9,9 +9,9 @@
 
     <h2 class='button' style='margin-top: 3rem;'><%= link_to "#{I18n.t "users.sign_out"}", destroy_user_session_path, method: :delete, class:'access' %></h2>
 
-    <h2 class='form-title'>
+    <h1 class='title white'>
         <%= I18n.t "users.edit_account" %>
-    </h2>
+    </h1>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -54,7 +54,7 @@
     </div>
 
     <div class="form-actions">
-        <%= f.button :submit, "#{I18n.t "users.edit"}", class:'big-navbar-link', id:'button' %>
+        <%= f.button :submit, "#{I18n.t "users.edit"}", class:'big-navbar-link button' %>
     </div>
     <% end %>
 

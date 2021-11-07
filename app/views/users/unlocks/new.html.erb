@@ -2,7 +2,7 @@
     <%= stylesheet_link_tag 'forms' %>
 </head>
 
-<h2>Resend unlock instructions</h2>
+<h1 class="title white">Resend unlock instructions</h1>
 
 <%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
 <%= f.error_notification %>
@@ -17,7 +17,7 @@
 </div>
 
 <div class="form-actions">
-    <%= f.button :submit, "Resend unlock instructions", class:'big-navbar-link', id:'button' %>
+    <%= f.button :submit, "Resend unlock instructions", class:'big-navbar-link button' %>
 </div>
 <% end %>
 

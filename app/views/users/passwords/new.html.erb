@@ -5,9 +5,9 @@
 <% content_for :title, "#{I18n.t "users.forgot_password"}" %>
 
 <div class='form-div'>
-    <h2 class='form-title'>
+    <h1 class='title white'>
         <%= I18n.t "users.forgot_password" %>
-    </h2>
+    </h1>
 
     <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
@@ -21,7 +21,7 @@
                   placeholder: 'Email' %>
 
         <div class="form-actions">
-            <%= f.button :submit, "#{I18n.t "users.change"}", class:'big-navbar-link', id:'button' %>
+            <%= f.button :submit, "#{I18n.t "users.change"}", class:'big-navbar-link button' %>
         </div>
         <% end %>
 

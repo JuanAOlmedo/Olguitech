@@ -5,9 +5,9 @@
 <% content_for :title, "#{I18n.t "users.sign_up"}" %>
 
 <div class='form-div'>
-    <h2 class='form-title'>
+    <h1 class='title white'>
         <%= I18n.t "users.sign_up" %>
-    </h2>
+    </h1>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -58,7 +58,7 @@
     <%= javascript_pack_tag 'user' %>
 
     <div class="form-actions">
-        <%= f.button :submit, "#{I18n.t "users.sign_up"}", class:'big-navbar-link', id:'button' %>
+        <%= f.button :submit, "#{I18n.t "users.sign_up"}", class:'big-navbar-link button' %>
     </div>
     <% end %>
 

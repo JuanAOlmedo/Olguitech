@@ -5,7 +5,7 @@
 <% content_for :title, "Reenviar instrucciones de confirmación" %>
 
 <div class='form-div'>
-    <h2 class='form-title'>Reenviar instrucciones de confirmación</h2>
+    <h1 class='title white'>Reenviar instrucciones de confirmación</h1>
 
     <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
@@ -22,7 +22,7 @@
                   input_html: { autocomplete: "email" } %>
 
         <div class="form-actions">
-            <%= f.button :submit, "Reenviar", class:'big-navbar-link', id:'button' %>
+            <%= f.button :submit, "Reenviar", class:'big-navbar-link button' %>
         </div>
         <% end %>
 

@@ -5,7 +5,7 @@
 <% content_for :title, "Acceder" %>
 
 <div class='form-div'>
-    <h2 class='form-title'>Acceder</h2>
+    <h1 class='title white'>Acceder</h1>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="form-actions">
-        <%= f.button :submit, "Acceder", class:'big-navbar-link', id:'button' %>
+        <%= f.button :submit, "Acceder", class:'big-navbar-link button' %>
     </div>
     <% end %>
 

@@ -23,7 +23,7 @@
 }
 
 .categories .index-title {
-    margin: 2rem 0 0 0;
+    margin: 2rem auto 1rem auto;
 }
 
 .articles-div,
@@ -32,21 +32,27 @@
     width: 60%;
     margin: 0 15% 5rem 25%;
     color: $color2;
-
-    @media only screen and (max-width: 72rem) {
-        width: 70%;
-        margin: 0 4% 5rem 26%;
-    }
-
-    @media only screen and (max-width: 50rem) {
-        width: 92.5%;
-        margin: 0 auto 5rem auto;
-    }
 }
 
 .products-div {
     width: 70%;
     margin: 0 5% 5rem 25%;
+}
+
+@media only screen and (max-width: 72rem) {
+    .articles-div,
+    .products-div {
+        width: 70%;
+        margin: 0 4% 5rem 26%;
+    }
+}
+
+@media only screen and (max-width: 50rem) {
+    .articles-div,
+    .products-div {
+        width: 92.5%;
+        margin: 0 auto 5rem auto;
+    }
 }
 
 .products-div2 {
@@ -300,7 +306,6 @@ h4.visible {
     display: block;
 }
 
-
 .categories {
     width: 80%;
     margin-left: auto;
@@ -336,7 +341,7 @@ h4.visible {
     width: 100%;
     height: 12.5rem;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
 }
 
 .category-info {

@@ -56,6 +56,10 @@ a:hover {
 
 .title {
     font-size: 3rem;
+
+    @media only screen and (max-width: 60rem) {
+        font-size: 2.6rem;
+    }
 }
 
 .big-text {
@@ -322,7 +326,7 @@ nav {
     appearance: none;
     border-style: none;
     font-family: "Varela Round", sans-serif;
-    margin: 1rem 0 2rem 0;
+    margin: 1rem 0 2rem 0 !important;
 }
 
 .icon-tabler-chevron-down2 {

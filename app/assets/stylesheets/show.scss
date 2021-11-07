@@ -8,7 +8,8 @@
     min-height: 35rem;
 }
 
-article {
+article,
+.product {
     width: 50rem;
     margin-left: auto;
     margin-right: auto;
@@ -18,7 +19,9 @@ article {
     }
 }
 
-.article-title {
+.article-title,
+.product-title,
+.category-title {
     color: $color2;
     font-size: 3rem;
     margin: 0;
@@ -28,13 +31,15 @@ article {
     }
 }
 
-.article-description {
+.article-description,
+.product-description {
     font-size: 1.3rem;
     font-family: "Montserrat";
     margin-top: 0;
 }
 
-.article-img {
+.article-img,
+.product-img {
     width: 100%;
     height: auto;
 }
@@ -186,6 +191,48 @@ article {
 .trix-content .attachment-gallery.attachment-gallery--4 action-text-attachment {
     flex-basis: 50%;
     max-width: 50%;
+}
+
+article .card {
+    height: 16rem;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: 67rem) {
+        height: auto;
+    }
+}
+
+#all-categories {
+    display: flex;
+}
+
+#all-categories p {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.category-link {
+    color: $link;
+    text-decoration: underline;
+}
+
+.category-link:hover {
+    color: $link-h;
+    text-decoration: none;
+}
+
+.category-link:visited {
+    color: $link-h;
+    text-decoration: underline;
+}
+
+.product .card {
+    height: 16rem;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: 67rem) {
+        height: auto;
+    }
 }
 
 article .card {

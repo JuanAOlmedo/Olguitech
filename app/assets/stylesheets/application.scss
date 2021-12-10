@@ -430,6 +430,30 @@ nav {
     }
 }
 
+// 2.3 Transparent Navbar //
+
+body.transparent {
+    nav {
+        background-color: transparent;
+        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0);
+        transition: background-color 0.7s, box-shadow 0.7s;
+    }
+
+    nav.show {
+        background-color: #121212;
+        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    nav.show-lock {
+        background-color: #121212;
+        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    main {
+        margin: 0;
+    }
+}
+
 // 3. ICONS //
 
 .fas {

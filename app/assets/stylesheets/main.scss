@@ -11,28 +11,6 @@
     background: url("/Background.jpg") no-repeat scroll left top;
 }
 
-nav {
-    background-color: transparent;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0);
-    transition: background-color 0.7s, box-shadow 0.7s;
-}
-
-nav.show {
-    background-color: #121212;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
-}
-
-@media only screen and (max-width: 67rem) {
-    nav.show-lock {
-        background-color: #121212;
-        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
-    }
-}
-
-main {
-    margin: 0;
-}
-
 .subtitle {
     color: #fff;
     width: 60%;
@@ -183,10 +161,8 @@ main {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
-    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
     transition: opacity 1s;
     display: flex;
-    transform: perspective(500px) translate3d(0, 0, 0);
     opacity: 0;
     z-index: 1;
     right: 0;
@@ -313,4 +289,241 @@ main {
         width: 80%;
         font-size: 1.3rem;
     }
+}
+.nosotros-front {
+    margin: 0;
+    color: $color2;
+    background-color: $color1;
+}
+
+.nosotros-front .still {
+    transform: translateY(3px);
+    opacity: 0.7;
+    transition: transform 1s, opacity 1s;
+    transition-timing-function: ease-in-out;
+}
+
+.nosotros-front .move {
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.nosotros-front .big-text {
+    width: 50rem;
+    margin: 0 auto 0 auto;
+
+    @media only screen and (max-width: 1000px) {
+        width: 95%;
+    }
+}
+
+// Nosotros
+
+#a1 {
+    padding: 12rem 1rem 10rem 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    background: transparent;
+    position: relative;
+}
+
+#a1::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    background: url("/Background.webp") no-repeat fixed;
+    background-size: cover;
+    -webkit-filter: blur(2px);
+    /* Chrome, Opera */
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+
+    @supports (-webkit-touch-callout: none) {
+        background: url("/Background.webp") center top no-repeat scroll;
+    }
+}
+
+.no-webp #a1::before {
+    background: url("/Background.jpg") no-repeat fixed;
+
+    @supports (-webkit-touch-callout: none) {
+        background: url("/Background.jpg") center top no-repeat scroll;
+    }
+}
+
+#a2 {
+    background: url("/Background1.webp") no-repeat fixed;
+    background-size: cover;
+    padding: 10rem 1rem 9rem 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    @supports (-webkit-touch-callout: none) {
+        background: url("/Background1.webp") center no-repeat scroll;
+    }
+}
+
+.no-webp #a2 {
+    background: url("/Background1.jpg") no-repeat fixed;
+
+    @supports (-webkit-touch-callout: none) {
+        background: url("/Background1.jpg") center top no-repeat scroll;
+    }
+}
+
+// Contacto
+
+.contact-div {
+    background-color: $color1;
+    margin-top: 0;
+    display: flex;
+    z-index: 10;
+    height: 100%;
+
+    @media only screen and (max-width: 70rem) {
+        display: block;
+    }
+}
+
+.contact-sub-div {
+    margin-left: 50%;
+    width: 50%;
+    padding: 2rem;
+    padding-bottom: 6rem;
+
+    @media only screen and (max-width: 70rem) {
+        width: 90%;
+        padding: 5%;
+        padding-bottom: 5rem;
+        margin-left: 0%;
+    }
+}
+
+.contact-div .big-navbar-link {
+    display: block;
+    margin: 2.5rem 0 2.5rem 0;
+    max-width: 15rem;
+    font-size: 1.5rem;
+}
+
+.contact-button {
+    cursor: pointer;
+    transition: color 0.8s;
+    width: 15rem;
+    padding: 0.7rem;
+    border-radius: 0.8rem;
+    margin: 0;
+    background-color: $color2;
+    color: $color1;
+    text-align: center;
+    transition: background-color 0.8s, color 0.8s;
+}
+
+.contact-button:visited {
+    color: $color1;
+}
+
+.contact-button:hover {
+    color: $color6;
+    background-color: $color5;
+}
+
+.contact-button a {
+    color: inherit;
+}
+
+.location-container {
+    width: 50%;
+    bottom: 0;
+    top: 5.15em;
+    left: 0;
+    position: fixed;
+
+    @media only screen and (max-width: 70rem) {
+        width: 100%;
+        height: 25rem;
+        position: relative;
+        top: 0;
+    }
+}
+
+.location-info {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+    background-color: $color2;
+    padding: 0.6rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.contact-alternative {
+    color: $color2;
+    font-size: 1.7rem;
+
+    @media only screen and (max-width: 40rem) {
+        font-size: 1.4rem;
+    }
+}
+
+.contact-mail {
+    color: $accent-color;
+    padding: 0 0.2rem 0 0.2rem;
+}
+
+.contact-mail:hover {
+    color: $accent-color;
+    text-decoration: underline;
+}
+
+.field {
+    padding: 2rem;
+    width: 60%;
+    margin: 7rem auto 2rem auto;
+    background-color: $color4;
+    border-radius: 1.7rem;
+
+    @media only screen and (max-width: 70rem) {
+        width: 85%;
+        padding: 1.5rem;
+    }
+}
+
+.preference {
+    color: $color2;
+    font-size: 2rem;
+}
+
+select {
+    max-width: 80%;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    padding: 0.3rem;
+
+    @media only screen and (max-width: 40rem) {
+        width: 100%;
+    }
+}
+
+textarea {
+    width: 100%;
+    height: 10rem;
+    background-color: $color6;
+    color: #fff;
+    font-size: 1.1rem;
+    resize: vertical;
+    font-family: "Open Sans", "Arial", "sans-serif";
+}
+
+#map a {
+    color: $link;
+}
+
+#map a:hover {
+    color: $link-h;
 }

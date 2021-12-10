@@ -22,6 +22,8 @@ class Clicker {
     }
 }
 
+const lazy = document.querySelectorAll(".lazy");
+
 if ("IntersectionObserver" in window) {
     const imgObserver = new IntersectionObserver(
         (entries, imgObserver) => {
@@ -39,7 +41,7 @@ if ("IntersectionObserver" in window) {
         }
     );
 
-    document.querySelectorAll(".lazy").forEach((img) => {
+    lazy.forEach((img) => {
         imgObserver.observe(img);
     });
 
@@ -64,7 +66,7 @@ if ("IntersectionObserver" in window) {
         stillsObserver.observe(still);
     });
 } else {
-    document.querySelectorAll("lazy").forEach((img) => {
+    lazy.forEach((img) => {
         img.classList.remove("lazy");
         img.src = img.dataset.src ? img.dataset.src : img.src;
     });

@@ -7,7 +7,7 @@
 <div class='form-div'>
     <%= render 'layouts/back' %>
 
-    <h2 class='button' style='margin-top: 3rem;'><%= link_to 'Cerrar sesion', destroy_admin_session_path, method: :delete, class:'access' %></h2>
+    <h2 class='button' id="close-session"><%= link_to 'Cerrar sesion', destroy_admin_session_path, method: :delete, class:'access' %></h2>
 
     <h1 class='title white'>Editar Cuenta</h1>
 
@@ -16,7 +16,7 @@
 
     <div class="form-inputs">
         <%= f.input :email,
-                  required: true, 
+                  required: true,
                   autofocus: true,
                   label: false,
                   placeholder: 'Email' %>

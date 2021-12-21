@@ -4,3 +4,4 @@ class AddExtraInfoToUsers < ActiveRecord::Migration[6.0]
     add_column :users, :company, :string
   end
 end
+ActiveRecord::Base.connection.execute(query)

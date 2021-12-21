@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_07_191822) do
+ActiveRecord::Schema.define(version: 2021_12_21_000236) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
+    t.integer "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_11_07_191822) do
     t.string "content_type"
     t.text "metadata"
     t.integer "byte_size", null: false
-    t.string "checksum", null: false
+    t.string "checksum"
     t.datetime "created_at", null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
@@ -169,7 +169,12 @@ ActiveRecord::Schema.define(version: 2021_11_07_191822) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "company"
-    t.string "phone"
+    t.string "phonreversible do |dir|
+      change_table :users do |t|
+        dir.up   { t.change :phone, :string }
+        dir.down { t.change :phone, :string }
+      end
+    ende"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

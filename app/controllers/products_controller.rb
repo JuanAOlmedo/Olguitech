@@ -14,9 +14,7 @@ class ProductsController < ApplicationController
 
     # GET /products/1 or /products/1.json
     def show
-        if @product.views == nil
-            @product.views = 0
-        end
+        @product.views = 0 if @product.views == nil
 
         if session[:viewed_products] == nil
             @product.views += 1
@@ -111,7 +109,8 @@ class ProductsController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to products_url,
-                            notice: 'Producto destruido exitosamente.'
+                            notice: 'Producto destruido exitosamente.',
+                            status: :see_other
             end
             format.json { head :no_content }
         end
@@ -138,7 +137,7 @@ class ProductsController < ApplicationController
                 { articles: [] },
                 { proyectos: [] },
                 { categories: [] },
-                :image,
+                :image
             )
     end
 end

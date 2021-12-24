@@ -88,7 +88,8 @@ class CategoriesController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to categories_url,
-                            notice: 'Category was successfully destroyed.'
+                            notice: 'Categoría destruída exitosamente.',
+                            status: :see_other
             end
             format.json { head :no_content }
         end
@@ -113,7 +114,7 @@ class CategoriesController < ApplicationController
                 { products: [] },
                 { articles: [] },
                 { proyectos: [] },
-                :image,
+                :image
             )
     end
 end

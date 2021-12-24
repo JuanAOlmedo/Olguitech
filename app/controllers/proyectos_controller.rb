@@ -14,9 +14,7 @@ class ProyectosController < ApplicationController
 
     # GET /proyectos/1
     def show
-        if @proyecto.views == nil
-            @proyecto.views = 0
-        end
+        @proyecto.views = 0 if @proyecto.views == nil
 
         if session[:viewed_proyectos] == nil
             @proyecto.views += 1
@@ -114,7 +112,8 @@ class ProyectosController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to proyectos_url,
-                            notice: 'Artículo destruido exitosamente.'
+                            notice: 'Artículo destruido exitosamente.',
+                            status: :see_other
             end
             format.json { head :no_content }
         end
@@ -140,7 +139,7 @@ class ProyectosController < ApplicationController
                 :description2,
                 { products: [] },
                 { categories: [] },
-                :image,
+                :image
             )
     end
 end

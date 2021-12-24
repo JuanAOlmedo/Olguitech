@@ -7,13 +7,15 @@
 <div class='form-div'>
     <%= render 'layouts/back' %>
 
-    <h2 class='button' id="close-session"><%= link_to "#{I18n.t "users.sign_out"}", destroy_user_session_path, method: :delete, class:'access' %></h2>
+    <h2 class='button' id="close-session">
+        <%= link_to "#{I18n.t "users.sign_out"}", destroy_user_session_path, method: :delete, class:'access' %>
+    </h2>
 
     <h1 class='title white'>
         <%= I18n.t "users.edit_account" %>
     </h1>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: :false } }, ) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -60,9 +62,7 @@
 
     <%= javascript_pack_tag 'user' %>
 
-    <h2 class='form-title'>
-        <%= I18n.t "users.delete_account" %>
+    <h2 class='button'>
+        <%= link_to "#{I18n.t "users.delete_account"}", registration_path(resource_name), data: { turbo_confirm: I18n.t("users.are_you_sure"), turbo_method: :delete }, class:'access' %>
     </h2>
-
-    <h2 class='button'><%= link_to "#{I18n.t "users.delete_account"}", registration_path(resource_name), data: { confirm: I18n.t("users.are_you_sure") }, method: :delete, class:'access' %></h2>
 </div>

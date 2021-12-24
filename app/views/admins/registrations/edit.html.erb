@@ -5,11 +5,13 @@
 <div class='form-div'>
     <%= render 'layouts/back' %>
 
-    <h2 class='button' id="close-session"><%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete, class:'access' %></h2>
+    <h2 class='button' id="close-session">
+        <%= button_to 'Cerrar sesion', destroy_user_session_path, method: :delete, class:'access' %>
+    </h2>
 
     <h2 class='title white'>Editar Cuenta</h2>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: :false } }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">

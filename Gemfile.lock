@@ -248,7 +248,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.4)
   capistrano-rbenv (~> 2.1, >= 2.1.4)
   capybara (>= 2.15)
-  devise (~> 4.8)
+  devise (= 4.8.1)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   mini_magick
@@ -258,7 +258,7 @@ DEPENDENCIES
   rexml (~> 3.2, >= 3.2.4)
   sassc-rails
   selenium-webdriver
-  simple_form (~> 5.0, >= 5.0.2)
+  simple_form (= 5.1.0)
   sqlite3
   stimulus-rails
   turbo-rails

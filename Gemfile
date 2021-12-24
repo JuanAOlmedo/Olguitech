@@ -35,10 +35,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Use devise for authentication
-gem 'devise', '~> 4.8'
+gem 'devise', '4.8.1'
 
 # Use simpre_form for devise forms
-gem 'simple_form', '~> 5.0', '>= 5.0.2'
+gem 'simple_form', '5.1.0'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'

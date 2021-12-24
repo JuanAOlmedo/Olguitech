@@ -9,7 +9,7 @@
         <%= I18n.t "users.sign_in" %>
     </h1>
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: :false } }) do |f| %>
     <div class="form-inputs">
         <%= f.input :email,
                   label: false,

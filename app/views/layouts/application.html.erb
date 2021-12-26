@@ -67,18 +67,26 @@
             <%= link_to "Nosotros", nosotros_path, class: "link" %>
             <%= link_to "Contacto", contactos_path, class: "link" %>
 
-            <select id="lang">
-                <option id="es" value="es" data-url="<%= url_for( :locale => 'es' ) %>"> Español </option>
-                <option id="en" value="en" data-url="<%= url_for( :locale => 'en' ) %>"> Inglés </option>
-            </select>
-
-
-            <%= link_to url_for( :locale => 'en' ), class: "flag", title: I18n.t("shared.flag1"), rel: "alternate", hreflang: "en" do %>
-            <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>">
-            <% end %>
-            <%= link_to url_for( :locale => 'es' ), class: "flag", title: I18n.t("shared.flag2"), rel: "alternate", hreflang: "es" do %>
-            <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>">
-            <% end %>
+            <div class="dropdown" id="lang">
+                <div class="dropdown-trigger">
+                    <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu">
+                        <%= I18n.locale == :es ? "Español" : "Inglés" %>
+                        <span class="dropdown-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2.5" stroke="inherit" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <polyline points="6 12 12 18 18 12" />
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <%= link_to url_for( locale: I18n.locale == :es ? :en : :es ), hreflang: I18n.locale == :es ? :en : :es do %>
+                        <div class="btn">
+                            <%= I18n.locale == :en ? "Español" : "Inglés" %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
 
             <% if user_signed_in? %>
                 <%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class: "btn" %>

@@ -21,13 +21,13 @@ es:
     how_are_we_different_message: "Nuestro diferencial es el servicio y la voluntad de mejorar continuamente. Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos. En Olguitech apostamos a ser socios tecnológicos de nuestros clientes."
   contact:
     direction_alt: "Mapa de 21 de Setiembre 2819 of. 703 esq. Ellauri"
-    direction: "Encontranos en 21 de Setiembre 2819 of. 703 esq. Ellauri"
+    direction_html: "Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>"
     how_can_we_help_you: "Cómo podemos ayudarte?"
     contact: "Contactarse"
     sign_in_and_contact: "Iniciar Sesión y Contactarse"
-    contact_html: "O contactate a <a class='contact-mail' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
-                   al teléfono <a class='contact-mail' href='tel:+59827162524'>+598 2716 2524</a> <br> 
-                   o al celular <a class='contact-mail' href='tel:+59892898500'>+598 92 898 500</a>"
+    contact_html: "O contactate a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
+                   al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
+                   o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>"
     preference: "Cuál de nuestras soluciones te interesó más?"
     preference2: "Cuál de nuestros proyectos te interesó más?"
     message: "Mensaje"

@@ -13,28 +13,22 @@
 
 <% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
 
-<div class='contact-div'>
-    <div id="map" class="location-container" alt='<%= I18n.t "contact.direction_alt" %>'>
-        <p class='location-info'> <%= I18n.t "contact.direction" %> </p>
-    </div>
+<div class="centered">
+    <h1 class='main-title'> Contacto </h1>
 
-    <div class='contact-sub-div'>
-        <h1 class='white title'> <%= I18n.t "contact.how_can_we_help_you" %> </h1>
+    <p class="subtitle">
+        <%= t "contact.direction_html" %>
+    </p>
 
-        <% if user_signed_in? %>
-            <%= link_to "/#{I18n.locale}/contacto/new", class: "big-navbar-link" do %>
-                <%= I18n.t "contact.contact" %>
-            <% end %>
-        <% else %>
-            <%= link_to "/#{I18n.locale}/contacto/new", class: "big-navbar-link" do %>
-                <%= I18n.t "contact.sign_in_and_contact" %>
-            <% end %>
-        <% end %>
+    <div id="map" class="centered location-container" alt='<%= I18n.t "contact.direction_alt" %>'></div>
 
-        <h3 class='contact-alternative'>
-            <%= t("contact.contact_html") %>
-        </h3>
-    </div>
+    <h1 class='main-title'> <%= I18n.t "contact.how_can_we_help_you" %> </h1>
+
+    <%= link_to "Hacer una pregunta!", "/#{I18n.locale}/contacto/new", class: "btn" %>
+
+    <p class='big-text'>
+        <%= t("contact.contact_html") %>
+    </p>
 </div>
 
 <%= javascript_pack_tag 'contacto' %>

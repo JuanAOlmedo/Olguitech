@@ -113,3 +113,11 @@ function dropdownClickHandler() {
         document.querySelector("nav").classList.remove("show-lock");
     }
 }
+
+const langs = document.querySelectorAll("#lang .btn");
+
+langs.forEach((lang) => {
+    lang.onclick = () => {
+        document.querySelector("#lang").classList.toggle("is-active");
+    }
+})

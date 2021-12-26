@@ -5,15 +5,17 @@
 </head>
 
 <div class="front">
-    <h2 class="main-title">Olguitech</h2>
-    <p class='subtitle'> <%= I18n.t 'main.what_do_we_do_message' %> <br>
-         <br>
-         </p>
-    <div class='subtitle-more-link'>
-        <%= link_to nosotros_path, title: t('nav.about_us') do %>
-            <%= render 'layouts/more' %>
-        <% end %>
-    </div>
+    <h2 class="main-title">Las últimas tendencias mundiales en ingeniería eléctrica.</h2>
+    <p class='subtitle'>
+        Te asesoramos cuando analices definir la compra de un insumo o cuando busques la forma de mejorar su proceso o instalación. 
+        <strong> 
+            En Olguitech, buscamos ser socios tecnológicos de nuestros clientes.
+        </strong>
+        <br>
+        <br>
+    </p>
+    
+    <%= link_to "Por qué elegir Olguitech?", nosotros_path, class: "btn centered" %>
 </div>
 
 <% if @articles.any? %>

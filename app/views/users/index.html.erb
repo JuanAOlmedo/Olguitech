@@ -35,7 +35,12 @@
 
                     <td> <%= if user.newsletter; "Sí"; else; "No"; end; %> </td>
 
-                    <td> <span class='times-contacted' data-id="<%= user.id %>"><%= user.contactos.length %></span> </td>
+                    <td>
+                        <% times_contacted = user.contactos.length %> 
+                        <span class='<%= times_contacted > 0 ? "times-contacted" : "" %>' data-id="<%= user.id %>">
+                            <%= user.contactos.length %>
+                        </span> 
+                    </td>
 
                     <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
                 </tr>

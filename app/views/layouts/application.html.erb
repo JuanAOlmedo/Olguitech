@@ -18,8 +18,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&family=Varela+Round&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet"> 
 </head>
 
 <body class="<%= yield(:nav) %>">
@@ -56,23 +56,17 @@
         <%= render 'layouts/dropdown' %>
 
         <div class="right-navbar-section">
-            <%= render 'layouts/hoverable', type: "products" %>
-            <%= render 'layouts/hoverable', type: "articles" %>
-            <%= render 'layouts/hoverable', type: "proyects" %>
-
-            <h2 class='navbar-link'>
-                <%= link_to (I18n.t 'nav.about_us'), nosotros_path, id: "nosotros-link" %>
-            </h2>
-
-            <h2 class='navbar-link'>
-                <%= link_to (I18n.t 'nav.contact'), "/#{I18n.locale}/contacto", id: "contacto-link" %>
-            </h2>
+            <%= link_to "Soluciones", articles_path, class: "link" %>
+            <%= link_to "Proyectos", proyectos_path, class: "link" %>
+            <%= link_to "Productos", products_path, class: "link" %>
 
             <% if admin_signed_in? %>
-            <h2 class='navbar-link' id="newsletter-link">
-                <%= link_to 'Newsletters', newsletters_path, id: "newsletter-link" %>
-            </h2>
+                <%= link_to "Nesletters", newsletters_path, class: "link" %>
             <% end %>
+
+            <%= link_to "Nosotros", nosotros_path, class: "link" %>
+            <%= link_to "Contacto", contactos_path, class: "link" %>
+
 
             <%= link_to url_for( :locale => 'en' ), class: "flag", title: I18n.t("shared.flag1"), rel: "alternate", hreflang: "en" do %>
             <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>">
@@ -82,13 +76,13 @@
             <% end %>
 
             <% if user_signed_in? %>
-            <%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class: "big-navbar-link" %>
+                <%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class: "btn" %>
             <% else %>
-            <%= link_to (I18n.t 'nav.sign_in'), new_user_session_path, class: "big-navbar-link" %>
+                <%= link_to (I18n.t 'nav.sign_in'), new_user_session_path, class: "btn" %>
             <% end %>
 
             <% if admin_signed_in? %>
-            <%= link_to 'Admin', edit_admin_registration_path, class: "big-navbar-link" %>
+                <%= link_to 'Admin', edit_admin_registration_path, class: "btn" %>
             <% end %>
         </div>
     </nav>

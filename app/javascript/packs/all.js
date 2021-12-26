@@ -50,11 +50,12 @@ if ("IntersectionObserver" in window) {
             entries.forEach((entry) => {
                 const still = entry.target;
                 if (!entry.isIntersecting) {
-                    still.classList.remove("move");
+                    still.classimgObserverList.remove("move");
                     return;
                 }
 
                 still.classList.add("move");
+                stillsObserver.unobserve(entry.target);
             });
         },
         {
@@ -111,16 +112,6 @@ function dropdownClickHandler() {
 
     if (!showing) {
         document.querySelector("nav").classList.remove("show-lock");
-    }
-}
-
-function defineElementOffset(element, change) {
-    const scrollTop = window.pageYOffset;
-
-    if (element.offsetTop < window.innerHeight + scrollTop - change) {
-        return true;
-    } else {
-        return false;
     }
 }
 

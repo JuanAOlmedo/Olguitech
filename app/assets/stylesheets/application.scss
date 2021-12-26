@@ -4,33 +4,40 @@
 
 body {
     margin: 0;
-    font-family: "Varela Round", sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', helvetica, 'Apple Color Emoji', arial, sans-serif;
     overflow-x: hidden;
-    background-color: $color1;
+    background-color: white;
+    color: black;
 }
 
-p {
-    font-family: "Montserrat", "Helvetica", sans-serif;
+.centered {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-main {
-    margin-top: 5.15em;
-}
-
-a {
+.btn {
+    font-size: 1.4rem;
+    display: inline-block;
     text-decoration: none;
-    color: $color2;
+    color: #333;
+    transition: background 0.25s, color 0.25s;
+    border-radius: 0.3rem;
+    width: auto;
+    height: fit-content;
+    padding: 0.5rem;
+    font-weight: 600;
+    background-color: hsl(26.7,23.1%,92.4%);
 }
 
-a:visited {
+.btn:visited {
     text-decoration: none;
-    color: $color2;
+    color: #333;
 }
 
-a:hover {
-    text-decoration: none;
-    background-color: hsla(0, 0, 0, 0);
-    color: $color3;
+.btn:hover {
+    background-color: hsl(26.7,23.1%,87.4%);
+    color: #f4923c;
 }
 
 .white {
@@ -38,12 +45,14 @@ a:hover {
 }
 
 .main-title {
-    color: #fff;
-    font-size: 4rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+    color: #f4923c;
+    font-size: 4.2rem;
+    text-align: center;
+    margin: 2rem auto 2rem auto;
+    width: 80%;
+    font-weight: 900;
+    line-height: 67px;
+    letter-spacing: -0.01em;
 
     @media only screen and (max-width: 600px) {
         font-size: 3.1rem;
@@ -55,7 +64,9 @@ a:hover {
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #f4923c;
 
     @media only screen and (max-width: 60rem) {
         font-size: 2.6rem;
@@ -66,9 +77,7 @@ a:hover {
     font-size: 1.4rem;
 }
 
-.centered {
-    text-align: center;
-}
+
 
 // 2. NAVBAR //
 
@@ -76,23 +85,15 @@ nav {
     padding: 0;
     margin: 0;
     display: flex;
-    background-color: #121212;
-    box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
+    background-color: white;
     font-size: 0.9rem;
-    font-family: "Varela Round", sans-serif;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
 .left-navbar-section {
     height: 5.7em;
     width: 13.02rem;
     padding: 0;
-    margin: 0;
-    margin-left: 0.4rem;
+    margin: 0 auto 0 0.4rem;
 }
 
 .logo {
@@ -104,239 +105,40 @@ nav {
 .right-navbar-section {
     text-align: center;
     display: flex;
-    position: absolute;
-    width: auto;
-    right: 0.5rem;
-    top: 6px;
-    bottom: 6px;
-}
-
-.flag {
+    height: fit-content;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 0.8rem;
-    margin-right: 0.3rem;
-    height: auto;
 }
 
-.flag img {
-    width: 2.2rem;
+nav .link, nav .btn {
+    margin: 0 0.5rem 0 0.5rem;
 }
 
-.flags-div {
-    width: 7rem;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.hoverable-content {
-    position: fixed;
-    background-color: $color6;
-    background-color: #121212;
-    top: 5.15em;
-    left: 2rem;
-    right: 2rem;
-    overflow-y: auto;
-    display: none;
-    flex-wrap: wrap;
-    max-height: 29rem;
-}
-
-.triangle-svg {
-    position: fixed;
-    pointer-events: none;
-    display: none;
-    opacity: 0;
-}
-
-.triangle {
-    pointer-events: auto;
-}
-
-// 2.1 Scrollbar //
-/* width */
-.hoverable-content::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-.hoverable-content::-webkit-scrollbar-track {
-    background-color: $color6;
-}
-
-/* Handle */
-.hoverable-content::-webkit-scrollbar-thumb {
-    background: $color3;
-    border-radius: 5px;
-}
-////////////
-
-.hoverable {
-    height: 100% !important;
-    margin-bottom: 0 !important;
-    cursor: auto !important;
-}
-
-.hoverable:hover,
-.hoverable:focus-within {
-    .hoverable-content {
-        display: flex;
-    }
-
-    #articles-hoverable {
-        color: $color5;
-    }
-
-    .icon-tabler-chevron-down2 {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(2px);
-    }
-
-    .icon-tabler-chevron-down {
-        transform: translateY(3px);
-    }
-}
-
-.dropdown-articles-hoverable-div:hover {
-    .hoverable-content {
-        display: none;
-    }
-}
-
-#articles-hoverable {
-    width: 100%;
-    height: 2rem;
-}
-
-#articles-hoverable a,
-#articles-hoverable a:visited {
-    color: inherit;
-}
-
-.hoverable-title2 {
-    width: 97%;
-    text-align: left;
-    padding-left: 2rem;
-}
-
-.hoverable-title2 a {
-    margin: 0 !important;
-}
-
-.card-img {
-    min-width: 50%;
-    max-width: 50%;
-    height: auto;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
-
-.card {
-    width: 100%;
-    height: 10rem;
-    padding: 0;
-    text-align: left;
-    display: flex;
-    margin: 0;
-}
-
-.hoverable-content a {
-    width: 47%;
-    margin: 1.5%;
-
-    @media only screen and (max-width: 80rem) {
-        width: 49%;
-        margin: 0.5%;
-    }
-}
-
-.card-content {
-    padding-left: 0.5rem;
-}
-
-.card h2 {
-    color: $color1;
-    background-color: $color2;
-    padding: 0.5rem;
-    margin: 0;
-
-    @media only screen and (max-width: 80rem) {
-        font-size: 1.2rem;
-    }
-}
-
-.icon-tabler-external-link {
-    color: $link;
-}
-
-.icon-tabler-external-link:hover,
-.icon-tabler-external-link:visited {
-    color: $link;
-}
-
-.navbar-link {
-    color: $color2;
-    padding-right: 0.5rem;
-    width: 7.5rem;
-    transition: color 0.8s;
-
-    @media only screen and (max-width: 1200px) {
-        width: 7.4rem;
-        padding-right: 0.4rem;
-    }
-}
-
-.big-navbar-link {
-    cursor: pointer;
-    transition: color 0.8s;
+.link {
+    font-size: 1.4rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.25s, color 0.25s;
+    border-radius: 0.3rem;
     width: auto;
-    padding: 0.6rem 1rem 0.6rem 1rem;
-    border-radius: 0.8rem;
-    margin: auto 0.5rem auto 0.5rem;
-    background-color: $color2;
-    color: $color1;
-    transition: background-color 0.8s, color 0.8s;
-    font-weight: bold;
-    font-size: 1.3rem;
-    text-align: center;
-
-    @media only screen and (max-width: 1200px) {
-        width: 5.4rem;
-        margin: auto 0.3rem auto 0.3rem;
-    }
+    padding: 0.5rem;
+    font-weight: 600;
+    background-color: white;
+    vertical-align: middle;
+    height: fit-content;
 }
 
-.big-navbar-link:visited {
-    color: $color1;
+.link:visited {
+    text-decoration: none;
+    color: #333;
 }
 
-.big-navbar-link:hover {
-    color: $color6;
-    background-color: $color5;
+.link:hover {
+    background-color: hsl(26.7,23.1%,92.4%);
+    color: #f4923c;
 }
 
-.big-navbar-link a {
-    color: inherit;
-}
-
-.button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border-style: none;
-    font-family: "Varela Round", sans-serif;
-    margin: 1rem 0 2rem 0 !important;
-}
-
-.icon-tabler-chevron-down2 {
-    position: relative;
-    bottom: 0.7rem;
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-2px);
-    transition: opacity 0.7s 0.1s, transform 0.7s 0.1s, visibility 0.6s 0.1s;
-}
 
 // 2.2 Dropdown //
 
@@ -427,30 +229,6 @@ nav {
         height: 0;
         min-height: 0;
         max-height: 0;
-    }
-}
-
-// 2.3 Transparent Navbar //
-
-body.transparent {
-    nav {
-        background-color: transparent;
-        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0);
-        transition: background-color 0.7s, box-shadow 0.7s;
-    }
-
-    nav.show {
-        background-color: #121212;
-        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    nav.show-lock {
-        background-color: #121212;
-        box-shadow: 1px 8px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    main {
-        margin: 0;
     }
 }
 

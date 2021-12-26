@@ -52,7 +52,7 @@
 
 .card.still {
     transform: translateY(2rem);
-    opacity: 0.2;
+    opacity: 0;
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
@@ -77,22 +77,11 @@
     margin: 0.5rem 0 0.5rem 0;
 }
 
-@media only screen and (max-width: 70rem) {
-    .article-title {
-        font-size: 1.6rem;
-    }
-
-    .article-text {
-        font-size: 0.9rem;
-    }
+.contacto {
+    margin: 3rem auto 7rem auto;
 }
 
-@media only screen and (max-width: 60rem) {
-    .information-text {
-        width: 80%;
-        font-size: 1.3rem;
-    }
-}
+
 .nosotros-front {
     margin: 0;
     color: $color2;
@@ -302,7 +291,7 @@
     font-size: 2rem;
 }
 
-select {
+.field select {
     max-width: 80%;
     margin-bottom: 2rem;
     font-size: 1.2rem;

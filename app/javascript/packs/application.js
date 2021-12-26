@@ -10,3 +10,15 @@ require("channels");
 require("trix");
 require("@rails/actiontext");
 import "./trix-editor-overrides";
+
+import { Turbo } from "@hotwired/turbo-rails";
+
+let select;
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    select = document.getElementById("lang");
+
+    select.addEventListener("change", () => {
+        Turbo.visit(document.getElementById(`${select.value}`).dataset.url);
+    });
+});

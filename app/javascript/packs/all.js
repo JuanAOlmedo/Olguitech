@@ -50,7 +50,6 @@ if ("IntersectionObserver" in window) {
             entries.forEach((entry) => {
                 const still = entry.target;
                 if (!entry.isIntersecting) {
-                    still.classimgObserverList.remove("move");
                     return;
                 }
 
@@ -113,101 +112,4 @@ function dropdownClickHandler() {
     if (!showing) {
         document.querySelector("nav").classList.remove("show-lock");
     }
-}
-
-const articlesHoverableDiv = document.querySelector(".articles-hoverable-div"),
-    proyectsHoverableDiv = document.querySelector(".proyects-hoverable-div");
-
-class Clickable {
-    constructor(element, chevron, dropdownExtensible) {
-        this.element = element;
-        this.chevron = chevron;
-        this.dropdownExtensible = dropdownExtensible;
-        this.extended = false;
-
-        elementClicker = new Clicker(
-            this.element,
-            this.extend,
-            this
-        ).createClick();
-    }
-
-    extend(thisClass) {
-        thisClass.dropdownExtensible.classList.toggle("extend");
-        thisClass.chevron.classList.toggle("extend");
-
-        if (thisClass.extended) {
-            thisClass.dropdownExtensible.classList.add("de-extend");
-            setTimeout(
-                () =>
-                    thisClass.dropdownExtensible.classList.remove("de-extend"),
-                800
-            );
-            thisClass.extended = false;
-        } else {
-            thisClass.extended = true;
-        }
-    }
-}
-
-const dropdownClickables = document.querySelectorAll(".hoverable"),
-    chevrons = document.querySelectorAll(".icon-tabler-chevron-down"),
-    dropdownExtensibles = document.querySelectorAll(".hoverable-content");
-
-let i;
-for (i = 0; i < dropdownClickables.length; i++) {
-    dropdownClickable = new Clickable(
-        dropdownClickables[i],
-        chevrons[i],
-        dropdownExtensibles[i]
-    );
-}
-
-let anchors = document.querySelectorAll("#articles-hoverable"),
-    menus = document.querySelectorAll(".hoverable-content"),
-    hoverables = document.querySelectorAll(".hoverable"),
-    triangles = document.querySelectorAll(".triangle");
-
-function setSvg(anchor, menu, triangle) {
-    tParent = triangle.parentElement;
-    tParent.style.height = `${menu.y}px`;
-    tParent.style.width = `${menu.x + menu.width}px`;
-    tParent.style.top = `${0}px`;
-    tParent.style.left = `${0}px`;
-
-    tParent.style.display = "block";
-
-    triangle.attributes.d.value = `
-    M ${anchor.x} ${anchor.y}
-    Q ${anchor.x} ${menu.y}
-      ${menu.x} ${menu.y}
-    h ${menu.width}
-    Q ${anchor.x + anchor.width} ${menu.y}
-      ${anchor.x + anchor.width} ${anchor.y}
-    V ${menu.y}
-    h ${-anchor.width}
-    z`;
-}
-
-function deSetSvg(triangle) {
-    triangle.parentElement.style.display = "none";
-}
-
-let i2;
-for (i2 = 0; i2 < hoverables.length; i2++) {
-    setMouseOver(i2);
-}
-
-function setMouseOver(index) {
-    hoverables[index].onmouseover = function () {
-        setSvg(
-            anchors[index].getBoundingClientRect(),
-            menus[index].getBoundingClientRect(),
-            triangles[index]
-        );
-    };
-
-    hoverables[index].onmouseout = function () {
-        deSetSvg(triangles[index]);
-    };
 }

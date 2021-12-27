@@ -10,17 +10,11 @@ module CardsHelper
         end
 
         def html
-            array1 =
-                @array.select { |element| @array.find_index(element).even? }
-            array2 = @array.select { |element| @array.find_index(element).odd? }
-
-            rand_num = @array.length.even? ? rand(0..1) : 1
-
-            content =
-                safe_join [
-                              grid(array1, rand_num == 0 ? true : false),
-                              grid(array2, rand_num == 1 ? true : false)
-                          ]
+            unless @array.length == 1
+                content = grid(@array)
+            else
+                content = card_single(@array[0])
+            end
 
             content_tag :div, content, id: uid, class: 'cards-holder centered'
         end
@@ -30,22 +24,61 @@ module CardsHelper
         attr_accessor :view, :array, :uid
         delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
 
-        def grid(array, has_padding)
+        def grid(array)
             content = []
 
-            content << content_tag(:div, "", style: "height: #{rand(3.00..6.00)}rem;") if has_padding
+            rand_num = @array.length.even? ? rand(0..1) : 1
+            rand_num2 = @array.length.even? ? rand(3..5) : 10
 
-            array.each { |element| content << card(element) if element }
+            if rand_num == 0
+                @last_row1, @last_row2 = rand_num2, 1
+            else
+                @last_row1, @last_row2 = 1, rand_num2
+            end
+
+            array.each do |element|
+                if element
+                    content << card(element, array.find_index(element).even?)
+                end
+            end
 
             content = safe_join content
 
-            content_tag :div, content, class: 'grid'
+            content_tag :div,
+                        content,
+                        class: 'grid',
+                        style:
+                            "grid-template-rows: repeat(#{[@last_row1, @last_row2].max}, 0.2rem);"
         end
 
-        def card(element)
+        def card_single(element)
             content = safe_join [img(element), card_content(element)]
 
-            content_tag :div, content, class: 'card still'
+            content_tag :div, content, class: 'card card-single centered still'
+        end
+
+        def card(element, is_even)
+            content = safe_join [img(element), card_content(element)]
+
+            grid_row =
+                if is_even
+                    "#{@last_row1} / #{@last_row1 + 19}"
+                else
+                    "#{@last_row2} / #{@last_row2 + 19}"
+                end
+
+            if is_even
+                @last_row1 += 20
+            else
+                @last_row2 += 20
+            end
+
+            content_tag :div,
+                        content,
+                        class: 'card still',
+                        style:
+                            "grid-column: #{is_even ? '1' : '2'};
+                                grid-row: #{grid_row};"
         end
 
         def img(element)
@@ -65,8 +98,8 @@ module CardsHelper
         end
 
         def card_content(element)
-            title = content_tag :h2, element.get_title, class: 'title'
-            desc = content_tag :p, element.get_desc, class: 'big-text'
+            title = content_tag :h2, element.get_short_title, class: 'title'
+            desc = content_tag :p, element.get_short_desc, class: 'big-text'
             link = link_to 'Ver más', element.base_uri, class: 'btn'
 
             content = safe_join [title, desc, link]

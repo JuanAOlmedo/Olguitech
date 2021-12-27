@@ -18,9 +18,7 @@
 
         <% @categories.each do |category| %>
             <% if !category.articles.empty? %>
-                <h4 class="menu-title">
-                    <%= link_to category.get_short_title, category_path(category), class: "menu-link" %>
-                </h4>
+                <%= link_to category.get_short_title, category_path(category), class: "link", style: "display: block;" %>
             <% else %>
                 <h4 style="display: none;">
                 </h4>
@@ -34,7 +32,7 @@
     </div>
 
     <div class='articles-div'>
-        <h1 class='index-title'>
+        <h1 class='main-title'>
             <%= I18n.t "shared.our_solutions" %>
         </h1>
 
@@ -44,32 +42,28 @@
             <% if !category.articles.empty? %>
                 <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
                     <h2> <%= category.get_title %> </h2>
-                    <% category.articles.each do |article| %>
-                        <%= render 'layouts/article_card', article: article, type: "article" %>
-                    <% end %>
+                        
+                    <%= cards_for category.articles %>
                 </div>
             <% end %>
         <% end %>
         <% if !@uncategorized.empty? %>
             <div class="category" data-index="<%= @categories.length %>">
                 <h2> <%= t "index.uncategorized" %> </h2>
-                <% @uncategorized.each do |article| %>
-                    <%= render 'layouts/article_card', article: article, type: "article" %>
-                <% end %>
+
+                <%= cards_for @uncategorized %>
             </div>
         <% end %>
     </div>
 <% else %>
     <div class='articles-div articles-div2'>
-        <h1 class='index-title'>
+        <h1 class='main-title'>
             <%= I18n.t "shared.our_solutions" %>
         </h1>
 
         <%= render 'layouts/popup' %>
 
-        <% @articles.each do |article| %>
-            <%= render 'layouts/article_card', article: article, type: "article" %>
-        <% end %>
+        <%= cards_for @articles %>
     </div>
 <% end %>
 

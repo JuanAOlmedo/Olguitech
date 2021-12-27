@@ -4,11 +4,11 @@
 
 <% content_for :title, "#{I18n.t "users.sign_in"}" %>
 
-<div class='form-div'>
-    <h1 class='title white'>
-        <%= I18n.t "users.sign_in" %>
-    </h1>
+<h1 class='main-title'>
+    <%= I18n.t "users.sign_in" %>
+</h1>
 
+<div class='form-div centered'>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: :false } }) do |f| %>
     <div class="form-inputs">
         <%= f.input :email,

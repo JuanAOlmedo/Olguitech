@@ -1,4 +1,5 @@
 @import "settings";
+// @import "sass/form/_all.sass";
 
 // 1. GENERAL //
 
@@ -32,16 +33,16 @@ body {
     font-weight: 600;
     background-color: white;
     height: fit-content;
-}
 
-.link:visited {
-    text-decoration: none;
-    color: #333;
-}
+    &:visited {
+        text-decoration: none;
+        color: #333;
+    }
 
-.link:hover {
-    background-color: hsl(26.7, 23.1%, 92.4%);
-    color: #f4923c;
+    &:hover {
+        background-color: hsl(26.7, 23.1%, 92.4%);
+        color: #f4923c;
+    }
 }
 
 .btn {
@@ -60,20 +61,16 @@ body {
     padding: 0.3rem 0.7rem 0.3rem 0.7rem;
     font-weight: 600;
     background-color: hsl(26.7, 23.1%, 92.4%);
-}
 
-.btn:visited {
-    text-decoration: none;
-    color: #333;
-}
+    &:visited {
+        text-decoration: none;
+        color: #333;
+    }
 
-.btn:hover {
-    background-color: hsl(26.7, 23.1%, 87.4%);
-    color: #f4923c;
-}
-
-.white {
-    color: #fff;
+    &:hover {
+        background-color: hsl(26.7, 23.1%, 87.4%);
+        color: #f4923c;
+    }
 }
 
 .main-title {
@@ -86,12 +83,14 @@ body {
     line-height: 67px;
     letter-spacing: -0.01em;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 67rem) {
+        width: 95%;
         font-size: 3.1rem;
     }
 
-    @media only screen and (max-width: 400px) {
-        letter-spacing: normal;
+    @media only screen and (max-width: 35rem) {
+        font-size: 2.5rem;
+        line-height: 43px;
     }
 }
 
@@ -101,7 +100,7 @@ body {
     color: #f4923c;
 
     @media only screen and (max-width: 60rem) {
-        font-size: 2.6rem;
+        font-size: 2rem;
     }
 }
 
@@ -111,11 +110,9 @@ body {
     font-size: 2.2rem;
     text-align: center;
 
-    @media only screen and (max-width: 800px) {
-        width: 100%;
-    }
-    @media only screen and (max-width: 500px) {
-        font-size: 1.3rem;
+    @media only screen and (max-width: 67rem) {
+        width: 95%;
+        font-size: 1.7rem;
     }
 }
 
@@ -124,12 +121,17 @@ body {
 }
 
 .big-card {
+    box-sizing: border-box;
     width: 85%;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
     border-radius: 2rem;
     padding: 2rem;
+
+    @media only screen and (max-width: 35rem) {
+        width: 95%;
+    }
 }
 
 // Card Holder
@@ -137,21 +139,33 @@ body {
 .cards-holder {
     width: 85%;
     display: flex;
+
+    @media only screen and (max-width: 35rem) {
+        width: 95%;
+    }
 }
 
 .cards-holder .grid {
     box-sizing: border-box;
     width: 100%;
-    padding: 0 1rem 0 1rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
+
+    @media only screen and (max-width: 67rem) {
+        display: block;
+    }
 }
 
 .card {
     border-radius: 1rem;
     width: 100%;
     height: 45rem;
+
+    @media only screen and (max-width: 67rem) {
+        height: auto;
+        margin-bottom: 2rem;
+    }
 }
 
 .card-single {
@@ -175,6 +189,10 @@ body {
     -o-object-fit: cover;
     object-fit: cover;
     border-radius: 1rem;
+
+    @media only screen and (max-width: 35rem) {
+        height: 25rem;
+    }
 }
 
 .card div {

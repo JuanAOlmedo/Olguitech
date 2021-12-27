@@ -65,7 +65,6 @@
             <% end %>
 
             <%= link_to "Nosotros", nosotros_path, class: "link" %>
-            <%= link_to "Contacto", contactos_path, class: "link" %>
 
             <div class="dropdown" id="lang">
                 <div class="dropdown-trigger">
@@ -88,11 +87,7 @@
                 </div>
             </div>
 
-            <% if user_signed_in? %>
-                <%= link_to (I18n.t 'nav.profile'), edit_user_registration_path, class: "btn" %>
-            <% else %>
-                <%= link_to (I18n.t 'nav.sign_in'), new_user_session_path, class: "btn" %>
-            <% end %>
+            <%= link_to "Contacto", contactos_path, class: "btn" %>
 
             <% if admin_signed_in? %>
                 <%= link_to 'Admin', edit_admin_registration_path, class: "btn" %>

@@ -1,31 +1,4 @@
 module Getters
-    def self.uncategorized
-        self.includes(:categories).where(categories: { id: nil })
-    end
-
-    def self.get_ordered(order_by, asc_desc)
-        order_by =
-            if order_by == 'created_at' || order_by == 'updated_at' ||
-                   order_by == 'title' || order_by == 'categories'
-                order_by
-            else
-                'categories'
-            end
-
-        order_by =
-            order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
-
-        asc_desc = asc_desc == 'asc' || asc_desc == 'desc' ? asc_desc : 'desc'
-
-        if order_by == 'categories'
-            categories = Category.all.order(created_at: :desc)
-        else
-            ordered = self.all.order(order_by => asc_desc)
-        end
-
-        return categories, ordered
-    end
-
     def get_title
         if I18n.locale == :en && self.title2 != '' && self.title2 != nil
             self.title2
@@ -51,7 +24,11 @@ module Getters
     def get_short_desc
         description = self.get_desc
         return(
-            description.length > 120 ? description[0...120] + '...' : description
+            if description.length > 120
+                description[0...120] + '...'
+            else
+                description
+            end
         )
     end
 
@@ -60,6 +37,40 @@ module Getters
             self.content2
         else
             self.content
+        end
+    end
+
+    def self.included(base)
+        base.extend(ClassMethods)
+    end
+
+    module ClassMethods
+        def uncategorized
+            self.includes(:categories).where(categories: { id: nil })
+        end
+
+        def get_ordered(order_by, asc_desc)
+            order_by =
+                if order_by == 'created_at' || order_by == 'updated_at' ||
+                       order_by == 'title' || order_by == 'categories'
+                    order_by
+                else
+                    'categories'
+                end
+
+            order_by =
+                order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
+
+            asc_desc =
+                asc_desc == 'asc' || asc_desc == 'desc' ? asc_desc : 'desc'
+
+            if order_by == 'categories'
+                categories = Category.all.order(created_at: :desc)
+            else
+                ordered = self.all.order(order_by => asc_desc)
+            end
+
+            return categories, ordered
         end
     end
 end

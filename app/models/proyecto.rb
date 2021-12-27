@@ -1,4 +1,6 @@
 class Proyecto < ApplicationRecord
+    include Getters
+    
     has_rich_text :content
     has_rich_text :content2
     has_one_attached :image

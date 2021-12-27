@@ -132,6 +132,53 @@ body {
     padding: 2rem;
 }
 
+// Card Holder
+
+.cards-holder {
+    width: 85%;
+    display: flex;
+}
+
+.cards-holder .grid {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 0 1rem 0 1rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.card {
+    border-radius: 1rem;
+    max-width: 100%;
+}
+
+.card.still {
+    transform: translateY(2rem);
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.card.move {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.card img {
+    width: 100%;
+    height: 27rem;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.card div {
+    padding: 0.2rem;
+}
+
+.card .title {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
 // 2. NAVBAR //
 
 nav {
@@ -172,7 +219,7 @@ nav .btn {
     display: inline-flex;
     position: relative;
     vertical-align: top;
-    width: 10rem;
+    width: 8rem;
 }
 
 // .dropdown.is-active {
@@ -201,16 +248,11 @@ nav .btn {
 
 .dropdown .btn {
     box-sizing: border-box;
-    width: 10rem;
+    width: 8rem;
     margin: 0;
     height: 100%;
     z-index: 11;
-    stroke: #333;
     transition: background 0.25s, color 0.25s, stroke 0.25s;
-}
-
-.dropdown .btn:hover {
-    stroke: #f4923c;
 }
 
 .dropdown.is-active .dropdown-menu {
@@ -225,7 +267,7 @@ nav .btn {
 
 .dropdown-menu {
     left: 0;
-    width: 10rem;
+    width: 8rem;
     position: absolute;
     top: 100%;
     z-index: 10;
@@ -244,7 +286,7 @@ nav .btn {
     display: none;
     cursor: pointer;
     margin: auto 1rem auto 0;
-    color: $color2;
+    color: black;
     position: absolute;
     right: 0.4rem;
     top: 1rem;
@@ -253,7 +295,7 @@ nav .btn {
 }
 
 #dropdown-bars:focus {
-    color: $color5;
+    color: #333;
     outline: none;
 
     .line1 {
@@ -429,17 +471,23 @@ i h3 {
         left: 0;
         bottom: 0;
         z-index: 99;
-        background-color: $color1;
+        background-color: white;
         position: fixed;
         padding: 1rem 2rem 1rem 2rem;
         margin-top: 5.1em;
-        transform: translateX(150%);
+        transform: translateY(-200%);
         transition: transform 0.8s;
         will-change: transform;
         visibility: hidden;
         overflow-y: auto;
         display: block;
-        font-size: 1rem;
+    }
+
+    .right-navbar-section .link,
+    .right-navbar-section .btn {
+        width: fit-content;
+        display: block;
+        margin: 0 auto 1rem auto;
     }
 
     .right-navbar-section.show {
@@ -451,146 +499,9 @@ i h3 {
         }
     }
 
-    .right-navbar-section.visible {
-        visibility: visible;
-
-        .icon-tabler-chevron-down2 {
-            visibility: visible;
-        }
-    }
-
-    .hoverable {
-        height: auto !important;
-        cursor: pointer;
-        position: relative;
-    }
-
-    .hoverable-content {
-        display: none;
-        overflow-y: auto;
-        overflow-x: hidden;
-        max-height: 20rem;
-        height: 0;
-        background-color: $color1;
-        position: unset;
-    }
-
-    .hoverable-content.extend {
-        -webkit-animation-name: extend;
-        animation-name: extend;
-        -webkit-animation-duration: 0.8s;
-        animation-duration: 0.8s;
-        -webkit-animation-timing-function: ease-out;
-        animation-timing-function: ease-out;
-        display: block;
-        height: 20rem;
-    }
-
-    .hoverable-content.de-extend {
-        height: 20rem;
-        display: block;
-        -webkit-animation-name: de-extend;
-        animation-name: de-extend;
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-        -webkit-animation-duration: 0.8s;
-        animation-duration: 0.8s;
-    }
-
-    .icon-tabler-chevron-down2 {
-        display: none;
-    }
-
-    .icon-tabler-chevron-down {
-        display: block;
-    }
-
-    #articles-hoverable {
-        cursor: pointer;
-        height: auto;
-    }
-
-    .card {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-
-    .card-content {
-        padding: 0;
-    }
-
-    .card-img {
-        width: 100%;
-        min-width: none;
-        max-width: none;
-        height: 15rem;
-    }
-
-    .hoverable:hover,
-    .hoverable:focus-within {
-        outline: none;
-
-        .hoverable-content {
-            display: none;
-        }
-
-        .hoverable-content.extend,
-        .hoverable-content.de-extend {
-            display: block;
-        }
-
-        #articles-hoverable {
-            color: $color5;
-        }
-
-        .icon-tabler-chevron-down2 {
-            transform: translateY(-0.35rem);
-            color: $color5;
-        }
-    }
-
-    .navbar-link {
-        width: 100%;
-        padding: 0;
-        text-align: center;
-    }
-
-    .navbar-link:hover {
-        color: $color3;
-    }
-
-    .big-navbar-link {
-        padding: 0.6rem;
-        display: block;
-        width: 14rem;
-        margin: 1rem auto 1rem auto;
-        font-size: 1.45rem;
-    }
-
     #dropdown-bars {
         display: block;
     }
-
-    .input input {
-        font-size: 1rem;
-    }
-}
-
-.article-hoverable-img2 {
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-}
-
-.article-hoverable-article2 {
-    display: block;
-    height: auto;
-    padding: 0;
-}
-
-.article-hoverable-content2 {
-    padding-left: 0;
 }
 
 img.lazy {

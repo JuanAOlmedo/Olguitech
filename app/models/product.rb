@@ -127,4 +127,8 @@ class Product < ApplicationRecord
             self.categories.delete(category) if !categories.include? category
         end
     end
+
+    def base_uri
+        Rails.application.routes.url_helpers.product_path(id: self.id, locale: I18n.locale)
+    end
 end

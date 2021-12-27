@@ -8,7 +8,7 @@
     <%= render 'layouts/back' %>
 
     <h2 class='button' id="close-session">
-        <%= link_to "#{I18n.t "users.sign_out"}", destroy_user_session_path, method: :delete, class:'access' %>
+        <%= link_to "#{I18n.t "users.sign_out"}", destroy_user_session_path, data: { turbo_method: :delete }, class:'access' %>
     </h2>
 
     <h1 class='title white'>

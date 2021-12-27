@@ -19,13 +19,31 @@
 </div>
 
 <% if @articles.any? %>
-    <%= render 'slideshow' %>
+    <h1 class="main-title">
+        Nuestros últimos artículos
+    </h1>
+
+    <%= cards_for @articles %>
 <% end %>
 
 <% if @proyectos.any? %>
-    <%= render 'slideshow2' %>
+    <h1 class="main-title">
+        Nuestros últimos proyectos
+    </h1>
+
+    <%= cards_for @proyectos %>
 <% end %>
 
-<%= render 'contacto' %>
+<div class="big-card contacto centered">
+    <h1 class='main-title'> Estás interesado en hablar con nosotros? </h1>
+
+    <p class="big-text">
+        Regístrate con nosotros para poder contactarte y acceder a nuestra newsletter o manda un mail a 
+        
+        <a class="link" href="mailto:olguitech@olguitech.com"> olguitech@olguitech.com </a>.
+    </p>
+
+    <%= link_to "Contactarse", contactos_path, class: "btn" %>
+</div>
 
 <%= javascript_pack_tag 'main' %>

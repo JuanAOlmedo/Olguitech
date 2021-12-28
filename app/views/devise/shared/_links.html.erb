@@ -1,4 +1,4 @@
-<%- if controller_name != 'sessions' %>
+<%- if devise_mapping.authenticatable? && controller_name != 'sessions' %>
 <%= link_to "Acceder", new_session_path(resource_name), class:'shared-links' %><br /><br />
 <% end %>
 

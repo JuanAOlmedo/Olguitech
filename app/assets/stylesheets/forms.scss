@@ -1,33 +1,127 @@
 @import "settings";
 
-.form-div {
-    width: 30rem;
-}
-
-form {
+.form {
     margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.input input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: 1px solid #dbdbdb;
-    border-radius: 0.3rem;
-    outline: none;
-    padding: 0.4rem;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    width: 100%;
+.field {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 1rem;
+
+    &.separate {
+        width: 100%;
+    }
+
+    & label,
+    & input,
+    & select,
+    & textarea {
+        display: block;
+        font-size: 1.3rem;
+    }
+
+    & label {
+        margin-bottom: 0.3rem;
+    }
+
+    & input,
+    & select,
+    & textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: white;
+        border: 1px solid #dbdbdb;
+        border-radius: 0.3rem;
+        outline: none;
+        padding: 0.4rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        box-shadow: 0 0 0 0 rgba(72, 95, 199, 0.25);
+        transition: box-shadow 0.2s;
+
+        &:hover {
+            border-color: #b5b5b5;
+        }
+
+        &:focus,
+        &:active {
+            border-color: #485fc7;
+            box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+        }
+
+        &:disabled {
+            background-color: #e9ecef;
+
+            &:focus,
+            &:active {
+                border-color: #b5b5b5;
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+    }
+
+    & textarea {
+        height: 4rem;
+        min-height: 1.6rem;
+        resize: vertical;
+    }
+
+    & select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px 12px;
+    }
 }
 
-.input input:hover {
-    border-color: #b5b5b5;
+.field_with_errors {
+    & input,
+    & select,
+    & textarea {
+        background-color: rgb(255, 55, 55);
+    }
 }
 
-.input input:focus, .input input:active {
-    border-color: #485fc7;
-    box-shadow: 0 0 0 .125em rgba(72,95,199,.25);
+#error_explanation {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading::after {
+    -webkit-animation: spinAround 0.5s infinite linear;
+    animation: spinAround 0.5s infinite linear;
+    border: 2px solid currentColor;
+    border-radius: 9999px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1em;
+    position: relative;
+    width: 1em;
+}
+
+@-webkit-keyframes spinAround {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes spinAround {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
 }
 
 .checkbox {
@@ -57,10 +151,6 @@ form {
 .error {
     color: #ff5f5f;
     display: block;
-}
-
-.field_with_errors input {
-    background-color: red;
 }
 
 #user_password,

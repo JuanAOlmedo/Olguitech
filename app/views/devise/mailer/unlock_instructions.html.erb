@@ -1,7 +1,0 @@
-<p>Hola <%= @resource.email %>!</p>
-
-<p>Tu contraseña ha sido blockeada debido a muchos intentos de acceso inexitosos.</p>
-
-<p>Clickea el link de abajo para desbloquearla:</p>
-
-<p><%= link_to 'Desbloquear mi cuenta', unlock_url(@resource, unlock_token: @token) %></p>

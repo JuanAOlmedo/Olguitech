@@ -1,23 +1,50 @@
 <head>
     <%= stylesheet_link_tag 'main' %>
+    <%= stylesheet_link_tag 'forms' %>
 </head>
 
 <% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
-<%= simple_form_for @contacto do |form| %>
-    <div class="field">
-        <h2 class='preference'>
-            <%= I18n.t "contact.preference" %>
-        </h2>
-        <%= form.collection_select :preference, Article.all, :id, :get_title %>
 
-        <h2 class='preference'>
-            <%= I18n.t "contact.preference2" %>
-        </h2>
-        <%= form.collection_select :preference2, Proyecto.all, :id, :get_title %> <br>
+<h1 class="main-title">
+    Contactarse
+</h1>
 
-        <%= form.label :message, "#{I18n.t "contact.how_can_we_help_you"}", class: 'preference' %> <br>
-        <%= form.text_area :message, maxlength: "4000" %> <br>
+<% if @user && @user.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> impidieron que se pudiera mandar un mail:</h2>
 
-        <%= form.button :submit, "#{I18n.t "contact.send"}", class:'big-navbar-link button' %>
+        <ul>
+            <% @user.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+<%= form_with(model: @contacto) do |form| %>
+    <div class="form big-card">
+        <%= fields_for :user, @contacto.user do |user_form| %>
+            <div class="field">
+                <%= user_form.label :email, "Email" %>
+                <%= user_form.email_field :email %>
+            </div>
+        <% end %>
+
+        <div class="field">
+            <%= form.label :preference, t("contact.preference") %>
+            <%= form.collection_select :preference, Article.all, :id, :get_title %>
+        </div>
+
+        <div class="field">
+            <%= form.label :preference2, t("contact.preference2") %>
+            <%= form.collection_select :preference2, Proyecto.all, :id, :get_title %>
+        </div>
+
+        <div class="field separate">
+            <%= form.label :message, "#{I18n.t "contact.how_can_we_help_you"}", class: 'preference' %>
+            <%= form.text_area :message, maxlength: "4000" %>
+        </div>
+
+        <%= form.submit "#{I18n.t "contact.send"}", class:'btn centered' %> 
     </div>
 <% end %>

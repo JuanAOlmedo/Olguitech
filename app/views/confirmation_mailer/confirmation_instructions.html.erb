@@ -1,0 +1,5 @@
+<p>Bienvenido <%= @email %>!</p>
+
+<p>Puedes confirmar tu cuenta con el link de abajo:</p>
+
+<p><%= link_to 'Confirmar mi cuenta', "https://olguitech.com/#{I18n.locale}/users/confirmation/#{@token}" %></p>

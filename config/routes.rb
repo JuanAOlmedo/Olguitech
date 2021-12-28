@@ -14,9 +14,9 @@ Rails.application.routes.draw do
         resources :products
         get '/products/:order_by/:asc_desc', to: 'products#index'
 
-        devise_for :users, :controllers => { registrations: 'registrations' }
-        get '/user_index', to: 'users#index'
+        resources :users
 
+        get "/users/confirmation/:confirmation_token", to: 'users#confirmation'
         get '/user/unsubscribe/:newsletter_token', to: 'users#unsubscribe'
 
         devise_for :admins, :controllers => { registrations: 'admin_registrations' }

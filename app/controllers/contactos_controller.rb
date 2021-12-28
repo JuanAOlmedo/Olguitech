@@ -1,64 +1,85 @@
 class ContactosController < ApplicationController
-    before_action :authenticate_user!, only: [:new]
-
     def index; end
 
     def new
         @contacto = Contacto.new
+        @user = @contacto.user
     end
 
+    def update; end
+
     def create
-        @contacto = current_user.contactos.new(contacto_params)
-        @contacto.message =
-            if @contacto.message.length > 4000
-                @contacto.message + '... [Mensaje muy largo]'
+        unless @user = User.find_by(user_params) && @user.name && @user.phone && @user.company
+            parameters = user_params
+            parameters[:locale] = I18n.locale
+
+            @user = User.new(parameters)
+
+            @contacto = @user.contactos.new(contacto_params)
+            @contacto.message =
+                if @contacto.message.length > 4000
+                    @contacto.message + '... [Mensaje muy largo]'
+                else
+                    @contacto.message
+                end
+            @contacto.preference = @contacto.preference.to_i
+            @contacto.preference2 = @contacto.preference2.to_i
+
+            if @user.save && @contacto.save
+                session[:will_contact] = true
+                redirect_to edit_user_path(@user),
+                            alert:
+                                'Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos'
             else
-                @contacto.message
+                render :new, status: :unprocessable_entity
             end
-        @contacto.preference = @contacto.preference.to_i
-        @contacto.preference2 = @contacto.preference2.to_i
-
-        if @contacto.save
-            article = Article.find(@contacto.preference)
-            proyecto = Proyecto.find(@contacto.preference2)
-
-            article =
-                if I18n.locale == :en && article.title2 != '' &&
-                       article.title2 != nil
-                    article.title2
+        else
+            @contacto = @user.contactos.new(contacto_params)
+            @contacto.message =
+                if @contacto.message.length > 4000
+                    @contacto.message + '... [Mensaje muy largo]'
                 else
-                    article.title
+                    @contacto.message
                 end
-            proyecto =
-                if I18n.locale == :en && proyecto.title2 != '' &&
-                       proyecto.title2 != nil
-                    proyecto.title2
-                else
-                    proyecto.title
-                end
+            @contacto.preference = @contacto.preference.to_i
+            @contacto.preference2 = @contacto.preference2.to_i
 
-            @mail =
-                ContactMailer.contacto(
-                    current_user,
-                    article,
-                    proyecto,
-                    @contacto.message,
-                ).deliver_now!
-            @mail =
-                ContactMailer.admin_contacto(
-                    current_user,
-                    Article.find(@contacto.preference).title,
-                    Proyecto.find(@contacto.preference2).title,
-                    @contacto.message,
-                ).deliver_now!
-            redirect_to "/#{I18n.locale}/contacto",
-                        notice: I18n.t('contact.sent')
+            if @contacto.save
+                article = Article.find(@contacto.preference)
+                proyecto = Proyecto.find(@contacto.preference2)
+
+                article = article.get_title
+                proyecto = proyecto.get_title
+
+                @mail =
+                    ContactMailer.contacto(
+                        @user,
+                        article,
+                        proyecto,
+                        @contacto.message
+                    ).deliver_now!
+                @mail =
+                    ContactMailer.admin_contacto(
+                        @user,
+                        Article.find(@contacto.preference).title,
+                        Proyecto.find(@contacto.preference2).title,
+                        @contacto.message
+                    ).deliver_now!
+                redirect_to "/#{I18n.locale}/contacto",
+                            notice: I18n.t('contact.sent')
+            else
+                render :new, status: :unprocessable_entity
+            end
         end
     end
 
     private
 
     def contacto_params
-        params.require(:contacto).permit(:preference, :preference2, :message)
+        params.require(:contacto).permit :preference, :preference2, :message
+    end
+
+    def user_params
+        params.require(:user).permit :email
     end
 end

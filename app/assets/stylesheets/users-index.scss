@@ -1,16 +1,9 @@
 @import "settings";
 
-h1 {
-    color: $color2;
-    font-size: 3rem;
-    margin-left: 5%;
-    padding-top: 2rem;
-}
-
 table,
 th,
 td {
-    border: 1px solid $color2;
+    border: 1px solid black;
     border-collapse: collapse;
 }
 
@@ -22,7 +15,7 @@ td {
 }
 
 .user {
-    color: $color2;
+    color: black;
     min-width: 100%;
 }
 
@@ -34,30 +27,9 @@ th {
 td {
     font-size: 1.12rem;
     padding: 0.3rem;
-}
 
-input {
-    margin-left: 5%;
-    margin-right: 5%;
-    width: 85%;
-    padding: 1rem;
-    height: 1.5rem;
-    text-align: center;
-    font-size: 1.2rem;
-    background-color: $color6;
-    border-radius: 0.5rem;
-    border-style: none;
-    color: $color2;
-}
-
-.times-contacted, td a {
-    color: hsl(200, 60, 40);
-    text-decoration: underline;
-}
-
-@media only screen and (max-width: 50rem) {
-    input {
-        padding: 2.5%;
+    & .link {
+        font-size: inherit;
     }
 }
 
@@ -67,16 +39,18 @@ input {
     left: 0;
     right: 0;
     bottom: 0;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     padding: 2rem;
     overflow-y: auto;
     display: none;
 }
 
-.contact-instance {
-    margin: 1% 0 1% 0;
-    padding: 1rem;
-    background-color: $color4;
-    border-radius: 1rem;
+#user-index-field {
+    width: 100%;
+
+    & input {
+        font-size: 1.5rem;
+        width: 90%;
+    }
 }

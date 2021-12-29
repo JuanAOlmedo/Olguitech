@@ -1,53 +1,52 @@
 <head>
     <%= stylesheet_link_tag 'users-index' %>
+    <%= stylesheet_link_tag 'forms' %>
 </head>
 
 <% content_for :title, "Usuarios" %>
 
-<div class='form-div'>
-    <h1 class='form-title'> Usuarios </h1>
+<h1 class='main-title'> Usuarios </h1>
 
-    <input id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
-
-    <div class='table'>
-        <table class="user">
-            <tr>
-                <th> ID </th>
-                <th> Nombre </th>
-                <th> Email </th>
-                <th> Compañía </th>
-                <th> Teléfono </th>
-                <th> Newsletter? </th>
-                <th> Veces Contactadas </th>
-                <th> Idioma </th>
-            </tr>
-            <% @users.each do |user| %>
-                <tr class='user-row'>
-                    <td> <%= user.id %> </td>
-
-                    <td> <%= user.name %> </td>
-
-                    <td> <%= mail_to user.email %> </td>
-
-                    <td> <%= user.company %> </td>
-
-                    <td> <%= link_to user.phone, "tel:#{user.phone}" %> </td>
-
-                    <td> <%= if user.newsletter; "Sí"; else; "No"; end; %> </td>
-
-                    <td>
-                        <% times_contacted = user.contactos.length %> 
-                        <span class='<%= times_contacted > 0 ? "times-contacted" : "" %>' data-id="<%= user.id %>">
-                            <%= user.contactos.length %>
-                        </span> 
-                    </td>
-
-                    <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
-                </tr>
-            <% end %>
-        </table>
-    </div>
+<div class="field" id="user-index-field">
+    <input class="centered" id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
 </div>
+
+<table class="user">
+    <tr>
+        <th> ID </th>
+        <th> Nombre </th>
+        <th> Email </th>
+        <th> Compañía </th>
+        <th> Teléfono </th>
+        <th> Newsletter? </th>
+        <th> Veces Contactadas </th>
+        <th> Idioma </th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr class='user-row'>
+            <td> <%= user.id %> </td>
+
+            <td> <%= user.name %> </td>
+
+            <td> <%= mail_to user.email, class: 'link' %> </td>
+
+            <td> <%= user.company %> </td>
+
+            <td> <%= phone_to user.phone, class: 'link' %> </td>
+
+            <td> <%= if user.newsletter; "Sí"; else; "No"; end; %> </td>
+
+            <td>
+                <% times_contacted = user.contactos.length %> 
+                <span class='<%= times_contacted > 0 ? "link times-contacted" : "" %>' data-id="<%= user.id %>">
+                    <%= user.contactos.length %>
+                </span> 
+            </td>
+
+            <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
+        </tr>
+    <% end %>
+</table>
 
 <% @contacted.each do |user| %>
     <div class='contact-info' id='article-<%= user.id %>'>
@@ -57,11 +56,11 @@
             <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
         <% user.contactos.each do |contact| %>
-            <div class="contact-instance">
-                <p> Fecha: <%= contact.created_at.to_formatted_s(:long) %> </p>
-                <p> Mensaje: <%= contact.message %> </p>
-                <p> Articulo 1: <%= Article.find(contact.preference).title rescue "Artícluo eliminado" %> </p>
-                <p> Articulo 2: <%= Proyecto.find(contact.preference2).title rescue "Artícluo eliminado" %> </p>
+            <div class="big-card">
+                <p> <strong> Fecha: </strong> <%= contact.created_at.to_formatted_s(:long) %> </p>
+                <p> <strong> Mensaje: </strong> <%= contact.message %> </p>
+                <p> <strong> Articulo 1: </strong> <%= Article.find(contact.preference).title rescue "Artícluo eliminado" %> </p>
+                <p> <strong> Articulo 2: </strong> <%= Proyecto.find(contact.preference2).title rescue "Artícluo eliminado" %> </p>
             </div>
         <% end %>
     </div>

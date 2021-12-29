@@ -43,7 +43,9 @@
         <% @categories.each_with_index do |category, index| %>
             <% if category.articles.any? %>
                 <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
-                    <h2> <%= category.get_title %> </h2>
+                    <h2 class="title centered">
+                        <%= category.get_title %> 
+                    </h2>
                         
                     <%= cards_for category.articles %>
                 </div>
@@ -51,7 +53,9 @@
         <% end %>
         <% if @uncategorized.any? %>
             <div class="category" data-index="<%= @categories.length %>">
-                <h2> <%= t "index.uncategorized" %> </h2>
+                <h2 class="title centered">
+                    <%= t "index.uncategorized" %> 
+                </h2>
 
                 <%= cards_for @uncategorized %>
             </div>

@@ -42,14 +42,20 @@
 
         <% @categories.each_with_index do |category, index| %>
             <% if !category.products.empty? %>
-                <h2> <%= category.get_title %> </h2>
+                <h2 class="title centered">
+                    <%= category.get_title %> 
+                </h2>
+
                 <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
                     <%= alternative_cards_for category.products %>
                 </div>
             <% end %>
         <% end %>
         <% if !@uncategorized.empty? %>
-            <h2> <%= t "index.uncategorized" %> </h2>
+            <h2 class="title centered">
+                <%= t "index.uncategorized" %> 
+            </h2>
+
             <div class="category" data-index="<%= @categories.length %>">
                 <%= alternative_cards_for @uncategorized %>
             </div>

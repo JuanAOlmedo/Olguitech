@@ -1,15 +1,15 @@
 module CardsHelper
-    def cards_for(array)
-        Cards.new(self, array).html
+    def cards_for(array, image: true)
+        Cards.new(self, array, image).html
     end
 
-    def alternative_cards_for(array)
-        ACards.new(self, array).html
+    def alternative_cards_for(array, image: true)
+        Cards.new(self, array, image).alternative_html
     end
 
     class Cards
-        def initialize(view, array)
-            @view, @array = view, array
+        def initialize(view, array, image)
+            @view, @array, @image = view, array, image
             @uid = SecureRandom.hex(6)
         end
 
@@ -18,6 +18,28 @@ module CardsHelper
                 content = grid(@array)
             else
                 content = card_single(@array[0])
+            end
+
+            content_tag :div, content, id: uid, class: 'cards-holder centered'
+        end
+
+        def alternative_html
+            unless @array.length == 1
+                content = []
+
+                rand_num = rand(0..1)
+
+                starts_left = rand_num == 1 ? true : false
+
+                array.each do |element|
+                    if element
+                        content << alternative_card(element, array.find_index(element).even?, starts_left)
+                    end
+                end
+    
+                content = safe_join content
+            else
+                content = alternative_card_single(@array[0])
             end
 
             content_tag :div, content, id: uid, class: 'cards-holder centered'
@@ -85,66 +107,6 @@ module CardsHelper
                                 grid-row: #{grid_row};"
         end
 
-        def img(element)
-            if element.image.attached?
-                ActiveStorage::Current.url_options = {
-                    locale: I18n.locale,
-                    only_path: true
-                }
-
-                image_tag element.image.variant(resize_to_limit: [40, 40]),
-                          data: {
-                              src: element.image.url
-                          },
-                          class: 'lazy',
-                          alt: element.image.filename
-            end
-        end
-
-        def card_content(element)
-            title = content_tag :h2, element.get_short_title, class: 'title'
-            desc = content_tag :p, element.get_short_desc, class: 'big-text'
-            link = link_to 'Ver más', element.base_uri, class: 'btn'
-
-            content = safe_join [title, desc, link]
-
-            content_tag :div, content
-        end
-    end
-
-    class ACards
-        def initialize(view, array)
-            @view, @array = view, array
-            @uid = SecureRandom.hex(6)
-        end
-
-        def html
-            unless @array.length == 1
-                content = []
-
-                rand_num = rand(0..1)
-
-                starts_left = rand_num == 1 ? true : false
-
-                array.each do |element|
-                    if element
-                        content << alternative_card(element, array.find_index(element).even?, starts_left)
-                    end
-                end
-    
-                content = safe_join content
-            else
-                content = alternative_card_single(@array[0])
-            end
-
-            content_tag :div, content, id: uid, class: 'cards-holder centered'
-        end
-
-        private
-
-        attr_accessor :view, :array, :uid
-        delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
-
         def alternative_card_single(element)
             content = safe_join [img(element), card_content(element)]
 
@@ -171,7 +133,7 @@ module CardsHelper
         end
 
         def img(element)
-            if element.image.attached?
+            if @image && element.image.attached?
                 ActiveStorage::Current.url_options = {
                     locale: I18n.locale,
                     only_path: true
@@ -196,7 +158,6 @@ module CardsHelper
             content_tag :div, content
         end
     end
-
 end
 
 

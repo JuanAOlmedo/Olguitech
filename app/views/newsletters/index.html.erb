@@ -1,5 +1,5 @@
 <head>
-    <%= stylesheet_link_tag 'articles-index' %>
+    <%= stylesheet_link_tag 'index' %>
     <style>
         #newsletter-link {
             color: #CCC !important;
@@ -9,21 +9,8 @@
 
 <% content_for :title, "Newsletters | Olguitech s.a.s." %>
 
-<h1 class='index-title'> Newsletters </h1>
+<h1 class='main-title'> Newsletters </h1>
 
-<div class='articles-div'>
-    <% @newsletters.each do |newsletter| %>
-    <div class='article still move'>
-        <div class='article-information' style='padding-top: 3rem;'>
-            <h2 class='article-title'> <%= newsletter.title %> </h2>
-            <p class='article-text'>
-                <%= newsletter.subject %> <br>
-            </p>
-
-            <%= link_to newsletter_path(newsletter), title: t('shared.see_more') do %>
-            <%= render 'layouts/more' %>
-            <% end %>
-        </div>
-    </div>
-    <% end %>
+<div class='articles-div articles-div2'>
+    <%= alternative_cards_for @newsletters, image: false %>
 </div>

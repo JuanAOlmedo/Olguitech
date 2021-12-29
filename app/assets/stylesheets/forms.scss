@@ -19,6 +19,7 @@
     & input,
     & select,
     & textarea {
+        box-sizing: border-box;
         display: block;
         font-size: 1.3rem;
     }

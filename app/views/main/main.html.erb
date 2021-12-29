@@ -22,6 +22,7 @@
     <h1 class="main-title">
         Nuestros últimos artículos
     </h1>
+    <%= link_to "Ver todos", articles_path, class: "btn centered" %>
 
     <%= cards_for @articles %>
 <% end %>
@@ -30,8 +31,18 @@
     <h1 class="main-title">
         Nuestros últimos proyectos
     </h1>
+    <%= link_to "Ver todos", proyectos_path, class: "btn centered" %>
 
     <%= cards_for @proyectos %>
+<% end %>
+
+<% if @products.any? %>
+    <h1 class="main-title">
+        Nuestros últimos productos
+    </h1>
+    <%= link_to "Ver todos", products_path, class: "btn centered" %>
+
+    <%= alternative_cards_for @products %>
 <% end %>
 
 <div class="big-card contacto centered">

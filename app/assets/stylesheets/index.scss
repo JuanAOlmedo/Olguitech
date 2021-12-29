@@ -1,7 +1,6 @@
 @import "settings";
 
-.articles-div,
-.products-div {
+.articles-div {
     display: block;
     width: 80%;
     margin: 0 2.5% 5rem 17.5%;
@@ -11,34 +10,23 @@
     width: 100%;
 }
 
-.products-div {
-    width: 70%;
-    margin: 0 5% 5rem 25%;
-}
-
 @media only screen and (max-width: 72rem) {
-    .articles-div,
-    .products-div {
+    .articles-div {
         width: 70%;
         margin: 0 4% 5rem 26%;
     }
 }
 
 @media only screen and (max-width: 50rem) {
-    .articles-div,
-    .products-div {
+    .articles-div {
         width: 92.5%;
         margin: 0 auto 5rem auto;
     }
 }
 
-.products-div2 {
-    margin-right: 15%;
-}
-
-.articles-div2,
-.products-div2 {
-    margin: 0 20% 5rem 20%;
+.articles-div2 {
+    margin: 0 auto 5rem auto;
+    width: 90%;
 
     @media only screen and (max-width: 72rem) {
         margin: 0 auto 5rem auto;
@@ -119,27 +107,24 @@
     top: 0;
     left: 0;
     pointer-events: none;
+
+    & path {
+        transition: all 0.5s;
+    }
 }
 
-.icon-tabler-minus-vertical path {
-    transition: all 0.5s;
-}
-
-.menu h4 {
+.menu-title {
     transition: padding 0.5s;
     color: #aaa;
-}
+    margin-bottom: 0.4rem;
 
-.menu-link {
-    color: #aaa;
-}
+    &.visible {
+        padding-left: 0.3rem;
+    }
 
-.menu-link:visited {
-    color: #aaa;
-}
-
-.menu-link:hover {
-    color: #aaa;
+    & .link {
+        font-size: 1.2rem;
+    }
 }
 
 .category {
@@ -165,16 +150,8 @@ h4.visible {
     color: $color2;
 }
 
-.visible .menu-link {
-    color: $color2;
-}
-
-.visible .menu-link:visited {
-    color: $color2;
-}
-
-.visible .menu-link:hover {
-    color: $color2;
+.popup {
+    width: fit-content;
 }
 
 .popup .info {
@@ -230,57 +207,6 @@ h4.visible {
 
 .clicked .arrow2 {
     transform: translateY(0.1rem);
-}
-
-.product {
-    width: 97%;
-    padding: 1.5%;
-    height: 13rem;
-
-    @media only screen and (max-width: 50rem) {
-        width: 100%;
-        width: 94%;
-        padding: 3%;
-    }
-}
-
-.product a {
-    width: 100%;
-    margin: 0;
-    display: flex;
-    height: 100%;
-}
-
-.product-img {
-    border-radius: 0.4rem;
-    width: 13rem;
-    max-width: 45%;
-    height: 13rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
-
-.product-title {
-    margin: 0;
-
-    @media only screen and (max-width: 50rem) {
-        font-size: 1.2rem;
-    }
-}
-
-.product-text {
-    @media only screen and (max-width: 50rem) {
-        font-size: 1rem;
-    }
-}
-
-.product-info {
-    padding: 0 1rem 0 1rem;
-}
-
-.product-more-link {
-    width: 10rem;
-    display: block;
 }
 
 .categories {

@@ -3,6 +3,10 @@ module CardsHelper
         Cards.new(self, array).html
     end
 
+    def alternative_cards_for(array)
+        ACards.new(self, array).html
+    end
+
     class Cards
         def initialize(view, array)
             @view, @array = view, array
@@ -107,4 +111,107 @@ module CardsHelper
             content_tag :div, content
         end
     end
+
+    class ACards
+        def initialize(view, array)
+            @view, @array = view, array
+            @uid = SecureRandom.hex(6)
+        end
+
+        def html
+            unless @array.length == 1
+                content = []
+
+                rand_num = rand(0..1)
+
+                starts_left = rand_num == 1 ? true : false
+
+                array.each do |element|
+                    if element
+                        content << alternative_card(element, array.find_index(element).even?, starts_left)
+                    end
+                end
+    
+                content = safe_join content
+            else
+                content = alternative_card_single(@array[0])
+            end
+
+            content_tag :div, content, id: uid, class: 'cards-holder centered'
+        end
+
+        private
+
+        attr_accessor :view, :array, :uid
+        delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
+
+        def alternative_card_single(element)
+            content = safe_join [img(element), card_content(element)]
+
+            content_tag :div, content, class: 'alternative-card centered still'
+        end
+
+        def alternative_card(element, is_even, starts_left)
+            content = safe_join [img(element), card_content(element)]
+
+            if is_even
+                margin_left = starts_left ? "auto" : "#{rand(11.0..15.0)}%"
+                margin_right = !starts_left ? "auto" : "#{rand(11.0..15.0)}%"
+            else 
+                margin_left = !starts_left ? "auto" : "#{rand(11.0..15.0)}%"
+                margin_right = starts_left ? "auto" : "#{rand(11.0..15.0)}%"
+            end
+
+            content_tag :div,
+                        content,
+                        class: 'alternative-card still',
+                        style:
+                            "margin-left: #{margin_left};
+                                margin-right: #{margin_right};"
+        end
+
+        def img(element)
+            if element.image.attached?
+                ActiveStorage::Current.url_options = {
+                    locale: I18n.locale,
+                    only_path: true
+                }
+
+                image_tag element.image.variant(resize_to_limit: [40, 40]),
+                          data: {
+                              src: element.image.url
+                          },
+                          class: 'lazy',
+                          alt: element.image.filename
+            end
+        end
+
+        def card_content(element)
+            title = content_tag :h2, element.get_short_title, class: 'title'
+            desc = content_tag :p, element.get_short_desc, class: 'big-text'
+            link = link_to 'Ver más', element.base_uri, class: 'btn'
+
+            content = safe_join [title, desc, link]
+
+            content_tag :div, content
+        end
+    end
+
 end
+
+
+# <div class="cards-holder centered">
+#     <% @products.each do |article| %>
+#         <div class="alternative-card">
+#             <% if article.image.attached? %>
+#                 <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
+#             <% end %>
+
+#             <div class="content">
+#                 <h2 class='title'> <%= article.get_short_title %> </h2>
+#                 <p class='big-text'> <%= article.get_short_desc %> </p>
+#                 <%= link_to "Ver más", article_path(article), class:'btn' %>
+#             </div>
+#         </div>
+#     <% end %>
+# </div>

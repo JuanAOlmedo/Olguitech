@@ -28,7 +28,7 @@ body {
     color: #333;
     transition: background 0.25s, color 0.25s;
     border-radius: 0.3rem;
-    width: auto;
+    width: fit-content;
     padding: 0.3rem 0.7rem 0.3rem 0.7rem;
     font-weight: 600;
     background-color: white;
@@ -43,6 +43,10 @@ body {
         background-color: hsl(26.7, 23.1%, 92.4%);
         color: #f4923c;
     }
+
+    &.centered {
+        display: block;
+    }
 }
 
 .btn {
@@ -56,7 +60,7 @@ body {
     appearance: none;
     border: none;
     border-radius: 0.3rem;
-    width: auto;
+    width: fit-content;
     height: fit-content;
     padding: 0.3rem 0.7rem 0.3rem 0.7rem;
     font-weight: 600;
@@ -70,6 +74,10 @@ body {
     &:hover {
         background-color: hsl(26.7, 23.1%, 87.4%);
         color: #f4923c;
+    }
+
+    &.centered {
+        display: block;
     }
 }
 
@@ -117,7 +125,7 @@ body {
 }
 
 .big-text {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 .big-card {
@@ -139,6 +147,8 @@ body {
 .cards-holder {
     width: 85%;
     display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
 
     @media only screen and (max-width: 35rem) {
         width: 95%;
@@ -166,41 +176,93 @@ body {
         height: auto;
         margin-bottom: 2rem;
     }
+
+    & img {
+        width: 100%;
+        height: 27rem;
+        -o-object-fit: cover;
+        object-fit: cover;
+        border-radius: 1rem;
+    
+        @media only screen and (max-width: 35rem) {
+            height: 25rem;
+        }
+    }
+
+    & div {
+        padding: 0.2rem;
+    }
 }
 
-.card-single {
-    width: 50%;
-}
-
-.card.still {
+.card.still, .alternative-card.still {
     transform: translateY(2rem);
     opacity: 0;
     transition: transform 1s ease-in-out, opacity 1s ease-in-out;
 }
 
-.card.move {
+.card.move, .alternative-card.move {
     transform: translateY(0);
     opacity: 1;
 }
 
-.card img {
-    width: 100%;
-    height: 27rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-    border-radius: 1rem;
 
-    @media only screen and (max-width: 35rem) {
-        height: 25rem;
+.card .title, .alternative-card .title {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.alternative-card {
+    width: 80%;
+    height: 19rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    @media only screen and (max-width: 75rem) {
+        height: 20rem;
+        width: 85%;
+    }
+
+    @media only screen and (max-width: 67rem) {
+        display: block;
+        height: fit-content;
+        width: 100%;
+        margin: 0 0 2rem 0 !important;
+    }
+
+    & img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        height: 19rem;
+        width: 19rem;
+        border-radius: 1rem;
+
+        @media only screen and (max-width: 75rem) {
+            height: 20rem;
+            width: 18rem;
+        }
+
+        @media only screen and (max-width: 67rem) {
+            height: 19rem;
+            width: 100%;
+        }
+    }
+
+    & div {
+        box-sizing: border-box;
+        text-align: left;
+        width: 100%;
+        padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+        @media only screen and (max-width: 67rem) {
+            padding: 1rem;
+        }
     }
 }
 
-.card div {
-    padding: 0.2rem;
-}
-
-.card .title {
-    margin: 0.5rem 0 0.5rem 0;
+.card-single {
+    width: 50%;
 }
 
 // 2. NAVBAR //

@@ -12,23 +12,23 @@
 
 <% if @categories %>
     <div class="menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="currentColor" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="black" fill="none">
             <path d="" />
         </svg>
 
         <% @categories.each do |category| %>
-            <% if !category.proyectos.empty? %>
+            <% if category.proyectos.any? %>
                 <h4 class="menu-title">
-                    <%= link_to category.get_short_title, category_path(category), class: "menu-link" %>
+                    <%= link_to category.get_short_title, category_path(category), class: "link" %>
                 </h4>
             <% else %>
                 <h4 style="display: none;">
                 </h4>
             <% end %>
         <% end %>
-        <% if !@uncategorized.empty? %>
+        <% if @uncategorized.any? %>
             <h4 class="menu-title">
-                <%= t "index.uncategorized" %>
+                <%= link_to t("index.uncategorized"), url_for(order_by: :uncategorized, asc_desc: :desc), class: "link", style: "display: block;" %>
             </h4>
         <% end %>
     </div>
@@ -41,21 +41,19 @@
         <%= render 'layouts/popup' %>
 
         <% @categories.each_with_index do |category, index| %>
-            <% if !category.proyectos.empty? %>
+            <% if category.proyectos.any? %>
                 <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
                     <h2> <%= category.get_title %> </h2>
-                    <% category.proyectos.each do |article| %>
-                        <%= render 'layouts/article_card', article: article, type: "proyecto" %>
-                    <% end %>
+                    
+                    <%= cards_for category.proyectos %>
                 </div>
             <% end %>
         <% end %>
-        <% if !@uncategorized.empty? %>
+        <% if @uncategorized.any? %>
             <div class="category" data-index="<%= @categories.length %>">
                 <h2> <%= t "index.uncategorized" %> </h2>
-                <% @uncategorized.each do |article| %>
-                    <%= render 'layouts/article_card', article: article, type: "proyecto" %>
-                <% end %>
+                
+                <%= cards_for @uncategorized %>
             </div>
         <% end %>
     </div>
@@ -67,9 +65,7 @@
 
         <%= render 'layouts/popup' %>
 
-        <% @proyectos.each do |article| %>
-            <%= render 'layouts/article_card', article: article, type: "proyecto" %>
-        <% end %>
+        <%= cards_for @proyectos %>
     </div>
 <% end %>
 

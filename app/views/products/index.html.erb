@@ -12,29 +12,29 @@
 
 <% if @categories %>
     <div class="menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="currentColor" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="black" fill="none">
             <path d="" />
         </svg>
 
         <% @categories.each do |category| %>
-            <% if !category.products.empty? %>
+            <% if category.products.any? %>
                 <h4 class="menu-title">
-                    <%= link_to category.get_short_title, category_path(category), class: "menu-link" %>
+                    <%= link_to category.get_short_title, category_path(category), class: "link" %>
                 </h4>
             <% else %>
                 <h4 style="display: none;">
                 </h4>
             <% end %>
         <% end %>
-        <% if !@uncategorized.empty? %>
+        <% if @uncategorized.any? %>
             <h4 class="menu-title">
-                <%= t "index.uncategorized" %>
+                <%= link_to t("index.uncategorized"), url_for(order_by: :uncategorized, asc_desc: :desc), class: "link" %>
             </h4>
         <% end %>
     </div>
 
-    <div class='products-div'>
-        <h1 class='index-title'>
+    <div class='articles-div'>
+        <h1 class='main-title'>
             <%= I18n.t "shared.our_products" %>
         </h1>
 
@@ -44,73 +44,26 @@
             <% if !category.products.empty? %>
                 <h2> <%= category.get_title %> </h2>
                 <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
-                    <% category.products.each do |product| %>
-                        <div class='product'>
-                            <%= link_to product_path(product) do %>
-                                <% if product.image.attached? %>
-                                    <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
-                                <% end %>
-
-                                <div class='product-info'>
-                                    <h2 class='product-title'> <%= product.get_short_title %> </h2>
-                                    <p class='product-text'>
-                                        <%= product.get_short_desc %> <br>
-                                    </p>
-                                </div>
-                            <% end %>
-                        </div>
-                    <% end %>
+                    <%= alternative_cards_for category.products %>
                 </div>
             <% end %>
         <% end %>
         <% if !@uncategorized.empty? %>
             <h2> <%= t "index.uncategorized" %> </h2>
             <div class="category" data-index="<%= @categories.length %>">
-                <% @uncategorized.each do |product| %>
-                    <div class='product'>
-                        <%= link_to product_path(product) do %>
-                            <% if product.image.attached? %>
-                                <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
-                            <% end %>
-
-                            <div class='product-info'>
-                                <h2 class='product-title'> <%= product.get_short_title %> </h2>
-                                <p class='product-text'>
-                                    <%= product.get_short_desc %> <br>
-                                </p>
-                            </div>
-                        <% end %>
-                    </div>
-                <% end %>
+                <%= alternative_cards_for @uncategorized %>
             </div>
         <% end %>
     </div>
 <% else %>
-    <div class='products-div products-div2'>
-        <h1 class='index-title'>
+    <div class='articles-div articles-div2'>
+        <h1 class='main-title'>
             <%= I18n.t "shared.our_products" %>
         </h1>
 
         <%= render 'layouts/popup' %>
 
-        <div class="products-sub-div">
-            <% @products.each do |product| %>
-                <div class='product'>
-                    <%= link_to product_path(product) do %>
-                        <% if product.image.attached? %>
-                            <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
-                        <% end %>
-
-                        <div class='product-info'>
-                            <h2 class='product-title'> <%= product.get_short_title %> </h2>
-                            <p class='product-text'>
-                                <%= product.get_short_desc %> <br>
-                            </p>
-                        </div>
-                    <% end %>
-                </div>
-            <% end %>
-        </div>
+        <%= alternative_cards_for @products %>
     </div>
 <% end %>
 

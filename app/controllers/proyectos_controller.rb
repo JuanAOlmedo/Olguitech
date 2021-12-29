@@ -43,10 +43,10 @@ class ProyectosController < ApplicationController
     # POST /proyectos.json
     def create
         parameters = proyecto_params
-        products = parameters[:products]
+        products = parameters[:product_ids][1..-1]
         parameters.delete(:products)
 
-        categories = parameters[:categories]
+        categories = parameters[:category_ids][1..-1]
         parameters.delete(:categories)
 
         @proyecto = Proyecto.new(parameters)
@@ -81,10 +81,10 @@ class ProyectosController < ApplicationController
     # PATCH/PUT /proyectos/1.json
     def update
         parameters = proyecto_params
-        products = parameters[:products]
+        products = parameters[:product_ids][1..-1]
         parameters.delete(:products)
 
-        categories = parameters[:categories]
+        categories = parameters[:category_ids][1..-1]
         parameters.delete(:categories)
 
         respond_to do |format|
@@ -137,8 +137,8 @@ class ProyectosController < ApplicationController
                 :content2,
                 :description,
                 :description2,
-                { products: [] },
-                { categories: [] },
+                { product_ids: [] },
+                { category_ids: [] },
                 :image
             )
     end

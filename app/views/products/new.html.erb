@@ -1,17 +1,13 @@
-<head>
-    <%= stylesheet_link_tag 'actiontext' %>
+<style>
+    .products-link {
+        color: #CCC !important;
+    }
+</style>
 
-    <style>
-        .products-link {
-            color: #CCC !important;
-        }
-    </style>
-</head>
+<% content_for :title, "Nuevo producto" %>
+
+<h1 class='main-title'>Crear Producto</h1>
 
 <div id='edit'>
-    <%= render 'layouts/back' %>
-
-    <h1 class='show-title gold'>Crear Producto</h1>
-
     <%= render 'form', product: @product %>
 </div>

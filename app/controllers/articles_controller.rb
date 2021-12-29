@@ -45,10 +45,10 @@ class ArticlesController < ApplicationController
     # POST /articles.json
     def create
         parameters = article_params
-        products = parameters[:products]
+        products = parameters[:product_ids][1..-1]
         parameters.delete(:products)
 
-        categories = parameters[:categories]
+        categories = parameters[:category_ids][1..-1]
         parameters.delete(:categories)
 
         @article = Article.new(parameters)
@@ -83,10 +83,10 @@ class ArticlesController < ApplicationController
     # PATCH/PUT /articles/1.json
     def update
         parameters = article_params
-        products = parameters[:products]
+        products = parameters[:product_ids][1..-1]
         parameters.delete(:products)
 
-        categories = parameters[:categories]
+        categories = parameters[:category_ids][1..-1]
         parameters.delete(:categories)
 
         respond_to do |format|
@@ -139,8 +139,8 @@ class ArticlesController < ApplicationController
                 :content2,
                 :description,
                 :description2,
-                { products: [] },
-                { categories: [] },
+                { product_ids: [] },
+                { category_ids: [] },
                 :image
             )
     end

@@ -1,5 +1,12 @@
-@import "settings";
-// @import "sass/form/_all.sass";
+@import "forms";
+@import "index";
+@import "main";
+@import "contacto";
+@import "nosotros";
+@import "show";
+@import "product-show";
+@import "alert";
+@import "actiontext";
 
 // 1. GENERAL //
 
@@ -78,6 +85,20 @@ body {
 
     &.centered {
         display: block;
+    }
+}
+
+.btn-group {
+    display: inline-flex;
+
+    & .btn:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    & .btn:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
 }
 
@@ -263,6 +284,10 @@ body {
 
 .card-single {
     width: 50%;
+
+    @media only screen and (max-width: 67rem) {
+        width: 100%;
+    }
 }
 
 // 2. NAVBAR //

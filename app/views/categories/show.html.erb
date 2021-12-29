@@ -32,17 +32,21 @@
         <% end %>
     <% end %>
 
-    <%= link_to categories_path do %>
-        <div id="all-categories">
-            <svg xmlns=" http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <polyline points="15 6 9 12 15 18" />
-            </svg>
-            <p>
+    <div id="all-categories" class="centered">
+        <p> <strong>
                 <%= t "categories.all" %>
-            </p>
-        </div>
-    <% end %>
+        </strong> </p>
+        <% @categories.each do |category| %>
+            <% unless category == @category %>
+                <%= link_to category.get_title, category_path(category), class: 'link' %>
+            <% else %>
+                <p class="btn">
+                    <%= category.title %>
+                </p>
+            <% end %>
+        <% end %>
+        </p>
+    </div>
 
     <h2 class='main-title'> <%= @category.get_title %> </h2>
     <p class='subtitle'> <%= @category.get_desc %> </p>

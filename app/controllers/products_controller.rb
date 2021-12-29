@@ -42,14 +42,14 @@ class ProductsController < ApplicationController
     # POST /products or /products.json
     def create
         parameters = product_params
-        articles = parameters[:articles]
+        categories = parameters[:category_ids][1..-1]
+        parameters.delete(:categories)
+
+        articles = parameters[:article_ids][1..-1]
         parameters.delete(:articles)
 
-        proyectos = parameters[:proyectos]
+        proyectos = parameters[:proyecto_ids][1..-1]
         parameters.delete(:proyectos)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
 
         @product = Product.new(parameters)
 
@@ -76,14 +76,14 @@ class ProductsController < ApplicationController
     # PATCH/PUT /products/1 or /products/1.json
     def update
         parameters = product_params
-        articles = parameters[:articles]
+        categories = parameters[:category_ids][1..-1]
+        parameters.delete(:categories)
+
+        articles = parameters[:article_ids][1..-1]
         parameters.delete(:articles)
 
-        proyectos = parameters[:proyectos]
+        proyectos = parameters[:proyecto_ids][1..-1]
         parameters.delete(:proyectos)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
 
         respond_to do |format|
             if @product.update(parameters)
@@ -134,9 +134,9 @@ class ProductsController < ApplicationController
                 :description2,
                 :content,
                 :content2,
-                { articles: [] },
-                { proyectos: [] },
-                { categories: [] },
+                { article_ids: [] },
+                { proyecto_ids: [] },
+                { category_ids: [] },
                 :image
             )
     end

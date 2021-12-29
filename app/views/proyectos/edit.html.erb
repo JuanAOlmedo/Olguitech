@@ -1,19 +1,13 @@
-<head>
-    <%= stylesheet_link_tag 'actiontext' %>
-
-    <style>
-        .proyects-link {
-            color: #CCC !important;
-        }
-    </style>
-</head>
+<style>
+    .proyects-link {
+        color: #CCC !important;
+    }
+</style>
 
 <% content_for :title, "Editar artículo #{@proyecto.title}" %>
 
+<h1 class='main-title'>Editar Artículo (Proyecto)</h1>
+
 <div id='edit'>
-    <%= render 'layouts/back' %>
-
-    <h1 class='show-title gold'>Editar Articulo (Proyecto)</h1>
-
     <%= render 'form', proyecto: @proyecto %>
 </div>

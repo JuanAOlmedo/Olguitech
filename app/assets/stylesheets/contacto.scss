@@ -1,0 +1,26 @@
+@import "settings";
+
+.location-container {
+    width: 85%;
+    border-radius: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.location-container .ol-viewport {
+    border-radius: 2rem;
+}
+
+.subtitle .link {
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    color: #f4923c;
+}
+
+#map a {
+    color: $link;
+}
+
+#map a:hover {
+    color: $link-h;
+}

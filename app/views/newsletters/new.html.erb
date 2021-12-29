@@ -1,18 +1,13 @@
-<head>
-    <%= stylesheet_link_tag 'actiontext' %>
-    <style>
-        #newsletter-link {
-            color: #CCC !important;
-        }
-    </style>
-</head>
+<style>
+    #newsletter-link {
+        color: #CCC !important;
+    }
+</style>
 
 <% content_for :title, "Nueva newsletter" %>
 
+<h1 class='main-title'>Nueva Newsletter</h1>
+
 <div id='edit'>
-    <%= render 'layouts/back' %>
-
-    <h1 class='show-title gold'>Enviar Newsletter</h1>
-
     <%= render 'form', newsletter: @newsletter %>
 </div>

@@ -25,17 +25,17 @@ class Clicker {
 const fileInput = document.querySelector(" #fileInput"),
     imageUpload = document.querySelector(".image-upload"),
     preview = document.querySelector("#preview"),
-    articleTitle = document.querySelectorAll(".article-title")[2],
+    articleTitle = document.querySelector(".a-title"),
     articleImg = document.querySelector(".article-img"),
-    articleDescription = document.querySelector(".article-description"),
+    articleDescription = document.querySelector(".subtitle"),
     articleText = document.querySelector(".article-text");
 
-let formTitle = document.querySelector("#article_title"),
-    formDescription = document.querySelector("#article_description"),
-    formContent = document.querySelector("#article_content"),
-    formTitle2 = document.querySelector("#article_title2"),
-    formDescription2 = document.querySelector("#article_description2"),
-    formContent2 = document.querySelector("#article_content2");
+let formTitle = document.querySelector("#title-1"),
+    formDescription = document.querySelector("#desc-1"),
+    formContent = document.querySelector("#content-1"),
+    formTitle2 = document.querySelector("#title-2"),
+    formDescription2 = document.querySelector("#desc-2"),
+    formContent2 = document.querySelector("#content-2");
 
 fileInput.onchange = () => {
     const [file] = fileInput.files;
@@ -43,16 +43,14 @@ fileInput.onchange = () => {
         imageUpload.src = URL.createObjectURL(file);
     }
 };
-
-preview.onclick = show;
-xClicker = new Clicker(document.querySelector(".x"), stopShow).createClick();
+previewClicker = new Clicker(preview, show).createClick();
 
 function stopShow() {
-    document.querySelector("#show").style.display = "none";
+    document.querySelector("#preview-div").style.display = "none";
 }
 
 function show() {
-    document.querySelector("#show").style.display = "block";
+    document.querySelector("#preview-div").style.display = "block";
 
     articleTitle.innerHTML = formTitle.value;
     articleImg.src = imageUpload.src;
@@ -72,7 +70,7 @@ flag2Clicker = new Clicker(
 ).createClick();
 
 function changeLanguage(lang) {
-    if (lang == "es") {
+    if (true) {
         articleTitle.innerHTML = formTitle.value;
         articleDescription.innerHTML = formDescription.value;
         articleText.innerHTML = formContent.innerHTML;

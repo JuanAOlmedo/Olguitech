@@ -8,7 +8,9 @@ class CategoriesController < ApplicationController
     end
 
     # GET /categories/1 or /categories/1.json
-    def show; end
+    def show
+        @categories = Category.all
+    end
 
     # GET /categories/new
     def new
@@ -21,13 +23,13 @@ class CategoriesController < ApplicationController
     # POST /categories or /categories.json
     def create
         parameters = category_params
-        products = parameters[:products]
+        products = parameters[:product_ids][1..-1]
         parameters.delete(:products)
 
-        articles = parameters[:articles]
+        articles = parameters[:article_ids][1..-1]
         parameters.delete(:articles)
 
-        proyectos = parameters[:proyectos]
+        proyectos = parameters[:proyecto_ids][1..-1]
         parameters.delete(:proyectos)
 
         @category = Category.new(parameters)
@@ -55,13 +57,13 @@ class CategoriesController < ApplicationController
     # PATCH/PUT /categories/1 or /categories/1.json
     def update
         parameters = category_params
-        products = parameters[:products]
+        products = parameters[:product_ids][1..-1]
         parameters.delete(:products)
 
-        articles = parameters[:articles]
+        articles = parameters[:article_ids][1..-1]
         parameters.delete(:articles)
 
-        proyectos = parameters[:proyectos]
+        proyectos = parameters[:proyecto_ids][1..-1]
         parameters.delete(:proyectos)
 
         respond_to do |format|
@@ -111,9 +113,9 @@ class CategoriesController < ApplicationController
                 :title2,
                 :description,
                 :description2,
-                { products: [] },
-                { articles: [] },
-                { proyectos: [] },
+                { product_ids: [] },
+                { article_ids: [] },
+                { proyecto_ids: [] },
                 :image
             )
     end

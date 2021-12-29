@@ -39,7 +39,7 @@
             <td>
                 <% times_contacted = user.contactos.length %> 
                 <span class='<%= times_contacted > 0 ? "link times-contacted" : "" %>' data-id="<%= user.id %>">
-                    <%= user.contactos.length %>
+                    <%= times_contacted %>
                 </span> 
             </td>
 

@@ -41,11 +41,24 @@
 }
 
 #edit {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media only screen and (max-width: 67rem) {
+        width: 95%;
+    }
+}
+
+.rich-text.field {
+    box-sizing: border-box;
     padding: 1rem;
-    background-color: $color1;
-    color: $color2;
-    font-size: 1.1rem;
-    min-height: 35rem;
+    width: 100%;
+
+    & trix-editor {
+        max-height: 30rem;
+        overflow-y: auto;
+    }
 }
 
 .right-tool {
@@ -62,4 +75,9 @@
     @media only screen and (max-width: 70rem) {
         margin: 5px;
     }
+}
+
+.image-upload {
+    width: 75%;
+    height: auto;
 }

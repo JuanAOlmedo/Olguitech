@@ -1,5 +1,4 @@
 @import "settings";
-@import "actiontext";
 
 #show {
     padding: 1rem;
@@ -15,10 +14,14 @@
     @media only screen and (max-width: 55.6rem) {
         width: 95%;
     }
-}
 
-.content .categories {
-    font-style: italic;
+    & .article-categories {
+        font-style: italic;
+
+        & .link {
+            font-size: inherit;
+        }
+    }
 }
 
 .article-img,
@@ -59,25 +62,19 @@
 
 
 #all-categories {
-    display: flex;
-}
+    display: block;
+    width: 85%;
 
-#all-categories p {
-    margin-top: auto;
-    margin-bottom: auto;
-}
+    @media only screen and (max-width: 67rem) {
+        width: 95%;
+    }
 
-.category-link {
-    color: $link;
-    text-decoration: underline;
-}
+    & .btn {
+        color: #f4923c;
+        margin: 0;
 
-.category-link:hover {
-    color: $link-h;
-    text-decoration: none;
-}
-
-.category-link:visited {
-    color: $link-h;
-    text-decoration: underline;
+        &:hover {
+            background-color: hsl(26.7, 23.1%, 92.4%);
+        }
+    }
 }

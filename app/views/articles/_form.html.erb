@@ -1,75 +1,88 @@
 <%= form_with model: @article do |form| %>
-<div class="field">
-    <%= form.label :title, "Título" %>
-    <%= form.text_area :title, class:'title-textarea article-title show-title' %>
+    <div class="form">
+        <div class="field">
+            <%= form.label :title, "Título" %>
+            <%= form.text_area :title, id: "title-1" %>
+        </div>
 
-    <%= form.label :title2, "Título en ingles" %>
-    <%= form.text_area :title2, class:'title-textarea article-title show-title' %>
+        <div class="field">
+            <%= form.label :title2, "Título en inglés" %>
+            <%= form.text_area :title2, id: "title-2" %>
+        </div>
 
-    <%= form.label :image, 'Imagen' %>
-    <%= form.file_field :image, class:'image-attacher', id:"fileInput" %> <br>
-    <img class="image-upload" src="<%= url_for(@article.image) rescue "https://" %>" /> <br>
+        <div class="file">
+            <%= form.label :image do %>
+                <%= form.file_field :image, class:'image-attacher', id:"fileInput" %>
+                <span>
+                    Elegir una imagen...
+                </span>
+            <% end %>
+        </div>
 
-    <%= form.label :content, "Contenido" %>
-    <%= form.rich_text_area :content, class:'rich-text' %>
+        <% url = url_for(@article.image) rescue "https://" %>
+        <%= image_tag url, class:"image-upload centered"  %>
 
-    <%= form.label :content2, "Contenido en ingles" %>
-    <%= form.rich_text_area :content2, class:'rich-text' %>
+        <div class="rich-text field">
+            <%= form.label :content, "Contenido" %>
+            <%= form.rich_text_area :content, id: "content-1" %>
+        </div>
 
-    <%= form.label :description, "Descripción" %>
-    <%= form.text_area :description, class:'description-textarea' %>
+        <div class="rich-text field">
+            <%= form.label :content2, "Contenido en inglés" %>
+            <%= form.rich_text_area :content2, id: "content-2" %>
+        </div>
 
-    <%= form.label :description2, "Descripción en ingles" %>
-    <%= form.text_area :description2, class:'description-textarea' %>
+        <div class="field">
+            <%= form.label :description, "Descripción" %>
+            <%= form.text_area :description, id: "desc-1" %>
+        </div>
 
-    <h2> Productos relacionados </h2>
-    <%= form.collection_check_boxes :products, Product.all, :id, :title, include_hidden: false do |b| %>
-    <% product = Product.find_by(title: b.text) %>
-    <% if !@article.products.include? product %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
+        <div class="field">
+            <%= form.label :description2, "Descripción en inglés" %>
+            <%= form.text_area :description2, id: "desc-2" %>
+        </div>
 
-    <h2> Categorias </h2>
-    <%= form.collection_check_boxes :categories, Category.all, :id, :title, include_hidden: false do |b| %>
-    <% category = Category.find_by(title: b.text) %>
-    <% if !@article.categories.include? category %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
+        <div class="checkbox-field">
+            <%= form.label :products, "Productos relacionados" %> <br>
+            <%= form.collection_check_boxes :product_ids, Product.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
 
-    <%= form.submit 'Crear', class: "big-navbar-link button" %>
-</div>
+        <div class="checkbox-field">
+            <%= form.label :categories, "Categorías" %> <br>
+            <%= form.collection_check_boxes :category_ids, Category.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
+
+        <div class='btn-group centered'>
+            <%= form.submit 'Crear', class: "btn" %>
+            <a class="btn" id="preview"> Previsualizar </a>
+        </div>
+    </div>
 <% end %>
 
-<button class="big-navbar-link button" id="preview"> Previsualizar </button>
-
-<div id='show'>
-    <div class="preview-header">
+<div id='preview-div'>
+    <div class="preview-header centered">
         <h2> Previsualizacion </h2>
         <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>" class="flag preview-flag">
 
         <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>" class="flag preview-flag">
-
-        <svg xmlns="http://www.w3.org/2000/svg" class="x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
     </div>
     <article>
-        <h2 class='article-title'> </h2>
+        <h2 class='main-title a-title'> </h2>
 
-        <p class='article-description'> </p>
+        <p class='subtitle'> </p>
 
-        <img src='' class='article-img' alt=''>
+        <img src='' class='article-img centered' alt=''>
 
-        <div class='show-text'>
-            <p class='article-text trix-content'> </p>
+        <div class="content">
+            <div class='show-text'>
+                <p class='article-text trix-content'> </p>
+            </div>
         </div>
     </article>
 </div>

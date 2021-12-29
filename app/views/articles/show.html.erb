@@ -1,14 +1,8 @@
-<head>
-    <%= stylesheet_link_tag 'show' %>
-
-    <style>
-        .articles-link {
-            color: #CCC !important;
-        }
-    </style>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-</head>
+<style>
+    .articles-link {
+        color: #CCC !important;
+    }
+</style>
 
 <% content_for :title, "#{@article.get_title} | Olguitech s.a.s." %>
 <% content_for :description, "#{@article.get_desc}" %>
@@ -50,10 +44,10 @@
 
     <div class="content">
         <% if !@article.categories.empty? %>
-            <p class="categories">
+            <p class="article-categories">
                 <%= @article.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
                 <% @article.categories.each do |category| %>
-                    <%= link_to category.get_title, category_path(category), class: "category-link" %><%= "#{@article.categories.last != category ? ", " : ""}" %>
+                    <%= link_to category.get_title, category_path(category), class: "link" %><%= "#{@article.categories.last != category ? ", " : ""}" %>
                 <% end %>
             </p>
         <% end %>

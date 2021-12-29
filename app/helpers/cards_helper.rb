@@ -33,10 +33,15 @@ module CardsHelper
 
                 array.each do |element|
                     if element
-                        content << alternative_card(element, array.find_index(element).even?, starts_left)
+                        content <<
+                            alternative_card(
+                                element,
+                                array.find_index(element).even?,
+                                starts_left
+                            )
                     end
                 end
-    
+
                 content = safe_join content
             else
                 content = alternative_card_single(@array[0])
@@ -117,11 +122,11 @@ module CardsHelper
             content = safe_join [img(element), card_content(element)]
 
             if is_even
-                margin_left = starts_left ? "auto" : "#{rand(11.0..15.0)}%"
-                margin_right = !starts_left ? "auto" : "#{rand(11.0..15.0)}%"
-            else 
-                margin_left = !starts_left ? "auto" : "#{rand(11.0..15.0)}%"
-                margin_right = starts_left ? "auto" : "#{rand(11.0..15.0)}%"
+                margin_left = starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
+                margin_right = !starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
+            else
+                margin_left = !starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
+                margin_right = starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
             end
 
             content_tag :div,
@@ -134,14 +139,18 @@ module CardsHelper
 
         def img(element)
             if @image && element.image.attached?
-                ActiveStorage::Current.url_options = {
-                    locale: I18n.locale,
-                    only_path: true
-                }
-
                 image_tag element.image.variant(resize_to_limit: [40, 40]),
                           data: {
-                              src: element.image.url
+                              src:
+                                  Rails
+                                      .application
+                                      .routes
+                                      .url_helpers
+                                      .rails_blob_url(
+                                      element.image,
+                                      locale: I18n.locale,
+                                      only_path: true
+                                  )
                           },
                           class: 'lazy',
                           alt: element.image.filename
@@ -159,7 +168,6 @@ module CardsHelper
         end
     end
 end
-
 
 # <div class="cards-holder centered">
 #     <% @products.each do |article| %>

@@ -1,14 +1,8 @@
-<head>
-    <%= stylesheet_link_tag 'show' %>
-
-    <style>
-        .proyects-link {
-            color: #CCC !important;
-        }
-    </style>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-</head>
+<style>
+    .proyects-link {
+        color: #CCC !important;
+    }
+</style>
 
 <% content_for :title, "#{@proyecto.get_title} | Olguitech s.a.s." %>
 <% content_for :description, "#{@proyecto.get_desc}" %>
@@ -49,10 +43,10 @@
 
     <div class="content">
         <% if !@proyecto.categories.empty? %>
-            <p class="categories">
+            <p class="article-categories">
                 <%= @proyecto.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
                 <% @proyecto.categories.each do |category| %>
-                    <%= link_to category.get_title, category_path(category), class: "category-link" %><%= "#{@proyecto.categories.last != category ? ", " : ""}" %>
+                    <%= link_to category.get_title, category_path(category), class: "link" %><%= "#{@proyecto.categories.last != category ? ", " : ""}" %>
                 <% end %>
             </p>
         <% end %>

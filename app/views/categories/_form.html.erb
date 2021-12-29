@@ -1,53 +1,53 @@
 <%= form_with model: @category do |form| %>
-<div class="field">
-    <%= form.label :title, "Título" %>
-    <%= form.text_area :title, class:'title-textarea article-title show-title' %>
+    <div class="form">
+        <div class="field">
+            <%= form.label :title, "Título" %>
+            <%= form.text_area :title, id: "title-1" %>
+        </div>
 
-    <%= form.label :title2, "Título en ingles" %>
-    <%= form.text_area :title2, class:'title-textarea article-title show-title' %>
+        <div class="field">
+            <%= form.label :title2, "Título en inglés" %>
+            <%= form.text_area :title2, id: "title-2" %>
+        </div>
 
-    <%= form.label :image, 'Imagen' %>
-    <%= form.file_field :image, class:'image-attacher', id:"fileInput" %> <br>
-    <img class="image-upload" src="<%= url_for(@category.image) rescue "https://" %>" /> <br>
+        <div class="file">
+            <%= form.label :image do %>
+                <%= form.file_field :image, class:'image-attacher', id:"fileInput" %>
+                <span>
+                    Elegir una imagen...
+                </span>
+            <% end %>
+        </div>
 
-    <%= form.label :description, "Descripción" %>
-    <%= form.text_area :description, class:'description-textarea' %>
+        <% url = url_for(@category.image) rescue "https://" %>
+        <%= image_tag url, class:"image-upload centered"  %>
 
-    <%= form.label :description2, "Descripción en ingles" %>
-    <%= form.text_area :description2, class:'description-textarea' %>
+        <div class="checkbox-field">
+            <%= form.label :products, "Productos relacionados" %> <br>
+            <%= form.collection_check_boxes :product_ids, Product.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
 
-    <h2> Productos relacionados </h2>
-    <%= form.collection_check_boxes :products, Product.all, :id, :title, include_hidden: false do |b| %>
-    <% article = Product.find_by(title: b.text) %>
-    <% if !@category.products.include? article %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
+        <div class="checkbox-field">
+            <%= form.label :article, "Artículos relacionados" %> <br>
+            <%= form.collection_check_boxes :article_ids, Article.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
 
-    <h2> Soluciones relacionadas </h2>
-    <%= form.collection_check_boxes :articles, Article.all, :id, :title, include_hidden: false do |b| %>
-    <% article = Article.find_by(title: b.text) %>
-    <% if !@category.articles.include? article %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
+        <div class="checkbox-field">
+            <%= form.label :proyecto, "Proyectos relacionados" %> <br>
+            <%= form.collection_check_boxes :proyecto_ids, Proyecto.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
+    </div>
 
-    <h2> Proyectos relacionados </h2>
-    <%= form.collection_check_boxes :proyectos, Proyecto.all, :id, :title, include_hidden: false do |b| %>
-    <% article = Proyecto.find_by(title: b.text) %>
-    <% if !@category.proyectos.include? article %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
-
-    <%= form.submit 'Crear', class: "big-navbar-link", id: "button" %>
-</div>
+    <%= form.submit 'Crear', class: "btn centered", style: "margin-bottom: 2rem;"  %>
 <% end %>
 
 <%= javascript_pack_tag 'product-creator' %>

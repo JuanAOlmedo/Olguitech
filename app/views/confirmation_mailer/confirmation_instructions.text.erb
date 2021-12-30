@@ -1,0 +1,10 @@
+Bienvenido <%= @email %>!
+=============================================
+
+Puedes confirmar tu cuenta con el link de abajo:
+
+<%= url_for controller: :users, action: :confirmation, confirmation_token: @token %>
+
+---------------------------------------------
+Si crees que has rellenado tus datos incorrectamente, puedes corregirlos desde este link :
+<%= url_for controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token %>

@@ -5,6 +5,7 @@ class NewsMailer < ApplicationMailer
     def newsletter(user, title, content, subject)
         @user = user
 
+        @user.regenerate_edit_token if @user.edit_token == nil
         @user.regenerate_newsletter_token if @user.newsletter_token == nil
 
         @token = @user.newsletter_token

@@ -22,7 +22,7 @@ class ArticleTest < ActiveSupport::TestCase
         assert_equal('Lorem Ipsum', @article.get_short_title)
 
         assert_equal(
-            '12345678901234567890123456789012345...',
+            '12345678901234567890123456789012345678901234567890...',
             @article2.get_short_title,
         )
     end
@@ -47,7 +47,7 @@ class ArticleTest < ActiveSupport::TestCase
         I18n.locale = :es
 
         assert_equal(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ...',
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore ...',
             @article.get_short_desc,
         )
 

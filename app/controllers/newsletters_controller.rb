@@ -23,7 +23,7 @@ class NewslettersController < ApplicationController
         @newsletter = Newsletter.new(newsletter_params)
 
         if @newsletter.save
-            @users = User.all.where(newsletter: true)
+            @users = User.all.where newsletter: true
 
             @users.each do |user|
                 @mail =

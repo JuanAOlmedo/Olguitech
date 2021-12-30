@@ -13,9 +13,9 @@
     <link rel="icon" href="/favicons/favicon.png" sizes="32x32">
     <link rel="apple-touch-icon" sizes="512x512" href="/apple-touch-icon.png">
 
-    <%= javascript_pack_tag 'application', :defer => "defer", "data-turbolinks-track" => "reload" %>
+    <%= javascript_pack_tag 'application', :defer => "defer", "data-turbo-track" => "reload" %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track' => 'reload' %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,16 +29,12 @@
 
        @products = Product.all.order(created_at: :desc) %>
 
-    <% if flash[:alert] %>
-    <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <% end %>
-
-    <% if flash[:notice] %>
-    <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <% if flash[:alert] || flash[:notice] %>
+        <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbo-track' => 'reload' %>
     <% end %>
 
     <% if admin_signed_in? %>
-    <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbo-track' => 'reload' %>
     <% end %>
 
     <nav>
@@ -56,15 +52,15 @@
         <%= render 'layouts/dropdown' %>
 
         <div class="right-navbar-section">
-            <%= link_to "Soluciones", articles_path, class: "link" %>
-            <%= link_to "Proyectos", proyectos_path, class: "link" %>
-            <%= link_to "Productos", products_path, class: "link" %>
+            <%= link_to "Soluciones", articles_path, class: "link #{"active" if controller_name == 'articles'}" %>
+            <%= link_to "Proyectos", proyectos_path, class: "link #{"active" if controller_name == 'proyectos'}" %>
+            <%= link_to "Productos", products_path, class: "link #{"active" if controller_name == 'products'}" %>
 
             <% if admin_signed_in? %>
-                <%= link_to "Nesletters", newsletters_path, class: "link" %>
+                <%= link_to "Newsletters", newsletters_path, class: "link #{"active" if controller_name == 'newsletters'}" %>
             <% end %>
 
-            <%= link_to "Nosotros", nosotros_path, class: "link" %>
+            <%= link_to "Nosotros", nosotros_path, class: "link #{"active" if controller_name == 'nosotros'}" %>
 
             <div class="dropdown" id="lang">
                 <div class="dropdown-trigger">
@@ -97,111 +93,111 @@
 
 
     <% if flash[:alert] %>
-    <div class='alert'>
-        <p role="alert"> <%= alert %> </p>
-        <i class='close-alert' cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.alert" %>">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-        </i>
-    </div>
+        <div class='alert'>
+            <p role="alert"> <%= alert %> </p>
+            <i class='close-alert' cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.alert" %>">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </i>
+        </div>
     <% end %>
 
 
     <% if flash[:notice] %>
-    <div class='notice'>
-        <p role="alert"> <%= notice %> </p>
-        <i class='close-notice' cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.notice" %>">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-        </i>
-    </div>
+        <div class='notice'>
+            <p role="alert"> <%= notice %> </p>
+            <i class='close-notice' cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.notice" %>">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" />
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </i>
+        </div>
     <% end %>
 
     <main>
         <%= yield %>
 
         <% if admin_signed_in? %>
-        <div id='admin-tools'>
-            <%= link_to new_category_path, class: 'right-tool' do %>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
-                <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
-            </svg>
-            <% end %>
+            <div id='admin-tools'>
+                <%= link_to new_category_path, class: 'right-tool' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-folders icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M9 4h3l2 2h5a2 2 0 0 1 2 2v7a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
+                        <path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2h2" />
+                    </svg>
+                <% end %>
 
-            <%= link_to new_product_path, class: 'right-tool' do %>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
-                <circle cx="12" cy="14" r="2" />
-                <polyline points="14 4 14 8 8 8 8 4" />
-            </svg>
-            <% end %>
+                <%= link_to new_product_path, class: 'right-tool' do %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2" />
+                        <circle cx="12" cy="14" r="2" />
+                        <polyline points="14 4 14 8 8 8 8 4" />
+                    </svg>
+                <% end %>
 
+                <%= link_to new_article_path, class: 'right-tool' do %>
+                    <i class='articles-fas'>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <circle cx="12" cy="12" r="9" />
+                            <line x1="9" y1="12" x2="15" y2="12" />
+                            <line x1="12" y1="9" x2="12" y2="15" />
+                        </svg>
+                    </i>
+                <% end %>
 
-            <%= link_to new_article_path, class: 'right-tool' do %>
-            <i class='articles-fas'>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <circle cx="12" cy="12" r="9" />
-                    <line x1="9" y1="12" x2="15" y2="12" />
-                    <line x1="12" y1="9" x2="12" y2="15" />
-                </svg>
-            </i>
-            <% end %>
-            <%= link_to new_proyecto_path, class: 'right-tool' do %>
-            <i class='articles-fas'>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <rect x="4" y="4" width="16" height="16" rx="2" />
-                    <line x1="9" y1="12" x2="15" y2="12" />
-                    <line x1="12" y1="9" x2="12" y2="15" />
-                </svg>
-            </i>
-            <% end %>
+                <%= link_to new_proyecto_path, class: 'right-tool' do %>
+                    <i class='articles-fas'>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-plus" width="55" height="55" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <rect x="4" y="4" width="16" height="16" rx="2" />
+                            <line x1="9" y1="12" x2="15" y2="12" />
+                            <line x1="12" y1="9" x2="12" y2="15" />
+                        </svg>
+                    </i>
+                <% end %>
 
-            <%= link_to new_newsletter_path, class: 'right-tool' do %>
-            <i class='articles-fas'>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
-                    <line x1="8" y1="8" x2="12" y2="8" />
-                    <line x1="8" y1="12" x2="12" y2="12" />
-                    <line x1="8" y1="16" x2="12" y2="16" />
-                </svg>
-            </i>
-            <% end %>
+                <%= link_to new_newsletter_path, class: 'right-tool' do %>
+                    <i class='articles-fas'>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-news" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" />
+                            <line x1="8" y1="8" x2="12" y2="8" />
+                            <line x1="8" y1="12" x2="12" y2="12" />
+                            <line x1="8" y1="16" x2="12" y2="16" />
+                        </svg>
+                    </i>
+                <% end %>
 
-            <%= link_to users_path, class: 'right-tool' do %>
-            <i class='articles-fas'>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
-                </svg>
-            </i>
-            <% end %>
-        </div>
+                <%= link_to users_path, class: 'right-tool' do %>
+                    <i class='articles-fas'>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+                        </svg>
+                    </i>
+                <% end %>
+            </div>
         <% end %>
     </main>
 
     <%= javascript_pack_tag 'all' %>
 
     <% if flash[:alert] %>
-    <%= javascript_pack_tag 'alert' %>
+        <%= javascript_pack_tag 'alert' %>
     <% end %>
 
     <% if flash[:notice] %>
-    <%= javascript_pack_tag 'notice' %>
+        <%= javascript_pack_tag 'notice' %>
     <% end %>
 </body>
 

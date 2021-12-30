@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         resources :users
 
         get "/users/confirmation/:confirmation_token", to: 'users#confirmation'
-        get '/user/unsubscribe/:newsletter_token', to: 'users#unsubscribe'
+        get '/users/unsubscribe/:newsletter_token', to: 'users#unsubscribe'
 
         devise_for :admins, :controllers => { registrations: 'admin_registrations' }
 

@@ -9,6 +9,7 @@ one:
   name: Juan Andres Olmedo
   phone: 012 345 678
   email: test1@test.com
+  confirmation_token: supersecuretoken
 
 two:
   email: test2@test.com

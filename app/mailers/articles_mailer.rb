@@ -10,6 +10,6 @@ class ArticlesMailer < ApplicationMailer
         @token = @user.newsletter_token
         @article = article
 
-        mail(to: @user.email, subject: 'Olguitech s.a.s., Nuevo Artículo')
+        mail(to: @user.email, subject: 'Nuevo Artículo de Olguitech!')
     end
 end

@@ -1,5 +1,8 @@
 <%= @title %>
+=============================================
 
-<%= @content %>
+<%= @content.to_plain_text %>
 
-Desubscribirse: https://olguitech.com/user/unsubscribe/<%= @token %>
+---------------------------------------------
+Desubscribirse: <%= url_for controller: :users, action: :unsubscribe, newsletter_token: @token %>
+Editar Usuario: <%=url_for controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token %>

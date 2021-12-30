@@ -16,16 +16,3 @@ class NewsMailerTest < ActionMailer::TestCase
         assert_match @user.newsletter_token, mail.body.encoded
     end
 end
-
-# def newsletter(user, title, content, subject)
-#     @user = user
-
-#     @user.regenerate_newsletter_token if @user.newsletter_token == nil
-
-#     @token = @user.newsletter_token
-#     @title = title
-#     @content = content
-#     @subject = subject
-
-#     mail(to: @user.email, subject: @subject)
-# end

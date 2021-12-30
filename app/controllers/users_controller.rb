@@ -86,8 +86,7 @@ class UsersController < ApplicationController
 
     def redirect_unless_admin
         if !admin_signed_in?
-            flash[:alert] = 'Solo administradores pueden hacer eso'
-            redirect_to root_path
+            redirect_to root_path, status: :unauthorized, alert: 'Solo administradores pueden hacer eso'
         end
     end
 
@@ -97,7 +96,7 @@ class UsersController < ApplicationController
 
     def authenticate_edit_token
         if @user.edit_token != params[:edit_token] && @user.edit_token != user_params[:edit_token]
-            redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
+            redirect_to root_path, status: :unauthorized, alert: 'No tienes permiso para hacer eso.'
         end
     end
 

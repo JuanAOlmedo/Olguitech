@@ -5,25 +5,7 @@
 <% content_for :title, "#{I18n.t "categories.categories"} | Olguitech s.a.s." %>
 
 <div class='categories'>
-    <h1 class='index-title'> <%= I18n.t "categories.categories" %> </h1>
+    <h1 class='main-title'> <%= I18n.t "categories.categories" %> </h1>
 
-    <% @categories.each do |category| %>
-    <%= link_to category_path(category), class: "category-link" do %>
-    <div class="category">
-        <% if category.image.attached? %>
-        <%= image_tag category.image, alt: category.image.filename, class: "category-img" %>
-        <% end %>
-
-        <div class="category-info">
-            <h2 class="category-title">
-                <%= category.get_short_title %>
-            </h2>
-
-            <p class="category-text">
-                <%= category.get_short_desc %>
-            </p>
-        </div>
-    </div>
-    <% end %>
-    <% end %>
+    <%= cards_for @categories %>
 </div>

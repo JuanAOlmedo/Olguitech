@@ -3,6 +3,7 @@ class ConfirmationMailer < ApplicationMailer
     layout 'mailer'
 
     def confirmation_instructions(user)
+        @user = user
         @email = user.email
         @token = user.confirmation_token
 

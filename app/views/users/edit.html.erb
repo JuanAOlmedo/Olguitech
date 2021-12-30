@@ -1,35 +1,40 @@
-<head>
-    <%= stylesheet_link_tag 'forms' %>
-</head>
-
 <% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
 
 <h1 class="main-title">
-    Crear usuario
+    <%= session[:will_contact] ? "Contactarse" : "Editar usuario" %>
 </h1>
 
 <%= form_with model: @user do |form| %>
     <div class="form big-card">
-        <div class="field">
+        <%= form.hidden_field :edit_token, value: @user.edit_token %>
+
+        <div class="field" style="padding-bottom: 0; margin-bottom: 0;">
             <%= form.label :name, "Nombre" %>
-            <%= form.text_field :name %>
+            <%= form.text_field :name, value: @user.name %>
         </div>
 
-        <div class="field">
+        <div class="field" style="padding-bottom: 0; margin-bottom: 0;">
             <%= form.label :email, "Email" %>
             <%= form.text_field :email, value: @user.email, disabled: true %>
         </div>
 
+        <div style="width: 50%;"> </div>
+
+        <div class="checkbox-field" style="padding-top: 0;">
+            <%= form.check_box :newsletter, checked: true %>
+            <%= form.label :newsletter, "Recibir newsletters" %>
+        </div>
+
         <div class="field">
             <%= form.label :phone, "Telefono" %>
-            <%= form.phone_field :phone %>
+            <%= form.phone_field :phone, value: @user.phone %>
         </div>
 
         <div class="field">
             <%= form.label :company, "Compañia" %>
-            <%= form.text_field :company %>
+            <%= form.text_field :company, value: @user.company %>
         </div>
 
-        <%= form.submit t("contact.send"), class:'btn centered' %>
+        <%= form.submit(session[:will_contact] ? "Enviar Mail" : "Editar Usuario", class:'btn centered') %>
     </div>
 <% end %>

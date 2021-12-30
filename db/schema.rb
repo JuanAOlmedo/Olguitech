@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_21_000236) do
+ActiveRecord::Schema.define(version: 2021_12_29_203803) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -169,12 +169,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_000236) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "company"
-    t.string "phonreversible do |dir|
-      change_table :users do |t|
-        dir.up   { t.change :phone, :string }
-        dir.down { t.change :phone, :string }
-      end
-    ende"
+    t.string "phone"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -184,6 +179,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_000236) do
     t.string "preference2"
     t.string "locale"
     t.string "newsletter_token"
+    t.string "edit_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
+    has_secure_token :edit_token
     has_secure_token :newsletter_token
     has_secure_token :confirmation_token
 

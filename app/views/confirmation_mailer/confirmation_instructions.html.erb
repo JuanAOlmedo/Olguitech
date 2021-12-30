@@ -2,4 +2,9 @@
 
 <p>Puedes confirmar tu cuenta con el link de abajo:</p>
 
-<p><%= link_to 'Confirmar mi cuenta', "https://olguitech.com/#{I18n.locale}/users/confirmation/#{@token}" %></p>
+<p><%= link_to 'Confirmar mi cuenta', url_for(controller: :users, action: :confirmation, confirmation_token: @token) %></p>
+
+<p>
+    Si crees que has rellenado tus datos incorrectamente, puedes corregirlos desde 
+    <%= link_to 'este link', url_for(controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token) %>
+</p>

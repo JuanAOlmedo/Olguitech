@@ -27,9 +27,12 @@ class ContactosController < ApplicationController
 
             if @user.save && @contacto.save
                 session[:will_contact] = true
-                redirect_to edit_user_path(@user),
-                            alert:
-                                'Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos'
+                redirect_to({ controller: 'users',
+                            action: 'edit',
+                            id: @user.id,
+                            edit_token: @user.edit_token },
+                            notice:
+                                'Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos')
             else
                 render :new, status: :unprocessable_entity
             end

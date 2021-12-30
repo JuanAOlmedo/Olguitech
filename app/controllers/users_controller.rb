@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[edit update]
+    before_action :authenticate_edit_token, only: %i[edit update]
     before_action :authenticate_admin!, :redirect_unless_admin, only: [:index]
 
     def index
@@ -57,9 +58,7 @@ class UsersController < ApplicationController
         if @user
             @user.confirm
 
-            redirect_to root_path,
-                        notice:
-                            'Has confirmado tu cuenta'
+            redirect_to root_path, notice: 'Has confirmado tu cuenta'
         else
             redirect_to root_path,
                         alert:
@@ -96,7 +95,13 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    def authenticate_edit_token
+        if @user.edit_token != params[:edit_token] && @user.edit_token != user_params[:edit_token]
+            redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
+        end
+    end
+
     def user_params
-        params.require(:user).permit :name, :phone, :company
+        params.require(:user).permit :name, :phone, :company, :newsletter, :edit_token
     end
 end

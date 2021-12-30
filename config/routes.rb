@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
         resources :users
 
+        get "/users/:id/edit/:edit_token", to: 'users#edit'
         get "/users/confirmation/:confirmation_token", to: 'users#confirmation'
         get '/users/unsubscribe/:newsletter_token', to: 'users#unsubscribe'
 

@@ -4,12 +4,20 @@ class ProductsController < ApplicationController
 
     # GET /products or /products.json
     def index
-        ordered = Product.get_ordered(params[:order_by], params[:asc_desc])
+        respond_to do |format|
+            format.html do
+                ordered = Product.get_ordered(params[:order_by], params[:asc_desc])
 
-        @categories = ordered[0]
-        @products = ordered[1]
+                @categories = ordered[0]
+                @products = ordered[1]
 
-        @uncategorized = Product.uncategorized
+                @uncategorized = Product.uncategorized
+            end
+
+            format.json do
+                @products = Product.all
+            end
+        end
     end
 
     # GET /products/1 or /products/1.json

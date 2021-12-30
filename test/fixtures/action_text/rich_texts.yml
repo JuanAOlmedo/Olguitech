@@ -34,3 +34,9 @@ product_two:
     record_id: 1
     name: content2
     body: '<p>In a <i>million</i> stars!</p>'
+newsletter_one:
+    id: 7
+    record_type: Newsletter
+    record_id: 1
+    name: content
+    body: '<p>In a <i>million</i> stars!</p>'

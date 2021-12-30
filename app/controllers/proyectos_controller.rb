@@ -3,13 +3,22 @@ class ProyectosController < ApplicationController
     before_action :authenticate_admin!, except: %i[index show]
 
     # GET /proyectos
+    # GET /proyectos.json
     def index
-        ordered = Proyecto.get_ordered(params[:order_by], params[:asc_desc])
+        respond_to do |format|
+            format.html do
+                ordered = Proyecto.get_ordered(params[:order_by], params[:asc_desc])
 
-        @categories = ordered[0]
-        @proyectos = ordered[1]
+                @categories = ordered[0]
+                @proyectos = ordered[1]
 
-        @uncategorized = Proyecto.uncategorized
+                @uncategorized = Proyecto.uncategorized
+            end
+
+            format.json do
+                @proyectos = Proyecto.all
+            end
+        end
     end
 
     # GET /proyectos/1

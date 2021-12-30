@@ -6,6 +6,10 @@ class ContactMailerTest < ActionMailer::TestCase
     test 'contacto' do
         mail = ContactMailer.contacto(@user, Article.first.get_title, Proyecto.first.get_title, "HI")
 
+        assert_emails 1 do
+            mail.deliver_now
+        end
+
         assert_equal 'Olguitech s.a.s.', mail.subject
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
@@ -16,6 +20,10 @@ class ContactMailerTest < ActionMailer::TestCase
 
     test 'admin_contacto' do
         mail = ContactMailer.admin_contacto(@user, Article.first.get_title, Proyecto.first.get_title, "HI")
+
+        assert_emails 1 do
+            mail.deliver_now
+        end
 
         assert_equal 'Una nueva persona se ha contactado', mail.subject
         assert_equal [ENV['EMAIL_USERNAME']], mail.to

@@ -5,11 +5,12 @@
         <%= @content %>
     </div>
 
-    <a href="https://olguitech.com" style="display: block; width: 100%;">
+    <%= link_to root_url, style: "display: block; width: 100%;" do %>
         <img src="https://olguitech.com/logo-muy-chico.png" style="display: block; margin-left: auto; margin-right: auto;" width="220px" height="90px">
-    </a>
+    <% end %>
 
-    <a href='https://olguitech.com/user/unsubscribe/<%= @token %>' style="display: block; width: 100%; text-align: center;">
-        Desubscribirse
-    </a>
+    <div style="text-align: center;">
+        <%= link_to "Desuscribirse", url_for(controller: :users, action: :unsubscribe, newsletter_token: @token) %> |
+        <%= link_to 'Editar usuario', url_for(controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token) %>
+    </div>
 </div>

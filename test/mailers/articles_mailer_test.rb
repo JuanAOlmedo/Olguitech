@@ -11,6 +11,10 @@ class ArticlesMailerTest < ActionMailer::TestCase
     test 'article' do
         mail = ArticlesMailer.article(@user, @article)
 
+        assert_emails 1 do
+            mail.deliver_now
+        end
+
         assert_equal 'Nuevo Artículo de Olguitech!', mail.subject
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from

@@ -4,12 +4,20 @@
     margin-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
+
+    @media only screen and (max-width: 67rem) {
+        display: block;
+    }
 }
 
 .field {
     box-sizing: border-box;
     width: 50%;
     padding: 1rem;
+
+    @media only screen and (max-width: 67rem) {
+        width: 100%;
+    }
 
     &.separate {
         width: 100%;
@@ -69,6 +77,10 @@
         height: 4rem;
         min-height: 1.6rem;
         resize: vertical;
+
+        @media only screen and (max-width: 67rem) {
+            height: 10rem;
+        }
     }
 
     & select {
@@ -129,6 +141,10 @@
     box-sizing: border-box;
     width: 50%;
     padding: 1rem;
+
+    @media only screen and (max-width: 67rem) {
+        width: 100%;
+    }
 
     & label,
     & input,

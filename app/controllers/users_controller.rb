@@ -14,6 +14,35 @@ class UsersController < ApplicationController
 
     def edit; end
 
+    def create
+        confirm = params[:auto_confirm] == 0 ? false : true
+        newsletter = params[:auto_subscribe] == 0 ? false : true
+
+        if params[:emails]
+            emails = []
+
+            params[:emails].split(", ").map do |a|
+                a.split(",").map do |b| 
+                    b.split(" ").each { |c| emails << c } 
+                end
+            end
+
+            emails.each do |email|
+                user = User.new(email: email, newsletter: newsletter)
+                user.confirm if confirm
+
+                user.save
+            end
+        else
+            email = params[:email]
+
+            user = User.new(email: email, newsletter: newsletter)
+            user.confirm if confirm
+
+            user.save
+        end
+    end
+
     def update
         parameters = user_params
         parameters[:locale] = I18n.locale

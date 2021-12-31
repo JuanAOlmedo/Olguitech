@@ -1,0 +1,27 @@
+<%= form_with url: "/users", method: :post do |form| %>
+    <h1 class="main-title">
+        Crear usuarios
+    </h1>
+
+    <div class="big-card form">
+        <div class="field">
+            <%= form.label :email, "Email" %>
+            <%= form.email_field :email %>
+        </div>
+
+        <div class="field">
+            <%= form.label :emails, "Lista de emails" %>
+            <%= form.text_area :emails %>
+        </div>
+
+        <div class="checkbox-field">
+            <%= form.check_box :auto_confirm %>
+            <%= form.label :auto_confirm, "Confirmar mail" %> <br>
+
+            <%= form.check_box :auto_subscribe %>
+            <%= form.label :auto_subscribe, "Newsletters" %>
+        </div>
+
+        <%= form.submit "Crear", class: 'btn' %>
+    </div>
+<% end %>

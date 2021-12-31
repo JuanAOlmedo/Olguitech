@@ -160,7 +160,7 @@ module CardsHelper
         def card_content(element)
             title = content_tag :h2, element.get_short_title, class: 'title'
             desc = content_tag :p, element.get_short_desc, class: 'big-text'
-            link = link_to 'Ver más', element.base_uri, class: 'btn'
+            link = link_to I18n.t("general.see_more"), element.base_uri, class: 'btn'
 
             content = safe_join [title, desc, link]
 
@@ -168,19 +168,3 @@ module CardsHelper
         end
     end
 end
-
-# <div class="cards-holder centered">
-#     <% @products.each do |article| %>
-#         <div class="alternative-card">
-#             <% if article.image.attached? %>
-#                 <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "article-img lazy", alt: article.image.filename %>
-#             <% end %>
-
-#             <div class="content">
-#                 <h2 class='title'> <%= article.get_short_title %> </h2>
-#                 <p class='big-text'> <%= article.get_short_desc %> </p>
-#                 <%= link_to "Ver más", article_path(article), class:'btn' %>
-#             </div>
-#         </div>
-#     <% end %>
-# </div>

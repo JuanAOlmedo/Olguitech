@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
 <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 
-<% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
+<% content_for :title, "#{I18n.t "nav.contacto"} | Olguitech s.a.s." %>
 
 <div class="centered">
     <h1 class='main-title'> Contacto </h1>
@@ -20,7 +20,7 @@
 
     <h1 class='main-title'> <%= I18n.t "contact.how_can_we_help_you" %> </h1>
 
-    <%= link_to "Hacer una pregunta!", "/#{I18n.locale}/contacto/new", class: "btn" %>
+    <%= link_to t("contact.ask"), "/#{I18n.locale}/contacto/new", class: "btn" %>
 
     <p class='big-text'>
         <%= t("contact.contact_html") %>

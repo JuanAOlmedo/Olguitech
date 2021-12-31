@@ -1,15 +1,22 @@
 es:
+  general:
+    es: "Español"
+    en: "Inglés"
+    see_more: Ver más
+    see_all: Ver todos
   main:
-    what_do_we_do_message: "Brindamos soluciones en Ingeniería Eléctrica a diferentes empresas. Representamos marcas de primer nivel regionalmente y en Uruguay. "
-    next_article: "Siguiente artículo"
-    previous_article: "Artículo anterior"
-    contact: "Contacto"
-    can_we_help_you: "Te podemos ayudar en algo?"
-    get_in_touch: "Contactate con nosotros"
-  nav: 
-    products: "Productos"
-    solutions: "Soluciones"
-    proyects: "Proyectos"
+    main:
+      title: Las últimas tendencias mundiales en ingeniería eléctrica.
+      subtitle1: Te asesoramos cuando analices definir la compra de un insumo o cuando busques la forma de mejorar su proceso o instalación.
+      subtitle2: En Olguitech, buscamos ser socios tecnológicos de nuestros clientes. 
+      why: Por qué elegir Olguitech?
+      articles: Nuestros últimos artículos
+      proyectos: Nuestros últimos proyectos
+      products: Algunos de nuestros productos
+      interested: Estás interesado en hablar con nosotros? 
+      sign_up: Regístrate con nosotros para poder contactarte y acceder a nuestra newsletter o manda un mail a
+      contact: Contactarse
+  nav:
     about_us: "Nosotros"
     contact: "Contacto"
     sign_in: "Acceder"
@@ -33,12 +40,13 @@ es:
     message: "Mensaje"
     send: "Enviar Mail"
     sent: "Un email ha sido enviado."
+    ask: "Hacer una pregunta!"
   users:
     sign_out: "Cerrar sesión"
     sign_up: "Crear Cuenta"
     sign_in: "Acceder"
     edit_account: "Editar cuenta"
-    delete_account: "Cancelar cuenta"
+    delete_account: "Eliminar cuenta"
     edit: "Editar"
     confirm: "Reenviar instrucciones de confirmación"
     resend: "Reenviar"
@@ -60,6 +68,7 @@ es:
     didnt_recieve: "No recibiste instrucciones para confirmar la cuenta?"
     confirm_account: "Confirmar mi cuenta"
     are_you_sure: "Estas seguro?"
+    deleted: "Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :("
   index:
     uncategorized: "Sin categoría"
     sort_by: "Ordenar por"
@@ -130,6 +139,25 @@ es:
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+    models:
+      article:
+        one: Solución
+        other: Soluciones
+      proyecto:
+        one: Proyecto
+        other: Proyectos
+      product:
+        one: Producto
+        other: Productos
+      category:
+        one: Categorías
+        other: Categorías
+      newsletter:
+        one: Newsletter
+        other: Newsletters
+      user:
+        one: Usuario
+        other: Usuarios
   date:
     abbr_day_names:
     - dom

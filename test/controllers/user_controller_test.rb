@@ -78,4 +78,20 @@ class UserControllerTest < ActionDispatch::IntegrationTest
         users(:one).reload
         assert_equal "Lorem Ipsum", users(:one).name
     end
+
+    test "should not destroy user without token" do
+        assert_no_difference('User.count') do
+            delete '/users/1'
+        end
+
+        assert_response :redirect
+    end
+
+    test "should destroy user with token" do
+        assert_difference('User.count', -1) do
+            delete "/users/1/#{users(:one).edit_token}"
+        end
+
+        assert_response :see_other
+    end
 end

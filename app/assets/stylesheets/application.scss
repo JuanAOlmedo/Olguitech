@@ -88,6 +88,15 @@ body {
     &.centered {
         display: block;
     }
+
+    &.is-danger {
+        background-color: #ff7b7b;
+
+        &:hover {
+            background-color: #e66060;
+            color: #000;
+        }
+    }
 }
 
 .btn-group {

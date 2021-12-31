@@ -1,11 +1,21 @@
 en:
+  general:
+    es: Spanish
+    en: English
+    see_more: See more
+    see_all: See all
   main:
-    what_do_we_do_message: "We provide electrical engineering solutions to different companies. We represent first level brands regionally and in Uruguay. "
-    contact: "Contact"
-    can_we_help_you: "Can we help you?"
-    get_in_touch: "Please get in touch"
-    next_article: "Next article"
-    previous_article: "Previous article"
+    main:
+      title: The latest global trends in electrical engineering.
+      subtitle1: We advise you when you analyze the purchase of a product or when you are looking for a way to improve its process or installation.
+      subtitle2: At Olguitech, we seek to be technological partners of our customers. 
+      why: Why choose Olguitech?
+      articles: Our latest solutions
+      proyectos: Our latest projects
+      products: Some of our products
+      interested: Interested in talking to us? 
+      sign_up: Sign up with us to get in touch and have access to our newsletter, or send a mail to
+      contact: Get in touch
   nav: 
     products: "Products"
     solutions: "Solutions"
@@ -21,24 +31,25 @@ en:
     how_are_we_different_message: "Our difference is the service and the will to continuously improve. When you are analyzing to define the purchase of a product whatever your activity is, when you are looking for a way to improve your process or installation, call us and we will advise you. At Olguitech we are committed to be technological partners of our customers."
   contact:
     direction_alt: "Map of 21 de Setiembre 2819 off. 703 esq. Ellauri"
-    direction: "Find us at 21 de Setiembre 2819 off. 703 esq. Ellauri"
+    direction_html: "Find us at <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>"
     how_can_we_help_you: "How can we help you?"
     contact: "Contact"
     sign_in_and_contact: "Sign In and Contact"
-    contact_html: "Or contact to <a class='contact-mail' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
-                   the phone number <a class='contact-mail' href='tel:+59827162524'>+598 2716 2524</a> <br> 
-                   or the mobile phone <a class='contact-mail' href='tel:+59892898500'>+598 92 898 500</a>"
+    contact_html: "Or contact to <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
+                   the phone number <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
+                   or the mobile phone <a class='link' href='tel:+59892898500'>+598 92 898 500</a>"
     preference: "Which of our solutions interested you the most?"
     preference2: "Which of our projects interested you the most?"
     message: "Message"
     send: "Send Mail"
     sent: "An email has been sent."
+    ask: "Ask us something!"
   users:
     sign_out: "Sign Out"
     sign_up: "Sign Up"
     sign_in: "Sign In"
     edit_account: "Edit Account"
-    delete_account: "Cancel Account"
+    delete_account: "Delete Account"
     edit: "Edit"
     confirm: "Resend confirmation instructions"
     resend: "Resend"
@@ -60,6 +71,7 @@ en:
     didnt_recieve: "Didn't recieve confirmation instructions?"  
     confirm_account: "Confirm my account"
     are_you_sure: "Are you sure?"
+    deleted: "Your account was deleted successfuly. We are sorry to see you go :("
   index:
     uncategorized: "Uncategorized"
     sort_by: "Sort By"
@@ -123,3 +135,23 @@ en:
       2_html: "<p>If you didn't request this, you can ignore this email.</p>
 
 <p>Your password won't change until you click on this link and change your password.</p>"
+  activerecord:
+    models:
+      article:
+        one: Solution
+        other: Solutions
+      proyecto:
+        one: Project
+        other: Projects
+      product:
+        one: Product
+        other: Products
+      category:
+        one: Category
+        other: Categories
+      newsletter:
+        one: Newsletter
+        other: Newsletters
+      user:
+        one: User
+        other: Users

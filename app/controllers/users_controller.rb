@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: %i[edit update]
-    before_action :authenticate_edit_token_for_edit, only: %i[edit]
+    before_action :set_user, only: %i[edit update destroy]
+    before_action :authenticate_edit_token, only: %i[edit destroy]
     before_action :authenticate_edit_token_for_update, only: %i[update]
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
@@ -16,6 +16,19 @@ class UsersController < ApplicationController
     def new; end
 
     def edit; end
+
+    def destroy
+        @user.destroy
+
+        respond_to do |format|
+            format.html do
+                redirect_to root_path,
+                            notice: I18n.t('users.deleted'),
+                            status: :see_other
+            end
+            format.json { head :no_content }
+        end
+    end
 
     def create
         confirm = params[:auto_confirm] == 0 ? false : true
@@ -121,12 +134,11 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    def authenticate_edit_token_for_edit
+    def authenticate_edit_token
         @user.regenerate_edit_token unless @user.edit_token
 
         if @user.edit_token != params[:edit_token]
-            redirect_to root_path,
-                        alert: 'No tienes permiso para hacer eso.'
+            redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
         end
     end
 
@@ -134,8 +146,7 @@ class UsersController < ApplicationController
         @user.regenerate_edit_token unless @user.edit_token
 
         if @user.edit_token != user_params[:edit_token]
-            redirect_to root_path,
-                        alert: 'No tienes permiso para hacer eso.'
+            redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
         end
     end
 

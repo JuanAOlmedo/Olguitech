@@ -1,7 +1,7 @@
-<% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
+<% content_for :title, "#{t "contact.contact"} | Olguitech s.a.s." %>
 
 <h1 class="main-title">
-    <%= session[:will_contact] ? "Contactarse" : "Editar usuario" %>
+    <%= session[:will_contact] ? t("contact.contact") : t("users.edit_account") %>
 </h1>
 
 <%= form_with model: @user do |form| %>
@@ -35,6 +35,9 @@
             <%= form.text_field :company, value: @user.company %>
         </div>
 
-        <%= form.submit(session[:will_contact] ? "Enviar Mail" : "Editar Usuario", class:'btn centered') %>
+        <div class="btn-group centered">
+            <%= form.submit(session[:will_contact] ? "Enviar Mail" : "Editar Usuario", class:'btn') %>
+            <%= link_to t("users.delete_account"), url_for(controller: :users, action: :destroy, id: @user.id, edit_token: @user.edit_token), class: "btn is-danger", data: { turbo_method: :delete, turbo_confirm: t("users.are_you_sure") } unless session[:will_contact] %>
+        </div>
     </div>
 <% end %>

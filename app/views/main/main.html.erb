@@ -1,56 +1,58 @@
 <% content_for :nav, "transparent" %>
 
 <div class="front">
-    <h2 class="main-title">Las últimas tendencias mundiales en ingeniería eléctrica.</h2>
+    <h2 class="main-title"><%= t ".title" %></h2>
     <p class='subtitle'>
-        Te asesoramos cuando analices definir la compra de un insumo o cuando busques la forma de mejorar su proceso o instalación. 
+        <%= t ".subtitle1" %> 
         <strong> 
-            En Olguitech, buscamos ser socios tecnológicos de nuestros clientes.
+            <%= t ".subtitle2" %> 
         </strong>
         <br>
         <br>
     </p>
     
-    <%= link_to "Por qué elegir Olguitech?", nosotros_path, class: "btn centered" %>
+    <%= link_to t(".why"), nosotros_path, class: "btn centered" %>
 </div>
 
 <% if @articles.any? %>
     <h1 class="main-title">
-        Nuestros últimos artículos
+        <%= t ".articles" %>
     </h1>
-    <%= link_to "Ver todos", articles_path, class: "btn centered" %>
+    <%= link_to t("general.see_all"), articles_path, class: "btn centered" %>
 
     <%= cards_for @articles %>
 <% end %>
 
 <% if @proyectos.any? %>
     <h1 class="main-title">
-        Nuestros últimos proyectos
+        <%= t ".proyectos" %>
     </h1>
-    <%= link_to "Ver todos", proyectos_path, class: "btn centered" %>
+    <%= link_to t("general.see_all"), proyectos_path, class: "btn centered" %>
 
     <%= cards_for @proyectos %>
 <% end %>
 
 <% if @products.any? %>
     <h1 class="main-title">
-        Nuestros últimos productos
+        <%= t ".products" %>
     </h1>
-    <%= link_to "Ver todos", products_path, class: "btn centered" %>
+    <%= link_to t("general.see_all"), products_path, class: "btn centered" %>
 
     <%= alternative_cards_for @products %>
 <% end %>
 
 <div class="big-card contacto centered">
-    <h1 class='main-title'> Estás interesado en hablar con nosotros? </h1>
+    <h1 class='main-title'> 
+        <%= t ".interested" %>
+    </h1>
 
     <p class="big-text">
-        Regístrate con nosotros para poder contactarte y acceder a nuestra newsletter o manda un mail a 
+        <%= t ".sign_up" %>
         
         <a class="link" href="mailto:olguitech@olguitech.com"> olguitech@olguitech.com </a>.
     </p>
 
-    <%= link_to "Contactarse", contactos_path, class: "btn" %>
+    <%= link_to t(".contact"), contactos_path, class: "btn" %>
 </div>
 
 <%= javascript_pack_tag 'main' %>

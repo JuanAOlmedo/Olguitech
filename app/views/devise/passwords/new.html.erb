@@ -3,7 +3,7 @@
 <div class='form-div'>
     <h1 class='title white'>¿Olvidaste tu contraseña?</h1>
 
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, data: { turbo: :false } }) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">

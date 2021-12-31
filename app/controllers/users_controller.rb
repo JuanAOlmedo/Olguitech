@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[edit update]
     before_action :authenticate_edit_token, only: %i[edit update]
-    before_action :authenticate_admin!, :redirect_unless_admin, only: [:index]
+    before_action :authenticate_admin!,
+                  :redirect_unless_admin,
+                  only: %i[index new create]
 
     def index
         @users = User.all
@@ -18,28 +20,20 @@ class UsersController < ApplicationController
         confirm = params[:auto_confirm] == 0 ? false : true
         newsletter = params[:auto_subscribe] == 0 ? false : true
 
-        if params[:emails]
-            emails = []
+        @user =
+            User.new(
+                name: params[:name],
+                email: params[:email],
+                phone: params[:phone],
+                company: params[:company],
+                newsletter: newsletter
+            )
+        @user.confirm if confirm
 
-            params[:emails].split(", ").map do |a|
-                a.split(",").map do |b| 
-                    b.split(" ").each { |c| emails << c } 
-                end
+        if @user.save
+            respond_to do |format|
+                format.turbo_stream
             end
-
-            emails.each do |email|
-                user = User.new(email: email, newsletter: newsletter)
-                user.confirm if confirm
-
-                user.save
-            end
-        else
-            email = params[:email]
-
-            user = User.new(email: email, newsletter: newsletter)
-            user.confirm if confirm
-
-            user.save
         end
     end
 
@@ -64,14 +58,14 @@ class UsersController < ApplicationController
                         article,
                         proyecto,
                         @contacto.message
-                    ).deliver_now!
+                    ).deliver_later
                 @mail =
                     ContactMailer.admin_contacto(
                         @user,
                         Article.find(@contacto.preference).title,
                         Proyecto.find(@contacto.preference2).title,
                         @contacto.message
-                    ).deliver_now!
+                    ).deliver_later
 
                 redirect_to "/#{I18n.locale}/contacto",
                             notice: I18n.t('contact.sent')
@@ -115,7 +109,9 @@ class UsersController < ApplicationController
 
     def redirect_unless_admin
         if !admin_signed_in?
-            redirect_to root_path, status: :unauthorized, alert: 'Solo administradores pueden hacer eso'
+            redirect_to root_path,
+                        status: :unauthorized,
+                        alert: 'Solo administradores pueden hacer eso'
         end
     end
 
@@ -124,12 +120,19 @@ class UsersController < ApplicationController
     end
 
     def authenticate_edit_token
-        if @user.edit_token != params[:edit_token] && @user.edit_token != user_params[:edit_token]
-            redirect_to root_path, status: :unauthorized, alert: 'No tienes permiso para hacer eso.'
+        if @user.edit_token != params[:edit_token] &&
+               @user.edit_token != user_params[:edit_token]
+            redirect_to root_path,
+                        status: :unauthorized,
+                        alert: 'No tienes permiso para hacer eso.'
         end
     end
 
     def user_params
-        params.require(:user).permit :name, :phone, :company, :newsletter, :edit_token
+        params.require(:user).permit :name,
+                                     :phone,
+                                     :company,
+                                     :newsletter,
+                                     :edit_token
     end
 end

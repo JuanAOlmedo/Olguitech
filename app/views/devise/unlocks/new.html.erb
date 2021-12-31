@@ -1,6 +1,6 @@
 <h1 class="main-title">Reenviar instrucciones de desbloqueo</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, data: { turbo: :false } }) do |f| %>
     <%= f.error_notification %>
     <%= f.full_error :unlock_token %>
 
@@ -18,7 +18,7 @@
         </div>
 
 
-        <%= f.button :submit, class:'btn centered' %>
+        <%= f.button :submit, "Reenviar", class:'btn centered' %>
     </div>
 <% end %>
 

@@ -1,27 +1,41 @@
-<%= form_with url: "/users", method: :post do |form| %>
-    <h1 class="main-title">
-        Crear usuarios
-    </h1>
+<h1 class="main-title">
+    Crear usuarios
+</h1>
 
-    <div class="big-card form">
-        <div class="field">
-            <%= form.label :email, "Email" %>
-            <%= form.email_field :email %>
-        </div>
+<div class="big-card form">
+    <%= turbo_frame_tag "new_user", target: "_top" do %>
+        <%= form_with url: "/users", method: :post, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, class: "form" do |form| %>
+            <div class="field">
+                <%= form.label :email, "Email" %>
+                <%= form.email_field :email %>
+            </div>
 
-        <div class="field">
-            <%= form.label :emails, "Lista de emails" %>
-            <%= form.text_area :emails %>
-        </div>
+            <div class="field">
+                <%= form.label :name, "Nombre" %>
+                <%= form.text_field :name %>
+            </div>
 
-        <div class="checkbox-field">
-            <%= form.check_box :auto_confirm %>
-            <%= form.label :auto_confirm, "Confirmar mail" %> <br>
+            <div class="field">
+                <%= form.label :phone, "Telfono" %>
+                <%= form.phone_field :phone %>
+            </div>
 
-            <%= form.check_box :auto_subscribe %>
-            <%= form.label :auto_subscribe, "Newsletters" %>
-        </div>
+            <div class="field">
+                <%= form.label :company, "Compañía" %>
+                <%= form.text_field :company %>
+            </div>
 
-        <%= form.submit "Crear", class: 'btn' %>
-    </div>
-<% end %>
+            <div class="checkbox-field">
+                <%= form.check_box :auto_confirm, checked: true %>
+                <%= form.label :auto_confirm, "Confirmar mail" %> <br>
+
+                <%= form.check_box :auto_subscribe, checked: true %>
+                <%= form.label :auto_subscribe, "Newsletters" %>
+            </div>
+
+            <div style="width: 50%;"> </div>
+
+            <%= form.submit "Crear", class: 'btn centered' %>
+        <% end %>
+    <% end %>
+</div>

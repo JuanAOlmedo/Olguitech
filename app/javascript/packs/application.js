@@ -4,9 +4,10 @@
 // that code so it'll be compiled.
 
 require("@hotwired/turbo-rails")
+require("@hotwired/stimulus")
 require("@rails/activestorage").start();
 require("channels");
-// require("controllers");
+require("controllers");
 require("trix");
 require("@rails/actiontext");
 import "./trix-editor-overrides";

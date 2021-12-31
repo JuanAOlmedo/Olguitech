@@ -2,7 +2,7 @@
 
 <h1 class='main-title'>Reenviar instrucciones de confirmación</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, data: { turbo: :false } }) do |f| %>
     <%= f.error_notification %>
     <%= f.full_error :confirmation_token %>
 

@@ -32,7 +32,7 @@
         </div>
     </div>
     
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: :false } }) do |f| %>
         <%= f.error_notification %>
 
         <div class="form">
@@ -63,7 +63,6 @@
                         required: false,
                         input_html: { autocomplete: "new-password" },
                         label: false,
-                        placeholder: 'Confrirmar contraseña',
                         class: 'input' %>
             </div>
 

@@ -7,7 +7,7 @@
 </div>
 
 <div class="table">
-    <table class="user">
+    <table class="user" id="users">
         <tr>
             <th> ID </th>
             <th> Nombre </th>
@@ -19,39 +19,15 @@
             <th> Idioma </th>
         </tr>
         <% @users.each do |user| %>
-            <tr class='user-row'>
-                <td> <%= user.id %> </td>
-
-                <td> <%= user.name %> </td>
-
-                <td> 
-                    <% if user.confirmed? %>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M5 12l5 5l10 -10" />
-                        </svg>
-                    <% end %>
-
-                    <%= mail_to user.email, class: 'link' %> 
-                </td>
-
-                <td> <%= user.company %> </td>
-
-                <td> <%= phone_to user.phone, class: 'link' %> </td>
-
-                <td> <%= if user.newsletter; "Sí"; else; "No"; end; %> </td>
-
-                <td>
-                    <% times_contacted = user.contactos.length %> 
-                    <span class='<%= times_contacted > 0 ? "link times-contacted" : "" %>' data-id="<%= user.id %>">
-                        <%= times_contacted %>
-                    </span> 
-                </td>
-
-                <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
-            </tr>
+            <%= render 'user', user: user%>
         <% end %>
     </table>
+</div>
+
+<div class="new-user">
+    <%= turbo_frame_tag "new_user" do %>
+        <%= link_to "Crear nuevo usuario", new_user_path, class: "btn centered" %>
+    <% end %>
 </div>
 
 <% @contacted.each do |user| %>

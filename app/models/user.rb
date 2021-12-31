@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
     def send_confirmation_instructions
         self.update(confirmation_sent_at: Time.now)
-        ConfirmationMailer.confirmation_instructions(self).deliver_now!
+        ConfirmationMailer.confirmation_instructions(self).deliver_later
     end
 
     def confirm

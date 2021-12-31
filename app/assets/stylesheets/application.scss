@@ -67,6 +67,7 @@ body {
     -moz-appearance: none;
     appearance: none;
     border: none;
+    outline: none;
     border-radius: 0.3rem;
     width: fit-content;
     height: fit-content;
@@ -92,12 +93,14 @@ body {
 .btn-group {
     display: inline-flex;
 
-    & .btn:not(:last-child) {
+    & .btn:not(:last-child),
+    & .dropdown:not(:last-child) .dropdown-trigger .btn {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
     }
 
-    & .btn:not(:first-child) {
+    & .btn:not(:first-child),
+    & .dropdown:not(:first-child) .dropdown-trigger .btn {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
@@ -334,12 +337,8 @@ nav .btn {
     position: relative;
     vertical-align: top;
     width: 8rem;
+    text-align: center;
 }
-
-// .dropdown.is-active {
-//     box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1),
-//         0 0px 0 1px rgba(10, 10, 10, 0.02);
-// }
 
 .dropdown.is-active .dropdown-trigger .btn {
     border-bottom-left-radius: 0;
@@ -362,36 +361,49 @@ nav .btn {
 
 .dropdown .btn {
     box-sizing: border-box;
-    width: 8rem;
+    width: 100%;
     margin: 0;
     height: 100%;
     z-index: 11;
-    transition: background 0.25s, color 0.25s, stroke 0.25s;
+    transition: background 0.25s, color 0.25s, stroke 0.25s, border-radius 0.25s;
 }
 
 .dropdown.is-active .dropdown-menu {
-    visibility: visible;
     transform: translateY(0);
 }
 
 .dropdown.is-active .dropdown-menu .btn {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    opacity: 1;
 }
 
 .dropdown-menu {
+    visibility: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    border-radius: 0.3rem;
     left: 0;
-    width: 8rem;
+    width: 100%;
     position: absolute;
+    height: 100%;
     top: 100%;
     z-index: 10;
-    transform: translateY(-100%);
+    transform: translateY(-3rem);
     transition: transform 0.25s;
-}
 
-.dropdown-menu .btn {
-    width: 100%;
-    transition: background 0.25s, color 0.25s, stroke 0.25s, border-radius 0.25s;
+    & .btn {
+        opacity: 0;
+        width: 100%;
+        height: fit-content;
+        border-radius: 0;
+        transition: background 0.25s, color 0.25s, stroke 0.25s,
+            border-radius 0.25s, opacity 0.2s;
+    }
+
+    & .btn:last-child {
+        border-bottom-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+    }
 }
 
 // 2.2 Dropdown //

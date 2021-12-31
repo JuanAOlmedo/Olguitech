@@ -4,6 +4,10 @@
     padding: 5rem 2rem 5rem 2rem;
     text-align: center;
     
+    @media only screen and (max-width: 67rem) {
+        padding: 5rem 1rem 5rem 1rem;
+    }
+
     @media only screen and (max-width: 35rem) {
         padding-top: 1.5rem;
     }

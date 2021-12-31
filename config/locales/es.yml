@@ -21,7 +21,7 @@ es:
     how_are_we_different_message: "Nuestro diferencial es el servicio y la voluntad de mejorar continuamente. Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos. En Olguitech apostamos a ser socios tecnológicos de nuestros clientes."
   contact:
     direction_alt: "Mapa de 21 de Setiembre 2819 of. 703 esq. Ellauri"
-    direction_html: "Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>"
+    direction_html: "Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>"
     how_can_we_help_you: "Cómo podemos ayudarte?"
     contact: "Contactarse"
     sign_in_and_contact: "Iniciar Sesión y Contactarse"

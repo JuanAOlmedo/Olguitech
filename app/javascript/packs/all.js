@@ -114,10 +114,23 @@ function dropdownClickHandler() {
     }
 }
 
-const langs = document.querySelectorAll("#lang .btn");
+const dropdowns = document.querySelectorAll(".dropdown");
 
-langs.forEach((lang) => {
-    lang.onclick = () => {
-        document.querySelector("#lang").classList.toggle("is-active");
-    }
-})
+dropdowns.forEach((dropdown) => {
+    btns = dropdown.querySelectorAll(".btn");
+    btns.forEach((btn) => {
+        btn.onclick = () => {
+            if (dropdown.classList.contains("is-active")) {
+                setTimeout(() => {
+                    dropdown.querySelector(".dropdown-menu").style.visibility =
+                        "hidden";
+                }, 250);
+            } else {
+                dropdown.querySelector(".dropdown-menu").style.visibility =
+                    "visible";
+            }
+
+            dropdown.classList.toggle("is-active");
+        };
+    });
+});

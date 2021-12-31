@@ -1,56 +1,86 @@
 <% content_for :title, "Editar Cuenta" %>
 
-<h1 class='main-title'>Editar Cuenta</h1>
-<%= button_to 'Cerrar sesion', destroy_admin_session_path, method: :delete, class:'btn centered', style: "margin-bottom: 2rem;" %>
+<h1 class='main-title'>Panel</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
 
-    <div class="form big-card">
-        <div class="field">
-            <%= f.label :email, "Email" %>
-            <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    label: false %>
+<div class="big-card">
+    <div class="centered">
+        <div class="btn-group" style="margin-bottom: 2rem;">
+            <%= link_to 'Cerrar sesion', destroy_admin_session_path, data: { turbo_method: :delete }, class:'btn' %>
+            <%= link_to 'Mail', "https://olguitech.com:2003/rainloop", target: :_blank, class:'btn' %>
+            <div class="dropdown" style="width: 12rem;">
+                    <div class="dropdown-trigger">
+                        <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu">
+                            Nuevo
+                            <span class="dropdown-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <polyline points="6 12 12 18 18 12" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                        <%= link_to "Solucion", new_article_path, class: "btn" %>
+                        <%= link_to "Proyecto", new_proyecto_path, class: "btn" %>
+                        <%= link_to "Producto", new_product_path, class: "btn" %>
+                        <%= link_to "Categoria", new_category_path, class: "btn" %>
+                        <%= link_to "Newsletter", new_newsletter_path, class: "btn" %>
+                    </div>
+                </div>
+            <%= link_to 'Usuarios', users_path, class:'btn' %>
         </div>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-        <% end %>
-
-        <div class="field">
-            <%= f.label :password, "Contraseña nueva" %>
-            <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "new-password" },
-                    label: false,
-                    hint: 'Dejar vacío si no se quiere cambiar' %>
-        </div>
-
-        <div class="field">
-            <%= f.label :password_confirmation, "Repetir contraseña nueva" %>
-            <%= f.input :password_confirmation,
-                    required: false,
-                    input_html: { autocomplete: "new-password" },
-                    label: false,
-                    placeholder: 'Confrirmar contraseña',
-                    class: 'input' %>
-        </div>
-
-        <div class="field">
-            <%= f.label :current_password, "Contraseña actual" %>
-            <%= f.input :current_password,
-                    required: true,
-                    input_html: { autocomplete: "current-password" },
-                    label: false,
-                    class: 'input',
-                    hint: 'Necesitamos tu contraseña actual' %>
-        </div>
-
-        <%= f.button :submit, "Editar", class:'btn centered' %>
     </div>
-<% end %>
+    
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form">
+            <div class="field">
+                <%= f.label :email, "Email" %>
+                <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        label: false %>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+            <div class="field">
+                <%= f.label :password, "Contraseña nueva" %>
+                <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "new-password" },
+                        label: false,
+                        hint: 'Dejar vacío si no se quiere cambiar' %>
+            </div>
+
+            <div class="field">
+                <%= f.label :password_confirmation, "Repetir contraseña nueva" %>
+                <%= f.input :password_confirmation,
+                        required: false,
+                        input_html: { autocomplete: "new-password" },
+                        label: false,
+                        placeholder: 'Confrirmar contraseña',
+                        class: 'input' %>
+            </div>
+
+            <div class="field">
+                <%= f.label :current_password, "Contraseña actual" %>
+                <%= f.input :current_password,
+                        required: true,
+                        input_html: { autocomplete: "current-password" },
+                        label: false,
+                        class: 'input',
+                        hint: 'Necesitamos tu contraseña actual' %>
+            </div>
+
+            <%= f.button :submit, "Editar", class:'btn centered' %>
+        </div>
+    <% end %>
+</div>
 
 <script>
     const password = document.querySelector('#user_password')

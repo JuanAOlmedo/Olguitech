@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
     before_action :set_user, only: %i[edit update]
-    before_action :authenticate_edit_token, only: %i[edit update]
+    before_action :authenticate_edit_token_for_edit, only: %i[edit]
+    before_action :authenticate_edit_token_for_update, only: %i[update]
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
                   only: %i[index new create]
@@ -32,6 +33,7 @@ class UsersController < ApplicationController
 
         if @user.save
             respond_to do |format|
+                format.html { redirect_to root_path }
                 format.turbo_stream
             end
         end
@@ -119,11 +121,20 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
-    def authenticate_edit_token
-        if @user.edit_token != params[:edit_token] &&
-               @user.edit_token != user_params[:edit_token]
+    def authenticate_edit_token_for_edit
+        @user.regenerate_edit_token unless @user.edit_token
+
+        if @user.edit_token != params[:edit_token]
             redirect_to root_path,
-                        status: :unauthorized,
+                        alert: 'No tienes permiso para hacer eso.'
+        end
+    end
+
+    def authenticate_edit_token_for_update
+        @user.regenerate_edit_token unless @user.edit_token
+
+        if @user.edit_token != user_params[:edit_token]
+            redirect_to root_path,
                         alert: 'No tienes permiso para hacer eso.'
         end
     end

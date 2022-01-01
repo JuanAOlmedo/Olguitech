@@ -1,6 +1,5 @@
+<% content_for :user, :user %>
+
 <h1> Hola, <%= @user.name %> </h1>
 
 <p> Nos contactamos para informarte que hemos subido un nuevo artículo, <%= link_to @article.title, url_for(controller: :articles, action: :show, id: @article.id) %> a nuestra página </p>
-
-<%= link_to "Desuscribirse", url_for(controller: :users, action: :unsubscribe, newsletter_token: @token) %>
-<%= link_to 'Editar usuario', url_for(controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token) %>

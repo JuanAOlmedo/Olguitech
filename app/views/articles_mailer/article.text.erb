@@ -1,8 +1,6 @@
+<% content_for :user, :user %>
+
 Hola, <%= @user.name %>
 =============================================
 
 Nos contactamos para informarte que hemos subido un nuevo artículo, <%= @article.title %>: <%= url_for controller: :articles, action: :show, id: @article.id %> a nuestra página
-
----------------------------------------------
-Desubscribirse: <%= url_for controller: :users, action: :unsubscribe, newsletter_token: @token %>
-Editar Usuario: <%= url_for controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token %>

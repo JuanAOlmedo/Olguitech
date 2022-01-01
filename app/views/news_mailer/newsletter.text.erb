@@ -1,8 +1,6 @@
+<% content_for :user, :user %>
+
 <%= @title %>
 =============================================
 
 <%= @content.to_plain_text %>
-
----------------------------------------------
-Desubscribirse: <%= url_for controller: :users, action: :unsubscribe, newsletter_token: @token %>
-Editar Usuario: <%=url_for controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token %>

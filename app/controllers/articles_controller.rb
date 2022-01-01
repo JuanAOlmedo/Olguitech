@@ -76,7 +76,7 @@ class ArticlesController < ApplicationController
                 @users = User.all.where(newsletter: true)
 
                 @users.each do |user|
-                    ArticlesMailer.article(user, @article).deliver_now!
+                    ArticlesMailer.article(user, @article).deliver_later
                 end
             else
                 format.html { render :new }

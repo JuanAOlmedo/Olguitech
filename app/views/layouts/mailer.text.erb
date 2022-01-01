@@ -1,1 +1,7 @@
 <%= yield %>
+
+<% if yield(:user) == "user" %>
+---------------------------------------------
+Desubscribirse: <%= url_for controller: :users, action: :unsubscribe, newsletter_token: @token %>
+Editar Usuario: <%= url_for controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token %>
+<% end %>

@@ -32,27 +32,51 @@
     <%= cards_for @proyectos %>
 <% end %>
 
-<% if @products.any? %>
-    <h1 class="main-title">
-        <%= t ".products" %>
-    </h1>
-    <%= link_to t("general.see_all"), products_path, class: "btn centered" %>
+<div class="products">
+    <% if @products.any? %>
+        <h1 class="main-title">
+            <%= t ".products" %>
+        </h1>
+        <%= link_to t("general.see_all"), products_path, class: "btn centered" %>
 
-    <%= alternative_cards_for @products %>
-<% end %>
+        <%= alternative_cards_for @products %>
+    <% end %>
+</div>
 
-<div class="big-card contacto centered">
-    <h1 class='main-title'> 
-        <%= t ".interested" %>
-    </h1>
+<div class="contacto">
+    <div class="contacto-sub-div">
+        <h1 class='main-title'> 
+            <%= t ".interested" %>
+        </h1>
 
-    <p class="big-text">
-        <%= t ".sign_up" %>
-        
-        <a class="link" href="mailto:olguitech@olguitech.com"> olguitech@olguitech.com </a>.
-    </p>
+        <p class="big-text">
+            Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta!
+        </p>
 
-    <%= link_to t(".contact"), contactos_path, class: "btn" %>
+        <%= link_to t(".contact"), contactos_path, class: "btn" %>
+
+        <div class="separator"> </div>
+
+        <p class="big-text newsletter">
+            <strong>
+                Sé el primero en saber de nuestras novedades
+            </strong>
+            , suscribete a nuestra newsletter.
+        </p>
+
+        <div class="form">
+            <%= form_with model: @user do |form| %>
+                <div class="field">
+                    <%= form.label :email, "Email" %>
+                    <%= form.email_field :email %>
+                </div>
+
+                <%= form.hidden_field :newsletter, value: "1" %>
+
+                <%= form.submit "Suscribirse", class: "btn" %>
+            <% end %>
+        </div>
+    </div>
 </div>
 
 <%= javascript_pack_tag 'main' %>

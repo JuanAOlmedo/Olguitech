@@ -1,20 +1,19 @@
 @import "settings";
 
 .front {
-    padding: 5rem 2rem 5rem 2rem;
+    padding: 5rem 2rem 10rem 2rem;
     text-align: center;
+    background: url("/vector1.svg") no-repeat center bottom;
+    background-size: 100%;
     
     @media only screen and (max-width: 67rem) {
-        padding: 5rem 1rem 5rem 1rem;
+        padding: 5rem 1rem 8rem 1rem;
+        background-size: 200%;
     }
 
     @media only screen and (max-width: 35rem) {
         padding-top: 1.5rem;
     }
-}
-
-.no-webp .front {
-    background: url("/Background.jpg") no-repeat scroll left top;
 }
 
 .subtitle-more-link {
@@ -28,33 +27,33 @@
 }
 
 .contacto {
-    margin: 3rem auto 7rem auto;
+    padding: 5rem 0 12rem 3rem;
+    background: url("/vector2.svg") no-repeat center bottom;
+    background-size: 100%;
 }
 
+.contacto-sub-div {
+    width: 80%;
 
-.nosotros-front {
-    margin: 0;
-    color: $color2;
-    background-color: $color1;
-}
-
-.nosotros-front .still {
-    transform: translateY(3px);
-    opacity: 0.7;
-    transition: transform 1s, opacity 1s;
-    transition-timing-function: ease-in-out;
-}
-
-.nosotros-front .move {
-    transform: translateY(0px);
-    opacity: 1;
-}
-
-.nosotros-front .big-text {
-    width: 50rem;
-    margin: 0 auto 0 auto;
-
-    @media only screen and (max-width: 1000px) {
-        width: 95%;
+    & .main-title {
+        margin-left: 0;
+        text-align: left;
     }
+
+    & .title,
+    & .big-text.newsletter {
+        margin-bottom: 0;
+    }
+
+    & form {
+        width: 100%;
+    }
+
+    & .field {
+        padding-left: 0;
+    }
+}
+
+.separator {
+    margin: 3rem;
 }

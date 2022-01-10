@@ -4,7 +4,7 @@
 
 <div class="big-card form">
     <%= turbo_frame_tag "new_user", target: "_top" do %>
-        <%= form_with url: "/users", method: :post, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, class: "form" do |form| %>
+        <%= form_with model: @user, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, class: "form" do |form| %>
             <div class="field">
                 <%= form.label :email, "Email" %>
                 <%= form.email_field :email %>
@@ -29,8 +29,8 @@
                 <%= form.check_box :auto_confirm, checked: true %>
                 <%= form.label :auto_confirm, "Confirmar mail" %> <br>
 
-                <%= form.check_box :auto_subscribe, checked: true %>
-                <%= form.label :auto_subscribe, "Newsletters" %>
+                <%= form.check_box :newsletter, checked: true %>
+                <%= form.label :newsletter, "Newsletters" %>
             </div>
 
             <div style="width: 50%;"> </div>

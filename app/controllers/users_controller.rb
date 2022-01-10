@@ -13,7 +13,9 @@ class UsersController < ApplicationController
 
     def show; end
 
-    def new; end
+    def new
+        @user = User.new
+    end
 
     def edit; end
 
@@ -31,17 +33,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        confirm = params[:auto_confirm] == 0 ? false : true
-        newsletter = params[:auto_subscribe] == 0 ? false : true
+        parameters = new_user_params
 
-        @user =
-            User.new(
-                name: params[:name],
-                email: params[:email],
-                phone: params[:phone],
-                company: params[:company],
-                newsletter: newsletter
-            )
+        confirm = parameters[:auto_confirm] == 0 ? false : true
+        parameters.delete(:auto_confirm)
+
+        @user = User.new parameters
         @user.confirm if confirm
 
         if @user.save
@@ -156,5 +153,14 @@ class UsersController < ApplicationController
                                      :company,
                                      :newsletter,
                                      :edit_token
+    end
+
+    def new_user_params
+        params.require(:user).permit :email,
+                                     :name,
+                                     :phone,
+                                     :company,
+                                     :newsletter,
+                                     :auto_confirm
     end
 end

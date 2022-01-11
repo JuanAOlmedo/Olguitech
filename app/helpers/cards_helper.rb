@@ -122,11 +122,11 @@ module CardsHelper
             content = safe_join [img(element), card_content(element)]
 
             if is_even
-                margin_left = starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
-                margin_right = !starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
+                margin_left = starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
+                margin_right = !starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
             else
-                margin_left = !starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
-                margin_right = starts_left ? 'auto' : "#{rand(11.0..15.0)}%"
+                margin_left = !starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
+                margin_right = starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
             end
 
             content_tag :div,

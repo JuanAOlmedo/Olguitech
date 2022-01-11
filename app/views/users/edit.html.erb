@@ -4,6 +4,7 @@
     <%= session[:will_contact] ? t("contact.contact") : t("users.edit_account") %>
 </h1>
 
+<%= turbo_frame_tag "new_contact"  do %>
 <%= form_with model: @user do |form| %>
     <div class="form big-card">
         <%= form.hidden_field :edit_token, value: @user.edit_token %>

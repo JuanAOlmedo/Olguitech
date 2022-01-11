@@ -206,6 +206,7 @@ body {
     border-radius: 1rem;
     width: 100%;
     height: 45rem;
+    background-color: white;
 
     @media only screen and (max-width: 67rem) {
         height: auto;
@@ -255,6 +256,7 @@ body {
     display: flex;
     margin-top: 2rem;
     margin-bottom: 2rem;
+    background-color: white;
 
     @media only screen and (max-width: 75rem) {
         height: 20rem;

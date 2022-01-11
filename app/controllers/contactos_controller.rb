@@ -9,41 +9,35 @@ class ContactosController < ApplicationController
     def update; end
 
     def create
-        unless @user = User.find_by(user_params) && @user.name && @user.phone && @user.company
+        unless @user =
+                   User.find_by(user_params) && @user.name && @user.phone &&
+                       @user.company
             parameters = user_params
             parameters[:locale] = I18n.locale
 
             @user = User.new(parameters)
 
             @contacto = @user.contactos.new(contacto_params)
-            @contacto.message =
-                if @contacto.message.length > 4000
-                    @contacto.message + '... [Mensaje muy largo]'
-                else
-                    @contacto.message
-                end
             @contacto.preference = @contacto.preference.to_i
             @contacto.preference2 = @contacto.preference2.to_i
 
             if @user.save && @contacto.save
                 session[:will_contact] = true
-                redirect_to({ controller: 'users',
-                            action: 'edit',
-                            id: @user.id,
-                            edit_token: @user.edit_token },
-                            notice:
-                                'Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos')
+                redirect_to(
+                    {
+                        controller: 'users',
+                        action: 'edit',
+                        id: @user.id,
+                        edit_token: @user.edit_token
+                    },
+                    notice:
+                        'Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos'
+                )
             else
                 render :new, status: :unprocessable_entity
             end
         else
             @contacto = @user.contactos.new(contacto_params)
-            @contacto.message =
-                if @contacto.message.length > 4000
-                    @contacto.message + '... [Mensaje muy largo]'
-                else
-                    @contacto.message
-                end
             @contacto.preference = @contacto.preference.to_i
             @contacto.preference2 = @contacto.preference2.to_i
 

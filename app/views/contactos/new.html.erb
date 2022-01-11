@@ -1,10 +1,10 @@
 <% content_for :title, "#{t "contact.contact"} | Olguitech s.a.s." %>
 
 <h1 class="main-title">
-    <%= t "contact.contact" %>
+    <%= t "contact.how_can_we_help_you" %>
 </h1>
 
-<%= turbo_frame_tag "new_contact"  do %>
+<%= turbo_frame_tag "new_contact" do %>
     <% if @user && @user.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(@user.errors.count, "error") %> impidieron que se pudiera mandar un mail:</h2>

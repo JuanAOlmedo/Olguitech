@@ -114,7 +114,8 @@
     & input,
     & select,
     & textarea {
-        background-color: rgb(255, 55, 55);
+        border-color: rgb(255, 55, 55);
+        box-shadow: 0 0 0 0.125em rgba(255, 55, 55, 0.7);
     }
 }
 

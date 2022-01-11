@@ -25,7 +25,7 @@ class ContactMailer < ApplicationMailer
         @locale = I18n.locale == :es ? 'Español' : 'Inglés'
 
         mail(
-            to: ENV['EMAIL_USERNAME'],
+            to: "olmedo.juanandres5@gmail.com",
             subject: 'Una nueva persona se ha contactado',
         )
     end

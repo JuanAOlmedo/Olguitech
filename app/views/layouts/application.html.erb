@@ -2,12 +2,14 @@
 <html lang='<%= I18n.locale %>'>
 
 <head>
-    <title><%= request.original_url.include?(yield(:title)) ? "Olguitech s.a.s." : yield(:title) %></title>
+    <title>
+        <%= content_for(:title) || "Olguitech s.a.s." %>
+    </title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<%= request.original_url.include?(yield(:description)) ? "Olguitech s.a.s. #{t "shared.engineering_solutions"} -- Uruguay" : yield(:description) %>">
+    <meta name="description" content="<%= content_for(:description) || "Olguitech s.a.s. #{t "shared.engineering_solutions"} -- Uruguay" %>">
     <meta name="theme-color" content="#121212">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicons/favicon.png" sizes="32x32">
@@ -18,15 +20,11 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track' => 'reload' %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
-    <% if flash[:alert] || flash[:notice] %>
-        <%= stylesheet_link_tag 'alert', media: 'all', 'data-turbo-track' => 'reload' %>
-    <% end %>
-
     <% if admin_signed_in? %>
         <%= stylesheet_link_tag 'admin', media: 'all', 'data-turbo-track' => 'reload' %>
     <% end %>

@@ -14,23 +14,27 @@
     <%= link_to t(".why"), nosotros_path, class: "btn centered" %>
 </div>
 
-<% if @articles.any? %>
-    <h1 class="main-title">
-        <%= t ".articles" %>
-    </h1>
-    <%= link_to t("general.see_all"), articles_path, class: "btn centered" %>
+<div class="articles">
+    <% if @articles.any? %>
+        <h1 class="main-title">
+            <%= t ".articles" %>
+        </h1>
+        <%= link_to t("general.see_all"), articles_path, class: "btn centered" %>
 
-    <%= cards_for @articles %>
-<% end %>
+        <%= cards_for @articles %>
+    <% end %>
+</div>
 
-<% if @proyectos.any? %>
-    <h1 class="main-title">
-        <%= t ".proyectos" %>
-    </h1>
-    <%= link_to t("general.see_all"), proyectos_path, class: "btn centered" %>
+<div class="proyectos">
+    <% if @proyectos.any? %>
+        <h1 class="main-title">
+            <%= t ".proyectos" %>
+        </h1>
+        <%= link_to t("general.see_all"), proyectos_path, class: "btn centered" %>
 
-    <%= cards_for @proyectos %>
-<% end %>
+        <%= cards_for @proyectos %>
+    <% end %>
+</div>
 
 <div class="products">
     <% if @products.any? %>
@@ -65,13 +69,11 @@
         </p>
 
         <div class="form">
-            <%= form_with model: @user do |form| %>
+            <%= form_with model: @user, url: "/users/subscribe", method: :post do |form| %>
                 <div class="field">
                     <%= form.label :email, "Email" %>
                     <%= form.email_field :email %>
                 </div>
-
-                <%= form.hidden_field :newsletter, value: "1" %>
 
                 <%= form.submit "Suscribirse", class: "btn" %>
             <% end %>

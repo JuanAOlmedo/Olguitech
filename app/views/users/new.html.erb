@@ -4,6 +4,18 @@
 
 <div class="big-card form">
     <%= turbo_frame_tag "new_user", target: "_top" do %>
+        <% if @user && @user.errors.any? %>
+            <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> impidieron que se guardara el usuario:</h2>
+
+                <ul>
+                    <% @user.errors.each do |error| %>
+                        <li><%= error.full_message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
         <%= form_with model: @user, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" }, class: "form" do |form| %>
             <div class="field">
                 <%= form.label :email, "Email" %>

@@ -18,6 +18,7 @@
             <th> Veces Contactadas </th>
             <th> Idioma </th>
         </tr>
+
         <% @users.each do |user| %>
             <%= render 'user', user: user%>
         <% end %>
@@ -37,6 +38,7 @@
             <line x1="18" y1="6" x2="6" y2="18" />
             <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
+        
         <% user.contactos.each do |contact| %>
             <div class="big-card">
                 <p> <strong> Fecha: </strong> <%= contact.created_at.to_formatted_s(:long) %> </p>

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     before_action :authenticate_edit_token_for_update, only: %i[update]
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
-                  only: %i[index new create]
+                  only: %i[index new]
 
     def index
         @users = User.all
@@ -35,7 +35,11 @@ class UsersController < ApplicationController
     def create
         parameters = new_user_params
 
-        confirm = parameters[:auto_confirm] == 0 ? false : true
+        if admin_signed_in?
+            confirm = parameters[:auto_confirm] == 1 ? true : false
+        else
+            confrim = false
+        end
         parameters.delete(:auto_confirm)
 
         @user = User.new parameters
@@ -46,6 +50,8 @@ class UsersController < ApplicationController
                 format.html { redirect_to root_path }
                 format.turbo_stream
             end
+        else
+            render :new, status: :unprocessable_entity
         end
     end
 

@@ -9,22 +9,20 @@
 
 <% content_for :title, "#{I18n.t "nav.contacto"} | Olguitech s.a.s." %>
 
+<h1 class='main-title'> <%= t "contact.how_can_we_help_you" %> </h1>
+
+<%= turbo_frame_tag "new_contact", src: new_contacto_path, target: "_top" %>
+
 <div class="centered">
-    <h1 class='main-title'> Contacto </h1>
+    <p class='big-text'>
+        <%= t("contact.contact_html") %>
+    </p>
 
     <p class="subtitle">
         <%= t "contact.direction_html" %>
     </p>
 
     <div id="map" class="centered location-container" alt='<%= I18n.t "contact.direction_alt" %>'></div>
-
-    <h1 class='main-title'> <%= I18n.t "contact.how_can_we_help_you" %> </h1>
-
-    <%= link_to t("contact.ask"), "/#{I18n.locale}/contacto/new", class: "btn" %>
-
-    <p class='big-text'>
-        <%= t("contact.contact_html") %>
-    </p>
 </div>
 
 <%= javascript_pack_tag 'contacto' %>

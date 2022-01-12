@@ -1,6 +1,5 @@
 <% content_for :title, "#{@category.get_title} | Olguitech s.a.s." %>
 
-
 <div id='show'>
     <% if admin_signed_in? %>
         <%= link_to edit_category_path(@category), class: 'edit', method: :get do %>

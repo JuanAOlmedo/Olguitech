@@ -1,28 +1,20 @@
-<% content_for :nav, "transparent" %>
-
-<style>
-    #nosotros-link {
-        color: #ccc !important;
-    }
-</style>
-
 <% content_for :title, "#{I18n.t "nosotros.who_are_we"} | Olguitech s.a.s." %>
 
 <div class='nosotros-front'>
-    <div id="a1">
-        <h1 class="still main-title centered">
+    <div class="who-are-we">
+        <h1 class="main-title centered">
             <%= I18n.t "nosotros.who_are_we" %>
         </h1>
-        <p class="big-text centered">
+        <p class="subtitle">
             <%= I18n.t "nosotros.who_are_we_message" %>
         </p>
     </div>
 
-    <div id="a2">
-        <h1 class="still main-title centered">
+    <div class="how-are-we-different">
+        <h1 class="main-title centered">
             <%= I18n.t "nosotros.how_are_we_different" %>
         </h1>
-        <p class="big-text centered">
+        <p class="subtitle">
             <%= I18n.t "nosotros.how_are_we_different_message" %>
         </p>
     </div>

@@ -33,20 +33,6 @@ class Clicker {
     }
 }
 
-sortClicker = new Clicker(
-    document.querySelector(".popup .info"),
-    showSort,
-    true
-);
-sortClicker.createClick();
-
-function showSort(add) {
-    if (add) {
-        document.querySelector(".popup .info").classList.toggle("clicked");
-        document.querySelector(".popuptext").classList.toggle("show");
-    }
-}
-
 const icon = document.querySelector(".icon-tabler-minus-vertical"),
     path = document.querySelector(".icon-tabler-minus-vertical path"),
     menu = document.querySelector(".menu"),

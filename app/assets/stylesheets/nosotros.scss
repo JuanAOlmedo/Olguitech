@@ -1,57 +1,66 @@
 @import "settings";
 
-#a1 {
-    padding: 12rem 1rem 10rem 1rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 5;
-    background: transparent;
+.who-are-we {
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    margin: 0;
     position: relative;
-}
+    z-index: 1;
 
-#a1::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -5;
-    background: url("/Background.webp") no-repeat fixed;
-    background-size: cover;
-    -webkit-filter: blur(2px);
-    /* Chrome, Opera */
-    -moz-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
+    &::after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        right: 0;
+        width: 100%;
+        height: 25rem;
+        background: url("/vector6.svg") no-repeat center bottom;
+        background-size: 100% 100%;
 
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background.webp") center top no-repeat scroll;
+        @media only screen and (max-width: 67rem) {
+            height: 10rem;
+            background-size: 200% 100%;            
+        }
     }
 }
 
-.no-webp #a1::before {
-    background: url("/Background.jpg") no-repeat fixed;
+.how-are-we-different {
+    background-color: hsl(26.7, 23.1%, 92.4%);
+    position: relative;
+    z-index: 1;
+    padding-top: 6rem;
+    padding-bottom: 10rem;
+    display: flex;
+    flex-wrap: wrap;
 
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background.jpg") center top no-repeat scroll;
+    @media only screen and (max-width: 67rem) {   
+        padding-top: 1rem;
+        padding-bottom: 2rem;
     }
-}
 
-#a2 {
-    background: url("/Background1.webp") no-repeat fixed;
-    background-size: cover;
-    padding: 10rem 1rem 9rem 1rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background1.webp") center no-repeat scroll;
+    &::after {
+        z-index: -1;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: url("/vector3.svg") no-repeat right bottom;
+        background-size: 100%;
     }
-}
 
-.no-webp #a2 {
-    background: url("/Background1.jpg") no-repeat fixed;
+    & .main-title,
+    & .subtitle {
+        width: 80%;
+        margin-right: 2rem;
+        text-align: right;
 
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background1.jpg") center top no-repeat scroll;
+        @media only screen and (max-width: 67rem) {
+            width: 90%;
+            margin-right: auto;
+            text-align: left;    
+        }
     }
 }

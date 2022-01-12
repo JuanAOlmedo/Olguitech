@@ -1,16 +1,15 @@
 <% content_for :title, "#{t "contact.contact"} | Olguitech s.a.s." %>
 
 <h1 class="main-title">
-    <%= session[:will_contact] ? t("contact.contact") : t("users.edit_account") %>
+    <%= session[:will_contact] ? t("contact.how_can_we_help_you") : t("users.edit_account") %>
 </h1>
 
-<%= turbo_frame_tag "new_contact"  do %>
 <%= form_with model: @user do |form| %>
     <div class="form big-card">
         <%= form.hidden_field :edit_token, value: @user.edit_token %>
 
         <div class="field" style="padding-bottom: 0; margin-bottom: 0;">
-            <%= form.label :name, "Nombre" %>
+            <%= form.label :name, I18n.t("users.name") %>
             <%= form.text_field :name, value: @user.name %>
         </div>
 
@@ -23,21 +22,21 @@
 
         <div class="checkbox-field" style="padding-top: 0;">
             <%= form.check_box :newsletter, checked: true %>
-            <%= form.label :newsletter, "Recibir newsletters" %>
+            <%= form.label :newsletter, t("users.newsletter") %>
         </div>
 
         <div class="field">
-            <%= form.label :phone, "Telefono" %>
+            <%= form.label :phone, t("users.phone") %>
             <%= form.phone_field :phone, value: @user.phone %>
         </div>
 
         <div class="field">
-            <%= form.label :company, "Compañia" %>
+            <%= form.label :company, t("users.company") %>
             <%= form.text_field :company, value: @user.company %>
         </div>
 
         <div class="btn-group centered">
-            <%= form.submit(session[:will_contact] ? "Enviar Mail" : "Editar Usuario", class:'btn') %>
+            <%= form.submit(session[:will_contact] ? t("contact.send") : t("users.edit_account"), class:'btn') %>
             <%= link_to t("users.delete_account"), url_for(controller: :users, action: :destroy, id: @user.id, edit_token: @user.edit_token), class: "btn is-danger", data: { turbo_method: :delete, turbo_confirm: t("users.are_you_sure") } unless session[:will_contact] %>
         </div>
     </div>

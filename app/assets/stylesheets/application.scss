@@ -114,6 +114,10 @@ body {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
     }
+
+    & .dropdown {
+        height: 2.5rem;
+    }
 }
 
 .main-title {
@@ -329,9 +333,8 @@ nav {
 }
 
 .logo {
-    height: 100%;
-    width: auto;
-    padding-left: 0.3rem;
+    position: relative;
+    z-index: 11;
 }
 
 .right-navbar-section {
@@ -356,7 +359,7 @@ nav {
         visibility: hidden;
         overflow-y: auto;
         display: block;
-        z-index: -1;
+        z-index: 10;
 
         &.visible {
             visibility: visible;
@@ -422,7 +425,7 @@ nav .btn {
     width: 100%;
     margin: 0;
     height: 100%;
-    z-index: 11;
+    z-index: 6;
     transition: background 0.25s, color 0.25s, stroke 0.25s, border-radius 0.25s;
 }
 
@@ -445,7 +448,7 @@ nav .btn {
     position: absolute;
     height: 100%;
     top: 100%;
-    z-index: 10;
+    z-index: 5;
     transform: translateY(-3rem);
     transition: transform 0.25s;
 
@@ -473,6 +476,8 @@ nav .btn {
     margin: auto 1rem auto auto;
     color: black;
     transition: color 1s;
+    position: relative;
+    z-index: 11;
 
     @media only screen and (max-width: 67rem) {
         display: block;

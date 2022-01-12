@@ -7,7 +7,9 @@
 <%= turbo_frame_tag "new_contact" do %>
     <% if @user && @user.errors.any? %>
         <div id="error_explanation">
-            <h2><%= pluralize(@user.errors.count, "error") %> impidieron que se pudiera mandar un mail:</h2>
+            <h2>
+                <%= pluralize(@user.errors.count, "error") %> <%= @user.errors.count > 1 ? t("contact.errors") : t("contact.error") %>:
+            </h2>
 
             <ul>
                 <% @user.errors.each do |error| %>

@@ -52,7 +52,7 @@
         </h1>
 
         <p class="big-text">
-            Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta!
+            <%= t ".sign_up" %>
         </p>
 
         <%= link_to t(".contact"), contactos_path, class: "btn" %>
@@ -60,10 +60,7 @@
         <div class="separator"> </div>
 
         <p class="big-text newsletter">
-            <strong>
-                Sé el primero en saber de nuestras novedades
-            </strong>
-            , suscribete a nuestra newsletter.
+            <%= t ".subscribe_message_html" %>
         </p>
 
         <div class="form">
@@ -73,7 +70,7 @@
                     <%= form.email_field :email %>
                 </div>
 
-                <%= form.submit "Suscribirse", class: "btn" %>
+                <%= form.submit t(".subscribe"), class: "btn" %>
             <% end %>
         </div>
     </div>

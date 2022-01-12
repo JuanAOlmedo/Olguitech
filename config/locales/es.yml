@@ -14,12 +14,13 @@ es:
       proyectos: Nuestros últimos proyectos
       products: Algunos de nuestros productos
       interested: Estás interesado en hablar con nosotros? 
-      sign_up: Regístrate con nosotros para poder contactarte y acceder a nuestra newsletter o manda un mail a
+      sign_up: Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta! 
       contact: Contactarse
+      subscribe_message_html: <strong>Sé el primero en saber de nuestras novedades</strong>, suscribete a nuestra newsletter.
+      subscribe: Suscribirse
   nav:
     about_us: "Nosotros"
     contact: "Contacto"
-    sign_in: "Acceder"
     profile: "Perfil"
   nosotros:
     who_are_we: "¿Quiénes Somos?"
@@ -41,6 +42,9 @@ es:
     send: "Enviar Mail"
     sent: "Un email ha sido enviado."
     ask: "Hacer una pregunta!"
+    error: impidió que se pudiera mandar un mail
+    errors: impidieron que se pudiera mandar un mail
+    first_time: Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos 
   users:
     sign_out: "Cerrar sesión"
     sign_up: "Crear Cuenta"
@@ -69,6 +73,7 @@ es:
     confirm_account: "Confirmar mi cuenta"
     are_you_sure: "Estas seguro?"
     deleted: "Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :("
+    newsletter: "Recibir newsletters"
   index:
     uncategorized: "Sin categoría"
     sort_by: "Ordenar por"

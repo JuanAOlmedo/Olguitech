@@ -30,8 +30,7 @@ class ContactosController < ApplicationController
                         id: @user.id,
                         edit_token: @user.edit_token
                     },
-                    notice:
-                        'Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos'
+                    notice: I18n.t("contact.first_time")
                 )
             else
                 render :new, status: :unprocessable_entity

@@ -116,7 +116,7 @@ body {
     }
 
     & .dropdown {
-        height: 2.5rem;
+        min-height: 2.4rem;
     }
 }
 
@@ -136,7 +136,8 @@ body {
     }
 
     @media only screen and (max-width: 35rem) {
-        font-size: 2.5rem;
+        width: 97%;
+        font-size: 2.3rem;
         line-height: 43px;
     }
 }
@@ -159,7 +160,7 @@ body {
 
     @media only screen and (max-width: 67rem) {
         width: 95%;
-        font-size: 1.7rem;
+        font-size: 1.5rem;
     }
 }
 

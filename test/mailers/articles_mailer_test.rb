@@ -15,7 +15,7 @@ class ArticlesMailerTest < ActionMailer::TestCase
             mail.deliver_now
         end
 
-        assert_equal 'Nuevo Artículo de Olguitech!', mail.subject
+        assert_equal 'Nueva Solución de Olguitech!', mail.subject
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match @article.title, mail.body.encoded

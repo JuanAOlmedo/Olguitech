@@ -31,7 +31,9 @@ class UserControllerTest < ActionDispatch::IntegrationTest
 
     test 'should not create if not admin' do
         parameters = {
-            email: "tests5@test.com"
+            user: {
+                email: "tests5@test.com"
+            }
         }
 
         assert_no_difference('User.count') do
@@ -43,7 +45,9 @@ class UserControllerTest < ActionDispatch::IntegrationTest
         sign_in admins(:one)
 
         parameters = {
-            email: "tests5@test.com"
+            user: {
+                email: "tests5@test.com"
+            }
         }
 
         assert_difference('User.count', 1) do

@@ -6,7 +6,7 @@ class NewslettersControllerTest < ActionDispatch::IntegrationTest
         @params = { newsletter: { title: 'a', subject: 'b' } }
     end
 
-    test 'should not get/post anything' do
+    test 'should not get/post anything except show' do
         get newsletters_url
         assert_response :redirect
 
@@ -14,7 +14,7 @@ class NewslettersControllerTest < ActionDispatch::IntegrationTest
         assert_response :redirect
 
         get newsletter_url(id: @newsletter.id)
-        assert_response :redirect
+        assert_response :success
 
         assert_no_difference('Newsletter.count') do
             post newsletters_url, params: @params
@@ -28,9 +28,6 @@ class NewslettersControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
 
         get new_newsletter_url
-        assert_response :success
-
-        get newsletter_url(id: @newsletter.id)
         assert_response :success
 
         assert_difference('Newsletter.count', 1) do

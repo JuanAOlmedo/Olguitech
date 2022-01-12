@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     before_action :authenticate_edit_token_for_update, only: %i[update]
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
-                  only: %i[index new]
+                  only: %i[index new create]
 
     def index
         @users = User.all

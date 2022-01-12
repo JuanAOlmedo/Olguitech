@@ -11,7 +11,8 @@ class ArticlesMailer < ApplicationMailer
         @article = article
 
         I18n.with_locale(@user.locale) do
-            mail(to: @user.email, subject: "#{@article.model_name.singular == "article" ? "Nueva" : "Nuevo"} #{@article.model_name.human} de Olguitech!")
+            mail(to: @user.email, 
+                subject: "#{@article.model_name.singular == "article" ? t("mail.articles.subject.new1") : t("mail.articles.subject.new2")} #{@article.model_name.human} #{t("mail.articles.subject.from")} Olguitech!")
         end
     end
 end

@@ -12,7 +12,7 @@ class ConfirmationMailerTest < ActionMailer::TestCase
             mail.deliver_now
         end
 
-        assert_equal 'Olguitech s.a.s.', mail.subject
+        assert_equal 'Confirmá tu cuenta!', mail.subject
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
     end

@@ -22,6 +22,7 @@ en:
     confirmation: 
       confirm: Confirm my account
       this_link: this link
+      subject: Confirm your account!
 
       html: >
         <p>Welcome %{email}!</p>
@@ -47,6 +48,10 @@ en:
         If you believe you have filled your information incorrectly, you can edit it with this link:
         %{link2} 
     articles:
+      subject:
+        new1: New
+        new2: New 
+        from: from
       html: >
         <h1> Hi, %{name} </h1>
         <p> We are contacting you to inform you that we have uploaded a new article, %{link} to our page </p>

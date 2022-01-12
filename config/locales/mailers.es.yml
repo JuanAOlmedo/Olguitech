@@ -7,22 +7,23 @@ es:
       html: >
         Hola %{name}, gracias por contactarte con Olguitech s.a.s.! <br>
 
-        La solución que ofrecemos que más le ha interesado fue: %{preference}, y el proyecto: %{preference2}.<br><br>
+        La solución que ofrecemos que más te interesó fue: %{preference}, y el proyecto: %{preference2}.<br><br>
         Tu mensaje fue: %{message} <br><br>
 
-        Alguien se contactará a la brevedad con usted con respecto a ambos artículos y a su mensaje.
+        Alguien se contactará a la brevedad con respecto a ambos artículos y a su mensaje.
         Esperamos escuchar de ti y de %{company} de vuelta.
       txt: |
         Hola %{name}, gracias por contactarte con Olguitech s.a.s.!
 
-        La solución que ofrecemos que más le ha interesado fue: %{preference}, y el proyecto: %{preference2}.
+        La solución que ofrecemos que más te interesó fue: %{preference}, y el proyecto: %{preference2}.
         Tu mensaje fue: %{message}
 
-        Alguien se contactará a la brevedad con usted con respecto a ambos artículos y a su mensaje.
+        Alguien se contactará a la brevedad con respecto a ambos artículos y a su mensaje.
         Esperamos escuchar de ti y de %{company} de vuelta.
     confirmation:
       confirm: Confirmar mi cuenta
       this_link: este link
+      subject: Confirmá tu cuenta!
 
       html: >
         <p>Bienvenido %{email}!</p>
@@ -48,6 +49,10 @@ es:
         Si crees que has rellenado tus datos incorrectamente, puedes corregirlos desde este link:
         %{link2} 
     articles:
+      subject:
+        new1: Nueva
+        new2: Nuevo
+        from: de
       html: >
         <h1> Hola, %{name} </h1>
         <p> Nos contactamos para informarte que hemos subido un nuevo artículo, %{link} a nuestra página </p>

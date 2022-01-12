@@ -7,7 +7,7 @@ class NewsMailerTest < ActionMailer::TestCase
     end
 
     test 'newsletter' do
-        mail = NewsMailer.newsletter(@user, @newsletter.title, @newsletter.content, @newsletter.subject)
+        mail = NewsMailer.newsletter(@user, @newsletter)
 
         assert_emails 1 do
             mail.deliver_now

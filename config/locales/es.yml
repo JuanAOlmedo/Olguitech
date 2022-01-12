@@ -38,7 +38,7 @@ es:
     direction_html: Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
     how_can_we_help_you: Cómo podemos ayudarte?
     contact: Contactarse
-    contact_html: <
+    contact_html: >
       O contactate a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
       al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
       o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
@@ -59,7 +59,7 @@ es:
     phone: Teléfono
     confirm_account: Confirmar mi cuenta
     delete_account: Eliminar cuenta
-    are_you_sure: Estas seguro?"
+    are_you_sure: Estas seguro?
     deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :(
     newsletter: Recibir newsletters
   index:
@@ -96,7 +96,8 @@ es:
   activerecord:
     errors:
       messages:
-        record_invalid: 'La validación falló: %{errors}'
+        record_invalid: >
+          La validación falló: %{errors}
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
@@ -111,7 +112,7 @@ es:
         one: Producto
         other: Productos
       category:
-        one: Categorías
+        one: Categoría
         other: Categorías
       newsletter:
         one: Newsletter

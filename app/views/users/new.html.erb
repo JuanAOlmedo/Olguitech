@@ -37,6 +37,11 @@
                 <%= form.text_field :company %>
             </div>
 
+            <div class="field">
+                <%= form.label :locale, "Idioma" %>
+                <%= form.select :locale, [["Español", :es], ["Inglés", :en]] %>
+            </div>
+
             <div class="checkbox-field">
                 <%= form.check_box :auto_confirm, checked: true %>
                 <%= form.label :auto_confirm, "Confirmar mail" %> <br>
@@ -44,8 +49,6 @@
                 <%= form.check_box :newsletter, checked: true %>
                 <%= form.label :newsletter, "Newsletters" %>
             </div>
-
-            <div style="width: 50%;"> </div>
 
             <%= form.submit "Crear", class: 'btn centered' %>
         <% end %>

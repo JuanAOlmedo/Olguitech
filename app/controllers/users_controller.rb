@@ -36,7 +36,7 @@ class UsersController < ApplicationController
         parameters = new_user_params
 
         if admin_signed_in?
-            confirm = parameters[:auto_confirm] == 1 ? true : false
+            confirm = parameters[:auto_confirm] == "1" ? true : false
         else
             confrim = false
         end
@@ -85,7 +85,7 @@ class UsersController < ApplicationController
                         @contacto.message
                     ).deliver_later
 
-                redirect_to "/#{I18n.locale}/contacto",
+                redirect_to root_path,
                             notice: I18n.t('contact.sent')
             end
         else
@@ -167,6 +167,7 @@ class UsersController < ApplicationController
                                      :phone,
                                      :company,
                                      :newsletter,
+                                     :locale,
                                      :auto_confirm
     end
 end

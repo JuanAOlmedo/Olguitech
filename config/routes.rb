@@ -7,20 +7,23 @@ Rails.application.routes.draw do
         get '/contacto', to: 'contactos#index'
         get '/contacto/new', to: 'contactos#new'
 
-        resources :articles
-        get '/articles/:order_by/:asc_desc', to: 'articles#index'
-        resources :proyectos
-        get '/proyectos/:order_by/:asc_desc', to: 'proyectos#index'
-        resources :products
-        get '/products/:order_by/:asc_desc', to: 'products#index'
+        resources :articles do
+            get '/:order_by/:asc_desc', to: 'articles#index', on: :collection
+        end
+        resources :proyectos do
+            get '/:order_by/:asc_desc', to: 'proyectos#index', on: :collection
+        end
+        resources :products do
+            get '/products/:order_by/:asc_desc', to: 'products#index', on: :collection
+        end
 
-        resources :users
-
-        delete "/users/:id/:edit_token", to: 'users#destroy'
-        get "/users/:id/edit/:edit_token", to: 'users#edit'
-        get "/users/confirmation/:confirmation_token", to: 'users#confirmation'
-        get '/users/unsubscribe/:newsletter_token', to: 'users#unsubscribe'
-        post "/users/subscribe", to: "main#subscribe"
+        resources :users do
+            delete "/:edit_token", to: 'users#destroy', on: :member
+            get "/edit/:edit_token", to: 'users#edit', on: :member
+            get "/confirmation/:confirmation_token", to: 'users#confirmation', on: :collection
+            get '/unsubscribe/:newsletter_token', to: 'users#unsubscribe', on: :collection
+            post "/subscribe", to: "main#subscribe", on: :collection
+        end
 
         devise_for :admins, :controllers => { registrations: 'admin_registrations' }
 

@@ -1,4 +1,4 @@
 <% content_for :user, :user %>
 
 <%= t("mail.articles.txt", name: (@user.name ? @user.name : @user.email), 
-                           link: "#{@article.get_title}: #{url_for(controller: :articles, action: :show, id: @article.id)}") %>
+                           link: "#{@article.get_title}: #{url_for(controller: :articles, action: :show, id: @article.id, locale: @user.locale)}") %>

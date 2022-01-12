@@ -16,8 +16,8 @@
 
         <% if yield(:user) == "user" %>
             <div style="text-align: center;">
-                <%= link_to t("mail.unsubscribe"), url_for(controller: :users, action: :unsubscribe, newsletter_token: @token) %> |
-                <%= link_to t("mail.edit_user"), url_for(controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token) %>
+                <%= link_to t("mail.unsubscribe"), url_for(controller: :users, action: :unsubscribe, newsletter_token: @token, locale: I18n.locale) %> |
+                <%= link_to t("mail.edit_user"), url_for(controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token, locale: I18n.locale) %>
             </div>
         <% end %>
     </body>

@@ -7,6 +7,8 @@ class ConfirmationMailer < ApplicationMailer
         @email = user.email
         @token = user.confirmation_token
 
-        mail(to: user.email, subject: 'Olguitech s.a.s.')
+        I18n.with_locale(@user.locale) do
+            mail(to: user.email, subject: 'Olguitech s.a.s.')
+        end
     end
 end

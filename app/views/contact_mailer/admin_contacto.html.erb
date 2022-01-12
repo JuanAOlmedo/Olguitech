@@ -1,17 +1,17 @@
-<h1><%= @user.name %> se ha contactado</h1>
+<h1><%= @user.name ? @user.name : @user.email %> se ha contactado</h1>
 
 <p>
     <%= @message %>
 </p>
 <p>
-    Prefiere: <%= @preference %>, y: <%= @preference2 %>
+    <strong>Prefiere:</strong> <%= @preference %>, y: <%= @preference2 %>
 </p>
 <p>
-    Email: <%= @user.email %>
+    <strong>Email:</strong> <%= mail_to @user.email %>
 </p>
 <p>
-    Idioma: <%= @locale %>
+    <strong>Idioma:</strong> <%= @locale %>
 </p>
 <p>
-    Id: <%= @user.id %>
+    <strong>Id:</strong> <%= @user.id %>
 </p>

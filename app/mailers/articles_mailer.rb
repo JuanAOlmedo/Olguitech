@@ -10,6 +10,8 @@ class ArticlesMailer < ApplicationMailer
         @token = @user.newsletter_token
         @article = article
 
-        mail(to: @user.email, subject: "#{@article.model_name.singular == "article" ? "Nueva" : "Nuevo"} #{@article.model_name.human} de Olguitech!")
+        I18n.with_locale(@user.locale) do
+            mail(to: @user.email, subject: "#{@article.model_name.singular == "article" ? "Nueva" : "Nuevo"} #{@article.model_name.human} de Olguitech!")
+        end
     end
 end

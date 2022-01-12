@@ -2,16 +2,17 @@ class NewsMailer < ApplicationMailer
     default from: ENV['EMAIL_USERNAME']
     layout 'mailer'
 
-    def newsletter(user, title, content, subject)
+    def newsletter(user, newsletter)
         @user = user
 
         @user.regenerate_edit_token if @user.edit_token == nil
         @user.regenerate_newsletter_token if @user.newsletter_token == nil
 
         @token = @user.newsletter_token
-        @title = title
-        @content = content
-        @subject = subject
+        @link = url_for(controller: :newsletters, action: :show, id: newsletter.id)
+        @title = newsletter.title
+        @content = newsletter.content
+        @subject = newsletter.subject
 
         mail(to: @user.email, subject: @subject)
     end

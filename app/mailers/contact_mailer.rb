@@ -14,7 +14,9 @@ class ContactMailer < ApplicationMailer
             message: message,
         }
 
-        mail(to: @user.email, subject: 'Olguitech s.a.s.')
+        I18n.with_locale(@user.locale) do
+            mail(to: @user.email, subject: 'Olguitech s.a.s.')
+        end
     end
 
     def admin_contacto(user, preference, preference2, message)

@@ -1,4 +1,4 @@
 Olguitech s.a.s.
 =============================================
 
-<%= t("mail.contact_mailer", name: @user.name, company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>
+<%= t("mail.contact.txt", name: (@user.name ? @user.name : @user.email), company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>

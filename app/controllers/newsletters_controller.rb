@@ -29,9 +29,7 @@ class NewslettersController < ApplicationController
                 @mail =
                     NewsMailer.newsletter(
                         user,
-                        @newsletter.title,
-                        @newsletter.content,
-                        @newsletter.subject,
+                        @newsletter
                     ).deliver_now!
             end
 

@@ -6,6 +6,6 @@ class NewsMailerPreview < ActionMailer::Preview
         user = User.last
         newsletter = Newsletter.last
 
-        NewsMailer.newsletter(user, newsletter.title, newsletter.content, newsletter.subject)
+        NewsMailer.newsletter(user, newsletter)
     end
 end

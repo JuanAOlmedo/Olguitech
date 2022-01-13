@@ -77,7 +77,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
 
     test "should update user with token" do
         patch '/users/1', params: { user: { name: "Lorem Ipsum", phone: "000 000 000", company: "Olguitech", edit_token: users(:one).edit_token } }
-        assert_response :success
+        assert_response :redirect
 
         users(:one).reload
         assert_equal "Lorem Ipsum", users(:one).name

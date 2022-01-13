@@ -9,8 +9,7 @@
         <div style="max-width: 50rem; box-sizing: border-box; width: 100%; margin: 1% auto 1% auto; background-color: white;">
             <%= yield %>
         </div>
-
-        <% Rails.application.config.action_controller.asset_host = "assets.example.com" %>
+        
         <%= link_to root_url, style: "display: block; width: 100%;" do %>
             <%= image_tag image_url("logos/logo-muy-chico.png"), style: "display: block; margin-left: auto; margin-right: auto;", width: "220px", height: "90px" %>
         <% end %>

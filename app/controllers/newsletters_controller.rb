@@ -34,6 +34,8 @@ class NewslettersController < ApplicationController
             end
 
             redirect_to root_path, notice: 'Se ha enviado la Newsletter'
+        else
+            render:new, status: :unprocessable_entity
         end
     end
 

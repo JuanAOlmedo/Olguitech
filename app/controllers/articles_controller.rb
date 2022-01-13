@@ -7,7 +7,8 @@ class ArticlesController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                ordered = Article.get_ordered(params[:order_by], params[:asc_desc])
+                ordered =
+                    Article.get_ordered(params[:order_by], params[:asc_desc])
 
                 @categories = ordered[0]
                 @articles = ordered[1]
@@ -15,9 +16,7 @@ class ArticlesController < ApplicationController
                 @uncategorized = Article.uncategorized
             end
 
-            format.json do
-                @articles = Article.all
-            end
+            format.json { @articles = Article.all }
         end
     end
 
@@ -79,7 +78,7 @@ class ArticlesController < ApplicationController
                     ArticlesMailer.article(user, @article).deliver_later
                 end
             else
-                format.html { render :new }
+                format.html { render :new, status: :unprocessable_entity }
                 format.json do
                     render json: @article.errors, status: :unprocessable_entity
                 end
@@ -107,7 +106,7 @@ class ArticlesController < ApplicationController
                 end
                 format.json { render :show, status: :ok, location: @article }
             else
-                format.html { render :edit }
+                format.html { render :edit, status: :unprocessable_entity }
                 format.json do
                     render json: @article.errors, status: :unprocessable_entity
                 end

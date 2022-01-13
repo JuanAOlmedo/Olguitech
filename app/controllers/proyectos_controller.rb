@@ -78,7 +78,7 @@ class ProyectosController < ApplicationController
                     ArticlesMailer.article(user, @proyecto).deliver_later
                 end
             else
-                format.html { render :new }
+                format.html { render :new, status: :unprocessable_entity }
                 format.json do
                     render json: @proyecto.errors, status: :unprocessable_entity
                 end
@@ -106,7 +106,7 @@ class ProyectosController < ApplicationController
                 end
                 format.json { render :show, status: :ok, location: @proyecto }
             else
-                format.html { render :edit }
+                format.html { render :edit, status: :unprocessable_entity }
                 format.json do
                     render json: @proyecto.errors, status: :unprocessable_entity
                 end

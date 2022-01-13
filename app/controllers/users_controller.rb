@@ -61,35 +61,16 @@ class UsersController < ApplicationController
 
         if @user.update(parameters)
             if session[:will_contact]
+                @user.contactos.find(session[:will_contact]).send_mail
                 session[:will_contact] = nil
-
-                @contacto = @user.contactos.last
-                article = Article.find(@contacto.preference)
-                proyecto = Proyecto.find(@contacto.preference2)
-
-                article = article.get_title
-                proyecto = proyecto.get_title
-
-                @mail =
-                    ContactMailer.contacto(
-                        @user,
-                        article,
-                        proyecto,
-                        @contacto.message
-                    ).deliver_later
-                @mail =
-                    ContactMailer.admin_contacto(
-                        @user,
-                        Article.find(@contacto.preference).title,
-                        Proyecto.find(@contacto.preference2).title,
-                        @contacto.message
-                    ).deliver_later
 
                 redirect_to root_path,
                             notice: I18n.t('contact.sent')
+            else 
+                redirect_to root_path, notice: "Usuario editado exitosamente"
             end
         else
-            render :edit
+            render :edit, status: :unprocessable_entity
         end
     end
 

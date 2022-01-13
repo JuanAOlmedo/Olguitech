@@ -1,5 +1,7 @@
 @import "settings";
 
+// FORMS //
+
 .form {
     margin-bottom: 2rem;
     display: flex;
@@ -125,65 +127,7 @@
     margin-right: auto;
 }
 
-.loading::after {
-    -webkit-animation: spinAround 0.5s infinite linear;
-    animation: spinAround 0.5s infinite linear;
-    border: 2px solid currentColor;
-    border-radius: 9999px;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    content: "";
-    display: block;
-    height: 1em;
-    position: relative;
-    width: 1em;
-}
-
-@-webkit-keyframes spinAround {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
-}
-
-@keyframes spinAround {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
-}
-
-.form-inputs {
-    width: 100%;
-    margin-bottom: 2rem;
-}
-
-.error_notification {
-    color: $color2;
-}
-
 .error {
     color: #ff5f5f;
     display: block;
-}
-
-#user_password,
-#user_password_confirmation {
-    transition: background-color 0.5s;
-}
-
-.right {
-    background-color: greenyellow;
-}
-
-.wrong {
-    background-color: red;
-}
-
-#close-session {
-    margin-top: 3rem !important;
 }

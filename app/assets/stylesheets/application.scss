@@ -1,6 +1,7 @@
 @import "forms";
 @import "index";
 @import "main";
+@import "navbar";
 @import "contacto";
 @import "nosotros";
 @import "show";
@@ -26,98 +27,6 @@ body {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-}
-
-.link {
-    font-size: 1.4rem;
-    display: inline-block;
-    text-decoration: none;
-    color: #333;
-    transition: background 0.25s, color 0.25s;
-    border-radius: 0.3rem;
-    width: fit-content;
-    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
-    font-weight: 600;
-    background-color: white;
-    height: fit-content;
-
-    &:visited {
-        text-decoration: none;
-        color: #333;
-    }
-
-    &:hover,
-    &.active {
-        background-color: hsl(26.7, 23.1%, 92.4%);
-        color: #f4923c;
-    }
-
-    &.centered {
-        display: block;
-    }
-}
-
-.btn {
-    font-size: 1.4rem;
-    display: inline-block;
-    text-decoration: none;
-    color: #333;
-    transition: background 0.25s, color 0.25s;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    border: none;
-    outline: none;
-    border-radius: 0.3rem;
-    width: fit-content;
-    height: fit-content;
-    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
-    font-weight: 600;
-    background-color: hsl(26.7, 23.1%, 92.4%);
-
-    &:visited {
-        text-decoration: none;
-        color: #333;
-    }
-
-    &:hover {
-        background-color: hsl(26.7, 23.1%, 87.4%);
-        color: #f4923c;
-    }
-
-    &.centered {
-        display: block;
-    }
-
-    &.is-danger {
-        background-color: #ff7b7b;
-
-        &:hover {
-            background-color: #e66060;
-            color: #000;
-        }
-    }
-}
-
-.btn-group {
-    display: inline-flex;
-    flex-wrap: wrap;
-
-    & .btn:not(:last-child),
-    & .dropdown:not(:last-child) .dropdown-trigger .btn {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-    }
-
-    & .btn:not(:first-child),
-    & .dropdown:not(:first-child) .dropdown-trigger .btn {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-    }
-
-    & .dropdown {
-        min-height: 2.4rem;
-    }
 }
 
 .main-title {
@@ -183,7 +92,106 @@ body {
     }
 }
 
-// Card Holder
+// 1.1 Buttons and links
+
+.link {
+    font-size: 1.4rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.25s, color 0.25s;
+    border-radius: 0.3rem;
+    width: fit-content;
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    font-weight: 600;
+    background-color: white;
+    height: fit-content;
+
+    &:visited {
+        text-decoration: none;
+        color: #333;
+    }
+
+    &:hover,
+    &.active, 
+    &:focus {
+        background-color: hsl(26.7, 23.1%, 92.4%);
+        color: #f4923c;
+    }
+
+    &.centered {
+        display: block;
+    }
+}
+
+.btn {
+    font-size: 1.4rem;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.25s, color 0.25s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    border-radius: 0.3rem;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    font-weight: 600;
+    background-color: hsl(26.7, 23.1%, 92.4%);
+
+    &:visited {
+        text-decoration: none;
+        color: #333;
+    }
+
+    &:hover,
+    &.active, 
+    &:focus {
+        background-color: hsl(26.7, 23.1%, 87.4%);
+        color: #f4923c;
+    }
+
+    &.centered {
+        display: block;
+    }
+
+    &.is-danger {
+        background-color: #ff7b7b;
+
+        &:hover {
+            background-color: #e66060;
+            color: #000;
+        }
+    }
+}
+
+.btn-group {
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    & .btn:not(:last-child),
+    & .dropdown:not(:last-child) .dropdown-trigger .btn,
+    & .dropdown.is-active:not(:last-child) .dropdown-trigger .btn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    & .btn:not(:first-child),
+    & .dropdown:not(:first-child) .dropdown-trigger .btn,
+    & .dropdown.is-active:not(:first-child) .dropdown-trigger .btn {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    & .dropdown {
+        min-height: 2.4rem;
+    }
+}
+
+// 1.1 Cards Holder
 
 .cards-holder {
     width: 85%;
@@ -314,85 +322,7 @@ body {
     }
 }
 
-// 2. NAVBAR //
-
-nav {
-    padding: 0;
-    margin: 0;
-    display: flex;
-    background-color: white;
-    font-size: 0.9rem;
-    z-index: 10;
-    position: relative;
-}
-
-.left-navbar-section {
-    height: 5.7em;
-    width: 13.02rem;
-    padding: 0;
-    margin: 0 auto 0 0.4rem;
-}
-
-.logo {
-    position: relative;
-    z-index: 11;
-}
-
-.right-navbar-section {
-    text-align: center;
-    display: flex;
-    height: fit-content;
-    margin-top: auto;
-    margin-bottom: auto;
-
-    @media only screen and (max-width: 67rem) {
-        right: 0;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        background-color: white;
-        position: absolute;
-        padding: 1rem 2rem 1rem 2rem;
-        margin-top: 5.1em;
-        transform: translateY(-200%);
-        transition: transform 0.8s;
-        will-change: transform;
-        visibility: hidden;
-        overflow-y: auto;
-        display: block;
-        z-index: 10;
-
-        &.visible {
-            visibility: visible;
-        }
-
-        &.show {
-            transform: translateY(0%);
-            visibility: visible;
-
-            .icon-tabler-chevron-down2 {
-                visibility: visible;
-            }
-        }
-
-        & .link,
-        & .btn {
-            width: fit-content;
-            display: block;
-            margin: 0 auto 1rem auto;
-        }
-
-        & .dropdown {
-            height: 2.5rem;
-            margin: 0 auto 1rem auto;
-        }
-    }
-}
-
-nav .link,
-nav .btn {
-    margin: 0 0.5rem 0 0.5rem;
-}
+// 1.2 Dropdown Menu
 
 .dropdown {
     display: inline-flex;
@@ -466,196 +396,4 @@ nav .btn {
         border-bottom-left-radius: 0.3rem;
         border-bottom-right-radius: 0.3rem;
     }
-}
-
-// 2.2 Dropdown //
-
-#dropdown-bars {
-    display: none;
-    cursor: pointer;
-    height: fit-content;
-    margin: auto 1rem auto auto;
-    color: black;
-    transition: color 1s;
-    position: relative;
-    z-index: 11;
-
-    @media only screen and (max-width: 67rem) {
-        display: block;
-    }
-}
-
-#dropdown-bars:focus {
-    color: #333;
-    outline: none;
-
-    .line1 {
-        transform: translateY(-0.07rem);
-    }
-    .line2 {
-        transform: translateY(0.07rem);
-    }
-}
-
-.icon-tabler-chevron-down {
-    position: absolute;
-    top: -0.5rem;
-    right: -0.3rem;
-    transition: transform 1s;
-    display: none;
-}
-
-.icon-tabler-chevron-down.extend {
-    transform: rotateZ(180deg) translateY(0) !important;
-}
-
-.line1,
-.line2 {
-    transform: rotateZ(0deg);
-    transition: transform 0.5s;
-}
-
-.line1.move {
-    transform: rotateZ(45deg) translateX(0.3rem) translateY(-0.45rem) !important;
-}
-
-.line2.move {
-    transform: rotateZ(-45deg) translateX(-0.8rem) translateY(0.04rem) !important;
-}
-
-@-webkit-keyframes extend {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: 20rem;
-    }
-}
-
-@keyframes extend {
-    0% {
-        height: 0;
-    }
-    100% {
-        height: 20rem;
-    }
-}
-
-@-webkit-keyframes de-extend {
-    0% {
-        height: 20rem;
-    }
-    100% {
-        height: 0;
-        min-height: 0;
-        max-height: 0;
-    }
-}
-
-@keyframes de-extend {
-    0% {
-        height: 20rem;
-    }
-    100% {
-        height: 0;
-        min-height: 0;
-        max-height: 0;
-    }
-}
-
-// 3. ICONS //
-
-.fas {
-    font-size: 2rem;
-    margin-top: auto;
-    margin-bottom: auto;
-    color: black;
-    cursor: pointer;
-}
-
-.articles-fas {
-    color: black;
-    text-decoration: none;
-    position: fixed;
-    z-index: 10;
-}
-
-.articles-fas:visited {
-    color: black;
-    text-decoration: none;
-}
-
-.articles-fas:hover {
-    color: black;
-    background-color: rgba(0, 0, 0, 0);
-    text-decoration: none;
-}
-
-.back {
-    z-index: 30;
-
-    @media only screen and (max-width: 40rem) {
-        display: none;
-    }
-}
-
-i {
-    transition: transform 0.5s;
-    transform: translateX(0px);
-    font-style: normal;
-    color: black;
-}
-
-.back i:hover {
-    transform: translateX(-10px);
-}
-
-.back:focus i {
-    transform: translateX(-10px);
-}
-
-i h3 {
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 25px;
-}
-
-// 4. VARIOUS //
-.more-link {
-    width: 10rem;
-    background-color: $color3;
-    color: $color1;
-    border-radius: 2rem;
-    display: flex;
-    vertical-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.8s;
-    height: auto;
-}
-
-.more-link a {
-    width: 100%;
-    display: flex;
-}
-
-.more-link .icon {
-    margin: 0.5rem;
-    color: $color1;
-}
-
-.more-text {
-    font-weight: bold;
-    line-height: 1.6;
-    color: $color1;
-    font-size: 1rem;
-}
-
-.more-link:hover {
-    background-color: $color5;
-}
-
-img.lazy {
-    -webkit-filter: blur(3px);
-    filter: blur(3px);
 }

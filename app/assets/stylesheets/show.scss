@@ -1,5 +1,9 @@
 @import "settings";
 
+// For /articles/1   //
+//     /proyectos/1  //
+//     /categories/1 //
+
 #show {
     padding: 1rem;
     font-size: 1.1rem;
@@ -37,29 +41,6 @@
 .show-text {
     font-size: 1.1rem;
 }
-
-#back-to-top {
-    position: fixed;
-    color: $color2;
-    font-size: 3rem;
-    left: 0;
-    bottom: 0;
-    margin: 2rem;
-    display: none;
-    cursor: pointer;
-    transition: transform 0.8s;
-    transform: translateY(0px);
-
-    @media only screen and (max-width: 40rem) {
-        display: none;
-        visibility: hidden;
-    }
-}
-
-#back-to-top:hover {
-    transform: translateY(-10px);
-}
-
 
 #all-categories {
     display: block;

@@ -2,9 +2,11 @@
 
 <div id='show'>
     <div id="all-categories" class="centered">
-        <p> <strong>
-                <%= t "categories.all" %>
-        </strong> </p>
+        <p> 
+            <strong>
+                    <%= t "categories.all" %>
+            </strong> 
+        </p>
         <% @categories.each do |category| %>
             <% unless category == @category %>
                 <%= link_to category.get_title, category_path(category), class: 'link' %>

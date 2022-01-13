@@ -1,7 +1,4 @@
 class ArticlesMailer < ApplicationMailer
-    default from: ENV['EMAIL_USERNAME']
-    layout 'mailer'
-
     def article(user, article)
         @user = user
 

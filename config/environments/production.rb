@@ -121,4 +121,5 @@ Rails.application.configure do
         password: ENV['EMAIL_PASSWORD'],
     }
     config.action_mailer.default_url_options = { host: 'https://olguitech.com' }
+    config.action_mailer.asset_host = "https://olguitech.com"
 end

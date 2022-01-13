@@ -1,7 +1,4 @@
 class ConfirmationMailer < ApplicationMailer
-    default from: ENV['EMAIL_USERNAME']
-    layout 'mailer'
-
     def confirmation_instructions(user)
         @user = user
         @email = user.email

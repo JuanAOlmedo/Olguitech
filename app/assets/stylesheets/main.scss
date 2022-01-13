@@ -3,7 +3,7 @@
 .front {
     padding: 5rem 2rem 10rem 2rem;
     text-align: center;
-    background: url("/vector1.svg") no-repeat center bottom;
+    background: image_url("vectors/vector1.svg") no-repeat center bottom;
     background-size: 100%;
     
     @media only screen and (max-width: 67rem) {
@@ -26,7 +26,7 @@
 
     &::after {
         position: absolute;
-        background: url("/vector4.svg") no-repeat center bottom;
+        background: image_url("vectors/vector4.svg") no-repeat center bottom;
         background-size: 100% 100%;
         content: '';
         height: 7rem;
@@ -54,7 +54,7 @@
     box-sizing: border-box;
     padding: 5rem 0 10rem 3rem;
     width: 100%;
-    background: url("/vector2.svg") no-repeat right bottom;
+    background: image_url("vectors/vector2.svg") no-repeat right bottom;
     background-size: 100%;
 
     @media only screen and (max-width: 67rem) {

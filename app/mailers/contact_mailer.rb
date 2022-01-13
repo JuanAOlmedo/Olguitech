@@ -1,7 +1,4 @@
 class ContactMailer < ApplicationMailer
-    default from: ENV['EMAIL_USERNAME']
-    layout 'mailer'
-
     def contacto(user, preference, preference2, message)
         @user = user
         @preference = preference
@@ -27,7 +24,7 @@ class ContactMailer < ApplicationMailer
         @locale = I18n.locale == :es ? 'Español' : 'Inglés'
 
         mail(
-            to: "olmedo.juanandres5@gmail.com",
+            to: ENV['EMAIL_USERNAME'],
             subject: 'Una nueva persona se ha contactado',
         )
     end

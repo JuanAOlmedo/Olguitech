@@ -1,7 +1,4 @@
 class NewsMailer < ApplicationMailer
-    default from: ENV['EMAIL_USERNAME']
-    layout 'mailer'
-
     def newsletter(user, newsletter)
         @user = user
 

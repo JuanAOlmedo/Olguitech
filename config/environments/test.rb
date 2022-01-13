@@ -61,14 +61,10 @@ Rails.application.configure do
     config.action_mailer.delivery_method = :smtp
 
     config.action_mailer.smtp_settings = {
-        address: 'olguitech.com',
-        port: 587,
-        domain: 'olguitech.com',
-        authentication: 'plain',
-        # enable_starttls_auto: true,
-        user_name: ENV['EMAIL_USERNAME'],
-        password: ENV['EMAIL_PASSWORD'],
+        :address => '127.0.0.1', 
+        :port => 1025 
     }
 
     config.action_mailer.default_url_options = { host: 'http://localhost:3000' }
+    config.action_mailer.asset_host = "http://localhost:3000"
 end

@@ -1,5 +1,8 @@
 class Proyecto < ApplicationRecord
     include Getters
+
+    extend FriendlyId
+    friendly_id :title, use: :slugged
     
     has_rich_text :content
     has_rich_text :content2
@@ -44,6 +47,6 @@ class Proyecto < ApplicationRecord
     end
 
     def base_uri
-        Rails.application.routes.url_helpers.proyecto_path(id: self.id, locale: I18n.locale)
+        Rails.application.routes.url_helpers.proyecto_path(self, locale: I18n.locale)
     end
 end

@@ -37,7 +37,7 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 # Use devise for authentication
 gem 'devise', '4.8.1'
 
-# Use simpre_form for devise forms
+# Use simple_form for devise forms
 gem 'simple_form', '5.1.0'
 
 # Use Active Storage variant
@@ -46,6 +46,9 @@ gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+
+# Use friendly_id for url ids
+gem 'friendly_id', '~> 5.4.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

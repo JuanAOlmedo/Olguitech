@@ -1,4 +1,7 @@
 class Category < ApplicationRecord
+    extend FriendlyId
+    friendly_id :title, use: :slugged
+
     has_many :category_categorizables, dependent: :destroy
     has_many :products,
              through: :category_categorizables,
@@ -96,6 +99,6 @@ class Category < ApplicationRecord
     end
 
     def base_uri
-        Rails.application.routes.url_helpers.article_path(id: self.id, locale: I18n.locale)
+        Rails.application.routes.url_helpers.category_path(self, locale: I18n.locale)
     end
 end

@@ -1,3 +1,3 @@
 <%= t("mail.confirmation.txt", email: @email, 
                                 link1: url_for(controller: :users, action: :confirmation, confirmation_token: @token, locale: @user.locale),
-                                link2: url_for(controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token, locale: @user.locale)) %>
+                                link2: edit_user_url(@user, edit_token: @user.edit_token, locale: @user.locale)) %>

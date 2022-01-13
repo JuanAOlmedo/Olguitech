@@ -9,7 +9,7 @@ class NewsMailer < ApplicationMailer
         @user.regenerate_newsletter_token if @user.newsletter_token == nil
 
         @token = @user.newsletter_token
-        @link = url_for(controller: :newsletters, action: :show, id: newsletter.id)
+        @link = newsletter_url(newsletter, locale: I18n.locale)
         @title = newsletter.title
         @content = newsletter.content
         @subject = newsletter.subject

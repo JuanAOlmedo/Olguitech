@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    extend FriendlyId
+    friendly_id :email, use: :slugged
+
     after_create :send_confirmation_instructions
 
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 

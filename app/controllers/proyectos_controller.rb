@@ -132,7 +132,7 @@ class ProyectosController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_proyecto
-        @proyecto = Proyecto.find(params[:id])
+        @proyecto = Proyecto.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

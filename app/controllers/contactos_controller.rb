@@ -23,15 +23,8 @@ class ContactosController < ApplicationController
 
             if @user.save && @contacto.save
                 session[:will_contact] = true
-                redirect_to(
-                    {
-                        controller: 'users',
-                        action: 'edit',
-                        id: @user.id,
-                        edit_token: @user.edit_token
-                    },
+                redirect_to edit_user_path(@user, edit_token: @user.edit_token),
                     notice: I18n.t("contact.first_time")
-                )
             else
                 render :new, status: :unprocessable_entity
             end

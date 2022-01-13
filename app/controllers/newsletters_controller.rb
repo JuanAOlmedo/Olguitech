@@ -41,7 +41,7 @@ class NewslettersController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_newsletter
-        @newsletter = Newsletter.find(params[:id])
+        @newsletter = Newsletter.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

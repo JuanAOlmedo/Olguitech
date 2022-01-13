@@ -2,6 +2,6 @@
 
 <% if yield(:user) == "user" %>
 ---------------------------------------------
-Desubscribirse: <%= url_for controller: :users, action: :unsubscribe, newsletter_token: @token %>
-Editar Usuario: <%= url_for controller: :users, action: :edit, id: @user.id, edit_token: @user.edit_token %>
+Desubscribirse: <%= url_for controller: :users, action: :unsubscribe, newsletter_token: @token, locale: I18n.locale %>
+Editar Usuario: <%= edit_user_url @user, edit_token: @user.edit_token, locale: I18n.locale %>
 <% end %>

@@ -7,15 +7,12 @@ Rails.application.routes.draw do
         get '/contacto', to: 'contactos#index'
         get '/contacto/new', to: 'contactos#new'
 
-        resources :articles do
-            get '/:order_by/:asc_desc', to: 'articles#index', on: :collection
-        end
-        resources :proyectos do
-            get '/:order_by/:asc_desc', to: 'proyectos#index', on: :collection
-        end
-        resources :products do
-            get '/products/:order_by/:asc_desc', to: 'products#index', on: :collection
-        end
+        resources :articles
+        get '/articles/:order_by/:asc_desc', to: 'articles#index'
+        resources :proyectos
+        get '/proyectos/:order_by/:asc_desc', to: 'proyectos#index'
+        resources :products
+        get '/products/:order_by/:asc_desc', to: 'products#index'
 
         resources :users do
             delete "/:edit_token", to: 'users#destroy', on: :member

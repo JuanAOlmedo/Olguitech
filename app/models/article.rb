@@ -1,6 +1,9 @@
 class Article < ApplicationRecord
     include Getters
 
+    extend FriendlyId
+    friendly_id :title, use: :slugged
+
     has_rich_text :content
     has_rich_text :content2
     has_one_attached :image
@@ -44,6 +47,6 @@ class Article < ApplicationRecord
     end
 
     def base_uri
-        Rails.application.routes.url_helpers.article_path(id: self.id, locale: I18n.locale)
+        Rails.application.routes.url_helpers.article_path(self, locale: I18n.locale)
     end
 end

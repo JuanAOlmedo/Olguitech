@@ -75,7 +75,7 @@
     }
 }
 
-#admin-tools {
+.admin-tools {
     right: 0;
     bottom: 0;
     z-index: 9;
@@ -93,16 +93,8 @@
     }
 }
 
-.right-navbar-section.admin-right {
-    width: 67%;
-
-    @media only screen and (max-width: 80rem) {
-        width: 74%;
-    }
-
-    @media only screen and (max-width: 70rem) {
-        width: 77%;
-    }
+.admin-tools-2 {
+    bottom: 3rem;
 }
 
 .edit i {
@@ -135,22 +127,6 @@
         @media only screen and (max-width: 67rem) {
             height: 30rem;
         }
-    }
-}
-
-.right-tool {
-    display: block;
-    right: 0;
-    bottom: 0;
-    width: 55px;
-    height: 55px;
-    margin: 10px;
-    z-index: 10;
-    color: $accent-color;
-    position: relative;
-
-    @media only screen and (max-width: 70rem) {
-        margin: 5px;
     }
 }
 

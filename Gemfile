@@ -15,8 +15,8 @@ gem "puma", ">= 5.5.1"
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '5.4.0'
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"

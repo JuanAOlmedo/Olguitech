@@ -12,7 +12,7 @@
 
         <div class="file">
             <%= form.label :image do %>
-                <%= form.file_field :image, class:'image-attacher', data: { article_creator_target: "fileInput" } %>
+                <%= form.file_field :image, class:'image-attacher', data: { article_creator_target: "fileInput", action: "change->article-creator#displayNewImage" } %>
                 <span>
                     Elegir una imagen...
                 </span>

@@ -18,8 +18,6 @@ export default class extends Controller {
         "formText2",
     ];
 
-    connect() {}
-
     displayNewImage() {
         const [file] = this.fileInputTarget.files;
         if (file) {

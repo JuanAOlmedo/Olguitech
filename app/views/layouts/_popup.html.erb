@@ -1,7 +1,7 @@
 <div style="height: 2.5rem; display: flex;">
-    <div class="dropdown centered" style="width: 15rem;">
+    <div class="dropdown centered" style="width: 15rem;" data-controller="dropdown" data-dropdown-active-class="is-active">
         <div class="dropdown-trigger">
-            <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu">
+            <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu" data-action="click->dropdown#display">
                 <%= t "index.sort_by" %>
                 <span class="dropdown-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -11,7 +11,7 @@
                 </span>
             </button>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <div class="dropdown-menu" id="dropdown-menu" role="menu" data-dropdown-target="menu">
             <%= link_to t("index.category"), url_for(order_by: :categories, asc_desc: :desc), class: "btn" %>
             <%= link_to t("index.up_desc"), url_for(order_by: :updated_at, asc_desc: :desc), class: "btn" %>
             <%= link_to t("index.created_desc"), url_for(order_by: :created_at, asc_desc: :desc), class: "btn" %>

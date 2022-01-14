@@ -8,9 +8,9 @@
         <div class="btn-group" style="margin-bottom: 2rem;">
             <%= link_to 'Cerrar sesion', destroy_admin_session_path, data: { turbo_method: :delete }, class:'btn' %>
             <%= link_to 'Mail', "https://olguitech.com:2003/rainloop", target: :_blank, class:'btn' %>
-            <div class="dropdown" style="width: 12rem;">
+            <div class="dropdown" style="width: 12rem;" data-controller="dropdown" data-dropdown-active-class="is-active">
                     <div class="dropdown-trigger">
-                        <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu">
+                        <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu" data-action="click->dropdown#display">
                             Nuevo
                             <span class="dropdown-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -20,7 +20,7 @@
                             </span>
                         </button>
                     </div>
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu" data-dropdown-target="menu">
                         <%= link_to "Solucion", new_article_path, class: "btn" %>
                         <%= link_to "Proyecto", new_proyecto_path, class: "btn" %>
                         <%= link_to "Producto", new_product_path, class: "btn" %>

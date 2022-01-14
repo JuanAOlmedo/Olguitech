@@ -65,7 +65,11 @@ td {
     background-color: white;
     padding: 2rem;
     overflow-y: auto;
-    display: none;
+    display: block;
+
+    &.hidden {
+        display: none;
+    }
 }
 
 #user-index-field {
@@ -75,4 +79,9 @@ td {
         font-size: 1.5rem;
         width: 90%;
     }
+}
+
+.icon-tabler-x, 
+.times-contacted {
+    cursor: pointer;
 }

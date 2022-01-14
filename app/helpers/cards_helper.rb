@@ -7,6 +7,8 @@ module CardsHelper
         Cards.new(self, array, image).alternative_html
     end
 
+    private
+
     class Cards
         def initialize(view, array, image)
             @view, @array, @image = view, array, image

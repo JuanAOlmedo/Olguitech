@@ -4,8 +4,23 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller.js"
-application.register("hello", HelloController)
+import AlertController from "./alert_controller.js"
+application.register("alert", AlertController)
+
+import DropdownBarsController from "./dropdown_bars_controller.js"
+application.register("dropdown-bars", DropdownBarsController)
+
+import DropdownController from "./dropdown_controller.js"
+application.register("dropdown", DropdownController)
+
+import IntersectionObserverController from "./intersection_observer_controller.js"
+application.register("intersection-observer", IntersectionObserverController)
 
 import ResetFormController from "./reset_form_controller.js"
 application.register("reset-form", ResetFormController)
+
+import UserIndexController from "./user_index_controller.js"
+application.register("user-index", UserIndexController)
+
+import UserSearchbarController from "./user_searchbar_controller.js"
+application.register("user-searchbar", UserSearchbarController)

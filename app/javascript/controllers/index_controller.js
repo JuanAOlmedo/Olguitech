@@ -1,8 +1,8 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="index"
 export default class extends Controller {
-    static targets = [ "menu", "svg", "path", "category", "title" ]
+    static targets = ["menu", "svg", "path", "category", "title"];
 
     initialize() {
         if ("IntersectionObserver" in window) {
@@ -15,11 +15,11 @@ export default class extends Controller {
                             this.titleTargets[
                                 Number(entry.target.dataset.index)
                             ].classList.remove("visible");
-        
+
                             this.setSvg();
                             return;
                         }
-        
+
                         entry.target.classList.add("visible1");
                         this.setVisible();
 
@@ -44,29 +44,24 @@ export default class extends Controller {
                     "visible"
                 );
             }
-        })
+        });
     }
 
     setSvg() {
         const categories = Array.from(document.querySelectorAll(".visible1")),
             menuBounds = this.menuTarget.getBoundingClientRect();
-        this.svgTarget.style.height = `${
-            menuBounds.y + menuBounds.height
-        }px`;
-    
+        this.svgTarget.style.height = `${menuBounds.y + menuBounds.height}px`;
+
         let categoriesIndex = [];
         categories.forEach((category) => {
             categoriesIndex.push(Number(category.dataset.index));
         });
 
         if (categories.length == 0) {
-            this.pathTarget.setAttribute(
-                "stroke-dasharray",
-                "0 0 0 10000"
-            );
+            this.pathTarget.setAttribute("stroke-dasharray", "0 0 0 10000");
             return;
         }
-    
+
         let category1 =
                 this.titleTargets[
                     Math.min.apply(Math, categoriesIndex)
@@ -75,19 +70,22 @@ export default class extends Controller {
                 this.titleTargets[
                     Math.max.apply(Math, categoriesIndex)
                 ].getBoundingClientRect();
-    
+
         const firstTitle = this.titleTargets[0].getBoundingClientRect(),
-            lastTitle = this.titleTargets[this.titleTargets.length - 1].getBoundingClientRect();
-    
+            lastTitle =
+                this.titleTargets[
+                    this.titleTargets.length - 1
+                ].getBoundingClientRect();
+
         let pathStart = category1.y - firstTitle.y,
             pathEnd = category2.y + category2.height - firstTitle.y,
             pathLength = pathEnd - pathStart;
-    
+
         this.pathTarget.attributes.d.value = `
         M ${firstTitle.x} ${firstTitle.y}
         V ${lastTitle.y + lastTitle.height}
         `;
-    
+
         this.pathTarget.setAttribute(
             "stroke-dasharray",
             `0 ${pathStart} ${pathLength} 10000`

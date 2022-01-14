@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="alert"
 export default class extends Controller {
@@ -12,10 +12,10 @@ export default class extends Controller {
         setTimeout(() => (this.element.style.display = "none"), 1000);
     }
 
-    moveTouch() {    
+    moveTouch() {
         this.currentY = event.touches[0].clientY;
         this.diffY = 0 - this.currentY;
-    
+
         event.preventDefault();
     }
 
@@ -23,7 +23,7 @@ export default class extends Controller {
         if (this.diffY > 8) {
             this.close();
         }
-    
+
         this.diffY = 0;
     }
 }

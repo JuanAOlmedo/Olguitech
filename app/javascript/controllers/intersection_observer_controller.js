@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="intersection-observer"
 export default class extends Controller {
@@ -8,7 +8,7 @@ export default class extends Controller {
                 (entries, imgObserver) => {
                     entries.forEach((entry) => {
                         if (!entry.isIntersecting) return;
-        
+
                         const img = entry.target;
                         img.classList.remove("lazy");
                         imgObserver.unobserve(img);
@@ -19,7 +19,7 @@ export default class extends Controller {
                     threshold: 0,
                 }
             );
-        
+
             this.stillsObserver = new IntersectionObserver(
                 (entries, stillsObserver) => {
                     entries.forEach((entry) => {
@@ -27,7 +27,7 @@ export default class extends Controller {
                         if (!entry.isIntersecting) {
                             return;
                         }
-        
+
                         still.classList.add("move");
                         stillsObserver.unobserve(entry.target);
                     });
@@ -38,7 +38,7 @@ export default class extends Controller {
             );
         }
     }
-    
+
     connect() {
         this.lazy = document.querySelectorAll(".lazy");
         this.stills = document.querySelectorAll(".still");
@@ -47,7 +47,7 @@ export default class extends Controller {
             this.lazy.forEach((img) => {
                 this.imgObserver.observe(img);
             });
-            
+
             this.stills.forEach((still) => {
                 this.stillsObserver.observe(still);
             });
@@ -56,7 +56,7 @@ export default class extends Controller {
                 img.classList.remove("lazy");
                 img.src = img.dataset.src ? img.dataset.src : img.src;
             });
-            
+
             this.stills.forEach((still) => {
                 still.classList.add("move");
             });

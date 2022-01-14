@@ -1,12 +1,12 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="contacto"
 export default class extends Controller {
     static values = {
         mapDefaultZoom: Number,
         longitude: Number,
-        latitude: Number
-    }
+        latitude: Number,
+    };
 
     initialize() {
         this.map;
@@ -16,7 +16,7 @@ export default class extends Controller {
         this.initialize_map();
         this.add_map_point();
     }
-    
+
     initialize_map() {
         this.map = new ol.Map({
             target: "map",
@@ -28,7 +28,10 @@ export default class extends Controller {
                 }),
             ],
             view: new ol.View({
-                center: ol.proj.fromLonLat([this.longitudeValue, this.latitudeValue]),
+                center: ol.proj.fromLonLat([
+                    this.longitudeValue,
+                    this.latitudeValue,
+                ]),
                 zoom: this.mapDefaultZoomValue,
             }),
         });
@@ -41,7 +44,10 @@ export default class extends Controller {
                     new ol.Feature({
                         geometry: new ol.geom.Point(
                             ol.proj.transform(
-                                [parseFloat(this.longitudeValue), parseFloat(this.latitudeValue)],
+                                [
+                                    parseFloat(this.longitudeValue),
+                                    parseFloat(this.latitudeValue),
+                                ],
                                 "EPSG:4326",
                                 "EPSG:3857"
                             )
@@ -58,7 +64,7 @@ export default class extends Controller {
                 }),
             }),
         });
-    
+
         this.map.addLayer(vectorLayer);
     }
 }

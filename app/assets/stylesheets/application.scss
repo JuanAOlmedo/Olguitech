@@ -183,7 +183,9 @@ body {
     &.is-danger {
         background-color: #ff7b7b;
 
-        &:hover {
+        &:hover,
+        &.active, 
+        &:focus {
             background-color: #e66060;
             color: #000;
         }

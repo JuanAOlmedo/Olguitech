@@ -66,7 +66,7 @@ module Getters
                 asc_desc == 'asc' || asc_desc == 'desc' ? asc_desc : :desc
 
             if order_by == 'categories'
-                categories = Category.all.order created_at: :desc
+                categories = Category.includes(self.model_name.plural).where.not(self.model_name.plural => { id: nil })
             elsif order_by == 'uncategorized'
                 ordered = self.uncategorized.order created_at: asc_desc
             else

@@ -16,6 +16,9 @@ application.register("dropdown-bars", DropdownBarsController)
 import DropdownController from "./dropdown_controller.js"
 application.register("dropdown", DropdownController)
 
+import IndexController from "./index_controller.js"
+application.register("index", IndexController)
+
 import IntersectionObserverController from "./intersection_observer_controller.js"
 application.register("intersection-observer", IntersectionObserverController)
 

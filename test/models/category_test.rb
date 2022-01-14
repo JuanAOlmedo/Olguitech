@@ -53,26 +53,4 @@ class CategoryTest < ActiveSupport::TestCase
             @category2.get_short_desc,
         )
     end
-
-    test 'should add articles, projects, products' do
-        @category.change_related([1, 2], [1, 2], [1, 2])
-
-        assert_equal(Article.all, @category.articles)
-        assert_equal(Proyecto.all, @category.proyectos)
-        assert_equal(Product.all, @category.products)
-    end
-
-    test 'should change articles, projects and products' do
-        @category.change_related([1], [2], [1])
-
-        assert_equal([Article.find(1)], @category.articles)
-        assert_equal([Proyecto.find(2)], @category.proyectos)
-        assert_equal([Product.find(1)], @category.products)
-
-        @category.change_related([], [], [])
-
-        assert_equal([], @category.articles)
-        assert_equal([], @category.proyectos)
-        assert_equal([], @category.products)
-    end
 end

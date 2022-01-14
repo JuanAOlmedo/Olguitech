@@ -67,36 +67,14 @@ class ProductTest < ActiveSupport::TestCase
         assert_equal(ActionText::RichText.find(6), @product.get_content)
     end
 
-    test 'should add articles, projects and categories' do
-        @product.change_related([1, 2], [1, 2], [1, 2])
-
-        assert_equal(Article.all, @product.articles)
-        assert_equal(Proyecto.all, @product.proyectos)
-        assert_equal(Category.all, @product.categories)
-    end
-
-    test 'should change articles, projects and categories' do
-        @product.change_related([1], [2], [1])
-
-        assert_equal([Article.find(1)], @product.articles)
-        assert_equal([Proyecto.find(2)], @product.proyectos)
-        assert_equal([Category.find(1)], @product.categories)
-
-        @product.change_related([], [], [])
-
-        assert_equal([], @product.articles)
-        assert_equal([], @product.proyectos)
-        assert_equal([], @product.categories)
-    end
-
     test 'should get uncategorized' do
-        @product.change_related([], [], [])
-        @product2.change_related([], [], [1])
+        @product.update(category_ids: [])
+        @product2.update(category_ids: [1])
 
         assert_equal([@product], Product.uncategorized)
 
-        @product.change_related([], [], [1])
-        @product2.change_related([], [], [])
+        @product.update(category_ids: [1])
+        @product2.update(category_ids: [])
 
         assert_equal([@product2], Product.uncategorized)
     end

@@ -9,7 +9,7 @@ module Getters
 
     def get_short_title
         title = self.get_title
-        return title.length > 50 ? title[0...50] + '...' : title
+        return title.length > 50 ? title[0...50] + '...' : title if title
     end
 
     def get_desc
@@ -23,13 +23,15 @@ module Getters
 
     def get_short_desc
         description = self.get_desc
-        return(
-            if description.length > 110
-                description[0...110] + '...'
-            else
-                description
-            end
-        )
+        if description
+            return(
+                if description.length > 110
+                    description[0...110] + '...'
+                else
+                    description
+                end
+            )
+        end
     end
 
     def get_content

@@ -67,33 +67,14 @@ class ProyectoTest < ActiveSupport::TestCase
         assert_equal(ActionText::RichText.find(4), @proyecto.get_content)
     end
 
-    test 'should add categories and products' do
-        @proyecto.change_categories_and_products([1, 2], [1, 2])
-
-        assert_equal(Category.all, @proyecto.categories)
-        assert_equal(Product.all, @proyecto.products)
-    end
-
-    test 'should change categories and products' do
-        @proyecto.change_categories_and_products([1], [2])
-
-        assert_equal([Category.find(1)], @proyecto.categories)
-        assert_equal([Product.find(2)], @proyecto.products)
-
-        @proyecto.change_categories_and_products([], [])
-
-        assert_equal([], @proyecto.categories)
-        assert_equal([], @proyecto.products)
-    end
-
     test 'should get uncategorized' do
-        @proyecto.change_categories_and_products([], [])
-        @proyecto2.change_categories_and_products([1], [])
+        @proyecto.update(category_ids: [])
+        @proyecto2.update(category_ids: [1])
 
         assert_equal([@proyecto], Proyecto.uncategorized)
 
-        @proyecto.change_categories_and_products([1], [])
-        @proyecto2.change_categories_and_products([], [])
+        @proyecto.update(category_ids: [1])
+        @proyecto2.update(category_ids: [])
 
         assert_equal([@proyecto2], Proyecto.uncategorized)
     end

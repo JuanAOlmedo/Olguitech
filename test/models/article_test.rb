@@ -67,33 +67,14 @@ class ArticleTest < ActiveSupport::TestCase
         assert_equal(ActionText::RichText.find(2), @article.get_content)
     end
 
-    test 'should add categories and products' do
-        @article.change_categories_and_products([1, 2], [1, 2])
-
-        assert_equal(Category.all, @article.categories)
-        assert_equal(Product.all, @article.products)
-    end
-
-    test 'should change categories and products' do
-        @article.change_categories_and_products([1], [2])
-
-        assert_equal([Category.find(1)], @article.categories)
-        assert_equal([Product.find(2)], @article.products)
-
-        @article.change_categories_and_products([], [])
-
-        assert_equal([], @article.categories)
-        assert_equal([], @article.products)
-    end
-
     test 'should get uncategorized' do
-        @article.change_categories_and_products([], [])
-        @article2.change_categories_and_products([1], [])
+        @article.update(category_ids: [])
+        @article2.update(category_ids: [1])
 
         assert_equal([@article], Article.uncategorized)
 
-        @article.change_categories_and_products([1], [])
-        @article2.change_categories_and_products([], [])
+        @article.update(category_ids: [1])
+        @article2.update(category_ids: [])
 
         assert_equal([@article2], Article.uncategorized)
     end

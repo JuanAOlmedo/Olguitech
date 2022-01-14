@@ -16,7 +16,5 @@
         <%= t "contact.direction_html" %>
     </p>
 
-    <div id="map" class="centered location-container" alt='<%= I18n.t "contact.direction_alt" %>'></div>
+    <div id="map" data-controller="contacto" data-contacto-map-default-zoom-value="15" data-contacto-longitude-value="-56.15627" data-contacto-latitude-value="-34.918624" class="centered location-container" alt='<%= I18n.t "contact.direction_alt" %>'></div>
 </div>
-
-<%= javascript_pack_tag 'contacto' %>

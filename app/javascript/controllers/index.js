@@ -7,6 +7,9 @@ import { application } from "./application"
 import AlertController from "./alert_controller.js"
 application.register("alert", AlertController)
 
+import ContactoController from "./contacto_controller.js"
+application.register("contacto", ContactoController)
+
 import DropdownBarsController from "./dropdown_bars_controller.js"
 application.register("dropdown-bars", DropdownBarsController)
 

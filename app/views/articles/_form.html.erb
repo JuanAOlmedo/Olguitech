@@ -1,18 +1,18 @@
-<%= form_with model: @article do |form| %>
+<%= form_with model: @article, data: { controller: "article-creator" } do |form| %>
     <div class="form">
         <div class="field">
             <%= form.label :title, "Título" %>
-            <%= form.text_area :title, id: "title-1" %>
+            <%= form.text_area :title, data: { article_creator_target: "formTitle" } %>
         </div>
 
         <div class="field">
             <%= form.label :title2, "Título en inglés" %>
-            <%= form.text_area :title2, id: "title-2" %>
+            <%= form.text_area :title2, data: { article_creator_target: "formTitle2" } %>
         </div>
 
         <div class="file">
             <%= form.label :image do %>
-                <%= form.file_field :image, class:'image-attacher', id:"fileInput" %>
+                <%= form.file_field :image, class:'image-attacher', data: { article_creator_target: "fileInput" } %>
                 <span>
                     Elegir una imagen...
                 </span>
@@ -20,26 +20,26 @@
         </div>
 
         <% url = url_for(@article.image) rescue "https://" %>
-        <%= image_tag url, class:"image-upload centered"  %>
+        <%= image_tag url, class:"image-upload centered", data: { article_creator_target: "image" }  %>
 
         <div class="rich-text field">
             <%= form.label :content, "Contenido" %>
-            <%= form.rich_text_area :content, id: "content-1" %>
+            <%= form.rich_text_area :content, data: { article_creator_target: "formText" } %>
         </div>
 
         <div class="rich-text field">
             <%= form.label :content2, "Contenido en inglés" %>
-            <%= form.rich_text_area :content2, id: "content-2" %>
+            <%= form.rich_text_area :content2, data: { article_creator_target: "formText2" } %>
         </div>
 
         <div class="field">
             <%= form.label :description, "Descripción" %>
-            <%= form.text_area :description, id: "desc-1" %>
+            <%= form.text_area :description, data: { article_creator_target: "formDescription" } %>
         </div>
 
         <div class="field">
             <%= form.label :description2, "Descripción en inglés" %>
-            <%= form.text_area :description2, id: "desc-2" %>
+            <%= form.text_area :description2, data: { article_creator_target: "formDescription2" } %>
         </div>
 
         <div class="checkbox-field">
@@ -60,31 +60,27 @@
 
         <div class='btn-group centered'>
             <%= form.submit 'Crear', class: "btn" %>
-            <a class="btn" id="preview"> Previsualizar </a>
+            <a class="btn pointer" data-action="click->article-creator#showPreview"> Previsualizar </a>
         </div>
+    </div>
+
+    <div id='preview-div' data-article-creator-target="preview">
+        <div class="preview-header centered">
+            <a class="btn pointer" data-action="click->article-creator#stopShowingPreview"> Cerrar </a>
+            <h2> Previsualizacion </h2>
+        </div>
+        <article>
+            <h2 class='main-title' data-article-creator-target="articleTitle"> </h2>
+
+            <p class='subtitle' data-article-creator-target="articleDescription"> </p>
+
+            <img src='' class='centered' data-article-creator-target="articleImg" alt=''>
+
+            <div class="content">
+                <div class='show-text'>
+                    <p class='trix-content' data-article-creator-target="articleText"> </p>
+                </div>
+            </div>
+        </article>
     </div>
 <% end %>
-
-<div id='preview-div'>
-    <div class="preview-header centered">
-        <h2> Previsualizacion </h2>
-        <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>" class="flag preview-flag">
-
-        <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>" class="flag preview-flag">
-    </div>
-    <article>
-        <h2 class='main-title a-title'> </h2>
-
-        <p class='subtitle'> </p>
-
-        <img src='' class='article-img centered' alt=''>
-
-        <div class="content">
-            <div class='show-text'>
-                <p class='article-text trix-content'> </p>
-            </div>
-        </div>
-    </article>
-</div>
-
-<%= javascript_pack_tag 'article-creator' %>

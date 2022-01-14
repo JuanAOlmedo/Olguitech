@@ -22,22 +22,10 @@ class CategoriesController < ApplicationController
 
     # POST /categories or /categories.json
     def create
-        parameters = category_params
-        products = parameters[:product_ids][1..-1]
-        parameters.delete(:products)
-
-        articles = parameters[:article_ids][1..-1]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyecto_ids][1..-1]
-        parameters.delete(:proyectos)
-
-        @category = Category.new(parameters)
+        @category = Category.new(category_params)
 
         respond_to do |format|
             if @category.save
-                @category.change_related(articles, proyectos, products)
-
                 format.html do
                     redirect_to @category,
                                 notice: 'Category was successfully created.'
@@ -56,20 +44,8 @@ class CategoriesController < ApplicationController
 
     # PATCH/PUT /categories/1 or /categories/1.json
     def update
-        parameters = category_params
-        products = parameters[:product_ids][1..-1]
-        parameters.delete(:products)
-
-        articles = parameters[:article_ids][1..-1]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyecto_ids][1..-1]
-        parameters.delete(:proyectos)
-
         respond_to do |format|
-            if @category.update(parameters)
-                @category.change_related(articles, proyectos, products)
-
+            if @category.update(category_params)
                 format.html do
                     redirect_to @category,
                                 notice: 'Category was successfully updated.'

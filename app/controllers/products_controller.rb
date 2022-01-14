@@ -49,20 +49,8 @@ class ProductsController < ApplicationController
 
     # POST /products or /products.json
     def create
-        parameters = product_params
-        categories = parameters[:category_ids][1..-1]
-        parameters.delete(:categories)
-
-        articles = parameters[:article_ids][1..-1]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyecto_ids][1..-1]
-        parameters.delete(:proyectos)
-
-        @product = Product.new(parameters)
-
-        @product.change_related(articles, proyectos, categories)
-
+        @product = Product.new(product_params)
+        
         respond_to do |format|
             if @product.save
                 format.html do
@@ -89,20 +77,8 @@ class ProductsController < ApplicationController
 
     # PATCH/PUT /products/1 or /products/1.json
     def update
-        parameters = product_params
-        categories = parameters[:category_ids][1..-1]
-        parameters.delete(:categories)
-
-        articles = parameters[:article_ids][1..-1]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyecto_ids][1..-1]
-        parameters.delete(:proyectos)
-
         respond_to do |format|
-            if @product.update(parameters)
-                @product.change_related(articles, proyectos, categories)
-
+            if @product.update(product_params)
                 format.html do
                     redirect_to @product,
                                 notice: 'Producto actualizado exitosamente.'

@@ -51,16 +51,7 @@ class ProyectosController < ApplicationController
     # POST /proyectos
     # POST /proyectos.json
     def create
-        parameters = proyecto_params
-        products = parameters[:product_ids][1..-1]
-        parameters.delete(:products)
-
-        categories = parameters[:category_ids][1..-1]
-        parameters.delete(:categories)
-
-        @proyecto = Proyecto.new(parameters)
-
-        @proyecto.change_categories_and_products(categories, products)
+        @proyecto = Proyecto.new(proyecto_params)
 
         respond_to do |format|
             if @proyecto.save
@@ -89,17 +80,8 @@ class ProyectosController < ApplicationController
     # PATCH/PUT /proyectos/1
     # PATCH/PUT /proyectos/1.json
     def update
-        parameters = proyecto_params
-        products = parameters[:product_ids][1..-1]
-        parameters.delete(:products)
-
-        categories = parameters[:category_ids][1..-1]
-        parameters.delete(:categories)
-
         respond_to do |format|
-            if @proyecto.update(parameters)
-                @proyecto.change_categories_and_products(categories, products)
-
+            if @proyecto.update(proyecto_params)
                 format.html do
                     redirect_to @proyecto,
                                 notice: 'Artículo actualizdo exitosamente.'

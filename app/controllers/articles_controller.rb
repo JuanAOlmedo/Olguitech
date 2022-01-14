@@ -51,16 +51,7 @@ class ArticlesController < ApplicationController
     # POST /articles
     # POST /articles.json
     def create
-        parameters = article_params
-        products = parameters[:product_ids][1..-1]
-        parameters.delete(:products)
-
-        categories = parameters[:category_ids][1..-1]
-        parameters.delete(:categories)
-
-        @article = Article.new(parameters)
-
-        @article.change_categories_and_products(categories, products)
+        @article = Article.new(article_params)
 
         respond_to do |format|
             if @article.save
@@ -89,17 +80,8 @@ class ArticlesController < ApplicationController
     # PATCH/PUT /articles/1
     # PATCH/PUT /articles/1.json
     def update
-        parameters = article_params
-        products = parameters[:product_ids][1..-1]
-        parameters.delete(:products)
-
-        categories = parameters[:category_ids][1..-1]
-        parameters.delete(:categories)
-
         respond_to do |format|
-            if @article.update(parameters)
-                @article.change_categories_and_products(categories, products)
-
+            if @article.update(article_params)
                 format.html do
                     redirect_to @article,
                                 notice: 'Artículo actualizado exitosamente.'

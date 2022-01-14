@@ -8,6 +8,10 @@
     background: image_url("vectors/vector1.svg") no-repeat center bottom;
     background-size: 100%;
     
+    @media only screen and (max-width: 110rem) {
+        padding: 7rem 2rem 12rem 2rem;
+    }
+
     @media only screen and (max-width: 67rem) {
         padding: 5rem 1rem 8rem 1rem;
         background-size: 200%;

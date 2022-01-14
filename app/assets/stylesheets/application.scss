@@ -11,6 +11,28 @@
 
 // 1. GENERAL //
 
+html {
+    @media only screen and (min-width: 100rem) {
+        font-size: 1.5rem;
+    }
+
+    @media only screen and (min-width: 120rem) {
+        font-size: 1.7rem;
+    }
+
+    @media only screen and (min-width: 140rem) {
+        font-size: 1.9rem;
+    }
+
+    @media only screen and (min-width: 160rem) {
+        font-size: 2.4rem;
+    }
+
+    @media only screen and (min-width: 190rem) {
+        font-size: 2.7rem;
+    }
+}
+
 * {
     font-family: "Source Sans Pro", "Helvetica Neue", helvetica,
         "Apple Color Emoji", arial, sans-serif;
@@ -36,7 +58,7 @@ body {
     margin: 2rem auto 2rem auto;
     width: 80%;
     font-weight: 900;
-    line-height: 67px;
+    line-height: 4.2rem;
     letter-spacing: -0.01em;
 
     @media only screen and (max-width: 67rem) {
@@ -47,7 +69,7 @@ body {
     @media only screen and (max-width: 35rem) {
         width: 97%;
         font-size: 2.3rem;
-        line-height: 43px;
+        line-height: 2.3rem;
     }
 }
 

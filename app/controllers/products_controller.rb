@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
     # POST /products or /products.json
     def create
         @product = Product.new(product_params)
-        
+
         respond_to do |format|
             if @product.save
                 format.html do
@@ -59,12 +59,6 @@ class ProductsController < ApplicationController
                 end
                 format.json do
                     render :show, status: :created, location: @product
-                end
-
-                @users = User.all.where(newsletter: true)
-
-                @users.each do |user|
-                    ArticlesMailer.article(user, @article).deliver_later
                 end
             else
                 format.html { render :new, status: :unprocessable_entity }

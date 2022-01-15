@@ -16,11 +16,7 @@ module CardsHelper
         end
 
         def html
-            unless @array.length == 1
-                content = grid(@array)
-            else
-                content = card_single(@array[0])
-            end
+            content = @array.length != 1 ? grid(@array) : card_single(@array[0])
 
             content_tag :div, content, id: uid, class: 'cards-holder centered'
         end

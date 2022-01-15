@@ -1,45 +1,34 @@
 module Getters
     def get_title
-        if I18n.locale == :en && self.title2 != '' && self.title2 != nil
-            self.title2
-        else
-            self.title
-        end
+        return title2 if I18n.locale == :en && !title2.empty? && !title2.nil?
+
+        title
     end
 
     def get_short_title
-        title = self.get_title
-        return title.length > 50 ? title[0...50] + '...' : title if title
+        title = get_title
+        return if title.nil?
+
+        title.length > 50 ? "#{title[0...50]}..." : title
     end
 
     def get_desc
-        if I18n.locale == :en && self.description2 != '' &&
-               self.description2 != nil
-            self.description2
-        else
-            self.description
-        end
+        return description2 if I18n.locale == :en && !description2.empty? && !description2.nil?
+
+        description
     end
 
     def get_short_desc
-        description = self.get_desc
-        if description
-            return(
-                if description.length > 110
-                    description[0...110] + '...'
-                else
-                    description
-                end
-            )
-        end
+        description = get_desc
+        return if description.nil?
+
+        description.length > 110 ? "#{description[0...110]}..." : description
     end
 
     def get_content
-        if I18n.locale == :en && !self.content2.empty?
-            self.content2
-        else
-            self.content
-        end
+        return content2 if I18n.locale == :en && !content2.empty?
+
+        content
     end
 
     def self.included(base)
@@ -53,9 +42,7 @@ module Getters
 
         def get_ordered(order_by, asc_desc)
             order_by =
-                if order_by == 'created_at' || order_by == 'updated_at' ||
-                       order_by == 'title' || order_by == 'categories' ||
-                       order_by == 'uncategorized'
+                if %w[created_at updated_at title categories uncategorized].include? order_by
                     order_by
                 else
                     'categories'
@@ -64,18 +51,18 @@ module Getters
             order_by =
                 order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
 
-            asc_desc =
-                asc_desc == 'asc' || asc_desc == 'desc' ? asc_desc : :desc
+            asc_desc = %w[asc desc].include?(asc_desc) ? asc_desc : :desc
 
-            if order_by == 'categories'
-                categories = Category.includes(self.model_name.plural).where.not(self.model_name.plural => { id: nil })
-            elsif order_by == 'uncategorized'
+            case order_by
+            when 'categories'
+                categories = Category.related_to self.model_name.plural
+            when 'uncategorized'
                 ordered = self.uncategorized.order created_at: asc_desc
             else
                 ordered = self.all.order order_by => asc_desc
             end
 
-            return categories, ordered
+            [categories, ordered]
         end
     end
 end

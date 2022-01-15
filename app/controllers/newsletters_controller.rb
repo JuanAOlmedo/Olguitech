@@ -23,19 +23,9 @@ class NewslettersController < ApplicationController
         @newsletter = Newsletter.new(newsletter_params)
 
         if @newsletter.save
-            @users = User.all.where newsletter: true
-
-            @users.each do |user|
-                @mail =
-                    NewsMailer.newsletter(
-                        user,
-                        @newsletter
-                    ).deliver_now!
-            end
-
             redirect_to root_path, notice: 'Se ha enviado la Newsletter'
         else
-            render:new, status: :unprocessable_entity
+            render :new, status: :unprocessable_entity
         end
     end
 

@@ -1,5 +1,6 @@
 class Article < ApplicationRecord
     include Getters
+    include Mailable
 
     extend FriendlyId
     friendly_id :title, use: :slugged
@@ -13,6 +14,8 @@ class Article < ApplicationRecord
 
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
+
+    after_create :send_mail
 
     def base_uri
         Rails.application.routes.url_helpers.article_path(self, locale: I18n.locale)

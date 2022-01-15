@@ -62,12 +62,6 @@ class ArticlesController < ApplicationController
                 format.json do
                     render :show, status: :created, location: @article
                 end
-
-                @users = User.all.where(newsletter: true)
-
-                @users.each do |user|
-                    ArticlesMailer.article(user, @article).deliver_later
-                end
             else
                 format.html { render :new, status: :unprocessable_entity }
                 format.json do

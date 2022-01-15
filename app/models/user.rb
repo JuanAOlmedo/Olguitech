@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
     after_create :send_confirmation_instructions
 
-    validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
+    validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
     has_secure_token :edit_token
     has_secure_token :newsletter_token
@@ -13,21 +13,21 @@ class User < ApplicationRecord
     has_many :contactos, dependent: :destroy
 
     def send_confirmation_instructions
-        unless self.confirmed?
-            self.update(confirmation_sent_at: Time.now)
-            ConfirmationMailer.confirmation_instructions(self).deliver_later
-        end
+        return if confirmed?
+
+        update(confirmation_sent_at: Time.now)
+        ConfirmationMailer.confirmation_instructions(self).deliver_later
     end
 
     def confirm
-        if !!self.id
-            self.update(confirmed_at: Time.now) unless self.confirmed?
+        if id.nil? && !confirmed?
+            update(confirmed_at: Time.now)
         else
             self.confirmed_at = Time.now
         end
     end
 
     def confirmed?
-        !!self.confirmed_at
+        !!confirmed_at
     end
 end

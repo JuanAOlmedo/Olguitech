@@ -33,13 +33,9 @@ class UsersController < ApplicationController
     end
 
     def create
-        parameters = new_user_params
+        parameters = user_params
 
-        if admin_signed_in?
-            confirm = parameters[:auto_confirm] == "1" ? true : false
-        else
-            confrim = false
-        end
+        confirm = parameters[:auto_confirm] == '1'
         parameters.delete(:auto_confirm)
 
         @user = User.new parameters
@@ -66,8 +62,8 @@ class UsersController < ApplicationController
 
                 redirect_to root_path,
                             notice: I18n.t('contact.sent')
-            else 
-                redirect_to root_path, notice: "Usuario editado exitosamente"
+            else
+                redirect_to root_path, notice: 'Usuario editado exitosamente'
             end
         else
             render :edit, status: :unprocessable_entity
@@ -107,11 +103,11 @@ class UsersController < ApplicationController
     private
 
     def redirect_unless_admin
-        if !admin_signed_in?
-            redirect_to root_path,
-                        status: :unauthorized,
-                        alert: 'Solo administradores pueden hacer eso'
-        end
+        return if admin_signed_in?
+
+        redirect_to root_path,
+                    status: :unauthorized,
+                    alert: 'Solo administradores pueden hacer eso'
     end
 
     def set_user
@@ -121,34 +117,27 @@ class UsersController < ApplicationController
     def authenticate_edit_token
         @user.regenerate_edit_token unless @user.edit_token
 
-        if @user.edit_token != params[:edit_token]
-            redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
-        end
+        return unless @user.edit_token != params[:edit_token]
+
+        redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
     end
 
     def authenticate_edit_token_for_update
         @user.regenerate_edit_token unless @user.edit_token
 
-        if @user.edit_token != user_params[:edit_token]
-            redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
-        end
+        return unless @user.edit_token != user_params[:edit_token]
+
+        redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
     end
 
     def user_params
-        params.require(:user).permit :name,
-                                     :phone,
-                                     :company,
-                                     :newsletter,
-                                     :edit_token
-    end
-
-    def new_user_params
         params.require(:user).permit :email,
                                      :name,
                                      :phone,
                                      :company,
                                      :newsletter,
                                      :locale,
+                                     :edit_token,
                                      :auto_confirm
     end
 end

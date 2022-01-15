@@ -7,7 +7,8 @@ class ProyectosController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                ordered = Proyecto.get_ordered(params[:order_by], params[:asc_desc])
+                ordered =
+                    Proyecto.get_ordered(params[:order_by], params[:asc_desc])
 
                 @categories = ordered[0]
                 @proyectos = ordered[1]
@@ -15,9 +16,7 @@ class ProyectosController < ApplicationController
                 @uncategorized = Proyecto.uncategorized
             end
 
-            format.json do
-                @proyectos = Proyecto.all
-            end
+            format.json { @proyectos = Proyecto.all }
         end
     end
 
@@ -61,12 +60,6 @@ class ProyectosController < ApplicationController
                 end
                 format.json do
                     render :show, status: :created, location: @proyecto
-                end
-
-                @users = User.all.where(newsletter: true)
-
-                @users.each do |user|
-                    ArticlesMailer.article(user, @proyecto).deliver_later
                 end
             else
                 format.html { render :new, status: :unprocessable_entity }

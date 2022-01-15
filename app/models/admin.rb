@@ -6,5 +6,5 @@ class Admin < ApplicationRecord
            :rememberable,
            :validatable,
            :lockable,
-           :confirmable #, password_length: 10..128
+           :confirmable # password_length: 10..128
 end

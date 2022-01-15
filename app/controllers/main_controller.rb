@@ -8,20 +8,25 @@ class MainController < ApplicationController
     end
 
     def subscribe
+        existent_user = User.find_by(user_params)
+
+        unless existent_user.nil?
+            existent_user.update(newsletter: true) unless existent_user.newsletter
+            redirect_to root_path,
+                        notice: 'Muchas gracias por suscribirte a nuestra newsletter!'
+            return
+        end
+
         @user = User.new user_params
         @user.newsletter = true
 
         if @user.save
-            main
-            redirect_to root_path, notice: "Muchas gracias por suscribirte a nuestra newsletter!"
+            redirect_to root_path,
+                        notice: 'Muchas gracias por suscribirte a nuestra newsletter!'
         else
-            if @user.errors.any? && @user.errors.count == 1 && @user.errors.first.type == :taken
-                main
-                redirect_to root_path, notice: "Ya estabas suscrito a nuestra newsletter"
-            else
-                main
-                redirect_to root_path, alert: "Por favor danos un mail válido"
-            end
+            redirect_to root_path,
+                        alert: 'Por favor danos un mail válido',
+                        status: :unprocessable_entity
         end
     end
 

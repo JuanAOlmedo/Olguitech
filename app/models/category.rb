@@ -19,36 +19,33 @@ class Category < ApplicationRecord
     has_one_attached :image
 
     def get_title
-        if I18n.locale == :en && self.title2 != '' && self.title2 != nil
-            self.title2
-        else
-            self.title
-        end
+        return title2 if I18n.locale == :en && !title2.empty? && !title2.nil?
+
+        title
     end
 
     def get_short_title
-        title = self.get_title
-        return title.length > 15 ? title[0...15] + '...' : title
+        title = get_title
+        return if title.nil?
+
+        title.length > 15 ? "#{title[0...15]}..." : title
     end
 
     def get_desc
-        if I18n.locale == :en && self.description2 != '' &&
-               self.description2 != nil
-            self.description2
-        else
-            self.description
-        end
+        return description2 if I18n.locale == :en && !description2.empty? && !description2.nil?
+
+        description
     end
 
     def get_short_desc
-        description = self.get_desc
-        return(
-            if description.length > 100
-                description[0...100] + '...'
-            else
-                description
-            end
-        )
+        description = get_desc
+        return if description.nil?
+
+        description.length > 100 ? "#{description[0...100]}..." : description
+    end
+
+    def self.related_to(model)
+        Category.includes(model).where.not(model => { id: nil })
     end
 
     def base_uri

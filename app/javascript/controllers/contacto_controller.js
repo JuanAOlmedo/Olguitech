@@ -13,8 +13,12 @@ export default class extends Controller {
     }
 
     connect() {
-        this.initialize_map();
-        this.add_map_point();
+        try {
+            this.initialize_map();
+            this.add_map_point();
+        } catch {
+            console.log("Error building map")
+        }
     }
 
     initialize_map() {

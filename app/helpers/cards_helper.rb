@@ -26,12 +26,12 @@ module CardsHelper
         end
 
         def alternative_html
-            unless @array.length == 1
+            if @array.length != 1
                 content = []
 
                 rand_num = rand(0..1)
 
-                starts_left = rand_num == 1 ? true : false
+                starts_left = rand_num == 1
 
                 array.each do |element|
                     if element
@@ -55,6 +55,7 @@ module CardsHelper
         private
 
         attr_accessor :view, :array, :uid
+
         delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
 
         def grid(array)

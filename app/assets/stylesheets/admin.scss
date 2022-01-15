@@ -89,7 +89,9 @@
     @media only screen and (max-width: 70rem) {
         padding: 0.2rem;
     }
+}
 
+.btn-group {
     & .dropdown {
         width: 10rem;
     }

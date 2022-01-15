@@ -60,24 +60,11 @@
 
             <%= link_to t("nav.about_us"), nosotros_path, class: "link #{"active" if controller_name == 'nosotros'}" %>
 
-            <div class="dropdown" data-controller="dropdown" data-dropdown-active-class="is-active">
-                <div class="dropdown-trigger">
-                    <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu" data-action="click->dropdown#display">
-                        <%= I18n.locale == :es ? t("general.es") : t("general.en") %>
-                        <span class="dropdown-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                <polyline points="6 12 12 18 18 12" />
-                            </svg>
-                        </span>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu" role="menu" data-dropdown-target="menu">
-                    <%= link_to url_for( locale: I18n.locale == :es ? :en : :es ), class: "btn", hreflang: I18n.locale == :es ? :en : :es do %>
-                        <%= I18n.locale != :es ? t("general.es") : t("general.en") %>
-                    <% end %>
-                </div>
-            </div>
+            <%= dropdown_for I18n.locale == :es ? t("general.es") : t("general.en") do %>
+                <%= link_to url_for( locale: I18n.locale == :es ? :en : :es ), class: "btn", hreflang: I18n.locale == :es ? :en : :es do %>
+                    <%= I18n.locale != :es ? t("general.es") : t("general.en") %>
+                <% end %>
+            <% end %>
 
             <%= link_to t("nav.contact"), contactos_path, class: "btn" %>
         </div>
@@ -116,26 +103,13 @@
 
         <% if admin_signed_in? %>
             <div class="btn-group admin-tools">
-                <div class="dropdown is-dropup" data-controller="dropdown" data-dropdown-active-class="is-active">
-                    <div class="dropdown-trigger">
-                        <button class="btn" aria-haspopup="true" aria-controls="dropdown-menu" data-action="click->dropdown#display">
-                            Nuevo
-                            <span class="dropdown-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                                    <polyline points="6 12 12 18 18 12" />
-                                </svg>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu" role="menu" data-dropdown-target="menu">
-                        <%= link_to Article.model_name.human, new_article_path, class: "btn" %>
-                        <%= link_to Proyecto.model_name.human, new_proyecto_path, class: "btn" %>
-                        <%= link_to Product.model_name.human, new_product_path, class: "btn" %>
-                        <%= link_to Category.model_name.human, new_category_path, class: "btn" %>
-                        <%= link_to Newsletter.model_name.human, new_newsletter_path, class: "btn" %>
-                    </div>
-                </div>
+                <%= dropdown_for "Nuevo", is_dropup: true do %>
+                    <%= link_to Article.model_name.human, new_article_path, class: "btn" %>
+                    <%= link_to Proyecto.model_name.human, new_proyecto_path, class: "btn" %>
+                    <%= link_to Product.model_name.human, new_product_path, class: "btn" %>
+                    <%= link_to Category.model_name.human, new_category_path, class: "btn" %>
+                    <%= link_to Newsletter.model_name.human, new_newsletter_path, class: "btn" %>
+                <% end %>
 
                 <%= link_to User.model_name.human(count: 2), users_path, class: 'btn' %>
 

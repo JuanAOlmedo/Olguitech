@@ -1,9 +1,0 @@
-{
-    "name": "olguitech",
-    "private": true,
-    "version": "0.1.0",
-    "devDependencies": {
-        "@prettier/plugin-ruby": "^1.6.1",
-        "prettier": "^2.4.0"
-    }
-}

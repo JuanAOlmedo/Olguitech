@@ -2,8 +2,8 @@
 
 import "trix-editor-overrides";
 import "@hotwired/turbo-rails";
-import "@hotwired/stimulus"
+import "@hotwired/stimulus";
 import "@hotwired/stimulus-loading";
 import "controllers";
-import "trix"
-import "@rails/actiontext"
+import "trix";
+import "@rails/actiontext";

@@ -2,34 +2,34 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from "./application";
 
-import AlertController from "./alert_controller.js"
-application.register("alert", AlertController)
+import AlertController from "./alert_controller.js";
+application.register("alert", AlertController);
 
-import ArticleCreatorController from "./article_creator_controller.js"
-application.register("article-creator", ArticleCreatorController)
+import ArticleCreatorController from "./article_creator_controller.js";
+application.register("article-creator", ArticleCreatorController);
 
-import ContactoController from "./contacto_controller.js"
-application.register("contacto", ContactoController)
+import ContactoController from "./contacto_controller.js";
+application.register("contacto", ContactoController);
 
-import DropdownBarsController from "./dropdown_bars_controller.js"
-application.register("dropdown-bars", DropdownBarsController)
+import DropdownBarsController from "./dropdown_bars_controller.js";
+application.register("dropdown-bars", DropdownBarsController);
 
-import DropdownController from "./dropdown_controller.js"
-application.register("dropdown", DropdownController)
+import DropdownController from "./dropdown_controller.js";
+application.register("dropdown", DropdownController);
 
-import IndexController from "./index_controller.js"
-application.register("index", IndexController)
+import IndexController from "./index_controller.js";
+application.register("index", IndexController);
 
-import IntersectionObserverController from "./intersection_observer_controller.js"
-application.register("intersection-observer", IntersectionObserverController)
+import IntersectionObserverController from "./intersection_observer_controller.js";
+application.register("intersection-observer", IntersectionObserverController);
 
-import ResetFormController from "./reset_form_controller.js"
-application.register("reset-form", ResetFormController)
+import ResetFormController from "./reset_form_controller.js";
+application.register("reset-form", ResetFormController);
 
-import UserIndexController from "./user_index_controller.js"
-application.register("user-index", UserIndexController)
+import UserIndexController from "./user_index_controller.js";
+application.register("user-index", UserIndexController);
 
-import UserSearchbarController from "./user_searchbar_controller.js"
-application.register("user-searchbar", UserSearchbarController)
+import UserSearchbarController from "./user_searchbar_controller.js";
+application.register("user-searchbar", UserSearchbarController);

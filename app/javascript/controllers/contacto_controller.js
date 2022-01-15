@@ -17,7 +17,7 @@ export default class extends Controller {
             this.initialize_map();
             this.add_map_point();
         } catch {
-            console.log("Error building map")
+            console.log("Error building map");
         }
     }
 

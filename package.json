@@ -25,6 +25,7 @@
         "webpack-dev-server": "^3.11.2"
     },
     "resolutions": {
+        "node-forge": "^1.0.0",
         "normalize-url": "^4.5.1",
         "glob-parent": "^5.1.2",
         "set-value": "^4.0.1",

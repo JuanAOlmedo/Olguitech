@@ -1,5 +1,8 @@
+<% content_for :user, :user %>
+
+Ver la newsletter en un navegador: <%= @link %>
+
 <%= @title %>
+=============================================
 
-<%= @content %>
-
-Desubscribirse: https://olguitech.com/user/unsubscribe/<%= @token %>
+<%= @content.to_plain_text %>

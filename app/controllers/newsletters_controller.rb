@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class NewslettersController < ApplicationController
     before_action :set_newsletter, only: %i[show edit update destroy]
-    before_action :authenticate_admin!
+    before_action :authenticate_admin!, except: :show
 
     def index
         @newsletters = Newsletter.all.order(created_at: :desc)
@@ -23,19 +25,9 @@ class NewslettersController < ApplicationController
         @newsletter = Newsletter.new(newsletter_params)
 
         if @newsletter.save
-            @users = User.all.where(newsletter: true)
-
-            @users.each do |user|
-                @mail =
-                    NewsMailer.newsletter(
-                        user,
-                        @newsletter.title,
-                        @newsletter.content,
-                        @newsletter.subject,
-                    ).deliver_now!
-            end
-
             redirect_to root_path, notice: 'Se ha enviado la Newsletter'
+        else
+            render :new, status: :unprocessable_entity
         end
     end
 
@@ -43,7 +35,7 @@ class NewslettersController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_newsletter
-        @newsletter = Newsletter.find(params[:id])
+        @newsletter = Newsletter.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -52,9 +44,9 @@ class NewslettersController < ApplicationController
     end
 
     def redirect_unless_admin
-        if !admin_signed_in?
-            flash[:alert] = 'Solo administradores pueden hacer eso'
-            redirect_to root_path
-        end
+        return if admin_signed_in?
+
+        flash[:alert] = 'Solo administradores pueden hacer eso'
+        redirect_to root_path
     end
 end

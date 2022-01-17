@@ -1,34 +1,37 @@
+# frozen_string_literal: true
+
 class ProyectosController < ApplicationController
     before_action :set_proyecto, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
 
     # GET /proyectos
+    # GET /proyectos.json
     def index
-        ordered = Proyecto.get_ordered(params[:order_by], params[:asc_desc])
+        respond_to do |format|
+            format.html do
+                ordered =
+                    Proyecto.get_ordered(params[:order_by], params[:asc_desc])
 
-        @categories = ordered[0]
-        @proyectos = ordered[1]
+                @categories = ordered[0]
+                @proyectos = ordered[1]
 
-        @uncategorized = Proyecto.uncategorized
+                @uncategorized = Proyecto.uncategorized
+            end
+
+            format.json { @proyectos = Proyecto.all }
+        end
     end
 
     # GET /proyectos/1
     def show
-        if @proyecto.views == nil
-            @proyecto.views = 0
-        end
+        viewed_proyectos = session[:viewed_proyectos]
 
-        if session[:viewed_proyectos] == nil
-            @proyecto.views += 1
+        return unless viewed_proyectos.nil? || !@proyecto.id.in?(viewed_proyectos)
 
-            session[:viewed_proyectos] = [@proyecto.id]
-        elsif !@proyecto.id.in? session[:viewed_proyectos].to_a
-            @proyecto.views += 1
+        @proyecto.views += 1
 
-            a = session[:viewed_proyectos].to_a
-            a << @proyecto.id
-            session[:viewed_proyectos] = a
-        end
+        session[:viewed_proyectos] = [] if viewed_proyectos.nil?
+        session[:viewed_proyectos] << @proyecto.id
 
         @proyecto.save
     end
@@ -44,16 +47,7 @@ class ProyectosController < ApplicationController
     # POST /proyectos
     # POST /proyectos.json
     def create
-        parameters = proyecto_params
-        products = parameters[:products]
-        parameters.delete(:products)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
-
-        @proyecto = Proyecto.new(parameters)
-
-        @proyecto.change_categories_and_products(categories, products)
+        @proyecto = Proyecto.new(proyecto_params)
 
         respond_to do |format|
             if @proyecto.save
@@ -64,14 +58,8 @@ class ProyectosController < ApplicationController
                 format.json do
                     render :show, status: :created, location: @proyecto
                 end
-
-                @users = User.all.where(newsletter: true)
-
-                @users.each do |user|
-                    ArticlesMailer.article(user, @proyecto).deliver_later
-                end
             else
-                format.html { render :new }
+                format.html { render :new, status: :unprocessable_entity }
                 format.json do
                     render json: @proyecto.errors, status: :unprocessable_entity
                 end
@@ -82,24 +70,15 @@ class ProyectosController < ApplicationController
     # PATCH/PUT /proyectos/1
     # PATCH/PUT /proyectos/1.json
     def update
-        parameters = proyecto_params
-        products = parameters[:products]
-        parameters.delete(:products)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
-
         respond_to do |format|
-            if @proyecto.update(parameters)
-                @proyecto.change_categories_and_products(categories, products)
-
+            if @proyecto.update(proyecto_params)
                 format.html do
                     redirect_to @proyecto,
                                 notice: 'Artículo actualizdo exitosamente.'
                 end
                 format.json { render :show, status: :ok, location: @proyecto }
             else
-                format.html { render :edit }
+                format.html { render :edit, status: :unprocessable_entity }
                 format.json do
                     render json: @proyecto.errors, status: :unprocessable_entity
                 end
@@ -114,7 +93,8 @@ class ProyectosController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to proyectos_url,
-                            notice: 'Artículo destruido exitosamente.'
+                            notice: 'Artículo destruido exitosamente.',
+                            status: :see_other
             end
             format.json { head :no_content }
         end
@@ -124,7 +104,7 @@ class ProyectosController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_proyecto
-        @proyecto = Proyecto.find(params[:id])
+        @proyecto = Proyecto.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -138,9 +118,9 @@ class ProyectosController < ApplicationController
                 :content2,
                 :description,
                 :description2,
-                { products: [] },
-                { categories: [] },
-                :image,
+                { product_ids: [] },
+                { category_ids: [] },
+                :image
             )
     end
 end

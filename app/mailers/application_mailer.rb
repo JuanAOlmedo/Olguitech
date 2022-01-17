@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 class ApplicationMailer < ActionMailer::Base
-    default from: ENV['EMAIL_USERNAME']
+    default from: email_address_with_name(ENV['EMAIL_USERNAME'], 'Olguitech')
     layout 'mailer'
 end

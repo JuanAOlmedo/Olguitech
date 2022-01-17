@@ -1,84 +1,51 @@
-<head>
-    <%= stylesheet_link_tag 'show' %>
-
-    <style>
-        .products-link {
-            color: #CCC !important;
-        }
-    </style>
-</head>
-
 <% content_for :title, "#{@product.get_title} | Olguitech s.a.s." %>
 <% content_for :description, "#{@product.get_desc}" %>
 
-<div id='show'>
-    <%= render 'layouts/back' %>
-
-    <% if admin_signed_in? %>
-        <%= link_to edit_product_path(@product), class: 'edit', method: :get do %>
-            <i class='articles-fas'>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                    <line x1="16" y1="5" x2="19" y2="8" />
-                </svg>
-            </i>
-        <% end %>
-        <%= link_to @product, method: :delete, data: { confirm: 'Estas seguro de que queres eliminar el articulo?' }, class: 'destroy' do %>
-            <i class='articles-fas fas fa-trash'>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" />
-                    <line x1="4" y1="7" x2="20" y2="7" />
-                    <line x1="10" y1="11" x2="10" y2="17" />
-                    <line x1="14" y1="11" x2="14" y2="17" />
-                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                </svg>
-            </i>
-        <% end %>
-    <% end %>
-
-    <div class="product">
-        <% if !@product.categories.empty? %>
-            <p>
-                <%= @product.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
-                <% @product.categories.each do |category| %>
-                    <%= link_to category.get_title, category_path(category), class: "category-link" %><%= "#{@product.categories.last != category ? ", " : ""}" %>
-                <% end %>
-            </p>
-        <% end %>
-
-        <h2 class='product-title'> <%= @product.get_title %> </h2>
-        <p class='product-description'> <%= @product.get_desc %> </p>
-
+<div class="product">
+    <div class="product-top">
         <% if @product.image.attached? %>
-            <img src='<%= url_for(@product.image) %>' class='product-img' alt='<%= @product.image.filename %>'>
+            <img src='<%= url_for(@product.image) %>' alt='<%= @product.image.filename %>'>
         <% end %>
 
+        <div class="text">
+            <% if @product.categories.any? %>
+                <p class="article-categories">
+                    <%= @product.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
+                    <% @product.categories.each do |category| %>
+                        <%= link_to category.get_title, category_path(category), class: "link" %><%= "#{@product.categories.last != category ? ", " : ""}" %>
+                    <% end %>
+                </p>
+            <% end %>
+
+            <h2 class='main-title'> <%= @product.get_title %> </h2>
+            <p class='subtitle'> <%= @product.get_desc %> </p>
+        </div>
+    </div>
+
+    <div class="content">
         <div class='show-text'>
             <p class='article-text'> <%= @product.get_content %> </p>
         </div>
-
-        <% if !@product.articles.empty? %>
-            <h2>
-                <%= t "show.articles" %>
-            </h2>
-            <% @product.articles.each do |article| %>
-                <%= link_to article_path(article) do %>
-                    <%= render 'layouts/card', article: article %>
-                <% end %>
-            <% end %>
-        <% end %>
-        <% if !@product.proyectos.empty? %>
-            <h2>
-                <%= t "show.proyects" %>
-            </h2>
-            <% @product.proyectos.each do |article| %>
-                <%= link_to proyecto_path(article) do %>
-                    <%= render 'layouts/card', article: article %>
-                <% end %>
-            <% end %>
-        <% end %>
     </div>
+
+    <% if @product.articles.any? %>
+        <h1 class="main-title">
+            <%= t "show.articles" %>
+        </h1>
+        <%= cards_for @product.articles %>
+    <% end %>
+    <% if @product.proyectos.any? %>
+        <h1 class="main-title">
+            <%= t "show.proyects" %>
+        </h1>
+        <%= cards_for @product.proyectos %>
+    <% end %>
 </div>
+
+<% if admin_signed_in? %>
+    <div class="btn-group admin-tools admin-tools-2">
+        <%= link_to "Editar", edit_product_path(@product), class: 'btn' %>
+
+        <%= link_to "Eliminar", @product, data: { turbo_method: :delete, turbo_confirm: 'Estas seguro de que queres eliminar el artículo?' }, class: 'btn is-danger' %>
+    </div>
+<% end %>

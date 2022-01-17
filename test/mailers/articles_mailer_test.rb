@@ -1,18 +1,24 @@
 require 'test_helper'
 
 class ArticlesMailerTest < ActionMailer::TestCase
-    # setup do
-    #     @user = users(:one)
-    #     @article = articles(:one)
-    # end
+    setup do
+        I18n.locale = :es
 
-    # test 'article' do
-    #     mail = ArticlesMailer.article(@user, @article)
+        @user = users(:one)
+        @article = articles(:one)
+    end
 
-    #     assert_equal 'Olguitech s.a.s., Nuevo Artículo', mail.subject
-    #     assert_equal [@user.email], mail.to
-    #     assert_equal [ENV['EMAIL_USERNAME']], mail.from
-    #     assert_match @article.get_title, mail.body.encoded
-    #     assert_match @user.newsletter_token, mail.body.encoded
-    # end
+    test 'article' do
+        mail = ArticlesMailer.article(@user, @article)
+
+        assert_emails 1 do
+            mail.deliver_now
+        end
+
+        assert_equal 'Nueva Solución de Olguitech!', mail.subject
+        assert_equal [@user.email], mail.to
+        assert_equal [ENV['EMAIL_USERNAME']], mail.from
+        assert_match @article.title, mail.body.encoded
+        assert_match "Desuscribirse", mail.body.encoded
+    end
 end

@@ -1,19 +1,7 @@
-<head>
-    <%= stylesheet_link_tag 'actiontext' %>
-
-    <style>
-        .articles-link {
-            color: #CCC !important;
-        }
-    </style>
-</head>
-
 <% content_for :title, "Nuevo artículo" %>
 
+<h1 class='main-title'>Crear Artículo (Solucion)</h1>
+
 <div id='edit'>
-    <%= render 'layouts/back' %>
-
-    <h1 class='show-title gold'>Crear Artículo (Solucion)</h1>
-
     <%= render 'form', article: @article %>
 </div>

@@ -1,81 +1,95 @@
-<head>
-    <%= stylesheet_link_tag 'forms' %>
-</head>
-
 <% content_for :title, "Editar Cuenta" %>
 
-<div class='form-div'>
-    <%= render 'layouts/back' %>
+<h1 class='main-title'>Panel</h1>
 
-    <h2 class='button' id="close-session"><%= link_to 'Cerrar sesion', destroy_admin_session_path, method: :delete, class:'access' %></h2>
 
-    <h1 class='title white'>Editar Cuenta</h1>
+<div class="big-card">
+    <div class="centered">
+        <div class="btn-group" style="margin-bottom: 2rem;">
+            <%= link_to 'Cerrar sesion', destroy_admin_session_path, data: { turbo_method: :delete }, class:'btn' %>
+            <%= link_to 'Mail', "https://olguitech.com:2003/rainloop", target: :_blank, class:'btn' %>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
+            <%= dropdown_for "Nuevo" do %>
+                <%= link_to "Solucion", new_article_path, class: "btn" %>
+                <%= link_to "Proyecto", new_proyecto_path, class: "btn" %>
+                <%= link_to "Producto", new_product_path, class: "btn" %>
+                <%= link_to "Categoria", new_category_path, class: "btn" %>
+                <%= link_to "Newsletter", new_newsletter_path, class: "btn" %>
+            <% end %>
 
-    <div class="form-inputs">
-        <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  label: false,
-                  placeholder: 'Email' %>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-        <% end %>
-
-        <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "new-password" },
-                  label: false,
-                  placeholder: 'Contraseña ',
-                  class: 'input',
-                  hint: 'Dejar vacío si no se quiere cambiar' %>
-        <%= f.input :password_confirmation,
-                  required: false,
-                  input_html: { autocomplete: "new-password" },
-                  label: false,
-                  placeholder: 'Confrirmar contraseña',
-                  class: 'input' %>
-        <%= f.input :current_password,
-                  required: true,
-                  input_html: { autocomplete: "current-password" },
-                  label: false,
-                  class: 'input',
-                  hint: 'Necesitamos tu contraseña actual' %>
+            <%= link_to 'Usuarios', users_path, class:'btn' %>
+        </div>
     </div>
+    
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: :false } }) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-actions">
-        <%= f.button :submit, "Editar", class:'big-navbar-link button' %>
-    </div>
+        <div class="form">
+            <div class="field">
+                <%= f.label :email, "Email" %>
+                <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        label: false %>
+            </div>
+
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
+
+            <div class="field">
+                <%= f.label :password, "Contraseña nueva" %>
+                <%= f.input :password,
+                        required: false,
+                        input_html: { autocomplete: "new-password" },
+                        label: false,
+                        hint: 'Dejar vacío si no se quiere cambiar' %>
+            </div>
+
+            <div class="field">
+                <%= f.label :password_confirmation, "Repetir contraseña nueva" %>
+                <%= f.input :password_confirmation,
+                        required: false,
+                        input_html: { autocomplete: "new-password" },
+                        label: false,
+                        class: 'input' %>
+            </div>
+
+            <div class="field">
+                <%= f.label :current_password, "Contraseña actual" %>
+                <%= f.input :current_password,
+                        required: true,
+                        input_html: { autocomplete: "current-password" },
+                        label: false,
+                        class: 'input',
+                        hint: 'Necesitamos tu contraseña actual' %>
+            </div>
+
+            <%= f.button :submit, "Editar", class:'btn centered' %>
+        </div>
     <% end %>
-
-    <script>
-        const password = document.querySelector('#user_password')
-        passwordConfirmation = document.querySelector('#user_password_confirmation')
-
-        passwordConfirmation.addEventListener('input', checkPassword)
-        password.addEventListener('input', checkPasswordLength)
-
-        function checkPassword() {
-            if (password.value != passwordConfirmation.value) {
-                passwordConfirmation.style.backgroundColor = 'red'
-            } else {
-                passwordConfirmation.style.backgroundColor = 'greenyellow'
-            }
-        }
-
-        function checkPasswordLength() {
-            if (password.value.length <= 7) {
-                password.style.backgroundColor = 'red'
-            } else {
-                password.style.backgroundColor = 'greenyellow'
-            }
-        }
-    </script>
-
-    <h2 class='form-title'>Cancelar Cuenta</h2>
-
-    <h2 class='button'><%= link_to "Cancelar", registration_path(resource_name), data: { confirm: "Estas seguro?" }, method: :delete, class:'access' %></h2>
 </div>
+
+<script>
+    const password = document.querySelector('#user_password')
+    passwordConfirmation = document.querySelector('#user_password_confirmation')
+
+    passwordConfirmation.addEventListener('input', checkPassword)
+    password.addEventListener('input', checkPasswordLength)
+
+    function checkPassword() {
+        if (password.value != passwordConfirmation.value) {
+            passwordConfirmation.style.backgroundColor = 'red'
+        } else {
+            passwordConfirmation.style.backgroundColor = 'greenyellow'
+        }
+    }
+
+    function checkPasswordLength() {
+        if (password.value.length <= 7) {
+            password.style.backgroundColor = 'red'
+        } else {
+            password.style.backgroundColor = 'greenyellow'
+        }
+    }
+</script>

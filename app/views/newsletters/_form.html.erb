@@ -1,14 +1,20 @@
 <%= form_with model: @newsletter do |form| %>
-  <div class="field">
-    <%= form.label :title, "Título" %>
-    <%= form.text_area :title, class:'title-textarea article-title show-title' %>
+    <div class="form">
+        <div class="field">
+            <%= form.label :title, "Título" %>
+            <%= form.text_area :title, id: "title-1" %>
+        </div>
 
-    <%= form.label :content, "Contenido" %>
-    <%= form.rich_text_area :content, class:'rich-text' %>
+        <div class="field">
+            <%= form.label :subject, "Asunto" %>
+            <%= form.text_area :subject, id: "subject-1" %>
+        </div>
 
-    <%= form.label :subject, "Asunto" %>
-    <%= form.text_area :subject, class:'description-textarea' %> 
+        <div class="rich-text field">
+            <%= form.label :content, "Contenido" %>
+            <%= form.rich_text_area :content, id: "content-1" %>
+        </div>
 
-    <%= form.submit 'Crear' %>
-  </div>
+        <%= form.submit 'Crear', class: 'btn centered' %>
+    </div>
 <% end %>

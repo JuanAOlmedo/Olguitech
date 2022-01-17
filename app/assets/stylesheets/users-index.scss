@@ -1,17 +1,16 @@
 @import "settings";
 
-h1 {
-    color: $color2;
-    font-size: 3rem;
-    margin-left: 5%;
-    padding-top: 2rem;
-}
+// For /users //
 
 table,
 th,
 td {
-    border: 1px solid $color2;
+    border: 0.1rem solid black;
     border-collapse: collapse;
+}
+
+table {
+    width: 100%;
 }
 
 .table {
@@ -19,11 +18,7 @@ td {
     max-width: 100%;
     overflow-x: auto;
     margin-top: 18px;
-}
-
-.user {
-    color: $color2;
-    min-width: 100%;
+    color: black;
 }
 
 th {
@@ -34,30 +29,29 @@ th {
 td {
     font-size: 1.12rem;
     padding: 0.3rem;
+
+    & .link {
+        font-size: inherit;
+    }
+
+    & svg { 	
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        width: 1rem;
+        height: 1rem;
+    }
 }
 
-input {
-    margin-left: 5%;
-    margin-right: 5%;
+.new-user {
     width: 85%;
-    padding: 1rem;
-    height: 1.5rem;
-    text-align: center;
-    font-size: 1.2rem;
-    background-color: $color6;
-    border-radius: 0.5rem;
-    border-style: none;
-    color: $color2;
-}
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
-.times-contacted, td a {
-    color: hsl(200, 60, 40);
-    text-decoration: underline;
-}
-
-@media only screen and (max-width: 50rem) {
-    input {
-        padding: 2.5%;
+    @media only screen and (max-width: 67rem) {
+        width: 95%;
     }
 }
 
@@ -67,16 +61,27 @@ input {
     left: 0;
     right: 0;
     bottom: 0;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     padding: 2rem;
     overflow-y: auto;
-    display: none;
+    display: block;
+
+    &.hidden {
+        display: none;
+    }
 }
 
-.contact-instance {
-    margin: 1% 0 1% 0;
-    padding: 1rem;
-    background-color: $color4;
-    border-radius: 1rem;
+#user-index-field {
+    width: 100%;
+
+    & input {
+        font-size: 1.5rem;
+        width: 90%;
+    }
+}
+
+.icon-tabler-x, 
+.times-contacted {
+    cursor: pointer;
 }

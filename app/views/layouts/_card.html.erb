@@ -1,9 +1,0 @@
-<div class='card'>
-    <% if article.image.attached? %>
-        <%= image_tag article.image.variant(resize_to_limit: [40, 40]), data: {src: url_for(article.image)}, class: "card-img lazy", alt: article.image.filename %>
-    <% end %>
-    <div class='card-content'>
-        <h2> <%= article.get_short_title %> </h2>
-        <p> <%= article.get_short_desc %> </p>
-    </div>
-</div>

@@ -1,105 +1,133 @@
 @import "settings";
 
-.gold {
-    color: $color2;
-}
+// FORMS //
 
-.input input {
-    width: 20rem;
-    display: block;
-    height: 1.5rem;
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    padding: 0.4rem;
-    border-radius: 0.5rem;
-    border-color: $color2;
-
-    @media only screen and (max-width: 380px) {
-        width: 90%;
-    }
-}
-
-.hint {
-    color: $color2;
-}
-
-.checkbox {
-    color: $color2;
-    font-size: 1.2rem;
-    font-family: "Montserrat", sans-serif;
-    width: 30%;
-}
-
-#user_remember_me,
-#admin_remember_me,
-#user_newsletter {
-    margin-top: 2rem;
-    width: auto;
-    height: auto;
-    display: inline-block;
-}
-
-.form-div {
-    background-color: $color1;
-    padding: 3rem;
-
-    @media only screen and (max-width: 500px) {
-        padding: 1.5rem;
-    }
-    @media only screen and (max-width: 380px) {
-        padding: 1rem;
-    }
-}
-
-.form-inputs {
-    width: 100%;
+.form {
     margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media only screen and (max-width: 67rem) {
+        display: block;
+    }
 }
 
-.shared-links {
-    color: $color2;
-    font-family: "Montserrat", sans-serif;
-    font-size: 1.4rem;
-    text-decoration: none;
+.field {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 1rem;
+
+    @media only screen and (max-width: 67rem) {
+        width: 100%;
+    }
+
+    &.separate {
+        width: 100%;
+    }
+
+    & label,
+    & input,
+    & select,
+    & textarea {
+        box-sizing: border-box;
+        display: block;
+        font-size: 1.3rem;
+    }
+
+    & label {
+        margin-bottom: 0.3rem;
+    }
+
+    & input,
+    & select,
+    & textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: white;
+        border: 0.1rem solid #dbdbdb;
+        border-radius: 0.3rem;
+        outline: none;
+        padding: 0.4rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        box-shadow: 0 0 0 0 rgba(72, 95, 199, 0.25);
+        transition: box-shadow 0.2s;
+
+        &:hover {
+            border-color: #b5b5b5;
+        }
+
+        &:focus,
+        &:active {
+            border-color: #485fc7;
+            box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
+        }
+
+        &:disabled {
+            background-color: #e9ecef;
+
+            &:focus,
+            &:active {
+                border-color: #b5b5b5;
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+    }
+
+    & textarea {
+        height: 4rem;
+        min-height: 1.6rem;
+        resize: vertical;
+
+        @media only screen and (max-width: 67rem) {
+            height: 10rem;
+        }
+    }
+
+    & select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 0.8rem 0.8rem;
+    }
 }
 
-.shared-links:visited {
-    color: $color2;
-    text-decoration: none;
+.checkbox-field {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 1rem;
+
+    @media only screen and (max-width: 67rem) {
+        width: 100%;
+    }
+
+    & label,
+    & input,
+    & select,
+    & textarea {
+        box-sizing: border-box;
+        display: inline;
+        font-size: 1.3rem;
+    }
 }
 
-.shared-links:hover {
-    color: $color3;
-    background-color: rgba(0, 0, 0, 0);
-    text-decoration: none;
+.field_with_errors {
+    & input,
+    & select,
+    & textarea {
+        border-color: rgb(255, 55, 55);
+        box-shadow: 0 0 0 0.125em rgba(255, 55, 55, 0.7);
+    }
 }
 
-.error_notification {
-    color: $color2;
+#error_explanation {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .error {
     color: #ff5f5f;
     display: block;
-}
-
-.field_with_errors input {
-    background-color: red;
-}
-
-#user_password,
-#user_password_confirmation {
-    transition: background-color 0.5s;
-}
-
-.right {
-    background-color: greenyellow;
-}
-
-.wrong {
-    background-color: red;
-}
-
-#close-session {
-    margin-top: 3rem !important;
 }

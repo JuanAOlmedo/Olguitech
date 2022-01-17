@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin < ApplicationRecord
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -6,5 +8,5 @@ class Admin < ApplicationRecord
            :rememberable,
            :validatable,
            :lockable,
-           :confirmable #, password_length: 10..128
+           :confirmable # password_length: 10..128
 end

@@ -1,40 +1,20 @@
-<head>
-    <%= stylesheet_link_tag 'main' %>
+<% content_for :title, "#{I18n.t "contact.contact"} | Olguitech s.a.s." %>
 
-    <style>
-        #contacto-link {
-            color: #ccc !important;
-        }
-    </style>
+<h1 class='main-title'> <%= t "contact.how_can_we_help_you" %> </h1>
 
-    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
-    <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
-</head>
+<%= turbo_frame_tag "new_contact", src: new_contacto_path, target: "_top" %>
 
-<% content_for :title, "#{I18n.t "nav.contact"} | Olguitech s.a.s." %>
+<div class="centered">
+    <p class='big-text'>
+        <%= t("contact.contact_html") %>
+    </p>
 
-<div class='contact-div'>
-    <div id="map" class="location-container" alt='<%= I18n.t "contact.direction_alt" %>'>
-        <p class='location-info'> <%= I18n.t "contact.direction" %> </p>
-    </div>
+    <p class="subtitle">
+        <%= t "contact.direction_html" %>
+    </p>
 
-    <div class='contact-sub-div'>
-        <h1 class='white title'> <%= I18n.t "contact.how_can_we_help_you" %> </h1>
-
-        <% if user_signed_in? %>
-            <%= link_to "/#{I18n.locale}/contacto/new", class: "big-navbar-link" do %>
-                <%= I18n.t "contact.contact" %>
-            <% end %>
-        <% else %>
-            <%= link_to "/#{I18n.locale}/contacto/new", class: "big-navbar-link" do %>
-                <%= I18n.t "contact.sign_in_and_contact" %>
-            <% end %>
-        <% end %>
-
-        <h3 class='contact-alternative'>
-            <%= t("contact.contact_html") %>
-        </h3>
+    <div id="map" data-controller="contacto" data-contacto-map-default-zoom-value="15" data-contacto-longitude-value="-56.15627" data-contacto-latitude-value="-34.918624" class="centered location-container" alt='<%= I18n.t "contact.direction_alt" %>'>
+        <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+        <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript" data-action="load->contacto#connect"></script>
     </div>
 </div>
-
-<%= javascript_pack_tag 'contacto' %>

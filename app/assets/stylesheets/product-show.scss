@@ -1,0 +1,57 @@
+// For /product/1 //
+
+.product {
+    & .product-top {
+        width: 100%;
+        display: flex;
+        height: fit-content;
+        min-height: 35rem;
+
+        @media only screen and (max-width: 67rem) {
+            display: block;
+        }
+
+        & img {
+            width: 50%;
+            -o-object-fit: cover;
+            object-fit: cover;
+
+            @media only screen and (max-width: 67rem) {
+                width: 100%;
+                height: 30rem;
+            }
+        }
+
+        & .text {
+            box-sizing: border-box;
+            width: 50%;
+            padding: 2rem;
+            height: 100%;
+
+            @media only screen and (max-width: 67rem) {
+                width: 100%;
+                height: fit-content;
+            }
+
+            & .article-categories {
+                font-style: italic;
+                margin: 0;
+        
+                & .link {
+                    font-size: inherit;
+                }
+            }
+
+            & .main-title,
+            & .subtitle {
+                margin-top: 0;
+                text-align: left;
+                width: 100%;
+            }
+        }
+    }
+
+    & .show-text {
+        margin-top: 2rem;
+    }
+}

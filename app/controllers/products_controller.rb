@@ -1,34 +1,37 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
     before_action :set_product, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
 
     # GET /products or /products.json
     def index
-        ordered = Product.get_ordered(params[:order_by], params[:asc_desc])
+        respond_to do |format|
+            format.html do
+                ordered = Product.get_ordered(params[:order_by], params[:asc_desc])
 
-        @categories = ordered[0]
-        @products = ordered[1]
+                @categories = ordered[0]
+                @products = ordered[1]
 
-        @uncategorized = Product.uncategorized
+                @uncategorized = Product.uncategorized
+            end
+
+            format.json do
+                @products = Product.all
+            end
+        end
     end
 
     # GET /products/1 or /products/1.json
     def show
-        if @product.views == nil
-            @product.views = 0
-        end
+        viewed_products = session[:viewed_products]
 
-        if session[:viewed_products] == nil
-            @product.views += 1
+        return unless viewed_products.nil? || !@product.id.in?(viewed_articles)
 
-            session[:viewed_products] = [@product.id]
-        elsif !@product.id.in? session[:viewed_products].to_a
-            @product.views += 1
+        @product.views += 1
 
-            a = session[:viewed_products].to_a
-            a << @product.id
-            session[:viewed_products] = a
-        end
+        session[:viewed_products] = [] if viewed_products.nil?
+        session[:viewed_products] << @product.id
 
         @product.save
     end
@@ -43,19 +46,7 @@ class ProductsController < ApplicationController
 
     # POST /products or /products.json
     def create
-        parameters = product_params
-        articles = parameters[:articles]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyectos]
-        parameters.delete(:proyectos)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
-
-        @product = Product.new(parameters)
-
-        @product.change_related(articles, proyectos, categories)
+        @product = Product.new(product_params)
 
         respond_to do |format|
             if @product.save
@@ -77,20 +68,8 @@ class ProductsController < ApplicationController
 
     # PATCH/PUT /products/1 or /products/1.json
     def update
-        parameters = product_params
-        articles = parameters[:articles]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyectos]
-        parameters.delete(:proyectos)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
-
         respond_to do |format|
-            if @product.update(parameters)
-                @product.change_related(articles, proyectos, categories)
-
+            if @product.update(product_params)
                 format.html do
                     redirect_to @product,
                                 notice: 'Producto actualizado exitosamente.'
@@ -111,7 +90,8 @@ class ProductsController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to products_url,
-                            notice: 'Producto destruido exitosamente.'
+                            notice: 'Producto destruido exitosamente.',
+                            status: :see_other
             end
             format.json { head :no_content }
         end
@@ -121,7 +101,7 @@ class ProductsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-        @product = Product.find(params[:id])
+        @product = Product.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -135,10 +115,10 @@ class ProductsController < ApplicationController
                 :description2,
                 :content,
                 :content2,
-                { articles: [] },
-                { proyectos: [] },
-                { categories: [] },
-                :image,
+                { article_ids: [] },
+                { proyecto_ids: [] },
+                { category_ids: [] },
+                :image
             )
     end
 end

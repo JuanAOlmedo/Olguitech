@@ -1,117 +1,60 @@
-<head>
-    <%= stylesheet_link_tag 'index' %>
-
-    <style>
-        .products-link {
-            color: #CCC !important;
-        }
-    </style>
-</head>
-
 <% content_for :title, "#{I18n.t "shared.our_products"} | Olguitech s.a.s." %>
 
 <% if @categories %>
-    <div class="menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="currentColor" fill="none">
-            <path d="" />
-        </svg>
+    <div data-controller="index">
+        <div class="menu" data-action="scroll->index#setSvg" data-index-target="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" data-index-target="svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="black" fill="none">
+                <path d="" data-index-target="path" />
+            </svg>
 
-        <% @categories.each do |category| %>
-            <% if !category.products.empty? %>
-                <h4 class="menu-title">
-                    <%= link_to category.get_short_title, category_path(category), class: "menu-link" %>
-                </h4>
-            <% else %>
-                <h4 style="display: none;">
+            <% @categories.each do |category| %>
+                <h4 class="menu-title" data-index-target="title">
+                    <%= link_to category.get_short_title, category_path(category), class: "link" %>
                 </h4>
             <% end %>
-        <% end %>
-        <% if !@uncategorized.empty? %>
-            <h4 class="menu-title">
-                <%= t "index.uncategorized" %>
-            </h4>
-        <% end %>
-    </div>
 
-    <div class='products-div'>
-        <h1 class='index-title'>
-            <%= I18n.t "shared.our_products" %>
-        </h1>
+            <% if @uncategorized.any? %>
+                <h4 class="menu-title" data-index-target="title">
+                    <%= link_to t("index.uncategorized"), url_for(order_by: :uncategorized, asc_desc: :desc), class: "link" %>
+                </h4>
+            <% end %>
+        </div>
 
-        <%= render 'layouts/popup' %>
+        <div class='articles-div'>
+            <h1 class='main-title'>
+                <%= I18n.t "shared.our_products" %>
+            </h1>
 
-        <% @categories.each_with_index do |category, index| %>
-            <% if !category.products.empty? %>
-                <h2> <%= category.get_title %> </h2>
-                <div class="category" data-title="<%= category.get_short_title %>" id="<%= category.id %>" data-index="<%= index %>">
-                    <% category.products.each do |product| %>
-                        <div class='product'>
-                            <%= link_to product_path(product) do %>
-                                <% if product.image.attached? %>
-                                    <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
-                                <% end %>
+            <%= render 'layouts/popup' %>
 
-                                <div class='product-info'>
-                                    <h2 class='product-title'> <%= product.get_short_title %> </h2>
-                                    <p class='product-text'>
-                                        <%= product.get_short_desc %> <br>
-                                    </p>
-                                </div>
-                            <% end %>
-                        </div>
-                    <% end %>
+            <% @categories.each_with_index do |category, index| %>
+                <div class="category" data-index-target="category" data-index="<%= index %>">
+                    <h2 class="title centered">
+                        <%= category.get_title %> 
+                    </h2>
+
+                    <%= alternative_cards_for category.products %>
                 </div>
             <% end %>
-        <% end %>
-        <% if !@uncategorized.empty? %>
-            <h2> <%= t "index.uncategorized" %> </h2>
-            <div class="category" data-index="<%= @categories.length %>">
-                <% @uncategorized.each do |product| %>
-                    <div class='product'>
-                        <%= link_to product_path(product) do %>
-                            <% if product.image.attached? %>
-                                <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
-                            <% end %>
+            <% if !@uncategorized.empty? %>
+                <div class="category" data-index-target="category" data-index="<%= @categories.length %>">
+                    <h2 class="title centered">
+                        <%= t "index.uncategorized" %> 
+                    </h2>
 
-                            <div class='product-info'>
-                                <h2 class='product-title'> <%= product.get_short_title %> </h2>
-                                <p class='product-text'>
-                                    <%= product.get_short_desc %> <br>
-                                </p>
-                            </div>
-                        <% end %>
-                    </div>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-<% else %>
-    <div class='products-div products-div2'>
-        <h1 class='index-title'>
-            <%= I18n.t "shared.our_products" %>
-        </h1>
-
-        <%= render 'layouts/popup' %>
-
-        <div class="products-sub-div">
-            <% @products.each do |product| %>
-                <div class='product'>
-                    <%= link_to product_path(product) do %>
-                        <% if product.image.attached? %>
-                            <%= image_tag product.image.variant(resize_to_limit: [30, 30]), data: {src: url_for(product.image)}, class: "product-img lazy", alt: product.image.filename %>
-                        <% end %>
-
-                        <div class='product-info'>
-                            <h2 class='product-title'> <%= product.get_short_title %> </h2>
-                            <p class='product-text'>
-                                <%= product.get_short_desc %> <br>
-                            </p>
-                        </div>
-                    <% end %>
+                    <%= alternative_cards_for @uncategorized %>
                 </div>
             <% end %>
         </div>
     </div>
-<% end %>
+<% else %>
+    <div class='articles-div articles-div2'>
+        <h1 class='main-title'>
+            <%= I18n.t "shared.our_products" %>
+        </h1>
 
-<%= javascript_pack_tag "index" %>
+        <%= render 'layouts/popup' %>
+
+        <%= alternative_cards_for @products %>
+    </div>
+<% end %>

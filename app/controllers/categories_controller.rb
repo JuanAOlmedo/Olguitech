@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
     before_action :set_category, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
@@ -8,7 +10,9 @@ class CategoriesController < ApplicationController
     end
 
     # GET /categories/1 or /categories/1.json
-    def show; end
+    def show
+        @categories = Category.all
+    end
 
     # GET /categories/new
     def new
@@ -20,22 +24,10 @@ class CategoriesController < ApplicationController
 
     # POST /categories or /categories.json
     def create
-        parameters = category_params
-        products = parameters[:products]
-        parameters.delete(:products)
-
-        articles = parameters[:articles]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyectos]
-        parameters.delete(:proyectos)
-
-        @category = Category.new(parameters)
+        @category = Category.new(category_params)
 
         respond_to do |format|
             if @category.save
-                @category.change_related(articles, proyectos, products)
-
                 format.html do
                     redirect_to @category,
                                 notice: 'Category was successfully created.'
@@ -54,23 +46,11 @@ class CategoriesController < ApplicationController
 
     # PATCH/PUT /categories/1 or /categories/1.json
     def update
-        parameters = category_params
-        products = parameters[:products]
-        parameters.delete(:products)
-
-        articles = parameters[:articles]
-        parameters.delete(:articles)
-
-        proyectos = parameters[:proyectos]
-        parameters.delete(:proyectos)
-
         respond_to do |format|
-            if @category.update(parameters)
-                @category.change_related(articles, proyectos, products)
-
+            if @category.update(category_params)
                 format.html do
                     redirect_to @category,
-                                notice: 'Category was successfully updated.'
+                                notice: 'Categoría actualizada exitosamente.'
                 end
                 format.json { render :show, status: :ok, location: @category }
             else
@@ -88,7 +68,8 @@ class CategoriesController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to categories_url,
-                            notice: 'Category was successfully destroyed.'
+                            notice: 'Categoría destruída exitosamente.',
+                            status: :see_other
             end
             format.json { head :no_content }
         end
@@ -98,7 +79,7 @@ class CategoriesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-        @category = Category.find(params[:id])
+        @category = Category.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
@@ -110,10 +91,10 @@ class CategoriesController < ApplicationController
                 :title2,
                 :description,
                 :description2,
-                { products: [] },
-                { articles: [] },
-                { proyectos: [] },
-                :image,
+                { product_ids: [] },
+                { article_ids: [] },
+                { proyecto_ids: [] },
+                :image
             )
     end
 end

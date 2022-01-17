@@ -1,529 +1,99 @@
 @import "settings";
 
+// For / //
+
 .front {
-    background: url("/Background.webp") no-repeat scroll left top;
-    background-size: cover;
-    padding: 14rem 2rem 5rem 2rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.no-webp .front {
-    background: url("/Background.jpg") no-repeat scroll left top;
-}
-
-.subtitle {
-    color: #fff;
-    width: 60%;
-    font-size: 1.5rem;
-
-    @media only screen and (max-width: 800px) {
-        width: 100%;
-    }
-    @media only screen and (max-width: 500px) {
-        font-size: 1.3rem;
-    }
-}
-
-.subtitle-more-link {
-    margin-bottom: 8rem;
-    width: 10rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-
-.alert,
-.notice {
-    top: 5.1rem;
-}
-
-.article-link .more-link {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 2rem;
-}
-
-.articles-section,
-.proyects-section {
-    background-color: $color1;
-    position: relative;
-    color: $color1;
-    height: 30rem;
-    opacity: 0.6;
-    transition: opacity 1s;
-
-    @media screen and (max-width: 50rem) {
-        height: 50rem;
-        margin-bottom: 0.5rem;
-    }
-}
-
-.proyects-section {
-    margin: 0;
-
-    @media only screen and (max-width: 50rem) {
-        margin-bottom: 0rem;
-    }
-}
-
-.articles-section.move,
-.proyects-section.move {
-    opacity: 1;
-}
-
-.articles-title {
-    color: $color2;
-    font-size: 2rem;
-    margin-top: 0;
-}
-
-#next,
-#previous,
-#proyects-next,
-#proyects-previous {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    cursor: pointer;
-    transform: translateX(0px);
-    transition: transform 0.5s;
-    position: absolute;
-    margin-bottom: 2.5rem;
-    height: auto;
-    bottom: 0;
-    z-index: 10;
-
-    @media screen and (max-width: 70rem) {
-        margin-bottom: 2rem;
-    }
-
-    @media screen and (max-width: 50rem) {
-        margin-bottom: 1rem;
-    }
-}
-
-@media screen and (max-width: 50rem) {
-    #proyects-next,
-    #proyects-previous {
-        margin-bottom: 26rem;
-    }
-}
-
-#next {
-    right: 0;
-}
-
-#previous {
-    right: 43%;
-
-    @media screen and (max-width: 50rem) {
-        right: 20%;
-    }
-}
-
-#proyects-next {
-    left: 43%;
-
-    @media screen and (max-width: 50rem) {
-        right: 0;
-        left: auto;
-    }
-}
-
-#proyects-previous {
-    left: 0;
-
-    @media screen and (max-width: 50rem) {
-        right: 20%;
-        left: auto;
-    }
-}
-
-#previous:hover,
-#previous:focus,
-#proyects-previous:hover,
-#proyects-previous:focus {
-    transform: translateX(-10px);
-    outline: none;
-}
-
-#next:hover,
-#next:focus,
-#proyects-next:hover,
-#proyects-next:focus {
-    transform: translateX(10px);
-    outline: none;
-}
-
-.article,
-.proyect {
-    background-color: $color4;
-    position: absolute;
-    width: 100%;
-    height: 30rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    transition: opacity 1s;
-    display: flex;
-    opacity: 0;
-    z-index: 1;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    visibility: hidden;
-
-    @media screen and (max-width: 50rem) {
-        height: 50rem;
-        display: block;
-    }
-}
-
-.article.show,
-.proyect.show {
-    opacity: 1;
-    z-index: 2;
-}
-
-.article.visible,
-.proyect.visible {
-    visibility: visible;
-}
-
-.article.visible-fix,
-.proyect.visible-fix {
-    visibility: visible;
-}
-
-.sub-article-information {
-    width: 50%;
-    @media screen and (max-width: 50rem) {
-        width: 100%;
-        height: 50%;
-    }
-}
-
-.article-information {
-    padding: 3rem;
-
-    @media screen and (max-width: 40rem) {
-        padding: 1rem;
-    }
-}
-
-.article-title {
-    color: $color1;
-    background-color: $color2;
-    padding: 0.4rem;
-    font-size: 2rem;
-    margin: 0;
-    margin-bottom: 2rem;
-}
-
-.article-text {
-    color: $color3;
-    font-size: 1.1rem;
-
-    @media screen and (max-width: 40rem) {
-        font-size: 1.1rem;
-    }
-}
-
-.article-img,
-.proyect-img {
-    min-width: 50%;
-    max-width: 50%;
-    height: auto;
-    -o-object-fit: cover;
-    object-fit: cover;
-
-    @media screen and (max-width: 50rem) {
-        min-width: 100%;
-        max-width: 100%;
-        height: 50%;
-    }
-}
-
-.information-section {
-    padding-bottom: 8rem;
-    padding-top: 8rem;
-    margin: 0;
-    width: 100%;
-    background: url("/Contact1.webp") no-repeat center top;
-    background-size: cover;
-    color: white;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
-}
-
-.no-webp .information-section {
-    background: url("/Contact.jpg") no-repeat center top;
-}
-
-.information-section.lazy {
-    background: url("/Contact2.webp") no-repeat center top;
-    background-size: cover;
-}
-
-.information-subtitle {
-    width: 50%;
-    margin: 3em auto 3rem auto;
-}
-
-.information-text {
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.4rem;
-}
-
-@media only screen and (max-width: 70rem) {
-    .article-title {
-        font-size: 1.6rem;
-    }
-
-    .article-text {
-        font-size: 0.9rem;
-    }
-}
-
-@media only screen and (max-width: 60rem) {
-    .information-text {
-        width: 80%;
-        font-size: 1.3rem;
-    }
-}
-.nosotros-front {
-    margin: 0;
-    color: $color2;
-    background-color: $color1;
-}
-
-.nosotros-front .still {
-    transform: translateY(3px);
-    opacity: 0.7;
-    transition: transform 1s, opacity 1s;
-    transition-timing-function: ease-in-out;
-}
-
-.nosotros-front .move {
-    transform: translateY(0px);
-    opacity: 1;
-}
-
-.nosotros-front .big-text {
-    width: 50rem;
-    margin: 0 auto 0 auto;
-
-    @media only screen and (max-width: 1000px) {
-        width: 95%;
-    }
-}
-
-// Nosotros
-
-#a1 {
-    padding: 12rem 1rem 10rem 1rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 5;
-    background: transparent;
-    position: relative;
-}
-
-#a1::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -5;
-    background: url("/Background.webp") no-repeat fixed;
-    background-size: cover;
-    -webkit-filter: blur(2px);
-    /* Chrome, Opera */
-    -moz-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
-
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background.webp") center top no-repeat scroll;
-    }
-}
-
-.no-webp #a1::before {
-    background: url("/Background.jpg") no-repeat fixed;
-
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background.jpg") center top no-repeat scroll;
-    }
-}
-
-#a2 {
-    background: url("/Background1.webp") no-repeat fixed;
-    background-size: cover;
-    padding: 10rem 1rem 9rem 1rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background1.webp") center no-repeat scroll;
-    }
-}
-
-.no-webp #a2 {
-    background: url("/Background1.jpg") no-repeat fixed;
-
-    @supports (-webkit-touch-callout: none) {
-        background: url("/Background1.jpg") center top no-repeat scroll;
-    }
-}
-
-// Contacto
-
-.contact-div {
-    background-color: $color1;
-    margin-top: 0;
-    display: flex;
-    z-index: 10;
-    height: 100%;
-
-    @media only screen and (max-width: 70rem) {
-        display: block;
-    }
-}
-
-.contact-sub-div {
-    margin-left: 50%;
-    width: 50%;
-    padding: 2rem;
-    padding-bottom: 6rem;
-
-    @media only screen and (max-width: 70rem) {
-        width: 90%;
-        padding: 5%;
-        padding-bottom: 5rem;
-        margin-left: 0%;
-    }
-}
-
-.contact-div .big-navbar-link {
-    display: block;
-    margin: 2.5rem 0 2.5rem 0;
-    max-width: 15rem;
-    font-size: 1.5rem;
-}
-
-.contact-button {
-    cursor: pointer;
-    transition: color 0.8s;
-    width: 15rem;
-    padding: 0.7rem;
-    border-radius: 0.8rem;
-    margin: 0;
-    background-color: $color2;
-    color: $color1;
+    padding: 4rem 2rem 10rem 2rem;
     text-align: center;
-    transition: background-color 0.8s, color 0.8s;
+    background: image_url("vectors/vector1.svg") no-repeat center bottom;
+    background-size: 100%;
+    
+    @media only screen and (max-width: 110rem) {
+        padding: 3rem 2rem 12rem 2rem;
+    }
+
+    @media only screen and (max-width: 67rem) {
+        padding: 5rem 1rem 8rem 1rem;
+        background-size: 200%;
+    }
+
+    @media only screen and (max-width: 35rem) {
+        padding-top: 1.5rem;
+    }
 }
 
-.contact-button:visited {
-    color: $color1;
-}
+.proyectos {
+    position: relative;
+    padding-bottom: 3rem;
 
-.contact-button:hover {
-    color: $color6;
-    background-color: $color5;
-}
-
-.contact-button a {
-    color: inherit;
-}
-
-.location-container {
-    width: 50%;
-    bottom: 0;
-    top: 5.15em;
-    left: 0;
-    position: fixed;
-
-    @media only screen and (max-width: 70rem) {
+    &::after {
+        position: absolute;
+        background: image_url("vectors/vector4.svg") no-repeat center bottom;
+        background-size: 100% 100%;
+        content: '';
+        height: 7rem;
+        max-height: 160px;
         width: 100%;
-        height: 25rem;
-        position: relative;
-        top: 0;
+        bottom: -2px;
+        left: 0;
+        z-index: -1;
+
+        @media only screen and (max-width: 67rem) {
+            background-size: 200% 100%;
+            height: 6rem;
+        }
     }
 }
 
-.location-info {
-    position: absolute;
-    z-index: 2;
-    right: 0;
-    top: 0;
-    background-color: $color2;
-    padding: 0.6rem;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
+.products {
+    background-color: hsl(26.7, 23.1%, 92.4%);
 
-.contact-alternative {
-    color: $color2;
-    font-size: 1.7rem;
-
-    @media only screen and (max-width: 40rem) {
-        font-size: 1.4rem;
+    & .main-title {
+        margin-top: 0;
     }
 }
 
-.contact-mail {
-    color: $accent-color;
-    padding: 0 0.2rem 0 0.2rem;
-}
-
-.contact-mail:hover {
-    color: $accent-color;
-    text-decoration: underline;
-}
-
-.field {
-    padding: 2rem;
-    width: 60%;
-    margin: 7rem auto 2rem auto;
-    background-color: $color4;
-    border-radius: 1.7rem;
-
-    @media only screen and (max-width: 70rem) {
-        width: 85%;
-        padding: 1.5rem;
-    }
-}
-
-.preference {
-    color: $color2;
-    font-size: 2rem;
-}
-
-select {
-    max-width: 80%;
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-    padding: 0.3rem;
-
-    @media only screen and (max-width: 40rem) {
-        width: 100%;
-    }
-}
-
-textarea {
+.contacto {
+    box-sizing: border-box;
+    padding: 5rem 0 10rem 3rem;
     width: 100%;
-    height: 10rem;
-    background-color: $color6;
-    color: #fff;
-    font-size: 1.1rem;
-    resize: vertical;
-    font-family: "Open Sans", "Arial", "sans-serif";
+    background: image_url("vectors/vector2.svg") no-repeat right bottom;
+    background-size: 100%;
+
+    @media only screen and (max-width: 67rem) {
+        padding: 5rem 0 8rem 0;
+        background-size: 200%;
+    }
 }
 
-#map a {
-    color: $link;
+.contacto-sub-div {
+    width: 80%;
+
+    @media only screen and (max-width: 67rem) {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    & .main-title {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    & .title,
+    & .big-text.newsletter {
+        margin-bottom: 0;
+    }
+
+    & form {
+        width: 100%;
+    }
+
+    & .field {
+        padding-left: 0;
+    }
 }
 
-#map a:hover {
-    color: $link-h;
+.separator {
+    margin: 3rem;
 }

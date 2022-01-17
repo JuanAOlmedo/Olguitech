@@ -1,7 +1,10 @@
 @import "settings";
 
+// ALERTS //
+
 .alert,
 .notice {
+    top: 5.1rem;
     right: 0;
     padding: 0.6rem;
     margin: 1rem 0.5rem;
@@ -14,14 +17,14 @@
     font-family: "Montserrat", "Helvetica", sans-serif;
     transform: translateY(0);
     transition: transform 0.5s;
-    background-color: $color4;
-    border-radius: 0.7rem;
+    background-color: white;
+    border-radius: 0.6rem;
     border: solid 2px;
-    color: white;
 
     @media only screen and (max-width: 40rem) {
-        width: 85%;
-        padding: 2%;
+        box-sizing: border-box;
+        width: 90%;
+        padding: 0.5rem;
         margin-right: 5%;
     }
 }

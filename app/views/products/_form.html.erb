@@ -1,87 +1,99 @@
-<%= form_with model: @product do |form| %>
-<div class="field">
-    <%= form.label :title, "Título" %>
-    <%= form.text_area :title, class:'title-textarea article-title show-title' %>
-
-    <%= form.label :title2, "Título en ingles" %>
-    <%= form.text_area :title2, class:'title-textarea article-title show-title' %>
-
-    <%= form.label :image, 'Imagen' %>
-    <%= form.file_field :image, class:'image-attacher', id:"fileInput" %> <br>
-    <img class="image-upload" src="<%= url_for(@product.image) rescue "https://" %>" /> <br>
-
-    <%= form.label :content, "Contenido" %>
-    <%= form.rich_text_area :content, class:'rich-text' %>
-
-    <%= form.label :content2, "Contenido en ingles" %>
-    <%= form.rich_text_area :content2, class:'rich-text' %>
-
-    <%= form.label :description, "Descripción" %>
-    <%= form.text_area :description, class:'description-textarea' %>
-
-    <%= form.label :description2, "Descripción en ingles" %>
-    <%= form.text_area :description2, class:'description-textarea' %>
-
-    <h2> Soluciones relacionadas </h2>
-    <%= form.collection_check_boxes :articles, Article.all, :id, :title, include_hidden: false do |b| %>
-    <% article = Article.find_by(title: b.text) %>
-    <% if !@product.articles.include? article %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
-
-    <h2> Proyectos relacionados </h2>
-    <%= form.collection_check_boxes :proyectos, Proyecto.all, :id, :title, include_hidden: false do |b| %>
-    <% article = Proyecto.find_by(title: b.text) %>
-    <% if !@product.proyectos.include? article %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
-
-    <h2> Categorias </h2>
-    <%= form.collection_check_boxes :categories, Category.all, :id, :title, include_hidden: false do |b| %>
-    <% category = Category.find_by(title: b.text) %>
-    <% if !@product.categories.include? category %>
-    <%= b.check_box %><%= b.label { b.text } %> <br>
-    <% else %>
-    <%= b.check_box(checked: true) %><%= b.label { b.text } %> <br>
-    <% end %>
-    <% end %>
-
-    <%= form.submit 'Crear', class: "big-navbar-link", id: "button" %>
-</div>
-<% end %>
-
-<button id="preview"> Previsualizar </button>
-
-<div id='show'>
-    <div class="preview-header">
-        <h2> Previsualizacion </h2>
-        <img src="/flag1.png" alt="<% I18n.t("shared.flag1")%>" class="flag preview-flag">
-
-        <img src="/flag2.png" alt="<% I18n.t("shared.flag2")%>" class="flag preview-flag">
-
-        <svg xmlns="http://www.w3.org/2000/svg" class="x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-    </div>
-    <article>
-        <h2 class='article-title'> </h2>
-
-        <p class='article-description'> </p>
-
-        <img src='' class='article-img' alt=''>
-
-        <div class='show-text'>
-            <p class='article-text trix-content'> </p>
+<%= form_with model: @product, data: { controller: "article-creator" } do |form| %>
+    <div class="form">
+        <div class="field">
+            <%= form.label :title, "Título" %>
+            <%= form.text_area :title, data: { article_creator_target: "formTitle" } %>
         </div>
-    </article>
-</div>
 
-<%= javascript_pack_tag 'product-creator' %>
+        <div class="field">
+            <%= form.label :title2, "Título en inglés" %>
+            <%= form.text_area :title2, data: { article_creator_target: "formTitle2" } %>
+        </div>
+
+        <div class="file">
+            <%= form.label :image do %>
+                <%= form.file_field :image, class:'image-attacher', data: { article_creator_target: "fileInput" } %>
+                <span>
+                    Elegir una imagen...
+                </span>
+            <% end %>
+        </div>
+
+        <% url = url_for(@product.image) rescue "https://" %>
+        <%= image_tag url, class:"image-upload centered", data: { article_creator_target: "image" }  %>
+
+        <div class="rich-text field">
+            <%= form.label :content, "Contenido" %>
+            <%= form.rich_text_area :content, data: { article_creator_target: "formText" } %>
+        </div>
+
+        <div class="rich-text field">
+            <%= form.label :content2, "Contenido en inglés" %>
+            <%= form.rich_text_area :content2, data: { article_creator_target: "formText2" } %>
+        </div>
+
+        <div class="field">
+            <%= form.label :description, "Descripción" %>
+            <%= form.text_area :description, data: { article_creator_target: "formDescription" } %>
+        </div>
+
+        <div class="field">
+            <%= form.label :description2, "Descripción en inglés" %>
+            <%= form.text_area :description2, data: { article_creator_target: "formDescription2" } %>
+        </div>
+
+        <div class="checkbox-field">
+            <%= form.label :articles, "Artículos relacionados" %> <br>
+            <%= form.collection_check_boxes :article_ids, Article.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
+        
+        <div class="checkbox-field">
+            <%= form.label :proyectos, "Proyectos relacionados" %> <br>
+            <%= form.collection_check_boxes :proyecto_ids, Proyecto.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
+
+        <div class="checkbox-field">
+            <%= form.label :categories, "Categorías" %> <br>
+            <%= form.collection_check_boxes :category_ids, Category.all, :id, :get_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
+
+        <div style="width: 50%;"> </div>
+
+        <div class='btn-group centered'>
+            <%= form.submit 'Crear', class: "btn" %>
+            <a class="btn pointer" data-action="click->article-creator#showPreview"> Previsualizar </a>
+        </div>
+    </div>
+
+    <div id='preview-div' data-article-creator-target="preview">
+        <div class="preview-header centered">
+            <a class="btn pointer" data-action="click->article-creator#stopShowingPreview"> Cerrar </a>
+            <h2> Previsualizacion </h2>
+        </div>
+        <div class="product">
+            <div class="product-top">
+                <img src='' data-article-creator-target="articleImg" alt=''>
+
+                <div class="text">
+                    <h2 class='main-title' data-article-creator-target="articleTitle"> </h2>
+                    <p class='subtitle' data-article-creator-target="articleDescription"> </p>
+                </div>
+            </div>
+
+            <div class="content">
+                <div class='show-text'>
+                    <p class='trix-content' data-article-creator-target="articleText"> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

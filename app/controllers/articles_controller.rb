@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
     before_action :set_article, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
@@ -5,32 +7,32 @@ class ArticlesController < ApplicationController
     # GET /articles
     # GET /articles.json
     def index
-        ordered = Article.get_ordered(params[:order_by], params[:asc_desc])
+        respond_to do |format|
+            format.html do
+                ordered =
+                    Article.get_ordered(params[:order_by], params[:asc_desc])
 
-        @categories = ordered[0]
-        @articles = ordered[1]
+                @categories = ordered[0]
+                @articles = ordered[1]
 
-        @uncategorized = Article.uncategorized
+                @uncategorized = Article.uncategorized
+            end
+
+            format.json { @articles = Article.all }
+        end
     end
 
     # GET /articles/1
     # GET /articles/1.json
     def show
-        if @article.views == nil
-            @article.views = 0
-        end
+        viewed_articles = session[:viewed_articles]
 
-        if session[:viewed_articles] == nil
-            @article.views += 1
+        return unless viewed_articles.nil? || !@article.id.in?(viewed_articles)
 
-            session[:viewed_articles] = [@article.id]
-        elsif !@article.id.in? session[:viewed_articles].to_a
-            @article.views += 1
+        @article.views += 1
 
-            a = session[:viewed_articles].to_a
-            a << @article.id
-            session[:viewed_articles] = a
-        end
+        session[:viewed_articles] = [] if viewed_articles.nil?
+        session[:viewed_articles] << @article.id
 
         @article.save
     end
@@ -46,16 +48,7 @@ class ArticlesController < ApplicationController
     # POST /articles
     # POST /articles.json
     def create
-        parameters = article_params
-        products = parameters[:products]
-        parameters.delete(:products)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
-
-        @article = Article.new(parameters)
-
-        @article.change_categories_and_products(categories, products)
+        @article = Article.new(article_params)
 
         respond_to do |format|
             if @article.save
@@ -66,14 +59,8 @@ class ArticlesController < ApplicationController
                 format.json do
                     render :show, status: :created, location: @article
                 end
-
-                @users = User.all.where(newsletter: true)
-
-                @users.each do |user|
-                    ArticlesMailer.article(user, @article).deliver_later
-                end
             else
-                format.html { render :new }
+                format.html { render :new, status: :unprocessable_entity }
                 format.json do
                     render json: @article.errors, status: :unprocessable_entity
                 end
@@ -84,24 +71,15 @@ class ArticlesController < ApplicationController
     # PATCH/PUT /articles/1
     # PATCH/PUT /articles/1.json
     def update
-        parameters = article_params
-        products = parameters[:products]
-        parameters.delete(:products)
-
-        categories = parameters[:categories]
-        parameters.delete(:categories)
-
         respond_to do |format|
-            if @article.update(parameters)
-                @article.change_categories_and_products(categories, products)
-
+            if @article.update(article_params)
                 format.html do
                     redirect_to @article,
                                 notice: 'Artículo actualizado exitosamente.'
                 end
                 format.json { render :show, status: :ok, location: @article }
             else
-                format.html { render :edit }
+                format.html { render :edit, status: :unprocessable_entity }
                 format.json do
                     render json: @article.errors, status: :unprocessable_entity
                 end
@@ -116,7 +94,8 @@ class ArticlesController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to articles_url,
-                            notice: 'Artículo destruido exitosamente.'
+                            notice: 'Artículo destruido exitosamente.',
+                            status: :see_other
             end
             format.json { head :no_content }
         end
@@ -126,23 +105,20 @@ class ArticlesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-        @article = Article.find(params[:id])
+        @article = Article.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def article_params
-        params
-            .require(:article)
-            .permit(
-                :title,
-                :title2,
-                :content,
-                :content2,
-                :description,
-                :description2,
-                { products: [] },
-                { categories: [] },
-                :image,
-            )
+        params.require(:article)
+              .permit(:title,
+                      :title2,
+                      :content,
+                      :content2,
+                      :description,
+                      :description2,
+                      { product_ids: [] },
+                      { category_ids: [] },
+                      :image)
     end
 end

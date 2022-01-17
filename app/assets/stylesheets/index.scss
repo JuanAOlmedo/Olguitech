@@ -1,127 +1,37 @@
 @import "settings";
 
-.index-title {
-    color: $color1;
-    background-color: $color2;
-    margin: 8rem 0 0 0;
-    width: 100%;
-    padding: 0.2rem;
-    font-size: 4.5rem;
-    text-align: center;
+// For /articles   //
+//     /products   //
+//     /proyectos  //
+//     /categories //
 
-    @media only screen and (max-width: 70rem) {
-        margin: 8rem 15% 0 15%;
-        width: 70%;
-        font-size: 3.5rem;
-    }
-
-    @media only screen and (max-width: 45rem) {
-        margin: 8rem 5% 0 5%;
-        width: 90%;
-        font-size: 3rem;
-    }
-}
-
-.categories .index-title {
-    margin: 2rem auto 1rem auto;
-}
-
-.articles-div,
-.products-div {
+.articles-div {
     display: block;
-    width: 60%;
-    margin: 0 15% 5rem 25%;
-    color: $color2;
-}
+    width: 80%;
+    margin: 0 2.5% 5rem 17.5%;
 
-.products-div {
-    width: 70%;
-    margin: 0 5% 5rem 25%;
-}
-
-@media only screen and (max-width: 72rem) {
-    .articles-div,
-    .products-div {
+    @media only screen and (max-width: 72rem) {
         width: 70%;
         margin: 0 4% 5rem 26%;
     }
-}
 
-@media only screen and (max-width: 50rem) {
-    .articles-div,
-    .products-div {
+    @media only screen and (max-width: 50rem) {
         width: 92.5%;
         margin: 0 auto 5rem auto;
     }
 }
 
-.products-div2 {
-    margin-right: 15%;
+.articles-div .cards-holder {
+    width: 100%;
 }
 
-.articles-div2,
-.products-div2 {
-    margin: 0 20% 5rem 20%;
+.articles-div2 {
+    margin: 0 auto 5rem auto;
+    width: 90%;
 
     @media only screen and (max-width: 72rem) {
         margin: 0 auto 5rem auto;
     }
-}
-
-.article {
-    background-color: $color4;
-    height: auto;
-    margin: 0 0 5rem 0;
-    border-radius: 2rem;
-    padding: 0;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    transition: opacity 1s;
-    opacity: 0.4;
-}
-
-.article img {
-    height: 20rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
-
-.article.move {
-    opacity: 1;
-}
-
-.article-information {
-    padding: 0rem 2rem 2rem 2rem;
-}
-
-.article-title {
-    color: $color2;
-    font-size: 3.5rem;
-
-    @media only screen and (max-width: 60rem) {
-        font-size: 1.8rem;
-    }
-}
-
-.article-text {
-    color: $color3;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-
-    @media only screen and (max-width: 60rem) {
-        font-size: 1.1rem;
-    }
-}
-
-.article-img {
-    width: 100%;
-    height: auto;
-    max-height: 40rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    margin: 0;
-    bottom: 0;
 }
 
 .menu {
@@ -142,31 +52,28 @@
     top: 0;
     left: 0;
     pointer-events: none;
+
+    & path {
+        transition: all 0.5s;
+    }
 }
 
-.icon-tabler-minus-vertical path {
-    transition: all 0.5s;
-}
-
-.menu h4 {
+.menu-title {
     transition: padding 0.5s;
     color: #aaa;
-}
+    margin-bottom: 0.4rem;
 
-.menu-link {
-    color: #aaa;
-}
+    &.visible {
+        padding-left: 0.3rem;
+    }
 
-.menu-link:visited {
-    color: #aaa;
-}
-
-.menu-link:hover {
-    color: #aaa;
+    & .link {
+        font-size: 1.2rem;
+    }
 }
 
 .category {
-    padding-top: 3rrem;
+    padding-bottom: 4rem;
     border-bottom: solid $color6 2px;
 }
 
@@ -188,162 +95,13 @@ h4.visible {
     color: $color2;
 }
 
-.visible .menu-link {
-    color: $color2;
-}
-
-.visible .menu-link:visited {
-    color: $color2;
-}
-
-.visible .menu-link:hover {
-    color: $color2;
-}
-
-.popup .info {
+.dropdown-holder {
+    height: 2.5rem;
     display: flex;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-}
 
-.popup .info h2 {
-    margin: auto 0 auto 1rem;
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: $color7;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 10;
-    opacity: 0;
-    transform: translateY(-0.2rem);
-    transition: opacity 0.1s, transform 0.2s, visibility 1s;
-    line-height: 45px;
-}
-
-.sort {
-    margin: 0;
-}
-
-.sort:hover,
-.sort:focus-within {
-    background-color: $color6;
-}
-
-.popup .show {
-    visibility: visible;
-    opacity: 1;
-    transform: translateY(0rem);
-}
-
-.arrow1,
-.arrow2 {
-    transition: transform 0.5s;
-}
-
-.clicked .arrow1 {
-    transform: translateY(-0.1rem);
-}
-
-.clicked .arrow2 {
-    transform: translateY(0.1rem);
-}
-
-.product {
-    width: 97%;
-    padding: 1.5%;
-    height: 13rem;
-
-    @media only screen and (max-width: 50rem) {
-        width: 100%;
-        width: 94%;
-        padding: 3%;
+    & .dropdown {
+        margin-left: auto;
+        margin-right: auto;
+        width: 15rem;
     }
-}
-
-.product a {
-    width: 100%;
-    margin: 0;
-    display: flex;
-    height: 100%;
-}
-
-.product-img {
-    border-radius: 0.4rem;
-    width: 13rem;
-    max-width: 45%;
-    height: 13rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
-
-.product-title {
-    margin: 0;
-
-    @media only screen and (max-width: 50rem) {
-        font-size: 1.2rem;
-    }
-}
-
-.product-text {
-    @media only screen and (max-width: 50rem) {
-        font-size: 1rem;
-    }
-}
-
-.product-info {
-    padding: 0 1rem 0 1rem;
-}
-
-.product-more-link {
-    width: 10rem;
-    display: block;
-}
-
-.categories {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    color: $color2;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.category-link {
-    width: 30%;
-    margin: 1.5%;
-    height: 25rem;
-    padding: 0;
-
-    @media only screen and (max-width: 70rem) {
-        width: 47%;
-    }
-
-    @media only screen and (max-width: 40rem) {
-        width: 97%;
-    }
-}
-
-.categories .category {
-    width: 100%;
-    height: 25rem;
-    background-color: $color6;
-    padding: 0;
-}
-
-.category-img {
-    width: 100%;
-    height: 12.5rem;
-    -o-object-fit: cover;
-    object-fit: cover;
-}
-
-.category-info {
-    padding: 1rem;
 }

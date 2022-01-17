@@ -1,34 +1,38 @@
-<head>
-    <%= stylesheet_link_tag 'forms' %>
-</head>
-
 <% content_for :title, "Acceder" %>
 
-<div class='form-div'>
-    <h1 class='title white'>Acceder</h1>
+<h1 class='main-title'>Acceder</h1>
 
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-        <%= f.input :email,
-                  label: false,
-                  required: false,
-                  placeholder: 'Email',
-                  autofocus: true,
-                  class: 'input',
-                  input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
-                  label: false,
-                  required: false,
-                  placeholder: 'Contraseña',
-                  class: 'input',
-                  input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: :false } }) do |f| %>
+    <div class="form big-card">
+        <div class="field">
+            <%= f.label :email, "Email" %>
+            <%= f.input :email,
+                        label: false,
+                        required: false,
+                        autofocus: true,
+                        class: 'input',
+                        input_html: { autocomplete: "email" } %>
+        </div>
+
+        <div class="field">
+            <%= f.label :password, "Contraseña" %>
+            <%= f.input :password,
+                        label: false,
+                        required: false,
+                        class: 'input',
+                        input_html: { autocomplete: "current-password" } %>
+        </div>
+
+        <div class="checkbox-field">
+            <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div style="width: 100%;"></div>
+
+        <%= f.button :submit, "Acceder", class:'btn centered' %>
     </div>
+<% end %>
 
-    <div class="form-actions">
-        <%= f.button :submit, "Acceder", class:'big-navbar-link button' %>
-    </div>
-    <% end %>
-
+<div class="centered">
     <%= render "devise/shared/links" %>
 </div>

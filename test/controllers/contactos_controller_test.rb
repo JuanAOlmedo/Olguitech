@@ -10,4 +10,12 @@ class ContactosControllerTest < ActionDispatch::IntegrationTest
         get '/contactos'
         assert_response :success
     end
+
+    test 'should get new' do
+        get '/contacto/new'
+        assert_response :success
+
+        get '/contactos/new'
+        assert_response :success
+    end
 end

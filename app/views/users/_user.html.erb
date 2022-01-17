@@ -1,0 +1,31 @@
+<tr class='user-row' data-user-searchbar-target="row">
+    <td> <%= user.id %> </td>
+
+    <td> <%= user.name %> </td>
+
+    <td> 
+        <% if user.confirmed? %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M5 12l5 5l10 -10" />
+            </svg>
+        <% end %>
+
+        <%= mail_to user.email, class: 'link' %> 
+    </td>
+
+    <td> <%= user.company %> </td>
+
+    <td> <%= phone_to user.phone, class: 'link' %> </td>
+
+    <td> <%= if user.newsletter; "Sí"; else; "No"; end; %> </td>
+
+    <td>
+        <% times_contacted = user.contactos.length %> 
+        <span class='<%= times_contacted > 0 ? "link times-contacted" : "" %>' data-action="click->user-index#toggleShowContacts" data-id="<%= user.id %>">
+            <%= times_contacted %>
+        </span> 
+    </td>
+
+    <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
+</tr>

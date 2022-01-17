@@ -5,4 +5,8 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+    id: 1
+    name: Juan Andres Olmedo
     email: tests1@test.com
+    encrypted_password: <%= Devise::Encryptor.digest(Admin, 'superstrongpassword') %>
+    confirmed_at: <%= Time.now %>

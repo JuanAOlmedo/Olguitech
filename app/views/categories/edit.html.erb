@@ -1,11 +1,7 @@
-<head>
-    <%= stylesheet_link_tag 'actiontext' %>
-</head>
+<% content_for :title, "Editar categoría #{@category.title}" %>
+
+<h1 class='main-title'>Editar Categoría</h1>
 
 <div id='edit'>
-    <%= render 'layouts/back' %>
-
-    <h1 class='show-title gold'>Editar Categoria</h1>
-
     <%= render 'form', category: @category %>
 </div>

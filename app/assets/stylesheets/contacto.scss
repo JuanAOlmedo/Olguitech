@@ -1,0 +1,36 @@
+@import "settings";
+
+// For /contacto      //
+//     /contacto/new  //
+
+.location-container {
+    width: 85%;
+    border-radius: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 30rem;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+
+    @media only screen and (max-width: 67rem) {
+        width: 90%;
+        height: 20rem;
+    }
+}
+
+.location-container .ol-viewport {
+    border-radius: 2rem;
+}
+
+.subtitle .link {
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    color: #f4923c;
+}
+
+#map a {
+    color: $link;
+}
+
+#map a:hover {
+    color: $link-h;
+}

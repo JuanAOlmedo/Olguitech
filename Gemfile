@@ -4,27 +4,46 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+<<<<<<< HEAD
 gem 'rails', '6.1.4.4'
 # Use sqlite3 as the database for Active Record
+=======
+gem 'rails', '7.0.0'
+
+# Use pg as the database for Active Record in production
+>>>>>>> redesign
 gem 'pg'
+
 # Use Puma as the app server
 gem "puma", ">= 5.5.1"
+
 # Use SCSS for stylesheets
-gem 'sass-rails', '>= 6'
-# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '5.4.0'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5.2.0'
+gem 'sassc-rails'
+
+# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+gem "importmap-rails"
+
+# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+gem "turbo-rails"
+
+# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+gem "stimulus-rails"
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 
-gem 'simple_form', '~> 5.0', '>= 5.0.2'
-gem 'devise', '~> 4.8'
+# Use devise for authentication
+gem 'devise', '4.8.1'
+
+# Use simple_form for devise forms
+gem 'simple_form', '5.1.0'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
@@ -32,8 +51,12 @@ gem 'mini_magick'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-# gem 'dotenv-rails', groups: [:development, :test]
-# gem "recaptcha"
+
+# Use friendly_id for url ids
+gem 'friendly_id', '~> 5.4.0'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -55,10 +78,7 @@ group :test do
     gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# Capistrano
+# Use capistrano to deploy to production
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'

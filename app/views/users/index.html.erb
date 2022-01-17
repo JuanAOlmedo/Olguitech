@@ -1,16 +1,14 @@
-<head>
-    <%= stylesheet_link_tag 'users-index' %>
-</head>
-
 <% content_for :title, "Usuarios" %>
 
-<div class='form-div'>
-    <h1 class='form-title'> Usuarios </h1>
+<div data-controller="user-index user-searchbar" data-user-index-hidden-class="hidden">
+    <h1 class='main-title'> Usuarios </h1>
 
-    <input id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
+    <div class="field" id="user-index-field">
+        <input class="centered" data-action="input->user-searchbar#search" data-user-searchbar-target="search" id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
+    </div>
 
-    <div class='table'>
-        <table class="user">
+    <div class="table">
+        <table class="user" id="users">
             <tr>
                 <th> ID </th>
                 <th> Nombre </th>
@@ -21,45 +19,35 @@
                 <th> Veces Contactadas </th>
                 <th> Idioma </th>
             </tr>
+
             <% @users.each do |user| %>
-                <tr class='user-row'>
-                    <td> <%= user.id %> </td>
-
-                    <td> <%= user.name %> </td>
-
-                    <td> <%= mail_to user.email %> </td>
-
-                    <td> <%= user.company %> </td>
-
-                    <td> <%= link_to user.phone, "tel:#{user.phone}" %> </td>
-
-                    <td> <%= if user.newsletter; "Sí"; else; "No"; end; %> </td>
-
-                    <td> <span class='times-contacted' data-id="<%= user.id %>"><%= user.contactos.length %></span> </td>
-
-                    <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
-                </tr>
+                <%= render 'user', user: user%>
             <% end %>
         </table>
     </div>
-</div>
 
-<% @contacted.each do |user| %>
-    <div class='contact-info' id='article-<%= user.id %>'>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" data-id="<%= user.id %>">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-        <% user.contactos.each do |contact| %>
-            <div class="contact-instance">
-                <p> Fecha: <%= contact.created_at.to_formatted_s(:long) %> </p>
-                <p> Mensaje: <%= contact.message %> </p>
-                <p> Articulo 1: <%= Article.find(contact.preference).title rescue "Artícluo eliminado" %> </p>
-                <p> Articulo 2: <%= Proyecto.find(contact.preference2).title rescue "Artícluo eliminado" %> </p>
-            </div>
+    <div class="new-user">
+        <%= turbo_frame_tag "new_user" do %>
+            <%= link_to "Crear nuevo usuario", new_user_path, class: "btn centered" %>
         <% end %>
     </div>
-<% end %>
 
-<%= javascript_pack_tag 'user-index' %>
+    <% @contacted.each do |user| %>
+        <div class='contact-info hidden' id='article-<%= user.id %>'>
+            <svg xmlns="http://www.w3.org/2000/svg" data-action="click->user-index#toggleShowContacts" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" data-id="<%= user.id %>">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+            
+            <% user.contactos.each do |contact| %>
+                <div class="big-card">
+                    <p> <strong> Fecha: </strong> <%= contact.created_at.to_formatted_s(:long) %> </p>
+                    <p> <strong> Mensaje: </strong> <%= contact.message %> </p>
+                    <p> <strong> Articulo 1: </strong> <%= Article.find(contact.preference).title rescue "Artícluo eliminado" %> </p>
+                    <p> <strong> Articulo 2: </strong> <%= Proyecto.find(contact.preference2).title rescue "Artícluo eliminado" %> </p>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>

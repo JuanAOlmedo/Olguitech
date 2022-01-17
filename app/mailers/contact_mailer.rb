@@ -1,20 +1,15 @@
-class ContactMailer < ApplicationMailer
-    default from: ENV['EMAIL_USERNAME']
-    layout 'mailer'
+# frozen_string_literal: true
 
+class ContactMailer < ApplicationMailer
     def contacto(user, preference, preference2, message)
         @user = user
         @preference = preference
         @preference2 = preference2
         @message = message
-        @variables = {
-            user: user,
-            preference: preference,
-            preference2: preference2,
-            message: message,
-        }
 
-        mail(to: @user.email, subject: 'Olguitech s.a.s.')
+        I18n.with_locale(@user.locale) do
+            mail(to: @user.email, subject: 'Olguitech s.a.s.')
+        end
     end
 
     def admin_contacto(user, preference, preference2, message)
@@ -26,7 +21,7 @@ class ContactMailer < ApplicationMailer
 
         mail(
             to: ENV['EMAIL_USERNAME'],
-            subject: 'Una nueva persona se ha contactado',
+            subject: 'Una nueva persona se ha contactado'
         )
     end
 end

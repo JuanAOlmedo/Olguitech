@@ -1,135 +1,125 @@
 es:
+  general:
+    es: Español
+    en: Inglés
+    see_more: Ver más
+    see_all: Ver todos
   main:
-    what_do_we_do_message: "Brindamos soluciones en Ingeniería Eléctrica a diferentes empresas. Representamos marcas de primer nivel regionalmente y en Uruguay. "
-    next_article: "Siguiente artículo"
-    previous_article: "Artículo anterior"
-    contact: "Contacto"
-    can_we_help_you: "Te podemos ayudar en algo?"
-    get_in_touch: "Contactate con nosotros"
-  nav: 
-    products: "Productos"
-    solutions: "Soluciones"
-    proyects: "Proyectos"
-    about_us: "Nosotros"
-    contact: "Contacto"
-    sign_in: "Acceder"
-    profile: "Perfil"
+    main:
+      title: Las últimas tendencias mundiales en Ingeniería Eléctrica, control, automatización y equipamiento industrial.
+      subtitle1: Le asesoramos cuando busque un insumo o cuando busque la forma de mejorar su proceso o instalación.
+      subtitle2: En Olguitech apostamos a ser su socio tecnológico. 
+      why: Por qué elegir Olguitech?
+      articles: Nuestros últimos artículos
+      proyectos: Nuestros últimos proyectos
+      products: Algunos de nuestros productos
+      interested: Estás interesado en hablar con nosotros? 
+      sign_up: Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta! 
+      contact: Contactarse
+      subscribe_message_html: <strong>Sé el primero en saber de nuestras novedades</strong>, suscribete a nuestra newsletter.
+      subscribe: Suscribirse
+  nav:
+    about_us: Nosotros
+    contact: Contacto
   nosotros:
-    who_are_we: "¿Quiénes Somos?"
-    who_are_we_message: "Somos una empresa joven. Nos esforzamos para brindarle los mejores productos y servicios con marcas de primer nivel mundial. Cuando esté por definir una tecnología, requiera ser asesorado en la selección de un producto, requiera asistencia en la instalación o su puesta en marcha, consúltenos. Nuestros técnicos son formados internacionalmente por nuestros proveedores. En Olguitech damos todo de nosotros mismos para que nuestro vínculo con usted y su empresa sea duradero. "
-    how_are_we_different: "¿Cómo Somos Diferentes?"
-    how_are_we_different_message: "Nuestro diferencial es el servicio y la voluntad de mejorar continuamente. Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos. En Olguitech apostamos a ser socios tecnológicos de nuestros clientes."
+    who_are_we: ¿Quiénes Somos?
+    who_are_we_message: >
+      Somos una empresa joven. Nos esforzamos para brindarle los mejores productos y servicios con marcas de primer nivel mundial en Argentina, Paraguay y Uruguay.
+      Cuando esté por definir una tecnología, requiera ser asesorado en la selección de un producto, requiera asistencia en la instalación o su puesta en marcha, consúltenos.
+      Nuestros técnicos son formados internacionalmente por nuestros proveedores.
+      En Olguitech damos todo de nosotros mismos para que nuestro vínculo con usted y su empresa sea duradero.
+    how_are_we_different: ¿Cómo Somos Diferentes?
+    how_are_we_different_message: >
+      Nuestro diferencial es el servicio y la voluntad de mejorar continuamente.
+      Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos.
+      En Olguitech apostamos a ser socios tecnológicos de nuestros clientes a nivel regional.
   contact:
-    direction_alt: "Mapa de 21 de Setiembre 2819 of. 703 esq. Ellauri"
-    direction: "Encontranos en 21 de Setiembre 2819 of. 703 esq. Ellauri"
-    how_can_we_help_you: "Cómo podemos ayudarte?"
-    contact: "Contactarse"
-    sign_in_and_contact: "Iniciar Sesión y Contactarse"
-    contact_html: "O contactate a <a class='contact-mail' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
-                   al teléfono <a class='contact-mail' href='tel:+59827162524'>+598 2716 2524</a> <br> 
-                   o al celular <a class='contact-mail' href='tel:+59892898500'>+598 92 898 500</a>"
-    preference: "Cuál de nuestras soluciones te interesó más?"
-    preference2: "Cuál de nuestros proyectos te interesó más?"
-    message: "Mensaje"
-    send: "Enviar Mail"
-    sent: "Un email ha sido enviado."
+    direction_alt: Mapa de 21 de Setiembre 2819 of. 703 esq. Ellauri
+    direction_html: Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
+    how_can_we_help_you: Cómo podemos ayudarte?
+    contact: Contactarse
+    contact_html: >
+      O contactate a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
+      al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
+      o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
+    preference: Cuál de nuestras soluciones te interesó más?
+    preference2: Cuál de nuestros proyectos te interesó más?
+    message: Mensaje
+    send: Enviar Mail
+    sent: Un email ha sido enviado.
+    ask: Hacer una pregunta!
+    error: impidió que se pudiera mandar un mail
+    errors: impidieron que se pudiera mandar un mail
+    first_time: Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos 
   users:
-    sign_out: "Cerrar sesión"
-    sign_up: "Crear Cuenta"
-    sign_in: "Acceder"
-    edit_account: "Editar cuenta"
-    delete_account: "Cancelar cuenta"
-    edit: "Editar"
-    confirm: "Reenviar instrucciones de confirmación"
-    resend: "Reenviar"
-    change_password: "Cambiar contraseña"
-    change: "Cambiar"
-    new_password: "Nueva contraseña"
-    confirm_new_password: "Confirmar nueva contraseña"
-    minimum_characters: "caracteres mínimo"
-    forgot_password: "¿Olvidaste tu contraseña?"
-    waiting_confirmation: "Esperando confirmación de: "
-    password: "Contraseña"
-    confirm_password: "Confirmar contraseña"
-    company: "Compañía"
-    name: "Nombre"
-    leave_empty: "Dejar vacío si no se quiere cambiar"
-    need_current_password: "Necesitamos tu contraseña actual"
-    phone: "Teléfono"
-    remember_me: "Recuérdame"
-    didnt_recieve: "No recibiste instrucciones para confirmar la cuenta?"
-    confirm_account: "Confirmar mi cuenta"
-    are_you_sure: "Estas seguro?"
+    edit_account: Editar cuenta
+    edit: Editar
+    company: Compañía
+    name: Nombre
+    phone: Teléfono
+    confirm_account: Confirmar mi cuenta
+    delete_account: Eliminar cuenta
+    are_you_sure: Estas seguro?
+    deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :(
+    newsletter: Recibir newsletters
   index:
-    uncategorized: "Sin categoría"
-    sort_by: "Ordenar por"
-    category: "Categoría"
-    up_desc: "Último editado"
-    created_desc: "Último creado"
-    created_asc: "Primero creado"
-    title_asc: "Título AZ"
-    title_desc: "Título ZA"
+    uncategorized: Sin categoría
+    sort_by: Ordenar por
+    category: Categoría
+    up_desc: Último editado
+    created_desc: Último creado
+    created_asc: Primero creado
+    title_asc: Título AZ
+    title_desc: Título ZA
   show:
-    articles: "Soluciones relacionadas"
-    proyects: "Proyectos relacionados"
-    products: "Productos relacionados"
+    articles: Soluciones relacionadas
+    proyects: Proyectos relacionados
+    products: Productos relacionados
   categories:
-    category: "Categoría"
-    categories: "Categorías"
-    all: "Todas las categorías"
+    category: Categoría
+    categories: Categorías
+    all: Todas las categorías
   shared:
-    see_more: "Ver más"
-    our_products: "Nuestros Productos"
-    our_solutions: "Nuestras Soluciones"
-    our_proyects: "Nuestros Proyectos"
-    back: "Atrás"
-    all: "Todos"
-    admins: "Solo administradores pueden hacer eso"
-    cant_cancel: "No podes destruir tu cuenta de administrador."
-    flag1: "Link to english version - Link a versión en inglés"
-    flag2: "Link a versión en español - Link to spanish version"
-    dropdown: "Menú desplegable"
-    alert: "Cerrar alerta"
-    notice: "Cerrar aviso"
-    engineering_solutions: "Soluciones en ingeniería"
-    logo: "Logo de Olguitech"
-  mail:
-    contact_mailer_html: "Hola %{name}, gracias por contactarte con Olguitech s.a.s.! <br>
-
-        La solución que ofrecemos que más le ha interesado fue: %{preference}, y el proyecto: %{preference2}.<br>
-        Tu mensaje fue: %{message} <br>
-
-        Alguien se contactará a la brevedad con usted con respecto a ambos artículos y a su mensaje.
-        Esperamos escuchar de ti y de %{company} de vuelta."
-    contact_mailer: "Hola %{name}, gracias por contactarte con Olguitech s.a.s.!
-
-        La solución que ofrecemos que más le ha interesado fue: %{preference}, y el proyecto: %{preference2}.
-        Tu mensaje fue: %{message}
-
-        Alguien se contactará a la brevedad con usted con respecto a ambos artículos y a su mensaje.
-        Esperamos escuchar de ti y de %{company} de vuelta."
-    confirm:
-      html: "<p>Bienvenido %{email}!</p>
-
-<p>Puedes confirmar tu cuenta con el link de abajo:</p>"
-    password: 
-      html: "<p>Hola %{email}!</p>
-
-<p>Te contactamos para informarte que tu contraseña a cambiado.</p>"
-    reset:
-      1_html: "<p>Hola %{email}!</p>
-
-<p>Has pedido un link para cambiar tu contraseña. Puedes hacerlo con el link de abajo.</p>"
-      2_html: "<p>Si no pediste esto, puedes ignorar este email.</p>
-
-<p>Tu contraseña no cambiará hasta que no accedas a este link y crees una nueva contraseña.</p>"
+    see_more: Ver más
+    our_products: Nuestros Productos
+    our_solutions: Nuestras Soluciones
+    our_proyects: Nuestros Proyectos
+    back: Atrás
+    all: Todos
+    admins: Solo administradores pueden hacer eso
+    cant_cancel: No podes destruir tu cuenta de administrador.
+    dropdown: Menú desplegable
+    alert: Cerrar alerta
+    notice: Cerrar aviso
+    engineering_solutions: Soluciones en ingeniería
+    logo: Logo de Olguitech
   activerecord:
     errors:
       messages:
-        record_invalid: 'La validación falló: %{errors}'
+        record_invalid: >
+          La validación falló: %{errors}
         restrict_dependent_destroy:
           has_one: No se puede eliminar el registro porque existe un %{record} dependiente
           has_many: No se puede eliminar el registro porque existen %{record} dependientes
+    models:
+      article:
+        one: Solución
+        other: Soluciones
+      proyecto:
+        one: Proyecto
+        other: Proyectos
+      product:
+        one: Producto
+        other: Productos
+      category:
+        one: Categoría
+        other: Categorías
+      newsletter:
+        one: Newsletter
+        other: Newsletters
+      user:
+        one: Usuario
+        other: Usuarios
   date:
     abbr_day_names:
     - dom

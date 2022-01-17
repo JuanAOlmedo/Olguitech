@@ -1,15 +1,7 @@
-<div style="background-color: #faf8f6; padding: 1rem 0 1rem 0;">
-    <div style="max-width: 40rem; margin: 1rem auto 1rem auto; background-color: white; border-radius: 0.5rem; padding: 1rem;">
-        <h1> <%= @title %> </h1>
+<% content_for :user, :user %>
 
-        <%= @content %>
-    </div>
+<a href="<%= @link %>"> Ver la newsletter en un navegador </a>
 
-    <a href="https://olguitech.com" style="display: block; width: 100%;">
-        <img src="https://olguitech.com/logo-muy-chico.png" style="display: block; margin-left: auto; margin-right: auto;" width="220px" height="90px">
-    </a>
+<h1> <%= @title %> </h1>
 
-    <a href='https://olguitech.com/user/unsubscribe/<%= @token %>' style="display: block; width: 100%; text-align: center;">
-        Desubscribirse
-    </a>
-</div>
+<%= @content %>

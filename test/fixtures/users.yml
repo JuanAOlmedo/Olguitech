@@ -8,7 +8,10 @@ one:
   id: 1
   name: Juan Andres Olmedo
   phone: 012 345 678
+  company: Olguitech
   email: test1@test.com
+  confirmation_token: supersecuretoken
+  edit_token: supersecuretoken2
 
 two:
   email: test2@test.com

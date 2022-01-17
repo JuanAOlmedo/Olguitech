@@ -1,11 +1,7 @@
-<head>
-    <%= stylesheet_link_tag 'actiontext' %>
-</head>
+<% content_for :title, "Crear Categoría" %>
+
+<h1 class='main-title'>Crear Categoría</h1>
 
 <div id='edit'>
-    <%= render 'layouts/back' %>
-
-    <h1 class='show-title gold'>Crear Categoria</h1>
-
     <%= render 'form', category: @category %>
 </div>

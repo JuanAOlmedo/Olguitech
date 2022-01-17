@@ -1,29 +1,78 @@
-<% content_for :nav, "transparent" %>
-
-<head>
-    <%= stylesheet_link_tag 'main' %>
-</head>
-
 <div class="front">
-    <h2 class="main-title">Olguitech</h2>
-    <p class='subtitle'> <%= I18n.t 'main.what_do_we_do_message' %> <br>
-         <br>
-         </p>
-    <div class='subtitle-more-link'>
-        <%= link_to nosotros_path, title: t('nav.about_us') do %>
-            <%= render 'layouts/more' %>
-        <% end %>
-    </div>
+    <h2 class="main-title"><%= t ".title" %></h2>
+    <p class='subtitle'>
+        <%= t ".subtitle1" %> 
+        <br>
+        <strong> 
+            <%= t ".subtitle2" %> 
+        </strong>
+        <br>
+        <br>
+    </p>
+    
+    <%= link_to t(".why"), nosotros_path, class: "btn centered" %>
 </div>
 
-<% if @articles.any? %>
-    <%= render 'slideshow' %>
-<% end %>
+<div class="articles">
+    <% if @articles.any? %>
+        <h1 class="main-title">
+            <%= t ".articles" %>
+        </h1>
+        <%= link_to t("general.see_all"), articles_path, class: "btn centered" %>
 
-<% if @proyectos.any? %>
-    <%= render 'slideshow2' %>
-<% end %>
+        <%= cards_for @articles %>
+    <% end %>
+</div>
 
-<%= render 'contacto' %>
+<div class="proyectos">
+    <% if @proyectos.any? %>
+        <h1 class="main-title">
+            <%= t ".proyectos" %>
+        </h1>
+        <%= link_to t("general.see_all"), proyectos_path, class: "btn centered" %>
 
-<%= javascript_pack_tag 'main' %>
+        <%= cards_for @proyectos %>
+    <% end %>
+</div>
+
+<div class="products">
+    <% if @products.any? %>
+        <h1 class="main-title">
+            <%= t ".products" %>
+        </h1>
+        <%= link_to t("general.see_all"), products_path, class: "btn centered" %>
+
+        <%= alternative_cards_for @products %>
+    <% end %>
+</div>
+
+<div class="contacto">
+    <div class="contacto-sub-div">
+        <h1 class='main-title'> 
+            <%= t ".interested" %>
+        </h1>
+
+        <p class="big-text">
+            <%= t ".sign_up" %>
+        </p>
+
+        <%= link_to t(".contact"), contactos_path, class: "btn" %>
+
+        <div class="separator"> </div>
+
+        <p class="big-text newsletter">
+            <%= t ".subscribe_message_html" %>
+        </p>
+
+        <div class="form">
+            <%= form_with model: @user, url: "/#{I18n.locale}/users/subscribe", method: :post do |form| %>
+                <div class="field">
+                    <%= form.label :email, "Email" %>
+                    <%= form.email_field :email %>
+                </div>
+
+                <%= form.submit t(".subscribe"), class: "btn" %>
+            <% end %>
+        </div>
+    </div>
+</div>

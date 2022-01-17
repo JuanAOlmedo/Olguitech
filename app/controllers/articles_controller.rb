@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
     before_action :set_article, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
@@ -23,19 +25,14 @@ class ArticlesController < ApplicationController
     # GET /articles/1
     # GET /articles/1.json
     def show
-        @article.views = 0 if @article.views == nil
+        viewed_articles = session[:viewed_articles]
 
-        if session[:viewed_articles] == nil
-            @article.views += 1
+        return unless viewed_articles.nil? || !@article.id.in?(viewed_articles)
 
-            session[:viewed_articles] = [@article.id]
-        elsif !@article.id.in? session[:viewed_articles].to_a
-            @article.views += 1
+        @article.views += 1
 
-            a = session[:viewed_articles].to_a
-            a << @article.id
-            session[:viewed_articles] = a
-        end
+        session[:viewed_articles] = [] if viewed_articles.nil?
+        session[:viewed_articles] << @article.id
 
         @article.save
     end
@@ -113,18 +110,15 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-        params
-            .require(:article)
-            .permit(
-                :title,
-                :title2,
-                :content,
-                :content2,
-                :description,
-                :description2,
-                { product_ids: [] },
-                { category_ids: [] },
-                :image
-            )
+        params.require(:article)
+              .permit(:title,
+                      :title2,
+                      :content,
+                      :content2,
+                      :description,
+                      :description2,
+                      { product_ids: [] },
+                      { category_ids: [] },
+                      :image)
     end
 end

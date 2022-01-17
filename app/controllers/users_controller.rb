@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
     before_action :set_user, only: %i[edit update destroy]
     before_action :authenticate_edit_token, only: %i[edit destroy]
@@ -91,12 +93,10 @@ class UsersController < ApplicationController
             @user.update! newsletter: false
 
             redirect_to root_path,
-                        notice:
-                            'Ya no recibiras más mails de nosotros. Puedes volver a activar esta opción en tu perfil'
+                        notice: 'Ya no recibiras más mails de nosotros. Puedes volver a activar esta opción en tu perfil'
         else
             redirect_to root_path,
-                        alert:
-                            'Algo parece no estar bien con ese link, inténtalo de nuevo.'
+                        alert: 'Algo parece no estar bien con ese link, inténtalo de nuevo.'
         end
     end
 

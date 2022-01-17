@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactosController < ApplicationController
     def index; end
 

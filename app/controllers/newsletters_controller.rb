@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class NewslettersController < ApplicationController
     before_action :set_newsletter, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: :show
@@ -42,9 +44,9 @@ class NewslettersController < ApplicationController
     end
 
     def redirect_unless_admin
-        if !admin_signed_in?
-            flash[:alert] = 'Solo administradores pueden hacer eso'
-            redirect_to root_path
-        end
+        return if admin_signed_in?
+
+        flash[:alert] = 'Solo administradores pueden hacer eso'
+        redirect_to root_path
     end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Getters
     def get_title
         return title2 if I18n.locale == :en && !title2.empty? && !title2.nil?
@@ -37,7 +39,7 @@ module Getters
 
     module ClassMethods
         def uncategorized
-            self.includes(:categories).where(categories: { id: nil })
+            includes(:categories).where(categories: { id: nil })
         end
 
         def get_ordered(order_by, asc_desc)
@@ -55,11 +57,11 @@ module Getters
 
             case order_by
             when 'categories'
-                categories = Category.related_to self.model_name.plural
+                categories = Category.related_to model_name.plural
             when 'uncategorized'
-                ordered = self.uncategorized.order created_at: asc_desc
+                ordered = uncategorized.order created_at: asc_desc
             else
-                ordered = self.all.order order_by => asc_desc
+                ordered = all.order order_by => asc_desc
             end
 
             [categories, ordered]

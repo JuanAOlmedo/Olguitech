@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProyectosController < ApplicationController
     before_action :set_proyecto, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
@@ -22,19 +24,14 @@ class ProyectosController < ApplicationController
 
     # GET /proyectos/1
     def show
-        @proyecto.views = 0 if @proyecto.views == nil
+        viewed_proyectos = session[:viewed_proyectos]
 
-        if session[:viewed_proyectos] == nil
-            @proyecto.views += 1
+        return unless viewed_proyectos.nil? || !@proyecto.id.in?(viewed_proyectos)
 
-            session[:viewed_proyectos] = [@proyecto.id]
-        elsif !@proyecto.id.in? session[:viewed_proyectos].to_a
-            @proyecto.views += 1
+        @proyecto.views += 1
 
-            a = session[:viewed_proyectos].to_a
-            a << @proyecto.id
-            session[:viewed_proyectos] = a
-        end
+        session[:viewed_proyectos] = [] if viewed_proyectos.nil?
+        session[:viewed_proyectos] << @proyecto.id
 
         @proyecto.save
     end

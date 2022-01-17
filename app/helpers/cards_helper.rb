@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CardsHelper
     def cards_for(array, image: true)
         Cards.new(self, array, image).html
@@ -7,11 +9,11 @@ module CardsHelper
         Cards.new(self, array, image).alternative_html
     end
 
-    private
-
     class Cards
         def initialize(view, array, image)
-            @view, @array, @image = view, array, image
+            @view = view
+            @array = array
+            @image = image
             @uid = SecureRandom.hex(6)
         end
 
@@ -30,14 +32,14 @@ module CardsHelper
                 starts_left = rand_num == 1
 
                 array.each do |element|
-                    if element
-                        content <<
-                            alternative_card(
-                                element,
-                                array.find_index(element).even?,
-                                starts_left
-                            )
-                    end
+                    next unless element
+
+                    content <<
+                        alternative_card(
+                            element,
+                            array.find_index(element).even?,
+                            starts_left
+                        )
                 end
 
                 content = safe_join content
@@ -60,16 +62,16 @@ module CardsHelper
             rand_num = @array.length.even? ? rand(0..1) : 1
             rand_num2 = @array.length.even? ? rand(3..5) : 10
 
-            if rand_num == 0
-                @last_row1, @last_row2 = rand_num2, 1
+            if rand_num.zero?
+                @last_row1 = rand_num2
+                @last_row2 = 1
             else
-                @last_row1, @last_row2 = 1, rand_num2
+                @last_row1 = 1
+                @last_row2 = rand_num2
             end
 
             array.each do |element|
-                if element
-                    content << card(element, array.find_index(element).even?)
-                end
+                content << card(element, array.find_index(element).even?) if element
             end
 
             content = safe_join content
@@ -146,10 +148,10 @@ module CardsHelper
                                       .routes
                                       .url_helpers
                                       .rails_blob_url(
-                                      element.image,
-                                      locale: I18n.locale,
-                                      only_path: true
-                                  )
+                                          element.image,
+                                          locale: I18n.locale,
+                                          only_path: true
+                                      )
                           },
                           class: 'lazy',
                           alt: element.image.filename
@@ -159,7 +161,7 @@ module CardsHelper
         def card_content(element)
             title = content_tag :h2, element.get_short_title, class: 'title'
             desc = content_tag :p, element.get_short_desc, class: 'big-text'
-            link = link_to I18n.t("general.see_more"), element.base_uri, class: 'btn'
+            link = link_to I18n.t('general.see_more'), element.base_uri, class: 'btn'
 
             content = safe_join [title, desc, link]
 

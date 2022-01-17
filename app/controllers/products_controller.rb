@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
     before_action :set_product, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
@@ -22,19 +24,14 @@ class ProductsController < ApplicationController
 
     # GET /products/1 or /products/1.json
     def show
-        @product.views = 0 if @product.views == nil
+        viewed_products = session[:viewed_products]
 
-        if session[:viewed_products] == nil
-            @product.views += 1
+        return unless viewed_products.nil? || !@product.id.in?(viewed_articles)
 
-            session[:viewed_products] = [@product.id]
-        elsif !@product.id.in? session[:viewed_products].to_a
-            @product.views += 1
+        @product.views += 1
 
-            a = session[:viewed_products].to_a
-            a << @product.id
-            session[:viewed_products] = a
-        end
+        session[:viewed_products] = [] if viewed_products.nil?
+        session[:viewed_products] << @product.id
 
         @product.save
     end

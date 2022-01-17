@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mailable
     def send_mail
         User.where(newsletter: true).find_each do |user|

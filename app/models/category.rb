@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Category < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged

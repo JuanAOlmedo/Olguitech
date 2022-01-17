@@ -20,11 +20,11 @@
     </div>
 
     <h2 class='main-title'> <%= @category.get_title %> </h2>
-    <p class='subtitle'> <%= @category.get_desc %> </p>
+    <p class='big-text centered categories-big-text'> <%= @category.get_desc %> </p>
 
     <% if @category.products.any? %>
         <h2 class="title centered">
-            <%= t "nav.products" %>
+            <%= Product.model_name.human(count: 2) %>
         </h2>
         
         <%= alternative_cards_for @category.products %>
@@ -32,7 +32,7 @@
 
     <% if @category.articles.any? %>
         <h2 class="title centered">
-            <%= t "nav.solutions" %>
+            <%= Article.model_name.human(count: 2) %>
         </h2>
 
         <%= cards_for @category.articles %>
@@ -40,7 +40,7 @@
 
     <% if !@category.proyectos.empty? %>
         <h2 class="title centered">
-            <%= t "nav.proyects" %>
+            <%= Proyecto.model_name.human(count: 2) %>
         </h2>
         
         <%= cards_for @category.proyectos %>

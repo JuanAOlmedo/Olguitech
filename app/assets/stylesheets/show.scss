@@ -59,3 +59,11 @@
         }
     }
 }
+
+.categories-big-text {
+    width: 80%;
+
+    @media only screen and (max-width: 67rem) {
+        width: 100%;
+    }
+}

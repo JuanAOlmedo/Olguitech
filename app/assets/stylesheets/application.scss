@@ -59,7 +59,7 @@ body {
     width: 80%;
     font-weight: 900;
     line-height: 4.2rem;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
 
     @media only screen and (max-width: 67rem) {
         width: 95%;
@@ -68,8 +68,8 @@ body {
 
     @media only screen and (max-width: 35rem) {
         width: 97%;
-        font-size: 2.3rem;
-        line-height: 2.3rem;
+        font-size: 2.2rem;
+        line-height: 2.1rem;
     }
 }
 

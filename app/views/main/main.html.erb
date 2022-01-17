@@ -65,7 +65,7 @@
         </p>
 
         <div class="form">
-            <%= form_with model: @user, url: "/users/subscribe", method: :post do |form| %>
+            <%= form_with model: @user, url: "/#{I18n.locale}/users/subscribe", method: :post do |form| %>
                 <div class="field">
                     <%= form.label :email, "Email" %>
                     <%= form.email_field :email %>

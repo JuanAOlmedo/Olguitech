@@ -65,7 +65,7 @@ class UsersController < ApplicationController
                 redirect_to root_path,
                             notice: I18n.t('contact.sent')
             else
-                redirect_to root_path, notice: 'Usuario editado exitosamente'
+                redirect_to root_path, notice: t('user_edited')
             end
         else
             render :edit, status: :unprocessable_entity
@@ -78,11 +78,10 @@ class UsersController < ApplicationController
         if @user
             @user.confirm
 
-            redirect_to root_path, notice: 'Has confirmado tu cuenta'
+            redirect_to root_path, notice: t('confirmed')
         else
             redirect_to root_path,
-                        alert:
-                            'Algo parece no estar bien con ese link, inténtalo de nuevo.'
+                        alert: t('link_borken')
         end
     end
 
@@ -93,10 +92,10 @@ class UsersController < ApplicationController
             @user.update! newsletter: false
 
             redirect_to root_path,
-                        notice: 'Ya no recibiras más mails de nosotros. Puedes volver a activar esta opción en tu perfil'
+                        notice: t('unsubscribed')
         else
             redirect_to root_path,
-                        alert: 'Algo parece no estar bien con ese link, inténtalo de nuevo.'
+                        alert: t('link_borken')
         end
     end
 
@@ -119,7 +118,7 @@ class UsersController < ApplicationController
 
         return unless @user.edit_token != params[:edit_token]
 
-        redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
+        redirect_to root_path, alert: t('not_allowed')
     end
 
     def authenticate_edit_token_for_update
@@ -127,7 +126,7 @@ class UsersController < ApplicationController
 
         return unless @user.edit_token != user_params[:edit_token]
 
-        redirect_to root_path, alert: 'No tienes permiso para hacer eso.'
+        redirect_to root_path, alert: t('not_allowed')
     end
 
     def user_params

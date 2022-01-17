@@ -50,7 +50,7 @@ class CategoriesController < ApplicationController
             if @category.update(category_params)
                 format.html do
                     redirect_to @category,
-                                notice: 'Category was successfully updated.'
+                                notice: 'Categoría actualizada exitosamente.'
                 end
                 format.json { render :show, status: :ok, location: @category }
             else

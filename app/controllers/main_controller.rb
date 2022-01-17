@@ -15,7 +15,7 @@ class MainController < ApplicationController
         unless existent_user.nil?
             existent_user.update(newsletter: true) unless existent_user.newsletter
             redirect_to root_path,
-                        notice: 'Muchas gracias por suscribirte a nuestra newsletter!'
+                        notice: t('thanks_for_subscribing')
             return
         end
 
@@ -24,10 +24,10 @@ class MainController < ApplicationController
 
         if @user.save
             redirect_to root_path,
-                        notice: 'Muchas gracias por suscribirte a nuestra newsletter!'
+                        notice: t('thanks_for_subscribing')
         else
             redirect_to root_path,
-                        alert: 'Por favor danos un mail válido',
+                        alert: t('valid_email'),
                         status: :unprocessable_entity
         end
     end

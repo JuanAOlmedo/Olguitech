@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
     def show
         viewed_products = session[:viewed_products]
 
-        return unless viewed_products.nil? || !@product.id.in?(viewed_articles)
+        return unless viewed_products.nil? || !@product.id.in?(viewed_products)
 
         @product.views += 1
 

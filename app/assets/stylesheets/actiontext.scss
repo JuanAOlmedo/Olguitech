@@ -481,6 +481,7 @@ trix-editor .attachment__metadata .attachment__size {
 
     & img {
         min-height: 18rem;
+        -o-object-fit: cover;
         object-fit: cover;
     }
 }

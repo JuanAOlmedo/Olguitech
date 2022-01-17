@@ -10,7 +10,7 @@
         <div class="text">
             <% if @product.categories.any? %>
                 <p class="article-categories">
-                    <%= @product.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
+                    <%= "#{Category.model_name.human(count: @product.categories.length)}:" %>
                     <% @product.categories.each do |category| %>
                         <%= link_to category.get_title, category_path(category), class: "link" %><%= "#{@product.categories.last != category ? ", " : ""}" %>
                     <% end %>

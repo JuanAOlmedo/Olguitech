@@ -13,7 +13,7 @@
     <div class="content">
         <% if !@proyecto.categories.empty? %>
             <p class="article-categories">
-                <%= @proyecto.categories.length == 1 ? "#{t "categories.category"}: " : "#{t "categories.categories"}: " %>
+                <%= "#{Category.model_name.human(count: @proyecto.categories.length)}:" %>
                 <% @proyecto.categories.each do |category| %>
                     <%= link_to category.get_title, category_path(category), class: "link" %><%= "#{@proyecto.categories.last != category ? ", " : ""}" %>
                 <% end %>

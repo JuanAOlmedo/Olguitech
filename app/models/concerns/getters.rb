@@ -2,7 +2,7 @@
 
 module Getters
     def get_title
-        return title2 if I18n.locale == :en && !title2.empty? && !title2.nil?
+        return title2 if I18n.locale == :en && !title2.nil? && !title2.empty?
 
         title
     end
@@ -15,7 +15,7 @@ module Getters
     end
 
     def get_desc
-        return description2 if I18n.locale == :en && !description2.empty? && !description2.nil?
+        return description2 if I18n.locale == :en && !description2.nil? && !description2.empty?
 
         description
     end

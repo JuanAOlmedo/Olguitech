@@ -16,9 +16,7 @@ class ProductsController < ApplicationController
                 @uncategorized = Product.uncategorized
             end
 
-            format.json do
-                @products = Product.all
-            end
+            format.json { @products = Product.all }
         end
     end
 

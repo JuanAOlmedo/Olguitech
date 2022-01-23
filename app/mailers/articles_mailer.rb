@@ -15,7 +15,7 @@ class ArticlesMailer < ApplicationMailer
  #{human} #{t('mail.articles.subject.from')} Olguitech!"
 
         I18n.with_locale(@user.locale) do
-            mail(to: @user.email, subject: subject)
+            mail(to: @user.email, subject:)
         end
     end
 end

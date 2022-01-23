@@ -26,10 +26,7 @@ module CardsHelper
         def alternative_html
             if @array.length != 1
                 content = []
-
-                rand_num = rand(0..1)
-
-                starts_left = rand_num == 1
+                starts_left = [true, false].sample
 
                 array.each do |element|
                     next unless element
@@ -59,15 +56,15 @@ module CardsHelper
         def grid(array)
             content = []
 
-            rand_num = @array.length.even? ? rand(0..1) : 1
-            rand_num2 = @array.length.even? ? rand(3..5) : 10
+            starts_right = @array.length.even? ? [false, true].sample : true
+            rand_num = @array.length.even? ? rand(3..5) : 10
 
-            if rand_num.zero?
-                @last_row1 = rand_num2
+            if starts_right
+                @last_row1 = rand_num
                 @last_row2 = 1
             else
                 @last_row1 = 1
-                @last_row2 = rand_num2
+                @last_row2 = rand_num
             end
 
             array.each do |element|
@@ -76,11 +73,8 @@ module CardsHelper
 
             content = safe_join content
 
-            content_tag :div,
-                        content,
-                        class: 'grid',
-                        style:
-                            "grid-template-rows: repeat(#{[@last_row1, @last_row2].max}, 0.2rem);"
+            content_tag :div, content, class: 'grid',
+                                       style: "grid-template-rows: repeat(#{[@last_row1, @last_row2].max}, 0.2rem);"
         end
 
         def card_single(element)
@@ -92,25 +86,16 @@ module CardsHelper
         def card(element, is_even)
             content = safe_join [img(element), card_content(element)]
 
-            grid_row =
-                if is_even
-                    "#{@last_row1} / #{@last_row1 + 19}"
-                else
-                    "#{@last_row2} / #{@last_row2 + 19}"
-                end
-
             if is_even
+                grid_row = "#{@last_row1} / #{@last_row1 + 19}"
                 @last_row1 += 20
             else
+                grid_row = "#{@last_row2} / #{@last_row2 + 19}"
                 @last_row2 += 20
             end
 
-            content_tag :div,
-                        content,
-                        class: 'card still',
-                        style:
-                            "grid-column: #{is_even ? '1' : '2'};
-                                grid-row: #{grid_row};"
+            content_tag :div, content, class: 'card still',
+                                       style: "grid-column: #{is_even ? '1' : '2'}; grid-row: #{grid_row};"
         end
 
         def alternative_card_single(element)
@@ -122,40 +107,28 @@ module CardsHelper
         def alternative_card(element, is_even, starts_left)
             content = safe_join [img(element), card_content(element)]
 
-            if is_even
-                margin_left = starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
-                margin_right = !starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
-            else
-                margin_left = !starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
-                margin_right = starts_left ? 'auto' : "#{rand(3.0..7.0)}%"
-            end
+            rand_num = "#{rand(3.0..7.0)}%"
 
-            content_tag :div,
-                        content,
-                        class: 'alternative-card still',
-                        style:
-                            "margin-left: #{margin_left};
-                                margin-right: #{margin_right};"
+            margin_left = !is_even ^ starts_left ? 'auto' : rand_num
+            margin_right = is_even ^ starts_left ? 'auto' : rand_num
+
+            content_tag :div, content, class: 'alternative-card still',
+                                       style: "margin-left: #{margin_left};
+                                               margin-right: #{margin_right};"
         end
 
         def img(element)
-            if @image && element.image.attached?
-                image_tag element.image.variant(resize_to_limit: [40, 40]),
-                          data: {
-                              src:
-                                  Rails
-                                      .application
-                                      .routes
-                                      .url_helpers
-                                      .rails_blob_url(
-                                          element.image,
-                                          locale: I18n.locale,
-                                          only_path: true
-                                      )
-                          },
-                          class: 'lazy',
-                          alt: element.image.filename
-            end
+            return unless @image && element.image.attached?
+
+            image_tag element.image.variant(resize_to_limit: [40, 40]),
+                      data: { src:
+                                  Rails.application.routes.url_helpers.rails_blob_url(
+                                      element.image,
+                                      locale: I18n.locale,
+                                      only_path: true
+                                  ) },
+                      class: 'lazy',
+                      alt: element.image.filename
         end
 
         def card_content(element)

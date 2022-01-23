@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ConfirmationMailerTest < ActionMailer::TestCase
-    setup do 
+    setup do
         @user = users(:one)
     end
 
@@ -16,7 +18,7 @@ class ConfirmationMailerTest < ActionMailer::TestCase
 
         assert_equal 'Confirmá tu cuenta!', mail.subject
         assert_equal [@user.email], mail.to
-        assert_match "Confirmar", mail.body.encoded
+        assert_match 'Confirmar', mail.body.encoded
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
     end
 
@@ -31,7 +33,7 @@ class ConfirmationMailerTest < ActionMailer::TestCase
 
         assert_equal 'Confirm your account!', mail.subject
         assert_equal [@user.email], mail.to
-        assert_match "Confirm", mail.body.encoded
+        assert_match 'Confirm', mail.body.encoded
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
     end
 end

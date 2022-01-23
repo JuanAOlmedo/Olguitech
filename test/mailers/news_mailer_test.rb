@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class NewsMailerTest < ActionMailer::TestCase
-    setup do 
+    setup do
         @user = users(:one)
         @newsletter = newsletters(:one)
     end
@@ -16,8 +18,8 @@ class NewsMailerTest < ActionMailer::TestCase
         assert_equal 'Lorem Ipsum', mail.subject
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
-        assert_match "Lorem Ipsum", mail.body.encoded
-        assert_match "million", mail.body.encoded
+        assert_match 'Lorem Ipsum', mail.body.encoded
+        assert_match 'million', mail.body.encoded
         assert_match @user.newsletter_token, mail.body.encoded
     end
 end

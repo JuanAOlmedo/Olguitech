@@ -2,17 +2,27 @@
     <div class="form">
         <div class="field">
             <%= form.label :title, "Título" %>
-            <%= form.text_area :title, id: "title-1" %>
+            <%= form.text_area :title %>
         </div>
 
         <div class="field">
             <%= form.label :title2, "Título en inglés" %>
-            <%= form.text_area :title2, id: "title-2" %>
+            <%= form.text_area :title2 %>
+        </div>
+
+        <div class="field">
+            <%= form.label :description, "Descripción" %>
+            <%= form.text_area :description %>
+        </div>
+
+        <div class="field">
+            <%= form.label :description2, "Descripción en inglés" %>
+            <%= form.text_area :description2 %>
         </div>
 
         <div class="file">
             <%= form.label :image do %>
-                <%= form.file_field :image, class:'image-attacher', id:"fileInput" %>
+                <%= form.file_field :image, class:'image-attacher' %>
                 <span>
                     Elegir una imagen...
                 </span>

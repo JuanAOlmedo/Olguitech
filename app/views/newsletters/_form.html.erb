@@ -2,17 +2,17 @@
     <div class="form">
         <div class="field">
             <%= form.label :title, "Título" %>
-            <%= form.text_area :title, id: "title-1" %>
+            <%= form.text_area :title %>
         </div>
 
         <div class="field">
             <%= form.label :subject, "Asunto" %>
-            <%= form.text_area :subject, id: "subject-1" %>
+            <%= form.text_area :subject %>
         </div>
 
         <div class="rich-text field">
             <%= form.label :content, "Contenido" %>
-            <%= form.rich_text_area :content, id: "content-1" %>
+            <%= form.rich_text_area :content %>
         </div>
 
         <%= form.submit 'Crear', class: 'btn centered' %>

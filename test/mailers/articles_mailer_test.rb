@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ArticlesMailerTest < ActionMailer::TestCase
@@ -19,6 +21,6 @@ class ArticlesMailerTest < ActionMailer::TestCase
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match @article.title, mail.body.encoded
-        assert_match "Desuscribirse", mail.body.encoded
+        assert_match 'Desuscribirse', mail.body.encoded
     end
 end

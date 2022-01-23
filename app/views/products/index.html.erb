@@ -9,7 +9,7 @@
 
             <% @categories.each do |category| %>
                 <h4 class="menu-title" data-index-target="title">
-                    <%= link_to category.get_short_title, category_path(category), class: "link" %>
+                    <%= link_to category.localized_short_title, category_path(category), class: "link" %>
                 </h4>
             <% end %>
 
@@ -30,7 +30,7 @@
             <% @categories.each_with_index do |category, index| %>
                 <div class="category" data-index-target="category" data-index="<%= index %>">
                     <h2 class="title centered">
-                        <%= category.get_title %> 
+                        <%= category.localized_title %> 
                     </h2>
 
                     <%= alternative_cards_for category.products %>

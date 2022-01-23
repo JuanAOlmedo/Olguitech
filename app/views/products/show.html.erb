@@ -1,5 +1,5 @@
-<% content_for :title, "#{@product.get_title} | Olguitech s.a.s." %>
-<% content_for :description, "#{@product.get_desc}" %>
+<% content_for :title, "#{@product.localized_title} | Olguitech s.a.s." %>
+<% content_for :description, "#{@product.localized_desc}" %>
 
 <div class="product">
     <div class="product-top">
@@ -12,19 +12,19 @@
                 <p class="article-categories">
                     <%= "#{Category.model_name.human(count: @product.categories.length)}:" %>
                     <% @product.categories.each do |category| %>
-                        <%= link_to category.get_title, category_path(category), class: "link" %><%= "#{@product.categories.last != category ? ", " : ""}" %>
+                        <%= link_to category.localized_title, category_path(category), class: "link" %><%= "#{@product.categories.last != category ? ", " : ""}" %>
                     <% end %>
                 </p>
             <% end %>
 
-            <h2 class='main-title'> <%= @product.get_title %> </h2>
-            <p class='subtitle'> <%= @product.get_desc %> </p>
+            <h2 class='main-title'> <%= @product.localized_title %> </h2>
+            <p class='subtitle'> <%= @product.localized_desc %> </p>
         </div>
     </div>
 
     <div class="content">
         <div class='show-text'>
-            <p class='article-text'> <%= @product.get_content %> </p>
+            <p class='article-text'> <%= @product.localized_content %> </p>
         </div>
     </div>
 

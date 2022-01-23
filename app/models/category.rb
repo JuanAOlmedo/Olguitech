@@ -20,27 +20,27 @@ class Category < ApplicationRecord
 
     has_one_attached :image
 
-    def get_title
-        return title2 if I18n.locale == :en && !title2.empty? && !title2.nil?
+    def localized_title
+        return title2 if I18n.locale == :en && !title2.nil? && !title2.empty?
 
         title
     end
 
-    def get_short_title
-        title = get_title
+    def localized_short_title
+        title = localized_title
         return if title.nil?
 
         title.length > 15 ? "#{title[0...15]}..." : title
     end
 
-    def get_desc
-        return description2 if I18n.locale == :en && !description2.empty? && !description2.nil?
+    def localized_desc
+        return description2 if I18n.locale == :en && !description2.nil? && !description2.empty?
 
         description
     end
 
-    def get_short_desc
-        description = get_desc
+    def localized_short_desc
+        description = localized_desc
         return if description.nil?
 
         description.length > 100 ? "#{description[0...100]}..." : description

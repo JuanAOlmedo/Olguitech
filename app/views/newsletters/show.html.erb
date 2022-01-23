@@ -1,13 +1,13 @@
 <% content_for :title, "#{@newsletter.title} | Olguitech s.a.s." %>
 
 <article>
-    <h1 class='main-title'> <%= @newsletter.get_title %> </h1>
+    <h1 class='main-title'> <%= @newsletter.localized_title %> </h1>
 
-    <p class='subtitle'> <%= @newsletter.get_desc %> </p>
+    <p class='subtitle'> <%= @newsletter.localized_desc %> </p>
 
     <div class="content">
         <div class='show-text'>
-            <p class='article-text'> <%= @newsletter.get_content %> </p>
+            <p class='article-text'> <%= @newsletter.localized_content %> </p>
         </div>
     </div>
 </article>

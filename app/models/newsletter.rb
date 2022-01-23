@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Newsletter < ApplicationRecord
-    include Getters
-
     extend FriendlyId
     friendly_id :title, use: :slugged
 
@@ -16,27 +14,23 @@ class Newsletter < ApplicationRecord
         end
     end
 
-    def get_short_desc
-        get_desc
-    end
-
-    def get_short_title
-        get_title
-    end
-
-    def description
-        subject
-    end
-
-    def description2
-        subject
-    end
-
-    def title2
+    def localized_title
         title
     end
 
-    def content2
+    def localized_short_title
+        title
+    end
+
+    def localized_desc
+        subject
+    end
+
+    def localized_short_desc
+        subject
+    end
+
+    def localized_content
         content
     end
 

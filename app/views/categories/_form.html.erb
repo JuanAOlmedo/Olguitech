@@ -24,7 +24,7 @@
 
         <div class="checkbox-field">
             <%= form.label :products, "Productos relacionados" %> <br>
-            <%= form.collection_check_boxes :product_ids, Product.all, :id, :get_title do |b| %>
+            <%= form.collection_check_boxes :product_ids, Product.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>
             <% end %>
@@ -32,7 +32,7 @@
 
         <div class="checkbox-field">
             <%= form.label :article, "Artículos relacionados" %> <br>
-            <%= form.collection_check_boxes :article_ids, Article.all, :id, :get_title do |b| %>
+            <%= form.collection_check_boxes :article_ids, Article.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>
             <% end %>
@@ -40,7 +40,7 @@
 
         <div class="checkbox-field">
             <%= form.label :proyecto, "Proyectos relacionados" %> <br>
-            <%= form.collection_check_boxes :proyecto_ids, Proyecto.all, :id, :get_title do |b| %>
+            <%= form.collection_check_boxes :proyecto_ids, Proyecto.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>
             <% end %>

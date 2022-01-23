@@ -159,8 +159,8 @@ module CardsHelper
         end
 
         def card_content(element)
-            title = content_tag :h2, element.get_short_title, class: 'title'
-            desc = content_tag :p, element.get_short_desc, class: 'big-text'
+            title = content_tag :h2, element.localized_short_title, class: 'title'
+            desc = content_tag :p, element.localized_short_desc, class: 'big-text'
             link = link_to I18n.t('general.see_more'), element.base_uri, class: 'btn'
 
             content = safe_join [title, desc, link]

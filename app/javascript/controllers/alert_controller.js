@@ -20,7 +20,7 @@ export default class extends Controller {
     }
 
     endTouch() {
-        if (this.diffY > 8) {
+        if (this.diffY > 1) {
             this.close();
         }
 

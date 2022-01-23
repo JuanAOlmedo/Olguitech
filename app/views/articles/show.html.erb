@@ -1,10 +1,10 @@
-<% content_for :title, "#{@article.get_title} | Olguitech s.a.s." %>
-<% content_for :description, "#{@article.get_desc}" %>
+<% content_for :title, "#{@article.localized_title} | Olguitech s.a.s." %>
+<% content_for :description, "#{@article.localized_desc}" %>
 
 <article>
-    <h1 class='main-title'> <%= @article.get_title %> </h1>
+    <h1 class='main-title'> <%= @article.localized_title %> </h1>
 
-    <p class='subtitle'> <%= @article.get_desc %> </p>
+    <p class='subtitle'> <%= @article.localized_desc %> </p>
 
     <% if @article.image.attached? %>
         <img src='<%= url_for(@article.image) %>' class='article-img centered' alt='<%= @article.image.filename %>'>
@@ -15,13 +15,13 @@
             <p class="article-categories">
                 <%= "#{Category.model_name.human(count: @article.categories.length)}:" %>
                 <% @article.categories.each do |category| %>
-                    <%= link_to category.get_title, category_path(category), class: "link" %><%= "#{@article.categories.last != category ? ", " : ""}" %>
+                    <%= link_to category.localized_title, category_path(category), class: "link" %><%= "#{@article.categories.last != category ? ", " : ""}" %>
                 <% end %>
             </p>
         <% end %>
 
         <div class='show-text'>
-            <p class='article-text'> <%= @article.get_content %> </p>
+            <p class='article-text'> <%= @article.localized_content %> </p>
         </div>
     </div>
 

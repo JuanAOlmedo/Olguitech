@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
         respond_to do |format|
             format.html do
                 ordered =
-                    Article.get_ordered(params[:order_by], params[:asc_desc])
+                    Article.ordered(params[:order_by], params[:asc_desc])
 
                 @categories = ordered[0]
                 @articles = ordered[1]

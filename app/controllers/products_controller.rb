@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                ordered = Product.get_ordered(params[:order_by], params[:asc_desc])
+                ordered = Product.ordered(params[:order_by], params[:asc_desc])
 
                 @categories = ordered[0]
                 @products = ordered[1]

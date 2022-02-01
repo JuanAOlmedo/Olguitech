@@ -10,19 +10,19 @@ gem 'rails', '7.0.1'
 gem 'pg'
 
 # Use Puma as the app server
-gem "puma", ">= 5.5.1"
+gem 'puma', '>= 5.5.1'
 
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+gem 'importmap-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+gem 'turbo-rails'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
-gem "stimulus-rails"
+gem 'stimulus-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'

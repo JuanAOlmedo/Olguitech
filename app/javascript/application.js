@@ -7,3 +7,5 @@ import "@hotwired/stimulus-loading";
 import "controllers";
 import "trix";
 import "@rails/actiontext";
+
+Trix.Attachment.previewablePattern = /^image(\/(png|jpe?g|webp)|$)/

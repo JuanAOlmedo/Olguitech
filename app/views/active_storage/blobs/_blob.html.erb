@@ -1,11 +1,11 @@
- <figure class="attachment attachment--<%= blob.representable? ? "preview" : "file" %> attachment--<%= blob.filename.extension %>">
-     <% if blob.representable? %>
-     <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 800, 600 ] : [ 1024, 768 ]), style: "max-width: 100%; height: auto;" %>
-     <% end %>
+<figure class="attachment attachment--<%= blob.representable? ? "preview" : "file" %> attachment--<%= blob.filename.extension %>">
+    <% if blob.representable? %>
+        <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 800, 600 ] : [ 1024, 768 ]), style: "max-width: 100%; height: auto;" %>
+    <% end %>
 
-     <figcaption class="attachment__caption">
-         <% if caption = blob.try(:caption) %>
-         <%= caption %>
-         <% end %>
-     </figcaption>
- </figure>
+    <figcaption class="attachment__caption">
+        <% if caption = blob.try(:caption) %>
+        <%= caption %>
+        <% end %>
+    </figcaption>
+</figure>

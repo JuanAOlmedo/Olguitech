@@ -22,11 +22,13 @@ class User < ApplicationRecord
     end
 
     def confirm
-        if id.nil? && !confirmed?
-            update(confirmed_at: Time.now)
-        else
-            self.confirmed_at = Time.now
-        end
+        return if confirmed?
+
+        self.confirmed_at = Time.now
+
+        return if id.nil?
+
+        save
     end
 
     def confirmed?

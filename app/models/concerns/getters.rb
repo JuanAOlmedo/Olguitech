@@ -61,7 +61,7 @@ module Getters
         def return_ordered(order_by, asc_desc)
             case order_by
             when 'categories'
-                categories = Category.where.associated model_name.plural.to_sym
+                categories = Category.where.associated(model_name.plural.to_sym).uniq
             when 'uncategorized'
                 ordered = where.missing(:categories).order created_at: asc_desc
             else

@@ -68,16 +68,4 @@ class ArticleTest < ActiveSupport::TestCase
 
         assert_equal(ActionText::RichText.find(2), @article.localized_content)
     end
-
-    test 'should get uncategorized' do
-        @article.update(category_ids: [])
-        @article2.update(category_ids: [1])
-
-        assert_equal([@article], Article.uncategorized)
-
-        @article.update(category_ids: [1])
-        @article2.update(category_ids: [])
-
-        assert_equal([@article2], Article.uncategorized)
-    end
 end

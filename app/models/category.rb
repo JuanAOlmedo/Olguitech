@@ -46,11 +46,6 @@ class Category < ApplicationRecord
         description.length > 100 ? "#{description[0...100]}..." : description
     end
 
-    # Gets all categories who have at least one of type model related to them
-    def self.related_to(model)
-        includes(model).where.not(model => { id: nil })
-    end
-
     def base_uri
         Rails.application.routes.url_helpers.category_path(self, locale: I18n.locale)
     end

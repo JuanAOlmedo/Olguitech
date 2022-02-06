@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
                 @categories = ordered[0]
                 @products = ordered[1]
 
-                @uncategorized = Product.uncategorized
+                @uncategorized = Product.where.missing :categories
             end
 
             format.json { @products = Product.all }

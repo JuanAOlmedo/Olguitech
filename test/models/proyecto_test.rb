@@ -68,16 +68,4 @@ class ProyectoTest < ActiveSupport::TestCase
 
         assert_equal(ActionText::RichText.find(4), @proyecto.localized_content)
     end
-
-    test 'should get uncategorized' do
-        @proyecto.update(category_ids: [])
-        @proyecto2.update(category_ids: [1])
-
-        assert_equal([@proyecto], Proyecto.uncategorized)
-
-        @proyecto.update(category_ids: [1])
-        @proyecto2.update(category_ids: [])
-
-        assert_equal([@proyecto2], Proyecto.uncategorized)
-    end
 end

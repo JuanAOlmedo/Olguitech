@@ -15,7 +15,7 @@ class ArticlesController < ApplicationController
                 @categories = ordered[0]
                 @articles = ordered[1]
 
-                @uncategorized = Article.uncategorized
+                @uncategorized = Article.where.missing :categories
             end
 
             format.json { @articles = Article.all }

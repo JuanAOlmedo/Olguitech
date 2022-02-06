@@ -38,10 +38,6 @@ module Getters
     end
 
     module ClassMethods
-        def uncategorized
-            includes(:categories).where(categories: { id: nil })
-        end
-
         def ordered(order_by, asc_desc)
             order_by = test_order_by order_by
             asc_desc = %w[asc desc].include?(asc_desc) ? asc_desc : :desc
@@ -65,9 +61,9 @@ module Getters
         def return_ordered(order_by, asc_desc)
             case order_by
             when 'categories'
-                categories = Category.related_to model_name.plural
+                categories = Category.where.associated model_name.plural.to_sym
             when 'uncategorized'
-                ordered = uncategorized.order created_at: asc_desc
+                ordered = where.missing(:categories).order created_at: asc_desc
             else
                 ordered = all.order order_by => asc_desc
             end

@@ -15,7 +15,7 @@ class ProyectosController < ApplicationController
                 @categories = ordered[0]
                 @proyectos = ordered[1]
 
-                @uncategorized = Proyecto.uncategorized
+                @uncategorized = Proyecto.where.missing :categories
             end
 
             format.json { @proyectos = Proyecto.all }

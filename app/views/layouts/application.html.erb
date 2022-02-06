@@ -60,7 +60,7 @@
 
             <%= link_to t("nav.about_us"), nosotros_path, class: "link #{"active" if controller_name == 'nosotros'}" %>
 
-            <%= dropdown_for I18n.locale == :es ? t("general.es") : t("general.en") do %>
+            <%= dropdown_for I18n.locale == :es ? t("general.es") : t("general.en"), icon: true do %>
                 <%= link_to url_for( locale: I18n.locale == :es ? :en : :es ), class: "btn", hreflang: I18n.locale == :es ? :en : :es do %>
                     <%= I18n.locale != :es ? t("general.es") : t("general.en") %>
                 <% end %>

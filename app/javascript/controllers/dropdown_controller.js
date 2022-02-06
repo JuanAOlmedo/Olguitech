@@ -16,4 +16,16 @@ export default class extends Controller {
 
         this.element.classList.toggle(this.activeClass);
     }
+
+    stopDisplayingWhenOutside(e) {
+        if (this.element.contains(e.target)) {
+            return;
+        }
+
+        setTimeout(() => {
+            this.menuTarget.style.visibility = "hidden";
+        }, 250);
+
+        this.element.classList.remove(this.activeClass);
+    }
 }

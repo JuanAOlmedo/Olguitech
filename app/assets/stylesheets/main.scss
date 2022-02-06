@@ -9,16 +9,22 @@
     background-size: 100%;
     
     @media only screen and (max-width: 110rem) {
-        padding: 3rem 2rem 12rem 2rem;
+        padding-top: 3rem;
     }
 
     @media only screen and (max-width: 67rem) {
-        padding: 5rem 1rem 8rem 1rem;
-        background-size: 200%;
+        padding: 5rem 1rem 9rem 1rem;
+        bacground-size: 200%;
     }
 
     @media only screen and (max-width: 35rem) {
         padding-top: 1.5rem;
+        background: image_url("vectors/vector6.svg") no-repeat center bottom;
+        background-size: 180%;
+    }
+
+    & .btn {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 }
 

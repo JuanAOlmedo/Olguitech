@@ -70,6 +70,10 @@ td {
     &.hidden {
         display: none;
     }
+
+    & .big-card {
+        margin-bottom: 2rem;
+    }
 }
 
 #user-index-field {

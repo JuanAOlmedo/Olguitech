@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     def index
         @users = User.all
-        @contacted = User.includes(:contactos).where.not(contactos: { id: nil })
+        @contacted = User.where.associated(:contactos).uniq
     end
 
     def show; end

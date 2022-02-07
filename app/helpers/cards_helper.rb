@@ -51,7 +51,7 @@ module CardsHelper
 
         attr_accessor :view, :array, :uid
 
-        delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
+        delegate :link_to, :content_tag, :image_tag, :safe_join, :url_for, to: :view
 
         def grid(array)
             content = []
@@ -121,12 +121,9 @@ module CardsHelper
             return unless @image && element.image.attached?
 
             image_tag element.image.variant(resize_to_limit: [40, 40]),
-                      data: { src:
-                                  Rails.application.routes.url_helpers.rails_blob_url(
-                                      element.image,
-                                      locale: I18n.locale,
-                                      only_path: true
-                                  ) },
+                      data: {
+                          src: url_for(element.image.variant(saver: { quality: 85 }))
+                      },
                       class: 'lazy',
                       alt: element.image.filename
         end
@@ -134,7 +131,7 @@ module CardsHelper
         def card_content(element)
             title = content_tag :h2, element.localized_short_title, class: 'title'
             desc = content_tag :p, element.localized_short_desc, class: 'big-text'
-            link = link_to I18n.t('general.see_more'), element.base_uri, class: 'btn'
+            link = link_to I18n.t('general.see_more'), element, class: 'btn'
 
             content = safe_join [title, desc, link]
 

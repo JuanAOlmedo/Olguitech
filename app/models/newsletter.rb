@@ -33,8 +33,4 @@ class Newsletter < ApplicationRecord
     def localized_content
         content
     end
-
-    def base_uri
-        Rails.application.routes.url_helpers.newsletter_path(self, locale: I18n.locale)
-    end
 end

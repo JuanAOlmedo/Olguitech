@@ -4,7 +4,7 @@
 <div class="product">
     <div class="product-top">
         <% if @product.image.attached? %>
-            <img src='<%= url_for(@product.image) %>' alt='<%= @product.image.filename %>'>
+            <%= image_tag @product.image.variant(saver: { quality: 85 }), alt: @product.image.filename %>
         <% end %>
 
         <div class="text">

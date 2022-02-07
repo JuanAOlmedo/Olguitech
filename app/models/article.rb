@@ -18,8 +18,4 @@ class Article < ApplicationRecord
     has_many :categories, through: :category_categorizables, as: :categorizable
 
     after_create :send_mail
-
-    def base_uri
-        Rails.application.routes.url_helpers.article_path(self, locale: I18n.locale)
-    end
 end

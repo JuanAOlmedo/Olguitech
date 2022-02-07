@@ -7,11 +7,11 @@
     <p class='subtitle'> <%= @article.localized_desc %> </p>
 
     <% if @article.image.attached? %>
-        <img src='<%= url_for(@article.image) %>' class='article-img centered' alt='<%= @article.image.filename %>'>
+        <%= image_tag @article.image.variant(saver: { quality: 85 }), class: 'article-img centered', alt: @article.image.filename %>
     <% end %>
 
     <div class="content">
-        <% if !@article.categories.empty? %>
+        <% if @article.categories.any? %>
             <p class="article-categories">
                 <%= "#{Category.model_name.human(count: @article.categories.length)}:" %>
                 <% @article.categories.each do |category| %>

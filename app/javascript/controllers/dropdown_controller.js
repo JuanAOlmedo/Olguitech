@@ -17,8 +17,8 @@ export default class extends Controller {
         this.element.classList.toggle(this.activeClass);
     }
 
-    stopDisplayingWhenOutside(e) {
-        if (this.element.contains(e.target)) {
+    stopDisplayingWhenOutside() {
+        if (this.element.contains(event.target)) {
             return;
         }
 

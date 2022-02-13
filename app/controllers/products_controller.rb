@@ -13,10 +13,10 @@ class ProductsController < ApplicationController
                 @categories = ordered[0]
                 @products = ordered[1]
 
-                @uncategorized = Product.where.missing :categories
+                @uncategorized = Product.published.where.missing :categories
             end
 
-            format.json { @products = Product.all }
+            format.json { @products = Product.published }
         end
     end
 
@@ -100,6 +100,8 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
         @product = Product.friendly.find(params[:id])
+
+        authenticate_admin! unless @product.published?
     end
 
     # Only allow a list of trusted parameters through.

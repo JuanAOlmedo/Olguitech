@@ -22,28 +22,28 @@
     <h1 class='main-title'> <%= @category.localized_title %> </h1>
     <p class='big-text centered categories-big-text'> <%= @category.localized_desc %> </p>
 
-    <% if @category.products.any? %>
+    <% if @category.products.published.any? %>
         <h2 class="title centered">
             <%= Product.model_name.human(count: 2) %>
         </h2>
         
-        <%= alternative_cards_for @category.products %>
+        <%= alternative_cards_for @category.products.published %>
     <% end %>
 
-    <% if @category.articles.any? %>
+    <% if @category.articles.published.any? %>
         <h2 class="title centered">
             <%= Article.model_name.human(count: 2) %>
         </h2>
 
-        <%= cards_for @category.articles %>
+        <%= cards_for @category.articles.published %>
     <% end %>
 
-    <% if !@category.proyectos.empty? %>
+    <% if @category.proyectos.published.any? %>
         <h2 class="title centered">
             <%= Proyecto.model_name.human(count: 2) %>
         </h2>
         
-        <%= cards_for @category.proyectos %>
+        <%= cards_for @category.proyectos.published %>
     <% end %>
 </div>
 

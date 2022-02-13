@@ -15,10 +15,10 @@ class ArticlesController < ApplicationController
                 @categories = ordered[0]
                 @articles = ordered[1]
 
-                @uncategorized = Article.where.missing :categories
+                @uncategorized = Article.published.where.missing :categories
             end
 
-            format.json { @articles = Article.all }
+            format.json { @articles = Article.published }
         end
     end
 
@@ -106,11 +106,13 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
         @article = Article.friendly.find(params[:id])
+
+        authenticate_admin! unless @article.published?
     end
 
     # Only allow a list of trusted parameters through.
     def article_params
-        params.require(:article)
+        article_params = params.require(:article)
               .permit(:title,
                       :title2,
                       :content,
@@ -119,6 +121,9 @@ class ArticlesController < ApplicationController
                       :description2,
                       { product_ids: [] },
                       { category_ids: [] },
-                      :image)
+                      :image,
+                      :status)
+        article_params[:status] = article_params[:status].to_i
+        article_params
     end
 end

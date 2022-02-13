@@ -13,38 +13,38 @@
     <%= link_to t(".why"), nosotros_path, class: "btn centered" %>
 </div>
 
-<div class="articles">
-    <% if @articles.any? %>
+<% if @articles.any? %>
+    <div class="articles">
         <h1 class="main-title">
             <%= t ".articles" %>
         </h1>
         <%= link_to t("general.see_all"), articles_path, class: "btn centered" %>
 
         <%= cards_for @articles %>
-    <% end %>
-</div>
+    </div>
+<% end %>
 
-<div class="proyectos">
-    <% if @proyectos.any? %>
+<% if @proyectos.any? %>
+    <div class="proyectos">
         <h1 class="main-title">
             <%= t ".proyectos" %>
         </h1>
         <%= link_to t("general.see_all"), proyectos_path, class: "btn centered" %>
 
         <%= cards_for @proyectos %>
-    <% end %>
-</div>
+    </div>
+<% end %>
 
-<div class="products">
-    <% if @products.any? %>
+<% if @products.any? %>
+    <div class="products">
         <h1 class="main-title">
             <%= t ".products" %>
         </h1>
         <%= link_to t("general.see_all"), products_path, class: "btn centered" %>
 
         <%= alternative_cards_for @products %>
-    <% end %>
-</div>
+    </div>
+<% end %>
 
 <div class="contacto">
     <div class="contacto-sub-div">

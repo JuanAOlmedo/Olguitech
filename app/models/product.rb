@@ -7,6 +7,8 @@ class Product < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
+    enum status: %i[published drafted trashed], _default: :drafted
+
     has_rich_text :content
     has_rich_text :content2
 

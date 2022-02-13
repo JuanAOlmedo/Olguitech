@@ -15,10 +15,10 @@ class ProyectosController < ApplicationController
                 @categories = ordered[0]
                 @proyectos = ordered[1]
 
-                @uncategorized = Proyecto.where.missing :categories
+                @uncategorized = Proyecto.published.where.missing :categories
             end
 
-            format.json { @proyectos = Proyecto.all }
+            format.json { @proyectos = Proyecto.published.all }
         end
     end
 
@@ -105,6 +105,8 @@ class ProyectosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_proyecto
         @proyecto = Proyecto.friendly.find(params[:id])
+
+        authenticate_admin! unless @proyecto.published?
     end
 
     # Only allow a list of trusted parameters through.

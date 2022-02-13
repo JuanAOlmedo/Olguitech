@@ -35,8 +35,6 @@
 
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">
-        <%= link_to "Editar", edit_article_path(@article), class: 'btn' %>
-
-        <%= link_to "Mover a la papelera", article_path(@article, params: { article: { status: 2 } }), data: { turbo_method: :patch }, class: 'btn is-danger' %>
+        <%= render partial: 'buttons', locals: { article: @article } %>
     </div>
 <% end %>

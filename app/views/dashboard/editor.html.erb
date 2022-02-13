@@ -1,0 +1,30 @@
+<%= render 'dashboard' %>
+
+<div class='articles-div'>
+    <h1 class='main-title'> Todos los artículos </h1>
+    <div class="dropdown-holder" style="height: 2.5rem; display: flex;">
+        <%= dropdown_for "Nuevo" do %>
+            <%= link_to Article.model_name.human, new_article_path, class: "btn" %>
+            <%= link_to Proyecto.model_name.human, new_proyecto_path, class: "btn" %>
+            <%= link_to Product.model_name.human, new_product_path, class: "btn" %>
+            <%= link_to Category.model_name.human, new_category_path, class: "btn" %>
+            <%= link_to Newsletter.model_name.human, new_newsletter_path, class: "btn" %>
+        <% end %>
+    </div>
+
+    <div class='dashboard-drafts'>
+        <h2 class="title centered"> Borradores </h2>
+        <div class='dashboard-card-holder'>
+            <% @article_drafts.each do |article| %>
+                <%= render partial: 'article', object: article %> 
+            <% end %>
+        </div>
+    </div>
+
+    <h2 class="title centered"> Soluciones publicadas </h2>
+    <div class='dashboard-card-holder'>
+        <% @articles.each do |article| %>
+            <%= render partial: 'article', object: article %> 
+        <% end %>
+    </div>
+</div>

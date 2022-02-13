@@ -1,0 +1,12 @@
+<%= render 'dashboard' %>
+
+<div class='articles-div'>
+    <h1 class='main-title'> Papelera </h1>
+
+    <h2 class="title centered"> Soluciones </h2>
+    <div class='dashboard-card-holder'>
+        <% @articles.each do |article| %>
+            <%= render partial: 'article', object: article %> 
+        <% end %>
+    </div>
+</div>

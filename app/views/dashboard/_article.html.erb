@@ -1,0 +1,10 @@
+<div class='dashboard-card'>
+    <%= image_tag article.image if article.image %>
+
+    <div>
+        <h3> <%= article.localized_short_title %> </h3>
+
+        <%= link_to 'Abrir', article, class: 'btn' unless @trash %>
+        <%= render partial: "#{article.model_name.plural}/buttons", locals: { article: article } %>
+    </div>
+</div>

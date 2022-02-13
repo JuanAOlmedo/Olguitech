@@ -1,0 +1,42 @@
+.dashboard-card-holder {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dashboard-drafts {
+    padding-top: 0.5rem;
+    width: 100%;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+    border-radius: 1rem;
+}
+
+.dashboard-card {
+    box-sizing: border-box;
+    padding: 0.5%;
+    margin: 0.5%;
+    width: 48%;
+    height: 12rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    display: flex;
+
+    & img {
+        border-radius: calc(1rem - 1%);
+        width: 12rem;
+        min-width: 12rem;
+        height: 100%;
+        object-fit: cover;
+        margin-right: 0.6rem;
+    }
+
+    & h3 {
+        color: #333;
+    }
+
+    & .btn {
+        margin-bottom: 0.2rem;
+        font-size: 1.1rem;
+    }
+}

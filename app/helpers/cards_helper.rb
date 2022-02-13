@@ -56,7 +56,7 @@ module CardsHelper
         def grid(array)
             content = []
 
-            starts_right = @array.length.even? ? [false, true].sample : true
+            starts_right = @array.length.even? ? [false, true].sample : false
             rand_num = @array.length.even? ? rand(3..5) : 10
 
             if starts_right

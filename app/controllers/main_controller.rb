@@ -2,9 +2,9 @@
 
 class MainController < ApplicationController
     def main
-        @articles = Article.published.order(created_at: :desc).last 4
-        @proyectos = Proyecto.published.order(created_at: :desc).last 4
-        @products = Product.published.order(created_at: :desc).last 4
+        @articles = Article.published.order(created_at: :desc).first 4
+        @proyectos = Proyecto.published.order(created_at: :desc).first 4
+        @products = Product.published.order(created_at: :desc).first 4
 
         @user = User.new
     end

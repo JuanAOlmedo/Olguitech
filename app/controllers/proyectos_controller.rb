@@ -111,7 +111,7 @@ class ProyectosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def proyecto_params
-        params
+        proyecto_params = params
             .require(:proyecto)
             .permit(
                 :title,
@@ -122,7 +122,10 @@ class ProyectosController < ApplicationController
                 :description2,
                 { product_ids: [] },
                 { category_ids: [] },
-                :image
+                :image,
+                :status
             )
+        proyecto_params[:status] = proyecto_params[:status].to_i if proyecto_params[:status]
+        proyecto_params
     end
 end

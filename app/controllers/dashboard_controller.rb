@@ -6,7 +6,7 @@ class DashboardController < ApplicationController
     def editor
         @articles = Article.published
         @proyectos = Proyecto.published
-        @productos = Product.published
+        @products = Product.published
 
         @article_drafts = Article.drafted
         @proyecto_drafts = Proyecto.drafted

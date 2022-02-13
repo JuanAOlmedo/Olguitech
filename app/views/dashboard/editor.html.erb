@@ -12,18 +12,55 @@
         <% end %>
     </div>
 
-    <div class='dashboard-drafts'>
+    <% unless [@article_drafts, @proyecto_drafts, @product_drafts].flatten.empty? %>
         <h2 class="title centered"> Borradores </h2>
-        <div class='dashboard-card-holder'>
-            <% @article_drafts.each do |article| %>
-                <%= render partial: 'article', object: article %> 
+        <div class='dashboard-drafts'>
+            <% unless @article_drafts.empty? %>
+                <h2 class="title centered"> Soluciones (borradores) </h2>
+                <div class='dashboard-card-holder'>
+                    <% @article_drafts.each do |article| %>
+                        <%= render partial: 'article', object: article %> 
+                    <% end %>
+                </div>
+            <% end %>
+
+            <% unless @proyecto_drafts.empty? %>
+                <h2 class="title centered"> Proyectos (borradores) </h2>
+                <div class='dashboard-card-holder'>
+                    <% @proyecto_drafts.each do |article| %>
+                        <%= render partial: 'article', object: article %> 
+                    <% end %>
+                </div>
+            <% end %>
+
+            <% unless @product_drafts.empty? %>
+                <h2 class="title centered"> Productos (borradores) </h2>
+                <div class='dashboard-card-holder'>
+                    <% @product_drafts.each do |article| %>
+                        <%= render partial: 'article', object: article %> 
+                    <% end %>
+                </div>
             <% end %>
         </div>
-    </div>
+    <% end %>
 
     <h2 class="title centered"> Soluciones publicadas </h2>
     <div class='dashboard-card-holder'>
         <% @articles.each do |article| %>
+            <%= render partial: 'article', object: article %> 
+        <% end %>
+    </div>
+
+    <h2 class="title centered"> Proyectos publicados </h2>
+    <div class='dashboard-card-holder'>
+        <% @proyectos.each do |article| %>
+            <%= render partial: 'article', object: article %> 
+        <% end %>
+    </div>
+
+    <h2 class="title centered"> Productos publicados </h2>
+    <div class='dashboard-card-holder'>
+        <% @products.each do |article| %>
             <%= render partial: 'article', object: article %> 
         <% end %>
     </div>

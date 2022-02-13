@@ -1,5 +1,5 @@
 <div class='dashboard-card'>
-    <%= image_tag article.image if article.image %>
+    <%= image_tag article.image if article.image.attached? %>
 
     <div>
         <h3> <%= article.localized_short_title %> </h3>

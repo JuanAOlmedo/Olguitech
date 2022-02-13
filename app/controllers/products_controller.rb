@@ -106,7 +106,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-        params
+        product_params = params
             .require(:product)
             .permit(
                 :title,
@@ -118,7 +118,10 @@ class ProductsController < ApplicationController
                 { article_ids: [] },
                 { proyecto_ids: [] },
                 { category_ids: [] },
-                :image
+                :image,
+                :status
             )
+        product_params[:status] = product_params[:status].to_i if product_params[:status]
+        product_params
     end
 end

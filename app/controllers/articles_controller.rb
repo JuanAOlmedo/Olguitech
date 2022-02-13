@@ -123,7 +123,7 @@ class ArticlesController < ApplicationController
                       { category_ids: [] },
                       :image,
                       :status)
-        article_params[:status] = article_params[:status].to_i
+        article_params[:status] = article_params[:status].to_i if article_params[:status]
         article_params
     end
 end

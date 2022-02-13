@@ -1,0 +1,13 @@
+<%= link_to "Editar", edit_product_path(article), class: 'btn' unless article.trashed? %>
+
+<% if article.drafted? %>
+    <%= link_to "Publicar", product_path(article, params: { product: { status: 0 } }), data: { turbo_method: :patch }, class: 'btn' %>
+<% elsif !article.trashed? %>
+    <%= link_to "Despublicar", product_path(article, params: { product: { status: 1 } }), data: { turbo_method: :patch }, class: 'btn' %>
+<% end %>
+
+<% if article.trashed? %>
+    <%= link_to "Sacar de la papelera", product_path(article, params: { product: { status: 1 } }), data: { turbo_method: :patch }, class: 'btn' %>
+<% else %>
+    <%= link_to "Mover a la papelera", product_path(article, params: { product: { status: 2 } }), data: { turbo_method: :patch }, class: 'btn is-danger' %>
+<% end %>

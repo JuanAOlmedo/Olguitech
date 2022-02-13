@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
     def trash
         @articles = Article.trashed
         @proyectos = Proyecto.trashed
-        @productos = Product.trashed
+        @products = Product.trashed
 
         @trash = true
     end

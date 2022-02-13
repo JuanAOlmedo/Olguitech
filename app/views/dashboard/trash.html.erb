@@ -3,10 +3,30 @@
 <div class='articles-div'>
     <h1 class='main-title'> Papelera </h1>
 
-    <h2 class="title centered"> Soluciones </h2>
-    <div class='dashboard-card-holder'>
-        <% @articles.each do |article| %>
-            <%= render partial: 'article', object: article %> 
-        <% end %>
-    </div>
+    <% unless @articles.empty? %>
+        <h2 class="title centered"> Soluciones </h2>
+        <div class='dashboard-card-holder'>
+            <% @articles.each do |article| %>
+                <%= render partial: 'article', object: article %> 
+            <% end %>
+        </div>
+    <% end %>
+    
+    <% unless @proyectos.empty? %>
+        <h2 class="title centered"> Proyectos </h2>
+        <div class='dashboard-card-holder'>
+            <% @proyectos.each do |article| %>
+                <%= render partial: 'article', object: article %> 
+            <% end %>
+        </div>
+    <% end %>
+
+    <% unless @products.empty? %>
+        <h2 class="title centered"> Productos </h2>
+        <div class='dashboard-card-holder'>
+            <% @products.each do |article| %>
+                <%= render partial: 'article', object: article %> 
+            <% end %>
+        </div>
+    <% end %>
 </div>

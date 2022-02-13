@@ -27,6 +27,7 @@ Rails.application.routes.draw do
             get '/edit', to: 'dashboard#edit'
             get '/editor', to: 'dashboard#editor'
             get '/trash', to: 'dashboard#trash'
+            get '/users', to: 'dashboard#users'
             get '/', to: 'dashboard#editor'
         end
 

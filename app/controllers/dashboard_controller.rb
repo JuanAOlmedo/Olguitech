@@ -20,4 +20,6 @@ class DashboardController < ApplicationController
 
         @trash = true
     end
+
+    def users; end
 end

@@ -57,3 +57,19 @@
         height: auto;
     }
 }
+
+.btn.drafted,
+.btn.published,
+.btn.trashed {
+    display: none;
+}
+
+.drafted .drafted {
+    display: inline-block;
+}
+.published .published {
+    display: inline-block;
+}
+.trashed .trashed {
+    display: inline-block;
+}

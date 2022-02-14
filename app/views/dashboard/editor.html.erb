@@ -1,6 +1,6 @@
 <%= render 'dashboard' %>
 
-<div class='articles-div'>
+<div class='articles-div' data-controller="dashboard">
     <h1 class='main-title'> Todos los artículos </h1>
     <div class="dropdown-holder" style="height: 2.5rem; display: flex;">
         <%= dropdown_for "Nuevo" do %>
@@ -12,54 +12,46 @@
         <% end %>
     </div>
 
-    <% unless [@article_drafts, @proyecto_drafts, @product_drafts].flatten.empty? %>
-        <h2 class="title centered"> Borradores </h2>
-        <div class='dashboard-drafts'>
-            <% unless @article_drafts.empty? %>
-                <h2 class="title centered"> Soluciones (borradores) </h2>
-                <div class='dashboard-card-holder'>
-                    <% @article_drafts.each do |article| %>
-                        <%= render partial: 'article', object: article %> 
-                    <% end %>
-                </div>
-            <% end %>
-
-            <% unless @proyecto_drafts.empty? %>
-                <h2 class="title centered"> Proyectos (borradores) </h2>
-                <div class='dashboard-card-holder'>
-                    <% @proyecto_drafts.each do |article| %>
-                        <%= render partial: 'article', object: article %> 
-                    <% end %>
-                </div>
-            <% end %>
-
-            <% unless @product_drafts.empty? %>
-                <h2 class="title centered"> Productos (borradores) </h2>
-                <div class='dashboard-card-holder'>
-                    <% @product_drafts.each do |article| %>
-                        <%= render partial: 'article', object: article %> 
-                    <% end %>
-                </div>
+    <h2 class="title centered"> Borradores </h2>
+    <div class='dashboard-drafts'>
+        <h2 class="title centered"> Soluciones (borradores) </h2>
+        <div class='dashboard-card-holder' id='article_drafts'>
+            <% @article_drafts.each do |article| %>
+                <%= render partial: 'article', object: article %> 
             <% end %>
         </div>
-    <% end %>
+
+        <h2 class="title centered"> Proyectos (borradores) </h2>
+        <div class='dashboard-card-holder' id='proyecto_drafts'>
+            <% @proyecto_drafts.each do |article| %>
+                <%= render partial: 'article', object: article %> 
+            <% end %>
+        </div>
+
+        <h2 class="title centered"> Productos (borradores) </h2>
+        <div class='dashboard-card-holder' id='product_drafts'>
+            <% @product_drafts.each do |article| %>
+                <%= render partial: 'article', object: article %> 
+            <% end %>
+        </div>
+    </div>
 
     <h2 class="title centered"> Soluciones publicadas </h2>
-    <div class='dashboard-card-holder'>
+    <div class='dashboard-card-holder' id='articles'>
         <% @articles.each do |article| %>
             <%= render partial: 'article', object: article %> 
         <% end %>
     </div>
 
     <h2 class="title centered"> Proyectos publicados </h2>
-    <div class='dashboard-card-holder'>
+    <div class='dashboard-card-holder' id='proyectos'>
         <% @proyectos.each do |article| %>
             <%= render partial: 'article', object: article %> 
         <% end %>
     </div>
 
     <h2 class="title centered"> Productos publicados </h2>
-    <div class='dashboard-card-holder'>
+    <div class='dashboard-card-holder' id='products'>
         <% @products.each do |article| %>
             <%= render partial: 'article', object: article %> 
         <% end %>

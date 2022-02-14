@@ -34,7 +34,7 @@
 </article>
 
 <% if admin_signed_in? %>
-    <div class="btn-group admin-tools admin-tools-2">
+    <div class="btn-group admin-tools admin-tools-2 <%= @article.status %>">
         <%= render partial: 'buttons', locals: { article: @article } %>
     </div>
 <% end %>

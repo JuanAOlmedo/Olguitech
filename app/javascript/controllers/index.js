@@ -33,3 +33,6 @@ application.register("user-index", UserIndexController);
 
 import UserSearchbarController from "./user_searchbar_controller.js";
 application.register("user-searchbar", UserSearchbarController);
+
+import DashboardController from "./dashboard_controller.js";
+application.register("dashboard", DashboardController);

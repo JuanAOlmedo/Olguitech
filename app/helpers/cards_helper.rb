@@ -122,7 +122,10 @@ module CardsHelper
 
             image_tag element.image.variant(saver: { quality: 60 }, resize_to_limit: [40, 40]),
                       data: {
-                          src: url_for(element.image.variant(saver: { quality: 85 }, resize_to_limit: [1080, 1080]))
+                          src: url_for(element.image.variant(saver: { quality: 85 },
+                                                             resize_to_limit: [
+                                                                 1080, 1080
+                                                             ]))
                       },
                       class: 'lazy',
                       alt: element.image.filename

@@ -34,7 +34,12 @@
 </article>
 
 <% if admin_signed_in? %>
-    <div class="btn-group admin-tools admin-tools-2 <%= @article.status %>">
-        <%= render partial: 'buttons', locals: { article: @article } %>
+    <div class="btn-group admin-tools admin-tools-2">
+        <% if %w[drafted published].include?(@article.status) %>
+            <%= link_to 'Editar', edit_article_path(@article), class: 'btn'  %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @article}", class: 'btn'  %>
+        <% else %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @article}", class: 'btn'  %>
+        <% end %>
     </div>
 <% end %>

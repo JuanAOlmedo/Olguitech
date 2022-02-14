@@ -1,0 +1,12 @@
+{
+  "name": "olguitech",
+  "version": "1.0.0",
+  "repository": "git@github.com:VarillasFriend/Olguitech",
+  "author": "Juan Andres Olmedo <olmedo.juanandres5@gmail.com>",
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "prettier": "^2.5.1"
+  }
+}

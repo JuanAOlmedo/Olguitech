@@ -113,16 +113,16 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
         article_params = params.require(:article)
-              .permit(:title,
-                      :title2,
-                      :content,
-                      :content2,
-                      :description,
-                      :description2,
-                      { product_ids: [] },
-                      { category_ids: [] },
-                      :image,
-                      :status)
+                               .permit(:title,
+                                       :title2,
+                                       :content,
+                                       :content2,
+                                       :description,
+                                       :description2,
+                                       { product_ids: [] },
+                                       { category_ids: [] },
+                                       :image,
+                                       :status)
         article_params[:status] = article_params[:status].to_i if article_params[:status]
         article_params
     end

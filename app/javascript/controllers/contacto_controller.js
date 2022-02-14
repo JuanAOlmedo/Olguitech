@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from '@hotwired/stimulus';
 
 // Connects to data-controller="contacto"
 export default class extends Controller {
@@ -17,17 +17,17 @@ export default class extends Controller {
             this.initialize_map();
             this.add_map_point();
         } catch {
-            console.log("Error building map");
+            console.log('Error building map');
         }
     }
 
     initialize_map() {
         this.map = new ol.Map({
-            target: "map",
+            target: 'map',
             layers: [
                 new ol.layer.Tile({
                     source: new ol.source.OSM({
-                        url: "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                        url: 'https://a.tile.openstreetmap.org/{z}/{x}/{y}.png',
                     }),
                 }),
             ],
@@ -52,9 +52,9 @@ export default class extends Controller {
                                     parseFloat(this.longitudeValue),
                                     parseFloat(this.latitudeValue),
                                 ],
-                                "EPSG:4326",
-                                "EPSG:3857"
-                            )
+                                'EPSG:4326',
+                                'EPSG:3857',
+                            ),
                         ),
                     }),
                 ],
@@ -62,9 +62,9 @@ export default class extends Controller {
             style: new ol.style.Style({
                 image: new ol.style.Icon({
                     anchor: [0.6, 0.8],
-                    anchorXUnits: "fraction",
-                    anchorYUnits: "fraction",
-                    src: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Marker_location.png",
+                    anchorXUnits: 'fraction',
+                    anchorYUnits: 'fraction',
+                    src: 'https://upload.wikimedia.org/wikipedia/commons/0/0a/Marker_location.png',
                 }),
             }),
         });

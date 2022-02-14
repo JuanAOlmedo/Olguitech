@@ -1,29 +1,30 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from '@hotwired/stimulus';
 
 // Connects to data-controller="dropdown"
 export default class extends Controller {
-    static targets = ["menu"];
-    static classes = ["active"];
+    static targets = ['menu'];
+
+    static classes = ['active'];
 
     display() {
         if (this.element.classList.contains(this.activeClass)) {
             setTimeout(() => {
-                this.menuTarget.style.visibility = "hidden";
+                this.menuTarget.style.visibility = 'hidden';
             }, 250);
         } else {
-            this.menuTarget.style.visibility = "visible";
+            this.menuTarget.style.visibility = 'visible';
         }
 
         this.element.classList.toggle(this.activeClass);
     }
 
-    stopDisplayingWhenOutside() {
+    stopDisplayingWhenOutside(event) {
         if (this.element.contains(event.target)) {
             return;
         }
 
         setTimeout(() => {
-            this.menuTarget.style.visibility = "hidden";
+            this.menuTarget.style.visibility = 'hidden';
         }, 250);
 
         this.element.classList.remove(this.activeClass);

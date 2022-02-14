@@ -112,19 +112,19 @@ class ProyectosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def proyecto_params
         proyecto_params = params
-            .require(:proyecto)
-            .permit(
-                :title,
-                :title2,
-                :content,
-                :content2,
-                :description,
-                :description2,
-                { product_ids: [] },
-                { category_ids: [] },
-                :image,
-                :status
-            )
+                          .require(:proyecto)
+                          .permit(
+                              :title,
+                              :title2,
+                              :content,
+                              :content2,
+                              :description,
+                              :description2,
+                              { product_ids: [] },
+                              { category_ids: [] },
+                              :image,
+                              :status
+                          )
         proyecto_params[:status] = proyecto_params[:status].to_i if proyecto_params[:status]
         proyecto_params
     end

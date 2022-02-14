@@ -29,6 +29,12 @@
         height: 100%;
         object-fit: cover;
         margin-right: 0.6rem;
+
+        @media only screen and (max-width: 30rem) {
+            height: 12rem;
+            width: 100%;
+            min-width: 8rem;
+        }
     }
 
     & h3 {
@@ -38,5 +44,16 @@
     & .btn {
         margin-bottom: 0.2rem;
         font-size: 1.1rem;
+    }
+
+    @media only screen and (max-width: 75rem) {
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    @media only screen and (max-width: 30rem) {
+        padding: 1rem;
+        display: block;
+        height: auto;
     }
 }

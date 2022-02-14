@@ -10,13 +10,13 @@
     width: 80%;
     margin: 0 2.5% 5rem 17.5%;
 
-    @media only screen and (max-width: 72rem) {
-        width: 70%;
-        margin: 0 4% 5rem 26%;
+    @media only screen and (max-width: 60rem) {
+        width: 73%;
+        margin: 0 1% 5rem 26%;
     }
 
     @media only screen and (max-width: 50rem) {
-        width: 92.5%;
+        width: 95%;
         margin: 0 auto 5rem auto;
     }
 }
@@ -40,10 +40,13 @@
     top: 7rem;
     bottom: 0rem;
     overflow-y: auto;
-    color: $color2;
+    color: #333;
 
     @media only screen and (max-width: 50rem) {
-        display: none;
+        position: unset;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        border-bottom: 0.15rem solid #333;
     }
 }
 
@@ -55,6 +58,10 @@
 
     & path {
         transition: all 0.5s;
+    }
+
+    @media only screen and (max-width: 50rem) {
+        display: none;
     }
 }
 
@@ -69,6 +76,14 @@
 
     & .link {
         font-size: 1.2rem;
+    }
+
+    @media only screen and (max-width: 50rem) {
+        margin-top: 0.6rem;
+
+        &.visible {
+            padding: 0;
+        }
     }
 }
 

@@ -2,12 +2,12 @@
 
 <% if article.drafted? %>
     <%= link_to "Publicar", proyecto_path(article, params: { proyecto: { status: 0 } }), data: { turbo_method: :patch }, class: 'btn' %>
+    <%= link_to "Mover a la papelera", proyecto_path(article, params: { proyecto: { status: 2 } }), data: { turbo_method: :patch }, class: 'btn is-danger' %>
 <% elsif !article.trashed? %>
     <%= link_to "Despublicar", proyecto_path(article, params: { proyecto: { status: 1 } }), data: { turbo_method: :patch }, class: 'btn' %>
+    <%= link_to "Mover a la papelera", proyecto_path(article, params: { proyecto: { status: 2 } }), data: { turbo_method: :patch }, class: 'btn is-danger' %>
+<% else %>
+    <%= link_to "Sacar de la papelera", proyecto_path(article, params: { proyecto: { status: 1 } }), data: { turbo_method: :patch }, class: 'btn' %>
+    <%= link_to "Eliminar definitivamente", article, remote: true, data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?' }, class: 'btn is-danger' %>
 <% end %>
 
-<% if article.trashed? %>
-    <%= link_to "Sacar de la papelera", proyecto_path(article, params: { proyecto: { status: 1 } }), data: { turbo_method: :patch }, class: 'btn' %>
-<% else %>
-    <%= link_to "Mover a la papelera", proyecto_path(article, params: { proyecto: { status: 2 } }), data: { turbo_method: :patch }, class: 'btn is-danger' %>
-<% end %>

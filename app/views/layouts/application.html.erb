@@ -115,7 +115,7 @@
                     <%= link_to Newsletter.model_name.human, new_newsletter_path, class: "btn" %>
                 <% end %>
 
-                <%= link_to User.model_name.human(count: 2), users_path, class: 'btn' %>
+                <%= link_to User.model_name.human(count: 2), "/#{I18n.locale}/dashboard/users", class: 'btn' %>
 
                 <%= link_to 'Panel', "/#{I18n.locale}/dashboard", class: "btn" %>
             </div>    

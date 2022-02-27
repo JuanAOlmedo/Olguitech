@@ -2,6 +2,9 @@ import { Controller } from '@hotwired/stimulus';
 
 // Connects to data-controller="dashboard"
 export default class extends Controller {
+    connect() {
+    }
+
     update(event) {
         event.preventDefault();
         let url = event.target.href;
@@ -37,6 +40,18 @@ export default class extends Controller {
             );
             if (articles) articles.appendChild(domArticle);
         }
+
+    }
+
+    removeEmpty() {
+        const toCheck = [];
+        toCheck.push(document.getElementById('article_drafts'));
+        toCheck.push(document.getElementById('proyecto_darfts'));
+        toCheck.push(document.getElementById('product_drafts'));
+
+        toCheck.forEach((element) => {
+            if (element && element.children.length === 0) element.remove();
+        });
     }
 
     delete({ params: { id } }) {

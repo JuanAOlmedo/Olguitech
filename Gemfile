@@ -41,7 +41,7 @@ gem 'devise', '4.8.1'
 gem 'simple_form', '5.1.0'
 
 # Use Active Storage variant
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'mini_magick'
 
 # Use terser for JavaScript compression

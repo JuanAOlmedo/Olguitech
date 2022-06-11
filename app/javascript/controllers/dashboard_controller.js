@@ -15,7 +15,7 @@ export default class extends Controller {
             method: 'PATCH',
             headers: {
                 'X-CSRF-Token': document.querySelector(
-                    'meta[name="csrf-token"]',
+                    'meta[name="csrf-token"]'
                 ).content,
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
@@ -36,7 +36,7 @@ export default class extends Controller {
             articles.appendChild(domArticle);
         } else if (article.status === 'drafted') {
             const articles = document.querySelector(
-                `#${article.model_name.slice(0, -1)}_drafts`,
+                `#${article.model_name.slice(0, -1)}_drafts`
             );
             if (articles) articles.appendChild(domArticle);
         }
@@ -65,7 +65,7 @@ export default class extends Controller {
             method: 'DELETE',
             headers: {
                 'X-CSRF-Token': document.querySelector(
-                    'meta[name="csrf-token"]',
+                    'meta[name="csrf-token"]'
                 ).content,
             },
         }).then(document.getElementById(id).remove());

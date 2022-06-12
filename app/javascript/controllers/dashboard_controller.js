@@ -3,6 +3,7 @@ import { Controller } from '@hotwired/stimulus';
 // Connects to data-controller="dashboard"
 export default class extends Controller {
     connect() {
+        this.updateHolders();
     }
 
     update(event) {
@@ -41,17 +42,31 @@ export default class extends Controller {
             if (articles) articles.appendChild(domArticle);
         }
 
+        this.updateHolders();
     }
 
-    removeEmpty() {
+    updateHolders() {
         const toCheck = [];
+        const message = document.getElementById('dashboard-message');
         toCheck.push(document.getElementById('article_drafts'));
-        toCheck.push(document.getElementById('proyecto_darfts'));
+        toCheck.push(document.getElementById('proyecto_drafts'));
         toCheck.push(document.getElementById('product_drafts'));
+        let empty = 0;
 
         toCheck.forEach((element) => {
-            if (element && element.children.length === 0) element.remove();
+            if (element && element.children.length === 0) { 
+                element.parentElement.style.display = 'none';
+                empty += 1;
+            } else {
+                element.parentElement.style.display = 'block';
+            }
         });
+
+        if (empty === 3) { 
+            message.style.display = 'block'; 
+        } else {
+            message.style.display = 'none';
+        }
     }
 
     delete({ params: { id } }) {

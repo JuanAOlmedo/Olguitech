@@ -14,7 +14,7 @@
 </div>
 
 <% if @articles.any? %>
-    <div class="articles">
+    <div class="articles <%= "proyectos" if @proyectos.empty? || @products.empty? %>">
         <h1 class="main-title">
             <%= t ".articles" %>
         </h1>
@@ -25,9 +25,9 @@
 <% end %>
 
 <% if @proyectos.any? %>
-    <div class="proyectos">
+    <div class="<%= @products.any? ? "proyectos" : "products"  %>">
         <h1 class="main-title">
-            <%= t ".proyectos" %>
+            <%= t ".proyectos" %>Publicar
         </h1>
         <%= link_to t("general.see_all"), proyectos_path, class: "btn centered" %>
 

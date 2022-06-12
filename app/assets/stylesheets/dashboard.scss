@@ -73,3 +73,11 @@
 .trashed .trashed {
     display: inline-block;
 }
+
+#dashboard-message {
+    display: none;
+    text-align: center;
+    color: #444;
+    padding: 2rem;
+    margin: 0;
+}

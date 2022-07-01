@@ -3,6 +3,7 @@
 
 <head>
     <title>
+        <%= "Dev - " if Rails.env == "development" %>
         <%= content_for(:title) || "Olguitech s.a.s." %>
     </title>
 

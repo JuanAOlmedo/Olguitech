@@ -58,6 +58,13 @@
             <% end %>
         </div>
 
-        <%= form.submit 'Crear', class: 'btn centered' %>
+
+        <div class="btn-group" style="margin: auto;">
+            <% unless @article.id %>
+                <%= form.check_box :published, class: 'btn-check' %>
+                <%= form.label :published, "Publicar al crear", class: 'btn' %>
+            <% end%>
+            <%= form.submit 'Crear', class: 'btn centered' %>
+        </div>
     </div>
 <% end %>

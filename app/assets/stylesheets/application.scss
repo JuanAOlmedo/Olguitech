@@ -191,6 +191,16 @@ body {
             color: #000;
         }
     }
+
+    .btn-check + & {
+        border-bottom-left-radius: 0.3rem !important;
+        border-top-left-radius: 0.3rem !important;
+    }
+
+    .btn-check:checked + & {
+        background-color: hsl(26.7, 20%, 83%);
+        color: #f77402;
+    }
 }
 
 .btn-group {

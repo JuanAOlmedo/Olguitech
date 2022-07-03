@@ -122,8 +122,11 @@ class ArticlesController < ApplicationController
                                        { product_ids: [] },
                                        { category_ids: [] },
                                        :image,
-                                       :status)
+                                       :status,
+                                       :published)
         article_params[:status] = article_params[:status].to_i if article_params[:status]
+        article_params[:status] = 0 if article_params[:published] == '1'
+        article_params.delete(:published)
         article_params
     end
 end

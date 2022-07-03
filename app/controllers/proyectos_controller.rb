@@ -123,9 +123,11 @@ class ProyectosController < ApplicationController
                               { product_ids: [] },
                               { category_ids: [] },
                               :image,
-                              :status
-                          )
+                              :status,
+                              :published)
         proyecto_params[:status] = proyecto_params[:status].to_i if proyecto_params[:status]
+        proyecto_params[:status] = 0 if proyecto_params[:published] == '1'
+        proyecto_params.delete(:published)
         proyecto_params
     end
 end

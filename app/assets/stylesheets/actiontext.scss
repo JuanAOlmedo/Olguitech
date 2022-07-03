@@ -510,6 +510,11 @@ trix-editor .attachment-gallery {
         width: 100%;
         -o-object-fit: cover;
         object-fit: cover;
+
+        @supports not (aspect-ratio: 1) {
+            height: 20rem !important;
+        }
+
     }
 }
 .trix-content .attachment-gallery.attachment-gallery--2 action-text-attachment,

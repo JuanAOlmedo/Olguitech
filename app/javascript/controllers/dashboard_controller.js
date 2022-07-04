@@ -23,7 +23,13 @@ export default class extends Controller {
             body: params,
         })
             .then((result) => result.json())
-            .then((article) => this.appendArticle(article));
+            .then((article) => {
+                if (url.indexOf('categories' != -1)) {
+                    event.target.parentElement.parentElement.remove();
+                    return;
+                }
+                this.appendArticle(article);
+            });
     }
 
     appendArticle(article) {

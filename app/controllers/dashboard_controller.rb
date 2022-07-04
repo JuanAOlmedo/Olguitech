@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
     def edit; end
 
-    def editor
+    def articles
         @articles = Article.published
         @proyectos = Proyecto.published
         @products = Product.published
@@ -13,6 +13,10 @@ class DashboardController < ApplicationController
         @article_drafts = Article.drafted
         @proyecto_drafts = Proyecto.drafted
         @product_drafts = Product.drafted
+    end
+
+    def categories
+        @categories = Category.all
     end
 
     def trash

@@ -5,6 +5,11 @@
         <h3> <%= article.localized_short_title %> </h3>
 
         <%= link_to 'Abrir', article, class: 'btn' unless @trash %>
-        <%= render partial: "#{article.model_name.plural}/buttons", locals: { article: article } %>
-    </div>
+        <% begin %>
+            <% ids_name = "#{article.model_name.singular}_ids" %>
+            <%= link_to 'Desasociar', category_path(category, params: { category: { ids_name => ([""] + category.send(ids_name.to_sym) - [ article.id ]) } } ), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn' %>
+        <% rescue %>
+            <%= render partial: "#{article.model_name.plural}/buttons", locals: { article: article } %>
+        <% end %>
+   </div>
 </div>

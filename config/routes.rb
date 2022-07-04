@@ -25,10 +25,11 @@ Rails.application.routes.draw do
         devise_for :admins, controllers: { registrations: 'admin_registrations' }
         scope 'dashboard' do
             get '/edit', to: 'dashboard#edit'
-            get '/editor', to: 'dashboard#editor'
+            get '/articles', to: 'dashboard#articles'
+            get '/categories', to: 'dashboard#categories'
             get '/trash', to: 'dashboard#trash'
             get '/users', to: 'dashboard#users'
-            get '/', to: 'dashboard#editor'
+            get '/', to: 'dashboard#articles'
         end
 
         get '/nosotros', to: 'nosotros#nosotros'

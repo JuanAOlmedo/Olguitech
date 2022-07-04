@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus';
 // Connects to data-controller="dashboard"
 export default class extends Controller {
     connect() {
-        this.updateHolders();
+        this.updateDraftHolders();
     }
 
     update(event) {
@@ -28,7 +28,7 @@ export default class extends Controller {
 
     appendArticle(article) {
         const domArticle = document.getElementById(article.dom_id);
-        domArticle.parentElement.removeChild(domArticle);
+        domArticle.remove();
         domArticle.classList.remove('drafted', 'published', 'trashed');
         domArticle.classList.add(article.status);
 
@@ -42,15 +42,14 @@ export default class extends Controller {
             if (articles) articles.appendChild(domArticle);
         }
 
-        this.updateHolders();
+        this.updateDraftHolders();
     }
 
-    updateHolders() {
-        const toCheck = [];
+    updateDraftHolders() {
+        const toCheck = [document.getElementById('article_drafts'),
+                         document.getElementById('proyecto_drafts'),
+                         document.getElementById('product_drafts')];
         const message = document.getElementById('dashboard-message');
-        toCheck.push(document.getElementById('article_drafts'));
-        toCheck.push(document.getElementById('proyecto_drafts'));
-        toCheck.push(document.getElementById('product_drafts'));
         let empty = 0;
 
         toCheck.forEach((element) => {
@@ -62,11 +61,7 @@ export default class extends Controller {
             }
         });
 
-        if (empty === 3) { 
-            message.style.display = 'block'; 
-        } else {
-            message.style.display = 'none';
-        }
+        message.style.display = empty === 3 ? 'block' : 'none'; 
     }
 
     delete({ params: { id } }) {

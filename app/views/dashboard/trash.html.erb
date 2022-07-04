@@ -29,4 +29,8 @@
             <% end %>
         </div>
     <% end %>
+
+    <% if [ @articles, @proyectos, @products ].flatten.empty? %>
+        <h2 id='dashboard-message' class='centered' style='display: block;'> La papelera está vacía </h2>
+    <% end %>
 </div>

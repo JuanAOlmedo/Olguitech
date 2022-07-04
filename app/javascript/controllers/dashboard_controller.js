@@ -29,10 +29,10 @@ export default class extends Controller {
     appendArticle(article) {
         const domArticle = document.getElementById(article.dom_id);
         domArticle.remove();
-        domArticle.classList.remove('drafted', 'published', 'trashed');
+        domArticle.classList.remove('drafted', 'published', 'trashed', 'sent');
         domArticle.classList.add(article.status);
 
-        if (article.status === 'published') {
+        if (article.status === 'published' || article.status === 'sent') {
             const articles = document.querySelector(`#${article.model_name}`);
             articles.appendChild(domArticle);
         } else if (article.status === 'drafted') {
@@ -48,25 +48,22 @@ export default class extends Controller {
     updateDraftHolders() {
         const toCheck = [document.getElementById('article_drafts'),
                          document.getElementById('proyecto_drafts'),
-                         document.getElementById('product_drafts')];
+                         document.getElementById('product_drafts'),
+                         document.getElementById('newsletter_drafts')];
         const message = document.getElementById('dashboard-message');
-        let empty = 0;
 
         toCheck.forEach((element) => {
-            if (element && element.children.length === 0) { 
-                element.parentElement.style.display = 'none';
-                empty += 1;
-            } else {
-                element.parentElement.style.display = 'block';
-            }
+            if (!element) return;
+
+            element.parentElement.style.display = element.children.length != 0 ? 'block' : 'none';
         });
 
-        message.style.display = empty === 3 ? 'block' : 'none'; 
+        const filtered = toCheck.filter(element => element && element.parentElement.style.display != 'none');
+        message.style.display = filtered.length === 0 ? 'block' : 'none'; 
     }
 
     delete({ params: { id } }) {
         event.preventDefault();
-        console.log(id);
         if (!confirm(event.target.dataset.turboConfirm)) return;
 
         const url = event.target.href;
@@ -79,5 +76,7 @@ export default class extends Controller {
                 ).content,
             },
         }).then(document.getElementById(id).remove());
+
+        this.updateDraftHolders();
     }
 }

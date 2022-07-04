@@ -19,8 +19,6 @@
                 <% associated.each do |article| %>
                     <%= render 'article', article: article, category: category %>
                 <% end %>
-
-                <h2 id='dashboard-message'> No hay ningún artículo asociado a esta categoría </h2>
             </div>    
         </div>
     <% end %>

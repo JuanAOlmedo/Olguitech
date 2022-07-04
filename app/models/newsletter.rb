@@ -4,11 +4,12 @@ class Newsletter < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
-    after_create :send_newsletter
+    enum status: %i[drafted sent], _default: :drafted
 
     has_rich_text :content
 
     def send_newsletter
+        sent!
         User.where(newsletter: true).find_each do |user|
             NewsMailer.newsletter(user, self).deliver_later
         end

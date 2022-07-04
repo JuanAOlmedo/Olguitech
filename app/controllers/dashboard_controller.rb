@@ -19,6 +19,11 @@ class DashboardController < ApplicationController
         @categories = Category.all
     end
 
+    def newsletters
+        @newsletters = Newsletter.sent
+        @newsletter_drafts = Newsletter.drafted
+    end
+
     def trash
         @articles = Article.trashed
         @proyectos = Proyecto.trashed

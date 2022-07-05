@@ -11,6 +11,7 @@ class ProductsTest < ApplicationSystemTestCase
     end
 
     test 'visiting an article' do
+        products(:one).published!
         visit '/products/1'
         assert_selector 'h1', text: products(:one).title
     end

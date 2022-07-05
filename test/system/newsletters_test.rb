@@ -10,7 +10,7 @@ class NewslettersTest < ApplicationSystemTestCase
         assert_selector 'h1', text: newsletters(:one).title
     end
 
-    test 'should create category' do
+    test 'should create newsletter' do
         sign_in admins(:one)
 
         visit '/newsletters/new'

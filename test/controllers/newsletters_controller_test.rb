@@ -38,4 +38,41 @@ class NewslettersControllerTest < ActionDispatch::IntegrationTest
 
         sign_out :admin
     end
+
+    test 'should not edit/update/destroy newsletter if sent' do
+        sign_in admins(:one)
+        @newsletter.sent!
+
+        get '/newsletters/1/edit'
+        assert_response :redirect
+
+        patch '/newsletters/1', params: @params
+        @newsletter.reload
+        assert_not_equal 'a', @newsletter.title
+
+        assert_no_difference('Newsletter.count') do
+            delete '/newsletters/1'
+        end
+
+        sign_out :admin
+        @newsletter.drafted!
+    end
+
+    test 'should edit/update/destroy newsletter if drafted' do
+        sign_in admins(:one)
+        @newsletter.drafted!
+
+        get '/newsletters/1/edit'
+        assert_response :success
+
+        patch '/newsletters/1', params: @params
+        @newsletter.reload
+        assert_equal 'a', @newsletter.title
+
+        assert_difference('Newsletter.count', -1) do
+            delete '/newsletters/1'
+        end
+
+        sign_out :admin
+    end
 end

@@ -33,7 +33,7 @@ class NewslettersController < ApplicationController
         end
     end
 
-    # PATCH /newsletter/1
+    # PATCH /newsletters/1
     def update
         respond_to do |format|
             if @newsletter.update(newsletter_params)
@@ -52,7 +52,7 @@ class NewslettersController < ApplicationController
         end
     end
 
-    # DELETE /newsletter/1
+    # DELETE /newsletters/1
     def destroy
         @newsletter.destroy
         respond_to do |format|

@@ -1,32 +1,32 @@
-import { Controller } from '@hotwired/stimulus';
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="index"
 export default class extends Controller {
-    static targets = ['menu', 'svg', 'path', 'category', 'title'];
+    static targets = ["menu", "svg", "path", "category", "title"];
 
     initialize() {
-        if ('IntersectionObserver' in window) {
+        if ("IntersectionObserver" in window) {
             this.categoryObserver = new IntersectionObserver(
                 (entries, categoryObserver) => {
                     entries.forEach((entry) => {
                         if (!entry.isIntersecting) {
-                            entry.target.classList.remove('visible1');
+                            entry.target.classList.remove("visible1");
 
                             this.titleTargets[
                                 Number(entry.target.dataset.index)
-                            ].classList.remove('visible');
+                            ].classList.remove("visible");
 
                             this.setSvg();
                             return;
                         }
 
-                        entry.target.classList.add('visible1');
+                        entry.target.classList.add("visible1");
                         this.setVisible();
 
                         this.setSvg();
                     });
                 },
-                { threshold: 0 },
+                { threshold: 0 }
             );
         }
     }
@@ -39,16 +39,16 @@ export default class extends Controller {
 
     setVisible() {
         this.categoryTargets.forEach((category) => {
-            if (category.classList.contains('visible1')) {
+            if (category.classList.contains("visible1")) {
                 this.titleTargets[Number(category.dataset.index)].classList.add(
-                    'visible',
+                    "visible"
                 );
             }
         });
     }
 
     setSvg() {
-        const categories = Array.from(document.querySelectorAll('.visible1'));
+        const categories = Array.from(document.querySelectorAll(".visible1"));
         const menuBounds = this.menuTarget.getBoundingClientRect();
         this.svgTarget.style.height = `${menuBounds.y + menuBounds.height}px`;
 
@@ -58,21 +58,24 @@ export default class extends Controller {
         });
 
         if (categories.length == 0) {
-            this.pathTarget.setAttribute('stroke-dasharray', '0 0 0 10000');
+            this.pathTarget.setAttribute("stroke-dasharray", "0 0 0 10000");
             return;
         }
 
-        const category1 = this.titleTargets[
-            Math.min.apply(Math, categoriesIndex)
-        ].getBoundingClientRect();
-        const category2 = this.titleTargets[
-            Math.max.apply(Math, categoriesIndex)
-        ].getBoundingClientRect();
+        const category1 =
+            this.titleTargets[
+                Math.min.apply(Math, categoriesIndex)
+            ].getBoundingClientRect();
+        const category2 =
+            this.titleTargets[
+                Math.max.apply(Math, categoriesIndex)
+            ].getBoundingClientRect();
 
         const firstTitle = this.titleTargets[0].getBoundingClientRect();
-        const lastTitle = this.titleTargets[
-            this.titleTargets.length - 1
-        ].getBoundingClientRect();
+        const lastTitle =
+            this.titleTargets[
+                this.titleTargets.length - 1
+            ].getBoundingClientRect();
 
         const pathStart = category1.y - firstTitle.y;
         const pathEnd = category2.y + category2.height - firstTitle.y;
@@ -84,8 +87,8 @@ export default class extends Controller {
         `;
 
         this.pathTarget.setAttribute(
-            'stroke-dasharray',
-            `0 ${pathStart} ${pathLength} 10000`,
+            "stroke-dasharray",
+            `0 ${pathStart} ${pathLength} 10000`
         );
     }
 }

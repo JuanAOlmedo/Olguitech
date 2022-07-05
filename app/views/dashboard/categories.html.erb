@@ -2,6 +2,7 @@
 
 <div class='articles-div' data-controller="dashboard">
     <h1 class='main-title'> Categorías </h1>
+    <%= link_to 'Nueva Categoría', new_category_path, class: "btn centered" %>
 
     <% @categories.each do |category| %>
         <div id='<%= dom_id category %>'>

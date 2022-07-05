@@ -24,10 +24,11 @@ export default class extends Controller {
         })
             .then((result) => result.json())
             .then((article) => {
-                if (url.indexOf('categories' != -1)) {
+                if (url.indexOf('/categories/') != -1) {
                     event.target.parentElement.parentElement.remove();
                     return;
                 }
+
                 this.appendArticle(article);
             });
     }
@@ -39,8 +40,7 @@ export default class extends Controller {
         domArticle.classList.add(article.status);
 
         if (article.status === 'published' || article.status === 'sent') {
-            const articles = document.querySelector(`#${article.model_name}`);
-            articles.appendChild(domArticle);
+            document.querySelector(`#${article.model_name}`).appendChild(domArticle);
         } else if (article.status === 'drafted') {
             const articles = document.querySelector(
                 `#${article.model_name.slice(0, -1)}_drafts`

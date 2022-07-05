@@ -31,7 +31,8 @@
         margin-right: 0.6rem;
 
         @media only screen and (max-width: 30rem) {
-            height: 12rem;
+            height: 13rem;
+            aspect-ratio: 1;
             width: 100%;
             min-width: 8rem;
         }
@@ -52,7 +53,7 @@
     }
 
     @media only screen and (max-width: 30rem) {
-        padding: 1rem;
+        padding: 0.5rem;
         display: block;
         height: auto;
     }

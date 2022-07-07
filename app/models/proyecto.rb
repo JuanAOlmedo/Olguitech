@@ -18,6 +18,4 @@ class Proyecto < ApplicationRecord
 
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
-
-    after_create :send_mail
 end

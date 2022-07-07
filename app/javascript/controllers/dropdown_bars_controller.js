@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="dropdown-bars"
 export default class extends Controller {
     static targets = ["menu", "bars", "line1", "line2"];
+
     static classes = ["show", "move"];
 
     initialize() {
@@ -19,10 +20,10 @@ export default class extends Controller {
             this.showing ? 450 : 0
         );
 
-        this.showing = this.showing ? false : true;
+        this.showing = !this.showing;
     }
 
-    stopDisplayingWhenOutside() {
+    stopDisplayingWhenOutside(event) {
         if (
             !this.menuTarget.contains(event.target) &&
             !this.barsTarget.contains(event.target) &&

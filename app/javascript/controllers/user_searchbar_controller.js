@@ -5,7 +5,7 @@ export default class extends Controller {
     static targets = ["search", "row"];
 
     search() {
-        let input = this.searchTarget.value.toLowerCase();
+        const input = this.searchTarget.value.toLowerCase();
 
         this.rowTargets.forEach((row) => {
             if (!row.innerText.toLowerCase().includes(input)) {

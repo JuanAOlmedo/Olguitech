@@ -48,11 +48,11 @@ export default class extends Controller {
     }
 
     setSvg() {
-        const categories = Array.from(document.querySelectorAll(".visible1")),
-            menuBounds = this.menuTarget.getBoundingClientRect();
+        const categories = Array.from(document.querySelectorAll(".visible1"));
+        const menuBounds = this.menuTarget.getBoundingClientRect();
         this.svgTarget.style.height = `${menuBounds.y + menuBounds.height}px`;
 
-        let categoriesIndex = [];
+        const categoriesIndex = [];
         categories.forEach((category) => {
             categoriesIndex.push(Number(category.dataset.index));
         });
@@ -62,24 +62,24 @@ export default class extends Controller {
             return;
         }
 
-        let category1 =
-                this.titleTargets[
-                    Math.min.apply(Math, categoriesIndex)
-                ].getBoundingClientRect(),
-            category2 =
-                this.titleTargets[
-                    Math.max.apply(Math, categoriesIndex)
-                ].getBoundingClientRect();
+        const category1 =
+            this.titleTargets[
+                Math.min.apply(Math, categoriesIndex)
+            ].getBoundingClientRect();
+        const category2 =
+            this.titleTargets[
+                Math.max.apply(Math, categoriesIndex)
+            ].getBoundingClientRect();
 
-        const firstTitle = this.titleTargets[0].getBoundingClientRect(),
-            lastTitle =
-                this.titleTargets[
-                    this.titleTargets.length - 1
-                ].getBoundingClientRect();
+        const firstTitle = this.titleTargets[0].getBoundingClientRect();
+        const lastTitle =
+            this.titleTargets[
+                this.titleTargets.length - 1
+            ].getBoundingClientRect();
 
-        let pathStart = category1.y - firstTitle.y,
-            pathEnd = category2.y + category2.height - firstTitle.y,
-            pathLength = pathEnd - pathStart;
+        const pathStart = category1.y - firstTitle.y;
+        const pathEnd = category2.y + category2.height - firstTitle.y;
+        const pathLength = pathEnd - pathStart;
 
         this.pathTarget.attributes.d.value = `
         M ${firstTitle.x} ${firstTitle.y}

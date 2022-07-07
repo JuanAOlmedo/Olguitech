@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="dropdown"
 export default class extends Controller {
     static targets = ["menu"];
+
     static classes = ["active"];
 
     display() {
@@ -17,7 +18,7 @@ export default class extends Controller {
         this.element.classList.toggle(this.activeClass);
     }
 
-    stopDisplayingWhenOutside() {
+    stopDisplayingWhenOutside(event) {
         if (this.element.contains(event.target)) {
             return;
         }

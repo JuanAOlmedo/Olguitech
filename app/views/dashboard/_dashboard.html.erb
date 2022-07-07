@@ -1,0 +1,34 @@
+<div class='menu'>
+    <h3> Panel </h3>
+    <h4 class='menu-title'>
+        <%= link_to 'Cerrar sesion', destroy_admin_session_path, data: { turbo_method: :delete }, class: 'link' %>
+    </h4>
+
+    <h4 class='menu-title'>
+        <%= link_to 'Artículos', "/#{I18n.locale}/dashboard/articles", class: 'link' %>
+    </h4>
+
+    <h4 class='menu-title'>
+        <%= link_to 'Categorías', "/#{I18n.locale}/dashboard/categories", class: 'link' %>
+    </h4>
+
+    <h4 class='menu-title'>
+        <%= link_to 'Newsletters', "/#{I18n.locale}/dashboard/newsletters", class: 'link' %>
+    </h4>
+
+    <h4 class='menu-title'>
+        <%= link_to 'Editar cuenta', "/#{I18n.locale}/dashboard/edit", class: 'link' %>
+    </h4>
+
+    <h4 class='menu-title'>
+        <%= link_to 'Mail', "https://olguitech.com:2003/rainloop", target: :_blank, class: 'link' %>
+    </h4>
+
+    <h4 class='menu-title'>
+        <%= link_to 'Usuarios', "/#{I18n.locale}/dashboard/users", class: 'link' %>
+    </h4>
+
+    <h4 class='menu-title'>
+        <%= link_to 'Papelera', "/#{I18n.locale}/dashboard/trash", class: 'link' %>
+    </h4>
+</div>

@@ -11,6 +11,7 @@ class ArticlesTest < ApplicationSystemTestCase
     end
 
     test 'visiting an article' do
+        articles(:one).published!
         visit '/articles/1'
         assert_selector 'h1', text: articles(:one).title
     end

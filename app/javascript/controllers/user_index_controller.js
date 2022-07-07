@@ -4,9 +4,9 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static classes = ["hidden"];
 
-    toggleShowContacts() {
-        const id = event.target.dataset.id;
-        const info = document.querySelector("#article-" + id);
+    toggleShowContacts(event) {
+        const { id } = event.target.dataset;
+        const info = document.querySelector(`#article-${id}`);
 
         if (info) {
             info.classList.toggle(this.hiddenClass);

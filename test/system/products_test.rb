@@ -4,13 +4,14 @@ require 'application_system_test_case'
 
 class ProductsTest < ApplicationSystemTestCase
     teardown { sign_out :admin }
-    
+
     test 'visiting the index' do
         visit products_url
         assert_selector 'h1', text: 'Nuestros Productos'
     end
 
     test 'visiting an article' do
+        products(:one).published!
         visit '/products/1'
         assert_selector 'h1', text: products(:one).title
     end

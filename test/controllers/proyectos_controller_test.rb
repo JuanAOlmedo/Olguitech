@@ -12,9 +12,28 @@ class ProyectosControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
-    test 'should show proyecto' do
+    test 'should not show drafted or trashed proyecto unless admin' do
+        get proyecto_url(id: @proyecto.id)
+        assert_response :redirect
+
+        @proyecto.trashed!
+        get proyecto_url(id: @proyecto.id)
+        assert_response :redirect
+
+        sign_in admins(:one)
         get proyecto_url(id: @proyecto.id)
         assert_response :success
+
+        @proyecto.drafted!
+        get proyecto_url(id: @proyecto.id)
+        assert_response :success
+    end
+
+    test 'should show published proyecto' do
+        @proyecto.published!
+        get proyecto_url(id: @proyecto.id)
+        assert_response :success
+        @proyecto.drafted!
     end
 
     test 'should not get new if not admin' do

@@ -2,6 +2,7 @@
 
 class NewslettersController < ApplicationController
     before_action :set_newsletter, only: %i[show edit update destroy]
+    before_action :check_sent, only: %i[edit update destroy]
     before_action :authenticate_admin!, except: :show
 
     def index
@@ -25,9 +26,42 @@ class NewslettersController < ApplicationController
         @newsletter = Newsletter.new(newsletter_params)
 
         if @newsletter.save
-            redirect_to root_path, notice: 'Se ha enviado la Newsletter'
+            @newsletter.send_newsletter if @newsletter.sent?
+            redirect_to @newsletter, notice: 'Se ha creado la Newsletter'
         else
             render :new, status: :unprocessable_entity
+        end
+    end
+
+    # PATCH /newsletters/1
+    def update
+        respond_to do |format|
+            if @newsletter.update(newsletter_params)
+                @newsletter.send_newsletter if @newsletter.sent?
+                format.html do
+                    redirect_to @newsletter,
+                                notice: 'Newsletter actualizada exitosamente.'
+                end
+                format.json { render :show, status: :ok, location: @newsletter }
+            else
+                format.html { render :edit, status: :unprocessable_entity }
+                format.json do
+                    render json: @newsletter.errors, status: :unprocessable_entity
+                end
+            end
+        end
+    end
+
+    # DELETE /newsletters/1
+    def destroy
+        @newsletter.destroy
+        respond_to do |format|
+            format.html do
+                redirect_to root_path,
+                            notice: 'Newsletter destruido exitosamente.',
+                            status: :see_other
+            end
+            format.json { head :no_content }
         end
     end
 
@@ -40,7 +74,18 @@ class NewslettersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def newsletter_params
-        params.require(:newsletter).permit(:title, :content, :subject)
+        newsletter_params = params.require(:newsletter)
+                                  .permit(:title, :content, :subject, :status, :sent)
+        newsletter_params[:status] = newsletter_params[:status].to_i
+        newsletter_params[:status] = 1 if newsletter_params[:sent] == '1'
+        newsletter_params.delete :sent
+        newsletter_params
+    end
+
+    def check_sent
+        return unless @newsletter.sent?
+
+        redirect_to root_path, alert: 'La Newsletter ya fue enviada, no se puede editar'
     end
 
     def redirect_unless_admin

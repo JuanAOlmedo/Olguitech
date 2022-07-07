@@ -6,7 +6,8 @@ class ContactMailerTest < ActionMailer::TestCase
     setup { @user = users(:one) }
 
     test 'contacto' do
-        mail = ContactMailer.contacto(@user, Article.first.localized_title, Proyecto.first.localized_title, 'HI')
+        mail = ContactMailer.contacto(@user, Article.first.localized_title,
+                                      Proyecto.first.localized_title, 'HI')
 
         assert_emails 1 do
             mail.deliver_now
@@ -21,7 +22,8 @@ class ContactMailerTest < ActionMailer::TestCase
     end
 
     test 'admin_contacto' do
-        mail = ContactMailer.admin_contacto(@user, Article.first.localized_title, Proyecto.first.localized_title, 'HI')
+        mail = ContactMailer.admin_contacto(@user, Article.first.localized_title,
+                                            Proyecto.first.localized_title, 'HI')
 
         assert_emails 1 do
             mail.deliver_now

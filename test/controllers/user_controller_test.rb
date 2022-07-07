@@ -70,7 +70,8 @@ class UserControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should not update user without token' do
-        patch '/users/1', params: { user: { name: 'Lorem Ipsum', phone: '000 000 000', company: 'Olguitech' } }
+        patch '/users/1',
+              params: { user: { name: 'Lorem Ipsum', phone: '000 000 000', company: 'Olguitech' } }
         assert_response :redirect
 
         users(:one).reload

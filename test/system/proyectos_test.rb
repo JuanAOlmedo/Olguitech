@@ -11,6 +11,7 @@ class ProyectosTest < ApplicationSystemTestCase
     end
 
     test 'visiting an article' do
+        proyectos(:one).published!
         visit '/proyectos/1'
         assert_selector 'h1', text: proyectos(:one).title
     end

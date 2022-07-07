@@ -61,11 +61,13 @@ module Getters
         def return_ordered(order_by, asc_desc)
             case order_by
             when 'categories'
-                categories = Category.where.associated(model_name.plural.to_sym).uniq
+                name = model_name.plural.to_sym
+                categories =
+                    Category.includes(name).where.associated(name).where(name => { status: 0 }).uniq
             when 'uncategorized'
-                ordered = where.missing(:categories).order created_at: asc_desc
+                ordered = published.where.missing(:categories).order created_at: asc_desc
             else
-                ordered = all.order order_by => asc_desc
+                ordered = published.order order_by => asc_desc
             end
 
             [categories, ordered]

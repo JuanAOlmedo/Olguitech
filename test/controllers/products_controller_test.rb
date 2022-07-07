@@ -12,9 +12,28 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
-    test 'should show product' do
+    test 'should not show drafted or trashed product unless admin' do
+        get product_url(id: @product.id)
+        assert_response :redirect
+
+        @product.trashed!
+        get product_url(id: @product.id)
+        assert_response :redirect
+
+        sign_in admins(:one)
         get product_url(id: @product.id)
         assert_response :success
+
+        @product.drafted!
+        get product_url(id: @product.id)
+        assert_response :success
+    end
+
+    test 'should show published product' do
+        @product.published!
+        get product_url(id: @product.id)
+        assert_response :success
+        @product.drafted!
     end
 
     test 'should not get new if not admin' do

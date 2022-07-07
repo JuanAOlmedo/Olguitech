@@ -2,17 +2,17 @@
     <div class="form">
         <div class="field">
             <%= form.label :title, "Título" %>
-            <%= form.text_area :title, data: { article_creator_target: "formTitle" } %>
+            <%= form.text_area :title %>
         </div>
 
         <div class="field">
             <%= form.label :title2, "Título en inglés" %>
-            <%= form.text_area :title2, data: { article_creator_target: "formTitle2" } %>
+            <%= form.text_area :title2 %>
         </div>
 
         <div class="file">
             <%= form.label :image do %>
-                <%= form.file_field :image, class:'image-attacher', data: { article_creator_target: "fileInput" } %>
+                <%= form.file_field :image, class:'image-attacher', data: { article_creator_target: "fileInput", action: "change->article-creator#displayNewImage" } %>
                 <span>
                     Elegir una imagen...
                 </span>
@@ -24,22 +24,22 @@
 
         <div class="rich-text field">
             <%= form.label :content, "Contenido" %>
-            <%= form.rich_text_area :content, data: { article_creator_target: "formText" } %>
+            <%= form.rich_text_area :content %>
         </div>
 
         <div class="rich-text field">
             <%= form.label :content2, "Contenido en inglés" %>
-            <%= form.rich_text_area :content2, data: { article_creator_target: "formText2" } %>
+            <%= form.rich_text_area :content2 %>
         </div>
 
         <div class="field">
             <%= form.label :description, "Descripción" %>
-            <%= form.text_area :description, data: { article_creator_target: "formDescription" } %>
+            <%= form.text_area :description %>
         </div>
 
         <div class="field">
             <%= form.label :description2, "Descripción en inglés" %>
-            <%= form.text_area :description2, data: { article_creator_target: "formDescription2" } %>
+            <%= form.text_area :description2 %>
         </div>
 
         <div class="checkbox-field">
@@ -58,29 +58,12 @@
             <% end %>
         </div>
 
-        <div class='btn-group centered'>
-            <%= form.submit 'Crear', class: "btn" %>
-            <a class="btn pointer" data-action="click->article-creator#showPreview"> Previsualizar </a>
+        <div class="btn-group" style="margin: auto;">
+            <% unless @proyecto.id %>
+                <%= form.check_box :published, class: 'btn-check' %>
+                <%= form.label :published, "Publicar al crear", class: 'btn' %>
+            <% end%>
+            <%= form.submit 'Crear', class: 'btn centered' %>
         </div>
-    </div>
-
-    <div id='preview-div' data-article-creator-target="preview">
-        <div class="preview-header centered">
-            <a class="btn pointer" data-action="click->article-creator#stopShowingPreview"> Cerrar </a>
-            <h2> Previsualizacion </h2>
-        </div>
-        <article>
-            <h2 class='main-title' data-article-creator-target="articleTitle"> </h2>
-
-            <p class='subtitle' data-article-creator-target="articleDescription"> </p>
-
-            <img src='' class='centered' data-article-creator-target="articleImg" alt=''>
-
-            <div class="content">
-                <div class='show-text'>
-                    <p class='trix-content' data-article-creator-target="articleText"> </p>
-                </div>
-            </div>
-        </article>
     </div>
 <% end %>

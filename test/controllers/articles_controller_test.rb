@@ -12,9 +12,28 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
-    test 'should show article' do
+    test 'should not show drafted or trashed article unless admin' do
+        get article_url(id: @article.id)
+        assert_response :redirect
+
+        @article.trashed!
+        get article_url(id: @article.id)
+        assert_response :redirect
+
+        sign_in admins(:one)
         get article_url(id: @article.id)
         assert_response :success
+
+        @article.drafted!
+        get article_url(id: @article.id)
+        assert_response :success
+    end
+
+    test 'should show published article' do
+        @article.published!
+        get article_url(id: @article.id)
+        assert_response :success
+        @article.drafted!
     end
 
     test 'should not get new if not admin' do

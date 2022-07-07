@@ -38,8 +38,6 @@
 
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">
-        <%= link_to "Editar", edit_proyecto_path(@proyecto), class: 'btn' %>
-
-        <%= link_to "Eliminar", @proyecto, data: { turbo_method: :delete, turbo_confirm: 'Estas seguro de que queres eliminar el artículo?' }, class: 'btn is-danger' %>
+        <%= render partial: 'buttons', locals: { article: @proyecto } %>
     </div>
 <% end %>

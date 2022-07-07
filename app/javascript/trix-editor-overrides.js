@@ -1,4 +1,4 @@
-window.addEventListener("trix-file-accept", function (event) {
+window.addEventListener("trix-file-accept", (event) => {
     const acceptedTypes = ["image/jpeg", "image/png"];
 
     if (!acceptedTypes.includes(event.file.type)) {

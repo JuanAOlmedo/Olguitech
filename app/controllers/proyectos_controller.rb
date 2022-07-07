@@ -15,10 +15,10 @@ class ProyectosController < ApplicationController
                 @categories = ordered[0]
                 @proyectos = ordered[1]
 
-                @uncategorized = Proyecto.where.missing :categories
+                @uncategorized = Proyecto.published.where.missing :categories
             end
 
-            format.json { @proyectos = Proyecto.all }
+            format.json { @proyectos = Proyecto.published.all }
         end
     end
 
@@ -105,22 +105,30 @@ class ProyectosController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_proyecto
         @proyecto = Proyecto.friendly.find(params[:id])
+
+        authenticate_admin! unless @proyecto.published?
     end
 
     # Only allow a list of trusted parameters through.
     def proyecto_params
-        params
-            .require(:proyecto)
-            .permit(
-                :title,
-                :title2,
-                :content,
-                :content2,
-                :description,
-                :description2,
-                { product_ids: [] },
-                { category_ids: [] },
-                :image
-            )
+        proyecto_params = params
+                          .require(:proyecto)
+                          .permit(
+                              :title,
+                              :title2,
+                              :content,
+                              :content2,
+                              :description,
+                              :description2,
+                              { product_ids: [] },
+                              { category_ids: [] },
+                              :image,
+                              :status,
+                              :published
+                          )
+        proyecto_params[:status] = proyecto_params[:status].to_i if proyecto_params[:status]
+        proyecto_params[:status] = 0 if proyecto_params[:published] == '1'
+        proyecto_params.delete(:published)
+        proyecto_params
     end
 end

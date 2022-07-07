@@ -22,9 +22,12 @@
         </div>
     </div>
 
-    <div class="content">
+    <div class="content" data-controller="image-displayer">
         <div class='show-text'>
             <p class='article-text'> <%= @product.localized_content %> </p>
+        </div>
+
+        <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
         </div>
     </div>
 

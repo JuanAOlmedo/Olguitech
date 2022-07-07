@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.0'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '7.0.2.2'
+gem 'rails', '7.0.3'
 
 # Use pg as the database for Active Record in production
 gem 'pg'
@@ -41,7 +41,7 @@ gem 'devise', '4.8.1'
 gem 'simple_form', '5.1.0'
 
 # Use Active Storage variant
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'mini_magick'
 
 # Use terser for JavaScript compression

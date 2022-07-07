@@ -10,7 +10,7 @@
         <%= image_tag @proyecto.image.variant(saver: { quality: 85 }), class: 'article-img centered', alt: @proyecto.image.filename %>
     <% end %>
 
-    <div class="content">
+    <div class="content" data-controller="image-displayer">
         <% if !@proyecto.categories.empty? %>
             <p class="article-categories">
                 <%= "#{Category.model_name.human(count: @proyecto.categories.length)}:" %>
@@ -22,6 +22,9 @@
 
         <div class='show-text'>
             <p class='article-text'> <%= @proyecto.localized_content %> </p>
+        </div>
+
+        <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
         </div>
     </div>
 

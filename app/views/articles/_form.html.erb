@@ -59,12 +59,16 @@
         </div>
 
 
-        <div class="btn-group" style="margin: auto;">
-            <% unless @article.id %>
-                <%= form.check_box :published, class: 'btn-check' %>
-                <%= form.label :published, "Publicar al crear", class: 'btn' %>
-            <% end%>
-            <%= form.submit 'Crear', class: 'btn centered' %>
+        <div class='centered' style='display: inline-block;'>
+            <div class="btn-group">
+                <%= form.radio_button :status, '0', checked: @article.published?, class: 'btn-check' %>
+                <%= form.label :status_0, "Publicar al crear", class: 'btn' %>
+
+                <%= form.radio_button :status, '1', checked: @article.drafted?, class: 'btn-check' %>
+                <%= form.label :status_1, "Crear como borrador", class: 'btn' %>
+            </div>
+
+            <%= form.submit 'Crear', class: 'btn' %>
         </div>
     </div>
 <% end %>

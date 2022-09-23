@@ -9,7 +9,7 @@ class UsersController < ApplicationController
                   only: %i[index new create]
 
     def index
-        @users = User.all
+        @users = User.all.order id: :asc
         @contacted = User.where.associated(:contactos).uniq
     end
 

@@ -8,11 +8,11 @@
 .articles-div {
     display: block;
     width: 80%;
-    margin: 0 2.5% 5rem 17.5%;
+    margin: 0 2% 5rem 18%;
 
-    @media only screen and (max-width: 60rem) {
-        width: 73%;
-        margin: 0 1% 5rem 26%;
+    @media only screen and (max-width: 67rem) {
+        width: 65%;
+        margin: 0 2% 5rem 33%;
     }
 
     @media only screen and (max-width: 50rem) {
@@ -35,14 +35,22 @@
 }
 
 .menu {
+    width: 17%;
     position: fixed;
-    left: 1rem;
+    padding-left: 1%;
+    left: 0;
     top: 5rem;
     bottom: 0rem;
     overflow-y: auto;
+    overflow-x: hidden;
     color: #333;
 
+    @media only screen and (max-width: 67rem) {
+        width: 32%;
+    }
+
     @media only screen and (max-width: 50rem) {
+        width: auto;
         position: unset;
         margin-left: 2rem;
         margin-right: 2rem;
@@ -66,6 +74,7 @@
 }
 
 .menu-title {
+    width: 100%;
     transition: padding 0.5s;
     color: #aaa;
     margin-bottom: 0.4rem;
@@ -75,7 +84,13 @@
     }
 
     & .link {
+        display: block;
+        max-width: 95%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
         font-size: 1.2rem;
+        box-sizing: border-box;
     }
 
     @media only screen and (max-width: 50rem) {

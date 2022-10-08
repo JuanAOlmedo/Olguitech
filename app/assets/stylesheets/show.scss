@@ -50,9 +50,13 @@
         width: 95%;
     }
 
+    & .link {
+        margin: 0.2rem;
+    }
+
     & .btn {
         color: #f4923c;
-        margin: 0;
+        margin: 0.2rem;
 
         &:hover {
             background-color: hsl(26.7, 23.1%, 92.4%);

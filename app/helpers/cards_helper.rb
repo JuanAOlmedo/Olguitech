@@ -14,7 +14,7 @@ module CardsHelper
             @view = view
             @array = array
             @image = image
-            @uid = SecureRandom.hex(6)
+            @uid = SecureRandom.hex(4)
         end
 
         def html

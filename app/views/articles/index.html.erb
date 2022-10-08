@@ -10,7 +10,7 @@
 
             <% @categories.each do |category| %>
                 <h4 class="menu-title" data-index-target="title">
-                    <%= link_to category.localized_short_title, category_path(category), class: "link" %>
+                    <%= link_to category.localized_title, category_path(category), class: "link", title: category.localized_title %>
                 </h4>
             <% end %>
             <% if @uncategorized.any? %>

@@ -38,6 +38,11 @@
 
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">
-        <%= render partial: 'buttons', locals: { article: @proyecto } %>
+        <% if %w[drafted published].include?(@proyecto.status) %>
+            <%= link_to 'Editar', edit_proyecto_path(@proyecto), class: 'btn'  %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @proyecto}", class: 'btn'  %>
+        <% else %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @proyecto}", class: 'btn'  %>
+        <% end %>
     </div>
 <% end %>

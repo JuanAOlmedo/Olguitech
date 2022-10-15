@@ -47,6 +47,11 @@
 
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">
-        <%= render partial: 'buttons', locals: { article: @product } %>
+        <% if %w[drafted published].include?(@product.status) %>
+            <%= link_to 'Editar', edit_product_path(@product), class: 'btn'  %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @product}", class: 'btn'  %>
+        <% else %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @product}", class: 'btn'  %>
+        <% end %>
     </div>
 <% end %>

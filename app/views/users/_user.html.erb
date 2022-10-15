@@ -30,4 +30,6 @@
     </td>
 
     <td> <%= if user.locale == "es"; "Español"; elsif user.locale == "en"; "Inglés"; end; %> </td>
+
+    <td> <%= link_to "Editar", edit_user_path(user, params: { edit_token: user.edit_token }), class: 'link' %> </td>
 </tr>

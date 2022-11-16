@@ -5,11 +5,15 @@
 
     <p class='subtitle'> <%= @newsletter.localized_desc %> </p>
 
-    <div class="content">
+    <div class="content" data-controller="image-displayer">
         <div class='show-text'>
             <p class='article-text'> <%= @newsletter.localized_content %> </p>
         </div>
+
+        <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
+        </div>
     </div>
+
 </article>
 
 <% if admin_signed_in? %>

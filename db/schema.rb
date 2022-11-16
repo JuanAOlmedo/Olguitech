@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_04_171105) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_16_173928) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_171105) do
     t.integer "views", default: 0
     t.string "slug"
     t.integer "status"
+    t.boolean "newsletter_sent"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
@@ -156,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_171105) do
     t.integer "views", default: 0
     t.string "slug"
     t.integer "status"
+    t.boolean "newsletter_sent"
     t.index ["slug"], name: "index_products_on_slug", unique: true
   end
 
@@ -170,6 +172,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_04_171105) do
     t.integer "views", default: 0
     t.string "slug"
     t.integer "status"
+    t.boolean "newsletter_sent"
     t.index ["slug"], name: "index_proyectos_on_slug", unique: true
   end
 

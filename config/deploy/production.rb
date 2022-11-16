@@ -50,6 +50,6 @@
 # The server-based syntax can be used to override options:
 # ------------------------------------
 
-server ENV["CAP_IP"], 
-    user: ENV["CAP_USER"], 
+server ENV["CAP_OLGUITECH_IP"], 
+    user: ENV["CAP_OLGUITECH_USER"], 
     roles: %w{app db web}

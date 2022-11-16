@@ -42,6 +42,5 @@ yarn-debug.log*
 
 # Ignore Enviroment Variables
 /config/local_env.yml
-.env
 
 /config/deploy/production.rb

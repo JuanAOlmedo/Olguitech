@@ -9,11 +9,8 @@ class ProjectsController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                ordered =
+                @categories, @projects =
                     Project.ordered(params[:order_by], params[:asc_desc])
-
-                @categories = ordered[0]
-                @projects = ordered[1]
 
                 @uncategorized = Project.published.where.missing :categories
             end
@@ -112,19 +109,19 @@ class ProjectsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def project_params
         project_params = params
-                          .require(:project)
-                          .permit(
-                              :title,
-                              :title2,
-                              :content,
-                              :content2,
-                              :description,
-                              :description2,
-                              { product_ids: [] },
-                              { category_ids: [] },
-                              :image,
-                              :status
-                          )
+                         .require(:project)
+                         .permit(
+                             :title,
+                             :title2,
+                             :content,
+                             :content2,
+                             :description,
+                             :description2,
+                             { product_ids: [] },
+                             { category_ids: [] },
+                             :image,
+                             :status
+                         )
         project_params[:status] = project_params[:status].to_i if project_params[:status]
         project_params
     end

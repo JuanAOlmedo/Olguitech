@@ -9,11 +9,8 @@ class ArticlesController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                ordered =
+                @categories, @articles =
                     Article.ordered(params[:order_by], params[:asc_desc])
-
-                @categories = ordered[0]
-                @articles = ordered[1]
 
                 @uncategorized = Article.published.where.missing :categories
             end

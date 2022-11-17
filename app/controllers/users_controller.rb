@@ -2,8 +2,7 @@
 
 class UsersController < ApplicationController
     before_action :set_user, only: %i[edit update destroy]
-    before_action :authenticate_edit_token, only: %i[edit destroy]
-    before_action :authenticate_edit_token_for_update, only: %i[update]
+    before_action :authenticate_edit_token, only: %i[edit destroy update]
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
                   only: %i[index new create]
@@ -129,15 +128,8 @@ class UsersController < ApplicationController
     def authenticate_edit_token
         @user.regenerate_edit_token unless @user.edit_token
 
-        return unless @user.edit_token != params[:edit_token]
-
-        redirect_to root_path, alert: t('not_allowed')
-    end
-
-    def authenticate_edit_token_for_update
-        @user.regenerate_edit_token unless @user.edit_token
-
-        return unless @user.edit_token != user_params[:edit_token]
+        return if [params[:edit_token], params.fetch(:user, {})[:edit_token]]
+                  .include?(@user.edit_token)
 
         redirect_to root_path, alert: t('not_allowed')
     end

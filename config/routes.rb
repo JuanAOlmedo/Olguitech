@@ -19,7 +19,7 @@ Rails.application.routes.draw do
             get '/edit/:edit_token', to: 'users#edit', on: :member
             get '/confirmation/:confirmation_token', to: 'users#confirmation', on: :collection
             get '/unsubscribe/:newsletter_token', to: 'users#unsubscribe', on: :collection
-            post '/subscribe', to: 'main#subscribe', on: :collection
+            post '/subscribe', to: 'users#subscribe', on: :collection
         end
 
         devise_for :admins, controllers: { registrations: 'admin_registrations' }

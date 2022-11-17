@@ -9,19 +9,6 @@ class MainController < ApplicationController
         @user = User.new
     end
 
-    def subscribe
-        @user = User.find_by(user_params) || User.new(user_params)
-
-        @user.newsletter = true
-        @user.locale = I18n.locale
-
-        if @user.save
-            redirect_to root_path, notice: t('thanks_for_subscribing')
-        else
-            redirect_to root_path, alert: t('valid_email'), status: :unprocessable_entity
-        end
-    end
-
     private
 
     def user_params

@@ -27,5 +27,5 @@ class Product < ApplicationRecord
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
 
-    after_save_commit :send_mail, if: :published?
+    after_save_commit :send_mail, if: :published?, unless: :newsletter_sent
 end

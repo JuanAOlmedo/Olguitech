@@ -12,10 +12,10 @@
         </div>
     <% end %>
     
-    <% unless @proyectos.empty? %>
+    <% unless @projects.empty? %>
         <h2 class="title centered"> Proyectos </h2>
         <div class='dashboard-card-holder'>
-            <% @proyectos.each do |article| %>
+            <% @projects.each do |article| %>
                 <%= render partial: 'article', object: article %> 
             <% end %>
         </div>
@@ -30,7 +30,7 @@
         </div>
     <% end %>
 
-    <% if [ @articles, @proyectos, @products ].flatten.empty? %>
+    <% if [ @articles, @projects, @products ].flatten.empty? %>
         <h2 id='dashboard-message' class='centered' style='display: block;'> La papelera está vacía </h2>
     <% end %>
 </div>

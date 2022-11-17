@@ -7,11 +7,11 @@ class DashboardController < ApplicationController
 
     def articles
         @articles = Article.published
-        @proyectos = Proyecto.published
+        @projects = Project.published
         @products = Product.published
 
         @article_drafts = Article.drafted
-        @proyecto_drafts = Proyecto.drafted
+        @project_drafts = Project.drafted
         @product_drafts = Product.drafted
     end
 
@@ -26,7 +26,7 @@ class DashboardController < ApplicationController
 
     def trash
         @articles = Article.trashed
-        @proyectos = Proyecto.trashed
+        @projects = Project.trashed
         @products = Product.trashed
 
         @trash = true

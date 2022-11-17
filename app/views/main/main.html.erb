@@ -9,7 +9,7 @@
 </div>
 
 <% if @articles.any? %>
-    <div class="articles <%= "proyectos" if @proyectos.empty? || @products.empty? %>">
+    <div class="articles <%= "projects" if @projects.empty? || @products.empty? %>">
         <h1 class="main-title">
             <%= t ".articles" %>
         </h1>
@@ -19,14 +19,14 @@
     </div>
 <% end %>
 
-<% if @proyectos.any? %>
-    <div class="<%= @products.any? ? "proyectos" : "products"  %>">
+<% if @projects.any? %>
+    <div class="<%= @products.any? ? "projects" : "products"  %>">
         <h1 class="main-title">
-            <%= t ".proyectos" %>
+            <%= t ".projects" %>
         </h1>
-        <%= link_to t("general.see_all"), proyectos_path, class: "btn centered" %>
+        <%= link_to t("general.see_all"), projects_path, class: "btn centered" %>
 
-        <%= cards_for @proyectos %>
+        <%= cards_for @projects %>
     </div>
 <% end %>
 

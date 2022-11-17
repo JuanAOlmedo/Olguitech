@@ -11,7 +11,7 @@ en:
       subtitle2: At Olguitech, we seek to be your technological partner. 
       why: Why choose Olguitech?
       articles: Our latest solutions
-      proyectos: Our latest projects
+      projects: Our latest projects
       products: Some of our products
       interested: Interested in talking to us? 
       sign_up: Do you want to know more about our work? Get in touch and ask a question!
@@ -85,7 +85,7 @@ en:
     see_more: See More
     our_products: Our Products
     our_solutions: Our Solutions
-    our_proyects: Our Projects
+    our_projects: Our Projects
     back: Back
     all: All
     admins: Only admins can do that
@@ -100,7 +100,7 @@ en:
       article:
         one: Solution
         other: Solutions
-      proyecto:
+      project:
         one: Project
         other: Projects
       product:

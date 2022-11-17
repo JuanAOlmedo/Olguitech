@@ -41,7 +41,7 @@
                         <p> <strong> Fecha: </strong> <%= contact.created_at.to_formatted_s(:long) %> </p>
                         <p> <strong> Mensaje: </strong> <%= contact.message %> </p>
                         <p> <strong> Articulo 1: </strong> <%= Article.find(contact.preference).title rescue "Artícluo eliminado" %> </p>
-                        <p> <strong> Articulo 2: </strong> <%= Proyecto.find(contact.preference2).title rescue "Artícluo eliminado" %> </p>
+                        <p> <strong> Articulo 2: </strong> <%= Project.find(contact.preference2).title rescue "Artícluo eliminado" %> </p>
                     </div>
                 <% end %>
             </div>

@@ -13,10 +13,10 @@ class Category < ApplicationRecord
              through: :category_categorizables,
              source: :categorizable,
              source_type: 'Article'
-    has_many :proyectos,
+    has_many :projects,
              through: :category_categorizables,
              source: :categorizable,
-             source_type: 'Proyecto'
+             source_type: 'Project'
 
     has_one_attached :image
 

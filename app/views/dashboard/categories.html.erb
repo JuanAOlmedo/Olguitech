@@ -16,7 +16,7 @@
             </h1>
 
             <div class='dashboard-card-holder'>
-                <% associated = [ category.articles, category.proyectos, category.products ].flatten %>
+                <% associated = [ category.articles, category.projects, category.products ].flatten %>
                 <% associated.each do |article| %>
                     <%= render 'article', article: article, category: category %>
                 <% end %>

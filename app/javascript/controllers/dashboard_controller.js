@@ -56,7 +56,7 @@ export default class extends Controller {
     updateDraftHolders() {
         const toCheck = [
             document.getElementById("article_drafts"),
-            document.getElementById("proyecto_drafts"),
+            document.getElementById("project_drafts"),
             document.getElementById("product_drafts"),
             document.getElementById("newsletter_drafts"),
         ];

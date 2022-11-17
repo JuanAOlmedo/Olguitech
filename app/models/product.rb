@@ -17,10 +17,10 @@ class Product < ApplicationRecord
              through: :product_referenceables,
              source: :referenceable,
              source_type: 'Article'
-    has_many :proyectos,
+    has_many :projects,
              through: :product_referenceables,
              source: :referenceable,
-             source_type: 'Proyecto'
+             source_type: 'Project'
 
     has_one_attached :image
 

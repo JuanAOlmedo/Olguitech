@@ -10,15 +10,15 @@ article_two:
     record_id: 1
     name: content2
     body: '<p>In a <i>million</i> stars!</p>'
-proyecto_one:
+project_one:
     id: 3
-    record_type: Proyecto
+    record_type: Project
     record_id: 1
     name: content
     body: '<p>En un <i>millon</i> de estrellas!</p>'
-proyecto_two:
+project_two:
     id: 4
-    record_type: Proyecto
+    record_type: Project
     record_id: 1
     name: content2
     body: '<p>In a <i>million</i> stars!</p>'

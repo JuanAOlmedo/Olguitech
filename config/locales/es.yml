@@ -11,7 +11,7 @@ es:
       subtitle2: En Olguitech apostamos a ser su socio tecnológico. 
       why: Por qué elegir Olguitech?
       articles: Nuestros últimos artículos
-      proyectos: Nuestros últimos proyectos
+      projects: Nuestros últimos proyectos
       products: Algunos de nuestros productos
       interested: Estás interesado en hablar con nosotros? 
       sign_up: Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta! 
@@ -83,7 +83,7 @@ es:
     see_more: Ver más
     our_products: Nuestros Productos
     our_solutions: Nuestras Soluciones
-    our_proyects: Nuestros Proyectos
+    our_projects: Nuestros Proyectos
     back: Atrás
     all: Todos
     admins: Solo administradores pueden hacer eso
@@ -105,7 +105,7 @@ es:
       article:
         one: Solución
         other: Soluciones
-      proyecto:
+      project:
         one: Proyecto
         other: Proyectos
       product:

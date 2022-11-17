@@ -93,7 +93,7 @@ class CategoriesController < ApplicationController
                 :description2,
                 { product_ids: [] },
                 { article_ids: [] },
-                { proyecto_ids: [] },
+                { project_ids: [] },
                 :image
             )
     end

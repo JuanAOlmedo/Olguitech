@@ -37,11 +37,11 @@
         </h1>
         <%= cards_for @product.articles %>
     <% end %>
-    <% if @product.proyectos.any? %>
+    <% if @product.projects.any? %>
         <h1 class="main-title">
             <%= t "show.proyects" %>
         </h1>
-        <%= cards_for @product.proyectos %>
+        <%= cards_for @product.projects %>
     <% end %>
 </div>
 

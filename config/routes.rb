@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
         resources :articles
         get '/articles/:order_by/:asc_desc', to: 'articles#index'
-        resources :proyectos
-        get '/proyectos/:order_by/:asc_desc', to: 'proyectos#index'
+        resources :projects
+        get '/projects/:order_by/:asc_desc', to: 'projects#index'
         resources :products
         get '/products/:order_by/:asc_desc', to: 'products#index'
 

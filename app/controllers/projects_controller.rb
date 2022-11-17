@@ -1,98 +1,98 @@
 # frozen_string_literal: true
 
-class ProyectosController < ApplicationController
-    before_action :set_proyecto, only: %i[show edit update destroy]
+class ProjectsController < ApplicationController
+    before_action :set_project, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
 
-    # GET /proyectos
-    # GET /proyectos.json
+    # GET /projects
+    # GET /projects.json
     def index
         respond_to do |format|
             format.html do
                 ordered =
-                    Proyecto.ordered(params[:order_by], params[:asc_desc])
+                    Project.ordered(params[:order_by], params[:asc_desc])
 
                 @categories = ordered[0]
-                @proyectos = ordered[1]
+                @projects = ordered[1]
 
-                @uncategorized = Proyecto.published.where.missing :categories
+                @uncategorized = Project.published.where.missing :categories
             end
 
-            format.json { @proyectos = Proyecto.published.all }
+            format.json { @projects = Project.published.all }
         end
     end
 
-    # GET /proyectos/1
+    # GET /projects/1
     def show
-        viewed_proyectos = session[:viewed_proyectos]
+        viewed_projects = session[:viewed_projects]
 
-        return unless viewed_proyectos.nil? || !@proyecto.id.in?(viewed_proyectos)
+        return unless viewed_projects.nil? || !@project.id.in?(viewed_projects)
 
-        @proyecto.views += 1
+        @project.views += 1
 
-        session[:viewed_proyectos] = [] if viewed_proyectos.nil?
-        session[:viewed_proyectos] << @proyecto.id
+        session[:viewed_projects] = [] if viewed_projects.nil?
+        session[:viewed_projects] << @project.id
 
-        @proyecto.save
+        @project.save
     end
 
-    # GET /proyectos/new
+    # GET /projects/new
     def new
-        @proyecto = Proyecto.new
+        @project = Project.new
     end
 
-    # GET /proyectos/1/edit
+    # GET /projects/1/edit
     def edit; end
 
-    # POST /proyectos
-    # POST /proyectos.json
+    # POST /projects
+    # POST /projects.json
     def create
-        @proyecto = Proyecto.new(proyecto_params)
+        @project = Project.new(project_params)
 
         respond_to do |format|
-            if @proyecto.save
+            if @project.save
                 format.html do
-                    redirect_to @proyecto,
+                    redirect_to @project,
                                 notice: 'Artículo creado exitosamente.'
                 end
                 format.json do
-                    render :show, status: :created, location: @proyecto
+                    render :show, status: :created, location: @project
                 end
             else
                 format.html { render :new, status: :unprocessable_entity }
                 format.json do
-                    render json: @proyecto.errors, status: :unprocessable_entity
+                    render json: @project.errors, status: :unprocessable_entity
                 end
             end
         end
     end
 
-    # PATCH/PUT /proyectos/1
-    # PATCH/PUT /proyectos/1.json
+    # PATCH/PUT /projects/1
+    # PATCH/PUT /projects/1.json
     def update
         respond_to do |format|
-            if @proyecto.update(proyecto_params)
+            if @project.update(project_params)
                 format.html do
-                    redirect_to @proyecto,
+                    redirect_to @project,
                                 notice: 'Artículo actualizdo exitosamente.'
                 end
-                format.json { render :show, status: :ok, location: @proyecto }
+                format.json { render :show, status: :ok, location: @project }
             else
                 format.html { render :edit, status: :unprocessable_entity }
                 format.json do
-                    render json: @proyecto.errors, status: :unprocessable_entity
+                    render json: @project.errors, status: :unprocessable_entity
                 end
             end
         end
     end
 
-    # DELETE /proyectos/1
-    # DELETE /proyectos/1.json
+    # DELETE /projects/1
+    # DELETE /projects/1.json
     def destroy
-        @proyecto.destroy
+        @project.destroy
         respond_to do |format|
             format.html do
-                redirect_to proyectos_url,
+                redirect_to projects_url,
                             notice: 'Artículo destruido exitosamente.',
                             status: :see_other
             end
@@ -103,16 +103,16 @@ class ProyectosController < ApplicationController
     private
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_proyecto
-        @proyecto = Proyecto.friendly.find(params[:id])
+    def set_project
+        @project = Project.friendly.find(params[:id])
 
-        authenticate_admin! unless @proyecto.published?
+        authenticate_admin! unless @project.published?
     end
 
     # Only allow a list of trusted parameters through.
-    def proyecto_params
-        proyecto_params = params
-                          .require(:proyecto)
+    def project_params
+        project_params = params
+                          .require(:project)
                           .permit(
                               :title,
                               :title2,
@@ -125,7 +125,7 @@ class ProyectosController < ApplicationController
                               :image,
                               :status
                           )
-        proyecto_params[:status] = proyecto_params[:status].to_i if proyecto_params[:status]
-        proyecto_params
+        project_params[:status] = project_params[:status].to_i if project_params[:status]
+        project_params
     end
 end

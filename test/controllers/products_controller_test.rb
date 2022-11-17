@@ -66,7 +66,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
-                proyecto_ids: [''],
+                project_ids: [''],
                 article_ids: ['']
             }
         }
@@ -84,7 +84,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
-                proyecto_ids: [''],
+                project_ids: [''],
                 article_ids: ['']
             }
         }
@@ -100,7 +100,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
-                proyecto_ids: [''],
+                project_ids: [''],
                 article_ids: ['']
             }
         }
@@ -120,7 +120,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
-                proyecto_ids: [''],
+                project_ids: [''],
                 article_ids: ['']
             }
         }

@@ -2,67 +2,67 @@
 
 require 'test_helper'
 
-class ProyectosControllerTest < ActionDispatch::IntegrationTest
-    setup { @proyecto = proyectos(:one) }
+class ProjectsControllerTest < ActionDispatch::IntegrationTest
+    setup { @project = projects(:one) }
 
     teardown { sign_out :admin }
 
     test 'should get index' do
-        get proyectos_url
+        get projects_url
         assert_response :success
     end
 
-    test 'should not show drafted or trashed proyecto unless admin' do
-        get proyecto_url(id: @proyecto.id)
+    test 'should not show drafted or trashed project unless admin' do
+        get project_url(id: @project.id)
         assert_response :redirect
 
-        @proyecto.trashed!
-        get proyecto_url(id: @proyecto.id)
+        @project.trashed!
+        get project_url(id: @project.id)
         assert_response :redirect
 
         sign_in admins(:one)
-        get proyecto_url(id: @proyecto.id)
+        get project_url(id: @project.id)
         assert_response :success
 
-        @proyecto.drafted!
-        get proyecto_url(id: @proyecto.id)
+        @project.drafted!
+        get project_url(id: @project.id)
         assert_response :success
     end
 
-    test 'should show published proyecto' do
-        @proyecto.published!
-        get proyecto_url(id: @proyecto.id)
+    test 'should show published project' do
+        @project.published!
+        get project_url(id: @project.id)
         assert_response :success
-        @proyecto.drafted!
+        @project.drafted!
     end
 
     test 'should not get new if not admin' do
-        get new_proyecto_url
+        get new_project_url
         assert_response :redirect
     end
 
     test 'should get new if admin' do
         sign_in admins(:one)
 
-        get new_proyecto_url
+        get new_project_url
         assert_response :success
     end
 
     test 'should not get edit if not admin' do
-        get edit_proyecto_url(id: @proyecto.id)
+        get edit_project_url(id: @project.id)
         assert_response :redirect
     end
 
     test 'should get edit if admin' do
         sign_in admins(:one)
 
-        get edit_proyecto_url(id: @proyecto.id)
+        get edit_project_url(id: @project.id)
         assert_response :success
     end
 
     test 'should not create if not admin' do
         parameters = {
-            proyecto: {
+            project: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -70,8 +70,8 @@ class ProyectosControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        assert_no_difference('Proyecto.count') do
-            post proyectos_url, params: parameters
+        assert_no_difference('Project.count') do
+            post projects_url, params: parameters
         end
     end
 
@@ -79,7 +79,7 @@ class ProyectosControllerTest < ActionDispatch::IntegrationTest
         sign_in admins(:one)
 
         parameters = {
-            proyecto: {
+            project: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -87,14 +87,14 @@ class ProyectosControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        assert_difference('Proyecto.count', 1) do
-            post proyectos_url, params: parameters
+        assert_difference('Project.count', 1) do
+            post projects_url, params: parameters
         end
     end
 
     test 'should not update if not admin' do
         parameters = {
-            proyecto: {
+            project: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -102,18 +102,18 @@ class ProyectosControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        patch proyecto_url(id: proyectos(:one)), params: parameters
+        patch project_url(id: projects(:one)), params: parameters
 
-        proyectos(:one).reload
+        projects(:one).reload
 
-        assert_not_equal 'a', proyectos(:one).title
+        assert_not_equal 'a', projects(:one).title
     end
 
     test 'should update if admin' do
         sign_in admins(:one)
 
         parameters = {
-            proyecto: {
+            project: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -121,24 +121,24 @@ class ProyectosControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        patch proyecto_url(id: proyectos(:one)), params: parameters
+        patch project_url(id: projects(:one)), params: parameters
 
-        proyectos(:one).reload
+        projects(:one).reload
 
-        assert_equal 'a', proyectos(:one).title
+        assert_equal 'a', projects(:one).title
     end
 
     test 'should not delete if not admin' do
-        assert_no_difference('Proyecto.count') do
-            delete proyecto_url(id: proyectos(:one).id)
+        assert_no_difference('Project.count') do
+            delete project_url(id: projects(:one).id)
         end
     end
 
     test 'should delete if admin' do
         sign_in admins(:one)
 
-        assert_difference('Proyecto.count', -1) do
-            delete proyecto_url(id: proyectos(:one).id)
+        assert_difference('Project.count', -1) do
+            delete project_url(id: projects(:one).id)
         end
     end
 end

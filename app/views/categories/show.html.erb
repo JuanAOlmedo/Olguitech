@@ -38,12 +38,12 @@
         <%= cards_for @category.articles.published %>
     <% end %>
 
-    <% if @category.proyectos.published.any? %>
+    <% if @category.projects.published.any? %>
         <h2 class="title centered">
-            <%= Proyecto.model_name.human(count: 2) %>
+            <%= Project.model_name.human(count: 2) %>
         </h2>
         
-        <%= cards_for @category.proyectos.published %>
+        <%= cards_for @category.projects.published %>
     <% end %>
 </div>
 

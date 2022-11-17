@@ -56,7 +56,7 @@
 
         <div class="right-navbar-section" data-dropdown-bars-target="menu">
             <%= link_to Article.model_name.human(count: 2), articles_path, class: "link #{"active" if controller_name == 'articles'}" %>
-            <%= link_to Proyecto.model_name.human(count: 2), proyectos_path, class: "link #{"active" if controller_name == 'proyectos'}" %>
+            <%= link_to Project.model_name.human(count: 2), projects_path, class: "link #{"active" if controller_name == 'projects'}" %>
             <%= link_to Product.model_name.human(count: 2), products_path, class: "link #{"active" if controller_name == 'products'}" %>
 
             <% if admin_signed_in? %>
@@ -110,7 +110,7 @@
             <div class="btn-group admin-tools">
                 <%= dropdown_for "Nuevo", is_dropup: true do %>
                     <%= link_to Article.model_name.human, new_article_path, class: "btn" %>
-                    <%= link_to Proyecto.model_name.human, new_proyecto_path, class: "btn" %>
+                    <%= link_to Project.model_name.human, new_project_path, class: "btn" %>
                     <%= link_to Product.model_name.human, new_product_path, class: "btn" %>
                     <%= link_to Category.model_name.human, new_category_path, class: "btn" %>
                     <%= link_to Newsletter.model_name.human, new_newsletter_path, class: "btn" %>

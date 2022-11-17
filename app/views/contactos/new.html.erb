@@ -35,7 +35,7 @@
 
             <div class="field">
                 <%= form.label :preference2, t("contact.preference2") %>
-                <%= form.collection_select :preference2, Proyecto.all, :id, :localized_title %>
+                <%= form.collection_select :preference2, Project.all, :id, :localized_title %>
             </div>
 
             <div class="field separate">

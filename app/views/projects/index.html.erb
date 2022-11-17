@@ -23,7 +23,7 @@
 
         <div class='articles-div'>
             <h1 class='main-title'>
-                <%= I18n.t "shared.our_proyects" %>
+                <%= I18n.t "shared.our_projects" %>
             </h1>
 
             <%= render 'layouts/popup' %>
@@ -34,7 +34,7 @@
                         <%= category.localized_title %> 
                     </h2>
                     
-                    <%= cards_for category.proyectos %>
+                    <%= cards_for category.projects %>
                 </div>
             <% end %>
             <% if @uncategorized.any? %>
@@ -56,6 +56,6 @@
 
         <%= render 'layouts/popup' %>
 
-        <%= cards_for @proyectos %>
+        <%= cards_for @projects %>
     </div>
 <% end %>

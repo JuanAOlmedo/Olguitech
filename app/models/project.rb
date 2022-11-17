@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Proyecto < ApplicationRecord
+class Project < ApplicationRecord
     include Getters
     include Mailable
 

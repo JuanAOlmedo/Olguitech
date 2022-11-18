@@ -107,7 +107,7 @@ class UsersController < ApplicationController
                         notice: t('unsubscribed')
         else
             redirect_to root_path,
-                        alert: t('link_borken')
+                        alert: t('link_broken')
         end
     end
 
@@ -118,7 +118,7 @@ class UsersController < ApplicationController
 
         redirect_to root_path,
                     status: :unauthorized,
-                    alert: 'Solo administradores pueden hacer eso'
+                    alert: t('not_allowed')
     end
 
     def set_user

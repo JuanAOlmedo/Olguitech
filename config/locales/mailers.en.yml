@@ -6,7 +6,6 @@ en:
       html: >
         Hello %{name}, thank you for contacting Olguitech s.a.s.! <br>
 
-        The solution we offered that you were most interested in was: %{preference}, and the project: %{preference2}.<br><br>
         Your message was: %{message} <br><br>
 
         Someone will contact you shortly regarding both items and your message.
@@ -14,7 +13,6 @@ en:
       txt: |
         Hello %{name}, thank you for contacting Olguitech s.a.s.!
 
-        The solution we offered that you were most interested in was: %{preference}, and the project: %{preference2}.
         Your message was: %{message}
 
         Someone will contact you shortly regarding both items and your message.

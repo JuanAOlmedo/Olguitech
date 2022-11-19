@@ -3,11 +3,11 @@
 class Contacto < ApplicationRecord
     belongs_to :user
 
-    def send_mail
-        article = Article.find(preference).localized_title
-        project = Project.find(preference2).localized_title
+    has_many :interests, dependent: :destroy
+    accepts_nested_attributes_for :interests
 
-        ContactMailer.contacto(user, article, project, message).deliver_later
-        ContactMailer.admin_contacto(user, article, project, message).deliver_later
+    def send_mail
+        ContactMailer.contacto(user, interests, message).deliver_later
+        ContactMailer.admin_contacto(user, interests, message).deliver_later
     end
 end

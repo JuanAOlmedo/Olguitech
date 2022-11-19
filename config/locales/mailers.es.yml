@@ -7,7 +7,6 @@ es:
       html: >
         Hola %{name}, gracias por contactarte con Olguitech s.a.s.! <br>
 
-        La solución que ofrecemos que más te interesó fue: %{preference}, y el proyecto: %{preference2}.<br><br>
         Tu mensaje fue: %{message} <br><br>
 
         Alguien se contactará a la brevedad con respecto a ambos artículos y a su mensaje.
@@ -15,7 +14,6 @@ es:
       txt: |
         Hola %{name}, gracias por contactarte con Olguitech s.a.s.!
 
-        La solución que ofrecemos que más te interesó fue: %{preference}, y el proyecto: %{preference2}.
         Tu mensaje fue: %{message}
 
         Alguien se contactará a la brevedad con respecto a ambos artículos y a su mensaje.

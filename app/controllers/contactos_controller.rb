@@ -6,6 +6,8 @@ class ContactosController < ApplicationController
     def new
         @contacto = Contacto.new
         @user = @contacto.user
+
+        @contacto.interests.build
     end
 
     def update; end
@@ -27,7 +29,7 @@ class ContactosController < ApplicationController
     private
 
     def contacto_params
-        params.require(:contacto).permit :preference, :preference2, :message
+        params.require(:contacto).permit(:message, interests_attributes: [:id, :record_type, :record_id])
     end
 
     def user_params
@@ -40,9 +42,11 @@ class ContactosController < ApplicationController
 
         @user = User.new(parameters)
 
-        @contacto = @user.contactos.new(contacto_params)
-        @contacto.preference = @contacto.preference.to_i
-        @contacto.preference2 = @contacto.preference2.to_i
+        @contacto = @user.contactos.new(message: contacto_params[:message])
+
+        contacto_params[:interests_attributes].each_value do |interest|
+            @contacto.interests.new(interest)
+        end
 
         if @user.save && @contacto.save
             session[:will_contact] = @contacto.id
@@ -54,9 +58,8 @@ class ContactosController < ApplicationController
     end
 
     def process_contact_for_existing_user
-        @contacto = @user.contactos.new(contacto_params)
-        @contacto.preference = @contacto.preference.to_i
-        @contacto.preference2 = @contacto.preference2.to_i
+        @contacto = @user.contactos.new(message: contacto_params[:message])
+        @contacto.interests.new(contacto_params[:interest_attributes])
 
         if @contacto.save
             @contacto.send_mail
@@ -69,9 +72,8 @@ class ContactosController < ApplicationController
     end
 
     def process_contact_for_incomplete_user
-        @contacto = @user.contactos.new(contacto_params)
-        @contacto.preference = @contacto.preference.to_i
-        @contacto.preference2 = @contacto.preference2.to_i
+        @contacto = @user.contactos.new(message: contacto_params[:message])
+        @contacto.interests.new(contacto_params[:interest_attributes])
 
         if @contacto.save
             session[:will_contact] = @contacto.id

@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class ContactMailer < ApplicationMailer
-    def contacto(user, preference, preference2, message)
+    def contacto(user, interests, message)
         @user = user
-        @preference = preference
-        @preference2 = preference2
+        @interests = interests
         @message = message
 
         I18n.with_locale(@user.locale) do
@@ -12,10 +11,9 @@ class ContactMailer < ApplicationMailer
         end
     end
 
-    def admin_contacto(user, preference, preference2, message)
+    def admin_contacto(user, interests, message)
         @user = user
-        @preference = preference
-        @preference2 = preference2
+        @interests = interests
         @message = message
         @locale = I18n.locale == :es ? 'Español' : 'Inglés'
 

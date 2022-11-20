@@ -10,10 +10,10 @@ class ContactosController < ApplicationController
     end
 
     # Find or create a new user based on the email and create a new contact
-    # for that user.
-    # Update their locale
+    # for that user and update their locale
     def create
         @user = User.find_by(user_params) || User.new(user_params)
+        @user.locale = I18n.locale
         @contacto = @user.contactos.new(contacto_params)
 
         if @user.name && @user.phone && @user.company
@@ -21,8 +21,6 @@ class ContactosController < ApplicationController
         else
             process_contact_for_incomplete_user
         end
-
-        @user.update!(locale: I18n.locale)
     end
 
     private
@@ -51,7 +49,7 @@ class ContactosController < ApplicationController
     # If the user doesn't have all fields (name, phone company) filled,
     # take them to the edit_user path to fill them up
     def process_contact_for_incomplete_user
-        if @contacto.save
+        if @user.save && @contacto.save
             @contacto.send_mail
 
             session[:will_contact] = @contacto.id

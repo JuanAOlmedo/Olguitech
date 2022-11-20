@@ -1,10 +1,22 @@
 # frozen_string_literal: true
 
+# Helper for creating the dropdown menus for example used in the navbar to 
+# select languages
+#
+# Accepts the label of the dropdown, a block with its contents and the option
+# to add the localization icon.
+#
+# Also has a dropup option.
 module DropdownHelper
-    def dropdown_for(name, is_dropup: false, icon: false, &block)
-        Dropdown.new(self, name, is_dropup, icon, block).html
+    def dropdown_for(name, icon: false, &block)
+        Dropdown.new(self, name, false, icon, block).html
     end
 
+    def dropup_for(name, icon: false, &block)
+        Dropdown.new(self, name, true, icon, block).html
+    end
+
+    # Returns the html to build the dropdown
     class Dropdown
         def initialize(view, name, is_dropup, icon, block)
             @view = view

@@ -2,6 +2,9 @@
 
 # Creates the cards shown for example on main, with the alternative of using
 # the cards shown for products
+#
+# Accepts the array of instances which will be turned to cards and the option
+# to display the instances' images
 module CardsHelper
     def cards_for(array, image: true)
         Cards.new(self, array, image).html

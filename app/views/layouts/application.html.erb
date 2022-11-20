@@ -108,7 +108,7 @@
 
         <% if admin_signed_in? %>
             <div class="btn-group admin-tools">
-                <%= dropdown_for "Nuevo", is_dropup: true do %>
+                <%= dropup_for "Nuevo" do %>
                     <%= link_to Article.model_name.human, new_article_path, class: "btn" %>
                     <%= link_to Project.model_name.human, new_project_path, class: "btn" %>
                     <%= link_to Product.model_name.human, new_product_path, class: "btn" %>

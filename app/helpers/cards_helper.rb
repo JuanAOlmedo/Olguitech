@@ -72,7 +72,7 @@ module CardsHelper
             end
 
             content_tag :div, safe_join(content), class: 'grid',
-                                       style: "grid-template-rows: repeat(#{[@last_row1, @last_row2].max}, 0.2rem);"
+                                                  style: "grid-template-rows: repeat(#{[@last_row1, @last_row2].max}, 0.2rem);"
         end
 
         def card_single(element)

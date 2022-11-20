@@ -74,12 +74,12 @@ class NewslettersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def newsletter_params
-        newsletter_params = params.require(:newsletter)
-                                  .permit(:title, :content, :subject, :status, :sent)
-        newsletter_params[:status] = newsletter_params[:status].to_i
-        newsletter_params[:status] = 1 if newsletter_params[:sent] == '1'
-        newsletter_params.delete :sent
-        newsletter_params
+        params.require(:newsletter)
+              .permit(:title, :content, :subject, :status, :sent)
+              .merge(status: params[:newsletter]
+                                .fetch(:sent, params[:newsletter].fetch(:status, 0).to_i)
+                                .to_i)
+              .except(:sent)
     end
 
     def check_sent

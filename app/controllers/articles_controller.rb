@@ -21,17 +21,15 @@ class ArticlesController < ApplicationController
 
     # GET /articles/1
     # GET /articles/1.json
+    # Count the number of views of an article. Store in the user's session that
+    # the article has been viewed
     def show
-        viewed_articles = session[:viewed_articles]
+        session[:viewed_articles] = [] unless session[:viewed_articles]
 
-        return unless viewed_articles.nil? || !@article.id.in?(viewed_articles)
+        return if @article.id.in? session[:viewed_articles]
 
-        @article.views += 1
-
-        session[:viewed_articles] = [] if viewed_articles.nil?
+        @article.update views: @article.views + 1
         session[:viewed_articles] << @article.id
-
-        @article.save
     end
 
     # GET /articles/new
@@ -108,19 +106,19 @@ class ArticlesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # Convert status to integer
     def article_params
-        article_params = params.require(:article)
-                               .permit(:title,
-                                       :title2,
-                                       :content,
-                                       :content2,
-                                       :description,
-                                       :description2,
-                                       { product_ids: [] },
-                                       { category_ids: [] },
-                                       :image,
-                                       :status)
-        article_params[:status] = article_params[:status].to_i if article_params[:status]
-        article_params
+        params.require(:article)
+              .permit(:title,
+                      :title2,
+                      :content,
+                      :content2,
+                      :description,
+                      :description2,
+                      { product_ids: [] },
+                      { category_ids: [] },
+                      :image,
+                      :status)
+              .merge(status: params[:article].fetch(:status, 1).to_i)
     end
 end

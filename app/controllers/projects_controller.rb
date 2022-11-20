@@ -20,17 +20,15 @@ class ProjectsController < ApplicationController
     end
 
     # GET /projects/1
+    # Count the number of views of an project. Store in the user's session that
+    # the project has been viewed
     def show
-        viewed_projects = session[:viewed_projects]
+        session[:viewed_projects] = [] unless session[:viewed_projects]
 
-        return unless viewed_projects.nil? || !@project.id.in?(viewed_projects)
+        return if @project.id.in? session[:viewed_projects]
 
-        @project.views += 1
-
-        session[:viewed_projects] = [] if viewed_projects.nil?
+        @project.update views: @project.views + 1
         session[:viewed_projects] << @project.id
-
-        @project.save
     end
 
     # GET /projects/new
@@ -107,22 +105,21 @@ class ProjectsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # Convert status to integer
     def project_params
-        project_params = params
-                         .require(:project)
-                         .permit(
-                             :title,
-                             :title2,
-                             :content,
-                             :content2,
-                             :description,
-                             :description2,
-                             { product_ids: [] },
-                             { category_ids: [] },
-                             :image,
-                             :status
-                         )
-        project_params[:status] = project_params[:status].to_i if project_params[:status]
-        project_params
+        params.require(:project)
+              .permit(
+                  :title,
+                  :title2,
+                  :content,
+                  :content2,
+                  :description,
+                  :description2,
+                  { product_ids: [] },
+                  { category_ids: [] },
+                  :image,
+                  :status
+              )
+              .merge(status: params[:project].fetch(:status, 1).to_i)
     end
 end

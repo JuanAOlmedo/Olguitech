@@ -88,17 +88,16 @@ class CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-        params
-            .require(:category)
-            .permit(
-                :title,
-                :title2,
-                :description,
-                :description2,
-                { product_ids: [] },
-                { article_ids: [] },
-                { project_ids: [] },
-                :image
-            )
+        params.require(:category)
+              .permit(
+                  :title,
+                  :title2,
+                  :description,
+                  :description2,
+                  { product_ids: [] },
+                  { article_ids: [] },
+                  { project_ids: [] },
+                  :image
+              )
     end
 end

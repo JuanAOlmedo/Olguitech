@@ -62,6 +62,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # Confirm user if they provide a valid confirmation_token
     def confirmation
         @user = User.find_by(confirmation_token: params[:confirmation_token])
 
@@ -73,6 +74,8 @@ class UsersController < ApplicationController
         end
     end
 
+    # Find or create an user based on their email, subscrive them to newsletters
+    # and update their locale
     def subscribe
         @user = User.find_by(user_params) || User.new(user_params)
 
@@ -87,6 +90,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # Unsubscribe the user to newsletters with the provided newsletter_token
     def unsubscribe
         @user = User.find_by(newsletter_token: params[:newsletter_token])
 
@@ -113,6 +117,8 @@ class UsersController < ApplicationController
         @user = User.friendly.find(params[:id])
     end
 
+    # Check that an edit_token has been provided in the params or in the
+    # form to authenticate the user
     def authenticate_edit_token
         @user.regenerate_edit_token unless @user.edit_token
 

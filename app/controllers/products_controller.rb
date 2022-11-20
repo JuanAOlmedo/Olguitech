@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                @categories, @products = 
+                @categories, @products =
                     Product.ordered(params[:order_by], params[:asc_desc])
 
                 @uncategorized = Product.published.where.missing :categories

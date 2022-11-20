@@ -2,22 +2,19 @@
 
 class ContactosController < ApplicationController
     def index; end
-
+    
     def new
         @contacto = Contacto.new
         @user = @contacto.user
         @contacto.interests.build
     end
 
-    def update; end
-
+    # Find or create a new user based on the email and create a new contact
+    # for that user.
+    # Update their locale
     def create
         @user = User.find_by(user_params) || User.new(user_params)
-
-        @contacto = @user.contactos.new(message: contacto_params[:message])
-        contacto_params[:interests_attributes].each_value do |interest|
-            @contacto.interests.new(interest)
-        end
+        @contacto = @user.contactos.new(contacto_params)
 
         if @user.name && @user.phone && @user.company
             process_contact
@@ -31,13 +28,15 @@ class ContactosController < ApplicationController
     private
 
     def contacto_params
-        params.require(:contacto).permit(:message, interests_attributes: [:id, :record_type, :record_id])
+        params.require(:contacto).permit(:message,
+                                         interests_attributes: %i[id record_type record_id])
     end
 
     def user_params
         params.require(:user).permit :email
     end
 
+    # If the contact saves successfully, send the user and the admin an email
     def process_contact
         if @contacto.save
             @contacto.send_mail
@@ -49,6 +48,8 @@ class ContactosController < ApplicationController
         end
     end
 
+    # If the user doesn't have all fields (name, phone company) filled,
+    # take them to the edit_user path to fill them up
     def process_contact_for_incomplete_user
         if @contacto.save
             @contacto.send_mail

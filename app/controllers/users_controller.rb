@@ -34,13 +34,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        parameters = user_params
-
-        confirm = parameters[:auto_confirm] == '1'
-        parameters.delete(:auto_confirm)
-
-        @user = User.new parameters
-        @user.confirm if confirm
+        @user = User.new user_params.except(:auto_confirm)
+        @user.confirm if user_params[:auto_confirm] == '1'
 
         if @user.save
             respond_to do |format|
@@ -53,13 +48,9 @@ class UsersController < ApplicationController
     end
 
     def update
-        parameters = user_params
-        parameters[:locale] = I18n.locale
-
-        if @user.update(parameters)
+        if @user.update(user_params.merge!(locale: I18n.locale))
             if session[:will_contact]
-                @user.contactos.find(session[:will_contact]).send_mail
-                session[:will_contact] = nil
+                session.delete :will_contact
 
                 redirect_to root_path,
                             notice: I18n.t('contact.sent')
@@ -76,11 +67,9 @@ class UsersController < ApplicationController
 
         if @user
             @user.confirm
-
             redirect_to root_path, notice: t('confirmed')
         else
-            redirect_to root_path,
-                        alert: t('link_borken')
+            redirect_to root_path, alert: t('link_borken')
         end
     end
 
@@ -93,7 +82,8 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to root_path, notice: t('thanks_for_subscribing')
         else
-            redirect_to root_path, alert: t('valid_email'), status: :unprocessable_entity
+            redirect_to root_path, alert: t('valid_email'),
+                                   status: :unprocessable_entity
         end
     end
 
@@ -103,11 +93,9 @@ class UsersController < ApplicationController
         if @user
             @user.update! newsletter: false
 
-            redirect_to root_path,
-                        notice: t('unsubscribed')
+            redirect_to root_path, notice: t('unsubscribed')
         else
-            redirect_to root_path,
-                        alert: t('link_broken')
+            redirect_to root_path, alert: t('link_broken')
         end
     end
 

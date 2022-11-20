@@ -2,9 +2,15 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="new-contacto"
 export default class extends Controller {
-    static targets = ["fields"]
+    static targets = ["fields", "select", "article", "project", "product"]
     id = 0
    
+    initialize() {
+        this.selectTargets.forEach(select => {
+            this.changeDisplayedArticles(select);
+        });
+    }
+
     addFields(event) {
         this.id++;
 
@@ -27,5 +33,43 @@ export default class extends Controller {
 
     replaceZeroById(str) {
         return str.replace(new RegExp('0', 'g'), this.id);
+    }
+
+    selectChange(event) {
+        this.changeDisplayedArticles(event.target);
+    }
+
+    changeDisplayedArticles(select) {
+        let id = select.dataset.id;
+
+        if (this.articleTargets[id].name != '') {
+            select.dataset.name = this.articleTargets[id].name;
+        }
+
+        this.remove(this.articleTargets[id]);
+        this.remove(this.projectTargets[id]);
+        this.remove(this.productTargets[id]);
+
+        switch (select.selectedOptions[0].value) {
+            case 'Article':
+                this.add(this.articleTargets[id], select.dataset.name);
+                break;
+            case 'Project':
+                this.add(this.projectTargets[id], select.dataset.name);
+                break;
+            case 'Product':
+                this.add(this.productTargets[id], select.dataset.name);
+                break;
+        }
+    }
+
+    remove(node) {
+        node.style.display = 'none';
+        node.name = '';
+    }
+
+    add(node, name) {
+        node.style.display = 'block';
+        node.name = name;
     }
 }

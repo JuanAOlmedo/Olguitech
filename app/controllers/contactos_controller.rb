@@ -6,7 +6,6 @@ class ContactosController < ApplicationController
     def new
         @contacto = Contacto.new
         @user = @contacto.user
-
         @contacto.interests.build
     end
 

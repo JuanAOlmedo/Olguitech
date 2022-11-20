@@ -31,21 +31,23 @@
             <span style='width: 50%'> </span>
 
             <%= form.fields_for :interests, @contacto.interests do |interests_form| %>
-                <div class='form' style='margin: 0' data-new-contacto-target='fields'>
+                <div class='form' style='margin: 0; width: 100%;' data-new-contacto-target='fields'>
                     <div class="field"> 
-                        <%= interests_form.label :record_type, t("contact.preference") %>
-                        <%= interests_form.select :record_type, ['Article', 'Project', 'Product'] %>
+                        <%= interests_form.label :record_type, "Tipo de Artículo" %>
+                        <%= interests_form.select :record_type, [[Article.model_name.human, 'Article'], [Project.model_name.human, 'Project'], [Product.model_name.human, 'Product']], {}, { data: { action: 'new-contacto#selectChange', new_contacto_target: 'select', id: '0' } } %>
                     </div>
 
-                    <div class="field">
-                        <%= interests_form.label :record_id, t("contact.preference") %>
-                        <%= interests_form.collection_select :record_id, Article.all, :id, :localized_title %>
+                    <div class="field"> 
+                        <%= interests_form.label :record_id, "Artículo" %>
+                        <%= interests_form.collection_select :record_id, Article.all, :id, :localized_title, {}, { data: { new_contacto_target: 'article' } } %>
+                        <%= interests_form.collection_select :record_id, Project.all, :id, :localized_title, {}, { data: { new_contacto_target: 'project' } } %>
+                        <%= interests_form.collection_select :record_id, Product.all, :id, :localized_title, {}, { data: { new_contacto_target: 'product' } } %>
                     </div>
                 </div>
             <% end %>
 
             <p class='btn centered' data-action="click->new-contacto#addFields">
-                Añadir
+                Adjuntar un artículo al mensaje
             </p>
 
             <div class="field separate">

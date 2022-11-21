@@ -118,12 +118,10 @@ module CardsHelper
         def img(element)
             return unless @image && element.image.attached?
 
-            options = { saver: { quality: 60 }, resize_to_limit: [40, 40] }
-            options2 = { saver: { quality: 85 }, resize_to_limit: [720, 720] }
+            options = { saver: { quality: 85 }, resize_to_limit: [720, 720] }
 
             image_tag element.image.variant(options),
-                      data: { src: url_for(element.image.variant(options2)) },
-                      class: 'lazy',
+                      loading: 'lazy',
                       alt: element.image.filename
         end
 

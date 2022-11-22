@@ -54,13 +54,10 @@ export default class extends Controller {
     }
 
     updateDraftHolders() {
-        const toCheck = [
-            document.getElementById("article_drafts"),
-            document.getElementById("project_drafts"),
-            document.getElementById("product_drafts"),
-            document.getElementById("newsletter_drafts"),
-        ];
-        const message = document.getElementById("dashboard-message");
+        const toCheck =
+                document.querySelectorAll(`#article_drafts, #project_drafts,
+                                                   #product_drafts, #newsletter_drafts`),
+            message = document.getElementById("dashboard-message");
 
         toCheck.forEach((element) => {
             if (!element) return;
@@ -69,7 +66,7 @@ export default class extends Controller {
                 element.children.length != 0 ? "block" : "none";
         });
 
-        const filtered = toCheck.filter(
+        const filtered = Array.from(toCheck).filter(
             (element) =>
                 element && element.parentElement.style.display != "none"
         );

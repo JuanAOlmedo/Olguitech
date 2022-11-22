@@ -4,24 +4,29 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static targets = ["menu", "svg", "path", "category", "title"];
 
+    categoriesIndex = [];
+
     initialize() {
         if ("IntersectionObserver" in window) {
             this.categoryObserver = new IntersectionObserver(
                 (entries, categoryObserver) => {
                     entries.forEach((entry) => {
-                        if (!entry.isIntersecting) {
-                            entry.target.classList.remove("visible1");
+                        const index = Number(entry.target.dataset.index);
 
-                            this.titleTargets[
-                                Number(entry.target.dataset.index)
-                            ].classList.remove("visible");
+                        if (!entry.isIntersecting) {
+                            this.categoriesIndex = this.categoriesIndex.filter(
+                                (i) => i != index
+                            );
+                            this.titleTargets[index].classList.remove(
+                                "visible"
+                            );
 
                             this.setSvg();
                             return;
                         }
 
-                        entry.target.classList.add("visible1");
-                        this.setVisible();
+                        this.categoriesIndex.push(index);
+                        this.titleTargets[index].classList.add("visible");
 
                         this.setSvg();
                     });
@@ -32,58 +37,40 @@ export default class extends Controller {
     }
 
     connect() {
-        this.categoryTargets.forEach((category) => {
-            this.categoryObserver.observe(category);
-        });
-    }
-
-    setVisible() {
-        this.categoryTargets.forEach((category) => {
-            if (category.classList.contains("visible1")) {
-                this.titleTargets[Number(category.dataset.index)].classList.add(
-                    "visible"
-                );
-            }
-        });
+        if ("IntersectionObserver" in window) {
+            this.categoryTargets.forEach((category) => {
+                this.categoryObserver.observe(category);
+            });
+        }
     }
 
     setSvg() {
-        const categories = Array.from(document.querySelectorAll(".visible1"));
-        const menuBounds = this.menuTarget.getBoundingClientRect();
-        this.svgTarget.style.height = `${menuBounds.y + menuBounds.height}px`;
-
-        const categoriesIndex = [];
-        categories.forEach((category) => {
-            categoriesIndex.push(Number(category.dataset.index));
-        });
-
-        if (categories.length == 0) {
+        if (this.categoriesIndex.length == 0) {
             this.pathTarget.setAttribute("stroke-dasharray", "0 0 0 10000");
             return;
         }
 
         const category1 =
-            this.titleTargets[
-                Math.min.apply(Math, categoriesIndex)
-            ].getBoundingClientRect();
-        const category2 =
-            this.titleTargets[
-                Math.max.apply(Math, categoriesIndex)
-            ].getBoundingClientRect();
+                this.titleTargets[
+                    Math.min.apply(Math, this.categoriesIndex)
+                ].getBoundingClientRect(),
+            category2 =
+                this.titleTargets[
+                    Math.max.apply(Math, this.categoriesIndex)
+                ].getBoundingClientRect();
 
-        const firstTitle = this.titleTargets[0].getBoundingClientRect();
-        const lastTitle =
-            this.titleTargets[
-                this.titleTargets.length - 1
-            ].getBoundingClientRect();
+        const firstTitle = this.titleTargets[0].getBoundingClientRect(),
+            lastTitle = this.titleTargets.pop().getBoundingClientRect();
 
-        const pathStart = category1.y - firstTitle.y;
-        const pathEnd = category2.y + category2.height - firstTitle.y;
-        const pathLength = pathEnd - pathStart;
+        const pathStart = category1.y - firstTitle.y,
+              pathEnd = category2.y + category2.height - firstTitle.y,
+              pathLength = pathEnd - pathStart,
+              lastY = lastTitle.y + lastTitle.height;
+
+        this.svgTarget.style.height = `${lastY}px`;
 
         this.pathTarget.attributes.d.value = `
-        M ${firstTitle.x} ${firstTitle.y}
-        V ${lastTitle.y + lastTitle.height}
+            M ${firstTitle.x} ${firstTitle.y} V ${lastY}
         `;
 
         this.pathTarget.setAttribute(

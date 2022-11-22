@@ -1,5 +1,5 @@
 <div class='dashboard-card <%= article.status %>' id='<%= dom_id article %>'>
-    <%= image_tag article.image.variant(saver: { quality: 60 }, resize_to_limit: [40, 40]), data: { src: url_for(article.image.variant(saver: { quality: 85 }, resize_to_limit: [1080, 1080])) }, class: 'lazy' if article.model_name != 'Newsletter' && article.image.attached? %>
+    <%= image_tag article.image.variant(saver: { quality: 85 }, resize_to_limit: [720, 720]), loading: 'lazy' if article.model_name != 'Newsletter' && article.image.attached? %>
 
     <div>
         <h3> <%= article.localized_short_title %> </h3>

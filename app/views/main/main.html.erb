@@ -15,7 +15,7 @@
         </h1>
         <%= link_to t("general.see_all"), articles_path, class: "btn centered" %>
 
-        <%= cards_for @articles %>
+        <%= cards_for @articles, webp: @webp %>
     </div>
 <% end %>
 
@@ -26,7 +26,7 @@
         </h1>
         <%= link_to t("general.see_all"), projects_path, class: "btn centered" %>
 
-        <%= cards_for @projects %>
+        <%= cards_for @projects, webp: @webp %>
     </div>
 <% end %>
 
@@ -37,7 +37,7 @@
         </h1>
         <%= link_to t("general.see_all"), products_path, class: "btn centered" %>
 
-        <%= alternative_cards_for @products %>
+        <%= alternative_cards_for @products, webp: @webp %>
     </div>
 <% end %>
 

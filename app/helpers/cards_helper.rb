@@ -6,21 +6,22 @@
 # Accepts the array of instances which will be turned to cards and the option
 # to display the instances' images
 module CardsHelper
-    def cards_for(array, image: true)
-        Cards.new(self, array, image).html
+    def cards_for(array, image: true, webp: false)
+        Cards.new(self, array, image, webp).html
     end
 
-    def alternative_cards_for(array, image: true)
-        Cards.new(self, array, image).alternative_html
+    def alternative_cards_for(array, image: true, webp: false)
+        Cards.new(self, array, image, webp).alternative_html
     end
 
     # Accepts an array and the option of showing an image, then returns the html
     # to show the cards
     class Cards
-        def initialize(view, array, image)
+        def initialize(view, array, image, webp)
             @view = view
             @array = array
             @image = image
+            @webp = webp
             @uid = SecureRandom.hex(4)
         end
 
@@ -118,7 +119,8 @@ module CardsHelper
         def img(element)
             return unless @image && element.image.attached?
 
-            options = { saver: { quality: 85 }, resize_to_limit: [720, 720] }
+            options = { saver: { quality: 80 }, resize_to_limit: [720, 720] }
+            options.merge!({ convert: 'webp' }) if @webp
 
             image_tag element.image.variant(options),
                       loading: 'lazy',

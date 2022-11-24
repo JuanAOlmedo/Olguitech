@@ -1,6 +1,10 @@
 <figure class="attachment attachment--<%= blob.representable? ? "preview" : "file" %> attachment--<%= blob.filename.extension %>">
     <% if blob.representable? %>
-        <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 800, 600 ] : [ 1024, 768 ]), style: "max-width: 100%; height: auto;", loading: 'lazy', data: { action: 'click->image-displayer#displayImage' } %>
+        <% if @webp %>
+            <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 800, 600 ] : [ 1024, 768 ], convert: 'webp'), style: "max-width: 100%; height: auto;", loading: 'lazy', data: { action: 'click->image-displayer#displayImage' } %>
+        <% else %>
+            <%= image_tag blob.representation(resize_to_limit: local_assigns[:in_gallery] ? [ 800, 600 ] : [ 1024, 768 ]), style: "max-width: 100%; height: auto;", loading: 'lazy', data: { action: 'click->image-displayer#displayImage' } %>
+        <% end %>
     <% end %>
 
     <figcaption class="attachment__caption">

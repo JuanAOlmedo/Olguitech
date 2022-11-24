@@ -4,7 +4,10 @@
 <div class="product">
     <div class="product-top">
         <% if @product.image.attached? %>
-            <%= image_tag @product.image.variant(saver: { quality: 85 }), alt: @product.image.filename %>
+            <% options = { saver: { quality: 85 } } %>
+            <% options.merge!({ convert: 'webp' }) if @webp %>
+
+            <%= image_tag @product.image.variant(options), alt: @product.image.filename %>
         <% end %>
 
         <div class="text">
@@ -35,13 +38,13 @@
         <h1 class="main-title">
             <%= t "show.articles" %>
         </h1>
-        <%= cards_for @product.articles %>
+        <%= cards_for @product.articles, webp: @webp %>
     <% end %>
     <% if @product.projects.any? %>
         <h1 class="main-title">
             <%= t "show.proyects" %>
         </h1>
-        <%= cards_for @product.projects %>
+        <%= cards_for @product.projects, webp: @webp %>
     <% end %>
 </div>
 

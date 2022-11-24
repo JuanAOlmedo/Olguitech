@@ -34,7 +34,7 @@
                         <%= category.localized_title %> 
                     </h2>
 
-                    <%= alternative_cards_for category.products %>
+                    <%= alternative_cards_for category.products, webp: @webp %>
                 </div>
             <% end %>
             <% if !@uncategorized.empty? %>
@@ -43,7 +43,7 @@
                         <%= t "index.uncategorized" %> 
                     </h2>
 
-                    <%= alternative_cards_for @uncategorized %>
+                    <%= alternative_cards_for @uncategorized, webp: @webp %>
                 </div>
             <% end %>
         </div>
@@ -56,6 +56,6 @@
 
         <%= render 'layouts/popup' %>
 
-        <%= alternative_cards_for @products %>
+        <%= alternative_cards_for @products, webp: @webp %>
     </div>
 <% end %>

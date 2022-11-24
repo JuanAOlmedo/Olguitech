@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
     around_action :switch_locale
+    before_action :detect_webp_support
 
     def switch_locale(&action)
         locale = params[:locale] || I18n.default_locale
@@ -11,6 +12,10 @@ class ApplicationController < ActionController::Base
         else
             I18n.with_locale :es, &action
         end
+    end
+
+    def detect_webp_support
+        @webp = request.env["HTTP_ACCEPT"].include? 'image/webp'
     end
 
     def default_url_options

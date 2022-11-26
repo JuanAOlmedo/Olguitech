@@ -7,19 +7,24 @@ class UsersController < ApplicationController
                   :redirect_unless_admin,
                   only: %i[index new create]
 
+    # GET /users
     def index
         @users = User.all.order id: :asc
         @contacted = User.where.associated(:contactos).uniq
     end
 
+    # GET /users/1
     def show; end
 
+    # GET /users/new
     def new
         @user = User.new
     end
 
+    # GET /users/1/edit
     def edit; end
 
+    # DELETE /users/1/:edit_token
     def destroy
         @user.destroy
 
@@ -33,6 +38,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # POST /users/
     def create
         parameters = user_params
 
@@ -52,9 +58,9 @@ class UsersController < ApplicationController
         end
     end
 
+    # PATCH /users/1/:edit_token
     def update
-        parameters = user_params
-        parameters[:locale] = I18n.locale
+        parameters = user_params.merge locale: I18n.locale
 
         if @user.update(parameters)
             if session[:will_contact]
@@ -71,6 +77,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # PATCH /users/confirmation/:confirmation_token
     def confirmation
         @user = User.find_by(confirmation_token: params[:confirmation_token])
 
@@ -84,6 +91,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # POST /users/subscribe
     def subscribe
         @user = User.find_by(user_params) || User.new(user_params)
 
@@ -97,6 +105,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # GET /users/unsubscribe/:newsletter_token
     def unsubscribe
         @user = User.find_by(newsletter_token: params[:newsletter_token])
 

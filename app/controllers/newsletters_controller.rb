@@ -73,6 +73,8 @@ class NewslettersController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # Convert status to integer or use :sent instead if it exists.
+    # Don't allow :sent through
     def newsletter_params
         params.require(:newsletter)
               .permit(:title, :content, :subject, :status, :sent)

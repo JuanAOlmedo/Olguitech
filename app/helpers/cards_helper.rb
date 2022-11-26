@@ -29,7 +29,7 @@ module CardsHelper
         def html
             content = @array.length != 1 ? grid(@array) : card_single(@array.first)
 
-            content_tag :div, content, id: uid, class: 'cards-holder centered'
+            tag.div content, id: uid, class: 'cards-holder centered'
         end
 
         # Defines the 'alternative' cards shown for products
@@ -46,14 +46,14 @@ module CardsHelper
                 content = [alternative_card_single(@array.first)]
             end
 
-            content_tag :div, safe_join(content), id: uid, class: 'cards-holder centered'
+            tag.div safe_join(content), id: uid, class: 'cards-holder centered'
         end
 
         private
 
         attr_accessor :view, :array, :uid
 
-        delegate :link_to, :content_tag, :image_tag, :safe_join, :url_for, to: :view
+        delegate :link_to, :tag, :image_tag, :safe_join, :url_for, to: :view
 
         # Creates a grid, randomly assigns which of the two columns will start first,
         # given by the variable starts_left, and the offset the other will start with.
@@ -70,39 +70,40 @@ module CardsHelper
                 starts_left = !starts_left
             end
 
-            content_tag :div, safe_join(content), class: 'grid',
-                                                  style: "grid-template-rows:\
-                                                          repeat(#{@last_row.max[1]}, 0.2rem);"
+            tag.div safe_join(content), class: 'grid', style: "grid-template-rows:\
+                                                               repeat(#{@last_row.max[1]}, 0.2rem);"
         end
 
+        # Generate a single, centered card
         def card_single(element)
             content = safe_join [img(element), card_content(element)]
 
-            content_tag :div, content, class: 'card card-single centered still'
+            tag.div content, class: 'card card-single centered still'
         end
 
         # The cards are set to occupy 20 rows of the grid each. The row at which they
-        # end is given by last_row_left or last_row_right depending on if they are in
-        # the left or the right column
+        # end is given by last_row[:left] or last_row[:right] depending on if they are
+        # in the left or the right column
         def card(element, column)
             content = safe_join [img(element), card_content(element)]
 
             grid_row = "#{@last_row[column]} / #{@last_row[column] + 19}"
             @last_row[column] += 20
 
-            content_tag :div, content, class: 'card still',
-                                       style: "grid-column: #{column == :left ? '1' : '2'};\
-                                               grid-row: #{grid_row};"
+            tag.div content, class: 'card still',
+                             style: "grid-column: #{column == :left ? '1' : '2'};\
+                                     grid-row: #{grid_row};"
         end
 
+        # Generate a single, centered alternative card
         def alternative_card_single(element)
             content = safe_join [img(element), card_content(element)]
 
-            content_tag :div, content, class: 'alternative-card centered still'
+            tag.div content, class: 'alternative-card centered still'
         end
 
-        # The alternative cards have a random margin on each side given by
-        # random_margin.
+        # The alternative cards have a random margin on one of theit sides given by
+        # random_margin and an automatic margin on the other side.
         def alternative_card(element, margin_left)
             content = safe_join [img(element), card_content(element)]
 
@@ -111,11 +112,13 @@ module CardsHelper
             margin_left = margin_left ? rand_margin : 'auto'
             margin_right = margin_left ? 'auto' : rand_margin
 
-            content_tag :div, content, class: 'alternative-card still',
-                                       style: "margin-left: #{margin_left};\
-                                               margin-right: #{margin_right};"
+            tag.div content, class: 'alternative-card still',
+                             style: "margin-left: #{margin_left};\
+                                     margin-right: #{margin_right};"
         end
 
+        # Return the image if the variable @image is provided, convert it to WebP
+        # if @webp is provided
         def img(element)
             return unless @image && element.image.attached?
 
@@ -127,12 +130,13 @@ module CardsHelper
                       alt: element.image.filename
         end
 
+        # The content of the card itself (title, description and link)
         def card_content(element)
-            title = content_tag :h2, element.localized_short_title, class: 'title'
-            desc = content_tag :p, element.localized_short_desc, class: 'big-text'
+            title = tag.h2 element.localized_short_title, class: 'title'
+            desc = tag.p element.localized_short_desc, class: 'big-text'
             link = link_to I18n.t('general.see_more'), element, class: 'btn'
 
-            content_tag :div, safe_join([title, desc, link])
+            tag.div safe_join([title, desc, link])
         end
     end
 end

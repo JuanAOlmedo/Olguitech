@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Mailer for newsltters
 class NewsMailer < ApplicationMailer
     def newsletter(user, newsletter)
         @user = user

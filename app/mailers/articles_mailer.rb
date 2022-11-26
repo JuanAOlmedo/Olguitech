@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Mailer for creating articles
 class ArticlesMailer < ApplicationMailer
     def article(user, article)
         @user = user

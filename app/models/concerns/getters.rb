@@ -37,6 +37,8 @@ module Getters
         base.extend(ClassMethods)
     end
 
+    # Used for the class method :ordered, which is used in articles, products and
+    # projects index
     module ClassMethods
         def ordered(order_by, asc_desc)
             order_by = test_order_by order_by

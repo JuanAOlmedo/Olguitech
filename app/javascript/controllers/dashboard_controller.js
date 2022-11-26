@@ -2,22 +2,22 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="dashboard"
 export default class extends Controller {
+    csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
     connect() {
         this.updateDraftHolders();
     }
 
     update(event) {
         event.preventDefault();
-        let url = event.target.href;
-        const params = url.slice(url.indexOf("?") + 1);
-        url = `${url.slice(0, url.indexOf("?"))}.json`;
+        const href = event.target.href,
+            params = href.slice(href.indexOf("?") + 1),
+            url = `${href.slice(0, href.indexOf("?"))}.json`;
 
         fetch(url, {
             method: "PATCH",
             headers: {
-                "X-CSRF-Token": document.querySelector(
-                    'meta[name="csrf-token"]'
-                ).content,
+                "X-CSRF-Token": this.csrfToken,
                 "Content-Type": "application/x-www-form-urlencoded",
             },
             body: params,
@@ -33,20 +33,29 @@ export default class extends Controller {
             });
     }
 
+    delete({ params: { id } }) {
+        event.preventDefault();
+        if (!confirm(event.target.dataset.turboConfirm)) return;
+
+        fetch(event.target.href, {
+            method: "DELETE",
+            headers: { "X-CSRF-Token": this.csrfToken },
+        }).then(document.getElementById(id).remove());
+
+        this.updateDraftHolders();
+    }
+
     appendArticle(article) {
         const domArticle = document.getElementById(article.dom_id);
         domArticle.remove();
         domArticle.classList.remove("drafted", "published", "trashed", "sent");
         domArticle.classList.add(article.status);
 
-        if (article.status === "published" || article.status === "sent") {
-            document
-                .querySelector(`#${article.model_name}`)
-                .appendChild(domArticle);
-        } else if (article.status === "drafted") {
+        if (article.status != "trashed") {
             const articles = document.querySelector(
-                `#${article.model_name.slice(0, -1)}_drafts`
+                `#${article.status}_${article.model_name}`
             );
+
             if (articles) articles.appendChild(domArticle);
         }
 
@@ -54,40 +63,21 @@ export default class extends Controller {
     }
 
     updateDraftHolders() {
-        const toCheck =
-                document.querySelectorAll(`#article_drafts, #project_drafts,
-                                                   #product_drafts, #newsletter_drafts`),
+        const holders = document.querySelectorAll(
+                "#drafted_articles, #drafted_projects, #drafted_products, #drafted_newsletters"
+            ),
             message = document.getElementById("dashboard-message");
 
-        toCheck.forEach((element) => {
-            if (!element) return;
-
-            element.parentElement.style.display =
-                element.children.length != 0 ? "block" : "none";
+        holders.forEach((holder) => {
+            holder.parentElement.style.display =
+                holder.childElementCount != 0 ? "block" : "none";
         });
 
-        const filtered = Array.from(toCheck).filter(
-            (element) =>
-                element && element.parentElement.style.display != "none"
+        if (!message) return;
+
+        const shouldDisplayMessage = Array.from(holders).every(
+            (holder) => holder && holder.parentElement.style.display == "none"
         );
-        message.style.display = filtered.length === 0 ? "block" : "none";
-    }
-
-    delete({ params: { id } }) {
-        event.preventDefault();
-        if (!confirm(event.target.dataset.turboConfirm)) return;
-
-        const url = event.target.href;
-
-        fetch(url, {
-            method: "DELETE",
-            headers: {
-                "X-CSRF-Token": document.querySelector(
-                    'meta[name="csrf-token"]'
-                ).content,
-            },
-        }).then(document.getElementById(id).remove());
-
-        this.updateDraftHolders();
+        message.style.display = shouldDisplayMessage ? "block" : "none";
     }
 }

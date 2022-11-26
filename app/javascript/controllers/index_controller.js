@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="index"
+// Controls the articles, products and projects index.
 export default class extends Controller {
     static targets = ["menu", "svg", "path", "category", "title"];
 
@@ -13,6 +14,8 @@ export default class extends Controller {
                     entries.forEach((entry) => {
                         const index = Number(entry.target.dataset.index);
 
+                        // If the category is intersecting, append its index to
+                        // the array and remove it if it isn't. Update the svg
                         if (!entry.isIntersecting) {
                             this.categoriesIndex = this.categoriesIndex.filter(
                                 (i) => i != index
@@ -36,6 +39,7 @@ export default class extends Controller {
         }
     }
 
+    // Observe every category section
     connect() {
         if ("IntersectionObserver" in window) {
             this.categoryTargets.forEach((category) => {
@@ -44,12 +48,16 @@ export default class extends Controller {
         }
     }
 
+    // Update the svg to span all the categories which are being viewed by the user
+    // The function will also get called when the user scrolls the sidebar
     setSvg() {
         if (this.categoriesIndex.length == 0) {
             this.pathTarget.setAttribute("stroke-dasharray", "0 0 0 10000");
             return;
         }
 
+        // Get the first and last category viewed by the user and select their
+        // corresponding titles on the sidebar
         const category1 =
                 this.titleTargets[
                     Math.min.apply(Math, this.categoriesIndex)
@@ -59,13 +67,14 @@ export default class extends Controller {
                     Math.max.apply(Math, this.categoriesIndex)
                 ].getBoundingClientRect();
 
+        // Get the first and last title in the sidebar
         const firstTitle = this.titleTargets[0].getBoundingClientRect(),
             lastTitle = this.titleTargets.pop().getBoundingClientRect();
 
         const pathStart = category1.y - firstTitle.y,
-              pathEnd = category2.y + category2.height - firstTitle.y,
-              pathLength = pathEnd - pathStart,
-              lastY = lastTitle.y + lastTitle.height;
+            pathEnd = category2.y + category2.height - firstTitle.y,
+            pathLength = pathEnd - pathStart,
+            lastY = lastTitle.y + lastTitle.height;
 
         this.svgTarget.style.height = `${lastY}px`;
 

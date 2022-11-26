@@ -16,7 +16,7 @@
     <div class='dashboard-drafts'>
         <div>
             <h2 class="title centered"> Soluciones (borradores) </h2>
-            <div class='dashboard-card-holder' id='article_drafts'>
+            <div class='dashboard-card-holder' id='drafted_articles'>
                 <% @article_drafts.each do |article| %>
                     <%= render partial: 'article', object: article %> 
                 <% end %>
@@ -25,7 +25,7 @@
 
         <div>
             <h2 class="title centered"> Proyectos (borradores) </h2>
-            <div class='dashboard-card-holder' id='project_drafts'>
+            <div class='dashboard-card-holder' id='drafted_projects'>
                 <% @project_drafts.each do |article| %>
                     <%= render partial: 'article', object: article %> 
                 <% end %>
@@ -34,7 +34,7 @@
 
         <div>
             <h2 class="title centered"> Productos (borradores) </h2>
-            <div class='dashboard-card-holder' id='product_drafts'>
+            <div class='dashboard-card-holder' id='drafted_products'>
                 <% @product_drafts.each do |article| %>
                     <%= render partial: 'article', object: article %> 
                 <% end %>
@@ -44,21 +44,21 @@
     </div>
 
     <h2 class="title centered"> Soluciones publicadas </h2>
-    <div class='dashboard-card-holder' id='articles'>
+    <div class='dashboard-card-holder' id='published_articles'>
         <% @articles.each do |article| %>
             <%= render partial: 'article', object: article %> 
         <% end %>
     </div>
 
     <h2 class="title centered"> Proyectos publicados </h2>
-    <div class='dashboard-card-holder' id='projects'>
+    <div class='dashboard-card-holder' id='published_projects'>
         <% @projects.each do |article| %>
             <%= render partial: 'article', object: article %> 
         <% end %>
     </div>
 
     <h2 class="title centered"> Productos publicados </h2>
-    <div class='dashboard-card-holder' id='products'>
+    <div class='dashboard-card-holder' id='published_products'>
         <% @products.each do |article| %>
             <%= render partial: 'article', object: article %> 
         <% end %>

@@ -1,6 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="image-displayer"
+// When showing an article, display its images bigger when they get clicked,
+// and zoom them in if they get clicked again
 export default class extends Controller {
     static targets = ["shower"];
 

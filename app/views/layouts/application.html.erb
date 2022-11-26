@@ -72,7 +72,7 @@
 
 
     <% if flash[:alert] %>
-        <div class='alert' data-controller="alert" data-action="touchmove->alert#moveTouch touchend->alert#endTouch">
+        <div class='alert' data-controller="alert">
             <p role="alert"> <%= alert %> </p>
             <i class='close-alert' cursor='pointer' data-action="click->alert#close" tabindex='0' role="button" aria-label="<%= t "shared.alert" %>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -86,7 +86,7 @@
 
 
     <% if flash[:notice] %>
-        <div class='notice' data-controller="alert" data-action="touchmove->alert#moveTouch touchend->alert#endTouch">
+        <div class='notice' data-controller="alert">
             <p role="alert"> <%= notice %> </p>
             <i class='close-notice' data-action="click->alert#close" cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.notice" %>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

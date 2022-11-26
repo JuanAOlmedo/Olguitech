@@ -20,6 +20,10 @@ export default class extends Controller {
         }
     }
 
+    // The class .move will be added to every element with the class .still when
+    // it is viewed by the user
+    // As a fallback, if the browser doesn't support the IntersectionObserver API
+    // all elements will have the .move class appended
     connect() {
         document.querySelectorAll(".still").forEach((still) => {
             if ("IntersectionObserver" in window) {

@@ -2,7 +2,7 @@
 
 class ContactosController < ApplicationController
     def index; end
-    
+
     def new
         @contacto = Contacto.new
         @user = @contacto.user

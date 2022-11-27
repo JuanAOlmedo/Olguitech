@@ -66,7 +66,7 @@ class UsersController < ApplicationController
         end
     end
 
-    # Find or create an user based on their email, subscrive them to newsletters
+    # Find or create an user based on their email, subscribe them to newsletters
     # and update their locale
     def subscribe
         @user = User.find_by(user_params) || User.new(user_params)
@@ -112,8 +112,7 @@ class UsersController < ApplicationController
     def authenticate_edit_token
         @user.regenerate_edit_token unless @user.edit_token
 
-        return if [params[:edit_token], params.fetch(:user, {})[:edit_token]]
-                  .include?(@user.edit_token)
+        return if [params[:edit_token], params.dig(:users, :edit_token)].include? @user.edit_token
 
         redirect_to root_path, alert: t('not_allowed')
     end

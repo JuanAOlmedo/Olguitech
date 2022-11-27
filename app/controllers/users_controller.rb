@@ -49,14 +49,7 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params.merge!(locale: I18n.locale))
-            if session[:will_contact]
-                session.delete :will_contact
-
-                redirect_to root_path,
-                            notice: I18n.t('contact.sent')
-            else
-                redirect_to root_path, notice: t('user_edited')
-            end
+            redirect_to root_path, notice: t(params[:contact] ? 'contact.sent' : 'user_edited')
         else
             render :edit, status: :unprocessable_entity
         end
@@ -64,10 +57,9 @@ class UsersController < ApplicationController
 
     # Confirm user if they provide a valid confirmation_token
     def confirmation
-        @user = User.find_by(confirmation_token: params[:confirmation_token])
+        @user = User.find_by confirmation_token: params[:confirmation_token]
 
-        if @user
-            @user.confirm
+        if @user&.confirm
             redirect_to root_path, notice: t('confirmed')
         else
             redirect_to root_path, alert: t('link_borken')
@@ -92,11 +84,9 @@ class UsersController < ApplicationController
 
     # Unsubscribe the user to newsletters with the provided newsletter_token
     def unsubscribe
-        @user = User.find_by(newsletter_token: params[:newsletter_token])
+        @user = User.find_by newsletter_token: params[:newsletter_token]
 
-        if @user
-            @user.update! newsletter: false
-
+        if @user&.update(newsletter: false)
             redirect_to root_path, notice: t('unsubscribed')
         else
             redirect_to root_path, alert: t('link_broken')

@@ -8,6 +8,10 @@
     <div class="form big-card">
         <%= form.hidden_field :edit_token, value: @user.edit_token %>
 
+        <% if params[:contact] %>
+            <%= form.hidden_field :contact, value: true %>
+        <% end %>
+
         <div class="field" style="padding-bottom: 0; margin-bottom: 0;">
             <%= form.label :name, I18n.t("users.name") %>
             <%= form.text_field :name, value: @user.name %>

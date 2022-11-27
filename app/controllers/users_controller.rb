@@ -49,7 +49,8 @@ class UsersController < ApplicationController
 
     def update
         if @user.update(user_params.merge!(locale: I18n.locale))
-            redirect_to root_path, notice: t(params[:contact] ? 'contact.sent' : 'user_edited')
+            redirect_to root_path,
+                        notice: t(params[:user][:contact] ? 'contact.sent' : 'user_edited')
         else
             render :edit, status: :unprocessable_entity
         end
@@ -112,7 +113,7 @@ class UsersController < ApplicationController
     def authenticate_edit_token
         @user.regenerate_edit_token unless @user.edit_token
 
-        return if [params[:edit_token], params.dig(:users, :edit_token)].include? @user.edit_token
+        return if [params[:edit_token], params.dig(:user, :edit_token)].include? @user.edit_token
 
         redirect_to root_path, alert: t('not_allowed')
     end

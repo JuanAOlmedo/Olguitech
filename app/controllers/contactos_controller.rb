@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 class ContactosController < ApplicationController
-    def index; end
-
-    def new
+    def index
         @contacto = Contacto.new
         @user = @contacto.user
-        @contacto.interests.build
     end
 
     # Find or create a new user based on the email and create a new contact
@@ -26,8 +23,7 @@ class ContactosController < ApplicationController
     private
 
     def contacto_params
-        params.require(:contacto).permit(:message,
-                                         interests_attributes: %i[id record_type record_id])
+        params.require(:contacto).permit :message, :preference, :preference2
     end
 
     def user_params
@@ -41,7 +37,7 @@ class ContactosController < ApplicationController
 
             redirect_to root_path, notice: I18n.t('contact.sent')
         else
-            render :new, status: :unprocessable_entity
+            render :index, status: :unprocessable_entity
         end
     end
 
@@ -55,7 +51,7 @@ class ContactosController < ApplicationController
             redirect_to edit_user_path(@user, edit_token: @user.edit_token, contact: true),
                         notice: I18n.t('contact.first_time')
         else
-            render :new, status: :unprocessable_entity
+            render :index, status: :unprocessable_entity
         end
     end
 end

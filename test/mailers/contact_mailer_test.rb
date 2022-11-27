@@ -3,11 +3,13 @@
 require 'test_helper'
 
 class ContactMailerTest < ActionMailer::TestCase
-    setup { @user = users(:one) }
+    setup do
+        @user = users(:one)
+        @contacto = @user.contactos.create(preference: 1, preference2: 1, message: 'HI')
+    end
 
     test 'contacto' do
-        mail = ContactMailer.contacto(@user, Article.first.localized_title,
-                                      Project.first.localized_title, 'HI')
+        mail = ContactMailer.contacto(@user, @contacto)
 
         assert_emails 1 do
             mail.deliver_now
@@ -22,8 +24,7 @@ class ContactMailerTest < ActionMailer::TestCase
     end
 
     test 'admin_contacto' do
-        mail = ContactMailer.admin_contacto(@user, Article.first.localized_title,
-                                            Project.first.localized_title, 'HI')
+        mail = ContactMailer.admin_contacto(@user, @contacto)
 
         assert_emails 1 do
             mail.deliver_now

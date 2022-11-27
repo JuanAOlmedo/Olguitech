@@ -19,8 +19,5 @@ class Article < ApplicationRecord
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
 
-    has_many :interests, as: :record, dependent: :destroy
-    has_many :contactos, through: :interests
-
     after_save_commit :send_mail, if: :published?, unless: :newsletter_sent
 end

@@ -3,11 +3,9 @@
 class Contacto < ApplicationRecord
     belongs_to :user
 
+    # Add some time to allow users to fill their information
     def send_mail
-        article = Article.find(preference).localized_title
-        project = Project.find(preference2).localized_title
-
-        ContactMailer.contacto(user, article, project, message).deliver_later
-        ContactMailer.admin_contacto(user, article, project, message).deliver_later
+        ContactMailer.contacto(user, self).deliver_later wait: 3.minutes
+        ContactMailer.admin_contacto(user, self).deliver_later wait: 3.minutes
     end
 end

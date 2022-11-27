@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
         resources :contactos
         get '/contacto', to: 'contactos#index'
-        get '/contacto/new', to: 'contactos#new'
 
         resources :articles
         get '/articles/:order_by/:asc_desc', to: 'articles#index'

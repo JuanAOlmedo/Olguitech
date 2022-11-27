@@ -1,4 +1,4 @@
-en:  
+en:
   mail:
     edit_user: Edit User
     unsubscribe: Unsubscribe
@@ -19,14 +19,14 @@ en:
 
         Someone will contact you shortly regarding both items and your message.
         We look forward to hearing from you and %{company} back.
-    confirmation: 
+    confirmation:
       confirm: Confirm my account
       this_link: this link
       subject: Confirm your account!
 
       html: >
         <p>Welcome %{email}!</p>
-      
+
         <p>You can confirm your account with the following link:</p>
         <p>
           %{link1}

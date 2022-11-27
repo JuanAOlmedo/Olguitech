@@ -7,19 +7,24 @@ class UsersController < ApplicationController
                   :redirect_unless_admin,
                   only: %i[index new create]
 
+    # GET /users
     def index
         @users = User.all.order id: :asc
         @contacted = User.where.associated(:contactos).uniq
     end
 
+    # GET /users/1
     def show; end
 
+    # GET /users/new
     def new
         @user = User.new
     end
 
+    # GET /users/1/edit
     def edit; end
 
+    # DELETE /users/1/:edit_token
     def destroy
         @user.destroy
 
@@ -33,6 +38,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # POST /users/
     def create
         @user = User.new user_params.except(:auto_confirm)
         @user.confirm if user_params[:auto_confirm] == '1'
@@ -47,6 +53,7 @@ class UsersController < ApplicationController
         end
     end
 
+    # PATCH /users/1/:edit_token
     def update
         if @user.update(user_params.merge!(locale: I18n.locale))
             redirect_to root_path,
@@ -57,6 +64,7 @@ class UsersController < ApplicationController
     end
 
     # Confirm user if they provide a valid confirmation_token
+    # PATCH /users/confirmation/:confirmation_token
     def confirmation
         @user = User.find_by confirmation_token: params[:confirmation_token]
 
@@ -69,6 +77,7 @@ class UsersController < ApplicationController
 
     # Find or create an user based on their email, subscribe them to newsletters
     # and update their locale
+    # POST /users/subscribe
     def subscribe
         @user = User.find_by(user_params) || User.new(user_params)
 
@@ -84,6 +93,7 @@ class UsersController < ApplicationController
     end
 
     # Unsubscribe the user to newsletters with the provided newsletter_token
+    # GET /users/unsubscribe/:newsletter_token
     def unsubscribe
         @user = User.find_by newsletter_token: params[:newsletter_token]
 

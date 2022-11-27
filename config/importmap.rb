@@ -2,6 +2,7 @@
 
 pin "application", preload: true
 pin "trix-editor-overrides"
+pin "webp"
 pin_all_from "app/javascript/controllers", under: "controllers"
 
 pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true

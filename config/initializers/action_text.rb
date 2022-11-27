@@ -2,3 +2,5 @@
 
 ActionText::ContentHelper.allowed_attributes.add 'style'
 ActionText::ContentHelper.allowed_attributes.add 'data-action'
+ActionText::ContentHelper.allowed_attributes.add 'data-nowebpsrc'
+ActionText::ContentHelper.allowed_attributes.add 'loading'

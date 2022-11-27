@@ -19,5 +19,7 @@ class Article < ApplicationRecord
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
 
+    # Send mail after the article has been created or edited as published
+    # and if no mail has been sent before
     after_save_commit :send_mail, if: :published?, unless: :newsletter_sent
 end

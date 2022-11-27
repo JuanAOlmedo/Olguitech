@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+# Creates the cards shown for example on main, with the alternative of using
+# the cards shown for products
+#
+# Accepts the array of instances which will be turned to cards and the option
+# to display the instances' images
 module CardsHelper
     def cards_for(array, image: true)
         Cards.new(self, array, image).html
@@ -9,6 +14,8 @@ module CardsHelper
         Cards.new(self, array, image).alternative_html
     end
 
+    # Accepts an array and the option of showing an image, then returns the html
+    # to show the cards
     class Cards
         def initialize(view, array, image)
             @view = view
@@ -17,126 +24,112 @@ module CardsHelper
             @uid = SecureRandom.hex(4)
         end
 
+        # Defines the 'normal' cards shown for articles and projects
         def html
-            content = @array.length != 1 ? grid(@array) : card_single(@array[0])
+            content = @array.length != 1 ? grid(@array) : card_single(@array.first)
 
-            content_tag :div, content, id: uid, class: 'cards-holder centered'
+            tag.div content, id: uid, class: 'cards-holder centered'
         end
 
+        # Defines the 'alternative' cards shown for products
         def alternative_html
             if @array.length != 1
                 content = []
-                starts_left = [true, false].sample
+                margin_left = [true, false].sample
 
                 array.each do |element|
-                    next unless element
-
-                    content <<
-                        alternative_card(
-                            element,
-                            array.find_index(element).even?,
-                            starts_left
-                        )
+                    content << alternative_card(element, margin_left)
+                    margin_left = !margin_left
                 end
-
-                content = safe_join content
             else
-                content = alternative_card_single(@array[0])
+                content = [alternative_card_single(@array.first)]
             end
 
-            content_tag :div, content, id: uid, class: 'cards-holder centered'
+            tag.div safe_join(content), id: uid, class: 'cards-holder centered'
         end
 
         private
 
         attr_accessor :view, :array, :uid
 
-        delegate :link_to, :content_tag, :image_tag, :safe_join, :url_for, to: :view
+        delegate :link_to, :tag, :image_for, :safe_join, :url_for, to: :view
 
+        # Creates a grid, randomly assigns which of the two columns will start first,
+        # given by the variable starts_left, and the offset the other will start with.
         def grid(array)
+            starts_left = [false, true].sample
+
+            @last_row = { left: 1, right: 1 }
+            # Define offset for one of the columns
+            @last_row[starts_left ? :right : :left] = @array.length.even? ? rand(3..5) : 10
+
             content = []
-
-            starts_right = @array.length.even? ? [false, true].sample : false
-            rand_num = @array.length.even? ? rand(3..5) : 10
-
-            if starts_right
-                @last_row1 = rand_num
-                @last_row2 = 1
-            else
-                @last_row1 = 1
-                @last_row2 = rand_num
-            end
-
             array.each do |element|
-                content << card(element, array.find_index(element).even?) if element
+                content << card(element, starts_left ? :left : :right) if element
+                starts_left = !starts_left
             end
 
-            content_tag :div, safe_join(content), class: 'grid',
-                                                  style: "grid-template-rows: repeat(#{[@last_row1, @last_row2].max}, 0.2rem);"
+            tag.div safe_join(content), class: 'grid', style: "grid-template-rows:\
+                                                               repeat(#{@last_row.max[1]}, 0.2rem);"
         end
 
+        # Generate a single, centered card
         def card_single(element)
             content = safe_join [img(element), card_content(element)]
 
-            content_tag :div, content, class: 'card card-single centered still'
+            tag.div content, class: 'card card-single centered still'
         end
 
-        def card(element, is_even)
+        # The cards are set to occupy 20 rows of the grid each. The row at which they
+        # end is given by last_row[:left] or last_row[:right] depending on if they are
+        # in the left or the right column
+        def card(element, column)
             content = safe_join [img(element), card_content(element)]
 
-            if is_even
-                grid_row = "#{@last_row1} / #{@last_row1 + 19}"
-                @last_row1 += 20
-            else
-                grid_row = "#{@last_row2} / #{@last_row2 + 19}"
-                @last_row2 += 20
-            end
+            grid_row = "#{@last_row[column]} / #{@last_row[column] + 19}"
+            @last_row[column] += 20
 
-            content_tag :div, content, class: 'card still',
-                                       style: "grid-column: #{is_even ? '1' : '2'}; grid-row: #{grid_row};"
+            tag.div content, class: 'card still',
+                             style: "grid-column: #{column == :left ? '1' : '2'};\
+                                     grid-row: #{grid_row};"
         end
 
+        # Generate a single, centered alternative card
         def alternative_card_single(element)
             content = safe_join [img(element), card_content(element)]
 
-            content_tag :div, content, class: 'alternative-card centered still'
+            tag.div content, class: 'alternative-card centered still'
         end
 
-        def alternative_card(element, is_even, starts_left)
+        # The alternative cards have a random margin on one of theit sides given by
+        # random_margin and an automatic margin on the other side.
+        def alternative_card(element, margin_left)
             content = safe_join [img(element), card_content(element)]
 
-            rand_num = "#{rand(3.0..7.0)}%"
+            rand_margin = "#{rand(3.0..7.0)}%"
 
-            margin_left = !is_even ^ starts_left ? 'auto' : rand_num
-            margin_right = is_even ^ starts_left ? 'auto' : rand_num
+            margin_left = margin_left ? rand_margin : 'auto'
+            margin_right = margin_left ? 'auto' : rand_margin
 
-            content_tag :div, content, class: 'alternative-card still',
-                                       style: "margin-left: #{margin_left};
-                                               margin-right: #{margin_right};"
+            tag.div content, class: 'alternative-card still',
+                             style: "margin-left: #{margin_left};\
+                                     margin-right: #{margin_right};"
         end
 
+        # Return the image if the variable @image is provided
         def img(element)
             return unless @image && element.image.attached?
 
-            image_tag element.image.variant(saver: { quality: 60 }, resize_to_limit: [40, 40]),
-                      data: {
-                          src: url_for(element.image.variant(saver: { quality: 85 },
-                                                             resize_to_limit: [
-                                                                 720, 720
-                                                             ]))
-                      },
-                      class: 'lazy',
-                      alt: element.image.filename
+            image_for element.image, resize: [720, 720], alt: element.image.filename
         end
 
+        # The content of the card itself (title, description and link)
         def card_content(element)
-            title = content_tag :h2, element.localized_short_title, class: 'title'
-            desc = content_tag :p, element.localized_short_desc, class: 'big-text'
+            title = tag.h2 element.localized_short_title, class: 'title'
+            desc = tag.p element.localized_short_desc, class: 'big-text'
             link = link_to I18n.t('general.see_more'), element, class: 'btn'
 
-            content = safe_join [title, desc, link]
-
-            content_tag :div, content
+            tag.div safe_join([title, desc, link])
         end
     end
 end

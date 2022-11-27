@@ -1,11 +1,11 @@
 <% content_for :title, "Usuarios" %>
 
 <%= turbo_frame_tag 'dashboard-users' do %>
-    <div data-controller="user-index user-searchbar" data-user-index-hidden-class="hidden">
+    <div data-controller="user-index" data-user-index-hidden-class="hidden">
         <h1 class='main-title'> Usuarios </h1>
 
         <div class="field" id="user-index-field">
-            <input class="centered" data-action="input->user-searchbar#search" data-user-searchbar-target="search" id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
+            <input class="centered" data-action="input->user-index#search" data-user-index-target="search" id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
         </div>
 
         <div class="table">

@@ -7,7 +7,7 @@
     <p class='subtitle'> <%= @project.localized_desc %> </p>
 
     <% if @project.image.attached? %>
-        <%= image_tag @project.image.variant(saver: { quality: 85 }), class: 'article-img centered', alt: @project.image.filename %>
+        <%= image_for @project.image, resize: [], class: 'article-img centered', alt: @project.image.filename %>
     <% end %>
 
     <div class="content" data-controller="image-displayer">

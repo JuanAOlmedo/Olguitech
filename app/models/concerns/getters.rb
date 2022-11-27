@@ -37,6 +37,8 @@ module Getters
         base.extend(ClassMethods)
     end
 
+    # Used for the class method :ordered, which is used in articles, products and
+    # projects index
     module ClassMethods
         def ordered(order_by, asc_desc)
             order_by = test_order_by order_by
@@ -47,6 +49,8 @@ module Getters
 
         private
 
+        # Test that ordet_by is in a certain list, else change order_by to 'categories'
+        # Return localized title or order_by accordingly
         def test_order_by(order_by)
             order_by =
                 if %w[created_at updated_at title categories uncategorized].include? order_by
@@ -58,6 +62,8 @@ module Getters
             order_by == 'title' && I18n.locale == :en ? 'title2' : order_by
         end
 
+        # Return an array containing all categories associated to the model,
+        # or just the instances order according to order_by
         def return_ordered(order_by, asc_desc)
             case order_by
             when 'categories'

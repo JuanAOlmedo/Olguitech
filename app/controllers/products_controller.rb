@@ -19,17 +19,15 @@ class ProductsController < ApplicationController
     end
 
     # GET /products/1 or /products/1.json
+    # Count the number of views of an product. Store in the user's session that
+    # the product has been viewed
     def show
-        viewed_products = session[:viewed_products]
+        session[:viewed_products] = [] unless session[:viewed_products]
 
-        return unless viewed_products.nil? || !@product.id.in?(viewed_products)
+        return if @product.id.in? session[:viewed_products]
 
-        @product.views += 1
-
-        session[:viewed_products] = [] if viewed_products.nil?
+        @product.update views: @product.views + 1
         session[:viewed_products] << @product.id
-
-        @product.save
     end
 
     # GET /products/new
@@ -103,23 +101,22 @@ class ProductsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # Convert status to integer
     def product_params
-        product_params = params
-                         .require(:product)
-                         .permit(
-                             :title,
-                             :title2,
-                             :description,
-                             :description2,
-                             :content,
-                             :content2,
-                             { article_ids: [] },
-                             { project_ids: [] },
-                             { category_ids: [] },
-                             :image,
-                             :status
-                         )
-        product_params[:status] = product_params[:status].to_i if product_params[:status]
-        product_params
+        params.require(:product)
+              .permit(
+                  :title,
+                  :title2,
+                  :description,
+                  :description2,
+                  :content,
+                  :content2,
+                  { article_ids: [] },
+                  { project_ids: [] },
+                  { category_ids: [] },
+                  :image,
+                  :status
+              )
+              .merge(status: params[:product].fetch(:status, 1).to_i)
     end
 end

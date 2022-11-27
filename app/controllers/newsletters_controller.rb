@@ -73,13 +73,13 @@ class NewslettersController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # Convert status to integer or use :sent instead if it exists.
+    # Don't allow :sent through
     def newsletter_params
-        newsletter_params = params.require(:newsletter)
-                                  .permit(:title, :content, :subject, :status, :sent)
-        newsletter_params[:status] = newsletter_params[:status].to_i
-        newsletter_params[:status] = 1 if newsletter_params[:sent] == '1'
-        newsletter_params.delete :sent
-        newsletter_params
+        params.require(:newsletter)
+              .permit(:title, :content, :subject, :status, :sent)
+              .merge(status: (params[:newsletter][:sent] || params[:newsletter][:status]).to_i)
+              .except(:sent)
     end
 
     def check_sent

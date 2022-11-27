@@ -1,6 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="contacto"
+// Code to show map
 export default class extends Controller {
     static values = {
         mapDefaultZoom: Number,

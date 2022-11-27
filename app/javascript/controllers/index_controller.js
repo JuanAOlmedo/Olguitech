@@ -1,27 +1,35 @@
 import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="index"
+// Controls the articles, products and projects index.
 export default class extends Controller {
     static targets = ["menu", "svg", "path", "category", "title"];
+
+    categoriesIndex = [];
 
     initialize() {
         if ("IntersectionObserver" in window) {
             this.categoryObserver = new IntersectionObserver(
                 (entries, categoryObserver) => {
                     entries.forEach((entry) => {
-                        if (!entry.isIntersecting) {
-                            entry.target.classList.remove("visible1");
+                        const index = Number(entry.target.dataset.index);
 
-                            this.titleTargets[
-                                Number(entry.target.dataset.index)
-                            ].classList.remove("visible");
+                        // If the category is intersecting, append its index to
+                        // the array and remove it if it isn't. Update the svg
+                        if (!entry.isIntersecting) {
+                            this.categoriesIndex = this.categoriesIndex.filter(
+                                (i) => i != index
+                            );
+                            this.titleTargets[index].classList.remove(
+                                "visible"
+                            );
 
                             this.setSvg();
                             return;
                         }
 
-                        entry.target.classList.add("visible1");
-                        this.setVisible();
+                        this.categoriesIndex.push(index);
+                        this.titleTargets[index].classList.add("visible");
 
                         this.setSvg();
                     });
@@ -31,59 +39,47 @@ export default class extends Controller {
         }
     }
 
+    // Observe every category section
     connect() {
-        this.categoryTargets.forEach((category) => {
-            this.categoryObserver.observe(category);
-        });
+        if ("IntersectionObserver" in window) {
+            this.categoryTargets.forEach((category) => {
+                this.categoryObserver.observe(category);
+            });
+        }
     }
 
-    setVisible() {
-        this.categoryTargets.forEach((category) => {
-            if (category.classList.contains("visible1")) {
-                this.titleTargets[Number(category.dataset.index)].classList.add(
-                    "visible"
-                );
-            }
-        });
-    }
-
+    // Update the svg to span all the categories which are being viewed by the user
+    // The function will also get called when the user scrolls the sidebar
     setSvg() {
-        const categories = Array.from(document.querySelectorAll(".visible1"));
-        const menuBounds = this.menuTarget.getBoundingClientRect();
-        this.svgTarget.style.height = `${menuBounds.y + menuBounds.height}px`;
-
-        const categoriesIndex = [];
-        categories.forEach((category) => {
-            categoriesIndex.push(Number(category.dataset.index));
-        });
-
-        if (categories.length == 0) {
+        if (this.categoriesIndex.length == 0) {
             this.pathTarget.setAttribute("stroke-dasharray", "0 0 0 10000");
             return;
         }
 
+        // Get the first and last category viewed by the user and select their
+        // corresponding titles on the sidebar
         const category1 =
-            this.titleTargets[
-                Math.min.apply(Math, categoriesIndex)
-            ].getBoundingClientRect();
-        const category2 =
-            this.titleTargets[
-                Math.max.apply(Math, categoriesIndex)
-            ].getBoundingClientRect();
+                this.titleTargets[
+                    Math.min.apply(Math, this.categoriesIndex)
+                ].getBoundingClientRect(),
+            category2 =
+                this.titleTargets[
+                    Math.max.apply(Math, this.categoriesIndex)
+                ].getBoundingClientRect();
 
-        const firstTitle = this.titleTargets[0].getBoundingClientRect();
-        const lastTitle =
-            this.titleTargets[
-                this.titleTargets.length - 1
-            ].getBoundingClientRect();
+        // Get the first and last title in the sidebar
+        const firstTitle = this.titleTargets[0].getBoundingClientRect(),
+            lastTitle = this.titleTargets.pop().getBoundingClientRect();
 
-        const pathStart = category1.y - firstTitle.y;
-        const pathEnd = category2.y + category2.height - firstTitle.y;
-        const pathLength = pathEnd - pathStart;
+        const pathStart = category1.y - firstTitle.y,
+            pathEnd = category2.y + category2.height - firstTitle.y,
+            pathLength = pathEnd - pathStart,
+            lastY = lastTitle.y + lastTitle.height;
+
+        this.svgTarget.style.height = `${lastY}px`;
 
         this.pathTarget.attributes.d.value = `
-        M ${firstTitle.x} ${firstTitle.y}
-        V ${lastTitle.y + lastTitle.height}
+            M ${firstTitle.x} ${firstTitle.y} V ${lastY}
         `;
 
         this.pathTarget.setAttribute(

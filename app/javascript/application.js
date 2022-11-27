@@ -6,3 +6,4 @@ import "@hotwired/stimulus";
 import "@hotwired/stimulus-loading";
 import "controllers";
 import "@rails/actiontext";
+import "webp";

@@ -3,8 +3,10 @@
 class DashboardController < ApplicationController
     before_action :authenticate_admin!
 
+    # GET /dashboard/edit
     def edit; end
 
+    # GET /dashboard/ or /dashboard/articles
     def articles
         @articles = Article.published
         @projects = Project.published
@@ -15,15 +17,18 @@ class DashboardController < ApplicationController
         @product_drafts = Product.drafted
     end
 
+    # GET /dashboard/categories
     def categories
         @categories = Category.all
     end
 
+    # GET /dashboard/newsletters
     def newsletters
         @newsletters = Newsletter.sent
         @newsletter_drafts = Newsletter.drafted
     end
 
+    # GET /dashboard/trash
     def trash
         @articles = Article.trashed
         @projects = Project.trashed
@@ -32,5 +37,6 @@ class DashboardController < ApplicationController
         @trash = true
     end
 
+    # GET /dashboard/users
     def users; end
 end

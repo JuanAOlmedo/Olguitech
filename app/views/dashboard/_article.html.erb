@@ -1,8 +1,5 @@
 <div class='dashboard-card <%= article.status %>' id='<%= dom_id article %>'>
-    <% options = { saver: { quality: 85 }, resize_to_limit: [720, 720] } %>
-    <% options.merge!({ convert: 'webp' }) if @webp %>
-
-    <%= image_tag article.image.variant(options), loading: 'lazy' if article.model_name != 'Newsletter' && article.image.attached? %>
+    <%= image_for article.image, resize: [720, 720] if article.model_name != 'Newsletter' && article.image.attached? %>
 
     <div>
         <h3> <%= article.localized_short_title %> </h3>

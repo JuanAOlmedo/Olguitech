@@ -4,10 +4,7 @@
 <div class="product">
     <div class="product-top">
         <% if @product.image.attached? %>
-            <% options = { saver: { quality: 85 } } %>
-            <% options.merge!({ convert: 'webp' }) if @webp %>
-
-            <%= image_tag @product.image.variant(options), alt: @product.image.filename %>
+            <%= image_for @product.image, resize: [], class: 'product-img centered', alt: @product.image.filename %>
         <% end %>
 
         <div class="text">
@@ -38,13 +35,13 @@
         <h1 class="main-title">
             <%= t "show.articles" %>
         </h1>
-        <%= cards_for @product.articles, webp: @webp %>
+        <%= cards_for @product.articles %>
     <% end %>
     <% if @product.projects.any? %>
         <h1 class="main-title">
             <%= t "show.proyects" %>
         </h1>
-        <%= cards_for @product.projects, webp: @webp %>
+        <%= cards_for @product.projects %>
     <% end %>
 </div>
 

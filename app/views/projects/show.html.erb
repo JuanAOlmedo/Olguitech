@@ -7,10 +7,7 @@
     <p class='subtitle'> <%= @project.localized_desc %> </p>
 
     <% if @project.image.attached? %>
-        <% options = { saver: { quality: 85 } } %>
-        <% options.merge!({ convert: 'webp' }) if @webp %>
-
-        <%= image_tag @project.image.variant(options), class: 'article-img centered', alt: @project.image.filename %>
+        <%= image_for @project.image, resize: [], class: 'article-img centered', alt: @project.image.filename %>
     <% end %>
 
     <div class="content" data-controller="image-displayer">
@@ -35,7 +32,7 @@
         <h1 class='main-title'>
             <%= t "show.products" %>
         </h1>
-        <%= alternative_cards_for @project.products, webp: @webp %>
+        <%= alternative_cards_for @project.products %>
     <% end %>
 </article>
 

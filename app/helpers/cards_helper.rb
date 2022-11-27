@@ -6,22 +6,21 @@
 # Accepts the array of instances which will be turned to cards and the option
 # to display the instances' images
 module CardsHelper
-    def cards_for(array, image: true, webp: false)
-        Cards.new(self, array, image, webp).html
+    def cards_for(array, image: true)
+        Cards.new(self, array, image).html
     end
 
-    def alternative_cards_for(array, image: true, webp: false)
-        Cards.new(self, array, image, webp).alternative_html
+    def alternative_cards_for(array, image: true)
+        Cards.new(self, array, image).alternative_html
     end
 
     # Accepts an array and the option of showing an image, then returns the html
     # to show the cards
     class Cards
-        def initialize(view, array, image, webp)
+        def initialize(view, array, image)
             @view = view
             @array = array
             @image = image
-            @webp = webp
             @uid = SecureRandom.hex(4)
         end
 
@@ -53,7 +52,7 @@ module CardsHelper
 
         attr_accessor :view, :array, :uid
 
-        delegate :link_to, :tag, :image_tag, :safe_join, :url_for, to: :view
+        delegate :link_to, :tag, :image_for, :safe_join, :url_for, to: :view
 
         # Creates a grid, randomly assigns which of the two columns will start first,
         # given by the variable starts_left, and the offset the other will start with.
@@ -117,17 +116,11 @@ module CardsHelper
                                      margin-right: #{margin_right};"
         end
 
-        # Return the image if the variable @image is provided, convert it to WebP
-        # if @webp is provided
+        # Return the image if the variable @image is provided
         def img(element)
             return unless @image && element.image.attached?
 
-            options = { saver: { quality: 80 }, resize_to_limit: [720, 720] }
-            options.merge!({ convert: 'webp' }) if @webp
-
-            image_tag element.image.variant(options),
-                      loading: 'lazy',
-                      alt: element.image.filename
+            image_for element.image, resize: [720, 720], alt: element.image.filename
         end
 
         # The content of the card itself (title, description and link)

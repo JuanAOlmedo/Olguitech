@@ -27,7 +27,7 @@
             <%= Product.model_name.human(count: 2) %>
         </h2>
         
-        <%= alternative_cards_for @products, webp: @webp %>
+        <%= alternative_cards_for @products %>
     <% end %>
 
     <% if @articles.any? %>
@@ -35,7 +35,7 @@
             <%= Article.model_name.human(count: 2) %>
         </h2>
 
-        <%= cards_for @articles, webp: @webp %>
+        <%= cards_for @articles %>
     <% end %>
 
     <% if @projects.any? %>
@@ -43,7 +43,7 @@
             <%= Project.model_name.human(count: 2) %>
         </h2>
         
-        <%= cards_for @projects, webp: @webp %>
+        <%= cards_for @projects %>
     <% end %>
 </div>
 

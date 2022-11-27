@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Generate lazy loaded images that have a no WebP fallback source in their dataset
 module ImageHelper
     def image_for(image, options = {})
         img_options = { saver: { quality: 80 }, resize_to_limit: options[:resize], convert: 'webp' }

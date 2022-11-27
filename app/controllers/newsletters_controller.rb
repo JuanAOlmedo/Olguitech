@@ -78,9 +78,7 @@ class NewslettersController < ApplicationController
     def newsletter_params
         params.require(:newsletter)
               .permit(:title, :content, :subject, :status, :sent)
-              .merge(status: params[:newsletter]
-                                .fetch(:sent, params[:newsletter].fetch(:status, 0).to_i)
-                                .to_i)
+              .merge(status: (params[:newsletter][:sent] || params[:newsletter][:status]).to_i)
               .except(:sent)
     end
 

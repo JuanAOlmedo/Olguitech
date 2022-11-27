@@ -14,23 +14,36 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
         newsletters(:one).drafted!
     end
 
-    test 'should send newsletter when updating a newsletter' do
+    test 'should send newsletter when updating a newsletter with sent' do
         parameters = {
             newsletter: {
-                sent: '1'
+                sent: '1',
+                status: '0'
             }
         }
 
-        assert_emails 2 do
+        assert_emails 1 do
             patch '/newsletters/1', params: parameters
-            newsletters(:one).send_newsletter
         end
     end
 
-    test 'should not send newsletter when updating a newsletter' do
+    test 'should send newsletter when updating a newsletter with status' do
         parameters = {
             newsletter: {
-                sent: '0'
+                status: '1'
+            }
+        }
+
+        assert_emails 1 do
+            patch '/newsletters/1', params: parameters
+        end
+    end
+
+    test 'should not send newsletter when updating a newsletter with sent' do
+        parameters = {
+            newsletter: {
+                sent: '0',
+                status: '1'
             }
         }
 
@@ -39,10 +52,23 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should send newsletter when creating a newsletter' do
+    test 'should not send newsletter when updating a newsletter with status' do
         parameters = {
             newsletter: {
-                sent: '1'
+                status: '0'
+            }
+        }
+
+        assert_emails 0 do
+            patch '/newsletters/1', params: parameters
+        end
+    end
+
+    test 'should send newsletter when creating a newsletter with sent' do
+        parameters = {
+            newsletter: {
+                sent: '1',
+                status: '0'
             }
         }
 
@@ -51,7 +77,32 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should not send newsletter when creating a newsletter' do
+    test 'should send newsletter when creating a newsletter with status' do
+        parameters = {
+            newsletter: {
+                status: '1'
+            }
+        }
+
+        assert_emails 1 do
+            post '/newsletters', params: parameters
+        end
+    end
+
+    test 'should not send newsletter when creating a newsletter with sent' do
+        parameters = {
+            newsletter: {
+                sent: '0',
+                status: '1'
+            }
+        }
+
+        assert_emails 0 do
+            post '/newsletters', params: parameters
+        end
+    end
+
+    test 'should not send newsletter when creating a newsletter with status' do
         parameters = {
             newsletter: {
                 sent: '0'

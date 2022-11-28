@@ -19,66 +19,61 @@ module CardsHelper
     class Cards
         def initialize(view, array, image)
             @view = view
-            @array = array
+            @array = array.to_a
             @image = image
-            @uid = SecureRandom.hex(4)
         end
 
         # Defines the 'normal' cards shown for articles and projects
         def html
-            content = @array.length != 1 ? grid(@array) : card_single(@array.first)
+            content = @array.length != 1 ? grid : card_single(@array.first)
 
-            tag.div content, id: uid, class: 'cards-holder centered'
+            tag.div content, class: 'cards-holder centered'
         end
 
         # Defines the 'alternative' cards shown for products
         def alternative_html
-            if @array.length != 1
-                content = []
-                margin_left = [true, false].sample
+            # When the margin is :none, both sides will have automatic margins.
+            # This is the case when the card is alone
+            margin = @array.length != 1 ? %i[left right].sample : :none
 
-                array.each do |element|
-                    content << alternative_card(element, margin_left)
-                    margin_left = !margin_left
-                end
-            else
-                content = [alternative_card_single(@array.first)]
+            @array.map! do |element|
+                margin = margin == :left ? :right : :left unless margin == :none
+                alternative_card(element, margin)
             end
 
-            tag.div safe_join(content), id: uid, class: 'cards-holder centered'
+            tag.div safe_join(@array), class: 'cards-holder centered'
         end
 
         private
 
-        attr_accessor :view, :array, :uid
+        attr_accessor :view, :array
 
         delegate :link_to, :tag, :image_for, :safe_join, :url_for, to: :view
 
         # Creates a grid, randomly assigns which of the two columns will start first,
-        # given by the variable starts_left, and the offset the other will start with.
-        def grid(array)
-            starts_left = [false, true].sample
+        # given by the variable column, and the offset the other will start with.
+        def grid
+            column = %i[left right].sample
 
             @last_row = { left: 1, right: 1 }
             # Define offset for one of the columns
-            @last_row[starts_left ? :right : :left] = @array.length.even? ? rand(3..5) : 10
+            @last_row[column] = @array.length.even? ? rand(3..5) : 10
 
-            content = []
-            array.each do |element|
-                content << card(element, starts_left ? :left : :right) if element
-                starts_left = !starts_left
+            @array.map! do |element|
+                column = column == :left ? :right : :left
+                card(element, column) if element
             end
 
-            tag.div safe_join(content), class: 'grid', style: "grid-template-rows:\
-                                                               repeat(#{@last_row.max[1]}, 0.2rem);"
+            tag.div safe_join(@array), class: 'grid', style: "grid-template-rows:\
+                                                              repeat(#{@last_row.max[1]}, 0.2rem);"
         end
 
         # Generate a single, centered card
         def card_single(element)
-            content = safe_join [img(element), card_content(element)]
-
-            tag.div content, class: 'card card-single centered still'
-        end
+            tag.div class: 'card card-single centered still' do
+                img(element) + card_content(element)
+            end
+         end
 
         # The cards are set to occupy 20 rows of the grid each. The row at which they
         # end is given by last_row[:left] or last_row[:right] depending on if they are
@@ -94,42 +89,34 @@ module CardsHelper
                                      grid-row: #{grid_row};"
         end
 
-        # Generate a single, centered alternative card
-        def alternative_card_single(element)
-            content = safe_join [img(element), card_content(element)]
-
-            tag.div content, class: 'alternative-card centered still'
-        end
-
         # The alternative cards have a random margin on one of theit sides given by
-        # random_margin and an automatic margin on the other side.
-        def alternative_card(element, margin_left)
+        # random_margin and an automatic margin on the other side. If rand_margin is
+        # :none, both sides will have automatic margins.
+        def alternative_card(element, rand_margin)
             content = safe_join [img(element), card_content(element)]
 
-            rand_margin = "#{rand(3.0..7.0)}%"
-
-            margin_left = margin_left ? rand_margin : 'auto'
-            margin_right = margin_left ? 'auto' : rand_margin
+            margin = { left: 'auto', right: 'auto' }
+            margin[rand_margin] = "#{rand(3.0..7.0)}%"
 
             tag.div content, class: 'alternative-card still',
-                             style: "margin-left: #{margin_left};\
-                                     margin-right: #{margin_right};"
+                             style: "margin-left: #{margin[:left]};\
+                                     margin-right: #{margin[:right]};"
         end
 
         # Return the image if the variable @image is provided
         def img(element)
-            return unless @image && element.image.attached?
+            return '' unless @image && element.image.attached?
 
             image_for element.image, resize: [720, 720], alt: element.image.filename
         end
 
         # The content of the card itself (title, description and link)
         def card_content(element)
-            title = tag.h2 element.localized_short_title, class: 'title'
-            desc = tag.p element.localized_short_desc, class: 'big-text'
-            link = link_to I18n.t('general.see_more'), element, class: 'btn'
-
-            tag.div safe_join([title, desc, link])
+            tag.div do
+                tag.h2(element.localized_short_title, class: 'title') +
+                    tag.p(element.localized_short_desc, class: 'big-text') +
+                    link_to(I18n.t('general.see_more'), element, class: 'btn')
+            end
         end
     end
 end

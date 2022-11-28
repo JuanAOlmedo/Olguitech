@@ -91,7 +91,6 @@ class NewslettersController < ApplicationController
     def redirect_unless_admin
         return if admin_signed_in?
 
-        flash[:alert] = 'Solo administradores pueden hacer eso'
-        redirect_to root_path
+        redirect_to root_path, alert: 'Solo administradores pueden hacer eso'
     end
 end

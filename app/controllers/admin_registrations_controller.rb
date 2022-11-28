@@ -7,8 +7,7 @@ class AdminRegistrationsController < Devise::RegistrationsController
     skip_before_action :require_no_authentication
 
     def destroy
-        flash[:alert] = I18n.t('shared.cant_cancel')
-        redirect_to root_path
+        redirect_to root_path, alert: I18n.t('shared.cant_cancel')
     end
 
     private
@@ -16,8 +15,7 @@ class AdminRegistrationsController < Devise::RegistrationsController
     def redirect_unless_admin
         return if admin_signed_in?
 
-        flash[:alert] = I18n.t('shared.admins')
-        redirect_to root_path
+        redirect_to root_path, alert: I18n.t('shared.admins')
     end
 
     def sign_up_params

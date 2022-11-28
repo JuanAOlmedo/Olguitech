@@ -79,7 +79,7 @@ class UsersController < ApplicationController
     # and update their locale
     # POST /users/subscribe
     def subscribe
-        @user = User.find_by(user_params) || User.new(user_params)
+        @user = User.find_by(subscribe_user_params) || User.new(subscribe_user_params)
 
         @user.newsletter = true
         @user.locale = I18n.locale
@@ -109,9 +109,7 @@ class UsersController < ApplicationController
     def redirect_unless_admin
         return if admin_signed_in?
 
-        redirect_to root_path,
-                    status: :unauthorized,
-                    alert: t('not_allowed')
+        redirect_to root_path, status: :unauthorized, alert: t('not_allowed')
     end
 
     def set_user
@@ -137,5 +135,9 @@ class UsersController < ApplicationController
                                      :locale,
                                      :edit_token,
                                      :auto_confirm
+    end
+
+    def subscribe_user_params
+        params.require(:user).permit :email
     end
 end

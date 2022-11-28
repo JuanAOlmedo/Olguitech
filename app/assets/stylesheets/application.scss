@@ -179,6 +179,7 @@ body {
 
     &.centered {
         display: block;
+        width: max-content;
     }
 
     &.is-danger {

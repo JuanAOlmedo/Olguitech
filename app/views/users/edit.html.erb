@@ -41,7 +41,7 @@
 
         <div class="btn-group centered">
             <%= form.submit(params[:contact] ? t("contact.send") : t("users.edit_account"), class:'btn') %>
-            <%= link_to t("users.delete_account"), url_for(controller: :users, action: :destroy, id: @user.id, edit_token: @user.edit_token), class: "btn is-danger", data: { turbo_method: :delete, turbo_confirm: t("users.are_you_sure") } unless session[:will_contact] %>
+            <%= link_to t("users.delete_account"), url_for(controller: :users, action: :destroy, id: @user.id, edit_token: @user.edit_token), class: "btn is-danger", data: { turbo_method: :delete, turbo_confirm: t("users.are_you_sure") } unless params[:contact] %>
         </div>
     </div>
 <% end %>

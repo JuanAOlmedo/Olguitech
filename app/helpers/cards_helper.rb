@@ -73,7 +73,7 @@ module CardsHelper
             tag.div class: 'card card-single centered still' do
                 img(element) + card_content(element)
             end
-         end
+        end
 
         # The cards are set to occupy 20 rows of the grid each. The row at which they
         # end is given by last_row[:left] or last_row[:right] depending on if they are

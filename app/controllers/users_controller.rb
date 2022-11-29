@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
     # PATCH /users/1/:edit_token
     def update
-        if @user.update(user_params.merge!(locale: I18n.locale))
+        if @user.update(user_params.merge(locale: I18n.locale))
             redirect_to root_path,
                         notice: t(params[:user][:contact] ? 'contact.sent' : 'user_edited')
         else

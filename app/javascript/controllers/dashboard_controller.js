@@ -1,13 +1,17 @@
 import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="dashboard"
+// Controller for the admin dashboard
 export default class extends Controller {
+    // CSRF-Token needed to send requests back to the server
     csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
     connect() {
         this.updateDraftHolders();
     }
 
+    // Send a request to the server with the parameters that the link provides.
+    // Send the resulting article to appendArticle to process it.
     update(event) {
         event.preventDefault();
         const href = event.target.href,
@@ -33,6 +37,7 @@ export default class extends Controller {
             });
     }
 
+    // Delete an article and remove it from the DOM
     delete({ params: { id } }) {
         event.preventDefault();
         if (!confirm(event.target.dataset.turboConfirm)) return;
@@ -45,11 +50,12 @@ export default class extends Controller {
         this.updateDraftHolders();
     }
 
+    // Append the updated article to its corresponding place in the DOM and update
+    // the draft holders.
     appendArticle(article) {
         const domArticle = document.getElementById(article.dom_id);
         domArticle.remove();
-        domArticle.classList.remove("drafted", "published", "trashed", "sent");
-        domArticle.classList.add(article.status);
+        domArticle.classList = `dashboard-card ${article.status}`;
 
         if (article.status != "trashed") {
             const articles = document.querySelector(
@@ -62,6 +68,8 @@ export default class extends Controller {
         this.updateDraftHolders();
     }
 
+    // Don't show the drafts section unless there are any drafted articles.
+    // If all draft holders are empty, display a message indicating this.
     updateDraftHolders() {
         const holders = document.querySelectorAll(
                 "#drafted_articles, #drafted_projects, #drafted_products, #drafted_newsletters"

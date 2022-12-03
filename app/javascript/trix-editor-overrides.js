@@ -1,3 +1,4 @@
+// Don't allow uploading unsupported file types
 window.addEventListener("trix-file-accept", (event) => {
     const acceptedTypes = ["image/jpeg", "image/png"];
 

@@ -153,6 +153,7 @@
     n.Modernizr = Modernizr;
 })(window, document);
 
+// Detect WebP support
 Modernizr.on("webpalpha", function (result) {
     if (!result) {
         remove_images();
@@ -160,6 +161,7 @@ Modernizr.on("webpalpha", function (result) {
     }
 });
 
+// Fallback to the Nowebpsrc in images that have one
 function remove_images() {
     document.querySelectorAll("img").forEach((img) => {
         if (img.dataset.nowebpsrc) {

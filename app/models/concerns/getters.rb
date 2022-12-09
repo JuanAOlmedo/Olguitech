@@ -49,7 +49,7 @@ module Getters
 
         private
 
-        # Test that ordet_by is in a certain list, else change order_by to 'categories'
+        # Test that order_by is in a certain list, else change order_by to 'categories'
         # Return localized title or order_by accordingly
         def test_order_by(order_by)
             order_by =

@@ -6,8 +6,10 @@ class NewslettersTest < ApplicationSystemTestCase
     teardown { sign_out :admin }
 
     test 'visiting a newsletter' do
+        newsletters(:one).sent!
         visit '/newsletters/1'
         assert_selector 'h1', text: newsletters(:one).title
+        newsletters(:one).drafted!
     end
 
     test 'should create newsletter' do

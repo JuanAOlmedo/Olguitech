@@ -15,8 +15,10 @@ class NewslettersControllerTest < ActionDispatch::IntegrationTest
         get new_newsletter_url
         assert_response :redirect
 
+        @newsletter.sent!
         get newsletter_url(id: @newsletter.id)
         assert_response :success
+        @newsletter.drafted!
 
         assert_no_difference('Newsletter.count') do
             post newsletters_url, params: @params

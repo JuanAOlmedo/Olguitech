@@ -19,8 +19,8 @@
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">
         <% if @newsletter.status == 'drafted' %>
-            <%= link_to 'Editar', edit_newsletter_path(@newsletter), class: 'btn'  %>
+            <%= link_to 'Editar', edit_newsletter_path(@newsletter), class: 'btn' %>
         <% end %>
-        <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/newsletters##{dom_id @newsletter}", class: 'btn'  %>
+        <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/newsletters##{dom_id @newsletter}", class: 'btn' %>
     </div>
 <% end %>

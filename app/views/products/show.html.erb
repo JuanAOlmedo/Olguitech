@@ -1,5 +1,5 @@
 <% content_for :title, "#{@product.localized_title} | Olguitech s.a.s." %>
-<% content_for :description, "#{@product.localized_desc}" %>
+<% content_for :description, @product.localized_desc.to_s %>
 
 <div class="product">
     <div class="product-top">
@@ -12,7 +12,7 @@
                 <p class="article-categories">
                     <%= "#{Category.model_name.human(count: @product.categories.length)}:" %>
                     <% @product.categories.each do |category| %>
-                        <%= link_to category.localized_title, category_path(category), class: "link" %><%= "#{@product.categories.last != category ? ", " : ""}" %>
+                        <%= link_to category.localized_title, category_path(category), class: 'link' %><%= (@product.categories.last != category ? ', ' : '').to_s %>
                     <% end %>
                 </p>
             <% end %>
@@ -33,13 +33,13 @@
 
     <% if @product.articles.any? %>
         <h1 class="main-title">
-            <%= t "show.articles" %>
+            <%= t 'show.articles' %>
         </h1>
         <%= cards_for @product.articles %>
     <% end %>
     <% if @product.projects.any? %>
         <h1 class="main-title">
-            <%= t "show.proyects" %>
+            <%= t 'show.proyects' %>
         </h1>
         <%= cards_for @product.projects %>
     <% end %>
@@ -48,10 +48,10 @@
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">
         <% if %w[drafted published].include?(@product.status) %>
-            <%= link_to 'Editar', edit_product_path(@product), class: 'btn'  %>
-            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @product}", class: 'btn'  %>
+            <%= link_to 'Editar', edit_product_path(@product), class: 'btn' %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @product}", class: 'btn' %>
         <% else %>
-            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @product}", class: 'btn'  %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @product}", class: 'btn' %>
         <% end %>
     </div>
 <% end %>

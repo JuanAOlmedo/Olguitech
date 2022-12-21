@@ -1,5 +1,5 @@
 <% content_for :title, "#{@project.localized_title} | Olguitech s.a.s." %>
-<% content_for :description, "#{@project.localized_desc}" %>
+<% content_for :description, @project.localized_desc.to_s %>
 
 <article>
     <h1 class='main-title'> <%= @project.localized_title %> </h1>
@@ -15,7 +15,7 @@
             <p class="article-categories">
                 <%= "#{Category.model_name.human(count: @project.categories.length)}:" %>
                 <% @project.categories.each do |category| %>
-                    <%= link_to category.localized_title, category_path(category), class: "link" %><%= "#{@project.categories.last != category ? ", " : ""}" %>
+                    <%= link_to category.localized_title, category_path(category), class: 'link' %><%= (@project.categories.last != category ? ', ' : '').to_s %>
                 <% end %>
             </p>
         <% end %>
@@ -30,7 +30,7 @@
 
     <% if !@project.products.empty? %>
         <h1 class='main-title'>
-            <%= t "show.products" %>
+            <%= t 'show.products' %>
         </h1>
         <%= alternative_cards_for @project.products %>
     <% end %>
@@ -39,10 +39,10 @@
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">
         <% if %w[drafted published].include?(@project.status) %>
-            <%= link_to 'Editar', edit_project_path(@project), class: 'btn'  %>
-            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @project}", class: 'btn'  %>
+            <%= link_to 'Editar', edit_project_path(@project), class: 'btn' %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @project}", class: 'btn' %>
         <% else %>
-            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @project}", class: 'btn'  %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @project}", class: 'btn' %>
         <% end %>
     </div>
 <% end %>

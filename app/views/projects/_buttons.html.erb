@@ -1,8 +1,7 @@
-<%= link_to "Editar", edit_project_path(article), class: 'btn drafted published' %>
+<%= link_to 'Editar', edit_project_path(article), class: 'btn drafted published' %>
 
-<%= link_to "Publicar", project_path(article, params: { project: { status: 0 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn drafted' %>
-<%= link_to "Despublicar", project_path(article, params: { project: { status: 1 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn published' %>
-<%= link_to "Mover a la papelera", project_path(article, params: { project: { status: 2 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn is-danger drafted published' %>
-<%= link_to "Sacar de la papelera", project_path(article, params: { project: { status: 1 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn trashed' %>
-<%= link_to "Eliminar definitivamente", article, data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?', action: 'dashboard#delete', dashboard_id_param: dom_id(article) }, class: 'btn is-danger trashed' %>
-
+<%= link_to 'Publicar', project_path(article, params: { project: { status: 0 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn drafted' %>
+<%= link_to 'Despublicar', project_path(article, params: { project: { status: 1 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn published' %>
+<%= link_to 'Mover a la papelera', project_path(article, params: { project: { status: 2 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn is-danger drafted published' %>
+<%= link_to 'Sacar de la papelera', project_path(article, params: { project: { status: 1 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn trashed' %>
+<%= link_to 'Eliminar definitivamente', article, data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?', action: 'dashboard#delete', dashboard_id_param: dom_id(article) }, class: 'btn is-danger trashed' %>

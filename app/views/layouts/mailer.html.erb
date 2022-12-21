@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     </head>
 
     <body style="font-family: sans-serif; padding: 1rem 0 1rem 0;">
@@ -9,15 +9,15 @@
         <div style="max-width: 50rem; box-sizing: border-box; width: 100%; margin: 1% auto 1% auto; background-color: white;">
             <%= yield %>
         </div>
-        
-        <%= link_to root_url(locale: I18n.locale), style: "display: block; width: 100%;" do %>
-            <%= image_tag image_url("logos/logo-chico.png"), style: "display: block; margin-left: auto; margin-right: auto;", width: "220px", height: "90px" %>
+
+        <%= link_to root_url(locale: I18n.locale), style: 'display: block; width: 100%;' do %>
+            <%= image_tag image_url('logos/logo-chico.png'), style: 'display: block; margin-left: auto; margin-right: auto;', width: '220px', height: '90px' %>
         <% end %>
 
         <% if yield(:user) == "user" %>
             <div style="text-align: center;">
-                <%= link_to t("mail.unsubscribe"), url_for(controller: :users, action: :unsubscribe, newsletter_token: @token, locale: I18n.locale) %> |
-                <%= link_to t("mail.edit_user"), url_for(controller: :users, action: :edit, id: @user.slug, edit_token: @user.edit_token, locale: I18n.locale) %>
+                <%= link_to t('mail.unsubscribe'), url_for(controller: :users, action: :unsubscribe, newsletter_token: @token, locale: I18n.locale) %> |
+                <%= link_to t('mail.edit_user'), url_for(controller: :users, action: :edit, id: @user.slug, edit_token: @user.edit_token, locale: I18n.locale) %>
             </div>
         <% end %>
     </body>

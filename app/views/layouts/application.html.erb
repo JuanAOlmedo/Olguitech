@@ -3,14 +3,14 @@
 
 <head>
     <title>
-        <%= "Dev - " if Rails.env == "development" %>
-        <%= content_for(:title) || "Olguitech s.a.s." %>
+        <%= 'Dev - ' if Rails.env == 'development' %>
+        <%= content_for(:title) || 'Olguitech s.a.s.' %>
     </title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<%= content_for(:description) || "Olguitech s.a.s. #{t "shared.engineering_solutions"} -- Uruguay" %>">
+    <meta name="description" content="<%= content_for(:description) || "Olguitech s.a.s. #{t 'shared.engineering_solutions'} -- Uruguay" %>">
     <meta name="theme-color" content="#FFFFFF">
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/favicons/favicon.png" sizes="32x32">
@@ -20,7 +20,7 @@
         <script type='module'> import "trix"; </script>
     <% end %>
 
-    <%= javascript_importmap_tags %> 
+    <%= javascript_importmap_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track' => 'reload' %>
 
@@ -41,40 +41,39 @@
             <% end %>
         </div>
 
-        <i id='dropdown-bars' data-action="click->dropdown-bars#display click@window->dropdown-bars#stopDisplayingWhenOutside" data-dropdown-bars-target="bars" tabindex='0' role="button" aria-label="<%= t "shared.dropdown" %>">
+        <i id='dropdown-bars' data-action="click->dropdown-bars#display click@window->dropdown-bars#stopDisplayingWhenOutside" data-dropdown-bars-target="bars" tabindex='0' role="button" aria-label="<%= t 'shared.dropdown' %>">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" />
-                <line data-dropdown-bars-target='line1'class="line1" x1="4" y1="8" x2="20" y2="8" />
-                <line data-dropdown-bars-target='line2'class="line2" x1="4" y1="16" x2="20" y2="16" />
+                <line data-dropdown-bars-target='line1' class="line1" x1="4" y1="8" x2="20" y2="8" />
+                <line data-dropdown-bars-target='line2' class="line2" x1="4" y1="16" x2="20" y2="16" />
             </svg>
         </i>
 
         <div class="right-navbar-section" data-dropdown-bars-target="menu">
-            <%= link_to Article.model_name.human(count: 2), articles_path, class: "link #{"active" if controller_name == 'articles'}" %>
-            <%= link_to Project.model_name.human(count: 2), projects_path, class: "link #{"active" if controller_name == 'projects'}" %>
-            <%= link_to Product.model_name.human(count: 2), products_path, class: "link #{"active" if controller_name == 'products'}" %>
+            <%= link_to Article.model_name.human(count: 2), articles_path, class: "link #{'active' if controller_name == 'articles'}" %>
+            <%= link_to Project.model_name.human(count: 2), projects_path, class: "link #{'active' if controller_name == 'projects'}" %>
+            <%= link_to Product.model_name.human(count: 2), products_path, class: "link #{'active' if controller_name == 'products'}" %>
 
             <% if admin_signed_in? %>
-                <%= link_to Newsletter.model_name.human(count: 2), newsletters_path, class: "link #{"active" if controller_name == 'newsletters'}" %>
+                <%= link_to Newsletter.model_name.human(count: 2), newsletters_path, class: "link #{'active' if controller_name == 'newsletters'}" %>
             <% end %>
 
-            <%= link_to t("nav.about_us"), nosotros_path, class: "link #{"active" if controller_name == 'nosotros'}" %>
+            <%= link_to t('nav.about_us'), nosotros_path, class: "link #{'active' if controller_name == 'nosotros'}" %>
 
-            <%= dropdown_for I18n.locale == :es ? t("general.es") : t("general.en"), icon: true do %>
-                <%= link_to url_for( locale: I18n.locale == :es ? :en : :es ), class: "btn", hreflang: I18n.locale == :es ? :en : :es do %>
-                    <%= I18n.locale != :es ? t("general.es") : t("general.en") %>
+            <%= dropdown_for I18n.locale == :es ? t('general.es') : t('general.en'), icon: true do %>
+                <%= link_to url_for(locale: I18n.locale == :es ? :en : :es), class: 'btn', hreflang: I18n.locale == :es ? :en : :es do %>
+                    <%= I18n.locale != :es ? t('general.es') : t('general.en') %>
                 <% end %>
             <% end %>
 
-            <%= link_to t("nav.contact"), contactos_path, class: "btn" %>
+            <%= link_to t('nav.contact'), contactos_path, class: 'btn' %>
         </div>
     </nav>
-
 
     <% if flash[:alert] %>
         <div class='alert' data-controller="alert">
             <p role="alert"> <%= alert %> </p>
-            <i class='close-alert' cursor='pointer' data-action="click->alert#close" tabindex='0' role="button" aria-label="<%= t "shared.alert" %>">
+            <i class='close-alert' cursor='pointer' data-action="click->alert#close" tabindex='0' role="button" aria-label="<%= t 'shared.alert' %>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" />
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -84,11 +83,10 @@
         </div>
     <% end %>
 
-
     <% if flash[:notice] %>
         <div class='notice' data-controller="alert">
             <p role="alert"> <%= notice %> </p>
-            <i class='close-notice' data-action="click->alert#close" cursor='pointer' tabindex='0' role="button" aria-label="<%= t "shared.notice" %>">
+            <i class='close-notice' data-action="click->alert#close" cursor='pointer' tabindex='0' role="button" aria-label="<%= t 'shared.notice' %>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" />
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -103,18 +101,18 @@
 
         <% if admin_signed_in? %>
             <div class="btn-group admin-tools">
-                <%= dropup_for "Nuevo" do %>
-                    <%= link_to Article.model_name.human, new_article_path, class: "btn" %>
-                    <%= link_to Project.model_name.human, new_project_path, class: "btn" %>
-                    <%= link_to Product.model_name.human, new_product_path, class: "btn" %>
-                    <%= link_to Category.model_name.human, new_category_path, class: "btn" %>
-                    <%= link_to Newsletter.model_name.human, new_newsletter_path, class: "btn" %>
+                <%= dropup_for 'Nuevo' do %>
+                    <%= link_to Article.model_name.human, new_article_path, class: 'btn' %>
+                    <%= link_to Project.model_name.human, new_project_path, class: 'btn' %>
+                    <%= link_to Product.model_name.human, new_product_path, class: 'btn' %>
+                    <%= link_to Category.model_name.human, new_category_path, class: 'btn' %>
+                    <%= link_to Newsletter.model_name.human, new_newsletter_path, class: 'btn' %>
                 <% end %>
 
                 <%= link_to User.model_name.human(count: 2), "/#{I18n.locale}/dashboard/users", class: 'btn' %>
 
-                <%= link_to 'Panel', "/#{I18n.locale}/dashboard", class: "btn" %>
-            </div>    
+                <%= link_to 'Panel', "/#{I18n.locale}/dashboard", class: 'btn' %>
+            </div>
         <% end %>
     </main>
 </body>

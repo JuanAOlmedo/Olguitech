@@ -1,30 +1,30 @@
 <div class="front">
-    <h1 class="main-title"><%= t ".title" %></h1>
+    <h1 class="main-title"><%= t '.title' %></h1>
     <p class='subtitle'>
-        <%= t ".subtitle1" %> <br>
-        <strong> <%= t ".subtitle2" %> </strong> <br> <br>
+        <%= t '.subtitle1' %> <br>
+        <strong> <%= t '.subtitle2' %> </strong> <br> <br>
     </p>
-    
-    <%= link_to t(".why"), nosotros_path, class: "btn centered" %>
+
+    <%= link_to t('.why'), nosotros_path, class: 'btn centered' %>
 </div>
 
 <% if @articles.any? %>
-    <div class="articles <%= "projects" if @projects.empty? || @products.empty? %>">
+    <div class="articles <%= 'projects' if @projects.empty? || @products.empty? %>">
         <h1 class="main-title">
-            <%= t ".articles" %>
+            <%= t '.articles' %>
         </h1>
-        <%= link_to t("general.see_all"), articles_path, class: "btn centered" %>
+        <%= link_to t('general.see_all'), articles_path, class: 'btn centered' %>
 
         <%= cards_for @articles %>
     </div>
 <% end %>
 
 <% if @projects.any? %>
-    <div class="<%= @products.any? ? "projects" : "products"  %>">
+    <div class="<%= @products.any? ? 'projects' : 'products' %>">
         <h1 class="main-title">
-            <%= t ".projects" %>
+            <%= t '.projects' %>
         </h1>
-        <%= link_to t("general.see_all"), projects_path, class: "btn centered" %>
+        <%= link_to t('general.see_all'), projects_path, class: 'btn centered' %>
 
         <%= cards_for @projects %>
     </div>
@@ -33,9 +33,9 @@
 <% if @products.any? %>
     <div class="products">
         <h1 class="main-title">
-            <%= t ".products" %>
+            <%= t '.products' %>
         </h1>
-        <%= link_to t("general.see_all"), products_path, class: "btn centered" %>
+        <%= link_to t('general.see_all'), products_path, class: 'btn centered' %>
 
         <%= alternative_cards_for @products %>
     </div>
@@ -43,30 +43,30 @@
 
 <div class="contacto">
     <div class="contacto-sub-div">
-        <h1 class='main-title'> 
-            <%= t ".interested" %>
+        <h1 class='main-title'>
+            <%= t '.interested' %>
         </h1>
 
         <p class="big-text">
-            <%= t ".sign_up" %>
+            <%= t '.sign_up' %>
         </p>
 
-        <%= link_to t(".contact"), contactos_path, class: "btn" %>
+        <%= link_to t('.contact'), contactos_path, class: 'btn' %>
 
         <div class="separator"> </div>
 
         <p class="big-text newsletter">
-            <%= t ".subscribe_message_html" %>
+            <%= t '.subscribe_message_html' %>
         </p>
 
         <div class="form">
             <%= form_with model: @user, url: "/#{I18n.locale}/users/subscribe", method: :post do |form| %>
                 <div class="field">
-                    <%= form.label :email, "Email" %>
+                    <%= form.label :email, 'Email' %>
                     <%= form.email_field :email %>
                 </div>
 
-                <%= form.submit t(".subscribe"), class: "btn" %>
+                <%= form.submit t('.subscribe'), class: 'btn' %>
             <% end %>
         </div>
     </div>

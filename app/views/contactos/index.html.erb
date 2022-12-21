@@ -1,11 +1,11 @@
-<% content_for :title, "#{I18n.t "contact.contact"} | Olguitech s.a.s." %>
+<% content_for :title, "#{I18n.t 'contact.contact'} | Olguitech s.a.s." %>
 
-<h1 class='main-title'> <%= t "contact.how_can_we_help_you" %> </h1>
+<h1 class='main-title'> <%= t 'contact.how_can_we_help_you' %> </h1>
 
 <% if @user && @user.errors.any? %>
     <div id="error_explanation">
         <h2>
-            <%= pluralize(@user.errors.count, "error") %> <%= @user.errors.count > 1 ? t("contact.errors") : t("contact.error") %>:
+            <%= pluralize(@user.errors.count, 'error') %> <%= @user.errors.count > 1 ? t('contact.errors') : t('contact.error') %>:
         </h2>
 
         <ul>
@@ -20,18 +20,18 @@
     <div class="form big-card" data-controller='new-contacto'>
         <%= fields_for :user, @contacto.user do |user_form| %>
             <div class="field">
-                <%= user_form.label :email, "Email" %>
+                <%= user_form.label :email, 'Email' %>
                 <%= user_form.email_field :email %>
             </div>
         <% end %>
 
         <div class="field">
-            <%= form.label :preference, t("contact.preference") %>
+            <%= form.label :preference, t('contact.preference') %>
             <%= form.collection_select :preference, Article.all, :id, :localized_title %>
         </div>
 
         <div class="field">
-            <%= form.label :preference2, t("contact.preference2") %>
+            <%= form.label :preference2, t('contact.preference2') %>
             <%= form.collection_select :preference2, Project.all, :id, :localized_title %>
         </div>
 
@@ -40,20 +40,20 @@
             <%= form.text_area :message, maxlength: 4000, style: 'height: 150px' %>
         </div>
 
-        <%= form.submit "#{t "contact.ask"}", class:'btn centered' %> 
+        <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>
     </div>
 <% end %>
 
 <div class="centered">
     <p class='big-text'>
-        <%= t("contact.contact_html") %>
+        <%= t('contact.contact_html') %>
     </p>
 
     <p class="subtitle">
-        <%= t "contact.direction_html" %>
+        <%= t 'contact.direction_html' %>
     </p>
 
-    <div id="map" data-controller="contacto" data-contacto-map-default-zoom-value="15" data-contacto-longitude-value="-56.15627" data-contacto-latitude-value="-34.918624" class="centered location-container" alt='<%= I18n.t "contact.direction_alt" %>'>
+    <div id="map" data-controller="contacto" data-contacto-map-default-zoom-value="15" data-contacto-longitude-value="-56.15627" data-contacto-latitude-value="-34.918624" class="centered location-container" alt='<%= I18n.t 'contact.direction_alt' %>'>
         <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
         <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript" data-action="load->contacto#connect"></script>
     </div>

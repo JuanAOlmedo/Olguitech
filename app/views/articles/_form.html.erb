@@ -1,49 +1,53 @@
-<%= form_with model: @article, data: { controller: "article-creator" } do |form| %>
+<%= form_with model: @article, data: { controller: 'article-creator' } do |form| %>
     <div class="form">
         <div class="field">
-            <%= form.label :title, "Título" %>
+            <%= form.label :title, 'Título' %>
             <%= form.text_area :title %>
         </div>
 
         <div class="field">
-            <%= form.label :title2, "Título en inglés" %>
+            <%= form.label :title2, 'Título en inglés' %>
             <%= form.text_area :title2 %>
         </div>
 
         <div class="file">
             <%= form.label :image do %>
-                <%= form.file_field :image, class:'image-attacher', data: { article_creator_target: 'fileInput', action: "change->article-creator#displayNewImage" } %>
+                <%= form.file_field :image, class: 'image-attacher', data: { article_creator_target: 'fileInput', action: 'change->article-creator#displayNewImage' } %>
                 <span>
                     Elegir una imagen...
                 </span>
             <% end %>
         </div>
 
-        <% url = url_for(@article.image) rescue "https://" %>
-        <%= image_tag url, class:"image-upload centered", data: { article_creator_target: "image" }  %>
+        <% url = begin
+               url_for(@article.image)
+           rescue StandardError
+               'https://'
+           end %>
+        <%= image_tag url, class: 'image-upload centered', data: { article_creator_target: 'image' } %>
 
         <div class="rich-text field">
-            <%= form.label :content, "Contenido" %>
+            <%= form.label :content, 'Contenido' %>
             <%= form.rich_text_area :content %>
         </div>
 
         <div class="rich-text field">
-            <%= form.label :content2, "Contenido en inglés" %>
+            <%= form.label :content2, 'Contenido en inglés' %>
             <%= form.rich_text_area :content2 %>
         </div>
 
         <div class="field">
-            <%= form.label :description, "Descripción" %>
+            <%= form.label :description, 'Descripción' %>
             <%= form.text_area :description %>
         </div>
 
         <div class="field">
-            <%= form.label :description2, "Descripción en inglés" %>
+            <%= form.label :description2, 'Descripción en inglés' %>
             <%= form.text_area :description2 %>
         </div>
 
         <div class="checkbox-field">
-            <%= form.label :products, "Productos relacionados" %> <br>
+            <%= form.label :products, 'Productos relacionados' %> <br>
             <%= form.collection_check_boxes :product_ids, Product.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>
@@ -51,21 +55,20 @@
         </div>
 
         <div class="checkbox-field">
-            <%= form.label :categories, "Categorías" %> <br>
+            <%= form.label :categories, 'Categorías' %> <br>
             <%= form.collection_check_boxes :category_ids, Category.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>
             <% end %>
         </div>
 
-
         <div class='centered' style='display: inline-block;'>
             <div class="btn-group">
                 <%= form.radio_button :status, '0', checked: @article.published?, class: 'btn-check' %>
-                <%= form.label :status_0, "Publicar al crear", class: 'btn' %>
+                <%= form.label :status_0, 'Publicar al crear', class: 'btn' %>
 
                 <%= form.radio_button :status, '1', checked: @article.drafted?, class: 'btn-check' %>
-                <%= form.label :status_1, "Crear como borrador", class: 'btn' %>
+                <%= form.label :status_1, 'Crear como borrador', class: 'btn' %>
             </div>
 
             <%= form.submit 'Crear', class: 'btn' %>

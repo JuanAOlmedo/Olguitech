@@ -1,29 +1,29 @@
-<% content_for :title, "Reenviar instrucciones de confirmación" %>
+<% content_for :title, 'Reenviar instrucciones de confirmación' %>
 
 <h1 class='main-title'>Reenviar instrucciones de confirmación</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, data: { turbo: :false } }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, data: { turbo: false } }) do |f| %>
     <%= f.error_notification %>
     <%= f.full_error :confirmation_token %>
 
     <div class="form big-card">
         <div style="width: 100%">
             <div class="field centered" style="text-align: left;">
-                <%= f.label :email, "Email" %>
+                <%= f.label :email, 'Email' %>
                 <%= f.input :email,
-                            required: true, 
+                            required: true,
                             autofocus: true,
                             label: false,
                             class: 'input',
                             value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
-                            input_html: { autocomplete: "email" } %>
+                            input_html: { autocomplete: 'email' } %>
             </div>
         </div>
 
-        <%= f.button :submit, "Reenviar", class:'btn centered', style: "margin-bottom: 2rem;" %>
+        <%= f.button :submit, 'Reenviar', class: 'btn centered', style: 'margin-bottom: 2rem;' %>
     </div>
 <% end %>
 
 <div class="centered">
-    <%= render "devise/shared/links" %>
+    <%= render 'devise/shared/links' %>
 </div>

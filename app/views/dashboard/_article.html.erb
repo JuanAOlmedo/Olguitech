@@ -7,9 +7,9 @@
         <%= link_to 'Abrir', article, class: 'btn' unless @trash %>
         <% begin %>
             <% ids_name = "#{article.model_name.singular}_ids" %>
-            <%= link_to 'Desasociar', category_path(category, params: { category: { ids_name => ([""] + category.send(ids_name.to_sym) - [ article.id ]) } } ), data: { turbo_method: :patch, action: 'dashboard#update', dashboard_category_param: '1' }, class: 'btn' %>
+            <%= link_to 'Desasociar', category_path(category, params: { category: { ids_name => ([''] + category.send(ids_name.to_sym) - [article.id]) } }), data: { turbo_method: :patch, action: 'dashboard#update', dashboard_category_param: '1' }, class: 'btn' %>
         <% rescue %>
-            <%= render partial: "#{article.model_name.plural}/buttons", locals: { article: article } %>
+            <%= render partial: "#{article.model_name.plural}/buttons", locals: { article: } %>
         <% end %>
    </div>
 </div>

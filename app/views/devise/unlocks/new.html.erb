@@ -1,27 +1,26 @@
 <h1 class="main-title">Reenviar instrucciones de desbloqueo</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, data: { turbo: :false } }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, data: { turbo: false } }) do |f| %>
     <%= f.error_notification %>
     <%= f.full_error :unlock_token %>
 
     <div class="form big-card">
         <div style="width: 100%">
             <div class="field centered" style="text-align: left;">
-                <%= f.label :email, "Email" %>
+                <%= f.label :email, 'Email' %>
                 <%= f.input :email,
-                            required: true, 
+                            required: true,
                             autofocus: true,
                             label: false,
                             class: 'input',
-                            input_html: { autocomplete: "email" } %>
+                            input_html: { autocomplete: 'email' } %>
             </div>
         </div>
 
-
-        <%= f.button :submit, "Reenviar", class:'btn centered' %>
+        <%= f.button :submit, 'Reenviar', class: 'btn centered' %>
     </div>
 <% end %>
 
 <div class="centered">
-    <%= render "devise/shared/links" %>
+    <%= render 'devise/shared/links' %>
 </div>

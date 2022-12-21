@@ -1,4 +1,4 @@
-<% content_for :title, "#{I18n.t "shared.our_products"} | Olguitech s.a.s." %>
+<% content_for :title, "#{I18n.t 'shared.our_products'} | Olguitech s.a.s." %>
 
 <% if @categories %>
     <div data-controller="index">
@@ -10,20 +10,20 @@
 
             <% @categories.each do |category| %>
                 <h4 class="menu-title" data-index-target="title">
-                    <%= link_to category.localized_title, category_path(category), class: "link", title: category.localized_title %>
+                    <%= link_to category.localized_title, category_path(category), class: 'link', title: category.localized_title %>
                 </h4>
             <% end %>
 
             <% if @uncategorized.any? %>
                 <h4 class="menu-title" data-index-target="title">
-                    <%= link_to t("index.uncategorized"), url_for(order_by: :uncategorized, asc_desc: :desc), class: "link" %>
+                    <%= link_to t('index.uncategorized'), url_for(order_by: :uncategorized, asc_desc: :desc), class: 'link' %>
                 </h4>
             <% end %>
         </div>
 
         <div class='articles-div'>
             <h1 class='main-title'>
-                <%= I18n.t "shared.our_products" %>
+                <%= I18n.t 'shared.our_products' %>
             </h1>
 
             <%= render 'layouts/popup' %>
@@ -31,7 +31,7 @@
             <% @categories.each_with_index do |category, index| %>
                 <div class="category" data-index-target="category" data-index="<%= index %>">
                     <h2 class="title centered">
-                        <%= category.localized_title %> 
+                        <%= category.localized_title %>
                     </h2>
 
                     <%= alternative_cards_for category.products %>
@@ -40,7 +40,7 @@
             <% if !@uncategorized.empty? %>
                 <div class="category" data-index-target="category" data-index="<%= @categories.length %>">
                     <h2 class="title centered">
-                        <%= t "index.uncategorized" %> 
+                        <%= t 'index.uncategorized' %>
                     </h2>
 
                     <%= alternative_cards_for @uncategorized %>
@@ -51,7 +51,7 @@
 <% else %>
     <div class='articles-div articles-div2'>
         <h1 class='main-title'>
-            <%= I18n.t "shared.our_products" %>
+            <%= I18n.t 'shared.our_products' %>
         </h1>
 
         <%= render 'layouts/popup' %>

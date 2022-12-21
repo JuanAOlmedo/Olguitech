@@ -1,5 +1,5 @@
 <h1>Olguitech s.a.s.</h1>
 
 <p>
-    <%= t("mail.contact.html", name: (@user.name ? @user.name : @user.email), company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>
+    <%= t('mail.contact.html', name: (@user.name || @user.email), company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>
 </p>

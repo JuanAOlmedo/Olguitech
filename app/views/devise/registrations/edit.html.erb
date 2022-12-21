@@ -1,19 +1,19 @@
-<% content_for :title, "Editar Cuenta" %>
+<% content_for :title, 'Editar Cuenta' %>
 
 <%= turbo_frame_tag 'edit-admin' do %>
     <h1 class='main-title'>Editar cuenta</h1>
 
     <div class="big-card">
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: :false } }) do |f| %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, data: { turbo: false } }) do |f| %>
             <%= f.error_notification %>
 
             <div class="form">
                 <div class="field">
-                    <%= f.label :email, "Email" %>
+                    <%= f.label :email, 'Email' %>
                     <%= f.input :email,
-                            required: true,
-                            autofocus: true,
-                            label: false %>
+                                required: true,
+                                autofocus: true,
+                                label: false %>
                 </div>
 
                 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,34 +21,34 @@
                 <% end %>
 
                 <div class="field">
-                    <%= f.label :password, "Contraseña nueva" %>
+                    <%= f.label :password, 'Contraseña nueva' %>
                     <%= f.input :password,
-                            required: false,
-                            input_html: { autocomplete: "new-password" },
-                            label: false,
-                            hint: 'Dejar vacío si no se quiere cambiar' %>
+                                required: false,
+                                input_html: { autocomplete: 'new-password' },
+                                label: false,
+                                hint: 'Dejar vacío si no se quiere cambiar' %>
                 </div>
 
                 <div class="field">
-                    <%= f.label :password_confirmation, "Repetir contraseña nueva" %>
+                    <%= f.label :password_confirmation, 'Repetir contraseña nueva' %>
                     <%= f.input :password_confirmation,
-                            required: false,
-                            input_html: { autocomplete: "new-password" },
-                            label: false,
-                            class: 'input' %>
+                                required: false,
+                                input_html: { autocomplete: 'new-password' },
+                                label: false,
+                                class: 'input' %>
                 </div>
 
                 <div class="field">
-                    <%= f.label :current_password, "Contraseña actual" %>
+                    <%= f.label :current_password, 'Contraseña actual' %>
                     <%= f.input :current_password,
-                            required: true,
-                            input_html: { autocomplete: "current-password" },
-                            label: false,
-                            class: 'input',
-                            hint: 'Necesitamos tu contraseña actual' %>
+                                required: true,
+                                input_html: { autocomplete: 'current-password' },
+                                label: false,
+                                class: 'input',
+                                hint: 'Necesitamos tu contraseña actual' %>
                 </div>
 
-                <%= f.button :submit, "Editar", class:'btn centered' %>
+                <%= f.button :submit, 'Editar', class: 'btn centered' %>
             </div>
         <% end %>
     </div>

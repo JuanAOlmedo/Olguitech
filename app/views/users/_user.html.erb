@@ -3,13 +3,13 @@
 
     <td> <%= user.name %> </td>
 
-    <td> 
+    <td>
         <div class='user-email'>
             <% if user.confirmed? %>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"/> <path d="M5 12l5 5l10 -10" /> </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M5 12l5 5l10 -10" /> </svg>
             <% end %>
 
-            <%= mail_to user.email, class: 'link' %> 
+            <%= mail_to user.email, class: 'link' %>
         </div>
     </td>
 
@@ -20,13 +20,13 @@
     <td> <%= user.newsletter ? 'Sí' : 'No' %> </td>
 
     <td>
-        <% times_contacted = user.contactos.count %> 
-        <span class='<%= times_contacted > 0 ? "link times-contacted" : "" %>' data-action="click->user-index#toggleShowContacts" data-id="<%= user.id %>">
+        <% times_contacted = user.contactos.count %>
+        <span class='<%= times_contacted.positive? ? 'link times-contacted' : '' %>' data-action="click->user-index#toggleShowContacts" data-id="<%= user.id %>">
             <%= times_contacted %>
-        </span> 
+        </span>
     </td>
 
     <td> <%= user.locale == 'en' ? 'Inglés' : 'Español' %> </td>
 
-    <td> <%= link_to "Editar", edit_user_path(user, params: { edit_token: user.edit_token }), class: 'link' %> </td>
+    <td> <%= link_to 'Editar', edit_user_path(user, params: { edit_token: user.edit_token }), class: 'link' %> </td>
 </tr>

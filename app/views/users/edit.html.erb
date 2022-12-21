@@ -1,7 +1,7 @@
-<% content_for :title, "#{t "contact.contact"} | Olguitech s.a.s." %>
+<% content_for :title, "#{t 'contact.contact'} | Olguitech s.a.s." %>
 
 <h1 class="main-title">
-    <%= params[:contact] ? t("contact.how_can_we_help_you") : t("users.edit_account") %>
+    <%= params[:contact] ? t('contact.how_can_we_help_you') : t('users.edit_account') %>
 </h1>
 
 <%= form_with model: @user do |form| %>
@@ -13,12 +13,12 @@
         <% end %>
 
         <div class="field" style="padding-bottom: 0; margin-bottom: 0;">
-            <%= form.label :name, I18n.t("users.name") %>
+            <%= form.label :name, I18n.t('users.name') %>
             <%= form.text_field :name, value: @user.name %>
         </div>
 
         <div class="field" style="padding-bottom: 0; margin-bottom: 0;">
-            <%= form.label :email, "Email" %>
+            <%= form.label :email, 'Email' %>
             <%= form.text_field :email, value: @user.email, disabled: true %>
         </div>
 
@@ -26,22 +26,22 @@
 
         <div class="checkbox-field" style="padding-top: 0;">
             <%= form.check_box :newsletter, checked: true %>
-            <%= form.label :newsletter, t("users.newsletter") %>
+            <%= form.label :newsletter, t('users.newsletter') %>
         </div>
 
         <div class="field">
-            <%= form.label :phone, t("users.phone") %>
+            <%= form.label :phone, t('users.phone') %>
             <%= form.phone_field :phone, value: @user.phone %>
         </div>
 
         <div class="field">
-            <%= form.label :company, t("users.company") %>
+            <%= form.label :company, t('users.company') %>
             <%= form.text_field :company, value: @user.company %>
         </div>
 
         <div class="btn-group centered">
-            <%= form.submit(params[:contact] ? t("contact.send") : t("users.edit_account"), class:'btn') %>
-            <%= link_to t("users.delete_account"), url_for(controller: :users, action: :destroy, id: @user.id, edit_token: @user.edit_token), class: "btn is-danger", data: { turbo_method: :delete, turbo_confirm: t("users.are_you_sure") } unless params[:contact] %>
+            <%= form.submit(params[:contact] ? t('contact.send') : t('users.edit_account'), class: 'btn') %>
+            <%= link_to t('users.delete_account'), url_for(controller: :users, action: :destroy, id: @user.id, edit_token: @user.edit_token), class: 'btn is-danger', data: { turbo_method: :delete, turbo_confirm: t('users.are_you_sure') } unless params[:contact] %>
         </div>
     </div>
 <% end %>

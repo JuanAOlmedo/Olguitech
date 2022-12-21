@@ -1,9 +1,9 @@
-<% content_for :title, "Cambiar contraseña" %>
+<% content_for :title, 'Cambiar contraseña' %>
 
 <div class='form-div'>
     <h1 class='title white'>Cambiar contraseña</h1>
 
-    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, data: { turbo: :false } }) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, data: { turbo: false } }) do |f| %>
     <%= f.error_notification %>
 
     <%= f.input :reset_password_token, as: :hidden %>
@@ -11,22 +11,22 @@
 
     <div class="form-inputs">
         <%= f.input :password,
-                  label: false,
-                  required: true,
-                  autofocus: true,
-                  class: 'input',
-                  placeholder: 'Nueva Contraseña',
-                  hint: ("#{@minimum_password_length} caracteres mínimo" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+                    label: false,
+                    required: true,
+                    autofocus: true,
+                    class: 'input',
+                    placeholder: 'Nueva Contraseña',
+                    hint: ("#{@minimum_password_length} caracteres mínimo" if @minimum_password_length),
+                    input_html: { autocomplete: 'new-password' } %>
         <%= f.input :password_confirmation,
-                  label: false,
-                  required: true,
-                  class: 'input',
-                  placeholder: 'Confirmar Nueva Contraseña',
-                  input_html: { autocomplete: "new-password" } %>
+                    label: false,
+                    required: true,
+                    class: 'input',
+                    placeholder: 'Confirmar Nueva Contraseña',
+                    input_html: { autocomplete: 'new-password' } %>
 
         <div class="form-actions">
-            <%= f.button :submit, "Cambiar", class:'big-navbar-link button' %>
+            <%= f.button :submit, 'Cambiar', class: 'big-navbar-link button' %>
         </div>
         <% end %>
         <script>
@@ -53,5 +53,5 @@
             }
         </script>
 
-        <%= render "devise/shared/links" %>
+        <%= render 'devise/shared/links' %>
     </div>

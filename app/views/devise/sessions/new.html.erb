@@ -1,26 +1,26 @@
-<% content_for :title, "Acceder" %>
+<% content_for :title, 'Acceder' %>
 
 <h1 class='main-title'>Acceder</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: :false } }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false } }) do |f| %>
     <div class="form big-card">
         <div class="field">
-            <%= f.label :email, "Email" %>
+            <%= f.label :email, 'Email' %>
             <%= f.input :email,
                         label: false,
                         required: false,
                         autofocus: true,
                         class: 'input',
-                        input_html: { autocomplete: "email" } %>
+                        input_html: { autocomplete: 'email' } %>
         </div>
 
         <div class="field">
-            <%= f.label :password, "Contraseña" %>
+            <%= f.label :password, 'Contraseña' %>
             <%= f.input :password,
                         label: false,
                         required: false,
                         class: 'input',
-                        input_html: { autocomplete: "current-password" } %>
+                        input_html: { autocomplete: 'current-password' } %>
         </div>
 
         <div class="checkbox-field">
@@ -29,10 +29,10 @@
 
         <div style="width: 100%;"></div>
 
-        <%= f.button :submit, "Acceder", class:'btn centered' %>
+        <%= f.button :submit, 'Acceder', class: 'btn centered' %>
     </div>
 <% end %>
 
 <div class="centered">
-    <%= render "devise/shared/links" %>
+    <%= render 'devise/shared/links' %>
 </div>

@@ -115,3 +115,7 @@ en:
       user:
         one: User
         other: Users
+  recaptcha:
+    errors:
+      verification_failed: hCaptcha was incorrect, please try again.
+      recaptcha_unreachable: hCaptcha verification server error, please try again.

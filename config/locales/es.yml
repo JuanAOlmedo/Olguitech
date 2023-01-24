@@ -219,6 +219,10 @@ es:
       day: Día
       month: Mes
       year: Año
+  hcaptcha:
+    errors:
+      verification_failed: hCaptcha fue incorrecto, por favor intentar de nuevo
+      recaptcha_unreachable: Error de verificación de servidor, por favor intentar de nuevo
   errors:
     format: "%{attribute} %{message}"
     messages:

@@ -14,6 +14,8 @@ export default class extends Controller {
     }
 
     connect() {
+        
+
         try {
             this.initialize_map();
             this.add_map_point();

@@ -4,6 +4,7 @@ class ContactosController < ApplicationController
     def index
         @contacto = Contacto.new
         @user = @contacto.user
+        @contacto.interests.build
     end
 
     # Find or create a new user based on the email and create a new contact
@@ -22,10 +23,16 @@ class ContactosController < ApplicationController
         end
     end
 
+    def interests
+        @contacto = Contacto.new
+        @contacto.interests.build
+    end
+
     private
 
     def contacto_params
-        params.require(:contacto).permit :message, :preference, :preference2
+        params.require(:contacto).permit(:message,
+                                         interests_attributes: %i[id record_type record_id])
     end
 
     def user_params

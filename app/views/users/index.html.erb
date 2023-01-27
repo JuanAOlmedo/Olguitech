@@ -11,13 +11,12 @@
         <div class="table">
             <table class="user" id="users">
                 <tr>
-                    <th> ID </th>
-                    <th> Nombre </th>
                     <th> Email </th>
+                    <th> Nombre </th>
                     <th> Compañía </th>
                     <th> Teléfono </th>
                     <th> Newsletter? </th>
-                    <th> Veces Contactadas </th>
+                    <th> Contactos </th>
                     <th> Idioma </th>
                     <th> Editar </th>
                 </tr>
@@ -40,16 +39,16 @@
                     <div class="big-card">
                         <p> <strong> Fecha: </strong> <%= contact.created_at.to_formatted_s(:long) %> </p>
                         <p> <strong> Mensaje: </strong> <%= contact.message %> </p>
-                        <p> <strong> Articulo 1: </strong> <%= begin
-                                                                   Article.find(contact.preference).title
-                                                               rescue StandardError
-                                                                   'Artícluo eliminado'
-                                                               end %> </p>
-                        <p> <strong> Articulo 2: </strong> <%= begin
-                                                                   Project.find(contact.preference2).title
-                                                               rescue StandardError
-                                                                   'Artícluo eliminado'
-                                                               end %> </p>
+                        <% if contact.interests.any? %>
+                            <p> <strong> Adjuntados: </strong> </p>
+                            <% contact.interests.each do |interest| %>
+                                <p>
+                                    <strong> <%= interest.record.model_name.human %> </strong> 
+                                    <%= interest.record.title %>
+                                </p>
+
+                            <% end %>
+                        <% end %>
                     </div>
                 <% end %>
             </div>

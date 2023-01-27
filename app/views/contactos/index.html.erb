@@ -33,20 +33,14 @@
             </div>
         <% end %>
 
-        <div class="field">
-            <%= form.label :preference, t('contact.preference') %>
-            <%= form.collection_select :preference, Article.all, :id, :localized_title %>
-        </div>
-
-        <div class="field">
-            <%= form.label :preference2, t('contact.preference2') %>
-            <%= form.collection_select :preference2, Project.all, :id, :localized_title %>
-        </div>
-
         <div class="field separate">
             <%= form.label :message, t('contact.how_can_we_help_you') %>
             <%= form.text_area :message, maxlength: 4000, style: 'height: 150px' %>
         </div>
+        
+        <%= turbo_frame_tag 'interests', style: 'width: 100%;', data: { action: 'turbo:frame-load->new-contacto#frametagChange' } do %>
+            <%= link_to 'Adjuntar un artículo', '/contacto/new/interests', class: 'btn centered', data: { action: 'new-contacto#duplicateFrametag' } %>
+        <% end %>
 
         <%= hcaptcha_tags theme: :light, class: 'field separate centered', id: 'captcha' %>
 

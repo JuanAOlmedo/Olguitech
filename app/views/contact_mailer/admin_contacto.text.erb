@@ -1,10 +1,16 @@
 <%= @user.name ? @user.name : @user.email %> se ha contactado
 =============================================
 
-<%= @message %>
+<%= @contact.message %>
 
 ---------------------------------------------
-Prefiere: <%= @preference %> y <%= @preference2 %>
+
+<% if @contact.interests.any? %>
+Adjuntados:
+<% @contact.interests.each do |interest| %>
+    <%= interest.record.model_name.human %>: <%= interest.record.title %>
+<% end %>
+<% end %>
 Email: <%= @user.email %>
-Idioma: <%= @locale %>
+Idioma: <%= @user.locale %>
 Id: <%= @user.id %>

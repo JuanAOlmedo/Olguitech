@@ -1,0 +1,19 @@
+<%= form_with model: @contacto do |form| %>
+    <%= turbo_frame_tag 'interests' do %>
+        <%= form.fields_for :interests, @contacto.interests do |interests_form| %>
+            <div class='form big-card'>
+                <div class="field">
+                    <%= interests_form.label :record_type, "Tipo de Artículo" %>
+                    <%= interests_form.select :record_type, [[Article.model_name.human, 'Article'], [Project.model_name.human, 'Project'], [Product.model_name.human, 'Product']], {}, { data: { action: 'new-contacto#selectChange', new_contacto_target: 'select', id: '0' } } %>
+                </div>
+
+                <div class="field">
+                    <%= interests_form.label :record_id, "Artículo" %>
+                    <%= interests_form.collection_select :record_id, Article.all, :id, :localized_title, {}, { data: { new_contacto_target: 'article' } } %>
+                    <%= interests_form.collection_select :record_id, Project.all, :id, :localized_title, {}, { data: { new_contacto_target: 'project' } } %>
+                    <%= interests_form.collection_select :record_id, Product.all, :id, :localized_title, {}, { data: { new_contacto_target: 'product' } } %>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+<% end %>

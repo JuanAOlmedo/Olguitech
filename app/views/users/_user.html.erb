@@ -1,8 +1,4 @@
 <tr class='user-row' data-user-index-target="row">
-    <td> <%= user.id %> </td>
-
-    <td> <%= user.name %> </td>
-
     <td>
         <div class='user-email'>
             <% if user.confirmed? %>
@@ -13,6 +9,8 @@
         </div>
     </td>
 
+    <td> <%= user.name %> </td>
+
     <td> <%= user.company %> </td>
 
     <td> <%= phone_to user.phone, class: 'link' %> </td>
@@ -21,8 +19,9 @@
 
     <td>
         <% times_contacted = user.contactos.count %>
+
         <span class='<%= times_contacted.positive? ? 'link times-contacted' : '' %>' data-action="click->user-index#toggleShowContacts" data-id="<%= user.id %>">
-            <%= times_contacted %>
+            <%= times_contacted.positive? ? "Ver #{times_contacted}" : times_contacted %>
         </span>
     </td>
 

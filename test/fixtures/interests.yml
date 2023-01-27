@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  contacto_id: 1
+  record_id: 1
+  record_type: MyString
+
+two:
+  contacto_id: 1
+  record_id: 1
+  record_type: MyString

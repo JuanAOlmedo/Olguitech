@@ -1,25 +1,13 @@
-es:  
+es:
   mail:
     edit_user: Editar Usuario
     unsubscribe: Desuscribirse
-
-    contact: 
-      html: >
-        Hola %{name}, gracias por contactarte con Olguitech s.a.s.! <br>
-
-        La solución que ofrecemos que más te interesó fue: %{preference}, y el proyecto: %{preference2}.<br><br>
-        Tu mensaje fue: %{message} <br><br>
-
-        Alguien se contactará a la brevedad con respecto a ambos artículos y a su mensaje.
-        Esperamos escuchar de ti y de %{company} de vuelta.
-      txt: |
-        Hola %{name}, gracias por contactarte con Olguitech s.a.s.!
-
-        La solución que ofrecemos que más te interesó fue: %{preference}, y el proyecto: %{preference2}.
-        Tu mensaje fue: %{message}
-
-        Alguien se contactará a la brevedad con respecto a ambos artículos y a su mensaje.
-        Esperamos escuchar de ti y de %{company} de vuelta.
+    contact:
+      greeting: Hola %{name}, gracias por contactarte con Olguitech s.a.s.!
+      attachments: 'Adjuntaste los siguientes artículos a tu mensaje:'
+      message: 'Tu mensaje fue: %{message}'
+      final_company: 'Nuestro equipo se contactará contigo a la brevedad. Esperamos escuchar de ti y de %{company} de vuelta.'
+      final: Nuestro equipo se contactará contigo a la brevedad. Esperamos escuchar de ti de vuelta.
     confirmation:
       confirm: Confirmar mi cuenta
       this_link: este link

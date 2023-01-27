@@ -1,4 +1,14 @@
 Olguitech s.a.s.
 =============================================
 
-<%= t("mail.contact.txt", name: (@user.name ? @user.name : @user.email), company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>
+<%= t 'mail.contact.greeting', name: (@user.name || @user.email) %>
+
+<%= t('mail.contact.attachments') %>
+
+<% @contact.interests.each do |interest| %>
+    <%= interest.record.localized_title %> (<%= url_for interest.record %>)
+<% end %>
+
+<%= t('mail.contact.message', message: @contact.message) %>
+
+<%= @user.company ? t('mail.contact.final_company', company: @user.company) : t('mail.contact.final') %>

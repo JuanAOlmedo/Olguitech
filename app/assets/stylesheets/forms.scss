@@ -10,6 +10,13 @@
     @media only screen and (max-width: 67rem) {
         display: block;
     }
+
+    & .form.big-card {
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        border-radius: 1rem;
+    }
 }
 
 .field {

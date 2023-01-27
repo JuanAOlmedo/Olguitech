@@ -1,5 +1,15 @@
 <h1>Olguitech s.a.s.</h1>
 
 <p>
-    <%= t('mail.contact.html', name: (@user.name || @user.email), company: @user.company, message: @message, preference: @preference, preference2: @preference2) %>
+    <%= t 'mail.contact.greeting', name: (@user.name || @user.email) %> <br> <br>
+
+    <%= t('mail.contact.attachments') %>
+
+    <% @contact.interests.each do |interest| %>
+        <%= link_to interest.record.localized_title, interest.record %>
+    <% end %> <br> <br>
+
+    <%= t('mail.contact.message', message: @contact.message) %> <br> <br>
+
+    <%= @user.company ? t('mail.contact.final_company', company: @user.company) : t('mail.contact.final') %>
 </p>

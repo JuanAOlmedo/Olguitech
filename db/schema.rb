@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_25_015309) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_28_133438) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_015309) do
     t.string "description"
     t.string "description2"
     t.string "slug"
+    t.integer "super_category_id"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
@@ -182,6 +183,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_25_015309) do
     t.integer "status"
     t.boolean "newsletter_sent"
     t.index ["slug"], name: "index_projects_on_slug", unique: true
+  end
+
+  create_table "super_categories", force: :cascade do |t|
+    t.string "title"
+    t.string "title2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

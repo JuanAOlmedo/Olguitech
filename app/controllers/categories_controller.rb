@@ -97,6 +97,7 @@ class CategoriesController < ApplicationController
                   { product_ids: [] },
                   { article_ids: [] },
                   { project_ids: [] },
+                  :super_category_id,
                   :image
               )
     end

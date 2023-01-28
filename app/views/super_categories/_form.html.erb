@@ -1,0 +1,23 @@
+<%= form_with model: @super_category do |form| %>
+    <div class='form'>
+        <div class="field">
+            <%= form.label :title, 'Título' %>
+            <%= form.text_area :title %>
+        </div>
+
+        <div class="field">
+            <%= form.label :title2, 'Título en inglés' %>
+            <%= form.text_area :title2 %>
+        </div>
+
+        <div class="checkbox-field">
+            <%= form.label :categories, 'Subcategoriías' %> <br>
+            <%= form.collection_check_boxes :category_ids, Category.all, :id, :localized_title do |b| %>
+                <%= b.check_box %>
+                <%= b.label { b.text } %> <br>
+            <% end %>
+        </div>
+    </div>
+
+    <%= form.submit 'Crear', class: 'btn centered' %>
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @super_category %>
+
+<div>
+  <%= link_to "Edit this super category", edit_super_category_path(@super_category) %> |
+  <%= link_to "Back to super categories", super_categories_path %>
+
+  <%= button_to "Destroy this super category", @super_category, method: :delete %>
+</div>

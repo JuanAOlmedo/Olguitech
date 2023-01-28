@@ -5,10 +5,6 @@ export default class extends Controller {
     static targets = ["select", "article", "project", "product"]
     id = -1
 
-    connect() {
-        hcaptcha.render('captcha');
-    }
-
     duplicateFrametag(event) {
         if (this.id >= 2) return;
         let clone = event.target.parentElement.cloneNode(true);

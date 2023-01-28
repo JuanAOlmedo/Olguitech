@@ -84,7 +84,7 @@ class UsersController < ApplicationController
         @user.newsletter = true
         @user.locale = I18n.locale
 
-        if @user.save
+        if verify_hcaptcha(model: @user) && @user.save
             redirect_to root_path, notice: t('thanks_for_subscribing')
         else
             redirect_to root_path, alert: t('valid_email'),

@@ -1,3 +1,19 @@
-<div id="<%= dom_id super_category %>">
+<div class='super-category'>
+    <div class="menu" data-controller="index">
+        <h3> Categorías </h3>
+
+        <% super_category.categories.each do |category| %>
+            <%= link_to category.localized_title, "##{category.id}", class: 'link', title: category.localized_title, data: { action: 'index#scrollToAnchor' } %>
+        <% end %>
+    </div>
+
+    <div class="articles-div">
+        <% super_category.categories.each do |category| %>
+            <div class="category" id="<%= category.id %>">
+                <%= tag.h2 category.localized_title, class: 'title centered' %>
+
+                <%= @model_name == :products ? alternative_cards_for(category.send(@model_name)) : cards_for(category.send(@model_name)) %>
+            </div>
+        <% end %>
+    </div>
 </div>
-<%= super_category.localized_title %>

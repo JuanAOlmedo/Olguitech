@@ -1,61 +1,6 @@
 <% content_for :title, "#{I18n.t 'shared.our_products'} | Olguitech s.a.s." %>
 
-<% if @categories %>
-    <div data-controller="index">
-        <div class="menu" data-action="scroll->index#setSvg" data-index-target="menu">
-            <svg xmlns="http://www.w3.org/2000/svg" data-index-target="svg" class="icon icon-tabler icon-tabler-minus-vertical" stroke-width="3" stroke="black" fill="none">
-                <path d="" data-index-target="path" />
-            </svg>
-            <h3> Categorías </h3>
+<%= tag.h4 t('shared.our_products'), class: 'main-title' %>
 
-            <% @categories.each do |category| %>
-                <h4 class="menu-title" data-index-target="title">
-                    <%= link_to category.localized_title, category_path(category), class: 'link', title: category.localized_title %>
-                </h4>
-            <% end %>
+<%= turbo_frame_tag 'super_category', src: super_category_path(@super_categories.first, params: {related_to: 'Product'}) %>
 
-            <% if @uncategorized.any? %>
-                <h4 class="menu-title" data-index-target="title">
-                    <%= link_to t('index.uncategorized'), url_for(order_by: :uncategorized, asc_desc: :desc), class: 'link' %>
-                </h4>
-            <% end %>
-        </div>
-
-        <div class='articles-div'>
-            <h1 class='main-title'>
-                <%= I18n.t 'shared.our_products' %>
-            </h1>
-
-            <%= render 'layouts/popup' %>
-
-            <% @categories.each_with_index do |category, index| %>
-                <div class="category" data-index-target="category" data-index="<%= index %>">
-                    <h2 class="title centered">
-                        <%= category.localized_title %>
-                    </h2>
-
-                    <%= alternative_cards_for category.products %>
-                </div>
-            <% end %>
-            <% if !@uncategorized.empty? %>
-                <div class="category" data-index-target="category" data-index="<%= @categories.length %>">
-                    <h2 class="title centered">
-                        <%= t 'index.uncategorized' %>
-                    </h2>
-
-                    <%= alternative_cards_for @uncategorized %>
-                </div>
-            <% end %>
-        </div>
-    </div>
-<% else %>
-    <div class='articles-div articles-div2'>
-        <h1 class='main-title'>
-            <%= I18n.t 'shared.our_products' %>
-        </h1>
-
-        <%= render 'layouts/popup' %>
-
-        <%= alternative_cards_for @products %>
-    </div>
-<% end %>

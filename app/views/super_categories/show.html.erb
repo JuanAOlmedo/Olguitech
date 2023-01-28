@@ -1,10 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @super_category %>
+<%= turbo_frame_tag 'super_category' do %>
+    <% if !@super_categories.nil? && @super_categories.length != 1 %>
+        <div class ='centered'>
+        <p> Area: </p>
+        <div class='btn-group centered'>
+            <% @super_categories.each do |super_category| %>
+                <%= link_to super_category.localized_title, super_category_path(super_category, params: { related_to: params[:related_to]}), class: 'btn centered' %>
+            <% end %>
+        </div>
+        </div>
+    <% end %>
 
-<div>
-  <%= link_to "Edit this super category", edit_super_category_path(@super_category) %> |
-  <%= link_to "Back to super categories", super_categories_path %>
-
-  <%= button_to "Destroy this super category", @super_category, method: :delete %>
-</div>
+    <%= render @super_category %>
+<% end %>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SuperCategoriesController < ApplicationController
-    before_action :set_super_category, only: %i[show edit update destroy]
+    before_action :set_super_category, only: %i[edit update destroy]
 
     # GET /super_categories or /super_categories.json
     def index
@@ -9,7 +9,16 @@ class SuperCategoriesController < ApplicationController
     end
 
     # GET /super_categories/1 or /super_categories/1.json
-    def show; end
+    def show
+        if %w[Article Project Product].include? params[:related_to]
+            @model_name = "#{params[:related_to].downcase}s".to_sym
+
+            @super_categories = SuperCategory.related_to Object.const_get(params[:related_to])
+            @super_category = @super_categories.find { |sc| sc.id == params[:id].to_i }
+        else
+            set_super_category
+        end
+    end
 
     # GET /super_categories/new
     def new

@@ -8,14 +8,8 @@ class ProjectsController < ApplicationController
     # GET /projects.json
     def index
         respond_to do |format|
-            format.html do
-                @categories, @projects =
-                    Project.ordered(params[:order_by], params[:asc_desc])
-
-                @uncategorized = Project.published.where.missing :categories
-            end
-
-            format.json { @projects = Project.published.all }
+            format.html { @super_categories = SuperCategory.related_to Project }
+            format.json { @projects = Project.published }
         end
     end
 

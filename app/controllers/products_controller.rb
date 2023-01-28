@@ -7,13 +7,7 @@ class ProductsController < ApplicationController
     # GET /products or /products.json
     def index
         respond_to do |format|
-            format.html do
-                @categories, @products =
-                    Product.ordered(params[:order_by], params[:asc_desc])
-
-                @uncategorized = Product.published.where.missing :categories
-            end
-
+            format.html { @super_categories = SuperCategory.related_to Product }
             format.json { @products = Product.published }
         end
     end

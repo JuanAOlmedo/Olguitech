@@ -8,13 +8,7 @@ class ArticlesController < ApplicationController
     # GET /articles.json
     def index
         respond_to do |format|
-            format.html do
-                @categories, @articles =
-                    Article.ordered(params[:order_by], params[:asc_desc])
-
-                @uncategorized = Article.published.where.missing :categories
-            end
-
+            format.html { @super_categories = SuperCategory.related_to Article }
             format.json { @articles = Article.published }
         end
     end

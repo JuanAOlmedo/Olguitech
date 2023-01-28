@@ -8,7 +8,6 @@
 .articles-div {
     display: block;
     width: 80%;
-    margin: 0 2% 5rem 18%;
 
     @media only screen and (max-width: 67rem) {
         width: 65%;
@@ -19,28 +18,24 @@
         width: 95%;
         margin: 0 auto 5rem auto;
     }
-}
 
-.articles-div .cards-holder {
-    width: 100%;
-}
-
-.articles-div2 {
-    margin: 0 auto 5rem auto;
-    width: 90%;
-
-    @media only screen and (max-width: 72rem) {
-        margin: 0 auto 5rem auto;
+    & .cards-holder {
+        width: 100%;
     }
 }
 
+.super-category {
+    display: inline-flex;
+    width: 100%;
+}
+
 .menu {
+    align-self: flex-start;
     width: 17%;
-    position: fixed;
-    padding-left: 1%;
-    left: 0;
-    top: 5rem;
-    bottom: 0rem;
+    position: sticky;
+    left: 1%;
+    top: 2rem;
+    bottom: 2rem;
     overflow-y: auto;
     overflow-x: hidden;
     color: #333;
@@ -56,49 +51,16 @@
         margin-right: 2rem;
         border-bottom: 0.15rem solid #333;
     }
-}
-
-.icon-tabler-minus-vertical {
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-
-    & path {
-        transition: all 0.5s;
-    }
-
-    @media only screen and (max-width: 50rem) {
-        display: none;
-    }
-}
-
-.menu-title {
-    width: 100%;
-    transition: padding 0.5s;
-    color: #aaa;
-    margin-bottom: 0.4rem;
-
-    &.visible {
-        padding-left: 0.3rem;
-    }
 
     & .link {
         display: block;
+        margin-bottom: 0.2rem;
         max-width: 95%;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        font-size: 1.2rem;
         box-sizing: border-box;
-    }
-
-    @media only screen and (max-width: 50rem) {
-        margin-top: 0.6rem;
-
-        &.visible {
-            padding: 0;
-        }
+        font-size: 1.2rem;
     }
 }
 
@@ -118,11 +80,6 @@
     @media only screen and (max-width: 50rem) {
         display: block;
     }
-}
-
-h4.visible {
-    padding-left: 0.4rem;
-    color: $color2;
 }
 
 .dropdown-holder {

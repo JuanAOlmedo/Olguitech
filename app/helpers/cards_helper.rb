@@ -70,7 +70,7 @@ module CardsHelper
 
         # Generate a single, centered card
         def card_single(element)
-            tag.div class: 'card card-single centered still' do
+            tag.div class: 'card card-single centered' do
                 img(element) + card_content(element)
             end
         end
@@ -84,7 +84,7 @@ module CardsHelper
             grid_row = "#{@last_row[column]} / #{@last_row[column] + 19}"
             @last_row[column] += 20
 
-            tag.div content, class: 'card still',
+            tag.div content, class: 'card',
                              style: "grid-column: #{column == :left ? '1' : '2'};\
                                      grid-row: #{grid_row};"
         end
@@ -98,7 +98,7 @@ module CardsHelper
             margin = { left: 'auto', right: 'auto' }
             margin[rand_margin] = "#{rand(3.0..7.0)}%"
 
-            tag.div content, class: 'alternative-card still',
+            tag.div content, class: 'alternative-card',
                              style: "margin-left: #{margin[:left]};\
                                      margin-right: #{margin[:right]};"
         end

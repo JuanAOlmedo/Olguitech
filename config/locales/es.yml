@@ -42,8 +42,9 @@ es:
       O contactate a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
       al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
       o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
-    preference: Cuál de nuestras soluciones te interesó más?
-    preference2: Cuál de nuestros proyectos te interesó más?
+    attach: Adjuntar un artículo
+    article_type: Tipo de artículo
+    article: Artículo
     message: Mensaje
     send: Enviar Mail
     sent: Un email ha sido enviado.

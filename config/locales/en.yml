@@ -44,8 +44,9 @@ en:
       Or contact to <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
       the phone number <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
       or the mobile phone <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
-    preference: Which of our solutions interested you the most?
-    preference2: Which of our projects interested you the most?
+    attach: Attach an article
+    article_type: Article type
+    article: Article
     message: Message
     send: Send Mail
     sent: An email has been sent.

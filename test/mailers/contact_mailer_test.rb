@@ -5,7 +5,8 @@ require 'test_helper'
 class ContactMailerTest < ActionMailer::TestCase
     setup do
         @user = users(:one)
-        @contacto = @user.contactos.create(preference: 1, preference2: 1, message: 'HI')
+        @contacto = @user.contactos.create(message: 'HI')
+        @contacto.interests.new record_type: 'Article', record_id: 1
     end
 
     test 'contacto' do
@@ -19,7 +20,6 @@ class ContactMailerTest < ActionMailer::TestCase
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match 'HI', mail.body.encoded
-        assert_match Project.first.localized_title, mail.body.encoded
         assert_match Article.first.localized_title, mail.body.encoded
     end
 
@@ -34,7 +34,6 @@ class ContactMailerTest < ActionMailer::TestCase
         assert_equal [ENV['EMAIL_USERNAME']], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match 'HI', mail.body.encoded
-        assert_match Project.first.localized_title, mail.body.encoded
         assert_match Article.first.localized_title, mail.body.encoded
     end
 end

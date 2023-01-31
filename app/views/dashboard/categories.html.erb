@@ -1,26 +1,28 @@
-<%= render 'dashboard' %>
+<div class='dashboard-holder'>
+    <%= render 'dashboard' %>
 
-<div class='articles-div' data-controller="dashboard">
-    <h1 class='main-title'> Categorías </h1>
-    <%= link_to 'Nueva Categoría', new_category_path, class: 'btn centered' %>
+    <div class='dashboard' data-controller="dashboard">
+        <h1 class='main-title'> Categorías </h1>
+        <%= link_to 'Nueva Categoría', new_category_path, class: 'btn centered' %>
 
-    <% @categories.each do |category| %>
-        <div id='<%= dom_id category %>'>
-            <h1 class='title'>
-                <%= category.title %>
-                <div class='btn-group' style='margin-left: 1rem;'>
-                    <%= link_to 'Editar', edit_category_path(category), class: 'btn' %>
-                    <%= link_to 'Abrir', category_path(category), class: 'btn' %>
-                    <%= link_to 'Eliminar', category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?', action: 'dashboard#delete', dashboard_id_param: dom_id(category) }, class: 'btn is-danger' %>
+        <% @categories.each do |category| %>
+            <div id='<%= dom_id category %>'>
+                <h1 class='title'>
+                    <%= category.title %>
+                    <div class='btn-group' style='margin-left: 1rem;'>
+                        <%= link_to 'Editar', edit_category_path(category), class: 'btn' %>
+                        <%= link_to 'Abrir', category_path(category), class: 'btn' %>
+                        <%= link_to 'Eliminar', category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?', action: 'dashboard#delete', dashboard_id_param: dom_id(category) }, class: 'btn is-danger' %>
+                    </div>
+                </h1>
+
+                <div class='dashboard-card-holder'>
+                    <% associated = [category.articles, category.projects, category.products].flatten %>
+                    <% associated.each do |article| %>
+                        <%= render 'article', article:, category: %>
+                    <% end %>
                 </div>
-            </h1>
-
-            <div class='dashboard-card-holder'>
-                <% associated = [category.articles, category.projects, category.products].flatten %>
-                <% associated.each do |article| %>
-                    <%= render 'article', article:, category: %>
-                <% end %>
             </div>
-        </div>
-    <% end %>
+        <% end %>
+    </div>
 </div>

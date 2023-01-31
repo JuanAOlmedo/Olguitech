@@ -1,5 +1,7 @@
-<%= render 'dashboard' %>
+<div class='dashboard-holder'>
+    <%= render 'dashboard' %>
 
-<div class='articles-div'>
-    <%= turbo_frame_tag 'dashboard-users', src: users_path %>
+    <div class='dashboard'>
+        <%= turbo_frame_tag 'dashboard-users', src: users_path %>
+    </div>
 </div>

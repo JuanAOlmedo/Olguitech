@@ -1,25 +1,27 @@
-<%= render 'dashboard' %>
+<div class='dashboard-holder'>
+    <%= render 'dashboard' %>
 
-<div class='articles-div' data-controller="dashboard">
-    <h1 class='main-title'> Newsletters </h1>
-    <%= link_to 'Nueva Newsletter', new_newsletter_path, class: 'btn centered' %>
+    <div class='dashboard' data-controller="dashboard">
+        <h1 class='main-title'> Newsletters </h1>
+        <%= link_to 'Nueva Newsletter', new_newsletter_path, class: 'btn centered' %>
 
-    <h2 class="title centered"> Borradores </h2>
-    <div class='dashboard-drafts'>
-        <div>
-            <div class='dashboard-card-holder' id='drafted_newsletters'>
-                <% @newsletter_drafts.each do |newsletter| %>
-                    <%= render partial: 'article', object: newsletter %>
-                <% end %>
+        <h2 class="title centered"> Borradores </h2>
+        <div class='dashboard-drafts'>
+            <div>
+                <div class='dashboard-card-holder' id='drafted_newsletters'>
+                    <% @newsletter_drafts.each do |newsletter| %>
+                        <%= render partial: 'article', object: newsletter %>
+                    <% end %>
+                </div>
             </div>
+            <h2 id='dashboard-message'> No hay ningún borrador </h2>
         </div>
-        <h2 id='dashboard-message'> No hay ningún borrador </h2>
-    </div>
 
-    <h2 class="title centered"> Newsletters enviadas </h2>
-    <div class='dashboard-card-holder' id='sent_newsletters'>
-        <% @newsletters.each do |newsletter| %>
-            <%= render partial: 'article', object: newsletter %>
-        <% end %>
+        <h2 class="title centered"> Newsletters enviadas </h2>
+        <div class='dashboard-card-holder' id='sent_newsletters'>
+            <% @newsletters.each do |newsletter| %>
+                <%= render partial: 'article', object: newsletter %>
+            <% end %>
+        </div>
     </div>
 </div>

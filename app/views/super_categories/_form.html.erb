@@ -11,7 +11,7 @@
         </div>
 
         <div class="checkbox-field">
-            <%= form.label :categories, 'Subcategoriías' %> <br>
+            <%= form.label :categories, 'Subcategorías' %> <br>
             <%= form.collection_check_boxes :category_ids, Category.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>

@@ -12,7 +12,11 @@
             <div class="category" id="<%= category.id %>">
                 <%= tag.h2 category.localized_title, class: 'title centered' %>
 
-                <%= @model_name == :products ? alternative_cards_for(category.send(@model_name)) : cards_for(category.send(@model_name)) %>
+                <% if @model_name == :products %>
+                    <%= alternative_cards_for(category.send(@model_name).select(:id, :slug, :title, :title2, :description, :description2)) %>
+                <% else %>
+                    <%= cards_for(category.send(@model_name).select(:id, :slug, :title, :title2, :description, :description2)) %>
+                <% end %>
             </div>
         <% end %>
     </div>

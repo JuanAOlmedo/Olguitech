@@ -2,7 +2,7 @@
 
 <%= turbo_frame_tag 'super_category' do %>
     <% if !@super_categories.nil? && @super_categories.length != 1 %>
-        <div class ='centered'>
+        <div class ='centered super-category-selector'>
         <p> Area: </p>
         <div class='btn-group centered'>
             <% @super_categories.each do |super_category| %>

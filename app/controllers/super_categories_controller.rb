@@ -2,11 +2,7 @@
 
 class SuperCategoriesController < ApplicationController
     before_action :set_super_category, only: %i[edit update destroy]
-
-    # GET /super_categories or /super_categories.json
-    def index
-        @super_categories = SuperCategory.all
-    end
+    before_action :authenticate_admin!, except: %i[show]
 
     # GET /super_categories/1 or /super_categories/1.json
     def show

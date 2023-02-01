@@ -2,6 +2,8 @@
 
 <h1 class='main-title'>Crear Super Categoría</h1>
 
-<div id='edit'>
-    <%= render "form", super_category: @super_category %>
-</div>
+<%= turbo_frame_tag 'new_super_category' do %>
+    <div id='edit'>
+        <%= render "form", super_category: @super_category %>
+    </div>
+<% end %>

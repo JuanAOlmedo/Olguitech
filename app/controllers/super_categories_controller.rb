@@ -4,7 +4,12 @@ class SuperCategoriesController < ApplicationController
     before_action :set_super_category, only: %i[edit update destroy]
     before_action :authenticate_admin!, except: %i[show]
 
-    # GET /super_categories/1 or /super_categories/1.json
+    def index
+        @super_categories =
+            SuperCategory.all.includes(dashboard_categories: %i[dashboard_articles dashboard_products dashboard_projects])
+    end
+
+    # GET /super_categories/1
     def show
         if %w[Article Project Product].include? params[:related_to]
             @model_name = "#{params[:related_to].downcase}s".to_sym
@@ -24,37 +29,26 @@ class SuperCategoriesController < ApplicationController
     # GET /super_categories/1/edit
     def edit; end
 
-    # POST /super_categories or /super_categories.json
+    # POST /super_categories
     def create
         @super_category = SuperCategory.new(super_category_params)
 
         respond_to do |format|
             if @super_category.save
-                format.html do
-                    redirect_to super_category_url(@super_category),
-                                notice: 'Super category was successfully created.'
-                end
-                format.json { render :show, status: :created, location: @super_category }
+                format.html { redirect_to super_categories_url }
+                format.turbo_stream
             else
                 format.html { render :new, status: :unprocessable_entity }
-                format.json { render json: @super_category.errors, status: :unprocessable_entity }
             end
         end
     end
 
-    # PATCH/PUT /super_categories/1 or /super_categories/1.json
+    # PATCH/PUT /super_categories/1
     def update
-        respond_to do |format|
-            if @super_category.update(super_category_params)
-                format.html do
-                    redirect_to super_category_url(@super_category),
-                                notice: 'Super category was successfully updated.'
-                end
-                format.json { render :show, status: :ok, location: @super_category }
-            else
-                format.html { render :edit, status: :unprocessable_entity }
-                format.json { render json: @super_category.errors, status: :unprocessable_entity }
-            end
+        if @super_category.update(super_category_params)
+            redirect_to super_categories_url
+        else
+            render :edit, status: :unprocessable_entity
         end
     end
 
@@ -62,13 +56,7 @@ class SuperCategoriesController < ApplicationController
     def destroy
         @super_category.destroy
 
-        respond_to do |format|
-            format.html do
-                redirect_to super_categories_url,
-                            notice: 'Super category was successfully destroyed.'
-            end
-            format.json { head :no_content }
-        end
+        redirect_to super_categories_url
     end
 
     private

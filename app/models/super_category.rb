@@ -2,6 +2,7 @@
 
 class SuperCategory < ApplicationRecord
     has_many :categories
+    has_many :dashboard_categories, -> { select(:id, :super_category_id, :title, :slug) }, class_name: 'Category'
 
     def localized_title
         return title2 if I18n.locale == :en && !title2.nil? && !title2.empty?

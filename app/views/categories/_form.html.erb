@@ -20,22 +20,6 @@
             <%= form.text_area :description2 %>
         </div>
 
-        <div class="file">
-            <%= form.label :image do %>
-                <%= form.file_field :image, class: 'image-attacher' %>
-                <span>
-                    Elegir una imagen...
-                </span>
-            <% end %>
-        </div>
-
-        <% url = begin
-               url_for(@category.image)
-           rescue StandardError
-               'https://'
-           end %>
-        <%= image_tag url, class: 'image-upload centered' %>
-
         <div class="checkbox-field">
             <%= form.label :products, 'Productos relacionados' %> <br>
             <%= form.collection_check_boxes :product_ids, Product.all, :id, :localized_title do |b| %>

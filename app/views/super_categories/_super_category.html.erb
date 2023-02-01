@@ -1,22 +1,32 @@
-<div class='super-category'>
-    <div class="menu" data-controller="index">
-        <h3> Categorías </h3>
+<div id='<%= dom_id super_category %>'>
+    <%= turbo_frame_tag "edit_super_category_#{super_category.id}" do %>
+        <h1 class='title centered'>
+            <%= super_category.title %>
+                <div class='btn-group' style='margin-left: 1rem;'>
+                    <%= link_to 'Editar', edit_super_category_path(super_category), class: 'btn' %>
+                    <%= link_to 'Eliminar', super_category_path(super_category), data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?', action: 'dashboard#delete', dashboard_id_param: dom_id(super_category) }, class: 'btn is-danger' %>
+                </div>
+        </h1>
+    <% end %>
 
-        <% super_category.categories.each do |category| %>
-            <%= link_to category.localized_title, "##{category.id}", class: 'link', title: category.localized_title, data: { action: 'index#scrollToAnchor' } %>
-        <% end %>
-    </div>
+    <div class='big-card' style='width: 100%; padding: 0.8rem;'>
+        <% super_category.dashboard_categories.each do |category| %>
+            <div id='<%= dom_id category %>'>
+                <h1 class='title'>
+                    <%= category.title %>
+                    <div class='btn-group' style='margin-left: 1rem;'>
+                        <%= link_to 'Editar', edit_category_path(category), class: 'btn' %>
+                        <%= link_to 'Abrir', category_path(category), class: 'btn' %>
+                        <%= link_to 'Eliminar', category_path(category), data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?', action: 'dashboard#delete', dashboard_id_param: dom_id(category) }, class: 'btn is-danger' %>
+                    </div>
+                </h1>
 
-    <div class="articles-div">
-        <% super_category.categories.each do |category| %>
-            <div class="category" id="<%= category.id %>">
-                <%= tag.h2 category.localized_title, class: 'title centered' %>
-
-                <% if @model_name == :products %>
-                    <%= alternative_cards_for(category.send(@model_name).select(:id, :slug, :title, :title2, :description, :description2)) %>
-                <% else %>
-                    <%= cards_for(category.send(@model_name).select(:id, :slug, :title, :title2, :description, :description2)) %>
-                <% end %>
+                <div class='dashboard-card-holder'>
+                    <% associated = [category.dashboard_articles, category.dashboard_projects, category.dashboard_products].flatten %>
+                    <% associated.each do |article| %>
+                        <%= render 'dashboard/article', article:, category: %>
+                    <% end %>
+                </div>
             </div>
         <% end %>
     </div>

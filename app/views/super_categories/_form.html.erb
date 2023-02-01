@@ -10,14 +10,6 @@
             <%= form.text_area :title2 %>
         </div>
 
-        <div class="checkbox-field">
-            <%= form.label :categories, 'Subcategorías' %> <br>
-            <%= form.collection_check_boxes :category_ids, Category.all, :id, :localized_title do |b| %>
-                <%= b.check_box %>
-                <%= b.label { b.text } %> <br>
-            <% end %>
-        </div>
+        <%= form.submit 'Crear', class: 'btn centered' %>
     </div>
-
-    <%= form.submit 'Crear', class: 'btn centered' %>
 <% end %>

@@ -19,7 +19,8 @@ class DashboardController < ApplicationController
 
     # GET /dashboard/categories
     def categories
-        @categories = Category.all
+        @super_categories =
+            SuperCategory.all.includes(dashboard_categories: %i[dashboard_articles dashboard_products dashboard_projects])
     end
 
     # GET /dashboard/newsletters

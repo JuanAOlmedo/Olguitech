@@ -39,7 +39,7 @@ module Getters
 
     module ClassMethods
         def fields_for_cards
-            [:id, :slug, :title, :title2, :description, :description2]
+            %i[id slug title title2 description description2]
         end
     end
 end

@@ -1,21 +1,20 @@
 .dashboard-holder {
     display: inline-flex;
     width: 100%;
+
+    @media only screen and (max-width: 50rem) {
+        display: block;
+    }
 }
 
 .dashboard {
     display: block;
-    width: 98%;
+    width: 80%;
     margin: 0 1% 0 1%;
-
-    @media only screen and (max-width: 67rem) {
-        width: 65%;
-        margin: 0 2% 5rem 33%;
-    }
 
     @media only screen and (max-width: 50rem) {
         width: 95%;
-        margin: 0 auto 5rem auto;
+        margin: 0 auto 0 auto;
     }
 }
 

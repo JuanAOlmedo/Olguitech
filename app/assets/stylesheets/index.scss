@@ -8,15 +8,11 @@
 .articles-div {
     display: block;
     width: 80%;
-
-    @media only screen and (max-width: 67rem) {
-        width: 65%;
-        margin: 0 2% 5rem 33%;
-    }
+    margin: 0 1% 0 1%;
 
     @media only screen and (max-width: 50rem) {
         width: 95%;
-        margin: 0 auto 5rem auto;
+        margin: 0 auto 0 auto;
     }
 
     & .cards-holder {
@@ -33,6 +29,10 @@
 .super-category {
     display: inline-flex;
     width: 100%;
+
+    @media only screen and (max-width: 50rem) {
+        display: block;
+    }
 }
 
 .menu {
@@ -47,14 +47,14 @@
     color: #333;
 
     @media only screen and (max-width: 67rem) {
-        width: 32%;
+        width: 20%;
     }
 
     @media only screen and (max-width: 50rem) {
         width: auto;
         position: unset;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
         border-bottom: 0.15rem solid #333;
     }
 
@@ -73,19 +73,6 @@
 .category {
     padding-bottom: 4rem;
     border-bottom: solid #aaa 2px;
-}
-
-.products-div .category {
-    border-bottom: solid $color6 2px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0;
-    border-radius: 0.4rem;
-    background-color: $color6;
-
-    @media only screen and (max-width: 50rem) {
-        display: block;
-    }
 }
 
 .dropdown-holder {

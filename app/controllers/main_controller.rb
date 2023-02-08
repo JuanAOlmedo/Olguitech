@@ -2,9 +2,9 @@
 
 class MainController < ApplicationController
     def main
-        @articles = Article.published.order(created_at: :desc).first 4
-        @projects = Project.published.order(created_at: :desc).first 4
-        @products = Product.published.order(created_at: :desc).first 4
+        @articles, @projects, @products = [Article, Project, Product].map do |model|
+            model.published.select(model.fields_for_cards).order(created_at: :desc).first 4
+        end
 
         @user = User.new
     end

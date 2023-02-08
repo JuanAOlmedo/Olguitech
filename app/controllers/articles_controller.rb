@@ -9,10 +9,10 @@ class ArticlesController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                @categories, @articles =
-                    Article.ordered(params[:order_by], params[:asc_desc])
-
-                @uncategorized = Article.published.where.missing :categories
+                @super_categories = SuperCategory.related_to :articles
+                @super_category = @super_categories.find do |sc|
+                    sc.id == params[:super_category_id].to_i
+                end || @super_categories.first
             end
 
             format.json { @articles = Article.published }

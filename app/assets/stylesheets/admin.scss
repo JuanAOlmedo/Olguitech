@@ -78,6 +78,20 @@
     }
 }
 
+.btn-group {
+    & .dropdown {
+        width: 10rem;
+    }
+}
+
+.edit i {
+    margin-top: 3rem;
+}
+
+.destroy i {
+    margin-top: 6.2rem;
+}
+
 .admin-tools {
     right: 0;
     bottom: 0;
@@ -90,24 +104,6 @@
     @media only screen and (max-width: 70rem) {
         padding: 0.2rem;
     }
-}
-
-.btn-group {
-    & .dropdown {
-        width: 10rem;
-    }
-}
-
-.admin-tools-2 {
-    bottom: 3rem;
-}
-
-.edit i {
-    margin-top: 3rem;
-}
-
-.destroy i {
-    margin-top: 6.2rem;
 }
 
 #edit {

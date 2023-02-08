@@ -9,13 +9,13 @@ class ProjectsController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                @categories, @projects =
-                    Project.ordered(params[:order_by], params[:asc_desc])
-
-                @uncategorized = Project.published.where.missing :categories
+                @super_categories = SuperCategory.related_to :projects
+                @super_category = @super_categories.find do |sc|
+                    sc.id == params[:super_category_id].to_i
+                end || @super_categories.first
             end
 
-            format.json { @projects = Project.published.all }
+            format.json { @projects = Project.published }
         end
     end
 

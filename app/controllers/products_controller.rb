@@ -8,10 +8,10 @@ class ProductsController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                @categories, @products =
-                    Product.ordered(params[:order_by], params[:asc_desc])
-
-                @uncategorized = Product.published.where.missing :categories
+                @super_categories = SuperCategory.related_to :products
+                @super_category = @super_categories.find do |sc|
+                    sc.id == params[:super_category_id].to_i
+                end || @super_categories.first
             end
 
             format.json { @products = Product.published }

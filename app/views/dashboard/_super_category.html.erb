@@ -1,0 +1,16 @@
+<div id='<%= dom_id super_category %>'>
+    <h1 class='title centered'>
+        <%= super_category.title %>
+
+        <div class='btn-group' style='margin-left: 1rem;'>
+            <%= link_to 'Editar', edit_super_category_path(super_category), class: 'btn' %>
+            <%= link_to 'Eliminar', super_category_path(super_category), data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?' }, class: 'btn is-danger' %>
+        </div>
+    </h1>
+
+    <div id='<%= dom_id super_category %>_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
+        <% super_category.dashboard_categories.each do |category| %>
+            <%= render 'dashboard/category', category: %>
+        <% end %>
+    </div>
+</div>

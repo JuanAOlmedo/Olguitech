@@ -4,6 +4,7 @@ class Category < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
+    belongs_to :super_category, optional: true
     has_many :category_categorizables, dependent: :destroy
     has_many :products,
              through: :category_categorizables,
@@ -18,7 +19,25 @@ class Category < ApplicationRecord
              source: :categorizable,
              source_type: 'Project'
 
-    has_one_attached :image
+    has_many :dashboard_products,
+             -> { select(:id, :title, :status, :slug) },
+             through: :category_categorizables,
+             source: :categorizable,
+             source_type: 'Product'
+    has_many :dashboard_articles,
+             -> { select(:id, :title, :status, :slug) },
+             through: :category_categorizables,
+             source: :categorizable,
+             source_type: 'Article'
+    has_many :dashboard_projects,
+             -> { select(:id, :title, :status, :slug) },
+             through: :category_categorizables,
+             source: :categorizable,
+             source_type: 'Project'
+
+    def localized_title_with_super_category
+        super_category ? "#{localized_title} (#{super_category.title})" : localized_title
+    end
 
     def localized_title
         return title2 if I18n.locale == :en && !title2.nil? && !title2.empty?

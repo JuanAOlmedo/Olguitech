@@ -1,0 +1,9 @@
+<% content_for :title, "Editar super categoría #{@super_category.title}" %>
+
+<h1 class='main-title'>Editar Super Categoría</h1>
+
+<%= turbo_frame_tag "edit_super_category_#{@super_category.id}" do %>
+    <div id='edit'>
+        <%= render "form", super_category: @super_category %>
+    </div>
+<% end %>

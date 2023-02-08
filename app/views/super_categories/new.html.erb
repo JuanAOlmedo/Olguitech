@@ -1,0 +1,9 @@
+<% content_for :title, 'Nueva super categoría' %>
+
+<h1 class='main-title'>Crear Super Categoría</h1>
+
+<%= turbo_frame_tag 'new_super_category' do %>
+    <div id='edit'>
+        <%= render "form", super_category: @super_category %>
+    </div>
+<% end %>

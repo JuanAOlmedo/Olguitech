@@ -1,3 +1,23 @@
+.dashboard-holder {
+    display: inline-flex;
+    width: 100%;
+
+    @media only screen and (max-width: 50rem) {
+        display: block;
+    }
+}
+
+.dashboard {
+    display: block;
+    width: 80%;
+    margin: 0 1% 0 1%;
+
+    @media only screen and (max-width: 50rem) {
+        width: 95%;
+        margin: 0 auto 0 auto;
+    }
+}
+
 .dashboard-card-holder {
     width: 100%;
     display: flex;
@@ -21,6 +41,7 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
     display: flex;
+    background: white;
 
     & img {
         border-radius: calc(1rem - 1%);
@@ -81,4 +102,23 @@
     color: #444;
     padding: 2rem;
     margin: 0;
+}
+
+.map {
+    display: flex;
+}
+
+.map-column {
+    height: auto;
+    width: 21%;
+    margin: 6%;
+}
+
+.map-row {
+    display: none;
+
+    &.show {
+        display: block;
+        cursor: pointer;
+    }
 }

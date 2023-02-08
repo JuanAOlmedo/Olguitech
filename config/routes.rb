@@ -2,6 +2,7 @@ Rails.application.routes.draw do
     scope '(:locale)', locale: /es|en/ do
         resources :newsletters
         resources :categories
+        resources :super_categories
 
         resources :contactos
         get '/contacto/new/interests', to: 'contactos#interests'

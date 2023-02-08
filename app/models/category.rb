@@ -4,7 +4,7 @@ class Category < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
 
-    belongs_to :super_category
+    belongs_to :super_category, optional: true
     has_many :category_categorizables, dependent: :destroy
     has_many :products,
              through: :category_categorizables,

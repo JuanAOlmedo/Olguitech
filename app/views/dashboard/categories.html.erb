@@ -2,6 +2,29 @@
     <%= render 'dashboard' %>
 
     <div class='dashboard' data-controller="dashboard">
-        <%= turbo_frame_tag 'super_categories', src: super_categories_path %>
+        <h1 class='main-title'> Categorías </h1>
+        <div class="dropdown-holder" style="height: 2.5rem; display: flex;">
+            <%= dropdown_for 'Nuevo' do %>
+                <%= link_to Category.model_name.human, new_category_path, class: 'btn' %>
+                <%= link_to 'Super Categoría', new_super_category_path, class: 'btn' %>
+            <% end %>
+        </div>
+
+        <div id='super-categories'>
+            <% @super_categories.each do |super_category| %>
+                <%= render super_category %>
+            <% end %>
+        </div>
+
+        <% if @uncategorized.any? %>
+            <h2 class='title centered'>
+                Sin Super categoría
+            </h2>
+            <div id='uncategorized_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
+                <% @uncategorized.each do |category| %>
+                    <%= render category, category: %>
+                <% end %>
+            </div>
+        <% end %>
     </div>
 </div>

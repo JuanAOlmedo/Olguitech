@@ -4,11 +4,6 @@ class SuperCategoriesController < ApplicationController
     before_action :set_super_category, only: %i[edit update destroy]
     before_action :authenticate_admin!, except: %i[show]
 
-    def index
-        @super_categories =
-            SuperCategory.all.includes(dashboard_categories: %i[dashboard_articles dashboard_products dashboard_projects])
-    end
-
     # GET /super_categories/1
     def show
         if %w[Article Project Product].include? params[:related_to]
@@ -35,8 +30,7 @@ class SuperCategoriesController < ApplicationController
 
         respond_to do |format|
             if @super_category.save
-                format.html { redirect_to super_categories_url }
-                format.turbo_stream
+                format.html { redirect_to categories_dashboard_path }
             else
                 format.html { render :new, status: :unprocessable_entity }
             end
@@ -46,7 +40,7 @@ class SuperCategoriesController < ApplicationController
     # PATCH/PUT /super_categories/1
     def update
         if @super_category.update(super_category_params)
-            redirect_to super_categories_url
+            redirect_to "/#{I18n.locale}/dashboard/categories"
         else
             render :edit, status: :unprocessable_entity
         end

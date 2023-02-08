@@ -104,3 +104,22 @@
     padding: 2rem;
     margin: 0;
 }
+
+.map {
+    display: flex;
+}
+
+.map-column {
+    height: auto;
+    width: 21%;
+    margin: 6%;
+}
+
+.map-row {
+    display: none;
+
+    &.show {
+        display: block;
+        cursor: pointer;
+    }
+}

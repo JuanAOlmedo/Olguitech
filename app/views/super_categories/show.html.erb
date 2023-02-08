@@ -3,12 +3,12 @@
 <%= turbo_frame_tag 'super_category' do %>
     <% if !@super_categories.nil? && @super_categories.length != 1 %>
         <div class ='centered super-category-selector'>
-        <p> Area: </p>
-        <div class='btn-group centered'>
-            <% @super_categories.each do |super_category| %>
-                <%= link_to super_category.localized_title, super_category_path(super_category, params: { related_to: params[:related_to]}), class: 'btn centered' %>
-            <% end %>
-        </div>
+            <p> Area: </p>
+            <div class='btn-group centered'>
+                <% @super_categories.each do |super_category| %>
+                    <%= link_to super_category.localized_title, super_category_path(super_category, params: { related_to: params[:related_to]}), class: 'btn centered' %>
+                <% end %>
+            </div>
         </div>
     <% end %>
 

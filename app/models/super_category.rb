@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SuperCategory < ApplicationRecord
-    has_many :categories
+    has_many :categories, dependent: :nullify
     has_many :dashboard_categories, -> { select(:id, :super_category_id, :title, :slug) }, class_name: 'Category'
 
     def localized_title

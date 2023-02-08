@@ -30,7 +30,7 @@ class SuperCategoriesController < ApplicationController
 
         respond_to do |format|
             if @super_category.save
-                format.html { redirect_to categories_dashboard_path }
+                format.html { redirect_to "/#{I18n.locale}/dashboard/categories" }
             else
                 format.html { render :new, status: :unprocessable_entity }
             end
@@ -50,7 +50,7 @@ class SuperCategoriesController < ApplicationController
     def destroy
         @super_category.destroy
 
-        redirect_to super_categories_url
+        redirect_to "/#{I18n.locale}/dashboard/categories"
     end
 
     private

@@ -35,6 +35,10 @@ class Category < ApplicationRecord
              source: :categorizable,
              source_type: 'Project'
 
+    def localized_title_with_super_category
+        super_category ? "#{localized_title} (#{super_category.title})" : localized_title
+    end
+
     def localized_title
         return title2 if I18n.locale == :en && !title2.nil? && !title2.empty?
 

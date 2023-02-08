@@ -9,6 +9,7 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<%= content_for(:description) || "Olguitech s.a.s. #{t 'shared.engineering_solutions'} -- Uruguay" %>">
     <meta name="theme-color" content="#FFFFFF">
@@ -51,12 +52,10 @@
 
         <div class="right-navbar-section" data-dropdown-bars-target="menu">
             <%= link_to Article.model_name.human(count: 2), articles_path, class: "link #{'active' if controller_name == 'articles'}" %>
-            <%= link_to Project.model_name.human(count: 2), projects_path, class: "link #{'active' if controller_name == 'projects'}" %>
-            <%= link_to Product.model_name.human(count: 2), products_path, class: "link #{'active' if controller_name == 'products'}" %>
 
-            <% if admin_signed_in? %>
-                <%= link_to Newsletter.model_name.human(count: 2), newsletters_path, class: "link #{'active' if controller_name == 'newsletters'}" %>
-            <% end %>
+            <%= link_to Project.model_name.human(count: 2), projects_path, class: "link #{'active' if controller_name == 'projects'}" %>
+
+            <%= link_to Product.model_name.human(count: 2), products_path, class: "link #{'active' if controller_name == 'products'}" %>
 
             <%= link_to t('nav.about_us'), nosotros_path, class: "link #{'active' if controller_name == 'nosotros'}" %>
 
@@ -67,6 +66,10 @@
             <% end %>
 
             <%= link_to t('nav.contact'), contactos_path, class: 'btn' %>
+
+            <% if admin_signed_in? %>
+                <%= link_to 'Panel', "/#{I18n.locale}/dashboard", class: 'btn' %>
+            <% end %>
         </div>
     </nav>
 
@@ -98,22 +101,6 @@
 
     <main data-controller="intersection-observer">
         <%= yield %>
-
-        <% if admin_signed_in? %>
-            <div class="btn-group admin-tools">
-                <%= dropup_for 'Nuevo' do %>
-                    <%= link_to Article.model_name.human, new_article_path, class: 'btn' %>
-                    <%= link_to Project.model_name.human, new_project_path, class: 'btn' %>
-                    <%= link_to Product.model_name.human, new_product_path, class: 'btn' %>
-                    <%= link_to Category.model_name.human, new_category_path, class: 'btn' %>
-                    <%= link_to Newsletter.model_name.human, new_newsletter_path, class: 'btn' %>
-                <% end %>
-
-                <%= link_to User.model_name.human(count: 2), "/#{I18n.locale}/dashboard/users", class: 'btn' %>
-
-                <%= link_to 'Panel', "/#{I18n.locale}/dashboard", class: 'btn' %>
-            </div>
-        <% end %>
     </main>
 </body>
 

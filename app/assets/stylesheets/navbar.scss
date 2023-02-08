@@ -74,8 +74,9 @@ nav {
 }
 
 nav .link,
-nav .btn {
-    margin: 0 0.5rem 0 0.5rem;
+nav .btn,
+nav .dropdown {
+    margin: 0 0.5rem 0 0;
 }
 
 // Dropdown Bars //

@@ -2,19 +2,7 @@
 
 class SuperCategoriesController < ApplicationController
     before_action :set_super_category, only: %i[edit update destroy]
-    before_action :authenticate_admin!, except: %i[show]
-
-    # GET /super_categories/1
-    def show
-        if %w[Article Project Product].include? params[:related_to]
-            @model_name = "#{params[:related_to].downcase}s".to_sym
-
-            @super_categories = SuperCategory.select(:id, :title, :title2).related_to Object.const_get(params[:related_to])
-            @super_category = @super_categories.find { |sc| sc.id == params[:id].to_i }
-        else
-            set_super_category
-        end
-    end
+    before_action :authenticate_admin!
 
     # GET /super_categories/new
     def new

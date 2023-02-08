@@ -8,7 +8,11 @@ class ArticlesController < ApplicationController
     # GET /articles.json
     def index
         respond_to do |format|
-            format.html { @super_categories = SuperCategory.related_to Article }
+            format.html do
+                @super_categories = SuperCategory.select(:id, :title, :title2).related_to :articles
+                @super_category = @super_categories.find { |sc| sc.id == params[:super_category_id].to_i } || @super_categories.first
+            end
+
             format.json { @articles = Article.published }
         end
     end

@@ -2,5 +2,5 @@
 
 <%= tag.h4 t('shared.our_products'), class: 'main-title' %>
 
-<%= turbo_frame_tag 'super_category', src: super_category_path(@super_categories.first, params: {related_to: 'Product'}) %>
+<%= render @super_category, super_categories: @super_categories, model_name: :products %>
 

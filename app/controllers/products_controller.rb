@@ -7,7 +7,11 @@ class ProductsController < ApplicationController
     # GET /products or /products.json
     def index
         respond_to do |format|
-            format.html { @super_categories = SuperCategory.related_to Product }
+            format.html do
+                @super_categories = SuperCategory.select(:id, :title, :title2).related_to :products
+                @super_category = @super_categories.find { |sc| sc.id == params[:super_category_id].to_i } || @super_categories.first
+            end
+
             format.json { @products = Product.published }
         end
     end

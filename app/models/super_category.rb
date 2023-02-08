@@ -11,9 +11,7 @@ class SuperCategory < ApplicationRecord
     end
 
     # Get all super categories which have categories related to published articles
-    def self.related_to(model)
-        name = model.model_name.collection.to_sym
-
+    def self.related_to(name)
         self.includes(categories: [name]) # Include categories and the provided model
             .where(categories: { name => { status: 0 } }) # Only allow published articles
             .uniq # Remove duplicates

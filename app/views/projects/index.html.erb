@@ -2,5 +2,9 @@
 
 <%= tag.h4 t('shared.our_projects'), class: 'main-title' %>
 
-<%= render @super_category, super_categories: @super_categories, model_name: :projects %>
+<% if @super_category %>
+    <%= render @super_category, super_categories: @super_categories, model_name: :projects %>
+<% else %>
+    <%= cards_for Project.all %>
+<% end %>
 

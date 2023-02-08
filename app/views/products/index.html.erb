@@ -2,5 +2,9 @@
 
 <%= tag.h4 t('shared.our_products'), class: 'main-title' %>
 
-<%= render @super_category, super_categories: @super_categories, model_name: :products %>
+<% if @super_category %>
+    <%= render @super_category, super_categories: @super_categories, model_name: :products %>
+<% else %>
+    <%= alternative_cards_for Product.all %>
+<% end %>
 

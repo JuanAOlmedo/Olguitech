@@ -12,7 +12,7 @@
 
         <div id='super-categories'>
             <% @super_categories.each do |super_category| %>
-                <%= render super_category %>
+                <%= render 'dashboard/super_category', super_category: %>
             <% end %>
         </div>
 
@@ -22,7 +22,7 @@
             </h2>
             <div id='uncategorized_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
                 <% @uncategorized.each do |category| %>
-                    <%= render category, category: %>
+                    <%= render 'dashboard/category', category: %>
                 <% end %>
             </div>
         <% end %>

@@ -10,7 +10,7 @@
 
     <div id='<%= dom_id super_category %>_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
         <% super_category.dashboard_categories.each do |category| %>
-            <%= render category, category: category%>
+            <%= render 'dashboard/category', category: %>
         <% end %>
     </div>
 </div>

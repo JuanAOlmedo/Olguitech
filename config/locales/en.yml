@@ -82,6 +82,8 @@ en:
     category: Category
     categories: Categories
     all: All categories
+  super_category:
+    area: "Area:"
   shared:
     see_more: See More
     our_products: Our Products

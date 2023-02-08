@@ -1,6 +1,6 @@
 <% if !super_categories.nil? && super_categories.length != 1 %>
     <div class ='centered super-category-selector'>
-        <p> Area: </p>
+        <%= tag.p t('super_category.area') %>
         <div class='btn-group centered'>
             <% super_categories.each do |super_category_all| %>
                 <% if super_category.id == super_category_all.id %>

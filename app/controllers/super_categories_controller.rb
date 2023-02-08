@@ -9,7 +9,7 @@ class SuperCategoriesController < ApplicationController
         if %w[Article Project Product].include? params[:related_to]
             @model_name = "#{params[:related_to].downcase}s".to_sym
 
-            @super_categories = SuperCategory.related_to Object.const_get(params[:related_to])
+            @super_categories = SuperCategory.select(:id, :title, :title2).related_to Object.const_get(params[:related_to])
             @super_category = @super_categories.find { |sc| sc.id == params[:id].to_i }
         else
             set_super_category

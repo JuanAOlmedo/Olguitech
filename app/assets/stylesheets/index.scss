@@ -35,14 +35,15 @@
 }
 
 .collapsible-content {
-    width: 90%;
-    margin: 0 0 0 10%;
+    width: 95%;
+    margin: 0 0 0 5%;
     background-color: white;
-    height: 0;
+    max-height: 0;
     overflow: hidden;
+    transition: max-height 0.2s ease-out;
 
-    &.active {
-        height: auto;
+    & a.link {
+        font-size: 1.1rem;
     }
 }
 

@@ -1,24 +1,20 @@
-<% if !super_categories.nil? && super_categories.length != 1 %>
-    <div class ='centered super-category-selector'>
-        <%= tag.p t('super_category.area') %>
-        <div class='btn-group centered'>
-            <% super_categories.each do |super_category_all| %>
-                <% if super_category.id == super_category_all.id %>
-                    <%= tag.p super_category_all.localized_title, class: 'btn active centered' %>
-                <% else %>
-                    <%= link_to super_category_all.localized_title, url_for(params: { super_category_id: super_category_all.id }), class: 'btn centered' %>
-                <% end %>
-            <% end %>
-        </div>
-    </div>
-<% end %>
-
 <div class='super-category'>
     <div class="menu" data-controller="index">
         <h3> Categorías </h3>
 
-        <% super_category.categories.each do |category| %>
-            <%= link_to category.localized_title, "##{category.id}", class: 'link', title: category.localized_title, data: { action: 'index#scrollToAnchor' } %>
+        <% super_categories.each do |super_category_all| %>
+            <div class='section'>
+                <%= tag.p class: 'link collapsible', data: { action: 'click->index#expandMenu' }, title: super_category_all.localized_title do %>
+                    <span class="dropdown-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> <polyline points="6 12 12 18 18 12"></polyline> </svg></span>
+                    <%= super_category_all.localized_title %>
+                <% end %>
+
+                <div class='collapsible-content'>
+                    <% super_category_all.categories.each do |category| %>
+                        <%= link_to category.localized_title, url_for(params: { super_category_id: super_category_all.id }, anchor: category.id), class: 'link', title: category.localized_title, data: { action: 'index#scrollToAnchor' } %>
+                    <% end %>
+                </div>
+            </div>
         <% end %>
     </div>
 

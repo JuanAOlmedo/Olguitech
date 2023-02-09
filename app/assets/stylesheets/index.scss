@@ -26,6 +26,26 @@
     font-weight: 600;
 }
 
+.collapsible {
+    cursor: pointer;
+
+    & span {
+        margin: 0;
+    }
+}
+
+.collapsible-content {
+    width: 90%;
+    margin: 0 0 0 10%;
+    background-color: white;
+    height: 0;
+    overflow: hidden;
+
+    &.active {
+        height: auto;
+    }
+}
+
 .super-category {
     display: inline-flex;
     width: 100%;

@@ -2,42 +2,39 @@
 <% content_for :description, @project.localized_desc.to_s %>
 
 <article>
-    <h1 class='main-title'> <%= @project.localized_title %> </h1>
+    <%= tag.h1 @project.localized_title, class: 'main-title' %>
 
-    <p class='subtitle'> <%= @project.localized_desc %> </p>
+    <%= tag.p @project.localized_desc, class: 'subtitle' %>
 
     <% if @project.image.attached? %>
         <%= image_for @project.image, resize: [], class: 'article-img centered', alt: @project.image.filename %>
     <% end %>
 
     <div class="content" data-controller="image-displayer">
-        <% if !@project.categories.empty? %>
+        <% if @project.categories.any? %>
             <p class="article-categories">
-                <%= "#{Category.model_name.human(count: @project.categories.length)}:" %>
+                <%= Category.model_name.human count: @project.categories.length %>:
+
                 <% @project.categories.each do |category| %>
-                    <%= link_to category.localized_title, category_path(category), class: 'link' %><%= (@project.categories.last != category ? ', ' : '').to_s %>
+                    <%= link_to category.localized_title, projects_path(params: { super_category_id: category.super_category_id }, anchor: category.id), class: 'link' %><%= (@project.categories.last != category ? ', ' : '').to_s %>
                 <% end %>
             </p>
         <% end %>
 
-        <div class='show-text'>
-            <p class='article-text'> <%= @project.localized_content %> </p>
-        </div>
+        <%= @project.localized_content %>
 
         <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
         </div>
     </div>
 
-    <% if !@project.products.empty? %>
-        <h1 class='main-title'>
-            <%= t 'show.products' %>
-        </h1>
+    <% if @project.products.any? %>
+        <%= tag.h1 t('show.products'), class: 'main-title' %>
         <%= alternative_cards_for @project.products %>
     <% end %>
 </article>
 
 <% if admin_signed_in? %>
-    <div class="btn-group admin-tools admin-tools-2">
+    <div class="btn-group admin-tools">
         <% if %w[drafted published].include?(@project.status) %>
             <%= link_to 'Editar', edit_project_path(@project), class: 'btn' %>
             <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @project}", class: 'btn' %>

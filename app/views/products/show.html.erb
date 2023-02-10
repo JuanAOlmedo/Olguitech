@@ -10,43 +10,38 @@
         <div class="text">
             <% if @product.categories.any? %>
                 <p class="article-categories">
-                    <%= "#{Category.model_name.human(count: @product.categories.length)}:" %>
+                    <%= Category.model_name.human count: @product.categories.length %>:
+
                     <% @product.categories.each do |category| %>
-                        <%= link_to category.localized_title, category_path(category), class: 'link' %><%= (@product.categories.last != category ? ', ' : '').to_s %>
+                        <%= link_to category.localized_title, products_path(params: { super_category_id: category.super_category_id }, anchor: category.id), class: 'link' %><%= (@product.categories.last != category ? ', ' : '').to_s %>
                     <% end %>
                 </p>
             <% end %>
 
-            <h1 class='main-title'> <%= @product.localized_title %> </h1>
-            <p class='subtitle'> <%= @product.localized_desc %> </p>
+            <%= tag.h1 @product.localized_title, class: 'main-title' %>
+            <%= tag.p @product.localized_desc, class: 'subtitle' %>
         </div>
     </div>
 
     <div class="content" data-controller="image-displayer">
-        <div class='show-text'>
-            <p class='article-text'> <%= @product.localized_content %> </p>
-        </div>
+        <%= @product.localized_content %>
 
         <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
         </div>
     </div>
 
     <% if @product.articles.any? %>
-        <h1 class="main-title">
-            <%= t 'show.articles' %>
-        </h1>
+        <%= tag.h1 t('show.articles'), class: 'main-title' %>
         <%= cards_for @product.articles %>
     <% end %>
     <% if @product.projects.any? %>
-        <h1 class="main-title">
-            <%= t 'show.proyects' %>
-        </h1>
+        <%= tag.h1 t('show.projects'), class: 'main-title' %>
         <%= cards_for @product.projects %>
     <% end %>
 </div>
 
 <% if admin_signed_in? %>
-    <div class="btn-group admin-tools admin-tools-2">
+    <div class="btn-group admin-tools">
         <% if %w[drafted published].include?(@product.status) %>
             <%= link_to 'Editar', edit_product_path(@product), class: 'btn' %>
             <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @product}", class: 'btn' %>

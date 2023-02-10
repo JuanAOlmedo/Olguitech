@@ -1,3 +1,5 @@
 # frozen_string_literal: true
 
-json.partial! 'projects/project', project: @project
+json.status @project.status
+json.dom_id dom_id(@project)
+json.model_name @project.model_name.plural

@@ -28,7 +28,7 @@ export default class extends Controller {
         })
             .then((result) => result.json())
             .then((article) => {
-                if (url.indexOf("/categories/") != -1) {
+                if (article.model_name == "categories") {
                     event.target.parentElement.parentElement.remove();
                     return;
                 }

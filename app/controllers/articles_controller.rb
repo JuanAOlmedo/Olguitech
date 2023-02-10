@@ -41,8 +41,7 @@ class ArticlesController < ApplicationController
         respond_to do |format|
             if @article.save
                 format.html do
-                    redirect_to @article,
-                                notice: 'Artículo creado exitosamente.'
+                    redirect_to @article, notice: 'Artículo creado exitosamente.'
                 end
                 format.json do
                     render :show, status: :created, location: @article

@@ -28,14 +28,7 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
 
-        respond_to do |format|
-            format.html do
-                redirect_to root_path,
-                            notice: I18n.t('users.deleted'),
-                            status: :see_other
-            end
-            format.json { head :no_content }
-        end
+        redirect_to root_path, notice: I18n.t('users.deleted'), status: :see_other
     end
 
     # POST /users/

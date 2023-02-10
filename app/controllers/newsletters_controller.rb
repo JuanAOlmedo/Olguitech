@@ -21,7 +21,6 @@ class NewslettersController < ApplicationController
     def edit; end
 
     # POST /newsletters
-    # POST /newsletters.json
     def create
         @newsletter = Newsletter.new(newsletter_params)
 
@@ -35,20 +34,12 @@ class NewslettersController < ApplicationController
 
     # PATCH /newsletters/1
     def update
-        respond_to do |format|
-            if @newsletter.update(newsletter_params)
-                @newsletter.send_newsletter if @newsletter.sent?
-                format.html do
-                    redirect_to @newsletter,
-                                notice: 'Newsletter actualizada exitosamente.'
-                end
-                format.json { render :show, status: :ok, location: @newsletter }
-            else
-                format.html { render :edit, status: :unprocessable_entity }
-                format.json do
-                    render json: @newsletter.errors, status: :unprocessable_entity
-                end
-            end
+        if @newsletter.update(newsletter_params)
+            @newsletter.send_newsletter if @newsletter.sent?
+
+            redirect_to @newsletter, notice: 'Newsletter actualizada exitosamente.'
+        else
+            render :edit, status: :unprocessable_entity
         end
     end
 

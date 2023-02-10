@@ -5,18 +5,11 @@ class ArticlesController < ApplicationController
     before_action :authenticate_admin!, except: %i[index show]
 
     # GET /articles
-    # GET /articles.json
     def index
-        respond_to do |format|
-            format.html do
-                @super_categories = SuperCategory.related_to :articles
-                @super_category = @super_categories.find do |sc|
-                    sc.id == params[:super_category_id].to_i
-                end || @super_categories.first
-            end
-
-            format.json { @articles = Article.published }
-        end
+        @super_categories = SuperCategory.related_to :articles
+        @super_category = @super_categories.find do |sc|
+            sc.id == params[:super_category_id].to_i
+        end || @super_categories.first
     end
 
     # GET /articles/1
@@ -48,8 +41,7 @@ class ArticlesController < ApplicationController
         respond_to do |format|
             if @article.save
                 format.html do
-                    redirect_to @article,
-                                notice: 'Artículo creado exitosamente.'
+                    redirect_to @article, notice: 'Artículo creado exitosamente.'
                 end
                 format.json do
                     render :show, status: :created, location: @article

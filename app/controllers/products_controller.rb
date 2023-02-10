@@ -4,18 +4,12 @@ class ProductsController < ApplicationController
     before_action :set_product, only: %i[show edit update destroy]
     before_action :authenticate_admin!, except: %i[index show]
 
-    # GET /products or /products.json
+    # GET /products
     def index
-        respond_to do |format|
-            format.html do
-                @super_categories = SuperCategory.related_to :products
-                @super_category = @super_categories.find do |sc|
-                    sc.id == params[:super_category_id].to_i
-                end || @super_categories.first
-            end
-
-            format.json { @products = Product.published }
-        end
+        @super_categories = SuperCategory.related_to :products
+        @super_category = @super_categories.find do |sc|
+            sc.id == params[:super_category_id].to_i
+        end || @super_categories.first
     end
 
     # GET /products/1 or /products/1.json

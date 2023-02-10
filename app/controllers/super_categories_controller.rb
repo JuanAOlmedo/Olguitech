@@ -16,12 +16,10 @@ class SuperCategoriesController < ApplicationController
     def create
         @super_category = SuperCategory.new(super_category_params)
 
-        respond_to do |format|
-            if @super_category.save
-                format.html { redirect_to "/#{I18n.locale}/dashboard/categories" }
-            else
-                format.html { render :new, status: :unprocessable_entity }
-            end
+        if @super_category.save
+            redirect_to "/#{I18n.locale}/dashboard/categories"
+        else
+            render :new, status: :unprocessable_entity
         end
     end
 
@@ -34,7 +32,7 @@ class SuperCategoriesController < ApplicationController
         end
     end
 
-    # DELETE /super_categories/1 or /super_categories/1.json
+    # DELETE /super_categories/1
     def destroy
         @super_category.destroy
 

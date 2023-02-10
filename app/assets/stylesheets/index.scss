@@ -20,6 +20,15 @@
     }
 }
 
+.sticky-title {
+    position: sticky;
+    font-size: 2.4rem !important;
+    top: 0rem;
+    padding: 1rem;
+    background-color: white;
+    z-index: 100;
+}
+
 .super-category-selector p {
     margin: 0 0 0.2rem 0;
     font-size: 1.4rem;
@@ -37,12 +46,20 @@
 .collapsible-content {
     width: 95%;
     margin: 0 0 0 5%;
-    background-color: white;
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+
+    &.active {
+        height: auto;
+
+        & a.link {
+            transform: translateY(0);
+        }
+    }
 
     & a.link {
+        transform: translateY(-0.8rem);
+        transition: transform 0.2s;
         font-size: 1.1rem;
     }
 }
@@ -94,6 +111,11 @@
 .category {
     padding-bottom: 4rem;
     border-bottom: solid #aaa 2px;
+
+    & .category-articles {
+        flex-wrap: wrap;
+        display: flex;
+    }
 }
 
 .dropdown-holder {

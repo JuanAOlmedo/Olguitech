@@ -5,10 +5,6 @@ class NewslettersController < ApplicationController
     before_action :check_sent, only: %i[edit update destroy]
     before_action :authenticate_admin!, except: :show
 
-    def index
-        @newsletters = Newsletter.all.order(created_at: :desc)
-    end
-
     # GET /newsletters/1
     def show; end
 

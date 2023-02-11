@@ -55,7 +55,7 @@ export default class extends Controller {
     appendArticle(article) {
         const domArticle = document.getElementById(article.dom_id);
         domArticle.remove();
-        domArticle.classList = `dashboard-card ${article.status}`;
+        domArticle.classList = `compact-card ${article.status}`;
 
         if (article.status != "trashed") {
             const articles = document.querySelector(

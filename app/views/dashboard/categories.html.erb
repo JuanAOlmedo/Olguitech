@@ -16,13 +16,24 @@
             <% end %>
         </div>
 
-        <% if @uncategorized.any? %>
+        <% if @unsupercategorized.any? %>
             <h2 class='title centered'>
                 Sin Super categoría
             </h2>
             <div id='uncategorized_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
-                <% @uncategorized.each do |category| %>
+                <% @unsupercategorized.each do |category| %>
                     <%= render 'dashboard/category', category: %>
+                <% end %>
+            </div>
+        <% end %>
+
+        <% if @uncategorized.any? %>
+            <h2 class='title centered'>
+                Artículos sin categoría
+            </h2>
+            <div id='uncategorized_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
+                <% @uncategorized.each do |uncategorized| %>
+                    <%= render 'dashboard/article', article: uncategorized %>
                 <% end %>
             </div>
         <% end %>

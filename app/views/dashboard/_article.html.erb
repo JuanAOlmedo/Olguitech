@@ -5,7 +5,7 @@
         <h3> <%= article.localized_short_title %> </h3>
 
         <%= link_to 'Abrir', article, class: 'btn' unless @trash %>
-        <% if article.categories.any? %>
+        <% if article.model_name != 'Newsletter' && article.categories.any? %>
             <% begin %>
                 <% ids_name = "#{article.model_name.singular}_ids" %>
                 <%= link_to 'Desasociar', category_path(category, params: { category: { ids_name => ([''] + category.send(ids_name.to_sym) - [article.id]) } }), data: { turbo_method: :patch, action: 'dashboard#update', dashboard_category_param: '1' }, class: 'btn' %>

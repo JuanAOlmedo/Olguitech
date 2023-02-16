@@ -9,11 +9,8 @@ Rails.application.routes.draw do
         get '/contacto', to: 'contactos#index'
 
         resources :articles
-        get '/articles/:order_by/:asc_desc', to: 'articles#index'
         resources :projects
-        get '/projects/:order_by/:asc_desc', to: 'projects#index'
         resources :products
-        get '/products/:order_by/:asc_desc', to: 'products#index'
 
         resources :users do
             delete '/:edit_token', to: 'users#destroy', on: :member

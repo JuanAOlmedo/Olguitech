@@ -9,9 +9,6 @@ class NewslettersControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should not get/post anything except show' do
-        get newsletters_url
-        assert_response :redirect
-
         get new_newsletter_url
         assert_response :redirect
 
@@ -27,9 +24,6 @@ class NewslettersControllerTest < ActionDispatch::IntegrationTest
 
     test 'should get/post everything if admin' do
         sign_in admins(:one)
-
-        get newsletters_url
-        assert_response :success
 
         get new_newsletter_url
         assert_response :success

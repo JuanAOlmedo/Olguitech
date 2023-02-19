@@ -30,7 +30,7 @@ class MainsControllerTest < ActionDispatch::IntegrationTest
         assert_response :redirect
 
         assert_difference('User.count', 1) do
-            post '/users/subscribe', params: { user: { email: "test@tesst.com" } }
+            post '/users/subscribe', params: { user: { email: 'test@tesst.com' } }
         end
     end
 end

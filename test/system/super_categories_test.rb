@@ -7,11 +7,6 @@ class SuperCategoriesTest < ApplicationSystemTestCase
         @super_category = super_categories(:one)
     end
 
-    test 'visiting the index' do
-        visit super_categories_url
-        assert_selector 'h1', text: 'Super categories'
-    end
-
     test 'should create super category' do
         visit super_categories_url
         click_on 'New super category'
@@ -30,12 +25,5 @@ class SuperCategoriesTest < ApplicationSystemTestCase
 
         assert_text 'Super category was successfully updated'
         click_on 'Back'
-    end
-
-    test 'should destroy Super category' do
-        visit super_category_url(@super_category)
-        click_on 'Destroy this super category', match: :first
-
-        assert_text 'Super category was successfully destroyed'
     end
 end

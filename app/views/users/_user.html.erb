@@ -27,5 +27,5 @@
 
     <td> <%= user.locale == 'en' ? 'Inglés' : 'Español' %> </td>
 
-    <td> <%= link_to 'Editar', edit_user_path(user, params: { edit_token: user.edit_token }), class: 'link' %> </td>
+    <td> <%= link_to 'Editar', edit_user_path(user, params: { edit_token: user.edit_token }), data: {turbo_frame: '_top' }, class: 'link' %> </td>
 </tr>

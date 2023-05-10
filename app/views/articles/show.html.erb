@@ -2,7 +2,7 @@
 <% content_for :description, @article.localized_desc.to_s %>
 
 <article>
-    <%= tag.h2 @article.localized_title, class: 'main-title' %>
+    <%= tag.h1 @article.localized_title, class: 'main-title' %>
 
     <%= tag.p @article.localized_desc, class: 'subtitle' %>
 

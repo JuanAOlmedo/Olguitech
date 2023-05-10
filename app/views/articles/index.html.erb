@@ -1,6 +1,6 @@
 <% content_for :title, "#{I18n.t 'shared.our_solutions'} | Olguitech s.a.s." %>
 
-<%= tag.h4 t('shared.our_solutions'), class: 'main-title' %>
+<%= tag.h1 t('shared.our_solutions'), class: 'main-title' %>
 
 <% if @super_category %>
     <%= render @super_category, super_categories: @super_categories, model_name: :articles %>

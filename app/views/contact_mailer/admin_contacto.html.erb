@@ -4,18 +4,6 @@
     <%= @contact.message %>
 </p>
 <p>
-    <% if @contact.interests.any? %>
-        <p> <strong> Adjuntados: </strong> </p>
-        <% @contact.interests.each do |interest| %>
-            <p>
-                <strong> <%= interest.record.model_name.human %> </strong> 
-                <%= interest.record.title %>
-            </p>
-
-        <% end %>
-    <% end %>
-</p>
-<p>
     <strong>Email:</strong> <%= mail_to @user.email %>
 </p>
 <p>

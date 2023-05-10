@@ -6,8 +6,6 @@ class ContactMailerPreview < ActionMailer::Preview
     def contacto
         user = User.last
         contact = user.contactos.new(message: 'saddsa')
-        contact.interests.new(record_type: 'Article', record_id: Article.last.id)
-        contact.interests.new(record_type: 'Article', record_id: Article.last.id)
 
         ContactMailer.contacto(user, contact)
     end
@@ -16,8 +14,6 @@ class ContactMailerPreview < ActionMailer::Preview
     def admin_contacto
         user = User.last
         contact = user.contactos.new(message: 'saddsa')
-        contact.interests.new(record_type: 'Article', record_id: Article.last.id)
-        contact.interests.new(record_type: 'Article', record_id: Article.last.id)
 
         ContactMailer.admin_contacto(user, contact)
     end

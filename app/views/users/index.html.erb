@@ -39,16 +39,6 @@
                     <div class="big-card">
                         <p> <strong> Fecha: </strong> <%= contact.created_at.to_formatted_s(:long) %> </p>
                         <p> <strong> Mensaje: </strong> <%= contact.message %> </p>
-                        <% if contact.interests.any? %>
-                            <p> <strong> Adjuntados: </strong> </p>
-                            <% contact.interests.each do |interest| %>
-                                <p>
-                                    <strong> <%= interest.record.model_name.human %> </strong> 
-                                    <%= interest.record.title %>
-                                </p>
-
-                            <% end %>
-                        <% end %>
                     </div>
                 <% end %>
             </div>

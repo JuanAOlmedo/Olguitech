@@ -5,12 +5,6 @@
 
 ---------------------------------------------
 
-<% if @contact.interests.any? %>
-Adjuntados:
-<% @contact.interests.each do |interest| %>
-    <%= interest.record.model_name.human %>: <%= interest.record.title %>
-<% end %>
-<% end %>
 Email: <%= @user.email %>
 Idioma: <%= @user.locale %>
 Id: <%= @user.id %>

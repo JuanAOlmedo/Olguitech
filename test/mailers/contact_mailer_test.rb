@@ -6,7 +6,6 @@ class ContactMailerTest < ActionMailer::TestCase
     setup do
         @user = users(:one)
         @contacto = @user.contactos.create(message: 'HI')
-        @contacto.interests.new record_type: 'Article', record_id: 1
     end
 
     test 'contacto' do
@@ -20,7 +19,6 @@ class ContactMailerTest < ActionMailer::TestCase
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match 'HI', mail.body.encoded
-        assert_match Article.first.localized_title, mail.body.encoded
     end
 
     test 'admin_contacto' do
@@ -34,6 +32,5 @@ class ContactMailerTest < ActionMailer::TestCase
         assert_equal [ENV['EMAIL_USERNAME']], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match 'HI', mail.body.encoded
-        assert_match Article.first.title, mail.body.encoded
     end
 end

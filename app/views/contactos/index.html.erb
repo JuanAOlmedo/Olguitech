@@ -38,10 +38,6 @@
             <%= form.text_area :message, maxlength: 4000, style: 'height: 150px' %>
         </div>
         
-        <%= turbo_frame_tag 'interests', style: 'width: 100%;', data: { action: 'turbo:frame-load->new-contacto#frametagChange' } do %>
-            <%= link_to t('contact.attach'), "/#{I18n.locale}/contacto/new/interests", class: 'btn centered', data: { action: 'new-contacto#duplicateFrametag' } %>
-        <% end %>
-
         <%= hcaptcha_tags theme: :light, class: 'field separate centered', id: 'captcha' %>
 
         <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>

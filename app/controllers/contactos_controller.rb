@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 class ContactosController < ApplicationController
     def index
@@ -13,10 +12,9 @@ class ContactosController < ApplicationController
         @user.locale = I18n.locale
         @contacto = @user.contactos.new(contacto_params)
 
-        unless verify_hcaptcha(model: @contacto)
-            render(:index,
-                   status: :unprocessable_entity) and return
-        end
+        #unless verify_hcaptcha(model: @contacto)
+        #    render(:index, status: :unprocessable_entity) and return
+        #end
 
         if @user.name && @user.phone && @user.company
             process_contact
@@ -25,16 +23,10 @@ class ContactosController < ApplicationController
         end
     end
 
-    def interests
-        @contacto = Contacto.new
-        @contacto.interests.build
-    end
-
     private
 
     def contacto_params
-        params.require(:contacto).permit(:message,
-                                         interests_attributes: %i[id record_type record_id])
+        params.require(:contacto).permit :message
     end
 
     def user_params

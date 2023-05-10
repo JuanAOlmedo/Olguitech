@@ -5,7 +5,6 @@ Rails.application.routes.draw do
         resources :super_categories
 
         resources :contactos
-        get '/contacto/new/interests', to: 'contactos#interests'
         get '/contacto', to: 'contactos#index'
 
         resources :articles

@@ -5,10 +5,6 @@
 
     <%= t('mail.contact.attachments') %>
 
-    <% @contact.interests.each do |interest| %>
-        <%= link_to interest.record.localized_title, interest.record %>
-    <% end %> <br> <br>
-
     <%= t('mail.contact.message', message: @contact.message) %> <br> <br>
 
     <%= @user.company ? t('mail.contact.final_company', company: @user.company) : t('mail.contact.final') %>

@@ -2,4 +2,4 @@
 
 <p>Puedes confirmar tu cuenta con el link de abajo:</p>
 
-<p><%= link_to 'Confirmar mi cuenta', "/#{I18n.locale}/confirmation/#{@token}" %></p>
+<p><%= link_to 'Confirmar mi cueta', confirmation_url(@resource, confirmation_token: @token) %></p>

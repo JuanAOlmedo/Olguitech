@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.2.1'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '7.0.4.3'
+gem 'rails', '7.0.8'
 
 # Use pg as the database for Active Record in production
 gem 'pg'
@@ -54,7 +54,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'friendly_id', '~> 5.4.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data'
 
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -71,9 +71,6 @@ group :test do
     # Adds support for Capybara system testing and selenium driver
     gem 'capybara', '>= 2.15'
     gem 'selenium-webdriver'
-
-    # Easy installation and use of web drivers to run system tests with browsers
-    gem 'webdrivers'
 end
 
 # Use capistrano to deploy to production

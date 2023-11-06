@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.17.0"
+lock "~> 3.18.0"
 
 set :application, "olguitech"
 set :repo_url, "https://github.com/VarillasFriend/Olguitech.git"

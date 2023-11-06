@@ -36,6 +36,8 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Use devise for authentication
 gem 'devise', '4.8.1'
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 
 # Use simple_form for devise forms
 gem 'simple_form', '5.1.0'

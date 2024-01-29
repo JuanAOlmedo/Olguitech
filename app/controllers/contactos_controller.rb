@@ -12,10 +12,10 @@ class ContactosController < ApplicationController
         @user.locale = I18n.locale
         @contacto = @user.contactos.new(contacto_params)
 
+        # Verify users with a captcha
         unless verify_hcaptcha(model: @contacto)
             render(:index, status: :unprocessable_entity) and return
         end
-
 
         if @user.name && @user.phone && @user.company
             process_contact

@@ -13,7 +13,7 @@ class ContactosController < ApplicationController
         @contacto = @user.contactos.new(contacto_params)
 
         # Verify users with a captcha
-        unless verify_hcaptcha(model: @contacto)
+        if Rails.env == 'development' || verify_hcaptcha(model: @contacto)
             render(:index, status: :unprocessable_entity) and return
         end
 

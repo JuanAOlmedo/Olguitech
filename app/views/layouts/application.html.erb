@@ -17,11 +17,11 @@
     <link rel="icon" href="/favicons/favicon.png" sizes="32x32">
     <link rel="apple-touch-icon" sizes="512x512" href="/apple-touch-icon.png">
 
+    <%= javascript_importmap_tags %>
+
     <% if admin_signed_in? %>
         <script type='module'> import "trix"; </script>
     <% end %>
-
-    <%= javascript_importmap_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track' => 'reload' %>
 

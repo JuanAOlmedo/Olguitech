@@ -35,9 +35,12 @@ gem 'jbuilder', '~> 2.7'
 gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Use devise for authentication
+gem 'bcrypt_pbkdf'
 gem 'devise', '4.8.1'
 gem 'ed25519'
-gem 'bcrypt_pbkdf'
+
+# Captcha
+gem 'hcaptcha', '~> 7.1'
 
 # Use simple_form for devise forms
 gem 'simple_form', '5.1.0'
@@ -61,7 +64,7 @@ gem 'tzinfo-data'
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
     gem 'byebug', platforms: %i[mri mingw x64_mingw]
-    gem 'sqlite3'
+    gem 'sqlite3', '1.7'
 end
 
 group :development do
@@ -77,8 +80,6 @@ end
 
 # Use capistrano to deploy to production
 gem 'capistrano', '~> 3.11'
-gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
-
-gem "hcaptcha", "~> 7.1"

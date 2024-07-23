@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.18.0"
+lock "~> 3.19.1"
 
 set :application, "olguitech"
 set :repo_url, "https://github.com/VarillasFriend/Olguitech.git"
@@ -9,7 +9,7 @@ set :branch, "main"
 set :deploy_to, "/home/deploy/#{fetch :application}"
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
-                     'vendor/bundle', '.bundle', 'public/system', 
+                     'vendor/bundle', '.bundle', 'public/system',
                      'public/uploads', 'storage'
 
 # Only keep the last 5 releases to save disk space

@@ -36,7 +36,7 @@ gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Use devise for authentication
 gem 'bcrypt_pbkdf'
-gem 'devise', '4.8.1'
+gem 'devise', '~> 4.9'
 gem 'ed25519'
 
 # Captcha

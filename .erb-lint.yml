@@ -21,3 +21,5 @@ linters:
         Enabled: false
       Lint/UselessAssignment:
         Enabled: false
+      Layout/IndentationStyle:
+        IndentationWidth: 4

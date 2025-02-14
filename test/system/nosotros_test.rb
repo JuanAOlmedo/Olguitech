@@ -9,5 +9,6 @@ class NosotrosTest < ApplicationSystemTestCase
         click_on 'Nosotros'
 
         assert_selector 'h1', text: '¿Quiénes Somos?'
+        assert_selector 'h1', text: '¿Cómo Somos Diferentes?'
     end
 end

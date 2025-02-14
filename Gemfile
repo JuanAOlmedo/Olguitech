@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '7.2.2.1'
+gem 'rails', '8.0.1'
 
 # Use pg as the database for Active Record in production
 gem 'pg'
@@ -64,7 +64,7 @@ gem 'tzinfo-data'
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
     gem 'byebug', platforms: %i[mri mingw x64_mingw]
-    gem 'sqlite3', '1.7'
+    gem 'sqlite3'
 end
 
 group :development do

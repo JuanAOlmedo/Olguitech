@@ -24,4 +24,19 @@ class SuperCategoriesTest < ApplicationSystemTestCase
         assert_equal 'A Title', SuperCategory.last.title
         assert_equal categories(:one), SuperCategory.last.categories.first
     end
+
+    test 'should edit super category' do
+        sign_in admins(:one)
+
+        visit '/super_category/1'
+
+        fill_in 'Título', with: 'A Title1'
+        uncheck id: 'article_category_ids_1'
+
+        click_on 'Crear'
+
+        @super_category.reload
+        assert_equal 'A Title1', @super_category.title
+        assert_equal 0, @super_category.categories.count
+    end
 end

@@ -1,4 +1,3 @@
-
 class ContactosController < ApplicationController
     def index
         @contacto = Contacto.new
@@ -11,6 +10,8 @@ class ContactosController < ApplicationController
         @user = User.find_by(user_params) || User.new(user_params)
         @user.locale = I18n.locale
         @contacto = @user.contactos.new(contacto_params)
+        puts @user.email
+        puts @user.id
 
         # Verify users with a captcha
         if Rails.env == 'production' && !verify_hcaptcha(model: @contacto)

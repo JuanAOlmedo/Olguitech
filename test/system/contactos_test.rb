@@ -8,8 +8,8 @@ class ContactosTest < ApplicationSystemTestCase
 
         click_on 'Contacto'
 
-        fill_in 'Email', with: 'test10@test.com'
-        fill_in 'Cómo podemos ayudarte?', with: 'Question'
+        fill_in 'contacto_message', with: 'Question'
+        fill_in 'user_email', with: 'test3@test.com'
 
         assert_difference('User.count', 1) do
             click_on 'Hacer una pregunta!'

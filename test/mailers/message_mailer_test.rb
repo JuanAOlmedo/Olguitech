@@ -2,14 +2,14 @@
 
 require 'test_helper'
 
-class ContactMailerTest < ActionMailer::TestCase
+class MessageMailerTest < ActionMailer::TestCase
     setup do
         @user = users(:one)
-        @contacto = @user.contactos.create(message: 'HI')
+        @message = @user.messages.create(content: 'HI')
     end
 
-    test 'contacto' do
-        mail = ContactMailer.contacto(@user, @contacto)
+    test 'user_message' do
+        mail = MessageMailer.user_mail(@user, @message)
 
         assert_emails 1 do
             mail.deliver_now
@@ -21,8 +21,8 @@ class ContactMailerTest < ActionMailer::TestCase
         assert_match 'HI', mail.body.encoded
     end
 
-    test 'admin_contacto' do
-        mail = ContactMailer.admin_contacto(@user, @contacto)
+    test 'admin_message' do
+        mail = MessageMailer.admin_mail(@user, @message)
 
         assert_emails 1 do
             mail.deliver_now

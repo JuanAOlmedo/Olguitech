@@ -28,10 +28,10 @@ class SuperCategoriesTest < ApplicationSystemTestCase
     test 'should edit super category' do
         sign_in admins(:one)
 
-        visit '/super_category/1'
+        visit '/super_categories/1/edit'
 
         fill_in 'Título', with: 'A Title1'
-        uncheck id: 'article_category_ids_1'
+        uncheck id: 'super_category_category_ids_1'
 
         click_on 'Crear'
 

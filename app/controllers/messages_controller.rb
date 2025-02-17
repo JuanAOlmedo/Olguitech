@@ -1,18 +1,13 @@
-class ContactosController < ApplicationController
-    def index
-        @contacto = Contacto.new
-        @user = @contacto.user
-    end
-
+class MessagesController < ApplicationController
     # Find or create a new user based on the email and create a new contact
     # for that user and update their locale
     def create
         @user = User.find_by(user_params) || User.new(user_params)
         @user.locale = I18n.locale
-        @contacto = @user.contactos.new(contacto_params)
+        @message = @user.messages.new message_params
 
         # Verify users with a captcha
-        if Rails.env == 'production' && !verify_hcaptcha(model: @contacto)
+        if Rails.env == 'production' && !verify_hcaptcha(model: @message)
             render(:index, status: :unprocessable_entity) and return
         end
 
@@ -25,8 +20,8 @@ class ContactosController < ApplicationController
 
     private
 
-    def contacto_params
-        params.require(:contacto).permit :message
+    def message_params
+        params.require(:message).permit :content
     end
 
     def user_params
@@ -35,8 +30,8 @@ class ContactosController < ApplicationController
 
     # If the contact saves successfully, send the user and the admin an email
     def process_contact
-        if @contacto.save
-            @contacto.send_mail
+        if @message.save
+            @message.send_mail
 
             redirect_to root_path, notice: I18n.t('contact.sent')
         else
@@ -48,8 +43,8 @@ class ContactosController < ApplicationController
     # the edit_user path to fill them up. Add a contact parameter so that the views
     # can show information according to the context
     def process_contact_for_incomplete_user
-        if @user.save && @contacto.save
-            @contacto.send_mail
+        if @user.save && @message.save
+            @message.send_mail
 
             redirect_to edit_user_path(@user, edit_token: @user.edit_token, contact: true),
                         notice: I18n.t('contact.first_time')

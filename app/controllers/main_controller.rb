@@ -10,8 +10,8 @@ class MainController < ApplicationController
     end
 
     def contacto
-        @contacto = Contacto.new
-        @user = @contacto.user
+        @message = Message.new
+        @user = @message.user
     end
 
     def nosotros

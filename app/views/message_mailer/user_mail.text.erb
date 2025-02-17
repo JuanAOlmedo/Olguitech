@@ -5,6 +5,6 @@ Olguitech s.a.s.
 
 <%= t('mail.contact.attachments') %>
 
-<%= t('mail.contact.message', message: @contact.message) %>
+<%= t('mail.contact.message', message: @message.content) %>
 
 <%= @user.company ? t('mail.contact.final_company', company: @user.company) : t('mail.contact.final') %>

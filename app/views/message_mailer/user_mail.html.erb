@@ -5,7 +5,7 @@
 
     <%= t('mail.contact.attachments') %>
 
-    <%= t('mail.contact.message', message: @contact.message) %> <br> <br>
+    <%= t('mail.contact.message', message: @message.content) %> <br> <br>
 
     <%= @user.company ? t('mail.contact.final_company', company: @user.company) : t('mail.contact.final') %>
 </p>

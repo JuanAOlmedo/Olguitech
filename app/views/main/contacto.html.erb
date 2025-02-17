@@ -2,10 +2,10 @@
 
 <h1 class='main-title'> <%= t 'contact.how_can_we_help_you' %> </h1>
 
-<% if (@user && @user.errors.any?) || (@contacto && @contacto.errors.any?) %>
+<% if (@user && @user.errors.any?) || (@message && @message.errors.any?) %>
     <div id="error_explanation">
         <h2>
-            <%= pluralize(@user.errors.count + @contacto.errors.count, 'error') %> <%= @user.errors.count + @contacto.errors.count > 1 ? t('contact.errors') : t('contact.error') %>:
+            <%= pluralize(@user.errors.count + @message.errors.count, 'error') %> <%= @user.errors.count + @message.errors.count > 1 ? t('contact.errors') : t('contact.error') %>:
         </h2>
 
         <ul>
@@ -15,8 +15,8 @@
                 <% end %>
             <% end %>
 
-            <% if @contacto && @contacto.errors.any? %>
-                <% @contacto.errors.each do |error| %>
+            <% if @message && @message.errors.any? %>
+                <% @message.errors.each do |error| %>
                     <li><%= error.full_message %></li>
                 <% end %>
             <% end %>
@@ -24,9 +24,9 @@
     </div>
 <% end %>
 
-<%= form_with model: @contacto do |form| %>
+<%= form_with model: @message do |form| %>
     <div class="form big-card" data-controller='new-contacto captcha'>
-        <%= fields_for :user, @contacto.user do |user_form| %>
+        <%= fields_for :user, @message.user do |user_form| %>
             <div class="field">
                 <%= user_form.label :email, 'Email' %>
                 <%= user_form.email_field :email %>
@@ -34,10 +34,10 @@
         <% end %>
 
         <div class="field separate">
-            <%= form.label :message, t('contact.how_can_we_help_you') %>
-            <%= form.text_area :message, maxlength: 4000, style: 'height: 150px' %>
+            <%= form.label :content, t('contact.how_can_we_help_you') %>
+            <%= form.text_area :content, maxlength: 4000, style: 'height: 150px' %>
         </div>
-        
+
         <%= hcaptcha_tags theme: :light, class: 'field separate centered', id: 'captcha' %>
 
         <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>

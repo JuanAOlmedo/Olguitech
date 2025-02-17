@@ -16,7 +16,7 @@
                     <th> Compañía </th>
                     <th> Teléfono </th>
                     <th> Newsletter? </th>
-                    <th> Contactos </th>
+                    <th> Mensaje </th>
                     <th> Idioma </th>
                     <th> Editar </th>
                 </tr>
@@ -33,12 +33,12 @@
             <% end %>
         </div>
 
-        <% @contacted.each do |user| %>
+        <% @users_with_messages.each do |user| %>
             <div class='contact-info hidden' data-action="click->user-index#toggleShowContacts" data-id='<%= user.id %>' id='article-<%= user.id %>'>
-                <% user.contactos.each do |contact| %>
+                <% user.messages.each do |message| %>
                     <div class="big-card">
-                        <p> <strong> Fecha: </strong> <%= contact.created_at.to_formatted_s(:long) %> </p>
-                        <p> <strong> Mensaje: </strong> <%= contact.message %> </p>
+                        <p> <strong> Fecha: </strong> <%= message.created_at.to_formatted_s(:long) %> </p>
+                        <p> <strong> Mensaje: </strong> <%= message.content %> </p>
                     </div>
                 <% end %>
             </div>

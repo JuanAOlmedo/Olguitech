@@ -4,13 +4,13 @@ require 'application_system_test_case'
 
 class ContactosTest < ApplicationSystemTestCase
     test 'should be able to contact when registered user' do
-        visit '/es/contactos'
+        visit '/es/contacto'
 
-        fill_in 'contacto_message', with: 'Question'
+        fill_in 'message_content', with: 'Question'
         fill_in 'user_email', with: 'test1@test.com'
 
         assert_difference('User.count', 0) do
-            assert_difference('Contacto.count', 1) do
+            assert_difference('Message.count', 1) do
                 click_on 'Hacer una pregunta!'
             end
         end
@@ -23,11 +23,11 @@ class ContactosTest < ApplicationSystemTestCase
 
         click_on 'Contacto'
 
-        fill_in 'contacto_message', with: 'Question'
+        fill_in 'message_content', with: 'Question'
         fill_in 'user_email', with: 'test3@test.com'
 
         assert_difference('User.count', 1) do
-            assert_difference('Contacto.count', 1) do
+            assert_difference('Message.count', 1) do
                 click_on 'Hacer una pregunta!'
             end
         end

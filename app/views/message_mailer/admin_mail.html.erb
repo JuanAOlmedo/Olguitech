@@ -1,7 +1,7 @@
 <h1><%= @user.name || @user.email %> se ha contactado</h1>
 
 <p>
-    <%= @contact.message %>
+    <%= @message.content %>
 </p>
 <p>
     <strong>Email:</strong> <%= mail_to @user.email %>

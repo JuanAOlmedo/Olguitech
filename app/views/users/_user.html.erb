@@ -18,10 +18,10 @@
     <td> <%= user.newsletter ? 'Sí' : 'No' %> </td>
 
     <td>
-        <% times_contacted = user.contactos.count %>
+        <% message_count = user.messages.count %>
 
-        <span class='<%= times_contacted.positive? ? 'link times-contacted' : '' %>' data-action="click->user-index#toggleShowContacts" data-id="<%= user.id %>">
-            <%= times_contacted.positive? ? "Ver #{times_contacted}" : times_contacted %>
+        <span class='<%= message_count.positive? ? 'link times-contacted' : '' %>' data-action="click->user-index#toggleShowContacts" data-id="<%= user.id %>">
+            <%= message_count.positive? ? "Ver #{message_count}" : message_count %>
         </span>
     </td>
 

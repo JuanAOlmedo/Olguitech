@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     # GET /users
     def index
         @users = User.all.order id: :asc
-        @contacted = User.where.associated(:contactos).uniq
+        @users_with_messages = User.where.associated(:messages).uniq
     end
 
     # GET /users/1

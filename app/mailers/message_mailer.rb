@@ -1,18 +1,18 @@
 # frozen_string_literal: true
 
-class ContactMailer < ApplicationMailer
-    def contacto(user, contact)
+class MessageMailer < ApplicationMailer
+    def user_mail(user, message)
         @user = user
-        @contact = contact
+        @message = message
 
         I18n.with_locale(@user.locale) do
-            mail(to: @user.email, subject: 'Olguitech s.a.s.')
+            mail to: @user.email, subject: 'Olguitech s.a.s.'
         end
     end
 
-    def admin_contacto(user, contact)
+    def admin_mail(user, message)
         @user = user
-        @contact = contact
+        @message = message
 
         mail to: ENV['EMAIL_USERNAME'], subject: 'Una nueva persona se ha contactado'
     end

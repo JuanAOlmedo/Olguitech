@@ -12,7 +12,7 @@ class User < ApplicationRecord
     has_secure_token :newsletter_token
     has_secure_token :confirmation_token
 
-    has_many :contactos, dependent: :destroy
+    has_many :messages, dependent: :destroy
 
     def send_confirmation_instructions
         return if confirmed?

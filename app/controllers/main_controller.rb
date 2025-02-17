@@ -8,4 +8,13 @@ class MainController < ApplicationController
 
         @user = User.new
     end
+
+    def contacto
+        @contacto = Contacto.new
+        @user = @contacto.user
+    end
+
+    def nosotros
+        @nosotros = true
+    end
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         resources :super_categories
 
         resources :contactos
-        get '/contacto', to: 'contactos#index'
+        get '/contacto', to: 'main#contacto'
 
         resources :articles
         resources :projects
@@ -30,8 +30,7 @@ Rails.application.routes.draw do
             get '/', to: 'dashboard#articles'
         end
 
-        get '/nosotros', to: 'nosotros#nosotros'
-
+        get '/nosotros', to: 'main#nosotros'
         root 'main#main'
     end
 

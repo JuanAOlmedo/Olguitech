@@ -8,6 +8,16 @@ class MainsControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
+    test 'should get contacto' do
+        get '/contacto'
+        assert_response :success
+    end
+
+    test 'should get nosotros' do
+        get nosotros_path
+        assert_response :success
+    end
+
     test 'should create user' do
         assert_difference('User.count', 1) do
             post '/users/subscribe', params: { user: { email: 'test10@test.com' } }

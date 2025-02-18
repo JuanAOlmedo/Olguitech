@@ -65,7 +65,7 @@
                 <% end %>
             <% end %>
 
-            <%= link_to t('nav.contact'), "/#{I18n.locale}/contacto", class: 'btn' %>
+            <%= link_to t('nav.contact'), contacto_path, class: 'btn' %>
 
             <% if admin_signed_in? %>
                 <%= link_to 'Panel', "/#{I18n.locale}/dashboard", class: 'btn' %>

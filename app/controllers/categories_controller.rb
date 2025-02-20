@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
     def show
         @categories = Category.all
 
-        @articles = @category.articles.published
+        @solutions = @category.solutions.published
         @projects = @category.projects.published
         @products = @category.products.published
     end
@@ -69,7 +69,7 @@ class CategoriesController < ApplicationController
                   :description,
                   :description2,
                   { product_ids: [] },
-                  { article_ids: [] },
+                  { solution_ids: [] },
                   { project_ids: [] },
                   :super_category_id,
                   :image

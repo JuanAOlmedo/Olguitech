@@ -11,7 +11,7 @@ export default class extends Controller {
     }
 
     // Send a request to the server with the parameters that the link provides.
-    // Send the resulting article to appendArticle to process it.
+    // Send the resulting solution to appendSolution to process it.
     update(event) {
         event.preventDefault();
         const href = event.target.href,
@@ -27,17 +27,17 @@ export default class extends Controller {
             body: params,
         })
             .then((result) => result.json())
-            .then((article) => {
-                if (article.model_name == "categories") {
+            .then((solution) => {
+                if (solution.model_name == "categories") {
                     event.target.parentElement.parentElement.remove();
                     return;
                 }
 
-                this.appendArticle(article);
+                this.appendSolution(solution);
             });
     }
 
-    // Delete an article and remove it from the DOM
+    // Delete an solution and remove it from the DOM
     delete({ params: { id } }) {
         event.preventDefault();
         if (!confirm(event.target.dataset.turboConfirm)) return;
@@ -59,7 +59,7 @@ export default class extends Controller {
 
         if (article.status != "trashed") {
             const articles = document.querySelector(
-                `#${article.status}_${article.model_name}`
+                `#${article.status}_${article.model_name}`,
             );
 
             if (articles) articles.appendChild(domArticle);
@@ -72,7 +72,7 @@ export default class extends Controller {
     // If all draft holders are empty, display a message indicating this.
     updateDraftHolders() {
         const holders = document.querySelectorAll(
-                "#drafted_articles, #drafted_projects, #drafted_products, #drafted_newsletters"
+                "#drafted_solutions, #drafted_projects, #drafted_products, #drafted_newsletters",
             ),
             message = document.getElementById("dashboard-message");
 
@@ -84,7 +84,7 @@ export default class extends Controller {
         if (!message) return;
 
         const shouldDisplayMessage = Array.from(holders).every(
-            (holder) => holder && holder.parentElement.style.display == "none"
+            (holder) => holder && holder.parentElement.style.display == "none",
         );
         message.style.display = shouldDisplayMessage ? "block" : "none";
     }

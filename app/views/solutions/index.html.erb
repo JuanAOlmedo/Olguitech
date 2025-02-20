@@ -3,7 +3,7 @@
 <%= tag.h1 t('shared.our_solutions'), class: 'main-title' %>
 
 <% if @super_category %>
-    <%= render @super_category, super_categories: @super_categories, model_name: :articles %>
+    <%= render @super_category, super_categories: @super_categories, model_name: :solutions %>
 <% else %>
-    <%= cards_for Article.all %>
+    <%= cards_for Solution.all %>
 <% end %>

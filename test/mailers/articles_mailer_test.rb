@@ -7,11 +7,11 @@ class ArticlesMailerTest < ActionMailer::TestCase
         I18n.locale = :es
 
         @user = users(:one)
-        @article = articles(:one)
+        @solution = solutions(:one)
     end
 
     test 'article' do
-        mail = ArticlesMailer.article(@user, @article)
+        mail = ArticlesMailer.article(@user, @solution)
 
         assert_emails 1 do
             mail.deliver_now
@@ -20,7 +20,7 @@ class ArticlesMailerTest < ActionMailer::TestCase
         assert_equal 'Nueva Solución de Olguitech!', mail.subject
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
-        assert_match @article.title, mail.body.encoded
+        assert_match @solution.title, mail.body.encoded
         assert_match 'Desuscribirse', mail.body.encoded
     end
 end

@@ -105,7 +105,7 @@ class ProductsController < ApplicationController
                   :description2,
                   :content,
                   :content2,
-                  { article_ids: [] },
+                  { solution_ids: [] },
                   { project_ids: [] },
                   { category_ids: [] },
                   :image,

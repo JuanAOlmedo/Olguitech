@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_17_210839) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_19_193510) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -69,22 +69,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_210839) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
-  end
-
-  create_table "articles", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "title"
-    t.text "content"
-    t.text "description"
-    t.text "content2"
-    t.text "title2"
-    t.text "description2"
-    t.integer "views", default: 0
-    t.string "slug"
-    t.integer "status"
-    t.boolean "newsletter_sent"
-    t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -173,6 +157,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_17_210839) do
     t.integer "status"
     t.boolean "newsletter_sent"
     t.index ["slug"], name: "index_projects_on_slug", unique: true
+  end
+
+  create_table "solutions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "title"
+    t.text "content"
+    t.text "description"
+    t.text "content2"
+    t.text "title2"
+    t.text "description2"
+    t.integer "views", default: 0
+    t.string "slug"
+    t.integer "status"
+    t.boolean "newsletter_sent"
+    t.index ["slug"], name: "index_solutions_on_slug", unique: true
   end
 
   create_table "super_categories", force: :cascade do |t|

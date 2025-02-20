@@ -8,14 +8,14 @@
     <%= link_to t('.why'), nosotros_path, class: 'btn centered' %>
 </div>
 
-<% if @articles.any? %>
-    <div class="articles <%= 'projects' if @projects.empty? || @products.empty? %>">
+<% if @solutions.any? %>
+    <div class="solutions <%= 'projects' if @projects.empty? || @products.empty? %>">
         <h1 class="main-title">
-            <%= t '.articles' %>
+            <%= t '.solutions' %>
         </h1>
-        <%= link_to t('general.see_all'), articles_path, class: 'btn centered' %>
+        <%= link_to t('general.see_all'), solutions_path, class: 'btn centered' %>
 
-        <%= cards_for @articles %>
+        <%= cards_for @solutions %>
     </div>
 <% end %>
 

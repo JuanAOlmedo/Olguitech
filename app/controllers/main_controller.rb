@@ -2,7 +2,7 @@
 
 class MainController < ApplicationController
     def main
-        @articles, @projects, @products = [Article, Project, Product].map do |model|
+        @solutions, @projects, @products = [Solution, Project, Product].map do |model|
             model.published.select(model.fields_for_cards).order(created_at: :desc).first 4
         end
 

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
         resources :messages
 
-        resources :articles
+        resources :solutions
         resources :projects
         resources :products
 

@@ -23,7 +23,7 @@ module CardsHelper
             @image = image
         end
 
-        # Defines the 'normal' cards shown for articles and projects
+        # Defines the 'normal' cards shown for solutions and projects
         def html
             content = @array.length != 1 ? grid : card_single(@array.first)
 

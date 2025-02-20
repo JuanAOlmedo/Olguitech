@@ -2,67 +2,67 @@
 
 require 'test_helper'
 
-class ArticlesControllerTest < ActionDispatch::IntegrationTest
-    setup { @article = articles(:one) }
+class SolutionsControllerTest < ActionDispatch::IntegrationTest
+    setup { @solution = solutions(:one) }
 
     teardown { sign_out :admin }
 
     test 'should get index' do
-        get articles_url
+        get solutions_url
         assert_response :success
     end
 
-    test 'should not show drafted or trashed article unless admin' do
-        get article_url(id: @article.id)
+    test 'should not show drafted or trashed solution unless admin' do
+        get solution_url(id: @solution.id)
         assert_response :redirect
 
-        @article.trashed!
-        get article_url(id: @article.id)
+        @solution.trashed!
+        get solution_url(id: @solution.id)
         assert_response :redirect
 
         sign_in admins(:one)
-        get article_url(id: @article.id)
+        get solution_url(id: @solution.id)
         assert_response :success
 
-        @article.drafted!
-        get article_url(id: @article.id)
+        @solution.drafted!
+        get solution_url(id: @solution.id)
         assert_response :success
     end
 
-    test 'should show published article' do
-        @article.published!
-        get article_url(id: @article.id)
+    test 'should show published solution' do
+        @solution.published!
+        get solution_url(id: @solution.id)
         assert_response :success
-        @article.drafted!
+        @solution.drafted!
     end
 
     test 'should not get new if not admin' do
-        get new_article_url
+        get new_solution_url
         assert_response :redirect
     end
 
     test 'should get new if admin' do
         sign_in admins(:one)
 
-        get new_article_url
+        get new_solution_url
         assert_response :success
     end
 
     test 'should not get edit if not admin' do
-        get edit_article_url(id: @article.id)
+        get edit_solution_url(id: @solution.id)
         assert_response :redirect
     end
 
     test 'should get edit if admin' do
         sign_in admins(:one)
 
-        get edit_article_url(id: @article.id)
+        get edit_solution_url(id: @solution.id)
         assert_response :success
     end
 
     test 'should not create if not admin' do
         parameters = {
-            article: {
+            solution: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -70,8 +70,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        assert_no_difference('Article.count') do
-            post articles_url, params: parameters
+        assert_no_difference('Solution.count') do
+            post solutions_url, params: parameters
         end
     end
 
@@ -79,7 +79,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
         sign_in admins(:one)
 
         parameters = {
-            article: {
+            solution: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -87,14 +87,14 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        assert_difference('Article.count', 1) do
-            post articles_url, params: parameters
+        assert_difference('Solution.count', 1) do
+            post solutions_url, params: parameters
         end
     end
 
     test 'should not update if not admin' do
         parameters = {
-            article: {
+            solution: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -102,18 +102,18 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        patch article_url(id: articles(:one)), params: parameters
+        patch solution_url(id: solutions(:one)), params: parameters
 
-        articles(:one).reload
+        solutions(:one).reload
 
-        assert_not_equal 'a', articles(:one).title
+        assert_not_equal 'a', solutions(:one).title
     end
 
     test 'should update if admin' do
         sign_in admins(:one)
 
         parameters = {
-            article: {
+            solution: {
                 title: 'a',
                 description: 'b',
                 category_ids: [''],
@@ -121,24 +121,24 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
             }
         }
 
-        patch article_url(id: articles(:one)), params: parameters
+        patch solution_url(id: solutions(:one)), params: parameters
 
-        articles(:one).reload
+        solutions(:one).reload
 
-        assert_equal 'a', articles(:one).title
+        assert_equal 'a', solutions(:one).title
     end
 
     test 'should not delete if not admin' do
-        assert_no_difference('Article.count') do
-            delete article_url(id: articles(:one).id)
+        assert_no_difference('Solution.count') do
+            delete solution_url(id: solutions(:one).id)
         end
     end
 
     test 'should delete if admin' do
         sign_in admins(:one)
 
-        assert_difference('Article.count', -1) do
-            delete article_url(id: articles(:one).id)
+        assert_difference('Solution.count', -1) do
+            delete solution_url(id: solutions(:one).id)
         end
     end
 end

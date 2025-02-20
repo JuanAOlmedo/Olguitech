@@ -1,42 +1,42 @@
-article_one:
+solution_one:
     id: 1
-    record_type: Article
+    record_type: Solution
     record_id: 1
     name: content
-    body: '<p>En un <i>millon</i> de estrellas!</p>'
-article_two:
+    body: "<p>En un <i>millon</i> de estrellas!</p>"
+solution_two:
     id: 2
-    record_type: Article
+    record_type: Solution
     record_id: 1
     name: content2
-    body: '<p>In a <i>million</i> stars!</p>'
+    body: "<p>In a <i>million</i> stars!</p>"
 project_one:
     id: 3
     record_type: Project
     record_id: 1
     name: content
-    body: '<p>En un <i>millon</i> de estrellas!</p>'
+    body: "<p>En un <i>millon</i> de estrellas!</p>"
 project_two:
     id: 4
     record_type: Project
     record_id: 1
     name: content2
-    body: '<p>In a <i>million</i> stars!</p>'
+    body: "<p>In a <i>million</i> stars!</p>"
 product_one:
     id: 5
     record_type: Product
     record_id: 1
     name: content
-    body: '<p>En un <i>millon</i> de estrellas!</p>'
+    body: "<p>En un <i>millon</i> de estrellas!</p>"
 product_two:
     id: 6
     record_type: Product
     record_id: 1
     name: content2
-    body: '<p>In a <i>million</i> stars!</p>'
+    body: "<p>In a <i>million</i> stars!</p>"
 newsletter_one:
     id: 7
     record_type: Newsletter
     record_id: 1
     name: content
-    body: '<p>In a <i>million</i> stars!</p>'
+    body: "<p>In a <i>million</i> stars!</p>"

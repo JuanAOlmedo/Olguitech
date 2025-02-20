@@ -12,10 +12,10 @@ class SuperCategory < ApplicationRecord
         title
     end
 
-    # Get all super categories which have categories related to published articles
+    # Get all super categories which have categories related to published solutions
     def self.related_to(name)
         includes(categories: [name]) # Include categories and the provided model
-            .where(categories: { name => { status: 0 } }) # Only allow published articles
+            .where(categories: { name => { status: 0 } }) # Only allow published solutions
             .uniq # Remove duplicates
     end
 end

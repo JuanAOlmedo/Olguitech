@@ -30,12 +30,12 @@
         <%= alternative_cards_for @products %>
     <% end %>
 
-    <% if @articles.any? %>
+    <% if @solutions.any? %>
         <h2 class="title centered">
-            <%= Article.model_name.human(count: 2) %>
+            <%= Solution.model_name.human(count: 2) %>
         </h2>
 
-        <%= cards_for @articles %>
+        <%= cards_for @solutions %>
     <% end %>
 
     <% if @projects.any? %>

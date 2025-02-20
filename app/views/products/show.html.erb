@@ -30,9 +30,9 @@
         </div>
     </div>
 
-    <% if @product.articles.any? %>
-        <%= tag.h1 t('show.articles'), class: 'main-title' %>
-        <%= cards_for @product.articles %>
+    <% if @product.solutions.any? %>
+        <%= tag.h1 t('show.solutions'), class: 'main-title' %>
+        <%= cards_for @product.solutions %>
     <% end %>
     <% if @product.projects.any? %>
         <%= tag.h1 t('show.projects'), class: 'main-title' %>

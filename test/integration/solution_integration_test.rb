@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class ArticleIntegrationTest < ActionDispatch::IntegrationTest
+class SolutionIntegrationTest < ActionDispatch::IntegrationTest
     teardown do
         sign_out admins(:one)
         users(:one).update newsletter: false
@@ -13,53 +13,53 @@ class ArticleIntegrationTest < ActionDispatch::IntegrationTest
         users(:one).update newsletter: true
     end
 
-    test 'should send newsletter when creating an article' do
+    test 'should send newsletter when creating an solution' do
         parameters = {
-            article: {
+            solution: {
                 status: '0'
             }
         }
 
         assert_emails 1 do
-            post '/articles', params: parameters
+            post '/solutions', params: parameters
         end
     end
 
-    test 'should not send newsletter when creating an article' do
+    test 'should not send newsletter when creating an solution' do
         parameters = {
-            article: {
+            solution: {
                 status: '1'
             }
         }
 
         assert_emails 0 do
-            post '/articles', params: parameters
+            post '/solutions', params: parameters
         end
     end
 
-    test 'should send newsletter when editing an article' do
+    test 'should send newsletter when editing an solution' do
         parameters = {
-            article: {
+            solution: {
                 status: '0'
             }
         }
 
         assert_emails 1 do
-            articles(:one).drafted!
-            patch '/articles/1', params: parameters
+            solutions(:one).drafted!
+            patch '/solutions/1', params: parameters
         end
     end
 
-    test 'should not send newsletter when editing an article' do
+    test 'should not send newsletter when editing an solution' do
         parameters = {
-            article: {
+            solution: {
                 status: '1'
             }
         }
 
         assert_emails 0 do
-            articles(:one).drafted!
-            patch '/articles/1', params: parameters
+            solutions(:one).drafted!
+            patch '/solutions/1', params: parameters
         end
     end
 end

@@ -1,124 +1,120 @@
 en:
-  general:
-    es: Español 
-    en: English
-    see_more: See more
-    see_all: See all
-  main:
+    general:
+        es: Español
+        en: English
+        see_more: See more
+        see_all: See all
     main:
-      title: The latest global trends in Electrical Engineering, control, automation and industrial equipment.
-      subtitle1: We advise you when you are looking for a product or when you are looking for a way to improve your process or installation.
-      subtitle2: At Olguitech, we seek to be your technological partner. 
-      why: Why choose Olguitech?
-      articles: Our latest solutions
-      projects: Our latest projects
-      products: Some of our products
-      interested: Interested in talking to us? 
-      sign_up: Do you want to know more about our work? Get in touch and ask a question!
-      contact: Get in touch
-      subscribe_message_html: <strong>Be the first to know of our new updates</strong>, subscribe to our newsletter.
-      subscribe: Subscribe
-  nav: 
-    about_us: "About Us"
-    contact: "Contact"
-  nosotros:
-    who_are_we: Who are we?
-    who_are_we_message: >
-      We are a young company. We strive to provide the best products and services with world-class brands in Argentina, Paraguay and Uruguay.
-      When you are about to define a technology, require advice in the selection of a product or require assistance in the installation please contact us.
-      Our technicians are internationally trained by our suppliers.
-      At Olguitech we give our best to ensure that our relationship with you and your company is a lasting one.
-    how_are_we_different: How are we different?
-    how_are_we_different_message: >
-      Our difference is the service and the will to continuously improve.
-      When you are analyzing to define the purchase of a product whatever your activity is, when you are looking for a way to improve your process or installation, call us and we will advise you.
-      At Olguitech we are committed to be technological partners of our customers at a regional level.
-  contact:
-    direction_alt: Map of 21 de Setiembre 2819 off. 703 esq. Ellauri
-    direction_html: 
-      Find us at <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
-    how_can_we_help_you: How can we help you?
-    contact: Contact
-    sign_in_and_contact: Sign In and Contact
-    contact_html: >
-      Or contact to <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
-      the phone number <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
-      or the mobile phone <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
-    attach: Attach an article
-    article_type: Article type
-    article: Article
-    message: Message
-    send: Send Mail
-    sent: An email has been sent.
-    ask: Ask us something!
-    error: prevented an email from being sent
-    errors: prevented an email from being sent
-    first_time: It looks like it's the first time you get in touch with us, please fill out your details
-  users:
-    edit_account: Edit Account
-    edit: Edit
-    company: Company
-    name: Name
-    phone: Phone
-    confirm_account: Confirm my account
-    delete_account: Delete Account
-    are_you_sure: Are you sure?
-    deleted: Your account was deleted successfuly. We are sorry to see you go :(
-    newsletter: Receive newsletters
-  index:
-    uncategorized: Uncategorized
-    sort_by: Sort By
-    category: Category
-    up_desc: Last edited
-    created_desc: Last created
-    created_asc: First created
-    title_asc: Title AZ
-    title_desc: Title ZA
-  show:
-    articles: Related solutions
-    proyects: Related projects
-    products: Related products
-  categories:
-    category: Category
-    categories: Categories
-    all: All categories
-  super_category:
-    area: "Area:"
-  shared:
-    see_more: See More
-    our_products: Our Products
-    our_solutions: Our Solutions
-    our_projects: Our Projects
-    back: Back
-    all: All
-    admins: Only admins can do that
-    cant_cancel: You can't destroy your admin account.
-    dropdown: Dropdown menu
-    alert: Close alert
-    notice: Close notice
-    engineering_solutions: Engineering solutions
-    logo: Olguitech logo
-  activerecord:
-    models:
-      article:
-        one: Solution
-        other: Solutions
-      project:
-        one: Project
-        other: Projects
-      product:
-        one: Product
-        other: Products
-      category:
-        one: Category
-        other: Categories
-      newsletter:
-        one: Newsletter
-        other: Newsletters
-      user:
-        one: User
-        other: Users
-  recaptcha:
-    errors:
-      verification_failed: hCaptcha was incorrect, please try again.
-      recaptcha_unreachable: hCaptcha verification server error, please try again.
+        main:
+            title: The latest global trends in Electrical Engineering, control, automation and industrial equipment.
+            subtitle1: We advise you when you are looking for a product or when you are looking for a way to improve your process or installation.
+            subtitle2: At Olguitech, we seek to be your technological partner.
+            why: Why choose Olguitech?
+            solutions: Our latest solutions
+            projects: Our latest projects
+            products: Some of our products
+            interested: Interested in talking to us?
+            sign_up: Do you want to know more about our work? Get in touch and ask a question!
+            contact: Get in touch
+            subscribe_message_html: <strong>Be the first to know of our new updates</strong>, subscribe to our newsletter.
+            subscribe: Subscribe
+    nav:
+        about_us: "About Us"
+        contact: "Contact"
+    nosotros:
+        who_are_we: Who are we?
+        who_are_we_message: >
+            We are a young company. We strive to provide the best products and services with world-class brands in Argentina, Paraguay and Uruguay.
+            When you are about to define a technology, require advice in the selection of a product or require assistance in the installation please contact us.
+            Our technicians are internationally trained by our suppliers.
+            At Olguitech we give our best to ensure that our relationship with you and your company is a lasting one.
+        how_are_we_different: How are we different?
+        how_are_we_different_message: >
+            Our difference is the service and the will to continuously improve.
+            When you are analyzing to define the purchase of a product whatever your activity is, when you are looking for a way to improve your process or installation, call us and we will advise you.
+            At Olguitech we are committed to be technological partners of our customers at a regional level.
+    contact:
+        direction_alt: Map of 21 de Setiembre 2819 off. 703 esq. Ellauri
+        direction_html: Find us at <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
+        how_can_we_help_you: How can we help you?
+        contact: Contact
+        sign_in_and_contact: Sign In and Contact
+        contact_html: >
+            Or contact to <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br>
+            the phone number <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br>
+            or the mobile phone <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
+        message: Message
+        send: Send Mail
+        sent: An email has been sent.
+        ask: Ask us something!
+        error: prevented an email from being sent
+        errors: prevented an email from being sent
+        first_time: It looks like it's the first time you get in touch with us, please fill out your details
+    users:
+        edit_account: Edit Account
+        edit: Edit
+        company: Company
+        name: Name
+        phone: Phone
+        confirm_account: Confirm my account
+        delete_account: Delete Account
+        are_you_sure: Are you sure?
+        deleted: Your account was deleted successfuly. We are sorry to see you go :(
+        newsletter: Receive newsletters
+    index:
+        uncategorized: Uncategorized
+        sort_by: Sort By
+        category: Category
+        up_desc: Last edited
+        created_desc: Last created
+        created_asc: First created
+        title_asc: Title AZ
+        title_desc: Title ZA
+    show:
+        solutions: Related solutions
+        proyects: Related projects
+        products: Related products
+    categories:
+        category: Category
+        categories: Categories
+        all: All categories
+    super_category:
+        area: "Area:"
+    shared:
+        see_more: See More
+        our_products: Our Products
+        our_solutions: Our Solutions
+        our_projects: Our Projects
+        back: Back
+        all: All
+        admins: Only admins can do that
+        cant_cancel: You can't destroy your admin account.
+        dropdown: Dropdown menu
+        alert: Close alert
+        notice: Close notice
+        engineering_solutions: Engineering solutions
+        logo: Olguitech logo
+    activerecord:
+        models:
+            solution:
+                one: Solution
+                other: Solutions
+            project:
+                one: Project
+                other: Projects
+            product:
+                one: Product
+                other: Products
+            category:
+                one: Category
+                other: Categories
+            newsletter:
+                one: Newsletter
+                other: Newsletters
+            user:
+                one: User
+                other: Users
+    recaptcha:
+        errors:
+            verification_failed: hCaptcha was incorrect, please try again.
+            recaptcha_unreachable: hCaptcha verification server error, please try again.

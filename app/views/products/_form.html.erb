@@ -47,8 +47,8 @@
         </div>
 
         <div class="checkbox-field">
-            <%= form.label :articles, 'Artículos relacionados' %> <br>
-            <%= form.collection_check_boxes :article_ids, Article.all, :id, :localized_title do |b| %>
+            <%= form.label :solutions, 'Artículos relacionados' %> <br>
+            <%= form.collection_check_boxes :solution_ids, Solution.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>
             <% end %>

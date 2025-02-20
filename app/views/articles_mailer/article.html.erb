@@ -1,4 +1,4 @@
 <% content_for :user, :user %>
 
-<%= t('mail.articles.html', name: (@user.name || @user.email),
+<%= t('mail.solutions.html', name: (@user.name || @user.email),
                             link: link_to(@article.localized_title, url_for(@article))) %>

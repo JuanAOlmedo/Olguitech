@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Inform all users that a new article has been created
+# Inform all users that a new solution has been created
 module Mailable
     def send_mail
         update(newsletter_sent: true)

@@ -5,7 +5,7 @@
         <h1 class='main-title'> Todos los artículos </h1>
         <div class="dropdown-holder" style="height: 2.5rem; display: flex;">
             <%= dropdown_for 'Nuevo' do %>
-                <%= link_to Article.model_name.human, new_article_path, class: 'btn' %>
+                <%= link_to Solution.model_name.human, new_solution_path, class: 'btn' %>
                 <%= link_to Project.model_name.human, new_project_path, class: 'btn' %>
                 <%= link_to Product.model_name.human, new_product_path, class: 'btn' %>
                 <%= link_to Category.model_name.human, new_category_path, class: 'btn' %>
@@ -17,8 +17,8 @@
         <div class='dashboard-drafts'>
             <div>
                 <h2 class="title centered"> Soluciones (borradores) </h2>
-                <div class='dashboard-card-holder' id='drafted_articles'>
-                    <% @article_drafts.each do |article| %>
+                <div class='dashboard-card-holder' id='drafted_solutions'>
+                    <% @solution_drafts.each do |article| %>
                         <%= render partial: 'article', object: article %>
                     <% end %>
                 </div>
@@ -45,8 +45,8 @@
         </div>
 
         <h2 class="title centered"> Soluciones publicadas </h2>
-        <div class='dashboard-card-holder' id='published_articles'>
-            <% @articles.each do |article| %>
+        <div class='dashboard-card-holder' id='published_solutions'>
+            <% @solutions.each do |article| %>
                 <%= render partial: 'article', object: article %>
             <% end %>
         </div>

@@ -8,25 +8,25 @@ class DashboardController < ApplicationController
 
     # GET /dashboard/ or /dashboard/articles
     def articles
-        @articles = Article.published
+        @solutions = Solution.published
         @projects = Project.published
         @products = Product.published
 
-        @article_drafts = Article.drafted
+        @solution_drafts = Solution.drafted
         @project_drafts = Project.drafted
         @product_drafts = Product.drafted
     end
 
     # GET /dashboard/categories
     def categories
-        @uncategorized = [Article.where.missing(:categories),
+        @uncategorized = [Solution.where.missing(:categories),
                           Product.where.missing(:categories),
                           Project.where.missing(:categories)].flatten
         @unsupercategorized =
-            Category.select(:id, :title, :super_category_id, :slug).includes(:dashboard_articles,
+            Category.select(:id, :title, :super_category_id, :slug).includes(:dashboard_solutions,
                                                                              :dashboard_products, :dashboard_projects).where super_category_id: nil
         @super_categories =
-            SuperCategory.all.includes(dashboard_categories: %i[dashboard_articles
+            SuperCategory.all.includes(dashboard_categories: %i[dashboard_solutions
                                                                 dashboard_products dashboard_projects])
     end
 
@@ -38,7 +38,7 @@ class DashboardController < ApplicationController
 
     # GET /dashboard/trash
     def trash
-        @articles = Article.trashed
+        @solutions = Solution.trashed
         @projects = Project.trashed
         @products = Product.trashed
 

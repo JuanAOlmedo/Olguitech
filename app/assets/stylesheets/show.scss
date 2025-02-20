@@ -1,6 +1,6 @@
 @import "settings";
 
-// For /articles/1   //
+// For /solutions/1   //
 //     /projects/1   //
 //     /categories/1 //
 
@@ -91,7 +91,7 @@
         cursor: zoom-in;
         transition: transform 0.7s;
     }
-    
+
     &.show {
         opacity: 1;
         visibility: visible;

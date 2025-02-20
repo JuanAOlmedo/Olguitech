@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Article < ApplicationRecord
+class Solution < ApplicationRecord
     include Getters
     include Mailable
 
@@ -19,7 +19,7 @@ class Article < ApplicationRecord
     has_many :category_categorizables, as: :categorizable, dependent: :destroy
     has_many :categories, through: :category_categorizables, as: :categorizable
 
-    # Send mail after the article has been created or edited as published
+    # Send mail after the solution has been created or edited as published
     # and if no mail has been sent before
     after_save_commit :send_mail, if: :published?, unless: :newsletter_sent
 end

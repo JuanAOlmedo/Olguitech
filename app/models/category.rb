@@ -10,10 +10,10 @@ class Category < ApplicationRecord
              through: :category_categorizables,
              source: :categorizable,
              source_type: 'Product'
-    has_many :articles,
+    has_many :solutions,
              through: :category_categorizables,
              source: :categorizable,
-             source_type: 'Article'
+             source_type: 'Solution'
     has_many :projects,
              through: :category_categorizables,
              source: :categorizable,
@@ -24,11 +24,11 @@ class Category < ApplicationRecord
              through: :category_categorizables,
              source: :categorizable,
              source_type: 'Product'
-    has_many :dashboard_articles,
+    has_many :dashboard_solutions,
              -> { select(:id, :title, :status, :slug) },
              through: :category_categorizables,
              source: :categorizable,
-             source_type: 'Article'
+             source_type: 'Solution'
     has_many :dashboard_projects,
              -> { select(:id, :title, :status, :slug) },
              through: :category_categorizables,

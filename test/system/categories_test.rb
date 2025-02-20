@@ -18,7 +18,7 @@ class CategoriesTest < ApplicationSystemTestCase
 
         fill_in 'Título', with: 'A Title'
         fill_in 'Descripción', with: 'Desc'
-        check id: 'category_article_ids_1'
+        check id: 'category_solution_ids_1'
 
         assert_difference('Category.count', 1) do
             click_on 'Crear'
@@ -32,7 +32,7 @@ class CategoriesTest < ApplicationSystemTestCase
 
         fill_in 'Título', with: 'A Title'
         fill_in 'Descripción', with: 'Desc'
-        check id: 'category_article_ids_1'
+        check id: 'category_solution_ids_1'
 
         click_on 'Crear'
 

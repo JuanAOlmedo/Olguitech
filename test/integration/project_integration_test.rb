@@ -13,7 +13,7 @@ class ProjectIntegrationTest < ActionDispatch::IntegrationTest
         users(:one).update newsletter: true
     end
 
-    test 'should send newsletter when creating an project' do
+    test 'should send newsletter when creating a project' do
         parameters = {
             project: {
                 status: '0'
@@ -25,7 +25,7 @@ class ProjectIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should not send newsletter when creating an project' do
+    test 'should not send newsletter when creating a project' do
         parameters = {
             project: {
                 status: '1'
@@ -37,7 +37,7 @@ class ProjectIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should send newsletter when editing an project' do
+    test 'should send newsletter when editing a project' do
         parameters = {
             project: {
                 status: '0'
@@ -50,7 +50,7 @@ class ProjectIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should not send newsletter when editing an project' do
+    test 'should not send newsletter when editing a project' do
         parameters = {
             project: {
                 status: '1'

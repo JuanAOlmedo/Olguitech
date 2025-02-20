@@ -1,0 +1,45 @@
+<% content_for :title, "#{@solution.localized_title} | Olguitech s.a.s." %>
+<% content_for :description, @solution.localized_desc.to_s %>
+
+<article>
+    <%= tag.h1 @solution.localized_title, class: 'main-title' %>
+
+    <%= tag.p @solution.localized_desc, class: 'subtitle' %>
+
+    <% if @solution.image.attached? %>
+        <%= image_for @solution.image, resize: [], class: 'article-img centered', alt: @solution.image.filename %>
+    <% end %>
+
+    <div class="content" data-controller="image-displayer">
+        <% if @solution.categories.any? %>
+            <p class="article-categories">
+                <%= Category.model_name.human count: @solution.categories.length %>:
+
+                <% @solution.categories.each do |category| %>
+                    <%= link_to category.localized_title, solutions_path(params: { super_category_id: category.super_category_id }, anchor: category.id), class: 'link' %><%= (@solution.categories.last != category ? ', ' : '').to_s %>
+                <% end %>
+            </p>
+        <% end %>
+
+        <%= @solution.localized_content %>
+
+        <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
+        </div>
+    </div>
+
+    <% if @solution.products.any? %>
+        <%= tag.h1 t('show.products'), class: 'main-title' %>
+        <%= alternative_cards_for @solution.products %>
+    <% end %>
+</article>
+
+<% if admin_signed_in? %>
+    <div class="btn-group admin-tools">
+        <% if %w[drafted published].include? @solution.status %>
+            <%= link_to 'Editar', edit_solution_path(@solution), class: 'btn' %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @solution}", class: 'btn' %>
+        <% else %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @solution}", class: 'btn' %>
+        <% end %>
+    </div>
+<% end %>

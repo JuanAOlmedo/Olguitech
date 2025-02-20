@@ -7,7 +7,7 @@ class ArticlesMailerPreview < ActionMailer::Preview
         I18n.locale = :es
 
         user = User.last
-        article = Article.last
+        article = Solution.last
 
         ArticlesMailer.article(user, article)
     end

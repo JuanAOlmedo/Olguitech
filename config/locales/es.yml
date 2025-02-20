@@ -1,339 +1,336 @@
 es:
-  general:
-    es: Español
-    en: English 
-    see_more: Ver más
-    see_all: Ver todos
-  main:
+    general:
+        es: Español
+        en: English
+        see_more: Ver más
+        see_all: Ver todos
     main:
-      title: Las últimas tendencias mundiales en Ingeniería Eléctrica, control, automatización y equipamiento industrial.
-      subtitle1: Le asesoramos cuando busque un insumo o cuando busque la forma de mejorar su proceso o instalación.
-      subtitle2: En Olguitech apostamos a ser su socio tecnológico. 
-      why: Por qué elegir Olguitech?
-      articles: Nuestros últimos artículos
-      projects: Nuestros últimos proyectos
-      products: Algunos de nuestros productos
-      interested: Estás interesado en hablar con nosotros? 
-      sign_up: Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta! 
-      contact: Contactarse
-      subscribe_message_html: <strong>Sé el primero en saber de nuestras novedades</strong>, suscribete a nuestra newsletter.
-      subscribe: Suscribirse
-  nav:
-    about_us: Nosotros
-    contact: Contacto
-  nosotros:
-    who_are_we: ¿Quiénes Somos?
-    who_are_we_message: >
-      Somos una empresa joven. Nos esforzamos para brindarle los mejores productos y servicios con marcas de primer nivel mundial en Argentina, Paraguay y Uruguay.
-      Cuando esté por definir una tecnología, requiera ser asesorado en la selección de un producto, requiera asistencia en la instalación o su puesta en marcha, consúltenos.
-      Nuestros técnicos son formados internacionalmente por nuestros proveedores.
-      En Olguitech damos todo de nosotros mismos para que nuestro vínculo con usted y su empresa sea duradero.
-    how_are_we_different: ¿Cómo Somos Diferentes?
-    how_are_we_different_message: >
-      Nuestro diferencial es el servicio y la voluntad de mejorar continuamente.
-      Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos.
-      En Olguitech apostamos a ser socios tecnológicos de nuestros clientes a nivel regional.
-  contact:
-    direction_alt: Mapa de 21 de Setiembre 2819 of. 703 esq. Ellauri
-    direction_html: Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
-    how_can_we_help_you: Cómo podemos ayudarte?
-    contact: Contactarse
-    contact_html: >
-      O contactate a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br> 
-      al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br> 
-      o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
-    attach: Adjuntar un artículo
-    article_type: Tipo de artículo
-    article: Artículo
-    message: Mensaje
-    send: Enviar Mail
-    sent: Un email ha sido enviado.
-    ask: Hacer una pregunta!
-    error: impidió que se pudiera mandar un mail
-    errors: impidieron que se pudiera mandar un mail
-    first_time: Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos 
-  users:
-    edit_account: Editar cuenta
-    edit: Editar
-    company: Compañía
-    name: Nombre
-    phone: Teléfono
-    confirm_account: Confirmar mi cuenta
-    delete_account: Eliminar cuenta
-    are_you_sure: Estas seguro?
-    deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :(
-    newsletter: Recibir newsletters
-  index:
-    uncategorized: Sin categoría
-    sort_by: Ordenar por
-    category: Categoría
-    up_desc: Último editado
-    created_desc: Último creado
-    created_asc: Primero creado
-    title_asc: Título AZ
-    title_desc: Título ZA
-  show:
-    articles: Soluciones relacionadas
-    proyects: Proyectos relacionados
-    products: Productos relacionados
-  categories:
-    category: Categoría
-    categories: Categorías
-    all: Todas las categorías
-  super_category:
-    area: "Área:"
-  shared:
-    see_more: Ver más
-    our_products: Nuestros Productos
-    our_solutions: Nuestras Soluciones
-    our_projects: Nuestros Proyectos
-    back: Atrás
-    all: Todos
-    admins: Solo administradores pueden hacer eso
-    cant_cancel: No podes destruir tu cuenta de administrador.
-    dropdown: Menú desplegable
-    alert: Cerrar alerta
-    notice: Cerrar aviso
-    engineering_solutions: Soluciones en ingeniería
-    logo: Logo de Olguitech
-  activerecord:
+        main:
+            title: Las últimas tendencias mundiales en Ingeniería Eléctrica, control, automatización y equipamiento industrial.
+            subtitle1: Le asesoramos cuando busque un insumo o cuando busque la forma de mejorar su proceso o instalación.
+            subtitle2: En Olguitech apostamos a ser su socio tecnológico.
+            why: Por qué elegir Olguitech?
+            articles: Nuestros últimos artículos
+            projects: Nuestros últimos proyectos
+            products: Algunos de nuestros productos
+            interested: Estás interesado en hablar con nosotros?
+            sign_up: Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta!
+            contact: Contactarse
+            subscribe_message_html: <strong>Sé el primero en saber de nuestras novedades</strong>, suscribete a nuestra newsletter.
+            subscribe: Suscribirse
+    nav:
+        about_us: Nosotros
+        contact: Contacto
+    nosotros:
+        who_are_we: ¿Quiénes Somos?
+        who_are_we_message: >
+            Somos una empresa joven. Nos esforzamos para brindarle los mejores productos y servicios con marcas de primer nivel mundial en Argentina, Paraguay y Uruguay.
+            Cuando esté por definir una tecnología, requiera ser asesorado en la selección de un producto, requiera asistencia en la instalación o su puesta en marcha, consúltenos.
+            Nuestros técnicos son formados internacionalmente por nuestros proveedores.
+            En Olguitech damos todo de nosotros mismos para que nuestro vínculo con usted y su empresa sea duradero.
+        how_are_we_different: ¿Cómo Somos Diferentes?
+        how_are_we_different_message: >
+            Nuestro diferencial es el servicio y la voluntad de mejorar continuamente.
+            Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos.
+            En Olguitech apostamos a ser socios tecnológicos de nuestros clientes a nivel regional.
+    contact:
+        direction_alt: Mapa de 21 de Setiembre 2819 of. 703 esq. Ellauri
+        direction_html: Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
+        how_can_we_help_you: Cómo podemos ayudarte?
+        contact: Contactarse
+        contact_html: >
+            O contactate a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br>
+            al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br>
+            o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
+        message: Mensaje
+        send: Enviar Mail
+        sent: Un email ha sido enviado.
+        ask: Hacer una pregunta!
+        error: impidió que se pudiera mandar un mail
+        errors: impidieron que se pudiera mandar un mail
+        first_time: Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos
+    users:
+        edit_account: Editar cuenta
+        edit: Editar
+        company: Compañía
+        name: Nombre
+        phone: Teléfono
+        confirm_account: Confirmar mi cuenta
+        delete_account: Eliminar cuenta
+        are_you_sure: Estas seguro?
+        deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :(
+        newsletter: Recibir newsletters
+    index:
+        uncategorized: Sin categoría
+        sort_by: Ordenar por
+        category: Categoría
+        up_desc: Último editado
+        created_desc: Último creado
+        created_asc: Primero creado
+        title_asc: Título AZ
+        title_desc: Título ZA
+    show:
+        articles: Soluciones relacionadas
+        proyects: Proyectos relacionados
+        products: Productos relacionados
+    categories:
+        category: Categoría
+        categories: Categorías
+        all: Todas las categorías
+    super_category:
+        area: "Área:"
+    shared:
+        see_more: Ver más
+        our_products: Nuestros Productos
+        our_solutions: Nuestras Soluciones
+        our_projects: Nuestros Proyectos
+        back: Atrás
+        all: Todos
+        admins: Solo administradores pueden hacer eso
+        cant_cancel: No podes destruir tu cuenta de administrador.
+        dropdown: Menú desplegable
+        alert: Cerrar alerta
+        notice: Cerrar aviso
+        engineering_solutions: Soluciones en ingeniería
+        logo: Logo de Olguitech
+    activerecord:
+        errors:
+            messages:
+                record_invalid: >
+                    La validación falló: %{errors}
+                restrict_dependent_destroy:
+                    has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+                    has_many: No se puede eliminar el registro porque existen %{record} dependientes
+        models:
+            solution:
+                one: Solución
+                other: Soluciones
+            project:
+                one: Proyecto
+                other: Proyectos
+            product:
+                one: Producto
+                other: Productos
+            category:
+                one: Categoría
+                other: Categorías
+            newsletter:
+                one: Newsletter
+                other: Newsletters
+            user:
+                one: Usuario
+                other: Usuarios
+    date:
+        abbr_day_names:
+            - dom
+            - lun
+            - mar
+            - mié
+            - jue
+            - vie
+            - sáb
+        abbr_month_names:
+            -
+            - ene
+            - feb
+            - mar
+            - abr
+            - may
+            - jun
+            - jul
+            - ago
+            - sep
+            - oct
+            - nov
+            - dic
+        day_names:
+            - domingo
+            - lunes
+            - martes
+            - miércoles
+            - jueves
+            - viernes
+            - sábado
+        formats:
+            default: "%-d/%-m/%Y"
+            long: "%-d de %B de %Y"
+            short: "%-d de %b"
+        month_names:
+            -
+            - enero
+            - febrero
+            - marzo
+            - abril
+            - mayo
+            - junio
+            - julio
+            - agosto
+            - septiembre
+            - octubre
+            - noviembre
+            - diciembre
+        order:
+            - :day
+            - :month
+            - :year
+    datetime:
+        distance_in_words:
+            about_x_hours:
+                one: alrededor de 1 hora
+                other: alrededor de %{count} horas
+            about_x_months:
+                one: alrededor de 1 mes
+                other: alrededor de %{count} meses
+            about_x_years:
+                one: alrededor de 1 año
+                other: alrededor de %{count} años
+            almost_x_years:
+                one: casi 1 año
+                other: casi %{count} años
+            half_a_minute: medio minuto
+            less_than_x_seconds:
+                one: menos de 1 segundo
+                other: menos de %{count} segundos
+            less_than_x_minutes:
+                one: menos de 1 minuto
+                other: menos de %{count} minutos
+            over_x_years:
+                one: más de 1 año
+                other: más de %{count} años
+            x_seconds:
+                one: 1 segundo
+                other: "%{count} segundos"
+            x_minutes:
+                one: 1 minuto
+                other: "%{count} minutos"
+            x_days:
+                one: 1 día
+                other: "%{count} días"
+            x_months:
+                one: 1 mes
+                other: "%{count} meses"
+            x_years:
+                one: 1 año
+                other: "%{count} años"
+        prompts:
+            second: Segundo
+            minute: Minuto
+            hour: Hora
+            day: Día
+            month: Mes
+            year: Año
+    hcaptcha:
+        errors:
+            verification_failed: hCaptcha fue incorrecto, por favor intentar de nuevo
+            recaptcha_unreachable: Error de verificación de servidor, por favor intentar de nuevo
     errors:
-      messages:
-        record_invalid: >
-          La validación falló: %{errors}
-        restrict_dependent_destroy:
-          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
-          has_many: No se puede eliminar el registro porque existen %{record} dependientes
-    models:
-      article:
-        one: Solución
-        other: Soluciones
-      project:
-        one: Proyecto
-        other: Proyectos
-      product:
-        one: Producto
-        other: Productos
-      category:
-        one: Categoría
-        other: Categorías
-      newsletter:
-        one: Newsletter
-        other: Newsletters
-      user:
-        one: Usuario
-        other: Usuarios
-  date:
-    abbr_day_names:
-    - dom
-    - lun
-    - mar
-    - mié
-    - jue
-    - vie
-    - sáb
-    abbr_month_names:
-    - 
-    - ene
-    - feb
-    - mar
-    - abr
-    - may
-    - jun
-    - jul
-    - ago
-    - sep
-    - oct
-    - nov
-    - dic
-    day_names:
-    - domingo
-    - lunes
-    - martes
-    - miércoles
-    - jueves
-    - viernes
-    - sábado
-    formats:
-      default: "%-d/%-m/%Y"
-      long: "%-d de %B de %Y"
-      short: "%-d de %b"
-    month_names:
-    - 
-    - enero
-    - febrero
-    - marzo
-    - abril
-    - mayo
-    - junio
-    - julio
-    - agosto
-    - septiembre
-    - octubre
-    - noviembre
-    - diciembre
-    order:
-    - :day
-    - :month
-    - :year
-  datetime:
-    distance_in_words:
-      about_x_hours:
-        one: alrededor de 1 hora
-        other: alrededor de %{count} horas
-      about_x_months:
-        one: alrededor de 1 mes
-        other: alrededor de %{count} meses
-      about_x_years:
-        one: alrededor de 1 año
-        other: alrededor de %{count} años
-      almost_x_years:
-        one: casi 1 año
-        other: casi %{count} años
-      half_a_minute: medio minuto
-      less_than_x_seconds:
-        one: menos de 1 segundo
-        other: menos de %{count} segundos
-      less_than_x_minutes:
-        one: menos de 1 minuto
-        other: menos de %{count} minutos
-      over_x_years:
-        one: más de 1 año
-        other: más de %{count} años
-      x_seconds:
-        one: 1 segundo
-        other: "%{count} segundos"
-      x_minutes:
-        one: 1 minuto
-        other: "%{count} minutos"
-      x_days:
-        one: 1 día
-        other: "%{count} días"
-      x_months:
-        one: 1 mes
-        other: "%{count} meses"
-      x_years:
-        one: 1 año
-        other: "%{count} años"
-    prompts:
-      second: Segundo
-      minute: Minuto
-      hour: Hora
-      day: Día
-      month: Mes
-      year: Año
-  hcaptcha:
-    errors:
-      verification_failed: hCaptcha fue incorrecto, por favor intentar de nuevo
-      recaptcha_unreachable: Error de verificación de servidor, por favor intentar de nuevo
-  errors:
-    format: "%{attribute} %{message}"
-    messages:
-      accepted: debe ser aceptado
-      blank: no puede estar en blanco
-      confirmation: no coincide
-      empty: no puede estar vacío
-      equal_to: debe ser igual a %{count}
-      even: debe ser par
-      exclusion: está reservado
-      greater_than: debe ser mayor que %{count}
-      greater_than_or_equal_to: debe ser mayor que o igual a %{count}
-      inclusion: no está incluido en la lista
-      invalid: no es válido
-      less_than: debe ser menor que %{count}
-      less_than_or_equal_to: debe ser menor que o igual a %{count}
-      model_invalid: 'La validación falló: %{errors}'
-      not_a_number: no es un número
-      not_an_integer: debe ser un entero
-      odd: debe ser impar
-      other_than: debe ser distinto de %{count}
-      present: debe estar en blanco
-      required: debe existir
-      taken: ya está en uso
-      too_long:
-        one: es demasiado largo (1 carácter máximo)
-        other: es demasiado largo (%{count} caracteres máximo)
-      too_short:
-        one: es demasiado corto (1 carácter mínimo)
-        other: es demasiado corto (%{count} caracteres mínimo)
-      wrong_length:
-        one: no tiene la longitud correcta (1 carácter exactos)
-        other: no tiene la longitud correcta (%{count} caracteres exactos)
-    template:
-      body: 'Se encontraron problemas con los siguientes campos:'
-      header:
-        one: No se pudo guardar este/a %{model} porque se encontró 1 error
-        other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
-  helpers:
-    select:
-      prompt: Por favor seleccione
-    submit:
-      create: Crear %{model}
-      submit: Guardar %{model}
-      update: Actualizar %{model}
-  number:
-    currency:
-      format:
-        delimiter: "."
-        format: "%n %u"
-        precision: 2
-        separator: ","
-        significant: false
-        strip_insignificant_zeros: false
-        unit: "€"
-    format:
-      delimiter: "."
-      precision: 3
-      separator: ","
-      significant: false
-      strip_insignificant_zeros: false
-    human:
-      decimal_units:
-        format: "%n %u"
-        units:
-          billion: mil millones
-          million:
-            one: millón
-            other: millones
-          quadrillion: mil billones
-          thousand: mil
-          trillion:
-            one: billón
-            other: billones
-          unit: ''
-      format:
-        delimiter: ''
-        precision: 1
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one: Byte
-            other: Bytes
-          eb: EB
-          gb: GB
-          kb: KB
-          mb: MB
-          pb: PB
-          tb: TB
-    percentage:
-      format:
-        delimiter: ''
-        format: "%n %"
-    precision:
-      format:
-        delimiter: ''
-  support:
-    array:
-      last_word_connector: " y "
-      two_words_connector: " y "
-      words_connector: ", "
-  time:
-    am: am
-    formats:
-      default: "%A, %-d de %B de %Y %H:%M:%S %z"
-      long: "%-d de %B de %Y %H:%M"
-      short: "%-d de %b %H:%M"
-    pm: pm
+        format: "%{attribute} %{message}"
+        messages:
+            accepted: debe ser aceptado
+            blank: no puede estar en blanco
+            confirmation: no coincide
+            empty: no puede estar vacío
+            equal_to: debe ser igual a %{count}
+            even: debe ser par
+            exclusion: está reservado
+            greater_than: debe ser mayor que %{count}
+            greater_than_or_equal_to: debe ser mayor que o igual a %{count}
+            inclusion: no está incluido en la lista
+            invalid: no es válido
+            less_than: debe ser menor que %{count}
+            less_than_or_equal_to: debe ser menor que o igual a %{count}
+            model_invalid: "La validación falló: %{errors}"
+            not_a_number: no es un número
+            not_an_integer: debe ser un entero
+            odd: debe ser impar
+            other_than: debe ser distinto de %{count}
+            present: debe estar en blanco
+            required: debe existir
+            taken: ya está en uso
+            too_long:
+                one: es demasiado largo (1 carácter máximo)
+                other: es demasiado largo (%{count} caracteres máximo)
+            too_short:
+                one: es demasiado corto (1 carácter mínimo)
+                other: es demasiado corto (%{count} caracteres mínimo)
+            wrong_length:
+                one: no tiene la longitud correcta (1 carácter exactos)
+                other: no tiene la longitud correcta (%{count} caracteres exactos)
+        template:
+            body: "Se encontraron problemas con los siguientes campos:"
+            header:
+                one: No se pudo guardar este/a %{model} porque se encontró 1 error
+                other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+    helpers:
+        select:
+            prompt: Por favor seleccione
+        submit:
+            create: Crear %{model}
+            submit: Guardar %{model}
+            update: Actualizar %{model}
+    number:
+        currency:
+            format:
+                delimiter: "."
+                format: "%n %u"
+                precision: 2
+                separator: ","
+                significant: false
+                strip_insignificant_zeros: false
+                unit: "€"
+        format:
+            delimiter: "."
+            precision: 3
+            separator: ","
+            significant: false
+            strip_insignificant_zeros: false
+        human:
+            decimal_units:
+                format: "%n %u"
+                units:
+                    billion: mil millones
+                    million:
+                        one: millón
+                        other: millones
+                    quadrillion: mil billones
+                    thousand: mil
+                    trillion:
+                        one: billón
+                        other: billones
+                    unit: ""
+            format:
+                delimiter: ""
+                precision: 1
+                significant: true
+                strip_insignificant_zeros: true
+            storage_units:
+                format: "%n %u"
+                units:
+                    byte:
+                        one: Byte
+                        other: Bytes
+                    eb: EB
+                    gb: GB
+                    kb: KB
+                    mb: MB
+                    pb: PB
+                    tb: TB
+        percentage:
+            format:
+                delimiter: ""
+                format: "%n %"
+        precision:
+            format:
+                delimiter: ""
+    support:
+        array:
+            last_word_connector: " y "
+            two_words_connector: " y "
+            words_connector: ", "
+    time:
+        am: am
+        formats:
+            default: "%A, %-d de %B de %Y %H:%M:%S %z"
+            long: "%-d de %B de %Y %H:%M"
+            short: "%-d de %b %H:%M"
+        pm: pm

@@ -13,10 +13,10 @@ class Product < ApplicationRecord
     has_rich_text :content2
 
     has_many :product_referenceables, dependent: :destroy
-    has_many :articles,
+    has_many :solutions,
              through: :product_referenceables,
              source: :referenceable,
-             source_type: 'Article'
+             source_type: 'Solution'
     has_many :projects,
              through: :product_referenceables,
              source: :referenceable,

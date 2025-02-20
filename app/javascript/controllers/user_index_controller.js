@@ -8,7 +8,7 @@ export default class extends Controller {
     // Show all the contacts a user has made
     toggleShowContacts(event) {
         const { id } = event.target.dataset;
-        const info = document.querySelector(`#article-${id}`);
+        const info = document.querySelector(`#solution-${id}`);
 
         if (info) {
             info.classList.toggle(this.hiddenClass);

@@ -4,10 +4,10 @@
     <div class='dashboard' data-controller='dashboard'>
         <h1 class='main-title'> Papelera </h1>
 
-        <% unless @articles.empty? %>
+        <% unless @solutions.empty? %>
             <h2 class="title centered"> Soluciones </h2>
             <div class='dashboard-card-holder'>
-                <% @articles.each do |article| %>
+                <% @solutions.each do |article| %>
                     <%= render partial: 'article', object: article %>
                 <% end %>
             </div>
@@ -31,7 +31,7 @@
             </div>
         <% end %>
 
-        <% if [ @articles, @projects, @products ].flatten.empty? %>
+        <% if [ @solutions, @projects, @products ].flatten.empty? %>
             <h2 id='dashboard-message' style='display: block;'> La papelera está vacía </h2>
         <% end %>
     </div>

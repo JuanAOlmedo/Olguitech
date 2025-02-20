@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Mailer for creating articles
+# Mailer for creating solutions
 class ArticlesMailer < ApplicationMailer
     def article(user, article)
         @user = user
@@ -13,7 +13,7 @@ class ArticlesMailer < ApplicationMailer
             model_name = @article.model_name.singular
             human = @article.model_name.human
 
-            subject = if model_name == 'article'
+            subject = if model_name == 'solution'
                           t('mail.articles.subject.new1')
                       else
                           t('mail.articles.subject.new2')

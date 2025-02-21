@@ -1,52 +1,52 @@
-<% content_for :title, "#{@product.localized_title} | Olguitech s.a.s." %>
-<% content_for :description, @product.localized_desc.to_s %>
+<% content_for :title, "#{@article.localized_title} | Olguitech s.a.s." %>
+<% content_for :description, @article.localized_desc.to_s %>
 
 <div class="product">
     <div class="product-top">
-        <% if @product.image.attached? %>
-            <%= image_for @product.image, resize: [], class: 'product-img centered', alt: @product.image.filename %>
+        <% if @article.image.attached? %>
+            <%= image_for @article.image, resize: [], class: 'product-img centered', alt: @article.image.filename %>
         <% end %>
 
         <div class="text">
-            <% if @product.categories.any? %>
+            <% if @article.categories.any? %>
                 <p class="article-categories">
-                    <%= Category.model_name.human count: @product.categories.length %>:
+                    <%= Category.model_name.human count: @article.categories.length %>:
 
-                    <% @product.categories.each do |category| %>
-                        <%= link_to category.localized_title, products_path(params: { super_category_id: category.super_category_id }, anchor: category.id), class: 'link' %><%= (@product.categories.last != category ? ', ' : '').to_s %>
+                    <% @article.categories.each do |category| %>
+                        <%= link_to category.localized_title, products_path(params: { super_category_id: category.super_category_id }, anchor: category.id), class: 'link' %><%= (@article.categories.last != category ? ', ' : '').to_s %>
                     <% end %>
                 </p>
             <% end %>
 
-            <%= tag.h1 @product.localized_title, class: 'main-title' %>
-            <%= tag.p @product.localized_desc, class: 'subtitle' %>
+            <%= tag.h1 @article.localized_title, class: 'main-title' %>
+            <%= tag.p @article.localized_desc, class: 'subtitle' %>
         </div>
     </div>
 
     <div class="content" data-controller="image-displayer">
-        <%= @product.localized_content %>
+        <%= @article.localized_content %>
 
         <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
         </div>
     </div>
 
-    <% if @product.solutions.any? %>
+    <% if @article.solutions.any? %>
         <%= tag.h1 t('show.solutions'), class: 'main-title' %>
-        <%= cards_for @product.solutions %>
+        <%= cards_for @article.solutions %>
     <% end %>
-    <% if @product.projects.any? %>
+    <% if @article.projects.any? %>
         <%= tag.h1 t('show.projects'), class: 'main-title' %>
-        <%= cards_for @product.projects %>
+        <%= cards_for @article.projects %>
     <% end %>
 </div>
 
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools">
-        <% if %w[drafted published].include?(@product.status) %>
-            <%= link_to 'Editar', edit_product_path(@product), class: 'btn' %>
-            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @product}", class: 'btn' %>
+        <% if %w[drafted published].include?(@article.status) %>
+            <%= link_to 'Editar', edit_product_path(@article), class: 'btn' %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard##{dom_id @article}", class: 'btn' %>
         <% else %>
-            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @product}", class: 'btn' %>
+            <%= link_to 'Mostrar en panel', "/#{I18n.locale}/dashboard/trash##{dom_id @article}", class: 'btn' %>
         <% end %>
     </div>
 <% end %>

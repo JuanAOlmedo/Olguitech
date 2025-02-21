@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-json.status @product.status
-json.dom_id dom_id(@product)
-json.model_name @product.model_name.plural
+json.status @article.status
+json.dom_id dom_id(@article)
+json.model_name @article.model_name.plural

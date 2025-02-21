@@ -11,7 +11,7 @@ export default class extends Controller {
     }
 
     // Send a request to the server with the parameters that the link provides.
-    // Send the resulting solution to appendSolution to process it.
+    // Send the resulting article to appendArticle to process it.
     update(event) {
         event.preventDefault();
         const href = event.target.href,
@@ -27,17 +27,17 @@ export default class extends Controller {
             body: params,
         })
             .then((result) => result.json())
-            .then((solution) => {
-                if (solution.model_name == "categories") {
+            .then((article) => {
+                if (article.model_name == "categories") {
                     event.target.parentElement.parentElement.remove();
                     return;
                 }
 
-                this.appendSolution(solution);
+                this.appendArticle(article);
             });
     }
 
-    // Delete an solution and remove it from the DOM
+    // Delete an article and remove it from the DOM
     delete({ params: { id } }) {
         event.preventDefault();
         if (!confirm(event.target.dataset.turboConfirm)) return;

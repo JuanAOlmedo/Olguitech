@@ -34,8 +34,9 @@ html {
 }
 
 * {
-    font-family: "Source Sans Pro", "Helvetica Neue", helvetica,
-        "Apple Color Emoji", arial, sans-serif;
+    font-family:
+        "Source Sans Pro", "Helvetica Neue", helvetica, "Apple Color Emoji",
+        arial, sans-serif;
 }
 
 body {
@@ -122,7 +123,9 @@ body {
     display: inline-block;
     text-decoration: none;
     color: #333;
-    transition: background 0.25s, color 0.25s;
+    transition:
+        background 0.25s,
+        color 0.25s;
     border-radius: 0.3rem;
     width: fit-content;
     padding: 0.3rem 0.7rem 0.3rem 0.7rem;
@@ -136,7 +139,7 @@ body {
     }
 
     &:hover,
-    &.active, 
+    &.active,
     &:focus {
         background-color: hsl(26.7, 23.1%, 92.4%);
         color: #f4923c;
@@ -152,7 +155,9 @@ body {
     display: inline-block;
     text-decoration: none;
     color: #333;
-    transition: background 0.25s, color 0.25s;
+    transition:
+        background 0.25s,
+        color 0.25s;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -171,7 +176,7 @@ body {
     }
 
     &:hover,
-    &.active, 
+    &.active,
     &:focus {
         background-color: hsl(26.7, 23.1%, 87.4%);
         color: #f4923c;
@@ -186,7 +191,7 @@ body {
         background-color: #ff7b7b;
 
         &:hover,
-        &.active, 
+        &.active,
         &:focus {
             background-color: #e66060;
             color: #000;
@@ -281,19 +286,6 @@ body {
     & div {
         padding: 0.2rem;
     }
-}
-
-.card.still,
-.alternative-card.still {
-    transform: translateY(2rem);
-    opacity: 0;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-}
-
-.card.move,
-.alternative-card.move {
-    transform: translateY(0);
-    opacity: 1;
 }
 
 .card .title,
@@ -462,7 +454,11 @@ body {
     margin: 0;
     height: 100%;
     z-index: 6;
-    transition: background 0.25s, color 0.25s, stroke 0.25s, border-radius 0.25s;
+    transition:
+        background 0.25s,
+        color 0.25s,
+        stroke 0.25s,
+        border-radius 0.25s;
 }
 
 .dropdown.is-active .dropdown-menu {
@@ -493,8 +489,12 @@ body {
         width: 100%;
         height: fit-content;
         border-radius: 0;
-        transition: background 0.25s, color 0.25s, stroke 0.25s,
-            border-radius 0.25s, opacity 0.2s;
+        transition:
+            background 0.25s,
+            color 0.25s,
+            stroke 0.25s,
+            border-radius 0.25s,
+            opacity 0.2s;
     }
 
     & .btn:last-child {

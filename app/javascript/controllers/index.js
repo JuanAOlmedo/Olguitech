@@ -31,9 +31,6 @@ application.register("image-displayer", ImageDisplayerController);
 import IndexController from "./index_controller";
 application.register("index", IndexController);
 
-import IntersectionObserverController from "./intersection_observer_controller";
-application.register("intersection-observer", IntersectionObserverController);
-
 import NewContactoController from "./new_contacto_controller";
 application.register("new-contacto", NewContactoController);
 

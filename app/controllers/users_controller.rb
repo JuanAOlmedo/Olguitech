@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
                   only: %i[index new create]
+    invisible_captcha only: [:subscribe]
 
     # GET /users
     def index
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
         @user.newsletter = true
         @user.locale = I18n.locale
 
-        if verify_hcaptcha(model: @user) && @user.save
+        if @user.save
             redirect_to root_path, notice: t('thanks_for_subscribing')
         else
             redirect_to root_path, alert: t('valid_email'),

@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
+    invisible_captcha only: [:create]
+
     # Find or create a new user based on the email, create a new message
     # for that user and update their locale
     def create
         @user = User.find_by(user_params) || User.new(user_params)
         @message = @user.messages.new message_params
         @user.locale = I18n.locale
-
-        verify_captcha
 
         if @message.save && @user.save
             @message.send_mail
@@ -27,12 +27,6 @@ class MessagesController < ApplicationController
 
     def user_params
         params.require(:user).permit :email
-    end
-
-    def verify_captcha
-        if !verify_hcaptcha(model: Message.new) && Rails.env == 'production'
-            render 'main/contacto', status: :unprocessable_entity
-        end
     end
 
     # Redirect the user to the appropriate page based on their status

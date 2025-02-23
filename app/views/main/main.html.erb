@@ -59,14 +59,14 @@
             <%= t '.subscribe_message_html' %>
         </p>
 
-        <div class="form" data-controller='captcha'>
+        <div class="form">
             <%= form_with model: @user, url: "/#{I18n.locale}/users/subscribe", method: :post do |form| %>
                 <div class="field">
                     <%= form.label :email, 'Email' %>
                     <%= form.email_field :email %>
                 </div>
 
-                <%= hcaptcha_tags theme: :light, id: 'captcha' %>
+                <%= form.invisible_captcha %>
 
                 <%= form.submit t('.subscribe'), class: 'btn' %>
             <% end %>

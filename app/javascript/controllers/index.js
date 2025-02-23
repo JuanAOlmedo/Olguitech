@@ -10,9 +10,6 @@ application.register("alert", AlertController);
 import ArticleCreatorController from "./article_creator_controller";
 application.register("solution-creator", ArticleCreatorController);
 
-import CaptchaController from "./captcha_controller";
-application.register("captcha", CaptchaController);
-
 import ContactoController from "./contacto_controller";
 application.register("contacto", ContactoController);
 

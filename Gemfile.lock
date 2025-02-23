@@ -133,8 +133,6 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    hcaptcha (7.1.0)
-      json
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
@@ -144,6 +142,8 @@ GEM
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
       railties (>= 6.0.0)
+    invisible_captcha (2.3.0)
+      rails (>= 5.2)
     io-console (0.8.0)
     irb (1.15.1)
       pp (>= 0.6.0)
@@ -399,9 +399,9 @@ DEPENDENCIES
   devise (~> 4.9)
   ed25519
   friendly_id (~> 5.5.0)
-  hcaptcha (~> 7.1)
   image_processing (~> 1.14)
   importmap-rails
+  invisible_captcha
   jbuilder (~> 2.13)
   mini_magick
   pg

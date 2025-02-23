@@ -1,9 +1,0 @@
-<div class="dropdown-holder" style="height: 2.5rem; display: flex;">
-    <%= dropdown_for t('index.sort_by') do %>
-        <%= link_to t('index.category'), url_for(order_by: :categories, asc_desc: :desc), class: 'btn' %>
-        <%= link_to t('index.created_desc'), url_for(order_by: :created_at, asc_desc: :desc), class: 'btn' %>
-        <%= link_to t('index.created_asc'), url_for(order_by: :created_at, asc_desc: :asc), class: 'btn' %>
-        <%= link_to t('index.title_asc'), url_for(order_by: :title, asc_desc: :asc), class: 'btn' %>
-        <%= link_to t('index.title_desc'), url_for(order_by: :title, asc_desc: :desc), class: 'btn' %>
-    <% end %>
-</div>

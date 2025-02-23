@@ -27,6 +27,8 @@
             <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
         </div>
 
+        <%= invisible_captcha %>
+
         <div style="width: 100%;"></div>
 
         <%= f.button :submit, 'Acceder', class: 'btn centered' %>

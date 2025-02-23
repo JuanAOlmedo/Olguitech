@@ -18,7 +18,7 @@ Rails.application.routes.draw do
             post '/subscribe', to: 'users#subscribe', on: :collection
         end
 
-        devise_for :admins, controllers: { registrations: 'admin_registrations' }
+        devise_for :admins, controllers: { registrations: 'admins/registrations', sessions: 'admins/sessions' }
         scope 'dashboard' do
             get '/edit', to: 'dashboard#edit'
             get '/articles', to: 'dashboard#articles'

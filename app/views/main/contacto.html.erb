@@ -53,7 +53,7 @@
         <%= t 'contact.direction_html' %>
     </p>
 
-    <div id="map" data-controller="contacto" data-contacto-map-default-zoom-value="15" data-contacto-longitude-value="-56.15627" data-contacto-latitude-value="-34.918624" class="centered location-container" alt='<%= I18n.t 'contact.direction_alt' %>'>
+    <div id="map" data-controller="map" data-map-default-zoom-value="15" data-map-longitude-value="-56.15627" data-map-latitude-value="-34.918624" class="centered location-container" alt='<%= I18n.t 'contact.direction_alt' %>'>
         <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
         <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript" data-action="load->contacto#connect"></script>
     </div>

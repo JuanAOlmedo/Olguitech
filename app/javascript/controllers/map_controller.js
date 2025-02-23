@@ -1,10 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="contacto"
+// Connects to data-controller="map"
 // Code to show map
 export default class extends Controller {
     static values = {
-        mapDefaultZoom: Number,
+        defaultZoom: Number,
         longitude: Number,
         latitude: Number,
     };
@@ -14,8 +14,6 @@ export default class extends Controller {
     }
 
     connect() {
-        
-
         try {
             this.initialize_map();
             this.add_map_point();
@@ -39,7 +37,7 @@ export default class extends Controller {
                     this.longitudeValue,
                     this.latitudeValue,
                 ]),
-                zoom: this.mapDefaultZoomValue,
+                zoom: this.defaultZoomValue,
             }),
         });
     }
@@ -56,8 +54,8 @@ export default class extends Controller {
                                     parseFloat(this.latitudeValue),
                                 ],
                                 "EPSG:4326",
-                                "EPSG:3857"
-                            )
+                                "EPSG:3857",
+                            ),
                         ),
                     }),
                 ],

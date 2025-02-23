@@ -6,10 +6,12 @@
 
         <%= link_to 'Abrir', article, class: 'btn' unless @trash %>
         <% unless article.model_name == 'Newsletter'%>
-            <% begin %>
+            <% if current_page?(controller: 'dashboard', action: 'categories') %>
                 <% ids_name = "#{article.model_name.singular}_ids" %>
-                <%= link_to 'Desasociar', category_path(category, params: { category: { ids_name => ([''] + category.send(ids_name.to_sym) - [article.id]) } }), data: { turbo_method: :patch, action: 'dashboard#update', dashboard_category_param: '1' }, class: 'btn' %>
-            <% rescue %>
+                <% if article.categories.any? %>
+                    <%= link_to 'Desasociar', category_path(category, params: { category: { ids_name => ([''] + category.send(ids_name.to_sym) - [article.id]) } }), data: { turbo_method: :patch, action: 'dashboard#update', dashboard_category_param: '1' }, class: 'btn' %>
+                <% end %>
+            <% else %>
                 <%= render partial: "#{article.model_name.plural}/buttons", locals: { article: } %>
             <% end %>
         <% end %>

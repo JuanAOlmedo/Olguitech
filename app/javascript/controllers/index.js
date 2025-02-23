@@ -28,9 +28,6 @@ application.register("image-displayer", ImageDisplayerController);
 import IndexController from "./index_controller";
 application.register("index", IndexController);
 
-import NewContactoController from "./new_contacto_controller";
-application.register("new-contacto", NewContactoController);
-
 import ResetFormController from "./reset_form_controller";
 application.register("reset-form", ResetFormController);
 

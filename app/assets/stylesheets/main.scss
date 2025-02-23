@@ -7,7 +7,7 @@
     text-align: center;
     background: image_url("vectors/vector1.svg") no-repeat center bottom;
     background-size: 100%;
-    
+
     @media only screen and (max-width: 110rem) {
         padding-top: 3rem;
     }
@@ -36,7 +36,7 @@
         position: absolute;
         background: image_url("vectors/vector4.svg") no-repeat center bottom;
         background-size: 100% 100%;
-        content: '';
+        content: "";
         height: 7rem;
         max-height: 160px;
         width: 100%;

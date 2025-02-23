@@ -129,7 +129,7 @@ GEM
     execjs (2.10.0)
     ffi (1.17.1)
     ffi (1.17.1-x86_64-linux-gnu)
-    friendly_id (5.4.2)
+    friendly_id (5.5.1)
       activerecord (>= 4.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -171,7 +171,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
-    mini_magick (5.1.2)
+    mini_magick (5.2.0)
       benchmark
       logger
     mini_mime (1.1.5)
@@ -301,13 +301,13 @@ GEM
       sprockets-rails
       tilt
     securerandom (0.4.1)
-    selenium-webdriver (4.29.0)
+    selenium-webdriver (4.29.1)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_form (5.1.0)
+    simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
     solargraph (0.51.2)
@@ -328,7 +328,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9, >= 0.9.24)
-    sorbet-runtime (0.5.11845)
+    sorbet-runtime (0.5.11851)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -391,27 +391,27 @@ DEPENDENCIES
   bcrypt_pbkdf
   bootsnap (>= 1.4.2)
   byebug
-  capistrano (~> 3.11)
+  capistrano (~> 3.19)
   capistrano-passenger (~> 0.2.0)
-  capistrano-rails (~> 1.4)
-  capistrano-rbenv (~> 2.1, >= 2.1.4)
-  capybara (>= 2.15)
+  capistrano-rails (~> 1.7)
+  capistrano-rbenv (~> 2.2)
+  capybara
   devise (~> 4.9)
   ed25519
-  friendly_id (~> 5.4.0)
+  friendly_id (~> 5.5.0)
   hcaptcha (~> 7.1)
-  image_processing (~> 1.12)
+  image_processing (~> 1.14)
   importmap-rails
-  jbuilder (~> 2.7)
+  jbuilder (~> 2.13)
   mini_magick
   pg
   puma
   rails (= 8.0.1)
-  rexml (~> 3.2, >= 3.2.4)
+  rexml (~> 3.4, >= 3.2.4)
   ruby-lsp
   sassc-rails
   selenium-webdriver
-  simple_form (= 5.1.0)
+  simple_form (= 5.3.0)
   solargraph
   sqlite3
   stimulus-rails

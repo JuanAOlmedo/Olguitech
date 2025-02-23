@@ -25,14 +25,14 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7'
+gem 'jbuilder', '~> 2.13'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'rexml', '~> 3.2', '>= 3.2.4'
+gem 'rexml', '~> 3.4', '>= 3.2.4'
 
 # Use devise for authentication
 gem 'bcrypt_pbkdf'
@@ -43,10 +43,10 @@ gem 'ed25519'
 gem 'hcaptcha', '~> 7.1'
 
 # Use simple_form for devise forms
-gem 'simple_form', '5.1.0'
+gem 'simple_form', '5.3.0'
 
 # Use Active Storage variant
-gem 'image_processing', '~> 1.12'
+gem 'image_processing', '~> 1.14'
 gem 'mini_magick'
 
 # Use terser for JavaScript compression
@@ -56,7 +56,7 @@ gem 'terser'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use friendly_id for url ids
-gem 'friendly_id', '~> 5.4.0'
+gem 'friendly_id', '~> 5.5.0'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
@@ -76,12 +76,12 @@ end
 
 group :test do
     # Adds support for Capybara system testing and selenium driver
-    gem 'capybara', '>= 2.15'
+    gem 'capybara'
     gem 'selenium-webdriver'
 end
 
 # Use capistrano to deploy to production
-gem 'capistrano', '~> 3.11'
+gem 'capistrano', '~> 3.19'
 gem 'capistrano-passenger', '~> 0.2.0'
-gem 'capistrano-rails', '~> 1.4'
-gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+gem 'capistrano-rails', '~> 1.7'
+gem 'capistrano-rbenv', '~> 2.2'

@@ -34,7 +34,7 @@ td {
         font-size: inherit;
     }
 
-    & svg { 	
+    & svg {
         width: 1rem;
         height: 1rem;
         margin: auto 0 auto 0;
@@ -46,41 +46,14 @@ td {
 }
 
 .new-user {
-    width: 85%;
-    margin-left: auto;
-    margin-right: auto;
     margin-top: 2rem;
-    margin-bottom: 2rem;
-
-    @media only screen and (max-width: 67rem) {
-        width: 95%;
-    }
 }
 
 .contact-info {
-    z-index: 100;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 5rem;
-    overflow-y: auto;
-    display: block;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-
-    &.hidden {
-        display: none;
-    }
+    padding: 2rem;
 
     & .big-card {
         margin-bottom: 2rem;
-    }
-
-    @media only screen and (max-width: 67rem) {
-        padding: 1rem;
     }
 }
 
@@ -91,9 +64,4 @@ td {
         font-size: 1.5rem;
         width: 90%;
     }
-}
-
-.icon-tabler-x, 
-.times-contacted {
-    cursor: pointer;
 }

@@ -1,7 +1,7 @@
 <% content_for :title, 'Usuarios' %>
 
 <%= turbo_frame_tag 'dashboard-users' do %>
-    <div data-controller="user-index" data-user-index-hidden-class="hidden">
+    <div data-controller="user-index">
         <h1 class='main-title'> Usuarios </h1>
 
         <div class="field" id="user-index-field">
@@ -27,21 +27,6 @@
             </table>
         </div>
 
-        <div class="new-user">
-            <%= turbo_frame_tag 'new_user' do %>
-                <%= link_to 'Crear nuevo usuario', new_user_path, class: 'btn centered' %>
-            <% end %>
-        </div>
-
-        <% @users_with_messages.each do |user| %>
-            <div class='contact-info hidden' data-action="click->user-index#toggleShowContacts" data-id='<%= user.id %>' id='user-<%= user.id %>-messages'>
-                <% user.messages.each do |message| %>
-                    <div class="big-card">
-                        <p> <strong> Fecha: </strong> <%= message.created_at.to_formatted_s(:long) %> </p>
-                        <p> <strong> Mensaje: </strong> <%= message.content %> </p>
-                    </div>
-                <% end %>
-            </div>
-        <% end %>
+        <%= link_to 'Crear nuevo usuario', new_user_path, data: { turbo_frame: '_top' }, class: 'btn new-user centered' %>
     </div>
 <% end %>

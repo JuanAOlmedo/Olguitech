@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-    before_action :set_user, only: %i[edit update destroy]
+    before_action :set_user, only: %i[show edit update destroy]
     before_action :authenticate_edit_token, only: %i[edit destroy update]
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
-                  only: %i[index new create]
+                  only: %i[index new create show]
     invisible_captcha only: [:subscribe]
 
     # GET /users
@@ -38,10 +38,7 @@ class UsersController < ApplicationController
         @user.confirm if user_params[:auto_confirm] == '1'
 
         if @user.save
-            respond_to do |format|
-                format.html { redirect_to root_path }
-                format.turbo_stream
-            end
+            redirect_to "/#{I18n.locale}/dashboard/users"
         else
             render :new, status: :unprocessable_entity
         end

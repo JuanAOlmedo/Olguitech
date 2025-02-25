@@ -1,0 +1,12 @@
+<h1 class="main-title"> Mensajes </h1>
+
+<%= tag.p @user.email, class: 'subtitle' %>
+
+<div class='contact-info'>
+    <% @user.messages.each do |message| %>
+        <div class="big-card">
+            <p> <strong> Fecha: </strong> <%= message.created_at.to_formatted_s(:long) %> </p>
+            <p> <strong> Mensaje: </strong> <%= message.content %> </p>
+        </div>
+    <% end %>
+</div>

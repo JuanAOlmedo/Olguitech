@@ -20,8 +20,12 @@
     <td>
         <% message_count = user.messages.count %>
 
-        <span class='<%= message_count.positive? ? 'link times-contacted' : '' %>' data-action="click->user-index#toggleShowContacts" data-id="<%= user.id %>">
-            <%= message_count.positive? ? "Ver #{message_count}" : message_count %>
+        <span class='<%= message_count.positive? ? 'times-contacted' : '' %>'>
+            <% if message_count.positive? %>
+                <%= link_to 'Ver', user_path(user), data: { turbo_frame: '_top' }, class: 'link' %>
+            <% else %>
+                0
+            <% end %>
         </span>
     </td>
 

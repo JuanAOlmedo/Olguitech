@@ -15,6 +15,9 @@ class MessagesController < ApplicationController
 
             redirect_user
         else
+            # Destroy message so that the user doesn't get redirected to
+            # the message update path
+            @message.destroy
             render 'main/contacto', status: :unprocessable_entity
         end
     end

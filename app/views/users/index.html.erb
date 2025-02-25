@@ -34,7 +34,7 @@
         </div>
 
         <% @users_with_messages.each do |user| %>
-            <div class='contact-info hidden' data-action="click->user-index#toggleShowContacts" data-id='<%= user.id %>' id='article-<%= user.id %>'>
+            <div class='contact-info hidden' data-action="click->user-index#toggleShowContacts" data-id='<%= user.id %>' id='user-<%= user.id %>-messages'>
                 <% user.messages.each do |message| %>
                     <div class="big-card">
                         <p> <strong> Fecha: </strong> <%= message.created_at.to_formatted_s(:long) %> </p>

@@ -9,6 +9,12 @@
     position: relative;
     z-index: 1;
 
+    & .subtitle {
+        @media only screen and (max-width: 67rem) {
+            text-align: left;
+        }
+    }
+
     &::after {
         z-index: -1;
         content: "";
@@ -52,8 +58,8 @@
         background: image_url("vectors/vector3.svg") no-repeat left bottom;
         background-size: auto 100%;
 
-        @media only screen and (max-width: 67rem) {
-            background-size: 200%;
+        @media only screen and (max-width: 50rem) {
+            background-size: auto 60%;
         }
     }
 

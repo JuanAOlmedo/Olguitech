@@ -53,6 +53,8 @@ class CategoriesController < ApplicationController
         redirect_to categories_url, notice: 'Categoría destruída exitosamente.', status: :see_other
     end
 
+    # PATCH /categories/1/unrelate
+    # Used in dashboard to change relationship between categories and articles.
     def unrelate
         @category.unrelate params[:model], params[:article_id].to_i
 

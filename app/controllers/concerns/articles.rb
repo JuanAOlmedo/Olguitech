@@ -61,8 +61,8 @@ module Articles
                     status: :see_other
     end
 
-    # Used in dashboard to update the status of an article
-    # When updated, a refresh is broadcasted to the dashboard.
+    # PATCH /articles/1/status
+    # Used in dashboard to update the status of an article.
     def change_status
         @article.update! status: params[:status].to_i
 

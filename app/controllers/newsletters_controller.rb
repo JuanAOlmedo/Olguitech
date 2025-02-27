@@ -46,6 +46,8 @@ class NewslettersController < ApplicationController
         redirect_to root_path, notice: 'Newsletter destruido exitosamente.', status: :see_other
     end
 
+    # PATCH /newsletters/1/status
+    # Used in dashboard to send a newsletter
     def change_status
         @newsletter.send_newsletter unless @newsletter.sent?
 

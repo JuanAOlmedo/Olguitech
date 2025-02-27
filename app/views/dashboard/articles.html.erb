@@ -1,7 +1,9 @@
+<%= turbo_stream_from :articles %>
+
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
-    <div class='dashboard' data-controller="dashboard">
+    <div class='dashboard' data-controller='dashboard'>
         <h1 class='main-title'> Todos los artículos </h1>
         <div class="dropdown-holder" style="height: 2.5rem; display: flex;">
             <%= dropdown_for 'Nuevo' do %>
@@ -15,54 +17,63 @@
 
         <h2 class="title centered"> Borradores </h2>
         <div class='dashboard-drafts'>
-            <div>
+            <% if @solution_drafts.any? %>
                 <h2 class="title centered"> Soluciones (borradores) </h2>
                 <div class='dashboard-card-holder' id='drafted_solutions'>
                     <% @solution_drafts.each do |article| %>
                         <%= render partial: 'article', object: article %>
                     <% end %>
                 </div>
-            </div>
+            <% end %>
 
-            <div>
+            <% if @project_drafts.any? %>
                 <h2 class="title centered"> Proyectos (borradores) </h2>
                 <div class='dashboard-card-holder' id='drafted_projects'>
                     <% @project_drafts.each do |article| %>
                         <%= render partial: 'article', object: article %>
                     <% end %>
                 </div>
-            </div>
+            <% end %>
 
-            <div>
+            <% if @product_drafts.any? %>
                 <h2 class="title centered"> Productos (borradores) </h2>
                 <div class='dashboard-card-holder' id='drafted_products'>
                     <% @product_drafts.each do |article| %>
                         <%= render partial: 'article', object: article %>
                     <% end %>
                 </div>
+            <% end %>
+
+            <% if [ @solution_drafts, @product_drafts, @project_drafts ].flatten.empty? %>
+                <h2 id='dashboard-message'> No hay ningún borrador </h2>
+            <% end %>
+        </div>
+
+        <% if @solutions.any? %>
+            <h2 class="title centered"> Soluciones publicadas </h2>
+            <div class='dashboard-card-holder' id='published_solutions'>
+                <% @solutions.each do |article| %>
+                    <%= render partial: 'article', object: article %>
+                <% end %>
             </div>
-            <h2 id='dashboard-message'> No hay ningún borrador </h2>
-        </div>
+        <% end %>
 
-        <h2 class="title centered"> Soluciones publicadas </h2>
-        <div class='dashboard-card-holder' id='published_solutions'>
-            <% @solutions.each do |article| %>
-                <%= render partial: 'article', object: article %>
-            <% end %>
-        </div>
+        <% if @projects.any? %>
+            <h2 class="title centered"> Proyectos publicados </h2>
+            <div class='dashboard-card-holder' id='published_projects'>
+                <% @projects.each do |article| %>
+                    <%= render partial: 'article', object: article %>
+                <% end %>
+            </div>
+        <% end %>
 
-        <h2 class="title centered"> Proyectos publicados </h2>
-        <div class='dashboard-card-holder' id='published_projects'>
-            <% @projects.each do |article| %>
-                <%= render partial: 'article', object: article %>
-            <% end %>
-        </div>
-
-        <h2 class="title centered"> Productos publicados </h2>
-        <div class='dashboard-card-holder' id='published_products'>
-            <% @products.each do |article| %>
-                <%= render partial: 'article', object: article %>
-            <% end %>
-        </div>
+        <% if @products.any? %>
+            <h2 class="title centered"> Productos publicados </h2>
+            <div class='dashboard-card-holder' id='published_products'>
+                <% @products.each do |article| %>
+                    <%= render partial: 'article', object: article %>
+                <% end %>
+            </div>
+        <% end %>
     </div>
 </div>

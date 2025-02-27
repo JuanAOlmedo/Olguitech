@@ -1,19 +1,27 @@
-<div class='compact-card <%= article.status %>' id='<%= dom_id article %>'>
-    <%= image_for article.image, resize: [720, 720] if article.model_name != 'Newsletter' && article.image.attached? %>
+<div class='compact-card'>
+    <%= image_for article.image, resize: [720, 720] if article.image.attached? %>
 
     <div>
         <h3> <%= article.localized_short_title %> </h3>
 
         <%= link_to 'Abrir', article, class: 'btn' unless @trash %>
-        <% unless article.model_name == 'Newsletter'%>
-            <% if current_page?(controller: 'dashboard', action: 'categories') %>
-                <% ids_name = "#{article.model_name.singular}_ids" %>
-                <% if article.categories.any? %>
-                    <%= link_to 'Desasociar', category_path(category, params: { category: { ids_name => ([''] + category.send(ids_name.to_sym) - [article.id]) } }), data: { turbo_method: :patch, action: 'dashboard#update', dashboard_category_param: '1' }, class: 'btn' %>
-                <% end %>
+
+        <% if current_page?(controller: 'dashboard', action: 'categories') %>
+            <%= link_to 'Editar', dashboard_edit_path(article), class: 'btn' %>
+
+            <%= unrelate_category_link category, article if article.categories.any? %>
+        <% elsif article.trashed? %>
+            <%= update_status_link 'Sacar de la papelera', article, 1 %>
+            <%= delete_article_link article %>
+        <% else %>
+            <%= link_to 'Editar', dashboard_edit_path(article), class: 'btn' %>
+
+            <% if article.drafted? %>
+                <%= update_status_link 'Publicar', article, 0 %>
             <% else %>
-                <%= render partial: "#{article.model_name.plural}/buttons", locals: { article: } %>
+                <%= update_status_link 'Despublicar', article, 1 %>
             <% end %>
+            <%= update_status_link 'Mover a la papelera', article, 2, is_danger: true %>
         <% end %>
    </div>
 </div>

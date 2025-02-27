@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CategoriesController < ApplicationController
-    before_action :set_category, only: %i[show edit update destroy]
+    before_action :set_category, only: %i[show edit update destroy unrelate]
     before_action :authenticate_admin!, except: %i[index show]
 
     # GET /categories
@@ -51,6 +51,11 @@ class CategoriesController < ApplicationController
         @category.destroy
 
         redirect_to categories_url, notice: 'Categoría destruída exitosamente.', status: :see_other
+    end
+
+    def unrelate
+        @category.unrelate params[:model], params[:article_id].to_i
+        @category.broadcast_refresh_later
     end
 
     private

@@ -1,0 +1,12 @@
+<div class='compact-card'>
+    <div>
+        <h3> <%= newsletter.localized_short_title %> </h3>
+
+        <%= link_to 'Abrir', newsletter, class: 'btn' %>
+
+        <% if newsletter.drafted? %>
+            <%= link_to 'Editar', edit_newsletter_path(newsletter), class: 'btn' %>
+            <%= update_status_link 'Enviar', newsletter, 1 %>
+        <% end %>
+   </div>
+</div>

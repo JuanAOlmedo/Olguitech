@@ -64,4 +64,12 @@ class Category < ApplicationRecord
 
         description.length > 100 ? "#{description[0...100]}..." : description
     end
+
+    def broadcast_refresh_later
+        broadcast_refresh_later_to :categories
+    end
+
+    def unrelate(model_name, id)
+        send(model_name).delete id
+    end
 end

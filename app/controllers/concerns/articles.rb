@@ -5,7 +5,7 @@ module Articles
     extend ActiveSupport::Concern
 
     included do
-        before_action :set_article, only: %i[show edit update destroy]
+        before_action :set_article, only: %i[show edit update destroy change_status]
         before_action :authenticate_admin!, except: %i[index show]
     end
 
@@ -35,44 +35,39 @@ module Articles
     def create
         @article = model.new article_params
 
-        respond_to do |format|
-            if @article.save
-                format.html { redirect_to @article, notice: 'Artículo creado exitosamente.' }
-                format.json { render :show, status: :created, location: @article }
-            else
-                format.html { render :new, status: :unprocessable_entity }
-                format.json { render json: @article.errors, status: :unprocessable_entity }
-            end
+        if @article.save
+            redirect_to @article, notice: 'Artículo creado exitosamente.'
+        else
+            render :new, status: :unprocessable_entity
         end
     end
 
     def edit; end
 
     def update
-        respond_to do |format|
-            if @article.update article_params
-                format.html do
-                    redirect_to @article, notice: 'Artículo actualizado exitosamente.'
-                end
-                format.json { render :show, status: :ok, location: @article }
-            else
-                format.html { render :edit, status: :unprocessable_entity }
-                format.json { render json: @article.errors, status: :unprocessable_entity }
-            end
+        if @article.update article_params
+            redirect_to @article, notice: 'Artículo actualizado exitosamente.'
+        else
+            render :edit, status: :unprocessable_entity
         end
     end
 
     def destroy
         @article.destroy
+        @article.broadcast_refresh_later
 
-        respond_to do |format|
-            format.html do
-                redirect_to send("#{model.model_name.plural}_url"),
-                            notice: 'Artículo destruido exitosamente.',
-                            status: :see_other
-            end
-            format.json { head :no_content }
-        end
+        redirect_to send("#{model.model_name.plural}_url"),
+                    notice: 'Artículo destruido exitosamente.',
+                    status: :see_other
+    end
+
+    # Used in dashboard to update the status of an article
+    # When updated, a refresh is broadcasted to the dashboard.
+    def change_status
+        @article.update! status: params[:status].to_i
+        @article.broadcast_refresh_later
+
+        head :no_content
     end
 
     private

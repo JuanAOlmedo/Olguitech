@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class NewslettersController < ApplicationController
-    before_action :set_newsletter, only: %i[show edit update destroy]
+    before_action :set_newsletter, only: %i[show edit update destroy change_status]
     before_action :check_sent, only: %i[edit update destroy]
     before_action :authenticate_admin!, except: :show
 
@@ -42,14 +42,15 @@ class NewslettersController < ApplicationController
     # DELETE /newsletters/1
     def destroy
         @newsletter.destroy
-        respond_to do |format|
-            format.html do
-                redirect_to root_path,
-                            notice: 'Newsletter destruido exitosamente.',
-                            status: :see_other
-            end
-            format.json { head :no_content }
-        end
+
+        redirect_to root_path, notice: 'Newsletter destruido exitosamente.', status: :see_other
+    end
+
+    def change_status
+        @newsletter.send_newsletter unless @newsletter.sent?
+        @newsletter.broadcast_refresh_later
+
+        head :no_content
     end
 
     private

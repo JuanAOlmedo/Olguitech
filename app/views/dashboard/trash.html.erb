@@ -1,10 +1,12 @@
+<%= turbo_stream_from :articles %>
+
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
     <div class='dashboard' data-controller='dashboard'>
         <h1 class='main-title'> Papelera </h1>
 
-        <% unless @solutions.empty? %>
+        <% if @solutions.any? %>
             <h2 class="title centered"> Soluciones </h2>
             <div class='dashboard-card-holder'>
                 <% @solutions.each do |article| %>
@@ -13,7 +15,7 @@
             </div>
         <% end %>
 
-        <% unless @projects.empty? %>
+        <% if @projects.any? %>
             <h2 class="title centered"> Proyectos </h2>
             <div class='dashboard-card-holder'>
                 <% @projects.each do |article| %>
@@ -22,7 +24,7 @@
             </div>
         <% end %>
 
-        <% unless @products.empty? %>
+        <% if @products.any? %>
             <h2 class="title centered"> Productos </h2>
             <div class='dashboard-card-holder'>
                 <% @products.each do |article| %>

@@ -23,11 +23,12 @@ class DashboardController < ApplicationController
                           Product.where.missing(:categories),
                           Project.where.missing(:categories)].flatten
         @unsupercategorized =
-            Category.select(:id, :title, :super_category_id, :slug).includes(:dashboard_solutions,
-                                                                             :dashboard_products, :dashboard_projects).where super_category_id: nil
+            Category.select(:id, :title, :super_category_id, :slug)
+                    .includes(:dashboard_solutions, :dashboard_products, :dashboard_projects)
+                    .where super_category_id: nil
         @super_categories =
-            SuperCategory.all.includes(dashboard_categories: %i[dashboard_solutions
-                                                                dashboard_products dashboard_projects])
+            SuperCategory.all
+                         .includes dashboard_categories: %i[dashboard_solutions dashboard_products dashboard_projects]
     end
 
     # GET /dashboard/newsletters

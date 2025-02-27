@@ -1,10 +1,12 @@
+<%= turbo_stream_from :categories %>
+
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
     <div class='dashboard' data-controller="dashboard">
         <% if @unsupercategorized.any? %>
             <h2 class='title centered'>
-                Sin Super categoría
+                Categorías sin Super categoría
             </h2>
             <div id='uncategorized_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
                 <% @unsupercategorized.each do |category| %>

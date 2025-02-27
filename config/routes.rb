@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
     scope '(:locale)', locale: /es|en/ do
-        resources :newsletters
-        resources :categories
+        resources :newsletters do
+            patch 'status', action: 'change_status', on: :member
+        end
+        resources :categories do
+            patch 'unrelate', on: :member
+        end
         resources :super_categories
 
         resources :messages
 
-        resources :solutions
-        resources :projects
-        resources :products
+        resources :solutions do
+            patch 'status', action: 'change_status', on: :member
+        end
+        resources :projects do
+            patch 'status', action: 'change_status', on: :member
+        end
+        resources :products do
+            patch 'status', action: 'change_status', on: :member
+        end
 
         resources :users do
             delete '/:edit_token', to: 'users#destroy', on: :member

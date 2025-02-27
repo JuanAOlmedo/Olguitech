@@ -55,7 +55,8 @@ class CategoriesController < ApplicationController
 
     def unrelate
         @category.unrelate params[:model], params[:article_id].to_i
-        @category.broadcast_refresh_later
+
+        head :no_content
     end
 
     private

@@ -1,9 +1,7 @@
-<%= turbo_stream_from :categories %>
-
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
-    <div class='dashboard' data-controller="dashboard">
+    <div class='dashboard' data-controller="dashboard"  data-action='turbo:submit-end@window->dashboard#refresh'>
         <% if @unsupercategorized.any? %>
             <h2 class='title centered'>
                 Categorías sin Super categoría

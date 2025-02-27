@@ -65,7 +65,6 @@ module Articles
     # When updated, a refresh is broadcasted to the dashboard.
     def change_status
         @article.update! status: params[:status].to_i
-        @article.broadcast_refresh_later
 
         head :no_content
     end

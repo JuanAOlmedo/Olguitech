@@ -48,7 +48,6 @@ class NewslettersController < ApplicationController
 
     def change_status
         @newsletter.send_newsletter unless @newsletter.sent?
-        @newsletter.broadcast_refresh_later
 
         head :no_content
     end

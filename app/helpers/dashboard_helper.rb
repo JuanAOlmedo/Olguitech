@@ -2,21 +2,17 @@
 module DashboardHelper
     def update_status_link(name, article, status, is_danger: false)
         link_to name, status_path(article, status),
-                data: { action: 'dashboard#update', turbo_method: :patch, dashboard_method_param: :PATCH },
-                class: "btn #{is_danger ? 'is-danger' : ''}"
+                data: { turbo_method: :patch }, class: "btn #{is_danger ? 'is-danger' : ''}"
     end
 
     def unrelate_category_link(category, article)
         link_to 'Desasociar', unrelate_category_path_with_article(category, article),
-                data: { turbo_method: :patch, action: 'dashboard#update', dashboard_method_param: :PATCH },
-                class: 'btn'
+                data: { turbo_method: :patch }, class: 'btn'
     end
 
     def delete_article_link(article)
         link_to 'Eliminar definitivamente', article,
-                data: { turbo_method: :delete, dashboard_method_param: :DELETE,
-                        action: 'dashboard#update', dashboard_confirm_param: 'Estás seguro?' },
-                class: 'btn is-danger'
+                data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?' }, class: 'btn is-danger'
     end
 
     def dashboard_edit_path(article)

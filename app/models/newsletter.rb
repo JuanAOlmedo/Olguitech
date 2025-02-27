@@ -34,8 +34,4 @@ class Newsletter < ApplicationRecord
     def localized_content
         content
     end
-
-    def broadcast_refresh_later
-        broadcast_refresh_later_to :newsletters
-    end
 end

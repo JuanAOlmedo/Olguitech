@@ -33,10 +33,6 @@ module Getters
         content
     end
 
-    def broadcast_refresh_later
-        broadcast_refresh_later_to :articles
-    end
-
     def self.included(base)
         base.extend(ClassMethods)
     end

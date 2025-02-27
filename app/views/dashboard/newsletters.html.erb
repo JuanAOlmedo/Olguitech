@@ -1,9 +1,7 @@
-<%= turbo_stream_from :newsletters %>
-
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
-    <div class='dashboard' data-controller="dashboard">
+    <div class='dashboard' data-controller="dashboard" data-action='turbo:submit-end@window->dashboard#refresh'>
         <h1 class='main-title'> Newsletters </h1>
         <%= link_to 'Nueva Newsletter', new_newsletter_path, class: 'btn centered' %>
 

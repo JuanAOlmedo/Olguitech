@@ -56,7 +56,9 @@ class CategoriesController < ApplicationController
     # PATCH /categories/1/unrelate
     # Used in dashboard to change relationship between categories and articles.
     def unrelate
-        @category.unrelate params[:model], params[:article_id].to_i
+        if params[:model].in? %w[products solutions projects]
+            @category.unrelate params[:model], params[:article_id].to_i
+        end
 
         head :no_content
     end

@@ -1,0 +1,26 @@
+<%= tag.h1 Category.model_name.human.pluralize, class: 'main-title' %>
+
+<%= turbo_frame_tag 'super_categories' do %>
+    <div class='all-categories centered'>
+        <% unless @model_name.nil? %>
+            <%= link_to t('general.see_all'),
+                        @model_path,
+                        data: { turbo_frame: 'index' },
+                        class: 'link' %>
+        <% end %>
+
+        <% @super_categories.each do |super_category| %>
+            <%= link_to super_category.localized_title,
+                        super_category_path(super_category, model_name: @model_name),
+                        data: { turbo_frame: 'index' },
+                        class: 'link' %>
+        <% end %>
+
+        <% if @uncategorized.any? %>
+            <%= link_to t('index.other'),
+                        @uncategorized_path,
+                        data: { turbo_frame: 'index' },
+                        class: 'link' %>
+        <% end %>
+    </div>
+<% end %>

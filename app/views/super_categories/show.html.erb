@@ -1,0 +1,17 @@
+<%= turbo_frame_tag 'index', target: '_top'  do %>
+    <%= turbo_frame_tag 'super_categories' do %>
+        <div class='all-categories centered'>
+            <%= link_to "#{t 'super_category.area'} #{@super_category.localized_title}",
+                        super_categories_path(model_name: @model_name),
+                        class: 'btn' %>
+        </div>
+    <% end %>
+
+    <% @super_category.categories.each do |category| %>
+        <div class="category" id="<%= category.id %>">
+            <%= tag.h2 category.localized_title, class: 'title centered' %>
+
+            <%= compact_cards_for category.send(@model_name) %>
+        </div>
+    <% end %>
+<% end %>

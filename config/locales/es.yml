@@ -61,14 +61,9 @@ es:
         deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :(
         newsletter: Recibir newsletters
     index:
+        other: Otros
         uncategorized: Sin categoría
-        sort_by: Ordenar por
-        category: Categoría
-        up_desc: Último editado
-        created_desc: Último creado
-        created_asc: Primero creado
-        title_asc: Título AZ
-        title_desc: Título ZA
+        explore: Explorar por categoría
     show:
         articles: Soluciones relacionadas
         proyects: Proyectos relacionados

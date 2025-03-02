@@ -12,7 +12,8 @@ class SuperCategory < ApplicationRecord
         title
     end
 
-    # Get all super categories which have categories related to published solutions
+    # Get all super categories which have categories related to published articles
+    # name represents the model name of the article type
     def self.related_to(name)
         includes(categories: [name]) # Include categories and the provided model
             .where(categories: { name => { status: 0 } }) # Only allow published solutions

@@ -14,6 +14,10 @@ module CardsHelper
         Cards.new(self, array, image).alternative_html
     end
 
+    def compact_cards_for(array, image: true)
+        Cards.new(self, array, image).compact_html
+    end
+
     # Accepts an array and the option of showing an image, then returns the html
     # to show the cards
     class Cards
@@ -42,6 +46,14 @@ module CardsHelper
             end
 
             tag.div safe_join(@array), class: 'cards-holder centered'
+        end
+
+        def compact_html
+            @array.map! do |element|
+                compact_card(element)
+            end
+
+            tag.div safe_join(@array), class: 'cards-holder centered', style: 'text-align: left;'
         end
 
         private
@@ -116,5 +128,18 @@ module CardsHelper
                     link_to(I18n.t('general.see_more'), element, class: 'btn')
             end
         end
+
+        def compact_card(element)
+            tag.div safe_join([img(element), compact_card_content(element)]), class: 'compact-card'
+        end
+
+        def compact_card_content(element)
+            tag.div do
+                tag.h3(element.localized_title) +
+                    tag.p(element.localized_desc) +
+                    link_to(I18n.t('general.see_more'), element, class: 'btn')
+            end
+        end
+
     end
 end

@@ -41,5 +41,9 @@ module Getters
         def fields_for_cards
             %i[id slug title title2 description description2]
         end
+
+        def uncategorized
+            where.missing :categories
+        end
     end
 end

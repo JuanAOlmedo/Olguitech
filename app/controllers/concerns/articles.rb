@@ -10,10 +10,12 @@ module Articles
     end
 
     def index
-        @super_categories = SuperCategory.related_to model.model_name.plural
-        @super_category = @super_categories.find do |sc|
-            sc.id == params[:super_category_id].to_i
-        end || @super_categories.first
+        @uncategorized = params[:uncategorized].present?
+        @articles = if @uncategorized
+                        model.published.uncategorized.select model.fields_for_cards
+                    else
+                        model.published.select model.fields_for_cards
+                    end
     end
 
     def new

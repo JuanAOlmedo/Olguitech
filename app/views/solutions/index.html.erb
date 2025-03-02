@@ -2,8 +2,14 @@
 
 <%= tag.h1 t('shared.our_solutions'), class: 'main-title' %>
 
-<% if @super_category %>
-    <%= render @super_category, super_categories: @super_categories, model_name: :solutions %>
-<% else %>
-    <%= cards_for Solution.all %>
+<%= turbo_frame_tag 'index', target: '_top' do %>
+    <%= turbo_frame_tag 'super_categories' do %>
+        <%= link_to t('index.explore'),
+                    super_categories_path(model_name: :solutions),
+                    class: 'btn centered' %>
+    <% end %>
+
+    <%= tag.h1 t('index.uncategorized'), class: 'title centered' if @uncategorized %>
+
+    <%= compact_cards_for @articles %>
 <% end %>

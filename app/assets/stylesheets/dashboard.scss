@@ -32,22 +32,6 @@
     border-radius: 1rem;
 }
 
-.btn.drafted,
-.btn.published,
-.btn.trashed {
-    display: none;
-}
-
-.drafted .drafted {
-    display: inline-block;
-}
-.published .published {
-    display: inline-block;
-}
-.trashed .trashed {
-    display: inline-block;
-}
-
 #dashboard-message {
     text-align: center;
     color: #444;

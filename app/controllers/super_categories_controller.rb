@@ -13,7 +13,13 @@ class SuperCategoriesController < ApplicationController
     # GET /super_categories/1/edit
     def edit; end
 
-    def show; end
+    def show
+        @categories = if @model_name.nil?
+                          @super_category.categories
+                      else
+                          @super_category.categories.where.associated @model_name
+                      end
+    end
 
     def index
         unless @model_name.nil?

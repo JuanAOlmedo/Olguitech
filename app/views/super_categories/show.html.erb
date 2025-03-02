@@ -5,7 +5,7 @@
                     class: 'btn' %>
     <% end %>
 
-    <% @super_category.categories.each do |category| %>
+    <% @categories.each do |category| %>
         <div class="category" id="<%= category.id %>">
             <%= tag.h2 category.localized_title, class: 'title centered' %>
 

@@ -1,51 +1,29 @@
 <% content_for :title, "#{@category.localized_title} | Olguitech s.a.s." %>
 
-<div id='show'>
-    <div class="all-categories centered">
-        <p>
-            <strong>
-                    <%= t 'categories.all' %>
-            </strong>
-        </p>
-        <% @categories.each do |category| %>
-            <% unless category == @category %>
-                <%= link_to category.localized_title, category_path(category), class: 'link' %>
-            <% else %>
-                <p class="btn">
-                    <%= category.title %>
-                </p>
-            <% end %>
-        <% end %>
-        </p>
-    </div>
+<%= tag.h1 @category.localized_title, class: 'main-title' %>
+<%= tag.p @category.localized_desc, class: 'subtitle' %>
 
-    <h1 class='main-title'> <%= @category.localized_title %> </h1>
-    <p class='big-text centered categories-big-text'> <%= @category.localized_desc %> </p>
+<%= turbo_frame_tag 'category_selector', class: 'all-categories centered' do %>
+    <%= link_to 'Todas las categorías', categories_path, class: 'btn' %>
+<% end %>
 
-    <% if @products.any? %>
-        <h2 class="title centered">
-            <%= Product.model_name.human(count: 2) %>
-        </h2>
+<% if @products.any? %>
+    <%= tag.h2 Product.model_name.human(count: 2), class: 'title centered' %>
 
-        <%= alternative_cards_for @products %>
-    <% end %>
+    <%= compact_cards_for @products %>
+<% end %>
 
-    <% if @solutions.any? %>
-        <h2 class="title centered">
-            <%= Solution.model_name.human(count: 2) %>
-        </h2>
+<% if @solutions.any? %>
+    <%= tag.h2 Solution.model_name.human(count: 2), class: 'title centered' %>
 
-        <%= cards_for @solutions %>
-    <% end %>
+    <%= compact_cards_for @solutions %>
+<% end %>
 
-    <% if @projects.any? %>
-        <h2 class="title centered">
-            <%= Project.model_name.human(count: 2) %>
-        </h2>
+<% if @projects.any? %>
+    <%= tag.h2 Project.model_name.human(count: 2), class: 'title centered' %>
 
-        <%= cards_for @projects %>
-    <% end %>
-</div>
+    <%= compact_cards_for @projects %>
+<% end %>
 
 <% if admin_signed_in? %>
     <div class="btn-group admin-tools admin-tools-2">

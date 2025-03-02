@@ -16,7 +16,8 @@
                 <%= Category.model_name.human count: @article.categories.length %>:
 
                 <% @article.categories.each do |category| %>
-                    <%= link_to category.localized_title, solutions_path(params: { super_category_id: category.super_category_id }, anchor: category.id), class: 'link' %><%= (@article.categories.last != category ? ', ' : '').to_s %>
+                    <%= link_to category.localized_title, category, class: 'link' %>
+                    <%= (@article.categories.last != category ? ', ' : '').to_s %>
                 <% end %>
             </p>
         <% end %>

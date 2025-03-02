@@ -3,10 +3,10 @@
 <%= tag.h1 t('shared.our_projects'), class: 'main-title' %>
 
 <%= turbo_frame_tag 'index', target: '_top' do %>
-    <%= turbo_frame_tag 'super_categories' do %>
+    <%= turbo_frame_tag 'super_categories', class: 'all-categories centered' do %>
         <%= link_to t('index.explore'),
                     super_categories_path(model_name: :projects),
-                    class: 'btn centered' %>
+                    class: 'btn' %>
     <% end %>
 
     <%= tag.h1 t('index.uncategorized'), class: 'title centered' if @uncategorized %>

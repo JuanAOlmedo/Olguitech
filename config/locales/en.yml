@@ -89,6 +89,9 @@ en:
         notice: Close notice
         engineering_solutions: Engineering solutions
         logo: Olguitech logo
+    admin_shared:
+        edit: Edit
+        create: Create
     activerecord:
         models:
             solution:

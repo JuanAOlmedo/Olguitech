@@ -12,10 +12,13 @@
 
         <div class="file">
             <%= form.label :image do %>
-                <%= form.file_field :image, class: 'image-attacher', data: { article_creator_target: 'fileInput', action: 'change->article-creator#displayNewImage' } %>
-                <span>
-                    Elegir una imagen...
-                </span>
+                <%= form.file_field :image,
+                                    class: 'image-attacher',
+                                    data: {
+                                        article_creator_target: 'fileInput',
+                                        action: 'change->article-creator#displayNewImage'
+                                    } %>
+                <span> Elegir una imagen... </span>
             <% end %>
         </div>
 
@@ -47,22 +50,6 @@
         </div>
 
         <div class="checkbox-field">
-            <%= form.label :solutions, 'Artículos relacionados' %> <br>
-            <%= form.collection_check_boxes :solution_ids, Solution.all, :id, :localized_title do |b| %>
-                <%= b.check_box %>
-                <%= b.label { b.text } %> <br>
-            <% end %>
-        </div>
-
-        <div class="checkbox-field">
-            <%= form.label :projects, 'Projects relacionados' %> <br>
-            <%= form.collection_check_boxes :project_ids, Project.all, :id, :localized_title do |b| %>
-                <%= b.check_box %>
-                <%= b.label { b.text } %> <br>
-            <% end %>
-        </div>
-
-        <div class="checkbox-field">
             <%= form.label :categories, 'Categorías' %> <br>
             <%= form.collection_check_boxes :category_ids, Category.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
@@ -70,7 +57,34 @@
             <% end %>
         </div>
 
-        <div style="width: 50%;"> </div>
+
+        <% if @article.model_name.plural == 'products' %>
+            <div class="checkbox-field">
+                <%= form.label :solutions, 'Artículos relacionados' %> <br>
+                <%= form.collection_check_boxes :solution_ids, Solution.all, :id, :localized_title do |b| %>
+                    <%= b.check_box %>
+                    <%= b.label { b.text } %> <br>
+                <% end %>
+            </div>
+
+            <div class="checkbox-field">
+                <%= form.label :projects, 'Proyectos relacionados' %> <br>
+                <%= form.collection_check_boxes :project_ids, Project.all, :id, :localized_title do |b| %>
+                    <%= b.check_box %>
+                    <%= b.label { b.text } %> <br>
+                <% end %>
+            </div>
+
+            <div style="width: 50%;"> </div>
+        <% else %>
+            <div class="checkbox-field">
+                <%= form.label :products, 'Productos relacionados' %> <br>
+                <%= form.collection_check_boxes :product_ids, Product.all, :id, :localized_title do |b| %>
+                    <%= b.check_box %>
+                    <%= b.label { b.text } %> <br>
+                <% end %>
+            </div>
+        <% end %>
 
         <div class='centered' style='display: inline-block;'>
             <div class="btn-group">

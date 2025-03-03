@@ -88,6 +88,9 @@ es:
         notice: Cerrar aviso
         engineering_solutions: Soluciones en ingeniería
         logo: Logo de Olguitech
+    admin_shared:
+        edit: Editar
+        create: Crear
     activerecord:
         errors:
             messages:

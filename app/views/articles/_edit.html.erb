@@ -1,0 +1,7 @@
+<% content_for :title, t('admin_shared.edit') + ' ' + @article.model_name.human %>
+
+<%= tag.h1 t('admin_shared.edit') + ' ' + @article.model_name.human, class: 'main-title' %>
+
+<div id='edit'>
+    <%= render 'articles/form' %>
+</div>

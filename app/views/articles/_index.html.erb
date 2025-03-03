@@ -1,0 +1,15 @@
+<% content_for :title, "#{I18n.t tag_name} | Olguitech s.a.s." %>
+
+<%= tag.h1 t(tag_name), class: 'main-title' %>
+
+<%= turbo_frame_tag 'index', target: '_top' do %>
+    <%= turbo_frame_tag 'super_categories', class: 'all-categories centered' do %>
+        <%= link_to t('index.explore'),
+                    super_categories_path(model_name:),
+                    class: 'btn' %>
+    <% end %>
+
+    <%= tag.h1 t('index.uncategorized'), class: 'title centered' if @uncategorized %>
+
+    <%= compact_cards_for @articles %>
+<% end %>

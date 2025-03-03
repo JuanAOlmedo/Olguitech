@@ -1,19 +1,16 @@
 <% content_for :title, "#{@newsletter.title} | Olguitech s.a.s." %>
 
 <article>
-    <h1 class='main-title'> <%= @newsletter.localized_title %> </h1>
+    <%= tag.h1 @newsletter.localized_title, class: 'main-title' %>
 
-    <p class='subtitle'> <%= @newsletter.localized_desc %> </p>
+    <%= tag.p @newsletter.localized_desc, class: 'subtitle' %>
 
     <div class="content" data-controller="image-displayer">
-        <div class='show-text'>
-            <p class='article-text'> <%= @newsletter.localized_content %> </p>
-        </div>
+        <%= @newsletter.localized_content %>
 
         <div class='image-shower' data-image-displayer-target="shower" data-action="click->image-displayer#stopDisplayImage">
         </div>
     </div>
-
 </article>
 
 <% if admin_signed_in? %>

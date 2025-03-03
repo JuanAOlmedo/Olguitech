@@ -1,7 +1,7 @@
-<% content_for :title, "Editar categoría #{@category.title}" %>
+<% content_for :title, t('admin_shared.edit') + ' ' + Category.model_name.human %>
 
-<h1 class='main-title'>Editar Categoría</h1>
+<%= tag.h1 t('admin_shared.edit') + ' ' + Category.model_name.human, class: 'main-title' %>
 
 <div id='edit'>
-    <%= render 'form', category: @category %>
+    <%= render 'form' %>
 </div>

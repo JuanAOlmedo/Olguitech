@@ -4,7 +4,7 @@
 <%= tag.p @category.localized_desc, class: 'subtitle' %>
 
 <%= turbo_frame_tag 'category_selector', class: 'all-categories centered' do %>
-    <%= link_to 'Todas las categorías', categories_path, class: 'btn' %>
+    <%= link_to t('categories.all_categories'), categories_path, class: 'btn' %>
 <% end %>
 
 <% if @products.any? %>

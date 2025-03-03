@@ -37,7 +37,7 @@
         </div>
 
         <div class="checkbox-field">
-            <%= form.label :project, 'Projects relacionados' %> <br>
+            <%= form.label :project, 'Proyectos relacionados' %> <br>
             <%= form.collection_check_boxes :project_ids, Project.all, :id, :localized_title do |b| %>
                 <%= b.check_box %>
                 <%= b.label { b.text } %> <br>

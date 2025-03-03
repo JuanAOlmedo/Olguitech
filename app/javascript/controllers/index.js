@@ -25,9 +25,6 @@ application.register("dropdown", DropdownController);
 import ImageDisplayerController from "./image_displayer_controller";
 application.register("image-displayer", ImageDisplayerController);
 
-import IndexController from "./index_controller";
-application.register("index", IndexController);
-
 import ResetFormController from "./reset_form_controller";
 application.register("reset-form", ResetFormController);
 

@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
     # Find or create a new user based on the email, create a new message
     # for that user and update their locale
+    # POST /messages
     def create
         @user = User.find_by(user_params) || User.new(user_params)
         @message = @user.messages.new message_params

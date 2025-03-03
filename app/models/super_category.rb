@@ -17,6 +17,6 @@ class SuperCategory < ApplicationRecord
     def self.related_to(name)
         includes(categories: [name]) # Include categories and the provided model
             .where(categories: { name => { status: 0 } }) # Only allow published solutions
-            .uniq # Remove duplicates
+            .distinct # Remove duplicates
     end
 end

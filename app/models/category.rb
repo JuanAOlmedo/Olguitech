@@ -65,7 +65,18 @@ class Category < ApplicationRecord
         description.length > 100 ? "#{description[0...100]}..." : description
     end
 
+    # Unrelate a model from the category
+    # model_name should be either 'products', 'solutions', or 'projects'
     def unrelate(model_name, id)
         send(model_name).delete id
+    end
+
+    # Return categories that have at least one published product, solution, or project
+    def self.related_to_published_categorizable
+        Category.left_outer_joins(:products, :solutions, :projects)
+                .where(products: { status: 0 })
+                .or(Category.where(solutions: { status: 0 })
+                .or(Category.where(projects: { status: 0 })))
+                .distinct
     end
 end

@@ -6,16 +6,14 @@ class CategoriesController < ApplicationController
 
     # GET /categories
     def index
-        @categories = Category.all
+        @categories = Category.related_to_published_categorizable
     end
 
     # GET /categories/1
     def show
-        @categories = Category.all
-
-        @solutions = @category.solutions.published
-        @projects = @category.projects.published
-        @products = @category.products.published
+        @solutions = @category.solutions.select(Solution.fields_for_cards).published
+        @projects = @category.projects.select(Project.fields_for_cards).published
+        @products = @category.products.select(Product.fields_for_cards).published
     end
 
     # GET /categories/new

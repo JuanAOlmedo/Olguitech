@@ -13,6 +13,8 @@ class SuperCategoriesController < ApplicationController
     # GET /super_categories/1/edit
     def edit; end
 
+    # GET /super_categories/1
+    # If the model name is set, fetch categories related to the model
     def show
         @categories = if @model_name.nil?
                           @super_category.categories
@@ -21,14 +23,19 @@ class SuperCategoriesController < ApplicationController
                       end
     end
 
+    # GET /super_categories
+    # If the model name is set, fetch super categories related to the model
     def index
-        unless @model_name.nil?
-            @model_path = model = @model_name.singularize.titleize.constantize
+        if @model_name.nil?
+            @super_categories = SuperCategory.all
+        else
+            model = @model_name.singularize.titleize.constantize
+            @model_path = model
             @uncategorized = model.published.where.missing :categories
             @uncategorized_path = url_for(controller: @model_name, action: :index, uncategorized: true)
-        end
 
-        @super_categories = SuperCategory.related_to @model_name
+            @super_categories = SuperCategory.related_to @model_name
+        end
     end
 
     # POST /super_categories
@@ -65,6 +72,9 @@ class SuperCategoriesController < ApplicationController
         @super_category = SuperCategory.find(params[:id])
     end
 
+    # When accessing super_categories from solutions, products or projects index,
+    # only super categories and categories relevant to those models should be displayed.
+    # Set the model name for the current request.
     def set_model_name
         @model_name = params[:model_name] if params[:model_name].in? %w[projects solutions products]
     end

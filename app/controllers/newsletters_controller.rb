@@ -73,6 +73,7 @@ class NewslettersController < ApplicationController
               .except(:sent)
     end
 
+    # Sent newsletters should not be edited or destroyed
     def check_sent
         return unless @newsletter.sent?
 

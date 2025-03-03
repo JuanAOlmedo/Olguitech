@@ -1,7 +1,7 @@
-<% content_for :title, 'Nueva newsletter' %>
+<% content_for :title, t('admin_shared.create') + ' Newsletter' %>
 
-<h1 class='main-title'>Nueva Newsletter</h1>
+<%= tag.h1 t('admin_shared.create') + ' Newsletter', class: 'main-title' %>
 
 <div id='edit'>
-    <%= render 'form', newsletter: @newsletter %>
+    <%= render 'form' %>
 </div>

@@ -1,4 +1,0 @@
-<%= link_to 'Editar', edit_newsletter_path(article), class: 'btn drafted' %>
-
-<%= link_to 'Enviar', newsletter_path(article, params: { newsletter: { status: 1 } }), data: { turbo_method: :patch, action: 'dashboard#update' }, class: 'btn drafted' %>
-<%= link_to 'Eliminar definitivamente', article, data: { turbo_method: :delete, turbo_confirm: 'Estás seguro?', action: 'dashboard#delete', dashboard_id_param: dom_id(article) }, class: 'btn is-danger drafted' %>

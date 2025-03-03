@@ -17,7 +17,7 @@ class SuperCategoriesController < ApplicationController
         @categories = if @model_name.nil?
                           @super_category.categories
                       else
-                          @super_category.categories.where.associated @model_name
+                          @super_category.categories.where.associated @model_name.to_sym
                       end
     end
 

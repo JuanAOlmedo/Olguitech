@@ -26,7 +26,7 @@
 <% end %>
 
 <% if admin_signed_in? %>
-    <div class="btn-group admin-tools admin-tools-2">
+    <div class="btn-group admin-tools">
         <%= link_to 'Editar', edit_category_path(@category), class: 'btn' %>
 
         <%= link_to 'Eliminar', @category, data: { turbo_method: :delete, turbo_confirm: 'Estas seguro de que queres eliminar la categoría? Los artículos asociados no serán eliminados' }, class: 'btn is-danger' %>

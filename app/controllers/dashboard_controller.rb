@@ -19,16 +19,13 @@ class DashboardController < ApplicationController
 
     # GET /dashboard/categories
     def categories
-        @uncategorized = [Solution.where.missing(:categories),
-                          Product.where.missing(:categories),
-                          Project.where.missing(:categories)].flatten
-        @unsupercategorized =
-            Category.select(:id, :title, :super_category_id, :slug)
-                    .includes(:dashboard_solutions, :dashboard_products, :dashboard_projects)
-                    .where super_category_id: nil
-        @super_categories =
-            SuperCategory.all
-                         .includes dashboard_categories: %i[dashboard_solutions dashboard_products dashboard_projects]
+        @uncategorized = [Solution.uncategorized, Product.uncategorized, Project.uncategorized].flatten
+        @unsupercategorized = Category.select(:id, :title, :super_category_id, :slug)
+                                      .includes(:dashboard_solutions, :dashboard_products, :dashboard_projects)
+                                      .unsupercategorized
+        @super_categories = SuperCategory.all.includes(
+            dashboard_categories: %i[dashboard_solutions dashboard_products dashboard_projects]
+        )
     end
 
     # GET /dashboard/newsletters

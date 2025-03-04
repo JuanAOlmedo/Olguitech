@@ -71,6 +71,10 @@ class Category < ApplicationRecord
         send(model_name).delete id
     end
 
+    def self.unsupercategorized
+        where super_category_id: nil
+    end
+
     # Return categories that have at least one published product, solution, or project
     def self.related_to_published_categorizable
         Category.left_outer_joins(:products, :solutions, :projects)

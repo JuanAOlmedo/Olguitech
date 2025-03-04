@@ -33,9 +33,15 @@ class NewslettersController < ApplicationController
         if @newsletter.update(newsletter_params)
             @newsletter.send_newsletter if @newsletter.sent?
 
-            redirect_to @newsletter, notice: 'Newsletter actualizada exitosamente.'
+            respond_to do |format|
+                format.html { redirect_to @newsletter, notice: 'Newsletter actualizada exitosamente.' }
+                format.json { head :ok }
+            end
         else
-            render :edit, status: :unprocessable_entity
+            respond_to do |format|
+                format.html { render :edit, status: :unprocessable_entity }
+                format.json { head :unprocessable_entity }
+            end
         end
     end
 
@@ -44,14 +50,6 @@ class NewslettersController < ApplicationController
         @newsletter.destroy
 
         redirect_to root_path, notice: 'Newsletter destruido exitosamente.', status: :see_other
-    end
-
-    # PATCH /newsletters/1/status
-    # Used in dashboard to send a newsletter
-    def change_status
-        @newsletter.send_newsletter unless @newsletter.sent?
-
-        head :no_content
     end
 
     private
@@ -64,12 +62,10 @@ class NewslettersController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    # Convert status to integer or use :sent instead if it exists.
     # Don't allow :sent through
     def newsletter_params
         params.require(:newsletter)
               .permit(:title, :content, :subject, :status, :sent)
-              .merge(status: (params[:newsletter][:sent] || params[:newsletter][:status]).to_i)
               .except(:sent)
     end
 

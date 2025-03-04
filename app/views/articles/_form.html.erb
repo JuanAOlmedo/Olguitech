@@ -88,10 +88,10 @@
 
         <div class='centered' style='display: inline-block;'>
             <div class="btn-group">
-                <%= form.radio_button :status, '0', checked: @article.published?, class: 'btn-check' %>
+                <%= form.radio_button :status, :published, checked: @article.published?, class: 'btn-check' %>
                 <%= form.label :status_0, 'Publicar al crear', class: 'btn' %>
 
-                <%= form.radio_button :status, '1', checked: @article.drafted?, class: 'btn-check' %>
+                <%= form.radio_button :status, :drafted, checked: @article.drafted?, class: 'btn-check' %>
                 <%= form.label :status_1, 'Crear como borrador', class: 'btn' %>
             </div>
 

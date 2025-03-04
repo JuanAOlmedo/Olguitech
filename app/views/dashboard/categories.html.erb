@@ -1,7 +1,7 @@
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
-    <div class='dashboard' data-controller="dashboard"  data-action='turbo:submit-end@window->dashboard#refresh'>
+    <div class='dashboard' data-controller="dashboard">
         <% if @unsupercategorized.any? %>
             <h2 class='title centered'>
                 Categorías sin Super categoría

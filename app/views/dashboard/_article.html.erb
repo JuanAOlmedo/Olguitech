@@ -11,17 +11,17 @@
 
             <%= unrelate_category_link category, article if article.categories.any? %>
         <% elsif article.trashed? %>
-            <%= update_status_link 'Sacar de la papelera', article, 1 %>
+            <%= update_status_link 'Sacar de la papelera', article, :drafted %>
             <%= delete_article_link article %>
         <% else %>
             <%= link_to 'Editar', dashboard_edit_path(article), class: 'btn' %>
 
             <% if article.drafted? %>
-                <%= update_status_link 'Publicar', article, 0 %>
+                <%= update_status_link 'Publicar', article, :published %>
             <% else %>
-                <%= update_status_link 'Despublicar', article, 1 %>
+                <%= update_status_link 'Despublicar', article, :drafted %>
             <% end %>
-            <%= update_status_link 'Mover a la papelera', article, 2, is_danger: true %>
+            <%= update_status_link 'Mover a la papelera', article, :trashed, is_danger: true %>
         <% end %>
    </div>
 </div>

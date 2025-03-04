@@ -11,9 +11,9 @@ class UsersController < ApplicationController
     # GET /users
     def index
         @users = User.all.order id: :asc
-        @users_with_messages = User.where.associated(:messages).uniq
     end
 
+    # Shows the messages of a user, only used for admins
     # GET /users/1
     def show
         @messages = @user.messages.order(created_at: :desc)

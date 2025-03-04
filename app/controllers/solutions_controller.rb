@@ -6,7 +6,6 @@ class SolutionsController < ApplicationController
     private
 
     # Only allow a list of trusted parameters through.
-    # Convert status to integer
     def article_params
         params.require(:solution)
               .permit(:title,
@@ -19,6 +18,5 @@ class SolutionsController < ApplicationController
                       { category_ids: [] },
                       :image,
                       :status)
-              .merge(status: params[:solution].fetch(:status, 1).to_i)
     end
 end

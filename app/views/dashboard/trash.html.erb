@@ -1,7 +1,7 @@
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
-    <div class='dashboard' data-controller='dashboard' data-action='turbo:submit-end@window->dashboard#refresh'>
+    <div class='dashboard' data-controller='dashboard'>
         <h1 class='main-title'> Papelera </h1>
 
         <% if @solutions.any? %>

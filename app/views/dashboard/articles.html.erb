@@ -1,7 +1,7 @@
 <div class='dashboard-holder'>
     <%= render 'dashboard' %>
 
-    <div class='dashboard' data-controller='dashboard' data-action='turbo:submit-end@window->dashboard#refresh'>
+    <div class='dashboard' data-controller='dashboard'>
         <h1 class='main-title'> Todos los artículos </h1>
         <div class="dropdown-holder" style="height: 2.5rem; display: flex;">
             <%= dropdown_for 'Nuevo' do %>

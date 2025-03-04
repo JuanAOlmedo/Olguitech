@@ -63,14 +63,21 @@ module Articles
     #     /projects/1/edit
     def edit; end
 
+    # JSON requests are made from the dashboard to update an article
     # PATCH /solutions/1
     #       /products/1
     #       /projects/1
     def update
         if @article.update article_params
-            redirect_to @article, notice: 'Artículo actualizado exitosamente.'
+            respond_to do |format|
+                format.html { redirect_to @article, notice: 'Artículo actualizado exitosamente.' }
+                format.json { head :ok }
+            end
         else
-            render :edit, status: :unprocessable_entity
+            respond_to do |format|
+                format.html { redirect_to @article, notice: 'Artículo actualizado exitosamente.' }
+                format.json { head :unprocessable_entity }
+            end
         end
     end
 
@@ -80,17 +87,14 @@ module Articles
     def destroy
         @article.destroy
 
-        redirect_to send("#{model.model_name.plural}_url"),
-                    notice: 'Artículo destruido exitosamente.',
-                    status: :see_other
-    end
-
-    # Used in dashboard to update the status of an article.
-    # PATCH /articles/1/status
-    def change_status
-        @article.update! status: params[:status].to_i
-
-        head :no_content
+        respond_to do |format|
+            format.html do
+                redirect_to send("#{model.model_name.plural}_url"),
+                            notice: 'Artículo destruido exitosamente.',
+                            status: :see_other
+            end
+            format.json { head :see_other }
+        end
     end
 
     private

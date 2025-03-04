@@ -48,7 +48,14 @@ class CategoriesController < ApplicationController
     def destroy
         @category.destroy
 
-        redirect_to categories_url, notice: 'Categoría destruída exitosamente.', status: :see_other
+        respond_to do |format|
+            format.html do
+                redirect_to categories_url,
+                            notice: 'Categoría destruída exitosamente.',
+                            status: :see_other
+            end
+            format.json { head :see_other }
+        end
     end
 
     # Used in dashboard to change relationship between categories and articles.
@@ -58,7 +65,7 @@ class CategoriesController < ApplicationController
             @category.unrelate params[:model], params[:article_id].to_i
         end
 
-        head :no_content
+        head :ok
     end
 
     private

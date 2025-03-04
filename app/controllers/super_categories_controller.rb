@@ -62,7 +62,14 @@ class SuperCategoriesController < ApplicationController
     def destroy
         @super_category.destroy
 
-        redirect_to "/#{I18n.locale}/dashboard/categories"
+        respond_to do |format|
+            format.html do
+                redirect_to "/#{I18n.locale}/dashboard/categories",
+                            notice: 'Categoría destruída exitosamente.',
+                            status: :see_other
+            end
+            format.json { head :see_other }
+        end
     end
 
     private

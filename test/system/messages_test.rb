@@ -2,7 +2,7 @@
 
 require 'application_system_test_case'
 
-class ContactosTest < ApplicationSystemTestCase
+class MessagesTest < ApplicationSystemTestCase
     test 'should be able to contact when registered user' do
         visit '/es/contacto'
 

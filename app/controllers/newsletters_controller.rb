@@ -64,9 +64,16 @@ class NewslettersController < ApplicationController
     # Only allow a list of trusted parameters through.
     # Don't allow :sent through
     def newsletter_params
-        params.require(:newsletter)
-              .permit(:title, :content, :subject, :status, :sent)
-              .except(:sent)
+        p = params.require(:newsletter).permit(:title, :content, :subject, :status, :sent) .except(:sent)
+
+        case params[:newsletter][:sent]
+        when '1'
+            p.merge! status: :sent
+        when '0'
+            p.merge! status: :drafted
+        else
+            p
+        end
     end
 
     # Sent newsletters should not be edited or destroyed

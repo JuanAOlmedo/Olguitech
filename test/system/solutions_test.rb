@@ -6,11 +6,35 @@ class SolutionsTest < ApplicationSystemTestCase
     teardown { sign_out :admin }
 
     test 'visiting the index' do
+        super_categories(:one).categories << categories(:one)
+        categories(:one).solutions << solutions(:one)
+        solutions(:one).drafted!
+
         visit solutions_url
         assert_selector 'h1', text: 'Nuestras Soluciones'
+
+        visit solutions_url
+
+        click_on 'Explorar por categoría'
+        assert_no_selector 'a', text: super_categories(:one).title
+        assert_no_selector 'a', text: super_categories(:two).title
+
+        solutions(:one).published!
+        visit solutions_url
+        click_on 'Explorar por categoría'
+
+        click_on super_categories(:one).title
+
+        assert_selector 'h1', text: 'Nuestras Soluciones'
+        assert_selector 'h2', text: categories(:one).title
+        assert_selector 'h2', text: solutions(:one).title
+
+        solutions(:one).drafted!
+        categories(:one).solutions.delete solutions(:one)
+        super_categories(:one).categories.delete categories(:one)
     end
 
-    test 'visiting an solution' do
+    test 'visiting a solution' do
         solutions(:one).published!
         visit '/solutions/1'
         assert_selector 'h1', text: solutions(:one).title

@@ -6,7 +6,10 @@
 #
 one:
     id: 1
-    title: 'Industrial'
-    title2: 'Industrial2'
+    title: "Industrial"
+    title2: "Industrial2"
+two:
+    id: 2
+    title: "Eléctrico"
 # column: value
 #

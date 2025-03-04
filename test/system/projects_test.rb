@@ -6,8 +6,32 @@ class ProjectsTest < ApplicationSystemTestCase
     teardown { sign_out :admin }
 
     test 'visiting the index' do
+        super_categories(:two).categories << categories(:one)
+        categories(:one).projects << projects(:one)
+        projects(:one).drafted!
+
         visit projects_url
         assert_selector 'h1', text: 'Nuestros Proyectos'
+
+        visit projects_url
+
+        click_on 'Explorar por categoría'
+        assert_no_selector 'a', text: super_categories(:one).title
+        assert_no_selector 'a', text: super_categories(:two).title
+
+        projects(:one).published!
+        visit projects_url
+        click_on 'Explorar por categoría'
+
+        click_on super_categories(:two).title
+
+        assert_selector 'h1', text: 'Nuestros Proyectos'
+        assert_selector 'h2', text: categories(:one).title
+        assert_selector 'h2', text: projects(:one).title
+
+        projects(:one).drafted!
+        categories(:one).projects.delete projects(:one)
+        super_categories(:two).categories.delete categories(:one)
     end
 
     test 'visiting an article' do

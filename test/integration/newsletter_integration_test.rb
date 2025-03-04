@@ -18,7 +18,7 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
         parameters = {
             newsletter: {
                 sent: '1',
-                status: '0'
+                status: :drafted
             }
         }
 
@@ -30,7 +30,7 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
     test 'should send newsletter when updating a newsletter with status' do
         parameters = {
             newsletter: {
-                status: '1'
+                status: :sent
             }
         }
 
@@ -43,7 +43,7 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
         parameters = {
             newsletter: {
                 sent: '0',
-                status: '1'
+                status: :drafted
             }
         }
 
@@ -55,7 +55,7 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
     test 'should not send newsletter when updating a newsletter with status' do
         parameters = {
             newsletter: {
-                status: '0'
+                status: :drafted
             }
         }
 
@@ -68,7 +68,7 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
         parameters = {
             newsletter: {
                 sent: '1',
-                status: '0'
+                status: :drafted
             }
         }
 
@@ -80,7 +80,7 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
     test 'should send newsletter when creating a newsletter with status' do
         parameters = {
             newsletter: {
-                status: '1'
+                status: :sent
             }
         }
 
@@ -93,7 +93,7 @@ class NewsletterIntegrationTest < ActionDispatch::IntegrationTest
         parameters = {
             newsletter: {
                 sent: '0',
-                status: '1'
+                status: :sent
             }
         }
 

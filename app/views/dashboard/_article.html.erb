@@ -1,4 +1,4 @@
-<div class='compact-card'>
+<div class='compact-card' id='<%= dom_id article %>'>
     <%= image_for article.image, resize: [720, 720] if article.image.attached? %>
 
     <div>
@@ -6,7 +6,7 @@
 
         <%= link_to 'Abrir', article, class: 'btn' unless @trash %>
 
-        <% if current_page?(controller: 'dashboard', action: 'categories') %>
+        <% if @categories %>
             <%= link_to 'Editar', dashboard_edit_path(article), class: 'btn' %>
 
             <%= unrelate_category_link category, article if article.categories.any? %>

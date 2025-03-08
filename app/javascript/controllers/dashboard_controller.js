@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 // Controller for the admin dashboard
 export default class extends Controller {
     // CSRF-Token needed to send requests back to the server
-    csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    csrfToken = document.head.querySelector('meta[name="csrf-token"]')?.content;
 
     // When clicking on a link, make the request it specifies.
     makeRequest(event) {
@@ -18,7 +18,10 @@ export default class extends Controller {
         fetch(event.target.href, {
             method: event.params.method || "PATCH", // Make PATCH request by default
             headers: { "X-CSRF-Token": this.csrfToken },
-        }).then(this.refresh()); // Refresh the dashboard after the request is completed
+        }).then(async () => {
+            // Refresh the dashboard after the request is completed
+            this.refresh();
+        });
     }
 
     // Make Turbo refresh the current page

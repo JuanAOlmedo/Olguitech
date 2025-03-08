@@ -65,7 +65,7 @@ class SuperCategoriesController < ApplicationController
         respond_to do |format|
             format.html do
                 redirect_to "/#{I18n.locale}/dashboard/categories",
-                            notice: 'Categoría destruída exitosamente.',
+                            notice: 'Super Categoría destruída exitosamente.',
                             status: :see_other
             end
             format.json { head :see_other }

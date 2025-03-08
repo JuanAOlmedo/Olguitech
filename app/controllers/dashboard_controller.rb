@@ -19,6 +19,7 @@ class DashboardController < ApplicationController
 
     # GET /dashboard/categories
     def categories
+        @categories = true # To determine path in views
         @uncategorized = [Solution.uncategorized, Product.uncategorized, Project.uncategorized].flatten
         @unsupercategorized = Category.select(:id, :title, :super_category_id, :slug)
                                       .includes(:dashboard_solutions, :dashboard_products, :dashboard_projects)

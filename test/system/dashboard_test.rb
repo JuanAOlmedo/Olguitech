@@ -14,15 +14,15 @@ class DashboardTest < ApplicationSystemTestCase
 
         find("#drafted_solutions ##{dom_id solutions(:one)}").find('.btn', text: 'Publicar').click
         solutions(:one).reload
-        assert_equal solutions(:one).status, 'published'
+        assert_equal 'published', solutions(:one).status
 
         find("#published_solutions ##{dom_id solutions(:one)}").find('.btn', text: 'Despublicar').click
         solutions(:one).reload
-        assert_equal solutions(:one).status, 'drafted'
+        assert_equal 'drafted', solutions(:one).status
 
         find("#drafted_solutions ##{dom_id solutions(:one)}").find('.btn', text: 'Mover a la papelera').click
         solutions(:one).reload
-        assert_equal solutions(:one).status, 'trashed'
+        assert_equal 'trashed', solutions(:one).status
 
         assert_no_selector 'h3', text: solutions(:one).title
 
@@ -36,15 +36,15 @@ class DashboardTest < ApplicationSystemTestCase
 
         find("#drafted_projects ##{dom_id projects(:one)}").find('.btn', text: 'Publicar').click
         projects(:one).reload
-        assert_equal projects(:one).status, 'published'
+        assert_equal 'published', projects(:one).status
 
         find("#published_projects ##{dom_id projects(:one)}").find('.btn', text: 'Despublicar').click
         projects(:one).reload
-        assert_equal projects(:one).status, 'drafted'
+        assert_equal 'drafted', projects(:one).status
 
         find("#drafted_projects ##{dom_id projects(:one)}").find('.btn', text: 'Mover a la papelera').click
         projects(:one).reload
-        assert_equal projects(:one).status, 'trashed'
+        assert_equal 'trashed', projects(:one).status
 
         assert_no_selector 'h3', text: projects(:one).title
 
@@ -58,15 +58,15 @@ class DashboardTest < ApplicationSystemTestCase
 
         find("#drafted_products ##{dom_id products(:one)}").find('.btn', text: 'Publicar').click
         products(:one).reload
-        assert_equal products(:one).status, 'published'
+        assert_equal 'published', products(:one).status
 
         find("#published_products ##{dom_id products(:one)}").find('.btn', text: 'Despublicar').click
         products(:one).reload
-        assert_equal products(:one).status, 'drafted'
+        assert_equal 'drafted', products(:one).status
 
         find("#drafted_products ##{dom_id products(:one)}").find('.btn', text: 'Mover a la papelera').click
         products(:one).reload
-        assert_equal products(:one).status, 'trashed'
+        assert_equal 'trashed', products(:one).status
 
         assert_no_selector 'h3', text: products(:one).title
 
@@ -133,5 +133,20 @@ class DashboardTest < ApplicationSystemTestCase
             find("##{dom_id categories(:one)}").find("##{dom_id products(:one)}").click_on 'Desasociar'
         end
         assert_selector '#uncategorized_big_card h3', text: products(:one).title
+    end
+
+    test 'visiting dashboard for newsletters and sending newsletters' do
+        newsletter = Newsletter.create title: 'Test', status: :drafted
+        visit '/dashboard/newsletters'
+
+        assert_selector 'h1', text: 'Newsletter'
+        find("##{dom_id newsletter}").click_on 'Enviar'
+
+        newsletter.reload
+
+        assert_equal 'sent', newsletter.status
+        assert_selector '#sent_newsletters h3', text: newsletter.title
+
+        newsletter.destroy
     end
 end

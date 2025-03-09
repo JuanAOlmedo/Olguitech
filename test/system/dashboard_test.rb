@@ -149,4 +149,43 @@ class DashboardTest < ApplicationSystemTestCase
 
         newsletter.destroy
     end
+
+    test 'visiting dashboard for trash and trashing and drafting articles' do
+        solutions(:one).trashed!
+        projects(:one).trashed!
+        products(:one).trashed!
+        solution = Solution.create title: 'Trash', status: :trashed
+        project = Project.create title: 'Trash', status: :trashed
+        product = Product.create title: 'Trash', status: :trashed
+
+        visit '/dashboard/trash'
+        assert_selector 'h1', text: 'Papelera'
+
+        find("##{dom_id solutions(:one)}").click_on 'Sacar de la papelera'
+        solutions(:one).reload
+        assert_equal 'drafted', solutions(:one).status
+        find("##{dom_id projects(:one)}").click_on 'Sacar de la papelera'
+        projects(:one).reload
+        assert_equal 'drafted', projects(:one).status
+        find("##{dom_id products(:one)}").click_on 'Sacar de la papelera'
+        products(:one).reload
+        assert_equal 'drafted', products(:one).status
+
+        assert_difference 'Solution.count', -1 do
+            accept_confirm { find("##{dom_id solution}").click_on 'Eliminar definitivamente' }
+            sleep 1
+        end
+
+        assert_difference 'Project.count', -1 do
+            accept_confirm { find("##{dom_id project}").click_on 'Eliminar definitivamente' }
+            sleep 1
+        end
+
+        assert_difference 'Product.count', -1 do
+            accept_confirm { find("##{dom_id product}").click_on 'Eliminar definitivamente' }
+            sleep 1
+        end
+
+        assert_content 'La papelera está vacía'
+    end
 end

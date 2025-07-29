@@ -1,0 +1,35 @@
+<%= form_with model: @message, id: 'message-form' do |form| %>
+    <% if @user && @user.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@user.errors.count, 'error') %> <%= @user.errors.count > 1 ? t('contact.errors') : t('contact.error') %>:
+            </h2>
+
+            <ul>
+                <% @user.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="form big-card">
+        <%= fields_for :user, @message.user do |user_form| %>
+            <div class="field">
+                <%= user_form.label :email, 'Email' %>
+                <%= user_form.email_field :email %>
+            </div>
+        <% end %>
+
+        <div class="field separate">
+            <%= form.label :content, t('contact.how_can_we_help_you') %>
+            <%= form.text_area :content, maxlength: 4000, style: 'height: 150px' %>
+        </div>
+
+        <%= turbo_frame_tag 'recaptcha' do %>
+            <%= recaptcha_v3 action: 'message', turbo: true %>
+        <% end %>
+
+        <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>
+    </div>
+<% end %>

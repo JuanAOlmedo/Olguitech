@@ -2,51 +2,11 @@
 
 <h1 class='main-title'> <%= t 'contact.how_can_we_help_you' %> </h1>
 
-<% if (@user && @user.errors.any?) || (@message && @message.errors.any?) %>
-    <div id="error_explanation">
-        <h2>
-            <%= pluralize(@user.errors.count + @message.errors.count, 'error') %> <%= @user.errors.count + @message.errors.count > 1 ? t('contact.errors') : t('contact.error') %>:
-        </h2>
-
-        <ul>
-            <% if @user && @user.errors.any? %>
-                <% @user.errors.each do |error| %>
-                    <li><%= error.full_message %></li>
-                <% end %>
-            <% end %>
-
-            <% if @message && @message.errors.any? %>
-                <% @message.errors.each do |error| %>
-                    <li><%= error.full_message %></li>
-                <% end %>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
-
-<%= form_with model: @message do |form| %>
-    <div class="form big-card">
-        <%= fields_for :user, @message.user do |user_form| %>
-            <div class="field">
-                <%= user_form.label :email, 'Email' %>
-                <%= user_form.email_field :email %>
-            </div>
-        <% end %>
-
-        <div class="field separate">
-            <%= form.label :content, t('contact.how_can_we_help_you') %>
-            <%= form.text_area :content, maxlength: 4000, style: 'height: 150px' %>
-        </div>
-
-        <%= form.invisible_captcha %>
-
-        <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>
-    </div>
-<% end %>
+<%= render 'message_form' %>
 
 <div class="centered">
     <p class='big-text'>
-        <%= t('contact.contact_html') %>
+        <%= t 'contact.contact_html' %>
     </p>
 
     <p class="subtitle">

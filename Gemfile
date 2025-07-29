@@ -40,7 +40,8 @@ gem 'devise', '~> 4.9'
 gem 'ed25519'
 
 # Captcha
-gem 'invisible_captcha'
+gem "recaptcha"
+gem "invisible_captcha"
 
 # Use simple_form for devise forms
 gem 'simple_form', '5.3.0'

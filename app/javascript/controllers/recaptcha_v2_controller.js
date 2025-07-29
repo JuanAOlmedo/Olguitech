@@ -1,0 +1,11 @@
+
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static values = { siteKey: String }
+
+  initialize() {
+  	console.log("sda")
+    grecaptcha.render("recaptchaV2", { sitekey: this.siteKeyValue } )
+  }
+}

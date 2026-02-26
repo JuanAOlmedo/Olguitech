@@ -1,0 +1,71 @@
+services:
+  web:
+    build: .
+    # Ensure Rails binds to 0.0.0.0 so the service is reachable from the host
+    command: >-
+      bash -lc 'rm -f tmp/pids/server.pid && bin/rails server -b 0.0.0.0 -p 3000'
+    volumes:
+      - .:/app:cached
+      - bundle:/app/vendor/bundle
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: development
+      BUNDLE_PATH: /app/vendor/bundle
+      # Read password from Docker secret
+      DATABASE_URL: postgresql://postgres:devpassword123@db:5432/olguitech_development
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+
+    # 🔥 Compose Watch: Auto-reload on file changes
+    develop:
+      watch:
+        # Sync changes (faster for small edits like Ruby files)
+        - action: sync
+          path: ./app
+          target: /app/app
+        - action: sync
+          path: ./config
+          target: /app/config
+        - action: sync
+          path: ./lib
+          target: /app/lib
+
+        # Rebuild for Gemfile or package changes
+        - action: rebuild
+          path: ./Gemfile
+        - action: rebuild
+          path: ./Gemfile.lock
+
+  db:
+    image: postgres:15
+    restart: always
+    secrets:
+      - db-password
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/db-password
+      POSTGRES_DB: olguitech_development
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+    # 🏥 Healthcheck: Ensures DB is ready before Rails starts
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db-data:
+  bundle:
+
+# 🔐 Docker Secrets for sensitive data
+secrets:
+  db-password:
+    file: db/password.txt

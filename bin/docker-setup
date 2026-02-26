@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+# Quick setup script for new developers
+# Usage: ./bin/docker-setup
+
+set -e
+
+echo "🚀 Olguitech Docker Development Setup"
+echo "======================================"
+echo ""
+
+# Check if Docker is running
+if ! docker info > /dev/null 2>&1; then
+  echo "❌ Error: Docker is not running. Please start Docker Desktop first."
+  exit 1
+fi
+
+# Create db password file if it doesn't exist
+if [ ! -f db/password.txt ]; then
+  echo "📝 Creating db/password.txt from example..."
+  cp db/password.txt.example db/password.txt
+  echo "✅ Created db/password.txt"
+  echo ""
+  echo "⚠️  NOTE: You can change the password in db/password.txt if desired."
+  echo "          Just make sure to update it BEFORE running docker compose up"
+  echo ""
+else
+  echo "✅ db/password.txt already exists"
+  echo ""
+fi
+
+# Clean up old containers/volumes to ensure fresh start with secrets
+echo "🧹 Cleaning up any existing containers..."
+docker compose down -v 2>/dev/null || true
+echo "✅ Cleaned up"
+echo ""
+
+# Build and start containers
+echo "🏗️  Building Docker images..."
+docker compose up --build -d
+
+echo ""
+echo "⏳ Waiting for database to be healthy (this may take 10-15 seconds)..."
+until docker compose exec db pg_isready -U postgres > /dev/null 2>&1; do
+  echo "   ⏳ Still waiting for database..."
+  sleep 2
+done
+echo "✅ Database is ready"
+echo ""
+
+echo "🗄️  Setting up database..."
+docker compose exec web bundle exec rails db:prepare
+
+echo ""
+echo "✅ Setup complete!"
+echo ""
+echo "📌 Your app is running at: http://localhost:3000"
+echo ""
+echo "🎯 Next steps:"
+echo "   1. Open http://localhost:3000 in your browser"
+echo "   2. For live reload during development, run: docker compose watch"
+echo ""
+echo "📖 Useful commands:"
+echo "   docker compose watch            # Start with auto-reload on code changes"
+echo "   docker compose logs -f          # View all logs in real-time"
+echo "   docker compose logs -f web      # View only Rails app logs"
+echo "   docker compose exec web bash    # Open shell in container"
+echo "   docker compose down -v          # Stop and clean up everything"
+echo ""

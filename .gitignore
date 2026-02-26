@@ -44,3 +44,6 @@ yarn-debug.log*
 /config/local_env.yml
 
 /config/deploy/production.rb
+
+# Ignore Docker secrets
+/db/password.txt

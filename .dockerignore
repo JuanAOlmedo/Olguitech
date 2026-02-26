@@ -1,0 +1,36 @@
+# Git and version control
+/.git
+/.gitignore
+/.github
+
+# Bundler and dependencies
+/.bundle
+/vendor/bundle
+
+# Logs and temporary files
+/log/*
+/tmp/*
+
+# Node modules and frontend
+node_modules
+/public/packs
+/public/assets
+
+# Cache and build artifacts
+.cache
+coverage
+.byebug_history
+
+# Development files
+.DS_Store
+**/*.sqlite3
+/storage/*
+
+# Docker files
+Dockerfile*
+docker-compose*
+.dockerignore
+
+# Secrets and credentials
+/db/password.txt
+.env*

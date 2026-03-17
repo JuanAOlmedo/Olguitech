@@ -110,6 +110,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
         get "/es/users/confirmation/#{user.confirmation_token}"
 
         assert_redirected_to root_path
+        I18n.locale = :es
         assert_equal I18n.t('confirmed'), flash[:notice]
         assert user.reload.confirmed?
     end
@@ -118,6 +119,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
         get '/es/users/confirmation/invalid_token'
 
         assert_redirected_to root_path
+        I18n.locale = :es
         assert_equal I18n.t('link_broken'), flash[:alert]
     end
 
@@ -125,6 +127,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
     test 'should unsubscribe user with valid token' do
         user = users(:one)
         user.update(locale: :es)
+        I18n.locale = :es
 
         get unsubscribe_users_path(newsletter_token: user.newsletter_token)
 
@@ -134,6 +137,7 @@ class UserControllerTest < ActionDispatch::IntegrationTest
     end
 
     test 'should not unsubscribe user with invalid token' do
+        I18n.locale = :es
         get unsubscribe_users_path(newsletter_token: 'invalid_token', locale: :es)
 
         assert_redirected_to root_path

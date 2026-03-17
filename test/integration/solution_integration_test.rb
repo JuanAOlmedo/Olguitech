@@ -13,7 +13,7 @@ class SolutionIntegrationTest < ActionDispatch::IntegrationTest
         users(:one).update newsletter: true
     end
 
-    test 'should send newsletter when creating an solution' do
+    test 'should send newsletter when creating a solution' do
         parameters = {
             solution: {
                 status: :published
@@ -25,7 +25,7 @@ class SolutionIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should not send newsletter when creating an solution' do
+    test 'should not send newsletter when creating a solution' do
         parameters = {
             solution: {
                 status: :drafted
@@ -37,7 +37,7 @@ class SolutionIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should send newsletter when editing an solution' do
+    test 'should send newsletter when editing a solution' do
         parameters = {
             solution: {
                 status: :published
@@ -50,7 +50,7 @@ class SolutionIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should not send newsletter when editing an solution' do
+    test 'should not send newsletter when editing a solution' do
         parameters = {
             solution: {
                 status: :drafted

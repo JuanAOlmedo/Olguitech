@@ -82,10 +82,4 @@ class NewslettersController < ApplicationController
 
         redirect_to root_path, alert: 'La Newsletter ya fue enviada, no se puede editar'
     end
-
-    def redirect_unless_admin
-        return if admin_signed_in?
-
-        redirect_to root_path, alert: 'Solo administradores pueden hacer eso'
-    end
 end

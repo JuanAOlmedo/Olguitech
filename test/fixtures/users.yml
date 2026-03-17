@@ -12,6 +12,12 @@ one:
   email: test1@test.com
   confirmation_token: supersecuretoken
   edit_token: supersecuretoken2
-
+  newsletter: true
+  newsletter_token: validnewslettertoken123
 two:
   email: test2@test.com
+unconfirmed:
+  email: unconfirmed@example.com
+  confirmed_at: null
+  confirmation_token: myvalidtoken123
+  confirmation_sent_at: <%= 1.hour.ago %>

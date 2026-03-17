@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.7'
+ruby '3.4.9'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '8.0.2.1'
+gem 'rails', '8.1.2'
 
 # Use pg as the database for Active Record in production
 gem 'pg'
@@ -36,7 +36,7 @@ gem 'rexml', '~> 3.4', '>= 3.2.4'
 
 # Use devise for authentication
 gem 'bcrypt_pbkdf'
-gem 'devise', '~> 4.9'
+gem 'devise', '~> 5.0'
 gem 'ed25519'
 
 # Captcha
@@ -79,6 +79,7 @@ group :test do
     # Adds support for Capybara system testing and selenium driver
     gem 'capybara'
     gem 'selenium-webdriver'
+    gem 'simplecov', require: false
 end
 
 # Use capistrano to deploy to production

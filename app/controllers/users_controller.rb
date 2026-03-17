@@ -64,7 +64,7 @@ class UsersController < ApplicationController
         if @user&.confirm
             redirect_to root_path, notice: t('confirmed')
         else
-            redirect_to root_path, alert: t('link_borken')
+            redirect_to root_path, alert: t('link_broken')
         end
     end
 

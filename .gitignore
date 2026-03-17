@@ -44,3 +44,5 @@ yarn-debug.log*
 /config/local_env.yml
 
 /config/deploy/production.rb
+
+coverage

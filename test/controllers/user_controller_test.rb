@@ -103,4 +103,40 @@ class UserControllerTest < ActionDispatch::IntegrationTest
 
         assert_response :see_other
     end
+
+    test 'should confirm user with valid token' do
+        user = users(:unconfirmed)
+
+        get "/es/users/confirmation/#{user.confirmation_token}"
+
+        assert_redirected_to root_path
+        assert_equal I18n.t('confirmed'), flash[:notice]
+        assert user.reload.confirmed?
+    end
+
+    test 'should not confirm user with invalid token' do
+        get '/es/users/confirmation/invalid_token'
+
+        assert_redirected_to root_path
+        assert_equal I18n.t('link_broken'), flash[:alert]
+    end
+
+
+    test 'should unsubscribe user with valid token' do
+        user = users(:one)
+        user.update(locale: :es)
+
+        get unsubscribe_users_path(newsletter_token: user.newsletter_token)
+
+        assert_redirected_to root_path
+        assert_equal I18n.t('unsubscribed'), flash[:notice]
+        assert_not user.reload.newsletter
+    end
+
+    test 'should not unsubscribe user with invalid token' do
+        get unsubscribe_users_path(newsletter_token: 'invalid_token', locale: :es)
+
+        assert_redirected_to root_path
+        assert_equal I18n.t('link_broken'), flash[:alert]
+    end
 end

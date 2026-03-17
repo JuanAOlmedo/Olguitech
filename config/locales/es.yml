@@ -58,7 +58,7 @@ es:
         confirm_account: Confirmar mi cuenta
         delete_account: Eliminar cuenta
         are_you_sure: Estas seguro?
-        deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas :(
+        deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas
         newsletter: Recibir newsletters
     index:
         other: Otros

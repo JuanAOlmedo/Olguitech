@@ -68,4 +68,23 @@ class SolutionsTest < ApplicationSystemTestCase
         solutions(:one).reload
         assert_equal 'A Title', solutions(:one).title
     end
+
+
+    test 'should add image to solution' do
+        # Autenticarse si el formulario requiere login
+        sign_in admins(:one)
+
+        visit '/solutions/1/edit'
+
+        # Adjuntar la imagen al input de Active Storage
+        attach_file 'solution[image]', 
+                    Rails.root.join('test/fixtures/files/test_image.png'),
+                    make_visible: true
+
+        click_button 'Crear' # ajustá al texto de tu botón
+
+        # Verificar que la imagen se subió
+        visit '/solutions/1'
+        assert solutions(:one).reload.image.attached?
+    end
 end

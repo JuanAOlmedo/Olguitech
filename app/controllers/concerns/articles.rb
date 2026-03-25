@@ -1,4 +1,4 @@
-#frozen_string_literal: true
+# frozen_string_literal: true
 
 # Includes all the functionality of Products, Projects and SolutionsControllers.
 # Defines the model corresponding to the controller in @model

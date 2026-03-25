@@ -5,6 +5,7 @@ class Solution < ApplicationRecord
     include Mailable
 
     extend FriendlyId
+
     friendly_id :title, use: :slugged
 
     enum :status, %i[published drafted trashed], default: :drafted

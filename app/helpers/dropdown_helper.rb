@@ -29,7 +29,7 @@ module DropdownHelper
         def html
             content = safe_join [trigger, menu(block)]
 
-            tag.div content, class: "dropdown #{is_dropup ? 'is-dropup' : ''} #{@icon ? 'localized' : ''}",
+            tag.div content, class: "dropdown #{'is-dropup' if is_dropup} #{'localized' if @icon}",
                              data: { controller: 'dropdown', dropdown_active_class: 'is-active' }
         end
 

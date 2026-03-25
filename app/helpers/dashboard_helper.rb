@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 
 module DashboardHelper
     def update_status_link(name, article, status, is_danger: false)
         link_to name, update_status_path(article, status),
                 data: { action: 'dashboard#makeRequest:prevent', turbo_prefetch: false },
-                class: "btn #{is_danger ? 'is-danger' : ''}"
+                class: "btn #{'is-danger' if is_danger}"
     end
 
     def unrelate_category_link(category, article)

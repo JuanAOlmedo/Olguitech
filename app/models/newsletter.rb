@@ -2,6 +2,7 @@
 
 class Newsletter < ApplicationRecord
     extend FriendlyId
+
     friendly_id :title, use: :slugged
 
     enum :status, %i[drafted sent], default: :drafted

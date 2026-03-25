@@ -14,6 +14,6 @@ class MessageMailer < ApplicationMailer
         @user = user
         @message = message
 
-        mail to: ENV['EMAIL_USERNAME'], subject: 'Una nueva persona se ha contactado'
+        mail to: ENV.fetch('EMAIL_USERNAME', 'olguitech@olguitech.com'), subject: 'Una nueva persona se ha contactado'
     end
 end

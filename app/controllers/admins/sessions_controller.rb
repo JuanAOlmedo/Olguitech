@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-class Admins::SessionsController < Devise::SessionsController
-    invisible_captcha only: [:create]
+module Admins
+    class SessionsController < Devise::SessionsController
+        invisible_captcha only: [:create]
+    end
 end

@@ -5,10 +5,10 @@ class ApplicationController < ActionController::Base
 
     # Change language to the one provided in the parameters and fallback to
     # spanish in case it is not valid
-    def switch_locale(&action)
+    def switch_locale(&)
         locale = I18n.locale_available?(params[:locale]) ? params[:locale] : I18n.default_locale
 
-        I18n.with_locale locale, &action
+        I18n.with_locale(locale, &)
     end
 
     def default_url_options

@@ -29,7 +29,7 @@ module CardsHelper
 
         # Defines the 'normal' cards shown for solutions and projects
         def html
-            content = @array.length != 1 ? grid : card_single(@array.first)
+            content = @array.length == 1 ? card_single(@array.first) : grid
 
             tag.div content, class: 'cards-holder centered'
         end
@@ -38,7 +38,7 @@ module CardsHelper
         def alternative_html
             # When the margin is :none, both sides will have automatic margins.
             # This is the case when the card is alone
-            margin = @array.length != 1 ? %i[left right].sample : :none
+            margin = @array.length == 1 ? :none : %i[left right].sample
 
             @array.map! do |element|
                 margin = margin == :left ? :right : :left unless margin == :none
@@ -140,6 +140,5 @@ module CardsHelper
                     link_to(I18n.t('general.see_more'), element, class: 'btn')
             end
         end
-
     end
 end

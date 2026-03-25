@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
         @user.locale = I18n.locale
         check = verify_recaptcha(action: 'message', minimum_score: 0.5) ||
                 verify_recaptcha(model: @user, secret_key: Rails.application.credentials.RECAPTCHA_SECRET_KEY_V2)
-        
+
         if check && @message.save && @user.save
             @message.send_mail
             redirect_user

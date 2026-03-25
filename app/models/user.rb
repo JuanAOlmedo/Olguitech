@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
     extend FriendlyId
+
     friendly_id :email, use: :slugged
 
     after_create :send_confirmation_instructions

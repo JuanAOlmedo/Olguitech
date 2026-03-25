@@ -2,6 +2,7 @@
 
 class Category < ApplicationRecord
     extend FriendlyId
+
     friendly_id :title, use: :slugged
 
     belongs_to :super_category, optional: true

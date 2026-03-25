@@ -9,43 +9,49 @@ es:
             title: Las últimas tendencias mundiales en Ingeniería Eléctrica, control, automatización y equipamiento industrial.
             subtitle1: Le asesoramos cuando busque un insumo o cuando busque la forma de mejorar su proceso o instalación.
             subtitle2: En Olguitech apostamos a ser su socio tecnológico.
-            why: Por qué elegir Olguitech?
+            why: ¿Por qué elegir Olguitech?
             solutions: Nuestros últimos artículos
             projects: Nuestros últimos proyectos
             products: Algunos de nuestros productos
-            interested: Estás interesado en hablar con nosotros?
-            sign_up: Quieres saber más acerca de nuestro tarabajo? Contáctate y haznos una pregunta!
+            interested: ¿Está interesado en hablar con nosotros?
+            sign_up: Contáctenos y descubra como podemos ayudar.
             contact: Contactarse
-            subscribe_message_html: <strong>Sé el primero en saber de nuestras novedades</strong>, suscribete a nuestra newsletter.
+            subscribe_message_html: <strong>Sea el primero en saber de nuestras novedades</strong>, suscríbase a nuestra newsletter.
             subscribe: Suscribirse
     nav:
         about_us: Nosotros
         contact: Contacto
     nosotros:
         who_are_we: ¿Quiénes Somos?
-        who_are_we_message: >
-            Somos una empresa joven. Nos esforzamos para brindarle los mejores productos y servicios con marcas de primer nivel mundial en Argentina, Paraguay y Uruguay.
-            Cuando esté por definir una tecnología, requiera ser asesorado en la selección de un producto, requiera asistencia en la instalación o su puesta en marcha, consúltenos.
-            Nuestros técnicos son formados internacionalmente por nuestros proveedores.
-            En Olguitech damos todo de nosotros mismos para que nuestro vínculo con usted y su empresa sea duradero.
+        who_are_we_subtitle: >
+            Somos una empresa joven comprometida con brindar los mejores productos y servicios tecnológicos.
+            Nuestros técnicos son formados internacionalmente y apostamos a ser socios tecnológicos de nuestros clientes a nivel regional.
+        what_defines_us: Lo que nos define
         how_are_we_different: ¿Cómo Somos Diferentes?
-        how_are_we_different_message: >
-            Nuestro diferencial es el servicio y la voluntad de mejorar continuamente.
-            Cuando analice definir la compra de un insumo cualquiera sea su actividad, cuando busque la forma de mejorar su proceso o instalación llámenos que le asesoraremos.
-            En Olguitech apostamos a ser socios tecnológicos de nuestros clientes a nivel regional.
+        how_are_we_different_subtitle: >
+            Cuando necesites definir una tecnología, buscar la forma de mejorar tu proceso o instalación — llamanos.
+            En Olguitech apostamos a ser socios tecnológicos de nuestros clientes a nivel regional, acompañándote antes, durante y después de cada proyecto.
+        card1: Asesoramiento personalizado
+        card1_subtitle: Antes de que definas una compra, te ayudamos a elegir la mejor tecnología para tu proceso.
+        card2: Técnicos certificados
+        card2_subtitle: Formados directamente por nuestros proveedores internacionales de primer nivel.
+        card3: Socios, no proveedores
+        card3_subtitle: Apostamos a vínculos duraderos con cada cliente, acompañando su crecimiento.
+        card4: Mejora continua
+        card4_subtitle: Nuestro diferencial es el servicio y la voluntad de mejorar continuamente.
     contact:
         direction_alt: Mapa de 21 de Setiembre 2819 of. 703 esq. Ellauri
         direction_html: Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
-        how_can_we_help_you: Cómo podemos ayudarte?
+        how_can_we_help_you: ¿Cómo podemos ayudar?
         contact: Contactarse
         contact_html: >
-            O contactate a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br>
+            O contactarse a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br>
             al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br>
             o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
         message: Mensaje
         send: Enviar Mail
         sent: Un email ha sido enviado.
-        ask: Hacer una pregunta!
+        ask: Preguntar
         error: impidió que se pudiera mandar un mail
         errors: impidieron que se pudiera mandar un mail
         first_time: Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos

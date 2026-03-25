@@ -10,8 +10,9 @@
     z-index: 1;
 
     & .subtitle {
-        @media only screen and (max-width: 67rem) {
+        @media only screen and (max-width: 40rem) {
             text-align: left;
+            font-size: 1.1rem;
         }
     }
 
@@ -25,11 +26,6 @@
         height: 25rem;
         background: image_url("vectors/vector5.svg") no-repeat center bottom;
         background-size: 100% 100%;
-
-        @media only screen and (max-width: 67rem) {
-            height: 10rem;
-            background-size: 200% 100%;
-        }
     }
 }
 
@@ -39,8 +35,6 @@
     z-index: 1;
     padding-top: 6rem;
     padding-bottom: 10rem;
-    display: flex;
-    flex-wrap: wrap;
 
     @media only screen and (max-width: 67rem) {
         padding-top: 1rem;
@@ -58,7 +52,7 @@
         background: image_url("vectors/vector3.svg") no-repeat left bottom;
         background-size: auto 100%;
 
-        @media only screen and (max-width: 50rem) {
+        @media only screen and (max-width: 40rem) {
             background-size: auto 60%;
         }
     }
@@ -74,4 +68,100 @@
             margin-right: auto;
         }
     }
+
+    & .subtitle {
+        @media only screen and (max-width: 40rem) {
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.two-col {
+    box-sizing: border-box;
+    width: 70%;
+    margin: 0 auto;
+    place-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @media only screen and (max-width: 60rem) {
+        width: 90%;
+    }
+    @media only screen and (max-width: 40rem) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.nosotros-card {
+    box-sizing: border-box;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 0.8rem;
+    padding: 1.25rem;
+    width: 100%;
+    height: 100%;
+}
+
+.nosotros-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 0.2rem;
+    background: #faeeda;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.nosotros-card h3 {
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 0.4rem;
+}
+
+.nosotros-card p {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.countries {
+    width: 40%;
+    margin: 2rem auto 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+
+    @media only screen and (max-width: 40rem) {
+        width: 90%;
+    }
+}
+
+.country {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: center;
+}
+.country .flag {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.country span {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+svg.ic {
+    width: 18px;
+    height: 18px;
+    stroke: #d4660a;
+    fill: none;
+    stroke-width: 1.5;
 }

@@ -14,7 +14,7 @@ en:
             projects: Our latest projects
             products: Some of our products
             interested: Interested in talking to us?
-            sign_up: Do you want to know more about our work? Get in touch and ask a question!
+            sign_up: Get in touch and discover how we can help.
             contact: Get in touch
             subscribe_message_html: <strong>Be the first to know of our new updates</strong>, subscribe to our newsletter.
             subscribe: Subscribe
@@ -23,20 +23,26 @@ en:
         contact: "Contact"
     nosotros:
         who_are_we: Who are we?
-        who_are_we_message: >
-            We are a young company. We strive to provide the best products and services with world-class brands in Argentina, Paraguay and Uruguay.
-            When you are about to define a technology, require advice in the selection of a product or require assistance in the installation please contact us.
-            Our technicians are internationally trained by our suppliers.
-            At Olguitech we give our best to ensure that our relationship with you and your company is a lasting one.
-        how_are_we_different: How are we different?
-        how_are_we_different_message: >
-            Our difference is the service and the will to continuously improve.
-            When you are analyzing to define the purchase of a product whatever your activity is, when you are looking for a way to improve your process or installation, call us and we will advise you.
-            At Olguitech we are committed to be technological partners of our customers at a regional level.
+        who_are_we_subtitle: >
+            We are a young company committed to providing the best technology products and services.
+            Our technicians are trained internationally and we strive to be the technology partners of our clients across the region.
+        what_defines_us: What defines us
+        how_are_we_different: How Are We Different?
+        how_are_we_different_subtitle: >
+            When you need to define a technology, or find ways to improve your process or installation — get in touch.
+            At Olguitech we aim to be the technology partners of our clients across the region, supporting you before, during and after every project.
+        card1: Personalized consulting
+        card1_subtitle: Before you commit to a purchase, we help you choose the best technology for your process.
+        card2: Certified technicians
+        card2_subtitle: Trained directly by our top-tier international suppliers.
+        card3: Partners, not vendors
+        card3_subtitle: We invest in lasting relationships with each client, supporting their growth.
+        card4: Continuous improvement
+        card4_subtitle: Our differentiator is our service and our commitment to always getting better.
     contact:
         direction_alt: Map of 21 de Setiembre 2819 off. 703 esq. Ellauri
         direction_html: Find us at <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
-        how_can_we_help_you: How can we help you?
+        how_can_we_help_you: How can we help?
         contact: Contact
         sign_in_and_contact: Sign In and Contact
         contact_html: >
@@ -46,7 +52,7 @@ en:
         message: Message
         send: Send Mail
         sent: An email has been sent.
-        ask: Ask us something!
+        ask: Ask
         error: prevented an email from being sent
         errors: prevented an email from being sent
         first_time: It looks like it's the first time you get in touch with us, please fill out your details

@@ -31,8 +31,8 @@ Rails.application.routes.draw do
             get '/', to: 'dashboard#articles'
         end
 
-        get '/contacto', to: 'main#contacto'
-        get '/nosotros', to: 'main#nosotros'
+        get '/contacto', to: 'main#contacto', as: :contacto
+        get '/nosotros', to: 'main#nosotros', as: :nosotros
         root 'main#main'
     end
 

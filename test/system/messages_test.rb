@@ -11,7 +11,7 @@ class MessagesTest < ApplicationSystemTestCase
 
         assert_difference('User.count', 0) do
             assert_difference('Message.count', 1) do
-                click_on 'Hacer una pregunta!'
+                click_on 'Preguntar'
             end
         end
 
@@ -28,7 +28,7 @@ class MessagesTest < ApplicationSystemTestCase
 
         assert_difference('User.count', 1) do
             assert_difference('Message.count', 1) do
-                click_on 'Hacer una pregunta!'
+                click_on 'Preguntar'
             end
         end
 

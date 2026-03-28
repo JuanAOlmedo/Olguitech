@@ -14,6 +14,9 @@ class NewsMailer < ApplicationMailer
         @content = newsletter.content
         @subject = newsletter.subject
 
+        headers['List-Unsubscribe'] = '<https://olguitech.com/unsubscribe?token=#{user.newsletter_token}>'
+        headers['List-Unsubscribe-Post'] = "List-Unsubscribe=One-Click"
+
         mail(to: @user.email, subject: @subject)
     end
 end

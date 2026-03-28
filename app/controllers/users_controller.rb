@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
                   only: %i[index new create show]
+    # Para permitir funcionalidad de List-Unsubscribe
+    protect_from_forgery except: :unsubscribe
 
     # GET /users
     def index
@@ -89,14 +91,15 @@ class UsersController < ApplicationController
     end
 
     # Unsubscribe the user to newsletters with the provided newsletter_token
-    # GET /users/unsubscribe/:newsletter_token
+    # GET  /users/unsubscribe/:newsletter_token
+    # POST /users/unsubscribe/:newsletter_token
     def unsubscribe
         @user = User.find_by newsletter_token: params[:newsletter_token]
 
         if @user&.update(newsletter: false)
             redirect_to root_path, notice: t('unsubscribed')
         else
-            redirect_to root_path, alert: t('link_broken')
+            redirect_to root_path, alert: t('link_broken'), status: :see_other
         end
     end
 

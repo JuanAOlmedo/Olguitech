@@ -40,8 +40,7 @@ gem 'devise', '~> 5.0'
 gem 'ed25519'
 
 # Captcha
-gem "recaptcha"
-gem "invisible_captcha"
+gem 'cloudflare-turnstile-rails'
 
 # Use simple_form for devise forms
 gem 'simple_form', '5.3.0'
@@ -65,9 +64,9 @@ gem 'tzinfo-data'
 group :development, :test do
     # Call 'byebug' anywhere in the code to stop execution and get a debugger console
     gem 'byebug', platforms: %i[mri windows]
-    gem 'sqlite3'
     gem 'ruby-lsp'
     gem 'solargraph'
+    gem 'sqlite3'
 end
 
 group :development do

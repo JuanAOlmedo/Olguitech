@@ -66,7 +66,7 @@
                     <%= form.email_field :email %>
                 </div>
 
-                <%= form.invisible_captcha %>
+                <%= cloudflare_turnstile_tag %>
 
                 <%= form.submit t('.subscribe'), class: 'btn' %>
             <% end %>

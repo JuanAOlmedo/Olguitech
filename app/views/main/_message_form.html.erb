@@ -40,9 +40,9 @@
             </div>
         </div>
 
-        <%= turbo_frame_tag 'recaptcha' do %>
-            <%= recaptcha_v3 action: 'message', turbo: true %>
-        <% end %>
+        <div style="width: 100%; margin-bottom: 1rem;">
+            <%= cloudflare_turnstile_tag %>
+        </div>
 
         <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>
     </div>

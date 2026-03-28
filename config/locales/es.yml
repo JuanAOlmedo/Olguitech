@@ -50,8 +50,8 @@ es:
         send: Confirmar
         sent: Gracias por tu mensaje. Nos pondremos en contacto pronto.
         ask: Preguntar
-        error: impidió que se pudiera mandar un mail
-        errors: impidieron que se pudiera mandar un mail
+        error: impidió que se procese la consulta
+        errors: impidieron que se procese la consulta
         first_time: El mensaje se envió correctamente. Opcionalmente, puede dejarnos sus datos de contacto.
     users:
         edit_account: Editar cuenta

@@ -9,11 +9,10 @@ class MessagesTest < ApplicationSystemTestCase
         fill_in 'message_content', with: 'Question'
         fill_in 'user_email', with: 'test1@test.com'
 
-        sleep(1)
-
         assert_difference('User.count', 0) do
             assert_difference('Message.count', 1) do
                 click_on 'Preguntar'
+                sleep(1)
             end
         end
 
@@ -28,11 +27,10 @@ class MessagesTest < ApplicationSystemTestCase
         fill_in 'message_content', with: 'Question'
         fill_in 'user_email', with: 'test3@test.com'
 
-        sleep(1)
-
         assert_difference('User.count', 1) do
             assert_difference('Message.count', 1) do
                 click_on 'Preguntar'
+                sleep(1)
             end
         end
 

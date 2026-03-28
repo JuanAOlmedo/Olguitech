@@ -110,8 +110,9 @@ body {
     padding: 2rem;
     background-color: white;
 
-    @media only screen and (max-width: 35rem) {
+    @media only screen and (max-width: 45rem) {
         width: 95%;
+        padding: 1rem;
     }
 }
 

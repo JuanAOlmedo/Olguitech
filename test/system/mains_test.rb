@@ -17,6 +17,7 @@ class MainsTest < ApplicationSystemTestCase
 
         assert_difference('User.count', 1) do
             click_on 'Suscribirse'
+            sleep(1)
         end
 
         assert_selector 'p', text: 'Muchas gracias por suscribirte a nuestra newsletter!'

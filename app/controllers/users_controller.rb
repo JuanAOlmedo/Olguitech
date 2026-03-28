@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
                   only: %i[index new create show]
-    invisible_captcha only: [:subscribe]
 
     # GET /users
     def index
@@ -72,6 +71,11 @@ class UsersController < ApplicationController
     # and update their locale
     # POST /users/subscribe
     def subscribe
+        unless valid_turnstile?
+            redirect_to root_path, status: :see_other
+            return
+        end
+
         @user = User.find_by(subscribe_user_params) || User.new(subscribe_user_params)
 
         @user.newsletter = true
@@ -80,8 +84,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect_to root_path, notice: t('thanks_for_subscribing')
         else
-            redirect_to root_path, alert: t('valid_email'),
-                                   status: :unprocessable_entity
+            redirect_to root_path, alert: t('valid_email'), status: :see_other
         end
     end
 

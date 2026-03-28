@@ -1,6 +1,6 @@
 <% content_for :title, 'Acceder' %>
 
-<h1 class='main-title'>Acceder</h1>
+<h1 class="main-title">Acceder</h1>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false } }) do |f| %>
     <div class="form big-card">
@@ -27,7 +27,9 @@
             <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
         </div>
 
-        <%= invisible_captcha %>
+        <div style="width: 100%; margin-bottom: 1rem;">
+            <%= cloudflare_turnstile_tag %>
+        </div>
 
         <div style="width: 100%;"></div>
 

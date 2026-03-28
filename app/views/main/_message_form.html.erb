@@ -16,14 +16,28 @@
     <div class="form big-card">
         <%= fields_for :user, @message.user do |user_form| %>
             <div class="field">
-                <%= user_form.label :email, 'Email' %>
+                <%= user_form.label :name, I18n.t('users.name') %>
+                <%= user_form.text_field :name %>
+            </div>
+
+            <div class="field">
+                <%= user_form.label :email, 'Email *' %>
                 <%= user_form.email_field :email %>
             </div>
         <% end %>
 
-        <div class="field separate">
-            <%= form.label :content, t('contact.message') %>
-            <%= form.text_area :content, maxlength: 4000, style: 'height: 150px' %>
+        <div class="field separate" data-controller="contacto">
+            <%= form.label :content, t('contact.message') + ' *' %>
+            <%= form.text_area :content,
+                maxlength: 2000,
+                style: 'height: 150px; margin-bottom: 0',
+                data: {
+                  contacto_target: "content",
+                  action: "input->contacto#updateCounter"
+                } %>
+            <div style="text-align: right;">
+                <span data-contacto-target="counter">0/2000</span>
+            </div>
         </div>
 
         <%= turbo_frame_tag 'recaptcha' do %>

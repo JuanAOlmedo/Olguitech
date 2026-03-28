@@ -44,21 +44,19 @@ es:
         direction_html: Encontranos en <a href='https://goo.gl/maps/eH5mH9Pbsz7LG4KT6' target='_blank' class='link'>21 de Setiembre 2819 of. 703 esq. Ellauri</a>
         how_can_we_help_you: ¿Cómo podemos ayudar?
         contact: Contactarse
-        contact_html: >
-            O contactarse a <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br>
-            al teléfono <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br>
-            o al celular <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
+        other_options: >
+            Otras opciones de contacto:
         message: Mensaje
-        send: Enviar Mail
-        sent: Un email ha sido enviado.
+        send: Confirmar
+        sent: Gracias por tu mensaje. Nos pondremos en contacto pronto.
         ask: Preguntar
         error: impidió que se pudiera mandar un mail
         errors: impidieron que se pudiera mandar un mail
-        first_time: Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos
+        first_time: El mensaje se envió correctamente. Opcionalmente, puede dejarnos sus datos de contacto.
     users:
         edit_account: Editar cuenta
         edit: Editar
-        company: Compañía
+        company: Empresa
         name: Nombre
         phone: Teléfono
         confirm_account: Confirmar mi cuenta

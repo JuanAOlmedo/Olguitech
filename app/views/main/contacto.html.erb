@@ -1,19 +1,22 @@
 <% content_for :title, "#{I18n.t 'contact.contact'} | Olguitech s.a.s." %>
 
-<h1 class='main-title'> <%= t 'contact.how_can_we_help_you' %> </h1>
+<h1 class="main-title"> <%= t 'contact.how_can_we_help_you' %> </h1>
 
 <%= render 'message_form' %>
 
 <div class="centered">
-    <p class='big-text'>
-        <%= t 'contact.contact_html' %>
+    <h2 class="title centered"><%= t 'contact.other_options' %></h2>
+    <p class="big-text">
+        <a class="link" href="mailto:olguitech@olguitech.com">olguitech@olguitech.com</a>
+        <a class="link" href="tel:+59827162524">+598 2716 2524</a>
+        <a class="link" href="tel:+59892898500">+598 92 898 500</a>
     </p>
 
     <p class="subtitle">
         <%= t 'contact.direction_html' %>
     </p>
 
-    <div id="map" data-controller="map" data-map-default-zoom-value="15" data-map-longitude-value="-56.15627" data-map-latitude-value="-34.918624" class="centered location-container" alt='<%= I18n.t 'contact.direction_alt' %>'>
+    <div id="map" data-controller="map" data-map-default-zoom-value="15" data-map-longitude-value="-56.15627" data-map-latitude-value="-34.918624" class="centered location-container" alt="<%= I18n.t 'contact.direction_alt' %>">
         <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
         <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript" data-action="load->contacto#connect"></script>
     </div>

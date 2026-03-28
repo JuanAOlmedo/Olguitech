@@ -45,13 +45,11 @@ en:
         how_can_we_help_you: How can we help?
         contact: Contact
         sign_in_and_contact: Sign In and Contact
-        contact_html: >
-            Or contact to <a class='link' href='mailto:olguitech@olguitech.com'>olguitech@olguitech.com</a>, <br>
-            the phone number <a class='link' href='tel:+59827162524'>+598 2716 2524</a> <br>
-            or the mobile phone <a class='link' href='tel:+59892898500'>+598 92 898 500</a>
+        other_options: >
+            Other contact options:
         message: Message
-        send: Send Mail
-        sent: An email has been sent.
+        send: Confirm
+        sent: Thanks for your message. We will get back to you soon.
         ask: Ask
         error: prevented an email from being sent
         errors: prevented an email from being sent

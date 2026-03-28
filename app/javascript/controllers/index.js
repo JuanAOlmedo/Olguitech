@@ -10,6 +10,9 @@ application.register("alert", AlertController);
 import ArticleCreatorController from "./article_creator_controller";
 application.register("solution-creator", ArticleCreatorController);
 
+import ContactoController from "./contacto_controller";
+application.register("contacto", ContactoController);
+
 import MapController from "./map_controller";
 application.register("map", MapController);
 

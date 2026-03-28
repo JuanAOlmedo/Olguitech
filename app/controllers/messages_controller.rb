@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit :email
+        params.require(:user).permit :email, :name
     end
 
     # Redirect the user to the appropriate page based on their status

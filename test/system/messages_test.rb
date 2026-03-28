@@ -9,13 +9,15 @@ class MessagesTest < ApplicationSystemTestCase
         fill_in 'message_content', with: 'Question'
         fill_in 'user_email', with: 'test1@test.com'
 
+        sleep(1)
+
         assert_difference('User.count', 0) do
             assert_difference('Message.count', 1) do
                 click_on 'Preguntar'
             end
         end
 
-        assert_selector 'p', text: 'Un email ha sido enviado.'
+        assert_selector 'p', text: 'Gracias por tu mensaje. Nos pondremos en contacto pronto.'
     end
 
     test 'should be able to contact when new user' do
@@ -26,6 +28,8 @@ class MessagesTest < ApplicationSystemTestCase
         fill_in 'message_content', with: 'Question'
         fill_in 'user_email', with: 'test3@test.com'
 
+        sleep(1)
+
         assert_difference('User.count', 1) do
             assert_difference('Message.count', 1) do
                 click_on 'Preguntar'
@@ -33,11 +37,11 @@ class MessagesTest < ApplicationSystemTestCase
         end
 
         assert_selector 'p',
-                        text: 'Notamos que es la primera vez que te contactas con nosotros, por favor rellena tus datos'
+                        text: 'El mensaje se envió correctamente. Opcionalmente, puede dejarnos sus datos de contacto.'
 
         fill_in 'Nombre', with: 'A Name'
-        click_on 'Enviar Mail'
+        click_on 'Confirmar'
 
-        assert_selector 'p', text: 'Un email ha sido enviado.'
+        assert_selector 'p', text: 'Gracias por tu mensaje. Nos pondremos en contacto pronto.'
     end
 end

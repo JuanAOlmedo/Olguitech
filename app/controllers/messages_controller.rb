@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     # for that user and update their locale
     # POST /messages
     def create
-        @user = User.find_by(user_params) || User.new(user_params)
+        @user = User.find_by(email: user_params[:email]) || User.new(user_params)
         @message = @user.messages.new message_params
         @user.locale = I18n.locale
         check = verify_recaptcha(action: 'message', minimum_score: 0.5) ||

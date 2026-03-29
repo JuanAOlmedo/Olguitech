@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='<%= I18n.locale %>'>
+<html lang="<%= I18n.locale %>">
 
 <head>
     <title>
@@ -22,7 +22,7 @@
     <%= javascript_importmap_tags %>
 
     <% if admin_signed_in? %>
-        <script type='module'> import "trix"; </script>
+        <script type="module"> import "trix"; </script>
     <% end %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track' => 'reload' %>
@@ -47,11 +47,11 @@
             <% end %>
         </div>
 
-        <i id='dropdown-bars' data-action="click->dropdown-bars#display click@window->dropdown-bars#stopDisplayingWhenOutside" data-dropdown-bars-target="bars" tabindex='0' role="button" aria-label="<%= t 'shared.dropdown' %>">
+        <i id="dropdown-bars" data-action="click->dropdown-bars#display click@window->dropdown-bars#stopDisplayingWhenOutside" data-dropdown-bars-target="bars" tabindex="0" role="button" aria-label="<%= t 'shared.dropdown' %>">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu" width="44" height="44" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" />
-                <line data-dropdown-bars-target='line1' class="line1" x1="4" y1="8" x2="20" y2="8" />
-                <line data-dropdown-bars-target='line2' class="line2" x1="4" y1="16" x2="20" y2="16" />
+                <line data-dropdown-bars-target="line1" class="line1" x1="4" y1="8" x2="20" y2="8" />
+                <line data-dropdown-bars-target="line2" class="line2" x1="4" y1="16" x2="20" y2="16" />
             </svg>
         </i>
 
@@ -79,9 +79,9 @@
     </nav>
 
     <% if flash[:alert] %>
-        <div class='alert' data-controller="alert">
+        <div class="alert" data-controller="alert">
             <p role="alert"> <%= alert %> </p>
-            <i class='close-alert' cursor='pointer' data-action="click->alert#close" tabindex='0' role="button" aria-label="<%= t 'shared.alert' %>">
+            <i class="close-alert" cursor="pointer" data-action="click->alert#close" tabindex="0" role="button" aria-label="<%= t 'shared.alert' %>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" />
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -92,9 +92,9 @@
     <% end %>
 
     <% if flash[:notice] %>
-        <div class='notice' data-controller="alert">
+        <div class="notice" data-controller="alert">
             <p role="alert"> <%= notice %> </p>
-            <i class='close-notice' data-action="click->alert#close" cursor='pointer' tabindex='0' role="button" aria-label="<%= t 'shared.notice' %>">
+            <i class="close-notice" data-action="click->alert#close" cursor="pointer" tabindex="0" role="button" aria-label="<%= t 'shared.notice' %>">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" />
                     <line x1="18" y1="6" x2="6" y2="18" />

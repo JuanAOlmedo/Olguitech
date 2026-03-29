@@ -6,9 +6,10 @@ en:
         see_all: See all
     main:
         main:
-            title: The latest global trends in Electrical Engineering, control, automation and industrial equipment.
-            subtitle1: We advise you when you are looking for a product or when you are looking for a way to improve your process or installation.
-            subtitle2: At Olguitech, we seek to be your technological partner.
+            title_html: >
+                Your <span class="color-primary">technology partner</span> in electrical engineering, control, automation and industrial equipment.
+            subtitle1: We guide you from finding the right supply to improving your process or installation.
+            subtitle2: At Olguitech, we strive to be your technology partner.
             why: Why choose Olguitech?
             solutions: Our latest solutions
             projects: Our latest projects

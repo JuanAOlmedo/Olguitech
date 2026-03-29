@@ -1,6 +1,6 @@
 <% content_for :title, "#{t 'contact.contact'} | Olguitech s.a.s." %>
 
-<h1 class="main-title">
+<h1 class="main-title <%= 'color-primary' if params[:contact] %>">
     <%= params[:contact] ? t('contact.how_can_we_help_you') : t('users.edit_account') %>
 </h1>
 

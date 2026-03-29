@@ -21,17 +21,17 @@ class Category < ApplicationRecord
              source_type: 'Project'
 
     has_many :dashboard_products,
-             -> { select(:id, :title, :status, :slug) },
+             -> { select(:id, :title, :title2, :status, :slug) },
              through: :category_categorizables,
              source: :categorizable,
              source_type: 'Product'
     has_many :dashboard_solutions,
-             -> { select(:id, :title, :status, :slug) },
+             -> { select(:id, :title, :title2, :status, :slug) },
              through: :category_categorizables,
              source: :categorizable,
              source_type: 'Solution'
     has_many :dashboard_projects,
-             -> { select(:id, :title, :status, :slug) },
+             -> { select(:id, :title, :title2, :status, :slug) },
              through: :category_categorizables,
              source: :categorizable,
              source_type: 'Project'

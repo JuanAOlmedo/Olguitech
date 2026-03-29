@@ -7,6 +7,7 @@
 @import "show";
 @import "alert";
 @import "actiontext";
+@import "settings";
 
 // 1. GENERAL //
 
@@ -33,9 +34,7 @@ html {
 }
 
 * {
-    font-family:
-        "Source Sans Pro", "Helvetica Neue", helvetica, "Apple Color Emoji",
-        arial, sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 body {
@@ -51,8 +50,12 @@ body {
     margin-right: auto;
 }
 
+.color-primary {
+    color: $accent-color !important;
+}
+
 .main-title {
-    color: #f4923c;
+    color: $gray;
     font-size: 4.2rem;
     text-align: center;
     margin: 2rem auto 2rem auto;
@@ -69,7 +72,7 @@ body {
 
     @media only screen and (max-width: 35rem) {
         width: 97%;
-        font-size: 2.2rem;
+        font-size: 2.1rem;
         line-height: 2.1rem;
     }
 }
@@ -77,27 +80,27 @@ body {
 .title {
     font-size: 2.2rem;
     font-weight: 900;
-    color: #f4923c;
+    color: $gray;
 
     @media only screen and (max-width: 60rem) {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 }
 
 .subtitle {
     margin: 0 auto 0 auto;
     width: 75%;
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-align: center;
 
     @media only screen and (max-width: 67rem) {
         width: 95%;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 }
 
 .big-text {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .big-card {
@@ -141,8 +144,8 @@ body {
     &:hover,
     &.active,
     &:focus {
-        background-color: hsl(26.7, 23.1%, 92.4%);
-        color: #f4923c;
+        background-color: $background-color;
+        color: $accent-color-dimmed;
     }
 
     &.centered {
@@ -168,7 +171,7 @@ body {
     height: fit-content;
     padding: 0.3rem 0.7rem 0.3rem 0.7rem;
     font-weight: 600;
-    background-color: hsl(26.7, 23.1%, 92.4%);
+    background-color: $background-color;
 
     &:visited {
         text-decoration: none;
@@ -178,8 +181,8 @@ body {
     &:hover,
     &.active,
     &:focus {
-        background-color: hsl(26.7, 23.1%, 87.4%);
-        color: #f4923c;
+        background-color: $background-color-dimmed;
+        color: $accent-color;
     }
 
     &.centered {

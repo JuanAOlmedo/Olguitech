@@ -1,6 +1,6 @@
-<tr class='user-row' data-user-index-target="row">
+<tr class="user-row" data-user-index-target="row">
     <td>
-        <div class='user-email'>
+        <div class="user-email">
             <% if user.confirmed? %>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"> <path stroke="none" d="M0 0h24v24H0z" fill="none" /> <path d="M5 12l5 5l10 -10" /> </svg>
             <% end %>
@@ -20,7 +20,7 @@
     <td>
         <% message_count = user.messages.count %>
 
-        <span class='<%= message_count.positive? ? 'times-contacted' : '' %>'>
+        <span class="<%= message_count.positive? ? 'times-contacted' : '' %>">
             <% if message_count.positive? %>
                 <%= link_to 'Ver', user_path(user), data: { turbo_frame: '_top' }, class: 'link' %>
             <% else %>

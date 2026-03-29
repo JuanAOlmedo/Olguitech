@@ -25,6 +25,9 @@ Rails.application.configure do
     # Compress CSS using a preprocessor.
     # config.assets.css_compressor = :sass
 
+    # Add fingerprint to assets URLs
+    config.assets.digest = true
+
     # Compress JS using terser
     config.assets.js_compressor = :terser
 

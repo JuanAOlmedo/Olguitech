@@ -41,7 +41,7 @@
                     data: { turbo_frame: '_top' },
                     class: 'link' %>
         <%= link_to 'Eliminar',
-                    url_for(controller: :users, action: :destroy, id: user.id, edit_token: user.edit_token),
+                    url_for(controller: :users, action: :destroy, id: user.id, edit_token: user.edit_token, dashboard: 'true'),
                     class: 'link',
                     data: {
                         turbo_method: :delete,

@@ -32,10 +32,10 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
 
-        if !admin_signed_in?
-            redirect_to root_path, notice: I18n.t('users.deleted'), status: :see_other
-        else
+        if admin_signed_in? && params[:dashboard] == 'true'
             redirect_to users_path, status: :see_other
+        else
+            redirect_to root_path, notice: I18n.t('users.deleted'), status: :see_other
         end
     end
 

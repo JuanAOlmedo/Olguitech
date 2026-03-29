@@ -8,17 +8,20 @@
             <input class="centered" data-action="input->user-index#search" data-user-index-target="search" id="searchbar" type="text" name="search" placeholder="Buscar usuarios..">
         </div>
 
+        <input type="checkbox" id="toggle" data-action="change->user-index#toggleFilter" data-user-index-target="toggle" class="btn-check">
+        <label class="btn centered" for="toggle"> Filtrar confirmados </label>
+
         <div class="table">
             <table class="user" id="users">
                 <tr>
                     <th> Email </th>
                     <th> Nombre </th>
-                    <th> Compañía </th>
+                    <th> Empresa </th>
                     <th> Teléfono </th>
-                    <th> Newsletter? </th>
-                    <th> Mensaje </th>
+                    <th> Suscrito </th>
+                    <th> Mensajes </th>
                     <th> Idioma </th>
-                    <th> Editar </th>
+                    <th> Acciones </th>
                 </tr>
 
                 <% @users.each do |user| %>

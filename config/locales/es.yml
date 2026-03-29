@@ -14,7 +14,7 @@ es:
             solutions: Nuestros últimos artículos
             projects: Nuestros últimos proyectos
             products: Algunos de nuestros productos
-            interested: ¿Está interesado en hablar con nosotros?
+            interested: ¿Listo para dar el siguiente paso?
             sign_up: Contáctenos y descubra como podemos ayudar.
             contact: Contactarse
             subscribe_message_html: <strong>Sea el primero en saber de nuestras novedades</strong>, suscríbase a nuestra newsletter.
@@ -49,7 +49,7 @@ es:
             Otras opciones de contacto:
         message: Mensaje
         send: Confirmar
-        sent: Gracias por tu mensaje. Nos pondremos en contacto pronto.
+        sent: Gracias por su mensaje. Nos pondremos en contacto pronto.
         ask: Preguntar
         error: impidió que se procese la consulta
         errors: impidieron que se procese la consulta
@@ -62,8 +62,8 @@ es:
         phone: Teléfono
         confirm_account: Confirmar mi cuenta
         delete_account: Eliminar cuenta
-        are_you_sure: Estas seguro?
-        deleted: Tu cuenta fue eliminada exitosamente. Lamentamos que te vayas
+        are_you_sure: Está seguro?
+        deleted: Su cuenta fue eliminada exitosamente. Lamentamos que se vaya.
         newsletter: Recibir newsletters
     index:
         other: Otros

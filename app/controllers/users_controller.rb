@@ -32,7 +32,11 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
 
-        redirect_to root_path, notice: I18n.t('users.deleted'), status: :see_other
+        if !admin_signed_in?
+            redirect_to root_path, notice: I18n.t('users.deleted'), status: :see_other
+        else
+            redirect_to users_path, status: :see_other
+        end
     end
 
     # POST /users/

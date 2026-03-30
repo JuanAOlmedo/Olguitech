@@ -16,7 +16,7 @@ class MessagesTest < ApplicationSystemTestCase
             end
         end
 
-        assert_selector 'p', text: 'Gracias por tu mensaje. Nos pondremos en contacto pronto.'
+        assert_selector 'p', text: 'Gracias por su mensaje. Nos pondremos en contacto pronto.'
     end
 
     test 'should be able to contact when new user' do
@@ -40,6 +40,6 @@ class MessagesTest < ApplicationSystemTestCase
         fill_in 'Nombre', with: 'A Name'
         click_on 'Confirmar'
 
-        assert_selector 'p', text: 'Gracias por tu mensaje. Nos pondremos en contacto pronto.'
+        assert_selector 'p', text: 'Gracias por su mensaje. Nos pondremos en contacto pronto.'
     end
 end

@@ -7,7 +7,7 @@ class MainsTest < ApplicationSystemTestCase
         visit root_url
 
         assert_selector 'h1',
-                        text: 'Las últimas tendencias mundiales en Ingeniería Eléctrica, control, automatización y equipamiento industrial.'
+                        text: 'Su socio tecnológico en ingeniería eléctrica, control, automatización y equipamiento industrial.'
     end
 
     test 'should subscribe' do

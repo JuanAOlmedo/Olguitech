@@ -10,6 +10,13 @@
             <%= yield %>
         </div>
 
+        <% if yield(:user) == "user" %>
+            <div style="text-align: center;">
+                <%= link_to t('mail.unsubscribe'), url_for(controller: :users, action: :unsubscribe, newsletter_token: @token, locale: I18n.locale) %> |
+                <%= link_to t('mail.edit_user'), edit_user_url(@user, edit_token: @user.edit_token, locale: I18n.locale) %>
+            </div>
+        <% end %>
+
         <%= link_to root_url(locale: I18n.locale), style: 'display: block; width: 100%;' do %>
             <%= image_tag image_url('logos/logo-chico.png'), style: 'display: block; margin-left: auto; margin-right: auto;', width: '220px', height: '90px' %>
         <% end %>

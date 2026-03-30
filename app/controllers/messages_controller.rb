@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
             return
         end
 
-        if @message.save && @user.save
+        if @user.save && @message.save
             @message.send_mail
             redirect_user
         else

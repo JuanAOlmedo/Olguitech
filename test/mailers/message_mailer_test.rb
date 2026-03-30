@@ -9,13 +9,14 @@ class MessageMailerTest < ActionMailer::TestCase
     end
 
     test 'user_message' do
+        @user.update(locale: :es)
         mail = MessageMailer.user_mail(@user, @message)
 
         assert_emails 1 do
             mail.deliver_now
         end
 
-        assert_equal 'Olguitech s.a.s.', mail.subject
+        assert_equal 'Recibimos su mensaje — Olguitech', mail.subject
         assert_equal [@user.email], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match 'HI', mail.body.encoded
@@ -28,7 +29,7 @@ class MessageMailerTest < ActionMailer::TestCase
             mail.deliver_now
         end
 
-        assert_equal 'Una nueva persona se ha contactado', mail.subject
+        assert_equal 'Una nueva persona se contactó', mail.subject
         assert_equal [ENV['EMAIL_USERNAME']], mail.to
         assert_equal [ENV['EMAIL_USERNAME']], mail.from
         assert_match 'HI', mail.body.encoded

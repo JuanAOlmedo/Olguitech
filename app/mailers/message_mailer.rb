@@ -2,8 +2,8 @@
 
 class MessageMailer < ApplicationMailer
     def user_mail(user, message)
-        @user.regenerate_edit_token if @user.edit_token.nil?
-        @user.regenerate_confirmation_token if @user.confirmation_token.nil?
+        user.regenerate_edit_token if user.edit_token.nil?
+        user.regenerate_confirmation_token if user.confirmation_token.nil?
 
         @name = user.name.empty? ? user.email : user.name
         @message = message.content

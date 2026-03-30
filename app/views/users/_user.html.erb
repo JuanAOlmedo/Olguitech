@@ -36,6 +36,7 @@
     <td> <%= user.locale == 'en' ? 'Inglés' : 'Español' %> </td>
 
     <td>
+        <% user.regenerate_edit_token if user.edit_token.nil? %>
         <%= link_to 'Editar',
                     edit_user_path(user, edit_token: user.edit_token),
                     data: { turbo_frame: '_top' },

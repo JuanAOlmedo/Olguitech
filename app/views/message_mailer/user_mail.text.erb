@@ -1,10 +1,11 @@
 Olguitech s.a.s.
 =============================================
 
-<%= t 'mail.contact.greeting', name: (@user.name || @user.email) %>
-
-<%= t('mail.contact.attachments') %>
-
-<%= t('mail.contact.message', message: @message.content) %>
-
-<%= @user.company ? t('mail.contact.final_company', company: @user.company) : t('mail.contact.final') %>
+<% if @confirmed %>
+<%= t 'mail.contact.body', name: @name, message: @message %>
+<%= t 'mail.contact.confirmation', link: @confirmation_link %>
+<%= t 'mail.contact.edit', link: @edit_link %>
+<% else %>
+<%= t 'mail.contact.body', name: @name, message: @message %>
+<%= t('mail.contact.edit', link: @edit_link) %>
+<% end %>

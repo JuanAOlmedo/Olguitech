@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
         resources :users do
             delete '/:edit_token', to: 'users#destroy', on: :member
-            get '/edit/:edit_token', to: 'users#edit', on: :member
-            get '/confirmation/:confirmation_token', to: 'users#confirmation', on: :collection
+            get '/edit/:edit_token', to: 'users#edit', on: :member, as: :edit
+            get '/confirmation/:confirmation_token', to: 'users#confirmation', on: :collection, as: :confirm
             post '/unsubscribe/:newsletter_token', to: 'users#unsubscribe', on: :collection
             get '/unsubscribe/:newsletter_token', to: 'users#unsubscribe', on: :collection, as: :unsubscribe
             post '/subscribe', to: 'users#subscribe', on: :collection

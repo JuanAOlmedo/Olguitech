@@ -37,7 +37,7 @@
 
     <td>
         <%= link_to 'Editar',
-                    edit_user_path(user, params: { edit_token: user.edit_token }),
+                    edit_user_path(user, edit_token: user.edit_token),
                     data: { turbo_frame: '_top' },
                     class: 'link' %>
         <%= link_to 'Eliminar',

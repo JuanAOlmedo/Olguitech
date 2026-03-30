@@ -84,10 +84,7 @@ class UsersController < ApplicationController
 
         @user = User.find_by(subscribe_user_params) || User.new(subscribe_user_params)
 
-        @user.newsletter = true
-        @user.locale = I18n.locale
-
-        if @user.save
+        if @user.subscribe
             redirect_to root_path, notice: t('thanks_for_subscribing')
         else
             redirect_to root_path, alert: t('valid_email'), status: :see_other

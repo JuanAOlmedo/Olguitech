@@ -1,51 +1,79 @@
 es:
-  mail:
-    edit_user: Editar Usuario
-    unsubscribe: Desuscribirse
-    contact:
-      greeting: Hola %{name}, gracias por contactarte con Olguitech s.a.s.!
-      attachments: 'Adjuntaste los siguientes artículos a tu mensaje:'
-      message: 'Tu mensaje fue: %{message}'
-      final_company: 'Nuestro equipo se contactará contigo a la brevedad. Esperamos escuchar de ti y de %{company} de vuelta.'
-      final: Nuestro equipo se contactará contigo a la brevedad. Esperamos escuchar de ti de vuelta.
-    confirmation:
-      confirm: Confirmar mi cuenta
-      this_link: este link
-      subject: Confirmá tu cuenta!
+    mail:
+        edit_user: Editar Usuario
+        unsubscribe: Desuscribirse
+        contact:
+            subject: Recibimos su mensaje — Olguitech
+            body_html: >
+                Hola %{name}, <br> <br>
+                Gracias por contactarte con Olguitech. Recibimos su mensaje y nuestro equipo ya está trabajando en dar una respuesta. <br> <br>
+                El mensaje envíado fue: <br>
+                %{message} <br> <br>
+                Nos pondremos en contacto lo antes posible.
+            confirmation_html: >
+                Mientras tanto, por favor confirme su email. Esto nos ayuda a priorizar consultas y a procesarlas de forma segura. <a href="%{link}">Confirmar Email</a>
+            edit_html: >
+                Para cambiar datos de contacto, acceder a <a href="%{link}">Editar cuenta</a>. <br> <br>
+                Saludos, <br>
+                El equipo de Olguitech <br>
+            body: |
+                Hola %{name},
 
-      html: >
-        <p>Bienvenido %{email}!</p>
+                Gracias por contactarse con Olguitech. Recibimos su mensaje y nuestro equipo ya está trabajando en dar una respuesta.
 
-        <p>Puedes confirmar tu cuenta con el link de abajo:</p>
-        <p>
-            %{link1}
-        </p>
+                El mensaje enviado fue:
+                %{message}
 
-        <p>
-            Si crees que has rellenado tus datos incorrectamente, puedes corregirlos desde 
-            %{link2}
-        </p>
-      txt: |
-        Bienvenido %{email}!
-        =============================================
+                Nos pondremos en contacto lo antes posible.
+            confirmation: |
+                Mientras tanto, por favor confirme su email. Esto nos ayuda a priorizar consultas y a procesarlas de forma segura.
+                Confirmar email: %{link}
+            edit: |
+                Para cambiar datos de contacto, acceder a %{link}
 
-        Puedes confirmar tu cuenta con el link de abajo:
+                Saludos,
+                El equipo de Olguitech
+        subscription:
+            subject: Suscripción a novedades de Olguitech
+            html: >
+                Hola %{name}, <br> <br>
+                Gracias por suscribirse a las novedades de Olguitech. <br> <br>
+            confirmation_html: >
+                Antes de comenzar, le pedimos que confirme su cuenta para asegurarnos de que su suscripción llegue correctamente. <br>
+                <a href="%{confirmation}">Confirmar</a> <br> <br>
+            end_html: >
+                Si desea completar o actualizar sus datos de contacto, puede hacerlo en cualquier momento.
+                <a href="%{edit}">Agregar mis datos</a> <br> <br>
+                Si usted no solicitó esta suscripción o desea cancelarla, puede desuscribirse sin inconvenientes.
+                <a href="%{unsubscribe}">Desuscribirse</a> <br> <br>
+                Saludos, <br>
+                El equipo de Olguitech <br>
+            txt: |
+                Hola %{name},
 
-        %{link1}
+                Gracias por suscribirse a las novedades de Olguitech.
+            confirmation: |
+                Antes de comenzar, le pedimos que confirme su cuenta para asegurarnos de que su suscripción llegue correctamente:
+                %{confirmation}
+            end: |
+                Si desea completar o actualizar sus datos de contacto, puede hacerlo en cualquier momento desde:
+                %{edit}
 
-        ---------------------------------------------
-        Si crees que has rellenado tus datos incorrectamente, puedes corregirlos desde este link:
-        %{link2} 
-    articles:
-      subject:
-        new1: Nueva
-        new2: Nuevo
-        from: de
-      html: >
-        <h1> Hola, %{name} </h1>
-        <p> Nos contactamos para informarte que hemos subido un nuevo artículo, %{link} a nuestra página </p>
-      txt: |
-        Hola, %{name} 
-        =============================================
+                Si usted no solicitó esta suscripción o desea cancelarla, puede desuscribirse sin inconvenientes.
+                %{unsubscribe}
 
-        Nos contactamos para informarte que hemos subido un nuevo artículo, %{link} a nuestra página
+                Saludos,
+                El equipo de Olguitech
+        articles:
+            subject:
+                new1: Nueva
+                new2: Nuevo
+                from: de
+            html: >
+                <h1> Hola, %{name} </h1>
+                <p> Nos contactamos para informarte que hemos subido un nuevo artículo, %{link} a nuestra página </p>
+            txt: |
+                Hola, %{name}
+                =============================================
+
+                Nos contactamos para informarte que hemos subido un nuevo artículo, %{link} a nuestra página

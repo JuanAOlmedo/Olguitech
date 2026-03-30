@@ -9,8 +9,8 @@ class ArticlesMailer < ApplicationMailer
         @token = @user.newsletter_token
         @article = article
 
-        headers['List-Unsubscribe'] = '<https://olguitech.com/unsubscribe?token=#{user.newsletter_token}>'
-        headers['List-Unsubscribe-Post'] = "List-Unsubscribe=One-Click"
+        headers['List-Unsubscribe'] = "<https://olguitech.com/unsubscribe?token=#{user.newsletter_token}>"
+        headers['List-Unsubscribe-Post'] = 'List-Unsubscribe=One-Click'
 
         I18n.with_locale(@user.locale) do
             model_name = @article.model_name.singular

@@ -1,11 +1,9 @@
-<h1>Olguitech s.a.s.</h1>
-
 <p>
-    <%= t 'mail.contact.greeting', name: (@user.name || @user.email) %> <br> <br>
+    <%= t 'mail.contact.body_html', name: @name, message: @message %> <br> <br>
 
-    <%= t('mail.contact.attachments') %>
+    <% unless @confirmed %>
+        <%= t('mail.contact.confirmation_html', link: @confirmation_link) %> <br> <br>
+    <% end %>
 
-    <%= t('mail.contact.message', message: @message.content) %> <br> <br>
-
-    <%= @user.company ? t('mail.contact.final_company', company: @user.company) : t('mail.contact.final') %>
+    <%= t('mail.contact.edit_html', link: @edit_link) %>
 </p>

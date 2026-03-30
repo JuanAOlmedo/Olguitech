@@ -1,0 +1,5 @@
+<p>
+    <%= t'mail.subscription.html', name: @email %>
+    <%= t('mail.subscription.confirmation_html', confirmation: @confirmation) unless @confirmed %>
+    <%= t 'mail.subscription.end_html', edit: @edit, unsubscribe: @unsubscribe %>
+</p>

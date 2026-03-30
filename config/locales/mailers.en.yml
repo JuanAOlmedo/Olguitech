@@ -1,51 +1,73 @@
 en:
-  mail:
-    edit_user: Edit User
-    unsubscribe: Unsubscribe
-    contact:
-      greeting: Hello %{name}, thank you for contacting Olguitech s.a.s.!
-      attachments: 'You attached the following articles to your message:'
-      message: 'Your message was: %{message}'
-      final_company: Our team will contact you shortly. We look forward to hearing from you and %{company} back.
-      final: Our team will contact you shortly. We look forward to hearing from you back.
-    confirmation:
-      confirm: Confirm my account
-      this_link: this link
-      subject: Confirm your account!
+    mail:
+        edit_user: Edit User
+        unsubscribe: Unsubscribe
+        contact:
+            subject: We received your message — Olguitech
+            body_html: >
+                Hello %{name}, <br> <br>
+                Thanks for getting in touch with Olguitech. We have recieved your message and our team is already working on an answer. <br> <br>
+                The message was: <br>
+                %{message} <br> <br>
+                We will get back to you shortly.
+            confirmation_html: >
+                In the meantime, please confirm your email. This helps us to prioritize requests and process them securely. <a href="%{link}">Confirm Email</a>
+            edit_html: >
+                To change contact information, go to <a href="%{link}">Edit information</a>.
+            body: |
+                Hello %{name},
 
-      html: >
-        <p>Welcome %{email}!</p>
+                Thanks for getting in touch with Olguitech. We have recieved your message and our team is already working on an answer.
 
-        <p>You can confirm your account with the following link:</p>
-        <p>
-          %{link1}
-        </p>
+                The message was:
+                %{message}
 
-        <p>
-          If you believe you have filled your information incorrectly, you can edit it with 
-          %{link2}
-        </p>
-      txt: |
-        Welcome %{email}!
-        =============================================
+                We will get back to you shortly.
+            confirmation: |
+                In the meantime, please confirm your email. This helps us to prioritize requests and process them securely.
+                Confirm Email: %{link}
+            edit: |
+                To change contact information, go to %{link}.
+        subscription:
+            subject: Olguitech newsletter subscription
+            html: >
+                Hi %{name}, <br> <br>
+                Thank you for subscribing to Olguitech's newsletter. <br> <br>
+            confirmation_html: >
+                Before we get started, please confirm your account to make sure your subscription goes through correctly. <br>
+                <a href="%{confirmation}">Confirm account</a> <br> <br>
+            end_html: >
+                If you'd like to complete or update your contact details, you can do so at any time.
+                <a href="%{edit}">Update my details</a> <br> <br>
+                If you didn't request this subscription or would like to cancel it, you can <a href="%{unsubscribe}">unsubscribe</a>. <br> <br>
+                Best, <br>
+                The Olguitech Team <br>
+            txt: |
+                Hi %{name},
 
-        You can confirm your account with the following link:
+                Thank you for subscribing to Olguitech's newsletter.
+            confirmation: |
+                Before we get started, please confirm your account to make sure your subscription goes through correctly:
+                %{confirmation}
+            end: |
+                If you'd like to complete or update your contact details, you can do so at any time:
+                %{edit}
 
-        %{link1}
+                If you didn't request this subscription or would like to cancel it, you can unsubscribe:
+                %{unsubscribe}
 
-        ---------------------------------------------
-        If you believe you have filled your information incorrectly, you can edit it with this link:
-        %{link2} 
-    articles:
-      subject:
-        new1: New
-        new2: New 
-        from: from
-      html: >
-        <h1> Hi, %{name} </h1>
-        <p> We are contacting you to inform you that we have uploaded a new article, %{link} to our page </p>
-      txt: |
-        Hi, %{name} 
-        =============================================
+                Best,
+                The Olguitech Team
+        articles:
+            subject:
+                new1: New
+                new2: New
+                from: from
+            html: >
+                <h1> Hi, %{name} </h1>
+                <p> We are contacting you to inform you that we have uploaded a new article, %{link} to our page </p>
+            txt: |
+                Hi, %{name}
+                =============================================
 
-        We are contacting you to inform you that we have uploaded a new article, %{link} to our page "
+                We are contacting you to inform you that we have uploaded a new article, %{link} to our page "

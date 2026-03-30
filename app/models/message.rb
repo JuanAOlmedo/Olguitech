@@ -5,7 +5,7 @@ class Message < ApplicationRecord
 
     # Add some time to allow users to fill their information
     def send_mail
-        MessageMailer.user_mail(user, self).deliver_later wait: 3.minutes
+        MessageMailer.user_mail(user, self).deliver
         MessageMailer.admin_mail(user, self).deliver_later wait: 3.minutes
     end
 end

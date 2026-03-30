@@ -1,0 +1,8 @@
+<% if @confirmed %>
+<%= t 'mail.subscription.txt', name: @email %>
+<%= t 'mail.subscription.end', edit: @edit, unsubscribe: @unsubscribe %>
+<% else %>
+<%= t 'mail.subscription.txt', name: @email %>
+<%= t 'mail.subscription.confirmation', confirmation: @confirmation %>
+<%= t 'mail.subscription.end', edit: @edit, unsubscribe: @unsubscribe %>
+<% end %>

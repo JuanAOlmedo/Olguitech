@@ -5,8 +5,6 @@ class User < ApplicationRecord
 
     friendly_id :email, use: :slugged
 
-    after_create :send_confirmation_instructions
-
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
     has_secure_token :edit_token
@@ -14,13 +12,6 @@ class User < ApplicationRecord
     has_secure_token :confirmation_token
 
     has_many :messages, dependent: :destroy
-
-    def send_confirmation_instructions
-        return if confirmed?
-
-        update(confirmation_sent_at: Time.now)
-        ConfirmationMailer.confirmation_instructions(self).deliver_later
-    end
 
     def confirm
         return if confirmed?
@@ -34,5 +25,21 @@ class User < ApplicationRecord
 
     def confirmed?
         !!confirmed_at
+    end
+
+    # Suscribe a la newsletter y manda un mail si correponde
+    # El usuario podría no existir en la base de datos todavía
+    def subscribe
+        was_subscribed = newsletter
+
+        self.newsletter = true
+        self.locale = I18n.locale
+
+        success = save
+
+        # Mandar un mail confirmando la suscripción solo si el usuario no estaba suscrito previamente
+        SubscriptionMailer.subscribe(self).deliver if success && !was_subscribed
+
+        success
     end
 end

@@ -3,9 +3,9 @@ Olguitech s.a.s.
 
 <% if @confirmed %>
 <%= t 'mail.contact.body', name: @name, message: @message %>
-<%= t 'mail.contact.confirmation', link: @confirmation_link %>
-<%= t 'mail.contact.edit', link: @edit_link %>
+<%= t('mail.contact.edit', link: @edit_link) %>
 <% else %>
 <%= t 'mail.contact.body', name: @name, message: @message %>
-<%= t('mail.contact.edit', link: @edit_link) %>
+<%= t 'mail.contact.confirmation', link: @confirmation_link %>
+<%= t 'mail.contact.edit', link: @edit_link %>
 <% end %>

@@ -21,6 +21,10 @@
 
     <%= javascript_importmap_tags %>
 
+    <% if admin_signed_in? %>
+        <script type="module"> import "trix"; </script>
+    <% end %>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track' => 'reload' %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">

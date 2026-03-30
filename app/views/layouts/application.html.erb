@@ -27,6 +27,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track' => 'reload' %>
 
+    <link rel="preload" href="/assets/SourceSansPro-Variable.woff2" as="font" type="font/woff2" crossorigin>
+
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
     <%= yield :head %>
 </head>

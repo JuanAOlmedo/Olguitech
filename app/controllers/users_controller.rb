@@ -77,7 +77,9 @@ class UsersController < ApplicationController
     # and update their locale
     # POST /users/subscribe
     def subscribe
-        unless valid_turnstile?
+        try do
+            validate_cloudflare_turnstile
+        rescue RailsCloudflareTurnstile::Forbidden
             redirect_to root_path, status: :see_other
             return
         end

@@ -40,7 +40,7 @@ gem 'devise', '~> 5.0'
 gem 'ed25519'
 
 # Captcha
-gem 'cloudflare-turnstile-rails'
+gem 'rails_cloudflare_turnstile'
 
 # Use simple_form for devise forms
 gem 'simple_form', '5.3.0'

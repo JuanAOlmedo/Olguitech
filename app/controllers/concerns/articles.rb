@@ -75,7 +75,7 @@ module Articles
             end
         else
             respond_to do |format|
-                format.html { redirect_to @article, notice: 'Artículo actualizado exitosamente.' }
+                format.html { redirect_to @article, notice: 'Error actualizando el artículo.' }
                 format.json { head :unprocessable_entity }
             end
         end

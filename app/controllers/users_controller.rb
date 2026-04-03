@@ -77,20 +77,17 @@ class UsersController < ApplicationController
     # and update their locale
     # POST /users/subscribe
     def subscribe
-        try do
-            validate_cloudflare_turnstile
-        rescue RailsCloudflareTurnstile::Forbidden
-            redirect_to root_path, status: :see_other
-            return
-        end
+        validate_cloudflare_turnstile unless Rails.env.test?
 
-        @user = User.find_by(subscribe_user_params) || User.new(subscribe_user_params)
+        @user = User.find_or_initialize_by(subscribe_user_params)
 
         if @user.subscribe
             redirect_to root_path, notice: t('thanks_for_subscribing')
         else
             redirect_to root_path, alert: t('valid_email'), status: :see_other
         end
+    rescue RailsCloudflareTurnstile::Forbidden
+        redirect_to root_path, status: :see_other, alert: t('contact.captcha_failed')
     end
 
     # Unsubscribe the user to newsletters with the provided newsletter_token

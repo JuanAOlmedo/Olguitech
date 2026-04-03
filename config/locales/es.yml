@@ -54,6 +54,7 @@ es:
         error: impidió que se procese la consulta
         errors: impidieron que se procese la consulta
         first_time: El mensaje se envió correctamente. Opcionalmente, puede dejarnos sus datos de contacto.
+        captcha_failed: El captcha no fue validado correctamente. Por favor, intente nuevamente.
     users:
         edit_account: Editar cuenta
         edit: Editar

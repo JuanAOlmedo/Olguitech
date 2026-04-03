@@ -14,8 +14,8 @@ class MainController < ApplicationController
 
     # GET /contacto
     def contacto
-        @message = Message.new
-        @user = @message.user
+        @user = User.new
+        @message = @user.messages.build
     end
 
     # GET /nosotros

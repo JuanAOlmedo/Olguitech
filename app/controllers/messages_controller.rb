@@ -5,24 +5,22 @@ class MessagesController < ApplicationController
     # for that user and update their locale
     # POST /messages
     def create
-        @user = User.find_by(email: user_params[:email]) || User.new(user_params)
-        @message = @user.messages.new message_params
+        @user = User.find_or_initialize_by(email: user_params[:email])
+        @user.name = user_params[:name] unless user_params[:name].blank?
         @user.locale = I18n.locale
 
-        unless valid_turnstile?(model: @user)
-            render 'main/contacto', status: :unprocessable_entity
-            return
-        end
+        @message = @user.messages.build message_params
 
-        if @user.save && @message.save
-            @message.send_mail
-            redirect_user
-        else
-            # Destroy message so that the user doesn't get redirected to
-            # the message update path
-            @message.destroy
-            render 'main/contacto', status: :unprocessable_entity
-        end
+        validate_cloudflare_turnstile unless Rails.env.test?
+
+        @user.save!
+
+        redirect_user
+    rescue RailsCloudflareTurnstile::Forbidden
+        @user.errors.add(:base, I18n.t('contact.captcha_failed'))
+        render 'main/contacto', status: :unprocessable_entity
+    rescue ActiveRecord::RecordInvalid
+        render 'main/contacto', status: :unprocessable_entity
     end
 
     private

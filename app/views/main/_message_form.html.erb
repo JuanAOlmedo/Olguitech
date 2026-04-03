@@ -14,7 +14,7 @@
     <% end %>
 
     <div class="form big-card">
-        <%= fields_for :user, @message.user do |user_form| %>
+        <%= fields_for :user do |user_form| %>
             <div class="field">
                 <%= user_form.label :name, I18n.t('users.name') %>
                 <%= user_form.text_field :name %>
@@ -41,7 +41,7 @@
         </div>
 
         <div style="width: 100%; margin-bottom: 1rem;">
-            <%= cloudflare_turnstile_tag %>
+            <%= cloudflare_turnstile %>
         </div>
 
         <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>

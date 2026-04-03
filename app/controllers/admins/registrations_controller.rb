@@ -14,8 +14,6 @@ module Admins
         private
 
         def redirect_unless_admin
-            return if admin_signed_in?
-
             redirect_to root_path, alert: I18n.t('shared.admins')
         end
 

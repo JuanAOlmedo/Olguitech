@@ -55,6 +55,7 @@ en:
         error: prevented your request from being processed
         errors: prevented your request from being processed
         first_time: It looks like it's the first time you get in touch with us, please fill out your details
+        captcha_failed: The captcha was not validated correctly. Please try again.
     users:
         edit_account: Edit Account
         edit: Edit

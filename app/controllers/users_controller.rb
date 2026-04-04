@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+    include Captcha
+
     before_action :set_user, only: %i[show edit update destroy]
     before_action :authenticate_edit_token, only: %i[edit destroy update]
     before_action :authenticate_admin!,
@@ -77,7 +79,7 @@ class UsersController < ApplicationController
     # and update their locale
     # POST /users/subscribe
     def subscribe
-        validate_cloudflare_turnstile unless Rails.env.test?
+        check_recaptcha!
 
         @user = User.find_or_initialize_by(subscribe_user_params)
 
@@ -86,7 +88,7 @@ class UsersController < ApplicationController
         else
             redirect_to root_path, alert: t('valid_email'), status: :see_other
         end
-    rescue RailsCloudflareTurnstile::Forbidden
+    rescue CaptchaError
         redirect_to root_path, status: :see_other, alert: t('contact.captcha_failed')
     end
 

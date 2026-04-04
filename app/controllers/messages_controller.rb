@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MessagesController < ApplicationController
+    include Captcha
+
     # Find or create a new user based on the email, create a new message
     # for that user and update their locale
     # POST /messages
@@ -11,13 +13,12 @@ class MessagesController < ApplicationController
 
         @message = @user.messages.build message_params
 
-        validate_cloudflare_turnstile unless Rails.env.test?
+        check_recaptcha! @user
 
         @user.save!
 
         redirect_user
-    rescue RailsCloudflareTurnstile::Forbidden
-        @user.errors.add(:base, I18n.t('contact.captcha_failed'))
+    rescue CaptchaError
         render 'main/contacto', status: :unprocessable_entity
     rescue ActiveRecord::RecordInvalid
         render 'main/contacto', status: :unprocessable_entity

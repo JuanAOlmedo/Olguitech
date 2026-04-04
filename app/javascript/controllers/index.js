@@ -33,3 +33,6 @@ application.register("reset-form", ResetFormController);
 
 import UserIndexController from "./user_index_controller";
 application.register("user-index", UserIndexController);
+
+import CaptchaController from "./captcha_controller";
+application.register("captcha", CaptchaController);

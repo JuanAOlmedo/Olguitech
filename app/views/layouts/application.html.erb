@@ -20,7 +20,6 @@
     <link rel="preload" as="image" href="<%= image_url('vectors/vector6.svg') %>">
 
     <%= javascript_importmap_tags %>
-    <%= cloudflare_turnstile_script_tag %>
 
     <% if admin_signed_in? %>
         <script type="module"> import "trix"; </script>

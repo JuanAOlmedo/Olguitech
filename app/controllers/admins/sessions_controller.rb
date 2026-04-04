@@ -10,7 +10,7 @@ module Admins
 
         def validate_turnstile_and_redirect
             check_recaptcha!
-        rescue CaptchaError
+        rescue Captcha::Invalid
             redirect_to new_admin_session_path, status: :see_other, alert: 'No pudimos verificar que seas humano. Intenta nuevamente.'
         end
     end

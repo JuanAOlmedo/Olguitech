@@ -1,4 +1,4 @@
-<%= form_with model: @message, id: 'message-form' do |form| %>
+<%= form_with model: @message, url: contacto_path, id: 'message-form' do |form| %>
     <% if @user && @user.errors.any? %>
         <div id="error_explanation">
             <h2>
@@ -40,8 +40,8 @@
             </div>
         </div>
 
-        <div style="width:100%;" data-controller="captcha" >
-            <%= recaptcha_tags theme: :light %>
+        <div style="width:100%; margin-bottom: 0.7rem;">
+            <%= recaptcha_tags theme: :light, site_key: Rails.application.credentials.CAPTCHA_SITE_KEY %>
         </div>
 
         <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>

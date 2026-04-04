@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
+class CaptchaError < StandardError; end
+
 class MessagesController < ApplicationController
     include Captcha
 
     # Find or create a new user based on the email, create a new message
     # for that user and update their locale
     # POST /messages
+    #      /contacto
     def create
         @user = User.find_or_initialize_by(email: user_params[:email])
         @user.name = user_params[:name] unless user_params[:name].blank?
@@ -18,9 +21,7 @@ class MessagesController < ApplicationController
         @user.save!
 
         redirect_user
-    rescue CaptchaError
-        render 'main/contacto', status: :unprocessable_entity
-    rescue ActiveRecord::RecordInvalid
+    rescue Captcha::Invalid, ActiveRecord::RecordInvalid
         render 'main/contacto', status: :unprocessable_entity
     end
 

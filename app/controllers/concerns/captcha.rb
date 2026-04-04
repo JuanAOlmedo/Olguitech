@@ -1,17 +1,14 @@
-class CaptchaError < StandardError; end
-
-# Provee un método para verificar captchas, lanzando la excepción CaptchaError si la verificación falla.
+# Provee un método para verificar captchas, lanzando la excepción Captcha::Invalid si la verificación falla.
 module Captcha
+    class Invalid < StandardError; end
+
     extend ActiveSupport::Concern
 
     private
 
     def check_recaptcha!(model = nil)
-        #return unless Rails.env.production?
+        return if verify_recaptcha model: model, secret_key: Rails.application.credentials.CAPTCHA_SECRET_KEY
 
-        return if verify_recaptcha minimum_score: 0.5
-
-        model&.errors&.add(:base, I18n.t('contact.captcha_failed'))
-        raise CaptchaError
+        raise Captcha::Invalid
     end
 end

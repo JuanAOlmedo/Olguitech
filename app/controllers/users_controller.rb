@@ -88,7 +88,7 @@ class UsersController < ApplicationController
         else
             redirect_to root_path, alert: t('valid_email'), status: :see_other
         end
-    rescue CaptchaError
+    rescue Captcha::Invalid
         redirect_to root_path, status: :see_other, alert: t('contact.captcha_failed')
     end
 

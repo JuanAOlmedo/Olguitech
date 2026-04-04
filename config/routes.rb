@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         end
 
         get '/contacto', to: 'main#contacto', as: :contacto
+        post '/contacto', to: 'messages#create'
         get '/nosotros', to: 'main#nosotros', as: :nosotros
         root 'main#main'
     end

@@ -27,8 +27,8 @@
             <%= f.input :remember_me, inline_label: 'Recuérdame', as: :boolean if devise_mapping.rememberable? %>
         </div>
 
-        <div style="width:100%;" data-controller="captcha" >
-            <%= recaptcha_tags theme: :light %>
+        <div style="width:100%; margin-bottom: 0.7rem;">
+            <%= recaptcha_tags theme: :light, site_key: Rails.application.credentials.CAPTCHA_SITE_KEY %>
         </div>
 
         <div style="width: 100%;"></div>

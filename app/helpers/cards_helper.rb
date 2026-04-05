@@ -123,7 +123,7 @@ module CardsHelper
         # The content of the card itself (title, description and link)
         def card_content(element)
             tag.div do
-                tag.h2(element.localized_short_title, class: 'title') +
+                tag.h2(element.localized_title, class: 'title') +
                     tag.p(element.localized_short_desc, class: 'big-text') +
                     link_to(I18n.t('general.see_more'), element, class: 'btn')
             end

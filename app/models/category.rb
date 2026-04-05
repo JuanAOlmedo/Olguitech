@@ -69,7 +69,9 @@ class Category < ApplicationRecord
     # Unrelate a model from the category
     # model_name should be either 'products', 'solutions', or 'projects'
     def unrelate(model_name, id)
-        send(model_name).delete id
+        raise "Invalid model name: #{model_name}" unless %w[products solutions projects].include?(model_name)
+
+        public_send(model_name).delete id
     end
 
     def self.unsupercategorized

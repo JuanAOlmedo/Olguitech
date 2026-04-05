@@ -1,10 +1,10 @@
 <%= tag.h1 Category.model_name.human.pluralize, class: 'main-title' %>
 
 <%= turbo_frame_tag 'super_categories' do %>
-    <div class='all-categories centered'>
+    <div class="all-categories centered">
         <% unless @model_name.nil? %>
             <%= link_to t('general.see_all'),
-                        @model_path,
+                        @model_class,
                         data: { turbo_frame: 'index' },
                         class: 'link' %>
         <% end %>

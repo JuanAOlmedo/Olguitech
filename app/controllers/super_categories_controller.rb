@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 
+MODEL_MAP = {
+    'projects' => Project,
+    'solutions' => Solution,
+    'products' => Product
+}.freeze
+
 class SuperCategoriesController < ApplicationController
     before_action :set_super_category, only: %i[show edit update destroy]
     before_action :set_model_name, only: %i[show index]
@@ -29,9 +35,7 @@ class SuperCategoriesController < ApplicationController
         if @model_name.nil?
             @super_categories = SuperCategory.all
         else
-            model = @model_name.singularize.titleize.constantize
-            @model_path = model
-            @uncategorized = model.published.where.missing :categories
+            @uncategorized = @model_class.published.where.missing :categories
             @uncategorized_path = url_for(controller: @model_name, action: :index, uncategorized: true)
 
             @super_categories = SuperCategory.related_to @model_name
@@ -82,8 +86,10 @@ class SuperCategoriesController < ApplicationController
     # When accessing super_categories from solutions, products or projects index,
     # only super categories and categories relevant to those models should be displayed.
     # Set the model name for the current request.
+
     def set_model_name
-        @model_name = params[:model_name] if params[:model_name].in? %w[projects solutions products]
+        @model_class = MODEL_MAP[params[:model_name]]
+        @model_name = params[:model_name] if @model_class
     end
 
     # Only allow a list of trusted parameters through.

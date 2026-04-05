@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     def subscribe
         check_recaptcha!
 
-        @user = User.find_or_initialize_by(subscribe_user_params)
+        @user = User.find_or_initialize_by(email: subscribe_user_params[:email])
 
         if @user.subscribe
             redirect_to root_path, notice: t('thanks_for_subscribing')

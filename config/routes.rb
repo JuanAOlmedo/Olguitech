@@ -18,7 +18,7 @@ Rails.application.routes.draw do
             get '/confirmation/:confirmation_token', to: 'users#confirmation', on: :collection, as: :confirm
             post '/unsubscribe/:newsletter_token', to: 'users#unsubscribe', on: :collection
             get '/unsubscribe/:newsletter_token', to: 'users#unsubscribe', on: :collection, as: :unsubscribe
-            post '/subscribe', to: 'users#subscribe', on: :collection
+            post '/subscribe', to: 'users#subscribe', on: :collection, as: :subscribe
         end
 
         devise_for :admins, controllers: { registrations: 'admins/registrations', sessions: 'admins/sessions' }

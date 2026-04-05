@@ -63,17 +63,20 @@
         </p>
 
         <div class="form">
-            <%= form_with model: @user, url: "/#{I18n.locale}/users/subscribe", method: :post do |form| %>
-                <div class="field">
+            <%= form_with model: @user,
+                          url: subscribe_users_path,
+                          method: :post,
+                          data: { controller: 'captcha', action: 'focusin->captcha#load' } do |form| %>
+                <div class="field" style="padding-bottom: 0;">
                     <%= form.label :email, 'Email' %>
                     <%= form.email_field :email %>
                 </div>
 
-                <div style="width:100%; margin-bottom: 0.7rem;">
-                    <%= recaptcha_tags theme: :light, site_key: Rails.application.credentials.CAPTCHA_SITE_KEY %>
-                </div>
-
                 <%= form.submit t('.subscribe'), class: 'btn' %>
+
+                <div style="min-height: 4.8rem; margin-top: 1rem;">
+                    <%= recaptcha_tags theme: :light, script: false, site_key: Rails.application.credentials.CAPTCHA_SITE_KEY %>
+                </div>
             <% end %>
         </div>
     </div>

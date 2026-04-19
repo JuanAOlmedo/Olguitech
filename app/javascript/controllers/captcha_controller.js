@@ -4,19 +4,26 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
     static targets = ["script"];
 
-    connect() {
-        this.loaded = false;
-    }
-
     load() {
-        if (this.loaded) return;
+        if (document.querySelector(".g-recaptcha").innerHTML !== "") return;
 
-        const script = document.createElement("script");
-        script.src = "https://www.recaptcha.net/recaptcha/api.js";
-        script.async = true;
-        script.defer = true;
-        document.head.appendChild(script);
+        if (!window.grecaptcha) {
+            // Script no cargado todavía
+            const script = document.createElement("script");
+            script.src = "https://www.recaptcha.net/recaptcha/api.js";
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+            return;
+        }
 
-        this.loaded = true;
+        // Si el script ya está cargado, intentamos renderizar el reCAPTCHA
+        // A veces falla uno de los dos comandos sin razón aparente, por eso se ponen
+        // los dos
+        try {
+            grecaptcha.render(document.querySelector(".g-recaptcha"));
+        } catch {
+            grecaptcha.reset(document.querySelector(".g-recaptcha"));
+        }
     }
 }

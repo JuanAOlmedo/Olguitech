@@ -1,13 +1,29 @@
 <%= form_with model: @newsletter do |form| %>
     <div class="form">
-        <div class="field">
+        <div class="field" data-controller="counter">
             <%= form.label :title, 'Título' %>
-            <%= form.text_area :title %>
+            <%= form.text_area :title,
+                maxlength: 60,
+                data: {
+                  counter_target: "content",
+                  action: "input->counter#updateCounter"
+                } %>
+            <div style="text-align: right;">
+                <span data-counter-target="counter">0/60</span>
+            </div>
         </div>
 
-        <div class="field">
+        <div class="field" data-controller="counter">
             <%= form.label :subject, 'Asunto' %>
-            <%= form.text_area :subject %>
+            <%= form.text_area :subject,
+                maxlength: 60,
+                data: {
+                  counter_target: "content",
+                  action: "input->counter#updateCounter"
+                } %>
+            <div style="text-align: right;">
+                <span data-counter-target="counter">0/60</span>
+            </div>
         </div>
 
         <div class="rich-text field">

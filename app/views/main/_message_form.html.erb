@@ -26,17 +26,17 @@
             </div>
         <% end %>
 
-        <div class="field separate" data-controller="contacto">
+        <div class="field separate" data-controller="counter">
             <%= form.label :content, t('contact.message') + ' *' %>
             <%= form.text_area :content,
                 maxlength: 2000,
                 style: 'height: 150px; margin-bottom: 0',
                 data: {
-                  contacto_target: "content",
-                  action: "input->contacto#updateCounter"
+                  counter_target: "content",
+                  action: "input->counter#updateCounter"
                 } %>
             <div style="text-align: right;">
-                <span data-contacto-target="counter">0/2000</span>
+                <span data-counter-target="counter">0/2000</span>
             </div>
         </div>
 

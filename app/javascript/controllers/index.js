@@ -13,8 +13,8 @@ application.register("article-creator", ArticleCreatorController)
 import CaptchaController from "./captcha_controller"
 application.register("captcha", CaptchaController)
 
-import ContactoController from "./contacto_controller"
-application.register("contacto", ContactoController)
+import CounterController from "./counter_controller"
+application.register("counter", CounterController)
 
 import DashboardController from "./dashboard_controller"
 application.register("dashboard", DashboardController)

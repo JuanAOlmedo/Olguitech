@@ -18,27 +18,21 @@
             <% if @solution_drafts.any? %>
                 <h2 class="title centered"> Soluciones (borradores) </h2>
                 <div class='dashboard-card-holder' id='drafted_solutions'>
-                    <% @solution_drafts.each do |article| %>
-                        <%= render partial: 'article', object: article %>
-                    <% end %>
+                    <%= render partial: 'article', collection: @solutions_drafts %>
                 </div>
             <% end %>
 
             <% if @project_drafts.any? %>
                 <h2 class="title centered"> Proyectos (borradores) </h2>
                 <div class='dashboard-card-holder' id='drafted_projects'>
-                    <% @project_drafts.each do |article| %>
-                        <%= render partial: 'article', object: article %>
-                    <% end %>
+                    <%= render partial: 'article', collection: @project_drafts %>
                 </div>
             <% end %>
 
             <% if @product_drafts.any? %>
                 <h2 class="title centered"> Productos (borradores) </h2>
                 <div class='dashboard-card-holder' id='drafted_products'>
-                    <% @product_drafts.each do |article| %>
-                        <%= render partial: 'article', object: article %>
-                    <% end %>
+                    <%= render partial: 'article', collection: @product_drafts %>
                 </div>
             <% end %>
 
@@ -50,27 +44,21 @@
         <% if @solutions.any? %>
             <h2 class="title centered"> Soluciones publicadas </h2>
             <div class='dashboard-card-holder' id='published_solutions'>
-                <% @solutions.each do |article| %>
-                    <%= render partial: 'article', object: article %>
-                <% end %>
+                <%= render partial: 'article', collection: @solutions %>
             </div>
         <% end %>
 
         <% if @projects.any? %>
             <h2 class="title centered"> Proyectos publicados </h2>
             <div class='dashboard-card-holder' id='published_projects'>
-                <% @projects.each do |article| %>
-                    <%= render partial: 'article', object: article %>
-                <% end %>
+                <%= render partial: 'article', collection: @projects %>
             </div>
         <% end %>
 
         <% if @products.any? %>
             <h2 class="title centered"> Productos publicados </h2>
             <div class='dashboard-card-holder' id='published_products'>
-                <% @products.each do |article| %>
-                    <%= render partial: 'article', object: article %>
-                <% end %>
+                <%= render partial: 'article', collection: @products %>
             </div>
         <% end %>
     </div>

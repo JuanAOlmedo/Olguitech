@@ -7,9 +7,7 @@
                 Categorías sin Super categoría
             </h2>
             <div id='uncategorized_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
-                <% @unsupercategorized.each do |category| %>
-                    <%= render 'dashboard/category', category: %>
-                <% end %>
+                <%= render partial: 'dashboard/category', collection: @unsupercategorized %>
             </div>
         <% end %>
 
@@ -18,9 +16,7 @@
                 Artículos sin categoría
             </h2>
             <div id='uncategorized_big_card' class='big-card' style='width: 100%; padding: 0.8rem;'>
-                <% @uncategorized.each do |uncategorized| %>
-                    <%= render 'dashboard/article', article: uncategorized %>
-                <% end %>
+                <%= render partial: 'dashboard/article', collection: @uncategorized %>
             </div>
         <% end %>
 
@@ -33,9 +29,7 @@
         </div>
 
         <div id='super-categories'>
-            <% @super_categories.each do |super_category| %>
-                <%= render 'dashboard/super_category', super_category: %>
-            <% end %>
+            <%= render partial: 'dashboard/super_category', collection: @super_categories %>
         </div>
     </div>
 </div>

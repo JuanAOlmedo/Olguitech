@@ -9,9 +9,7 @@
         <div class='dashboard-drafts'>
             <% if @newsletter_drafts.any? %>
                 <div class='dashboard-card-holder' id='drafted_newsletters'>
-                    <% @newsletter_drafts.each do |newsletter| %>
-                        <%= render partial: 'newsletter', object: newsletter %>
-                    <% end %>
+                    <%= render partial: 'newsletter', collection: @newsletter_drafts %>
                 </div>
             <% else %>
                 <h2 id='dashboard-message'> No hay ningún borrador </h2>
@@ -20,9 +18,7 @@
 
         <h2 class="title centered"> Newsletters enviadas </h2>
         <div class='dashboard-card-holder' id='sent_newsletters'>
-            <% @newsletters.each do |newsletter| %>
-                <%= render partial: 'newsletter', object: newsletter %>
-            <% end %>
+            <%= render partial: 'newsletter', collection: @newsletters %>
         </div>
     </div>
 </div>

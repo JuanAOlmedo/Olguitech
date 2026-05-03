@@ -24,9 +24,7 @@
                     <th> Acciones </th>
                 </tr>
 
-                <% @users.each do |user| %>
-                    <%= render 'user', user: %>
-                <% end %>
+                <%= render partial: 'user', collection: @users %>
             </table>
         </div>
 

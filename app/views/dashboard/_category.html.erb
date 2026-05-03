@@ -10,6 +10,6 @@
 
     <div class='dashboard-card-holder'>
         <% associated = [category.dashboard_solutions, category.dashboard_projects, category.dashboard_products].flatten %>
-        <%= render partial: 'dashboard/article', collection: associated, cached: true, locals: { category: } %>
+        <%= render partial: 'dashboard/article', collection: associated, locals: { category: } %>
     </div>
 </div>

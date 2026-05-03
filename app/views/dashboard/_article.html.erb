@@ -9,7 +9,7 @@
         <% if @categories %>
             <%= link_to 'Editar', dashboard_edit_path(article), class: 'btn' %>
 
-            <%= unrelate_category_link category, article if article.categories.any? %>
+            <%= unrelate_category_link category, article if local_assigns[:category] %>
         <% elsif article.trashed? %>
             <%= update_status_link 'Sacar de la papelera', article, :drafted %>
             <%= delete_article_link article %>

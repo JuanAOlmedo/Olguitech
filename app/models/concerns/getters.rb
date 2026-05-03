@@ -42,6 +42,10 @@ module Getters
             %i[id slug title title2 description description2]
         end
 
+        def fields_for_dashboard
+            %i[id title title2 status slug]
+        end
+
         def uncategorized
             where.missing :categories
         end

@@ -2,7 +2,7 @@
     <%= render 'dashboard' %>
 
     <div class='dashboard' data-controller="dashboard">
-        <% if @unsupercategorized.any? %>
+        <% if @unsupercategorized.size > 0 %>
             <h2 class='title centered'>
                 Categorías sin Super categoría
             </h2>

@@ -20,13 +20,18 @@ class SuperCategoriesController < ApplicationController
     def edit; end
 
     # GET /super_categories/1
-    # If the model name is set, fetch categories related to the model
     def show
-        @categories = if @model_name.nil?
-                          @super_category.categories
-                      else
-                          @super_category.categories.where.associated(@model_name.to_sym).distinct
-                      end
+        # Si @model_name está seteado, solo incluir categorías relacionadas a ese modelo
+        if @model_name.nil?
+            redirect_to root_path, alert: 'Operación no permitida', status: :see_other
+        else
+            @categories = @super_category.categories
+                                         .where.associated(@model_name.to_sym)
+                                         .where(@model_name => { status: 0 })
+                                         .includes(@model_name => { image_attachment: :blob })
+                                         .distinct
+                                         .load
+        end
     end
 
     # GET /super_categories
@@ -38,7 +43,7 @@ class SuperCategoriesController < ApplicationController
             @uncategorized = @model_class.published.where.missing :categories
             @uncategorized_path = url_for(controller: @model_name, action: :index, uncategorized: true)
 
-            @super_categories = SuperCategory.related_to @model_name
+            @super_categories = SuperCategory.related_to(@model_name)
         end
     end
 

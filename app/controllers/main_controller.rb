@@ -6,7 +6,11 @@ class MainController < ApplicationController
     def main
         @solutions, @projects, @products =
             [Solution, Project, Product].map! do |model|
-                model.published.select(model.fields_for_cards).order(created_at: :desc).first 4
+                model.published
+                     .select(model.fields_for_cards)
+                     .order(created_at: :desc)
+                     .includes(image_attachment: { blob: :variant_records })
+                     .first(4)
             end
 
         @user = User.new

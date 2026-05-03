@@ -16,11 +16,10 @@ module Articles
     #     /projects
     def index
         @uncategorized = params[:uncategorized].present?
-        @articles = if @uncategorized
-                        model.published.uncategorized.select model.fields_for_cards
-                    else
-                        model.published.select model.fields_for_cards
-                    end
+        scope = model.published
+        scope = scope.uncategorized if @uncategorized
+        @articles = scope.select(model.fields_for_cards)
+                         .includes(image_attachment: :blob)
     end
 
     # GET /solutions/new

@@ -22,7 +22,7 @@
     <td> <%= user.newsletter ? 'Sí' : 'No' %> </td>
 
     <td>
-        <% message_count = user.messages.count %>
+        <% message_count = user.messages.size %>
 
         <span class="<%= message_count.positive? ? 'times-contacted' : '' %>">
             <% if message_count.positive? %>

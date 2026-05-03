@@ -9,7 +9,7 @@ class MainController < ApplicationController
                 model.published
                      .select(model.fields_for_cards)
                      .order(created_at: :desc)
-                     .includes(image_attachment: { blob: :variant_records })
+                     .includes(image_attachment: :blob)
                      .first(4)
             end
 

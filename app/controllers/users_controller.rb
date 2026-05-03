@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     # GET /users
     def index
-        @users = User.all.order id: :asc
+        @users = User.all.includes(:messages).order id: :asc
     end
 
     # Shows the messages of a user, only used for admins

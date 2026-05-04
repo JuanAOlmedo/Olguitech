@@ -12,11 +12,32 @@ class SuperCategory < ApplicationRecord
         title
     end
 
-    # Get all super categories which have categories related to published articles
-    # name represents the model name of the article type
+    # Obtener todas las super categorías que tienen categorías relacionadas a algún
+    # artículo publicado de tipo name
     def self.related_to(name)
         includes(categories: [name]) # Include categories and the provided model
             .where(categories: { name => { status: 0 } }) # Only allow published solutions
             .distinct # Remove duplicates
+    end
+
+    # Obtener tdas las super categorías, con sus categorías y sus respectivos artículos
+    # para dashboard
+    def self.includes_dashboard_categories
+        includes(
+            dashboard_categories: {
+                dashboard_solutions: { image_attachment: :blob },
+                dashboard_products: { image_attachment: :blob },
+                dashboard_projects: { image_attachment: :blob }
+            }
+        )
+    end
+
+    # Obtener todas las categorías de una super categoría relacionadas a algún
+    # artículo publicado de tipo name
+    def categories_related_to(name)
+        categories
+            .where(name => { status: 0 })
+            .includes(name => { image_attachment: :blob })
+            .distinct
     end
 end

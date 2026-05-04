@@ -21,29 +21,24 @@ class SuperCategoriesController < ApplicationController
 
     # GET /super_categories/1
     def show
-        # Si @model_name está seteado, solo incluir categorías relacionadas a ese modelo
+        # Si @model_name está seteado, incluir categorías relacionadas a ese modelo
         if @model_name.nil?
             redirect_to root_path, alert: 'Operación no permitida', status: :see_other
         else
-            @categories = @super_category.categories
-                                         .where.associated(@model_name.to_sym)
-                                         .where(@model_name => { status: 0 })
-                                         .includes(@model_name => { image_attachment: :blob })
-                                         .distinct
-                                         .load
+            @categories = @super_category.categories_related_to(@model_name).load
         end
     end
 
     # GET /super_categories
-    # If the model name is set, fetch super categories related to the model
     def index
+        # Si @model_name está seteado, incluir categorías relacionadas a ese modelo
         if @model_name.nil?
-            @super_categories = SuperCategory.all
+            redirect_to root_path, alert: 'Operación no permitida', status: :see_other
         else
-            @uncategorized = @model_class.published.where.missing :categories
+            @uncategorized = @model_class.published.uncategorized.load
             @uncategorized_path = url_for(controller: @model_name, action: :index, uncategorized: true)
 
-            @super_categories = SuperCategory.related_to(@model_name)
+            @super_categories = SuperCategory.related_to(@model_name).load
         end
     end
 
@@ -91,7 +86,6 @@ class SuperCategoriesController < ApplicationController
     # When accessing super_categories from solutions, products or projects index,
     # only super categories and categories relevant to those models should be displayed.
     # Set the model name for the current request.
-
     def set_model_name
         @model_class = MODEL_MAP[params[:model_name]]
         @model_name = params[:model_name] if @model_class

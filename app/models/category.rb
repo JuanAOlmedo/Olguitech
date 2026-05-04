@@ -78,12 +78,19 @@ class Category < ApplicationRecord
         where super_category_id: nil
     end
 
+    def self.includes_dashboard_articles
+        select(:id, :title, :super_category_id, :slug)
+            .includes(
+                dashboard_solutions: { image_attachment: :blob },
+                dashboard_products: { image_attachment: :blob },
+                dashboard_projects: { image_attachment: :blob }
+            )
+    end
+
     # Return categories that have at least one published product, solution, or project
     def self.related_to_published_categorizable
         Category.left_outer_joins(:products, :solutions, :projects)
-                .where(products: { status: 0 })
-                .or(Category.where(solutions: { status: 0 })
-                .or(Category.where(projects: { status: 0 })))
+                .where('products.status = 0 OR solutions.status = 0 OR projects.status = 0')
                 .distinct
     end
 end

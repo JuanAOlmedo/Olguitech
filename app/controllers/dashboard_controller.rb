@@ -27,27 +27,12 @@ class DashboardController < ApplicationController
         @uncategorized.flatten!
 
         # Categorías sin supercategorías, incluyendo sus artículos
-        @unsupercategorized =
-            Category.select(:id, :title, :super_category_id, :slug)
-                    .includes(
-                        dashboard_solutions: { image_attachment: :blob },
-                        dashboard_products: { image_attachment: :blob },
-                        dashboard_projects: { image_attachment: :blob }
-                    )
-                    .unsupercategorized
-                    .load
+        @unsupercategorized = Category.includes_dashboard_articles
+                                      .unsupercategorized
+                                      .load
 
         # Super categorías, incluyendo categorías y sus respectivos artículos
-        @super_categories =
-            SuperCategory.all
-                         .includes(
-                             dashboard_categories: {
-                                 dashboard_solutions: { image_attachment: :blob },
-                                 dashboard_products: { image_attachment: :blob },
-                                 dashboard_projects: { image_attachment: :blob }
-                             }
-                         )
-                         .load
+        @super_categories = SuperCategory.includes_dashboard_categories.load
     end
 
     # GET /dashboard/newsletters
@@ -75,9 +60,9 @@ class DashboardController < ApplicationController
         model = model.published if published
         model = model.drafted if drafted
         model = model.trashed if trashed
-        model.uncategorized
+        model.includes_image
              .select(model.fields_for_dashboard)
-             .includes(image_attachment: :blob)
+             .uncategorized
              .load
     end
 end

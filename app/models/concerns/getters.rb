@@ -33,6 +33,10 @@ module Getters
         content
     end
 
+    def includes_image
+        includes(image_attachment: :blob)
+    end
+
     def self.included(base)
         base.extend(ClassMethods)
     end
@@ -48,6 +52,10 @@ module Getters
 
         def uncategorized
             where.missing :categories
+        end
+
+        def includes_image
+            includes(image_attachment: :blob)
         end
     end
 end

@@ -20,6 +20,7 @@ class DashboardController < ApplicationController
     # GET /dashboard/categories
     def categories
         @categories = true # Para determinar path en las views
+
         # Artículos sin categorías
         @uncategorized = [Solution, Project, Product].map do |model|
             get_articles(model, uncategorized: true)

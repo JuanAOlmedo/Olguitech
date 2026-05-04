@@ -40,7 +40,9 @@ module Articles
 
         return if @article.id.in? session[session_name]
 
-        @article.update views: @article.views + 1
+        # Usar update_column y no update para evitar callbacks, en particular
+        # el que expira cachés.
+        @article.update_column :views, @article.views + 1
         session[session_name] << @article.id
     end
 

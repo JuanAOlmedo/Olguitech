@@ -23,4 +23,13 @@ class Solution < ApplicationRecord
     # Send mail after the solution has been created or edited as published
     # and if no mail has been sent before
     after_save_commit :send_mail, if: :published?, unless: :newsletter_sent
+
+    # Expirar el caché de main cuando se actualiza alguna solución
+    after_commit :expire_main_cache
+
+    private
+
+    def expire_main_cache
+        Rails.cache.delete("#{model_name.cache_key}/main")
+    end
 end

@@ -63,7 +63,6 @@ class DashboardController < ApplicationController
         model = model.trashed if trashed
         model.includes_image
              .select(model.fields_for_dashboard)
-             .uncategorized
              .load
     end
 end

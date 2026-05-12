@@ -39,9 +39,9 @@ module Getters
 
     def includes_localized_content
         if I18n.locale == :es
-            includes(rich_text_content: { embeds_attachments: :blob })
+            with_rich_text_content_and_embeds
         else
-            includes(rich_text_content2: { embeds_attachments: :blob })
+            with_rich_text_content2_and_embeds
         end
     end
 
@@ -68,9 +68,9 @@ module Getters
 
         def includes_localized_content
             if I18n.locale == :es
-                includes(rich_text_content: { embeds_attachments: :blob })
+                with_rich_text_content_and_embeds
             else
-                includes(rich_text_content2: { embeds_attachments: :blob })
+                with_rich_text_content2_and_embeds
             end
         end
     end

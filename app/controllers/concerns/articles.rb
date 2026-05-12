@@ -8,6 +8,7 @@ module Articles
     included do
         before_action :set_article, only: %i[show edit update destroy change_status]
         before_action :authenticate_admin!, except: %i[index show]
+        after_action :update_views, only: %i[show]
     end
 
     # If the uncategorized param is present, show only uncategorized articles
@@ -35,15 +36,11 @@ module Articles
     #     /products/1
     #     /projects/1
     def show
-        session_name = :"viewed_#{model.model_name.plural}"
-        session[session_name] = [] unless session[session_name]
-
-        return if @article.id.in? session[session_name]
-
-        # Usar update_column y no update para evitar callbacks, en particular
-        # el que expira cachés.
-        @article.update_column :views, @article.views + 1
-        session[session_name] << @article.id
+        @article = model.friendly
+                        .includes_localized_content
+                        .includes_image
+                        .includes(:categories)
+                        .find(params[:id])
     end
 
     # POST /solutions
@@ -110,5 +107,17 @@ module Articles
         @article = model.friendly.find(params[:id])
 
         authenticate_admin! unless @article.published?
+    end
+
+    def update_views
+        session_name = :"viewed_#{model.model_name.plural}"
+        session[session_name] ||= []
+
+        return if @article.id.in? session[session_name]
+
+        # Usar update_counters y no update para evitar callbacks, en particular
+        # el que expira cachés.
+        model.update_counters @article.id, views: 1
+        session[session_name] << @article.id
     end
 end

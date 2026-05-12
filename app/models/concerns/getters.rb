@@ -37,6 +37,14 @@ module Getters
         includes(image_attachment: :blob)
     end
 
+    def includes_localized_content
+        if I18n.locale == :es
+            includes(rich_text_content: { embeds_attachments: :blob })
+        else
+            includes(rich_text_content2: { embeds_attachments: :blob })
+        end
+    end
+
     def self.included(base)
         base.extend(ClassMethods)
     end
@@ -56,6 +64,14 @@ module Getters
 
         def includes_image
             includes(image_attachment: :blob)
+        end
+
+        def includes_localized_content
+            if I18n.locale == :es
+                includes(rich_text_content: { embeds_attachments: :blob })
+            else
+                includes(rich_text_content2: { embeds_attachments: :blob })
+            end
         end
     end
 end

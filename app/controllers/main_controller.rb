@@ -23,6 +23,12 @@ class MainController < ApplicationController
     def contacto
         @user = User.new
         @message = @user.messages.build
+
+        if I18n.locale == :es
+            flash[:alert] = 'Estamos experimentando muchos pedidos en este momento. Por favor, contáctese directamente a olguitech@olguitech.com'
+        else
+            flash[:alert] = 'We are currently experiencing a high volume of orders. Please contact us directly at olguitech@olguitech.com.'
+        end
     end
 
     # GET /nosotros

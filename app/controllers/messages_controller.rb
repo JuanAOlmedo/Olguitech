@@ -10,6 +10,8 @@ class MessagesController < ApplicationController
     # POST /messages
     #      /contacto
     def create
+        return
+
         @user = User.find_or_initialize_by(email: user_params[:email])
         @user.name = user_params[:name] unless user_params[:name].blank?
         @user.locale = I18n.locale

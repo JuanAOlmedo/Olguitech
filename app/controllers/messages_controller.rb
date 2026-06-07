@@ -48,13 +48,13 @@ class MessagesController < ApplicationController
     end
 
     def contact_count
-        bucket = Time.now.to_i / 1.hour.to_i
+        bucket = Time.now.to_i / 1.day.to_i
 
-        Rails.cache.fetch("contactos_#{bucket}", expires_in: 1.hour) { 0 }
+        Rails.cache.fetch("contactos_#{bucket}", expires_in: 1.day) { 0 }
     end
 
     def increment_contact_count
-        bucket = Time.now.to_i / 1.hour.to_i
+        bucket = Time.now.to_i / 1.day.to_i
 
         Rails.cache.increment("contactos_#{bucket}")
     end

@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
         @user = set_user
         @message = @user.messages.build message_params
 
-        if check_recaptcha(@user) && @user.save
+        if  @user.save
             increment_contact_count
 
             redirect_user

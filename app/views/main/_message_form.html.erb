@@ -1,13 +1,17 @@
 <%= form_with model: @message, url: contacto_path, id: 'message-form' do |form| %>
-    <% if @user && @user.errors.any? %>
+    <% if (@user && @user.errors.any?) || @message.errors.any? %>
         <div id="error_explanation">
             <h2>
-                <%= pluralize(@user.errors.count, 'error') %> <%= @user.errors.count > 1 ? t('contact.errors') : t('contact.error') %>:
+                <% error_count = @user.errors.count + @message.errors.count %>
+                <%= pluralize(error_count, 'error') %> <%= error_count > 1 ? t('contact.errors') : t('contact.error') %>:
             </h2>
 
             <ul>
                 <% @user.errors.each do |error| %>
-                    <li><%= error.full_message %></li>
+                    <li> <%= error.full_message %> </li>
+                <% end %>
+                <% @message.errors.each do |error| %>
+                    <li> <%= error.full_message %> </li>
                 <% end %>
             </ul>
         </div>

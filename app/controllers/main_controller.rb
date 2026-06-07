@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MainController < ApplicationController
+    include Throttle
+
     # GET /
     def main
         @solutions, @projects, @products =
@@ -23,7 +25,7 @@ class MainController < ApplicationController
     def contacto
         @user = User.new
         @message = @user.messages.build
-        @show_form = contact_count < 10
+        @show_form = !block_contact?
     end
 
     # GET /nosotros
@@ -32,10 +34,4 @@ class MainController < ApplicationController
     end
 
     private
-
-    def contact_count
-        bucket = Time.now.to_i / 1.day.to_i
-
-        Rails.cache.fetch("contactos_#{bucket}", expires_in: 1.day) { 0 }
-    end
 end

@@ -55,6 +55,8 @@ es:
         ask: Preguntar
         error: impidió que se procese la consulta
         errors: impidieron que se procese la consulta
+        error_throttle_html: >
+            Estamos procesando muchas consultas actualmente. Por favor, envíe su mensaje directamente a olguitech@olguitech.com.
         first_time: El mensaje se envió correctamente. Opcionalmente, puede dejarnos sus datos de contacto.
         captcha_failed: El captcha no fue validado correctamente. Por favor, intente nuevamente.
     users:

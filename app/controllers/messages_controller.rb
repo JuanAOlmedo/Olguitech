@@ -4,23 +4,27 @@ class CaptchaError < StandardError; end
 
 class MessagesController < ApplicationController
     include Captcha
+    include Throttle
 
-    before_action :check_contact_count, only: :create
-
-    # Find or create a new user based on the email, create a new message
-    # for that user and update their locale
     # POST /messages
     #      /contacto
+    # Crea un mensaje para el usuario que se está contactando.
+    # Incluye la validación del módulo Throttle y validación por CAPTCHA
     def create
         @user = set_user
         @message = @user.messages.build message_params
+        @show_form = true
 
-        if  @user.save
+        # No hacer la consulta si se hicieron muchas en poco tiempo
+        if block_contact?
+            @message.errors.add :base, message: I18n.t('contact.error_throttle_html')
+
+            render 'main/contacto', status: :unprocessable_entity
+        elsif check_recaptcha(@user) && @user.save
             increment_contact_count
 
             redirect_user
         else
-            @show_form = true
             render 'main/contacto', status: :unprocessable_entity
         end
     end
@@ -35,6 +39,8 @@ class MessagesController < ApplicationController
         params.require(:user).permit :email, :name
     end
 
+    # Crea o busca un usuario con el mail pasado por parámetro,
+    # actualiza su nombre y locale.
     def set_user
         user = User.find_or_initialize_by(email: user_params[:email])
         user.name = user_params[:name] unless user_params[:name].blank?
@@ -43,24 +49,8 @@ class MessagesController < ApplicationController
         user
     end
 
-    def check_contact_count
-        render 'main/contacto', status: :unprocessable_entity if contact_count >= 10
-    end
-
-    def contact_count
-        bucket = Time.now.to_i / 1.day.to_i
-
-        Rails.cache.fetch("contactos_#{bucket}", expires_in: 1.day) { 0 }
-    end
-
-    def increment_contact_count
-        bucket = Time.now.to_i / 1.day.to_i
-
-        Rails.cache.increment("contactos_#{bucket}")
-    end
-
-    # Redirect the user to the appropriate page based on their status
-    # Redirects to root_path if all fields are filled, otherwise redirects to edit_user_path
+    # Redirige al usuario. Cuando al usuario le falta información por completar, se va a la
+    # página de editar usuario para que la pueda llenar.
     def redirect_user
         if @user.name && @user.phone && @user.company
             redirect_to root_path, notice: I18n.t('contact.sent')

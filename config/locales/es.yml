@@ -47,6 +47,8 @@ es:
         contact: Contactarse
         other_options: >
             Otras opciones de contacto:
+        options: >
+            Opciones de contacto:
         message: Mensaje
         send: Confirmar
         sent: Gracias por su mensaje. Nos pondremos en contacto pronto.

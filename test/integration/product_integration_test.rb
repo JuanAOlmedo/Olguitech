@@ -13,7 +13,7 @@ class ProductIntegrationTest < ActionDispatch::IntegrationTest
         users(:one).update newsletter: true
     end
 
-    test 'should send newsletter when creating an product' do
+    test 'should send newsletter when creating a product' do
         parameters = {
             product: {
                 status: :published
@@ -25,7 +25,7 @@ class ProductIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should not send newsletter when creating an product' do
+    test 'should not send newsletter when creating a product' do
         parameters = {
             product: {
                 status: :drafted
@@ -37,7 +37,7 @@ class ProductIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should send newsletter when editing an product' do
+    test 'should send newsletter when editing a product' do
         parameters = {
             product: {
                 status: :published
@@ -50,7 +50,7 @@ class ProductIntegrationTest < ActionDispatch::IntegrationTest
         end
     end
 
-    test 'should not send newsletter when editing an product' do
+    test 'should not send newsletter when editing a product' do
         parameters = {
             product: {
                 status: :drafted

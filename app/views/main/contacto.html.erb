@@ -2,10 +2,18 @@
 
 <h1 class="main-title color-primary"> <%= t 'contact.how_can_we_help_you' %> </h1>
 
-<%= render 'main/message_form' %>
+<% if @show_form %>
+    <%= render 'main/message_form' %>
+<% end %>
 
 <div class="centered">
-    <h2 class="title centered"><%= t 'contact.other_options' %></h2>
+    <h2 class="title centered">
+        <% if @show_form %>
+            <%= t 'contact.other_options' %>
+        <% else %>
+            <%= t 'contact.options' %>
+        <% end %>
+    </h2>
     <p class="big-text">
         <a class="link" href="mailto:olguitech@olguitech.com">olguitech@olguitech.com</a>
         <a class="link" href="tel:+59827162524">+598 2716 2524</a>

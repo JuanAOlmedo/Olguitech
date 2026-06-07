@@ -23,16 +23,19 @@ class MainController < ApplicationController
     def contacto
         @user = User.new
         @message = @user.messages.build
-
-        if I18n.locale == :es
-            flash[:alert] = 'Estamos experimentando muchos pedidos en este momento. Por favor, contáctese directamente a olguitech@olguitech.com'
-        else
-            flash[:alert] = 'We are currently experiencing a high volume of orders. Please contact us directly at olguitech@olguitech.com.'
-        end
+        @show_form = contact_count < 10
     end
 
     # GET /nosotros
     def nosotros
         @nosotros = true
+    end
+
+    private
+
+    def contact_count
+        bucket = Time.now.to_i / 1.hour.to_i
+
+        Rails.cache.fetch("contactos_#{bucket}", expires_in: 1.hour) { 0 }
     end
 end

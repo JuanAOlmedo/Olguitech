@@ -44,6 +44,6 @@
             <%= recaptcha_tags theme: :light, site_key: Rails.application.credentials.CAPTCHA_SITE_KEY %>
         </div>
 
-        <%= form.submit t('contact.ask').to_s, class: 'btn centered', disabled: true %>
+        <%= form.submit t('contact.ask').to_s, class: 'btn centered' %>
     </div>
 <% end %>

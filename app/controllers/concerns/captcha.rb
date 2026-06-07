@@ -11,4 +11,8 @@ module Captcha
 
         raise Captcha::Invalid
     end
+
+    def check_recaptcha(model = nil)
+        verify_recaptcha model: model, secret_key: Rails.application.credentials.CAPTCHA_SECRET_KEY
+    end
 end

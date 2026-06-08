@@ -67,6 +67,8 @@
                           url: subscribe_users_path,
                           method: :post,
                           data: { controller: 'captcha', action: 'focusin->captcha#load' } do |form| %>
+                <%= form.invisible_captcha :subtitle %>
+
                 <div class="field" style="padding-bottom: 0;">
                     <%= form.label :email, 'Email' %>
                     <%= form.email_field :email %>

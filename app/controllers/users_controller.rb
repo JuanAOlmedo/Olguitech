@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     before_action :authenticate_admin!,
                   :redirect_unless_admin,
                   only: %i[index new create show]
+
+    invisible_captcha only: [:subscribe], honeypot: :subtitle unless Rails.env.test?
+
     # Para permitir funcionalidad de List-Unsubscribe
     protect_from_forgery except: :unsubscribe
 

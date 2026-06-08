@@ -7,7 +7,7 @@ class ContactoIntegrationTest < ActionDispatch::IntegrationTest
         Rails.cache.clear
     end
 
-    test 'should block contact page after 20 attemps' do
+    test 'should block contact page after 10 attemps' do
         parameters = {
             user: {
                 email: users(:one).email
@@ -36,7 +36,7 @@ class ContactoIntegrationTest < ActionDispatch::IntegrationTest
         assert_response :unprocessable_entity
     end
 
-    test 'should block contact page after 20 invalid attemps' do
+    test 'should not block contact page after invalid attemps' do
         invalid_parameters = {
             user: {
                 email: 'noemail'

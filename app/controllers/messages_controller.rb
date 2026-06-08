@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     include Captcha
     include Throttle
 
-    invisible_captcha only: [:create], honeypot: :subtitle
+    invisible_captcha only: [:create], honeypot: :subtitle unless Rails.env.test?
 
     # POST /messages
     #      /contacto

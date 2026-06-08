@@ -128,6 +128,12 @@ es:
             user:
                 one: Usuario
                 other: Usuarios
+        attributes:
+            user:
+                name: Nombre
+                messages: Mensaje
+            message:
+                content: Contenido
     date:
         abbr_day_names:
             - dom

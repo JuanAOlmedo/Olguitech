@@ -7,7 +7,7 @@ class ContactoIntegrationTest < ActionDispatch::IntegrationTest
         Rails.cache.clear
     end
 
-    test 'should block contact page after 10 attemps' do
+    test 'should block contact page after 5 attemps' do
         parameters = {
             user: {
                 email: users(:one).email
@@ -17,7 +17,7 @@ class ContactoIntegrationTest < ActionDispatch::IntegrationTest
             }
         }
 
-        10.times do
+        5.times do
             assert_emails 2 do
                 assert_difference('Message.count', 1) do
                     post '/contacto', params: parameters

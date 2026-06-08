@@ -122,3 +122,9 @@ en:
             user:
                 one: User
                 other: Users
+        attributes:
+            user:
+                name: Name
+                messages: Message
+            message:
+                content: Content

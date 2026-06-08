@@ -6,6 +6,7 @@ class User < ApplicationRecord
     friendly_id :email, use: :slugged
 
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+    validates :name, format: { with: /\A\p{L}+(\s\p{L}+)*\z/, allow_blank: true }
 
     has_secure_token :edit_token
     has_secure_token :newsletter_token

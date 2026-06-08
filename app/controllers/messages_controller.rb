@@ -43,7 +43,7 @@ class MessagesController < ApplicationController
     # actualiza su nombre y locale.
     def set_user
         user = User.find_or_initialize_by(email: user_params[:email])
-        user.name = user_params[:name] unless user_params[:name].blank?
+        user.name = user_params[:name].strip unless user_params[:name]&.strip.blank?
         user.locale = I18n.locale
 
         user

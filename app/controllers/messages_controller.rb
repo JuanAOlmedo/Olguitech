@@ -6,6 +6,8 @@ class MessagesController < ApplicationController
     include Captcha
     include Throttle
 
+    invisible_captcha only: [:create], honeypot: :subtitle
+
     # POST /messages
     #      /contacto
     # Crea un mensaje para el usuario que se está contactando.

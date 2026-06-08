@@ -39,8 +39,9 @@ gem 'bcrypt_pbkdf'
 gem 'devise', '~> 5.0'
 gem 'ed25519'
 
-# Captcha
-gem "recaptcha"
+# Captchas para página de contacto
+gem 'invisible_captcha', '~> 2.3'
+gem 'recaptcha'
 
 # Use simple_form for devise forms
 gem 'simple_form', '5.3.0'

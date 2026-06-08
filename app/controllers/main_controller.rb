@@ -8,7 +8,7 @@ class MainController < ApplicationController
         @solutions, @projects, @products =
             [Solution, Project, Product].map! do |model|
                 # Cachear consulta
-                Rails.cache.fetch("#{model.model_name.cache_key}/main", expires_in: 2.hours) do
+                Rails.cache.fetch("#{model.model_name.cache_key}/main", expires_in: 4.hours) do
                     model.published
                          .select(model.fields_for_cards)
                          .order(created_at: :desc)
@@ -32,6 +32,4 @@ class MainController < ApplicationController
     def nosotros
         @nosotros = true
     end
-
-    private
 end

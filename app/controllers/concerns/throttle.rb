@@ -3,7 +3,8 @@
 # Cuenta la cantidad de contactos y decide si es necesario bloquear una request.
 # Requiere Rails.cache, por lo que tiene que estar configurado
 module Throttle
-    MAX_CONTACTS = 10
+    # Bloquea si hay más de cinco contactos en un día
+    MAX_CONTACTS = 5
     TIME_WINDOW = 1.day
 
     def contact_count

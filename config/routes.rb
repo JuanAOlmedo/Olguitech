@@ -6,8 +6,6 @@ Rails.application.routes.draw do
         end
         resources :super_categories
 
-        resources :messages
-
         resources :solutions
         resources :projects
         resources :products

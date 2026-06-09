@@ -8,8 +8,7 @@ class MessagesController < ApplicationController
 
     invisible_captcha only: [:create], honeypot: :subtitle unless Rails.env.test?
 
-    # POST /messages
-    #      /contacto
+    # POST /contacto
     # Crea un mensaje para el usuario que se está contactando.
     # Incluye la validación del módulo Throttle y validación por CAPTCHA
     def create

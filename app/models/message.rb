@@ -7,7 +7,7 @@ class Message < ApplicationRecord
     after_commit :send_mail, on: :create
     validates :content, format: {
         without: LINK_PATTERN,
-        message: 'no puede contener enlaces'
+        message: I18n.t('contact.links')
     }, length: { maximum: 2000 }
 
     # Add some time to allow users to fill their information

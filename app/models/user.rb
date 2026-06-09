@@ -5,8 +5,21 @@ class User < ApplicationRecord
 
     friendly_id :email, use: :slugged
 
-    validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-    validates :name, format: { with: /\A\p{L}+(\s\p{L}+)*\z/, allow_blank: true }, length: { maximum: 30 }
+    validates :email,
+              format: { with: URI::MailTo::EMAIL_REGEXP },
+              presence: true,
+              uniqueness: true
+    validates :name,
+              format: { with: /\A\p{L}+( \p{L}+)*\z/, allow_blank: true },
+              length: { maximum: 30 }
+    validates :company,
+              format: { with: /\A[\p{L}\d .()&'-]*\z/ },
+              length: { maximum: 50 },
+              allow_blank: true
+    validates :phone,
+              format: { with: /\A[\d ()+-]*\z/ },
+              length: { minimum: 5, maximum: 20 },
+              allow_blank: true
 
     has_secure_token :edit_token
     has_secure_token :newsletter_token

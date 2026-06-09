@@ -5,8 +5,24 @@
 </h1>
 
 <%= form_with model: @user do |form| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@user.errors.count, 'error') %> <%= @user.errors.count > 1 ? t('contact.errors') : t('contact.error') %>:
+            </h2>
+
+            <ul>
+                <% @user.errors.each do |error| %>
+                    <li> <%= error.full_message %> </li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
     <div class="form big-card">
         <%= form.hidden_field :edit_token, value: @user.edit_token %>
+
+        <%= hidden_field_tag :contact, value: params[:contact] %>
 
         <% if params[:contact] %>
             <%= form.hidden_field :contact, value: true %>

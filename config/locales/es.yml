@@ -55,6 +55,7 @@ es:
         ask: Preguntar
         error: impidió que se procese la consulta
         errors: impidieron que se procese la consulta
+        links: no puede tener enlaces
         error_throttle_html: >
             Estamos procesando muchas consultas actualmente. Por favor, envíe su mensaje directamente a olguitech@olguitech.com.
         first_time: El mensaje se envió correctamente. Opcionalmente, puede dejarnos sus datos de contacto.
@@ -130,10 +131,12 @@ es:
                 other: Usuarios
         attributes:
             user:
-                name: Nombre
-                messages: Mensaje
+                name: El nombre
+                phone: El teléfono
+                company: La empresa
+                messages: El mensaje
             message:
-                content: Contenido
+                content: El contenido
     date:
         abbr_day_names:
             - dom
@@ -246,7 +249,7 @@ es:
             greater_than: debe ser mayor que %{count}
             greater_than_or_equal_to: debe ser mayor que o igual a %{count}
             inclusion: no está incluido en la lista
-            invalid: no es válido
+            invalid: no es válido/a
             less_than: debe ser menor que %{count}
             less_than_or_equal_to: debe ser menor que o igual a %{count}
             model_invalid: "La validación falló: %{errors}"

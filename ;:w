@@ -13,7 +13,7 @@ module Captcha
     end
 
     def check_recaptcha(model = nil)
-        !Rails.env.production?\
-            || verify_recaptcha(model: model, secret_key: Rails.application.credentials.CAPTCHA_SECRET_KEY)
+        !Rails.env.development?
+            || verify_recaptcha model: model, secret_key: Rails.application.credentials.CAPTCHA_SECRET_KEY
     end
 end

@@ -55,7 +55,6 @@ es:
         ask: Preguntar
         error: impidió que se procese la consulta
         errors: impidieron que se procese la consulta
-        links: no puede tener enlaces
         error_throttle_html: >
             Estamos procesando muchas consultas actualmente. Por favor, envíe su mensaje directamente a olguitech@olguitech.com.
         first_time: El mensaje se envió correctamente. Opcionalmente, puede dejarnos sus datos de contacto.
@@ -110,6 +109,11 @@ es:
                 restrict_dependent_destroy:
                     has_one: No se puede eliminar el registro porque existe un %{record} dependiente
                     has_many: No se puede eliminar el registro porque existen %{record} dependientes
+            models:
+                message:
+                    attributes:
+                        content:
+                            invalid: no puede tener enlaces
         models:
             solution:
                 one: Solución

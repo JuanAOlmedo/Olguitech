@@ -58,7 +58,6 @@ en:
             We are currently processing too many requests. Please send your message directly to olguitech@olguitech.com.
         error: prevented your request from being processed
         errors: prevented your request from being processed
-        links: cannot have links
         first_time: It looks like it's the first time you get in touch with us, please fill out your details
         captcha_failed: The captcha was not validated correctly. Please try again.
     users:
@@ -104,6 +103,12 @@ en:
         edit: Edit
         create: Create
     activerecord:
+        errors:
+            models:
+                message:
+                    attributes:
+                        content:
+                            invalid: cannot have links
         models:
             solution:
                 one: Solution

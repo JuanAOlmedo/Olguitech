@@ -6,8 +6,7 @@ class Message < ApplicationRecord
     belongs_to :user
     after_commit :send_mail, on: :create
     validates :content, format: {
-        without: LINK_PATTERN,
-        message: I18n.t('contact.links')
+        without: LINK_PATTERN
     }, length: { maximum: 2000 }
 
     # Add some time to allow users to fill their information

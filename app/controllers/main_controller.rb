@@ -7,11 +7,14 @@ class MainController < ApplicationController
     def main
         @solutions, @projects, @products =
             [Solution, Project, Product].map! do |model|
-                model.published
-                     .select(model.fields_for_cards)
-                     .order(created_at: :desc)
-                     .includes_image
-                     .limit(4)
+                # Cachear consulta
+                Rails.cache.fetch("#{model.model_name.cache_key}/main", expires_in: 4.hours) do
+                    model.published
+                         .select(model.fields_for_cards)
+                         .order(created_at: :desc)
+                         .includes_image
+                         .first(4)
+                end
             end
 
         # Crear usuario para usar en formulario de suscripción

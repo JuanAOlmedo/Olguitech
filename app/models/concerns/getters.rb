@@ -51,7 +51,7 @@ module Getters
 
     module ClassMethods
         def fields_for_cards
-            %i[id slug title title2 description description2 updated_at]
+            %i[id slug title title2 description description2]
         end
 
         def fields_for_dashboard

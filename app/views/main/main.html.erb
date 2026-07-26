@@ -18,7 +18,9 @@
         </h1>
         <%= link_to t('general.see_all'), solutions_path, class: 'btn centered' %>
 
-        <%= cards_for @solutions %>
+        <% cache [I18n.locale, @solutions] do %>
+            <%= cards_for @solutions %>
+        <% end %>
     </div>
 <% end %>
 
@@ -29,7 +31,9 @@
         </h1>
         <%= link_to t('general.see_all'), projects_path, class: 'btn centered' %>
 
-        <%= cards_for @projects %>
+        <% cache [I18n.locale, @projects] do %>
+            <%= cards_for @projects %>
+        <% end %>
     </div>
 <% end %>
 
@@ -40,7 +44,9 @@
         </h1>
         <%= link_to t('general.see_all'), products_path, class: 'btn centered' %>
 
-        <%= alternative_cards_for @products %>
+        <% cache [I18n.locale, @products] do %>
+            <%= alternative_cards_for @products %>
+        <% end %>
     </div>
 <% end %>
 

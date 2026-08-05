@@ -131,7 +131,7 @@ GEM
     diff-lcs (1.6.2)
     drb (2.2.3)
     ed25519 (1.4.0)
-    erb (6.0.6)
+    erb (6.0.7)
     erubi (1.13.1)
     execjs (2.10.1)
     ffi (1.17.4)
@@ -162,7 +162,7 @@ GEM
     jbuilder (2.15.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (2.21.1)
+    json (2.21.2)
     kramdown (2.5.2)
       rexml (>= 3.4.4)
     kramdown-parser-gfm (1.1.0)
@@ -188,7 +188,7 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
-    msgpack (1.8.3)
+    msgpack (1.8.4)
     net-imap (0.6.6)
       date
       net-protocol
@@ -275,7 +275,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
-    rbs (4.0.3)
+    rbs (4.1.2)
       logger
       prism (>= 1.6.0)
       tsort
@@ -293,7 +293,7 @@ GEM
     reverse_markdown (3.0.2)
       nokogiri
     rexml (3.4.4)
-    rubocop (1.88.2)
+    rubocop (1.89.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -334,8 +334,8 @@ GEM
     simple_form (5.3.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
-    simplecov (1.0.2)
-    solargraph (0.60.2)
+    simplecov (1.0.3)
+    solargraph (0.60.3)
       ast (~> 2.4.3)
       backport (~> 1.2)
       benchmark (~> 0.4)
@@ -360,7 +360,7 @@ GEM
       yard (~> 0.9, >= 0.9.24)
       yard-activesupport-concern (~> 0.0)
       yard-solargraph (~> 0.1)
-    sorbet-runtime (0.6.13363)
+    sorbet-runtime (0.6.13405)
     sord (7.1.0)
       commander (~> 5.0)
       parlour (~> 9.1)
@@ -425,7 +425,7 @@ GEM
       yard (>= 0.8)
     yard-solargraph (0.1.0)
       yard (~> 0.9)
-    zeitwerk (2.8.2)
+    zeitwerk (2.8.3)
 
 PLATFORMS
   ruby
